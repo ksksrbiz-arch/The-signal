@@ -66,6 +66,45 @@ Place static files in the repository root. Netlify will serve them directly.
 ### Modifying the PDF
 Replace `index.html` with an updated PDF file. The file must remain named `index.html` for the site to work correctly.
 
+## Terminal Setup (GitHub Codespaces)
+
+This project is designed to be worked on from **GitHub Codespaces**, where the terminal is available directly in the browser.
+
+### Authentication
+
+Codespaces injects `GITHUB_TOKEN` automatically — no SSH key or personal access token setup is needed for push/pull operations.
+
+If a push prompts for credentials, set the remote URL explicitly:
+
+```bash
+git remote set-url origin https://<YOUR_GITHUB_USERNAME>:<YOUR_TOKEN>@github.com/ksksrbiz-arch/The-signal.git
+```
+
+### Common Terminal Commands
+
+**Deploy to production** (push to `main`):
+```bash
+git push origin main
+```
+Netlify detects the push and deploys within seconds — no build step required.
+
+**Create and push a release tag**:
+```bash
+git tag v1.0
+git push origin v1.0
+```
+After pushing, visit `github.com/ksksrbiz-arch/The-signal/releases` to convert the tag into a formal GitHub Release with a title and description.
+
+**Check deployment status**: Visit the Netlify dashboard or the repository's Deployments tab on GitHub.
+
+### Local Preview
+
+To preview the site locally without deploying:
+```bash
+python3 -m http.server 8080
+```
+Then open `http://localhost:8080` in the browser.
+
 ## Conventions for AI Assistants
 
 1. **Keep it simple** - this is a minimal static site; avoid introducing unnecessary complexity
