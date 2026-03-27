@@ -22,7 +22,13 @@
       "https://fonts.googleapis.com",
       "https://fonts.gstatic.com",
       "https://api.fontshare.com",
-      "https://www.perplexity.ai"
+      "https://www.perplexity.ai",
+      "#/",
+      "#/blog",
+      "#/write",
+      "#/auth",
+      "#/dashboard",
+      "#/post"
     ]
 
 # Sitemap generation (auto-generates sitemap.xml from all HTML files)
