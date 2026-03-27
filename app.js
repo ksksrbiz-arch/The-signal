@@ -43,71 +43,46 @@
   update();
 })();
 
-// Active section tracking (header nav)
+// Initialize auth UI state
 (function(){
-  const links = document.querySelectorAll('.nav-link');
-  if (!links.length) return;
-
-  const sections = ['foundation', 'revenue', 'systems', 'scale']
-    .map(function(id) { return document.getElementById(id); })
-    .filter(Boolean);
-
-  if (!sections.length) return;
-
-  var observer = new IntersectionObserver(function(entries) {
-    entries.forEach(function(entry) {
-      if (entry.isIntersecting) {
-        links.forEach(function(l) { l.classList.remove('active'); });
-        var link = document.querySelector('.nav-link[href="#' + entry.target.id + '"]');
-        if (link) link.classList.add('active');
-      }
-    });
-  }, { threshold: 0.2, rootMargin: '-80px 0px -50% 0px' });
-
-  sections.forEach(function(s) { observer.observe(s); });
+  // Update auth nav on load and auth state changes
+  if (typeof updateAuthUI === 'function') {
+    updateAuthUI();
+    try {
+      const sb = getSupabase();
+      sb.auth.onAuthStateChange((event, session) => {
+        updateAuthUI();
+      });
+    } catch (e) { /* supabase not ready */ }
+  }
 })();
 
-// Scroll reveal
+// Mobile nav toggle
 (function(){
-  var els = document.querySelectorAll('.dispatch, .quote-block, .entity-card, .status-bar, .newsletter-cta');
-  els.forEach(function(el) { el.classList.add('reveal'); });
+  const header = document.querySelector('.site-header');
+  const nav = document.querySelector('.header-nav');
+  if (!header || !nav) return;
 
-  var observer = new IntersectionObserver(function(entries) {
-    entries.forEach(function(entry) {
-      if (entry.isIntersecting) {
-        entry.target.classList.add('visible');
-        observer.unobserve(entry.target);
-      }
-    });
-  }, { threshold: 0.1, rootMargin: '0px 0px -40px 0px' });
+  // Create hamburger button
+  const menuBtn = document.createElement('button');
+  menuBtn.className = 'mobile-menu-btn';
+  menuBtn.setAttribute('aria-label', 'Toggle navigation');
+  menuBtn.innerHTML = '<svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="3" y1="6" x2="21" y2="6"/><line x1="3" y1="12" x2="21" y2="12"/><line x1="3" y1="18" x2="21" y2="18"/></svg>';
 
-  els.forEach(function(el) { observer.observe(el); });
+  const headerInner = header.querySelector('.header-inner');
+  headerInner.insertBefore(menuBtn, nav);
+
+  menuBtn.addEventListener('click', () => {
+    nav.classList.toggle('open');
+    const isOpen = nav.classList.contains('open');
+    menuBtn.innerHTML = isOpen
+      ? '<svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>'
+      : '<svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="3" y1="6" x2="21" y2="6"/><line x1="3" y1="12" x2="21" y2="12"/><line x1="3" y1="18" x2="21" y2="18"/></svg>';
+  });
+
+  // Close on route change
+  window.addEventListener('hashchange', () => {
+    nav.classList.remove('open');
+    menuBtn.innerHTML = '<svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="3" y1="6" x2="21" y2="6"/><line x1="3" y1="12" x2="21" y2="12"/><line x1="3" y1="18" x2="21" y2="18"/></svg>';
+  });
 })();
-
-// Newsletter form handler
-function handleSubscribe(e) {
-  e.preventDefault();
-  var form = e.target;
-  var input = form.querySelector('.newsletter-input');
-  var btn = form.querySelector('.newsletter-btn');
-  var email = input.value;
-
-  if (!email) return;
-
-  // Visual feedback
-  btn.querySelector('.btn-text').textContent = 'Sent ✓';
-  form.classList.add('submitted');
-  input.value = '';
-  input.placeholder = 'Thanks — you\'re on the list.';
-  input.disabled = true;
-  btn.disabled = true;
-
-  // Reset after 4 seconds
-  setTimeout(function() {
-    btn.querySelector('.btn-text').textContent = 'Subscribe';
-    form.classList.remove('submitted');
-    input.placeholder = 'your@email.com';
-    input.disabled = false;
-    btn.disabled = false;
-  }, 4000);
-}
