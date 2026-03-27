@@ -71,23 +71,44 @@ async function fetchPublishedPosts(limit = 20, offset = 0) {
   const sb = getSupabase();
   const { data, error } = await sb
     .from('signal_posts')
-    .select('id, slug, title, excerpt, cover_image_url, tags, view_count, repost_count, published_at, author_id, signal_profiles(display_name, avatar_url)')
+    .select('id, slug, title, excerpt, cover_image_url, tags, view_count, repost_count, published_at, author_id')
     .eq('status', 'published')
     .order('published_at', { ascending: false })
     .range(offset, offset + limit - 1);
   if (error) throw error;
-  return data || [];
+  // Fetch author profiles separately
+  const posts = data || [];
+  const authorIds = [...new Set(posts.map(p => p.author_id))];
+  if (authorIds.length > 0) {
+    const { data: profiles } = await sb
+      .from('signal_profiles')
+      .select('id, display_name, avatar_url')
+      .in('id', authorIds);
+    const profileMap = {};
+    (profiles || []).forEach(p => profileMap[p.id] = p);
+    posts.forEach(p => p.signal_profiles = profileMap[p.author_id] || { display_name: 'Unknown', avatar_url: '' });
+  }
+  return posts;
 }
 
 async function fetchPostBySlug(slug) {
   const sb = getSupabase();
   const { data, error } = await sb
     .from('signal_posts')
-    .select('*, signal_profiles(display_name, avatar_url, bio)')
+    .select('*')
     .eq('slug', slug)
     .eq('status', 'published')
     .single();
   if (error) throw error;
+  // Fetch author profile separately
+  if (data && data.author_id) {
+    const { data: profile } = await sb
+      .from('signal_profiles')
+      .select('display_name, avatar_url, bio')
+      .eq('id', data.author_id)
+      .single();
+    data.signal_profiles = profile || { display_name: 'Unknown', avatar_url: '', bio: '' };
+  }
   // Increment view count (fire and forget)
   sb.rpc('increment_view_count', { post_slug: slug }).catch(() => {});
   return data;
