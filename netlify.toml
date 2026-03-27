@@ -1,5 +1,42 @@
 [build]
   publish = "."
+  command = "echo 'Static site — no build step needed'"
+
+[build.environment]
+  NODE_ENV = "production"
+
+[build.processing]
+  skip_processing = false
+
+[build.processing.html]
+  pretty_urls = true
+
+# Configure checklinks — skip external preconnects and URLs that fail
+# in Netlify's sandboxed build environment (SSL cert mismatches, 403s)
+[[plugins]]
+  package = "netlify-plugin-checklinks"
+  [plugins.inputs]
+    checkExternal = false
+    pretty = true
+    skipPatterns = [
+      "https://fonts.googleapis.com",
+      "https://fonts.gstatic.com",
+      "https://api.fontshare.com",
+      "https://www.perplexity.ai",
+      "#/",
+      "#/blog",
+      "#/write",
+      "#/auth",
+      "#/dashboard",
+      "#/post"
+    ]
+
+# Sitemap generation (auto-generates sitemap.xml from all HTML files)
+[[plugins]]
+  package = "@netlify/plugin-sitemap"
+  [plugins.inputs]
+    buildDir = "."
+    prettyURLs = true
 
 # Convenience redirects to the PDF
 [[redirects]]
@@ -26,17 +63,33 @@
 [[headers]]
   for = "/*"
   [headers.values]
-    X-Frame-Options = "SAMEORIGIN"
+    X-Frame-Options = "DENY"
     X-Content-Type-Options = "nosniff"
     Referrer-Policy = "strict-origin-when-cross-origin"
     Permissions-Policy = "camera=(), microphone=(), geolocation=()"
-    Content-Security-Policy = "default-src 'self'; style-src 'self' 'unsafe-inline'; script-src 'self' 'unsafe-inline'; object-src 'self'; frame-src 'self'"
 
-# Cache PDF aggressively (changes rarely)
+# Cache CSS and JS aggressively (immutable assets)
+[[headers]]
+  for = "/*.css"
+  [headers.values]
+    Cache-Control = "public, max-age=31536000, immutable"
+
+[[headers]]
+  for = "/*.js"
+  [headers.values]
+    Cache-Control = "public, max-age=31536000, immutable"
+
+# Cache PDF (changes rarely)
 [[headers]]
   for = "/*.pdf"
   [headers.values]
     Cache-Control = "public, max-age=86400, stale-while-revalidate=604800"
+
+# Cache OG image
+[[headers]]
+  for = "/og-image.svg"
+  [headers.values]
+    Cache-Control = "public, max-age=86400"
 
 # HTML should always revalidate for fresh deploys
 [[headers]]

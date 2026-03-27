@@ -1,223 +1,184 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" data-theme="dark">
 <head>
-  <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>The Signal</title>
-  <meta name="description" content="The Signal - Document viewer and download">
-  <meta property="og:title" content="The Signal">
-  <meta property="og:description" content="The Signal - Document viewer and download">
-  <meta property="og:type" content="website">
-  <style>
-    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+<!--
+   ______                            __
+  / ____/___  ____ ___  ____  __  __/ /____  _____
+ / /   / __ \/ __ `__ \/ __ \/ / / / __/ _ \/ ___/
+/ /___/ /_/ / / / / / / /_/ / /_/ / /_/  __/ /
+\____/\____/_/ /_/ /_/ .___/\__,_/\__/\___/_/
+                    /_/
+        Created with Perplexity Computer
+        https://www.perplexity.ai/computer
+-->
+<meta name="generator" content="Perplexity Computer">
+<meta name="author" content="Perplexity Computer">
+<meta property="og:see_also" content="https://www.perplexity.ai/computer">
+<link rel="author" href="https://www.perplexity.ai/computer">
 
-    :root {
-      --bg: #fafafa;
-      --text: #1a1a2e;
-      --accent: #0f3460;
-      --accent-hover: #16498a;
-      --surface: #ffffff;
-      --border: #e2e8f0;
-      --shadow: 0 2px 16px rgba(0, 0, 0, 0.08);
-      --radius: 8px;
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>THE SIGNAL — Weekly Transmissions from 1Commerce LLC</title>
+<meta name="description" content="Build the cathedral. Light it from within. Raw field notes, weekly dispatches, and builder transmissions from 1Commerce LLC, Canby, Oregon.">
+<meta property="og:title" content="THE SIGNAL — Weekly Transmissions">
+<meta property="og:description" content="Build the cathedral. Light it from within. Raw field notes from building a cathedral in real time.">
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://th3signal.netlify.app">
+<meta property="og:image" content="https://th3signal.netlify.app/og-image.svg">
+<meta property="og:site_name" content="THE SIGNAL">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="THE SIGNAL — Weekly Transmissions">
+<meta name="twitter:description" content="Build the cathedral. Light it from within.">
+<meta name="theme-color" content="#0c0b09" media="(prefers-color-scheme: dark)">
+<meta name="theme-color" content="#f5f3ee" media="(prefers-color-scheme: light)">
+<meta name="robots" content="index, follow">
+<link rel="canonical" href="https://th3signal.netlify.app">
+
+<!-- Favicon -->
+<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'><rect width='32' height='32' rx='4' fill='%230c0b09'/><line x1='16' y1='6' x2='16' y2='26' stroke='%23c9a84c' stroke-width='2'/><circle cx='16' cy='16' r='3.5' stroke='%23c9a84c' stroke-width='1.5' fill='none'/><circle cx='16' cy='16' r='1' fill='%23c9a84c'/></svg>">
+
+<!-- Fonts -->
+<link rel="preconnect" href="https://api.fontshare.com" crossorigin>
+<link href="https://api.fontshare.com/v2/css?f[]=zodiak@400,500,600,700&f[]=general-sans@300,400,500,600&display=swap" rel="stylesheet">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@300;400;500&display=swap" rel="stylesheet">
+
+<!-- Supabase JS -->
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2/dist/umd/supabase.min.js"></script>
+
+<link rel="stylesheet" href="./base.css">
+<link rel="stylesheet" href="./style.css">
+
+<!-- JSON-LD: Website structured data -->
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "WebSite",
+  "name": "THE SIGNAL",
+  "url": "https://th3signal.netlify.app",
+  "description": "Weekly transmissions from 1Commerce LLC. Raw field notes from building a cathedral in real time.",
+  "publisher": {
+    "@type": "Organization",
+    "name": "1Commerce LLC",
+    "url": "https://th3signal.netlify.app",
+    "address": {
+      "@type": "PostalAddress",
+      "addressLocality": "Canby",
+      "addressRegion": "OR",
+      "addressCountry": "US"
     }
+  },
+  "creator": {
+    "@type": "SoftwareApplication",
+    "name": "Perplexity Computer",
+    "url": "https://www.perplexity.ai/computer"
+  },
+  "potentialAction": {
+    "@type": "SearchAction",
+    "target": "https://th3signal.netlify.app/#/blog?q={search_term_string}",
+    "query-input": "required name=search_term_string"
+  }
+}
+</script>
 
-    body {
-      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
-      background: var(--bg);
-      color: var(--text);
-      line-height: 1.6;
-      min-height: 100vh;
-      display: flex;
-      flex-direction: column;
+<!-- JSON-LD: Blog structured data -->
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "Blog",
+  "name": "THE SIGNAL — Transmissions",
+  "url": "https://th3signal.netlify.app/#/blog",
+  "description": "Weekly dispatches, builder field notes, and cathedral transmissions.",
+  "publisher": {
+    "@type": "Organization",
+    "name": "1Commerce LLC"
+  },
+  "blogPost": [
+    {
+      "@type": "BlogPosting",
+      "headline": "Welcome to The Signal",
+      "description": "This is the first transmission. Not a launch announcement — a frequency lock. You are now tuned in.",
+      "datePublished": "2026-03-27",
+      "author": {
+        "@type": "Person",
+        "name": "Keith Skaggs"
+      }
     }
-
-    header {
-      text-align: center;
-      padding: 2rem 1rem 1rem;
-      border-bottom: 1px solid var(--border);
-    }
-
-    header h1 {
-      font-size: 1.75rem;
-      font-weight: 700;
-      letter-spacing: -0.02em;
-    }
-
-    main {
-      flex: 1;
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      padding: 1.5rem 1rem;
-      max-width: 960px;
-      width: 100%;
-      margin: 0 auto;
-    }
-
-    #pdf-viewer {
-      width: 100%;
-      height: 80vh;
-      background: var(--surface);
-      border: 1px solid var(--border);
-      border-radius: var(--radius);
-      box-shadow: var(--shadow);
-      overflow: hidden;
-    }
-
-    #pdf-viewer object,
-    #pdf-viewer embed,
-    #pdf-viewer iframe {
-      width: 100%;
-      height: 100%;
-      border: none;
-    }
-
-    .actions {
-      margin-top: 1.25rem;
-      display: flex;
-      gap: 0.75rem;
-      flex-wrap: wrap;
-      justify-content: center;
-    }
-
-    .btn {
-      display: inline-flex;
-      align-items: center;
-      gap: 0.5rem;
-      padding: 0.75rem 1.75rem;
-      border-radius: 24px;
-      font-size: 0.95rem;
-      font-weight: 600;
-      text-decoration: none;
-      transition: background 0.2s, transform 0.1s;
-      cursor: pointer;
-      border: none;
-    }
-
-    .btn:active { transform: scale(0.97); }
-
-    .btn-primary {
-      background: var(--accent);
-      color: #fff;
-    }
-
-    .btn-primary:hover { background: var(--accent-hover); }
-
-    .btn-secondary {
-      background: transparent;
-      color: var(--accent);
-      border: 2px solid var(--accent);
-    }
-
-    .btn-secondary:hover {
-      background: var(--accent);
-      color: #fff;
-    }
-
-    #fallback-message {
-      display: none;
-      text-align: center;
-      margin-top: 1.5rem;
-      padding: 1.5rem;
-      background: #fff8e1;
-      border: 1px solid #ffe082;
-      border-radius: var(--radius);
-      max-width: 480px;
-    }
-
-    #fallback-message p { margin-bottom: 1rem; }
-
-    footer {
-      text-align: center;
-      padding: 1.5rem 1rem;
-      border-top: 1px solid var(--border);
-      font-size: 0.85rem;
-      color: #64748b;
-    }
-
-    noscript .noscript-notice {
-      text-align: center;
-      margin-top: 1rem;
-      padding: 1rem;
-      background: #e3f2fd;
-      border: 1px solid #90caf9;
-      border-radius: var(--radius);
-    }
-
-    noscript .noscript-notice a { color: var(--accent); }
-
-    @media (max-width: 600px) {
-      header h1 { font-size: 1.35rem; }
-      #pdf-viewer { height: 60vh; }
-      .btn { padding: 0.6rem 1.25rem; font-size: 0.9rem; }
-    }
-  </style>
+  ]
+}
+</script>
 </head>
 <body>
-  <header>
-    <h1>The Signal</h1>
+
+  <!-- Ambient grain overlay -->
+  <div class="grain" aria-hidden="true"></div>
+
+  <!-- Reading progress bar -->
+  <div class="reading-progress" aria-hidden="true"></div>
+
+  <!-- Header -->
+  <header class="site-header">
+    <div class="header-inner">
+      <div class="header-left">
+        <a href="#/" class="header-brand" aria-label="The Signal home">
+          <svg class="logo" viewBox="0 0 32 32" width="28" height="28" fill="none" aria-label="The Signal logo">
+            <rect x="2" y="2" width="28" height="28" rx="2" stroke="currentColor" stroke-width="1.5" opacity="0.3"/>
+            <line x1="16" y1="6" x2="16" y2="26" stroke="currentColor" stroke-width="1.5"/>
+            <line x1="10" y1="9" x2="10" y2="23" stroke="currentColor" stroke-width="1" opacity="0.5"/>
+            <line x1="22" y1="9" x2="22" y2="23" stroke="currentColor" stroke-width="1" opacity="0.5"/>
+            <circle cx="16" cy="16" r="3" stroke="currentColor" stroke-width="1.5" fill="none"/>
+            <circle cx="16" cy="16" r="1" fill="currentColor"/>
+            <line x1="6" y1="16" x2="13" y2="16" stroke="currentColor" stroke-width="0.75" opacity="0.4"/>
+            <line x1="19" y1="16" x2="26" y2="16" stroke="currentColor" stroke-width="0.75" opacity="0.4"/>
+          </svg>
+          <span class="header-title">THE SIGNAL</span>
+        </a>
+      </div>
+      <nav class="header-nav" aria-label="Main navigation">
+        <a href="#/" class="main-nav-link">Home</a>
+        <a href="#/blog" class="main-nav-link">Archive</a>
+        <a href="#/write" class="main-nav-link">Write</a>
+        <a href="#/auth" class="main-nav-link" id="authNavLink">Sign In</a>
+      </nav>
+      <div class="header-right">
+        <span class="header-meta">1COMMERCE LLC</span>
+        <button data-theme-toggle aria-label="Switch to light mode">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="5"/><path d="M12 1v2M12 21v2M4.22 4.22l1.42 1.42M18.36 18.36l1.42 1.42M1 12h2M21 12h2M4.22 19.78l1.42-1.42M18.36 5.64l1.42-1.42"/></svg>
+        </button>
+      </div>
+    </div>
   </header>
 
-  <main>
-    <div id="pdf-viewer">
-      <object data="the-signal.pdf" type="application/pdf" width="100%" height="100%">
-        <embed src="the-signal.pdf" type="application/pdf" width="100%" height="100%">
-        <iframe src="the-signal.pdf" width="100%" height="100%" title="The Signal PDF document">
-          <p>Your browser cannot display this PDF inline.</p>
-        </iframe>
-      </object>
+  <main id="app-content">
+    <!-- SPA content renders here -->
+    <div class="loading-state">
+      <span class="mono-label dim">Tuning frequency...</span>
     </div>
-
-    <div class="actions">
-      <a href="the-signal.pdf" download class="btn btn-primary">
-        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
-        Download PDF
-      </a>
-      <a href="the-signal.pdf" target="_blank" class="btn btn-secondary">
-        Open in new tab
-      </a>
-    </div>
-
-    <div id="fallback-message">
-      <p>The PDF could not be displayed inline. Use the buttons above to download or open it directly.</p>
-    </div>
-
-    <noscript>
-      <div class="noscript-notice">
-        <p>JavaScript is disabled. If the PDF does not appear above, <a href="the-signal.pdf">click here to download it</a>.</p>
-      </div>
-    </noscript>
   </main>
 
-  <footer>
-    <p>The Signal</p>
+  <footer class="site-footer">
+    <div class="footer-inner">
+      <div class="footer-left">
+        <svg class="footer-logo" viewBox="0 0 32 32" width="20" height="20" fill="none" aria-hidden="true">
+          <line x1="16" y1="6" x2="16" y2="26" stroke="currentColor" stroke-width="1.5"/>
+          <circle cx="16" cy="16" r="3" stroke="currentColor" stroke-width="1.5" fill="none"/>
+          <circle cx="16" cy="16" r="1" fill="currentColor"/>
+        </svg>
+        <span class="mono-label dim">THE SIGNAL · 2026 · 1COMMERCE LLC</span>
+      </div>
+      <div class="footer-right">
+        <a href="#/" class="mono-label footer-link">Home</a>
+        <a href="#/blog" class="mono-label footer-link">Archive</a>
+        <a href="https://www.perplexity.ai/computer" target="_blank" rel="noopener noreferrer" class="mono-label dim">Created with Perplexity Computer</a>
+      </div>
+    </div>
   </footer>
 
-  <script>
-    (function () {
-      'use strict';
-      var viewer = document.getElementById('pdf-viewer');
-      var fallback = document.getElementById('fallback-message');
-      var obj = viewer ? viewer.querySelector('object') : null;
-      var loaded = false;
-
-      function showFallback() {
-        if (!loaded && fallback) {
-          fallback.style.display = 'block';
-        }
-      }
-
-      if (obj) {
-        obj.addEventListener('load', function () { loaded = true; });
-        obj.addEventListener('error', showFallback);
-      }
-
-      // Safety timeout: show fallback if PDF hasn't loaded after 8 seconds
-      setTimeout(function () {
-        if (!loaded) showFallback();
-      }, 8000);
-    })();
-  </script>
+  <!-- Scripts: order matters -->
+  <script src="./supabase-config.js"></script>
+  <script src="./router.js"></script>
+  <script src="./pages.js"></script>
+  <script src="./app.js"></script>
 </body>
 </html>
