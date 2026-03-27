@@ -80,9 +80,17 @@
       : '<svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="3" y1="6" x2="21" y2="6"/><line x1="3" y1="12" x2="21" y2="12"/><line x1="3" y1="18" x2="21" y2="18"/></svg>';
   });
 
-  // Close on route change
-  window.addEventListener('hashchange', () => {
+  // Close menu helper
+  function closeMenu() {
     nav.classList.remove('open');
     menuBtn.innerHTML = '<svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="3" y1="6" x2="21" y2="6"/><line x1="3" y1="12" x2="21" y2="12"/><line x1="3" y1="18" x2="21" y2="18"/></svg>';
+  }
+
+  // Close on route change
+  window.addEventListener('hashchange', closeMenu);
+
+  // Close when clicking a nav link (covers same-route clicks)
+  nav.addEventListener('click', function(e) {
+    if (e.target.closest('a')) closeMenu();
   });
 })();

@@ -354,7 +354,7 @@ registerRoute('/post/:slug', async function(params, container) {
           <div class="author-avatar">${safeAuthorName.charAt(0).toUpperCase()}</div>
           <div class="author-info">
             <h3 class="author-name">${safeAuthorName}</h3>
-            <p class="author-bio">${safeAuthorBio}</p>
+            <p class="author-bio">${safeAuthorBio || '<span class="dim">No bio yet.</span>'}</p>
           </div>
         </div>
       </section>
@@ -607,22 +607,22 @@ registerRoute('/write', async function(params, container) {
         <form class="editor-form" id="editorForm">
           <div class="form-field">
             <label class="form-label mono-label" for="postTitle">Title</label>
-            <input type="text" id="postTitle" class="form-input form-input-large" placeholder="Transmission title..." value="${existingPost ? escapeHtml(existingPost.title) : ''}" required>
+            <input type="text" id="postTitle" class="form-input form-input-large" placeholder="Transmission title..." value="${existingPost ? escapeHtml(existingPost.title) : ''}" required maxlength="200" aria-label="Post title">
           </div>
 
           <div class="form-field">
             <label class="form-label mono-label" for="postExcerpt">Excerpt</label>
-            <input type="text" id="postExcerpt" class="form-input" placeholder="Brief description for cards and SEO..." value="${existingPost ? escapeHtml(existingPost.excerpt) : ''}">
+            <input type="text" id="postExcerpt" class="form-input" placeholder="Brief description for cards and SEO..." value="${existingPost ? escapeHtml(existingPost.excerpt) : ''}" maxlength="300" aria-label="Post excerpt">
           </div>
 
           <div class="form-field">
             <label class="form-label mono-label" for="postTags">Tags <span class="dim">(comma separated)</span></label>
-            <input type="text" id="postTags" class="form-input" placeholder="founder, systems, dispatch..." value="${existingPost ? escapeHtml((existingPost.tags || []).join(', ')) : ''}">
+            <input type="text" id="postTags" class="form-input" placeholder="founder, systems, dispatch..." value="${existingPost ? escapeHtml((existingPost.tags || []).join(', ')) : ''}" aria-label="Tags, comma separated">
           </div>
 
           <div class="form-field">
             <label class="form-label mono-label" for="postContent">Content <span class="dim">(Markdown supported)</span></label>
-            <textarea id="postContent" class="form-textarea" rows="20" placeholder="Write your transmission...">${existingPost ? escapeHtml(existingPost.content) : ''}</textarea>
+            <textarea id="postContent" class="form-textarea" rows="20" placeholder="Write your transmission..." maxlength="100000" aria-label="Post content, markdown supported">${existingPost ? escapeHtml(existingPost.content) : ''}</textarea>
           </div>
 
           <div class="editor-actions">
@@ -694,6 +694,20 @@ async function handleSavePost(status) {
     statusDiv.style.display = 'block';
     statusDiv.className = 'editor-status error';
     statusDiv.textContent = 'Title and content are required.';
+    return;
+  }
+
+  if (title.length > 200) {
+    statusDiv.style.display = 'block';
+    statusDiv.className = 'editor-status error';
+    statusDiv.textContent = 'Title must be under 200 characters.';
+    return;
+  }
+
+  if (content.length > 100000) {
+    statusDiv.style.display = 'block';
+    statusDiv.className = 'editor-status error';
+    statusDiv.textContent = 'Content exceeds maximum length (100,000 characters).';
     return;
   }
 
@@ -791,8 +805,9 @@ function initNewsletterForm() {
       input.disabled = true;
     } catch (err) {
       if (err.message === 'Already subscribed') {
-        btnText.textContent = 'Already In ✓';
-        input.placeholder = 'You are already on the frequency.';
+        btnText.textContent = 'Subscribed ✓';
+        input.value = '';
+        input.placeholder = 'You are already subscribed.';
         input.disabled = true;
       } else {
         btnText.textContent = 'Error — Retry';

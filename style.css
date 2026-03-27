@@ -1794,6 +1794,7 @@ blockquote p {
     top: 100%;
     left: 0;
     right: 0;
+    z-index: 100;
     background: var(--color-surface);
     border-bottom: 1px solid var(--color-divider);
     flex-direction: column;

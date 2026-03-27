@@ -58,12 +58,12 @@
 [[redirects]]
   from = "/document"
   to = "/the-signal.pdf"
-  status = 301
+  status = 302
 
 [[redirects]]
   from = "/document.pdf"
   to = "/the-signal.pdf"
-  status = 301
+  status = 302
 
 # Security and caching headers for all pages
 [[headers]]
