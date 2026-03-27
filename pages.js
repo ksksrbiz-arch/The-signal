@@ -130,7 +130,7 @@ function renderPostCard(post) {
   const tags = (post.tags || []).slice(0, 3).map(t => `<span class="post-tag">${t}</span>`).join('');
 
   return `
-    <article class="post-card" onclick="navigateTo('/post/${post.slug}')">
+    <a href="#/post/${post.slug}" class="post-card" aria-label="${post.title}">
       ${post.cover_image_url ? `<div class="post-card-image" style="background-image: url('${post.cover_image_url}')"></div>` : ''}
       <div class="post-card-content">
         <div class="post-card-meta">
@@ -148,7 +148,7 @@ function renderPostCard(post) {
           </div>
         </div>
       </div>
-    </article>
+    </a>
   `;
 }
 
@@ -157,34 +157,65 @@ function renderPostCard(post) {
    BLOG LISTING PAGE
    ============================================= */
 registerRoute('/blog', async function(params, container) {
-  container.innerHTML = '<div class="loading-state"><span class="mono-label dim">Loading transmissions...</span></div>';
+  const PAGE_SIZE = 12;
+  let currentPage = parseInt(params.page, 10) || 1;
+  if (currentPage < 1) currentPage = 1;
 
-  let posts = [];
-  try {
-    posts = await fetchPublishedPosts(50);
-  } catch (e) {
-    console.error('Failed to load posts:', e);
+  async function loadPage(page) {
+    const offset = (page - 1) * PAGE_SIZE;
+    container.innerHTML = '<div class="loading-state"><span class="mono-label dim">Loading transmissions...</span></div>';
+
+    let posts = [];
+    let loadError = false;
+    try {
+      posts = await fetchPublishedPosts(PAGE_SIZE + 1, offset);
+    } catch (e) {
+      console.error('Failed to load posts:', e);
+      loadError = true;
+    }
+
+    const hasMore = posts.length > PAGE_SIZE;
+    const displayPosts = hasMore ? posts.slice(0, PAGE_SIZE) : posts;
+
+    const paginationHtml = (page > 1 || hasMore) ? `
+      <div class="pagination">
+        ${page > 1 ? `<button class="pagination-btn" id="prevPageBtn" aria-label="Previous page">← Newer</button>` : '<span></span>'}
+        <span class="mono-label dim">Page ${page}</span>
+        ${hasMore ? `<button class="pagination-btn" id="nextPageBtn" aria-label="Next page">Older →</button>` : '<span></span>'}
+      </div>
+    ` : '';
+
+    container.innerHTML = `
+      <section class="page-header">
+        <div class="page-header-inner">
+          <span class="mono-label accent-text">◈ ALL TRANSMISSIONS</span>
+          <h1 class="page-title">The Archive</h1>
+          <p class="page-description">Every dispatch, field note, and transmission from the cathedral construction site.</p>
+        </div>
+      </section>
+      <section class="dispatch">
+        <div class="dispatch-inner">
+          ${loadError
+            ? '<p class="mono-label dim" style="text-align:center;padding:var(--space-16) 0;">Failed to load transmissions. Please try again.</p>'
+            : displayPosts.length > 0
+              ? `<div class="posts-grid">${displayPosts.map(renderPostCard).join('')}</div>${paginationHtml}`
+              : '<p class="mono-label dim" style="text-align:center;padding:var(--space-16) 0;">No transmissions yet. The first signal is incoming.</p>'}
+        </div>
+      </section>
+      ${renderNewsletterSection()}
+    `;
+
+    // Bind pagination buttons
+    const prevBtn = document.getElementById('prevPageBtn');
+    const nextBtn = document.getElementById('nextPageBtn');
+    if (prevBtn) prevBtn.addEventListener('click', () => { loadPage(page - 1); window.scrollTo(0, 0); });
+    if (nextBtn) nextBtn.addEventListener('click', () => { loadPage(page + 1); window.scrollTo(0, 0); });
+
+    initScrollReveal();
+    initNewsletterForm();
   }
 
-  container.innerHTML = `
-    <section class="page-header">
-      <div class="page-header-inner">
-        <span class="mono-label accent-text">◈ ALL TRANSMISSIONS</span>
-        <h1 class="page-title">The Archive</h1>
-        <p class="page-description">Every dispatch, field note, and transmission from the cathedral construction site.</p>
-      </div>
-    </section>
-    <section class="dispatch">
-      <div class="dispatch-inner">
-        ${posts.length > 0
-          ? `<div class="posts-grid">${posts.map(renderPostCard).join('')}</div>`
-          : '<p class="mono-label dim" style="text-align:center;padding:var(--space-16) 0;">No transmissions yet. The first signal is incoming.</p>'}
-      </div>
-    </section>
-    ${renderNewsletterSection()}
-  `;
-  initScrollReveal();
-  initNewsletterForm();
+  loadPage(currentPage);
 });
 
 

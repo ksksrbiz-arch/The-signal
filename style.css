@@ -953,19 +953,29 @@ blockquote p {
 }
 
 .post-card {
+  display: block;
   padding: var(--space-6);
   border: 1px solid var(--color-border);
   border-radius: var(--radius-md);
   background: var(--color-surface);
   cursor: pointer;
   transition: all var(--transition-interactive);
+  text-decoration: none;
+  color: inherit;
 }
 
-.post-card:hover {
+.post-card:hover,
+.post-card:focus-visible {
   border-color: var(--color-gold-dim);
   background: var(--color-surface-2);
   transform: translateY(-2px);
   box-shadow: var(--shadow-md);
+  outline: none;
+}
+
+.post-card:focus-visible {
+  outline: 2px solid var(--color-gold);
+  outline-offset: 2px;
 }
 
 .post-card-image {
@@ -1032,6 +1042,40 @@ blockquote p {
 .post-card-stats {
   display: flex;
   gap: var(--space-3);
+}
+
+/* --- Pagination --- */
+.pagination {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: var(--space-8) 0 var(--space-4);
+}
+
+.pagination-btn {
+  font-family: var(--font-mono);
+  font-size: var(--text-xs);
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--color-gold);
+  background: var(--color-surface);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-sm);
+  padding: var(--space-2) var(--space-4);
+  cursor: pointer;
+  transition: all var(--transition-interactive);
+}
+
+.pagination-btn:hover,
+.pagination-btn:focus-visible {
+  background: var(--color-surface-2);
+  border-color: var(--color-gold-dim);
+  outline: none;
+}
+
+.pagination-btn:focus-visible {
+  outline: 2px solid var(--color-gold);
+  outline-offset: 2px;
 }
 
 
