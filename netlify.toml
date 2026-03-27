@@ -1,6 +1,11 @@
 [build]
   publish = "."
-  command = "echo 'Static site — no build needed'"
+  command = "echo done"
+
+# Skip installing problematic plugins
+[build.environment]
+  NPM_FLAGS = "--ignore-scripts"
+  NODE_ENV = "production"
 
 [build.processing]
   skip_processing = false
@@ -14,7 +19,6 @@
     X-Frame-Options = "DENY"
     X-Content-Type-Options = "nosniff"
     Referrer-Policy = "strict-origin-when-cross-origin"
-    Cache-Control = "public, max-age=3600"
 
 [[headers]]
   for = "/*.css"
@@ -25,3 +29,8 @@
   for = "/*.js"
   [headers.values]
     Cache-Control = "public, max-age=31536000, immutable"
+
+[[headers]]
+  for = "/og-image.svg"
+  [headers.values]
+    Cache-Control = "public, max-age=86400"
