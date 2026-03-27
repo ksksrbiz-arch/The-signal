@@ -1,0 +1,29 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 630" width="1200" height="630">
+  <rect width="1200" height="630" fill="#0c0b09"/>
+  <!-- Grain texture hint -->
+  <rect width="1200" height="630" fill="url(#grain)" opacity="0.04"/>
+  <defs>
+    <filter id="grain">
+      <feTurbulence type="fractalNoise" baseFrequency="0.8" numOctaves="4" stitchTiles="stitch"/>
+    </filter>
+  </defs>
+  <!-- Gold scanline -->
+  <line x1="0" y1="580" x2="1200" y2="580" stroke="#c9a84c" stroke-width="1" opacity="0.4"/>
+  <!-- Logo mark -->
+  <g transform="translate(80, 200)">
+    <line x1="0" y1="0" x2="0" y2="80" stroke="#c9a84c" stroke-width="3"/>
+    <circle cx="0" cy="40" r="12" stroke="#c9a84c" stroke-width="2.5" fill="none"/>
+    <circle cx="0" cy="40" r="4" fill="#c9a84c"/>
+    <line x1="-30" y1="40" x2="-12" y2="40" stroke="#c9a84c" stroke-width="1.5" opacity="0.4"/>
+    <line x1="12" y1="40" x2="30" y2="40" stroke="#c9a84c" stroke-width="1.5" opacity="0.4"/>
+  </g>
+  <!-- Title -->
+  <text x="140" y="230" font-family="Georgia, serif" font-size="72" font-weight="600" fill="#d4d0c8" letter-spacing="0.05em">THE SIGNAL</text>
+  <!-- Subtitle -->
+  <text x="140" y="275" font-family="Consolas, monospace" font-size="16" fill="#8a8780" letter-spacing="0.2em">WEEKLY TRANSMISSION №013 · MARCH 20–26, 2026</text>
+  <!-- Quote -->
+  <line x1="140" y1="310" x2="140" y2="360" stroke="#c9a84c" stroke-width="2" opacity="0.5"/>
+  <text x="160" y="340" font-family="Georgia, serif" font-size="24" font-style="italic" fill="#8a8780">"Build the cathedral. Light it from within."</text>
+  <!-- Entity -->
+  <text x="140" y="420" font-family="Consolas, monospace" font-size="14" fill="#5a5955" letter-spacing="0.15em">1COMMERCE LLC · CANBY, OR</text>
+</svg>

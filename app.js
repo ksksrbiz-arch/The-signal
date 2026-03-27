@@ -4,7 +4,8 @@
 (function(){
   const t = document.querySelector('[data-theme-toggle]');
   const r = document.documentElement;
-  let d = r.getAttribute('data-theme') || (matchMedia('(prefers-color-scheme:dark)').matches ? 'dark' : 'light');
+  const stored = localStorage.getItem('signal-theme');
+  let d = stored || r.getAttribute('data-theme') || (matchMedia('(prefers-color-scheme:dark)').matches ? 'dark' : 'light');
   r.setAttribute('data-theme', d);
   updateIcon();
 
@@ -12,6 +13,7 @@
     t.addEventListener('click', function() {
       d = d === 'dark' ? 'light' : 'dark';
       r.setAttribute('data-theme', d);
+      localStorage.setItem('signal-theme', d);
       t.setAttribute('aria-label', 'Switch to ' + (d === 'dark' ? 'light' : 'dark') + ' mode');
       updateIcon();
     });
@@ -25,9 +27,49 @@
   }
 })();
 
+// Reading progress bar
+(function(){
+  const bar = document.querySelector('.reading-progress');
+  if (!bar) return;
+
+  function update() {
+    const scrollTop = window.scrollY;
+    const docHeight = document.documentElement.scrollHeight - window.innerHeight;
+    const progress = docHeight > 0 ? (scrollTop / docHeight) * 100 : 0;
+    bar.style.width = Math.min(progress, 100) + '%';
+  }
+
+  window.addEventListener('scroll', update, { passive: true });
+  update();
+})();
+
+// Active section tracking (header nav)
+(function(){
+  const links = document.querySelectorAll('.nav-link');
+  if (!links.length) return;
+
+  const sections = ['foundation', 'revenue', 'systems', 'scale']
+    .map(function(id) { return document.getElementById(id); })
+    .filter(Boolean);
+
+  if (!sections.length) return;
+
+  var observer = new IntersectionObserver(function(entries) {
+    entries.forEach(function(entry) {
+      if (entry.isIntersecting) {
+        links.forEach(function(l) { l.classList.remove('active'); });
+        var link = document.querySelector('.nav-link[href="#' + entry.target.id + '"]');
+        if (link) link.classList.add('active');
+      }
+    });
+  }, { threshold: 0.2, rootMargin: '-80px 0px -50% 0px' });
+
+  sections.forEach(function(s) { observer.observe(s); });
+})();
+
 // Scroll reveal
 (function(){
-  var els = document.querySelectorAll('.dispatch, .quote-block, .entity-card, .status-bar');
+  var els = document.querySelectorAll('.dispatch, .quote-block, .entity-card, .status-bar, .newsletter-cta');
   els.forEach(function(el) { el.classList.add('reveal'); });
 
   var observer = new IntersectionObserver(function(entries) {
@@ -41,3 +83,31 @@
 
   els.forEach(function(el) { observer.observe(el); });
 })();
+
+// Newsletter form handler
+function handleSubscribe(e) {
+  e.preventDefault();
+  var form = e.target;
+  var input = form.querySelector('.newsletter-input');
+  var btn = form.querySelector('.newsletter-btn');
+  var email = input.value;
+
+  if (!email) return;
+
+  // Visual feedback
+  btn.querySelector('.btn-text').textContent = 'Sent ✓';
+  form.classList.add('submitted');
+  input.value = '';
+  input.placeholder = 'Thanks — you\'re on the list.';
+  input.disabled = true;
+  btn.disabled = true;
+
+  // Reset after 4 seconds
+  setTimeout(function() {
+    btn.querySelector('.btn-text').textContent = 'Subscribe';
+    form.classList.remove('submitted');
+    input.placeholder = 'your@email.com';
+    input.disabled = false;
+    btn.disabled = false;
+  }, 4000);
+}
