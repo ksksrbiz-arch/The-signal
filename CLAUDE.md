@@ -2,7 +2,7 @@
 
 ## Project Overview
 
-**The-signal** is a static site hosted on Netlify. It serves a single PDF document (`index.html`) that is auto-deployed from the git repository.
+**The-signal** is a static site hosted on Netlify. It serves a PDF document via an HTML landing page with an embedded viewer, auto-deployed from the git repository.
 
 - **Repository**: `ksksrbiz-arch/The-signal`
 - **Hosting**: Netlify (auto-deploys on push)
@@ -12,16 +12,24 @@
 
 ```
 The-signal/
-├── index.html    # PDF document served as the site's main content
-├── CLAUDE.md     # This file - AI assistant guidance
-└── .git/         # Git metadata
+├── index.html        # HTML landing page with embedded PDF viewer
+├── the-signal.pdf    # The PDF document
+├── 404.html          # Custom 404 error page
+├── netlify.toml      # Netlify configuration (headers, redirects, caching)
+├── _redirects        # Backup redirect rules for Netlify
+├── CLAUDE.md         # This file - AI assistant guidance
+└── .git/             # Git metadata
 ```
 
 ### Key Files
 
 | File | Description |
 |------|-------------|
-| `index.html` | A PDF file (despite the `.html` extension). This is the sole content of the site. |
+| `index.html` | HTML landing page with embedded PDF viewer, fallback chain, and download links |
+| `the-signal.pdf` | The PDF document served by the site |
+| `404.html` | Custom error page for missing routes |
+| `netlify.toml` | Netlify config: security headers, caching rules, redirect aliases |
+| `_redirects` | Backup redirects (`/pdf`, `/download`) and catch-all 404 rule |
 
 ## Tech Stack
 
@@ -53,10 +61,11 @@ All deployments are automatic via Netlify:
 
 ## Important Notes
 
-- **`index.html` is a PDF**: Despite the filename, this is a binary PDF file, not an HTML document. Do not attempt to edit it as text.
+- **`the-signal.pdf` is binary**: Do not attempt to edit it as text. Replace the file to update the PDF.
+- **`index.html` is the HTML wrapper**: It embeds the PDF with a fallback chain (`<object>` -> `<embed>` -> `<iframe>` -> download link).
+- **Netlify config**: `netlify.toml` manages security headers, caching, and redirects. `_redirects` is a backup.
 - **No CI/CD pipeline**: There are no GitHub Actions, test suites, or linting configurations.
 - **No environment variables or secrets**: The project has no `.env` files or configuration requirements.
-- **Minimal repository**: This is an extremely simple, single-file project. Do not over-engineer changes.
 
 ## Common Tasks
 
@@ -64,7 +73,7 @@ All deployments are automatic via Netlify:
 Place static files in the repository root. Netlify will serve them directly.
 
 ### Modifying the PDF
-Replace `index.html` with an updated PDF file. The file must remain named `index.html` for the site to work correctly.
+Replace `the-signal.pdf` with an updated PDF file. The filename must remain `the-signal.pdf` for the embedded viewer to work.
 
 ## Terminal Setup (GitHub Codespaces)
 
@@ -109,6 +118,6 @@ Then open `http://localhost:8080` in the browser.
 
 1. **Keep it simple** - this is a minimal static site; avoid introducing unnecessary complexity
 2. **Do not add build tools** unless explicitly requested
-3. **Binary files** - be aware that `index.html` is a binary PDF; do not read/edit it as text
+3. **Binary files** - `the-signal.pdf` is a binary PDF; do not read/edit it as text
 4. **Test locally** - changes can be previewed by opening files directly in a browser or using a simple HTTP server
 5. **Push to `main`** for production deployments via Netlify

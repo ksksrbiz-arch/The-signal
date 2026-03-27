@@ -1,0 +1,7 @@
+/pdf          /the-signal.pdf   200
+/download     /the-signal.pdf   200
+/document     /the-signal.pdf   301
+/document.pdf /the-signal.pdf   301
+
+# Custom 404 - must be the last rule
+/*            /404.html         404
