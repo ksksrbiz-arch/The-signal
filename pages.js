@@ -14,6 +14,7 @@ registerRoute('/', async function(params, container) {
   }
 
   container.innerHTML = renderHomePage(posts);
+  initPostCardNavigation(container);
   initScrollReveal();
   initNewsletterForm();
 });
@@ -126,25 +127,27 @@ function renderPostCard(post) {
   const date = post.published_at ? new Date(post.published_at).toLocaleDateString('en-US', {
     year: 'numeric', month: 'short', day: 'numeric'
   }) : '';
-  const author = post.signal_profiles ? post.signal_profiles.display_name : 'Unknown';
-  const tags = (post.tags || []).slice(0, 3).map(t => `<span class="post-tag">${t}</span>`).join('');
+  const author = post.signal_profiles ? escapeHtml(post.signal_profiles.display_name) : 'Unknown';
+  const tags = (post.tags || []).slice(0, 3).map(t => `<span class="post-tag">${escapeHtml(t)}</span>`).join('');
+  const safeSlug = encodeURIComponent(post.slug);
+  const safeCoverUrl = post.cover_image_url ? escapeHtml(post.cover_image_url) : '';
 
   return `
-    <article class="post-card" onclick="navigateTo('/post/${post.slug}')">
-      ${post.cover_image_url ? `<div class="post-card-image" style="background-image: url('${post.cover_image_url}')"></div>` : ''}
+    <article class="post-card" data-nav-slug="${safeSlug}" role="link" tabindex="0">
+      ${safeCoverUrl ? `<div class="post-card-image" style="background-image: url('${safeCoverUrl}')"></div>` : ''}
       <div class="post-card-content">
         <div class="post-card-meta">
-          <span class="mono-label dim">${date}</span>
+          <span class="mono-label dim">${escapeHtml(date)}</span>
           <span class="mono-label dim">·</span>
           <span class="mono-label dim">${author}</span>
         </div>
-        <h2 class="post-card-title">${post.title}</h2>
-        <p class="post-card-excerpt">${post.excerpt}</p>
+        <h2 class="post-card-title">${escapeHtml(post.title)}</h2>
+        <p class="post-card-excerpt">${escapeHtml(post.excerpt)}</p>
         <div class="post-card-footer">
           <div class="post-card-tags">${tags}</div>
           <div class="post-card-stats">
-            <span class="mono-label dim" title="Views">${post.view_count || 0} views</span>
-            <span class="mono-label dim" title="Reposts">${post.repost_count || 0} shares</span>
+            <span class="mono-label dim" title="Views">${parseInt(post.view_count) || 0} views</span>
+            <span class="mono-label dim" title="Reposts">${parseInt(post.repost_count) || 0} shares</span>
           </div>
         </div>
       </div>
@@ -183,6 +186,7 @@ registerRoute('/blog', async function(params, container) {
     </section>
     ${renderNewsletterSection()}
   `;
+  initPostCardNavigation(container);
   initScrollReveal();
   initNewsletterForm();
 });
@@ -216,8 +220,14 @@ registerRoute('/post/:slug', async function(params, container) {
     weekday: 'long', year: 'numeric', month: 'long', day: 'numeric'
   }) : '';
   const author = post.signal_profiles ? post.signal_profiles : { display_name: 'Unknown', bio: '' };
-  const tags = (post.tags || []).map(t => `<span class="post-tag">${t}</span>`).join('');
+  const tags = (post.tags || []).map(t => `<span class="post-tag">${escapeHtml(t)}</span>`).join('');
   const contentHtml = renderMarkdown(post.content);
+  const safeTitle = escapeHtml(post.title);
+  const safeAuthorName = escapeHtml(author.display_name);
+  const safeAuthorBio = escapeHtml(author.bio || '');
+  const safeSlug = encodeURIComponent(post.slug);
+  const safePostId = escapeHtml(post.id);
+  const safeCoverUrl = post.cover_image_url ? escapeHtml(post.cover_image_url) : '';
 
   // JSON-LD structured data
   const jsonLd = {
@@ -238,7 +248,7 @@ registerRoute('/post/:slug', async function(params, container) {
     },
     "mainEntityOfPage": {
       "@type": "WebPage",
-      "@id": `https://th3signal.netlify.app/#/post/${post.slug}`
+      "@id": `https://th3signal.netlify.app/#/post/${encodeURIComponent(post.slug)}`
     },
     "creator": {
       "@type": "SoftwareApplication",
@@ -252,7 +262,7 @@ registerRoute('/post/:slug', async function(params, container) {
   updateMetaTags({
     title: post.title + ' — THE SIGNAL',
     description: post.excerpt,
-    url: `https://th3signal.netlify.app/#/post/${post.slug}`,
+    url: `https://th3signal.netlify.app/#/post/${encodeURIComponent(post.slug)}`,
     image: post.cover_image_url || 'https://th3signal.netlify.app/og-image.svg'
   });
 
@@ -262,17 +272,17 @@ registerRoute('/post/:slug', async function(params, container) {
       <header class="post-hero">
         <div class="post-hero-inner">
           <span class="mono-label accent-text">◈ TRANSMISSION</span>
-          <h1 class="post-hero-title">${post.title}</h1>
+          <h1 class="post-hero-title">${safeTitle}</h1>
           <div class="post-hero-meta">
-            <span class="mono-label">${date}</span>
+            <span class="mono-label">${escapeHtml(date)}</span>
             <span class="mono-label dim">·</span>
-            <span class="mono-label">${author.display_name}</span>
+            <span class="mono-label">${safeAuthorName}</span>
           </div>
           <div class="post-tags-row">${tags}</div>
         </div>
       </header>
 
-      ${post.cover_image_url ? `<div class="post-cover-image"><img src="${post.cover_image_url}" alt="${post.title}" loading="lazy"></div>` : ''}
+      ${safeCoverUrl ? `<div class="post-cover-image"><img src="${safeCoverUrl}" alt="${safeTitle}" loading="lazy"></div>` : ''}
 
       <div class="post-content dispatch-inner">
         ${contentHtml}
@@ -285,20 +295,20 @@ registerRoute('/post/:slug', async function(params, container) {
             <span class="mono-label accent-text">◈ AMPLIFY THE SIGNAL</span>
             <p class="share-description">Share this transmission and earn reputation. Every repost strengthens the frequency.</p>
           </div>
-          <div class="share-buttons" data-post-id="${post.id}" data-post-slug="${post.slug}">
-            <button class="share-btn" onclick="handleShare('${post.id}', '${post.slug}', 'twitter')" title="Share on X/Twitter">
+          <div class="share-buttons" data-post-id="${safePostId}" data-post-slug="${safeSlug}">
+            <button class="share-btn" data-share-platform="twitter" aria-label="Share on X/Twitter" title="Share on X/Twitter">
               <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor"><path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/></svg>
               <span>Share on X</span>
             </button>
-            <button class="share-btn" onclick="handleShare('${post.id}', '${post.slug}', 'linkedin')" title="Share on LinkedIn">
+            <button class="share-btn" data-share-platform="linkedin" aria-label="Share on LinkedIn" title="Share on LinkedIn">
               <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor"><path d="M20.5 2h-17A1.5 1.5 0 002 3.5v17A1.5 1.5 0 003.5 22h17a1.5 1.5 0 001.5-1.5v-17A1.5 1.5 0 0020.5 2zM8 19H5v-9h3zM6.5 8.25A1.75 1.75 0 118.3 6.5a1.78 1.78 0 01-1.8 1.75zM19 19h-3v-4.74c0-1.42-.6-1.93-1.38-1.93A1.74 1.74 0 0013 14.19a.66.66 0 000 .14V19h-3v-9h2.9v1.3a3.11 3.11 0 012.7-1.4c1.55 0 3.36.86 3.36 3.66z"/></svg>
               <span>LinkedIn</span>
             </button>
-            <button class="share-btn" onclick="handleShare('${post.id}', '${post.slug}', 'copy_link')" title="Copy link">
+            <button class="share-btn" data-share-platform="copy_link" aria-label="Copy link" title="Copy link">
               <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"/><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"/></svg>
               <span>Copy Link</span>
             </button>
-            <button class="share-btn" onclick="handleShare('${post.id}', '${post.slug}', 'email')" title="Share via email">
+            <button class="share-btn" data-share-platform="email" aria-label="Share via email" title="Share via email">
               <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="4" width="20" height="16" rx="2"/><path d="m22 7-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 7"/></svg>
               <span>Email</span>
             </button>
@@ -312,10 +322,10 @@ registerRoute('/post/:slug', async function(params, container) {
       <!-- Author Card -->
       <section class="author-card-section">
         <div class="author-card">
-          <div class="author-avatar">${author.display_name.charAt(0).toUpperCase()}</div>
+          <div class="author-avatar">${safeAuthorName.charAt(0).toUpperCase()}</div>
           <div class="author-info">
-            <h3 class="author-name">${author.display_name}</h3>
-            <p class="author-bio">${author.bio || ''}</p>
+            <h3 class="author-name">${safeAuthorName}</h3>
+            <p class="author-bio">${safeAuthorBio}</p>
           </div>
         </div>
       </section>
@@ -323,6 +333,19 @@ registerRoute('/post/:slug', async function(params, container) {
 
     ${renderNewsletterSection()}
   `;
+
+  // Attach share button listeners via event delegation
+  const shareContainer = container.querySelector('.share-buttons');
+  if (shareContainer) {
+    shareContainer.addEventListener('click', function(e) {
+      const btn = e.target.closest('[data-share-platform]');
+      if (!btn) return;
+      const platform = btn.dataset.sharePlatform;
+      const postId = shareContainer.dataset.postId;
+      const postSlug = shareContainer.dataset.postSlug;
+      handleShare(postId, postSlug, platform);
+    });
+  }
 
   initNewsletterForm();
 });
@@ -471,12 +494,12 @@ registerRoute('/dashboard', async function(params, container) {
       <div class="dispatch-inner">
         <!-- Profile Card -->
         <div class="dashboard-profile">
-          <div class="profile-avatar-large">${(profile?.display_name || user.email).charAt(0).toUpperCase()}</div>
+          <div class="profile-avatar-large">${escapeHtml((profile?.display_name || user.email).charAt(0).toUpperCase())}</div>
           <div class="profile-info">
-            <h2>${profile?.display_name || user.email.split('@')[0]}</h2>
-            <span class="mono-label dim">${profile?.role || 'reader'} · ${profile?.reputation_score || 0} rep · ${profile?.repost_count || 0} shares</span>
+            <h2>${escapeHtml(profile?.display_name || user.email.split('@')[0])}</h2>
+            <span class="mono-label dim">${escapeHtml(profile?.role || 'reader')} · ${parseInt(profile?.reputation_score) || 0} rep · ${parseInt(profile?.repost_count) || 0} shares</span>
           </div>
-          <button class="btn-secondary" onclick="handleSignOut()">Sign Out</button>
+          <button class="btn-secondary" id="signOutBtn">Sign Out</button>
         </div>
 
         <!-- Quick Actions -->
@@ -499,12 +522,12 @@ registerRoute('/dashboard', async function(params, container) {
           ${myPosts.length > 0 ? myPosts.map(p => `
             <div class="dashboard-post-row">
               <div class="dashboard-post-info">
-                <span class="dashboard-post-status status-${p.status}">${p.status}</span>
-                <a href="#/post/${p.slug}" class="dashboard-post-title">${p.title}</a>
+                <span class="dashboard-post-status status-${escapeHtml(p.status)}">${escapeHtml(p.status)}</span>
+                <a href="#/post/${encodeURIComponent(p.slug)}" class="dashboard-post-title">${escapeHtml(p.title)}</a>
               </div>
               <div class="dashboard-post-actions">
-                <a href="#/write?edit=${p.id}" class="mono-label dim">Edit</a>
-                <button class="mono-label dim" onclick="handleDeletePost('${p.id}')">Delete</button>
+                <a href="#/write?edit=${encodeURIComponent(p.id)}" class="mono-label dim">Edit</a>
+                <button class="mono-label dim delete-post-btn" data-post-id="${escapeHtml(p.id)}">Delete</button>
               </div>
             </div>
           `).join('') : '<p class="mono-label dim">No transmissions yet. Write your first one.</p>'}
@@ -512,6 +535,14 @@ registerRoute('/dashboard', async function(params, container) {
       </div>
     </section>
   `;
+
+  // Attach event listeners via delegation
+  const signOutBtn = container.querySelector('#signOutBtn');
+  if (signOutBtn) signOutBtn.addEventListener('click', handleSignOut);
+
+  container.querySelectorAll('.delete-post-btn').forEach(btn => {
+    btn.addEventListener('click', () => handleDeletePost(btn.dataset.postId));
+  });
 });
 
 
@@ -547,27 +578,27 @@ registerRoute('/write', async function(params, container) {
         <form class="editor-form" id="editorForm">
           <div class="form-field">
             <label class="form-label mono-label" for="postTitle">Title</label>
-            <input type="text" id="postTitle" class="form-input form-input-large" placeholder="Transmission title..." value="${existingPost ? existingPost.title : ''}" required>
+            <input type="text" id="postTitle" class="form-input form-input-large" placeholder="Transmission title..." value="${existingPost ? escapeHtml(existingPost.title) : ''}" required>
           </div>
 
           <div class="form-field">
             <label class="form-label mono-label" for="postExcerpt">Excerpt</label>
-            <input type="text" id="postExcerpt" class="form-input" placeholder="Brief description for cards and SEO..." value="${existingPost ? existingPost.excerpt : ''}">
+            <input type="text" id="postExcerpt" class="form-input" placeholder="Brief description for cards and SEO..." value="${existingPost ? escapeHtml(existingPost.excerpt) : ''}">
           </div>
 
           <div class="form-field">
             <label class="form-label mono-label" for="postTags">Tags <span class="dim">(comma separated)</span></label>
-            <input type="text" id="postTags" class="form-input" placeholder="founder, systems, dispatch..." value="${existingPost ? (existingPost.tags || []).join(', ') : ''}">
+            <input type="text" id="postTags" class="form-input" placeholder="founder, systems, dispatch..." value="${existingPost ? escapeHtml((existingPost.tags || []).join(', ')) : ''}">
           </div>
 
           <div class="form-field">
             <label class="form-label mono-label" for="postContent">Content <span class="dim">(Markdown supported)</span></label>
-            <textarea id="postContent" class="form-textarea" rows="20" placeholder="Write your transmission...">${existingPost ? existingPost.content : ''}</textarea>
+            <textarea id="postContent" class="form-textarea" rows="20" placeholder="Write your transmission...">${existingPost ? escapeHtml(existingPost.content) : ''}</textarea>
           </div>
 
           <div class="editor-actions">
-            <button type="button" class="btn-secondary" onclick="handleSavePost('draft')">Save Draft</button>
-            <button type="button" class="btn-primary" onclick="handleSavePost('published')">Publish →</button>
+            <button type="button" class="btn-secondary" id="saveDraftBtn">Save Draft</button>
+            <button type="button" class="btn-primary" id="publishBtn">Publish →</button>
           </div>
 
           <div class="editor-status" id="editorStatus" style="display:none;"></div>
@@ -578,6 +609,12 @@ registerRoute('/write', async function(params, container) {
 
   // Store edit ID for the save handler
   window._editPostId = existingPost ? existingPost.id : null;
+
+  // Attach save/publish button listeners
+  const saveDraftBtn = document.getElementById('saveDraftBtn');
+  const publishBtn = document.getElementById('publishBtn');
+  if (saveDraftBtn) saveDraftBtn.addEventListener('click', () => handleSavePost('draft'));
+  if (publishBtn) publishBtn.addEventListener('click', () => handleSavePost('published'));
 });
 
 
@@ -603,7 +640,7 @@ async function handleShare(postId, postSlug, platform) {
         break;
       case 'copy_link':
         await navigator.clipboard.writeText(shareUrl);
-        const btn = document.querySelector('[onclick*="copy_link"]');
+        const btn = document.querySelector('[data-share-platform="copy_link"]');
         if (btn) {
           const span = btn.querySelector('span');
           span.textContent = 'Copied ✓';
@@ -759,6 +796,18 @@ function updateMetaTags(opts) {
 /* =============================================
    UTILITIES
    ============================================= */
+function initPostCardNavigation(container) {
+  container.querySelectorAll('.post-card[data-nav-slug]').forEach(card => {
+    card.addEventListener('click', () => navigateTo('/post/' + decodeURIComponent(card.dataset.navSlug)));
+    card.addEventListener('keydown', (e) => {
+      if (e.key === 'Enter' || e.key === ' ') {
+        e.preventDefault();
+        navigateTo('/post/' + decodeURIComponent(card.dataset.navSlug));
+      }
+    });
+  });
+}
+
 function initScrollReveal() {
   const els = document.querySelectorAll('.dispatch, .quote-block, .entity-card, .status-bar, .newsletter-cta, .share-section, .author-card-section');
   els.forEach(el => el.classList.add('reveal'));

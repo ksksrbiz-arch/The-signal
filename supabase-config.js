@@ -231,12 +231,34 @@ function getShareUrl(postSlug, referralCode) {
 }
 
 /* =============================================
+   HTML ESCAPING UTILITY
+   ============================================= */
+function escapeHtml(str) {
+  if (!str) return '';
+  return String(str)
+    .replace(/&/g, '&amp;')
+    .replace(/</g, '&lt;')
+    .replace(/>/g, '&gt;')
+    .replace(/"/g, '&quot;')
+    .replace(/'/g, '&#x27;');
+}
+
+/* =============================================
    MARKDOWN RENDERER (simple)
    ============================================= */
 function renderMarkdown(md) {
   if (!md) return '';
-  let html = md
-    // Headers
+
+  // Escape HTML first to prevent injection
+  let html = escapeHtml(md);
+
+  // Code blocks (must come before other inline rules to protect contents)
+  html = html.replace(/```(\w*)\n([\s\S]*?)```/g, '<pre><code class="language-$1">$2</code></pre>');
+  // Inline code
+  html = html.replace(/`([^`]+)`/g, '<code>$1</code>');
+
+  // Headers
+  html = html
     .replace(/^### (.+)$/gm, '<h3>$1</h3>')
     .replace(/^## (.+)$/gm, '<h2>$1</h2>')
     .replace(/^# (.+)$/gm, '<h1>$1</h1>')
@@ -245,17 +267,16 @@ function renderMarkdown(md) {
     .replace(/\*\*(.+?)\*\*/g, '<strong>$1</strong>')
     .replace(/\*(.+?)\*/g, '<em>$1</em>')
     // Blockquotes
-    .replace(/^>\s*(.+)$/gm, '<blockquote><p>$1</p></blockquote>')
+    .replace(/^&gt;\s*(.+)$/gm, '<blockquote><p>$1</p></blockquote>')
     // Unordered lists
     .replace(/^- (.+)$/gm, '<li>$1</li>')
     // Horizontal rules
     .replace(/^---$/gm, '<hr>')
-    // Links
-    .replace(/\[([^\]]+)\]\(([^)]+)\)/g, '<a href="$2" target="_blank" rel="noopener">$1</a>')
-    // Code blocks
-    .replace(/```(\w*)\n([\s\S]*?)```/g, '<pre><code class="language-$1">$2</code></pre>')
-    // Inline code
-    .replace(/`([^`]+)`/g, '<code>$1</code>');
+    // Links — block javascript: protocol
+    .replace(/\[([^\]]+)\]\(([^)]+)\)/g, function(match, text, url) {
+      if (/^\s*javascript\s*:/i.test(url)) return text;
+      return '<a href="' + url + '" target="_blank" rel="noopener">' + text + '</a>';
+    });
 
   // Wrap loose <li> in <ul>
   html = html.replace(/((?:<li>.*<\/li>\n?)+)/g, '<ul>$1</ul>');
