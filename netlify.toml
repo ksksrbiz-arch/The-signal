@@ -11,14 +11,19 @@
 [build.processing.html]
   pretty_urls = true
 
-# Configure checklinks to not fail on external URLs
-# (Netlify's sandboxed build env has SSL cert issues with preconnects,
-#  and some external sites block crawlers with 403s)
+# Configure checklinks — skip external preconnects and URLs that fail
+# in Netlify's sandboxed build environment (SSL cert mismatches, 403s)
 [[plugins]]
   package = "netlify-plugin-checklinks"
   [plugins.inputs]
     checkExternal = false
     pretty = true
+    skipPatterns = [
+      "https://fonts.googleapis.com",
+      "https://fonts.gstatic.com",
+      "https://api.fontshare.com",
+      "https://www.perplexity.ai"
+    ]
 
 # Sitemap generation (auto-generates sitemap.xml from all HTML files)
 [[plugins]]
