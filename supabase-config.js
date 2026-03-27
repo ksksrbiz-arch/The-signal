@@ -110,7 +110,7 @@ async function fetchPostBySlug(slug) {
     data.signal_profiles = profile || { display_name: 'Unknown', avatar_url: '', bio: '' };
   }
   // Increment view count (fire and forget)
-  sb.rpc('increment_view_count', { post_slug: slug }).catch(() => {});
+  try { sb.rpc('increment_view_count', { post_slug: slug }); } catch (_) {}
   return data;
 }
 
