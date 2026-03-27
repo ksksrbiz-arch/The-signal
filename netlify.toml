@@ -1,10 +1,8 @@
 [build]
   publish = "."
-  command = "echo done"
+  command = "echo 'Static site — no build step needed'"
 
-# Skip installing problematic plugins
 [build.environment]
-  NPM_FLAGS = "--ignore-scripts"
   NODE_ENV = "production"
 
 [build.processing]
@@ -12,6 +10,22 @@
 
 [build.processing.html]
   pretty_urls = true
+
+# Configure checklinks to not fail on external URLs
+# (Netlify's sandboxed build env has SSL cert issues with preconnects,
+#  and some external sites block crawlers with 403s)
+[[plugins]]
+  package = "netlify-plugin-checklinks"
+  [plugins.inputs]
+    checkExternal = false
+    pretty = true
+
+# Sitemap generation (auto-generates sitemap.xml from all HTML files)
+[[plugins]]
+  package = "@netlify/plugin-sitemap"
+  [plugins.inputs]
+    buildDir = "."
+    prettyURLs = true
 
 [[headers]]
   for = "/*"
