@@ -31,12 +31,18 @@
       "#/post"
     ]
 
-# Sitemap generation (auto-generates sitemap.xml from all HTML files)
+# Sitemap generation — include SPA hash routes as defined entries
 [[plugins]]
   package = "@netlify/plugin-sitemap"
   [plugins.inputs]
     buildDir = "."
     prettyURLs = true
+    trailingSlash = false
+    # Append SPA hash routes the crawler can't discover
+    [plugins.inputs.additionalPaths]
+      "/#/"      = { priority = 1.0, changeFreq = "weekly" }
+      "/#/blog"  = { priority = 0.8, changeFreq = "daily" }
+      "/#/auth"  = { priority = 0.3, changeFreq = "yearly" }
 
 # Convenience redirects to the PDF
 [[redirects]]

@@ -317,16 +317,22 @@ function escapeHtml(str) {
 function renderMarkdown(md) {
   if (!md) return '';
 
-  // Escape HTML first to prevent injection
-  let html = escapeHtml(md);
+  // Extract code blocks first to protect their contents from other transformations
+  const codeBlocks = [];
+  let processed = md.replace(/```(\w*)\n([\s\S]*?)```/g, (_, lang, code) => {
+    codeBlocks.push(`<pre><code class="language-${lang}">${escapeHtml(code)}</code></pre>`);
+    return `%%CODEBLOCK_${codeBlocks.length - 1}%%`;
+  });
 
-  // Code blocks (must come before other inline rules to protect contents)
-  html = html.replace(/```(\w*)\n([\s\S]*?)```/g, '<pre><code class="language-$1">$2</code></pre>');
-  // Inline code
-  html = html.replace(/`([^`]+)`/g, '<code>$1</code>');
+  // Extract inline code
+  const inlineCodes = [];
+  processed = processed.replace(/`([^`]+)`/g, (_, code) => {
+    inlineCodes.push(`<code>${escapeHtml(code)}</code>`);
+    return `%%INLINE_${inlineCodes.length - 1}%%`;
+  });
 
-  // Headers
-  html = html
+  let html = processed
+    // Headers
     .replace(/^### (.+)$/gm, '<h3>$1</h3>')
     .replace(/^## (.+)$/gm, '<h2>$1</h2>')
     .replace(/^# (.+)$/gm, '<h1>$1</h1>')
@@ -335,15 +341,15 @@ function renderMarkdown(md) {
     .replace(/\*\*(.+?)\*\*/g, '<strong>$1</strong>')
     .replace(/\*(.+?)\*/g, '<em>$1</em>')
     // Blockquotes
-    .replace(/^&gt;\s*(.+)$/gm, '<blockquote><p>$1</p></blockquote>')
+    .replace(/^>\s*(.+)$/gm, '<blockquote><p>$1</p></blockquote>')
     // Unordered lists
     .replace(/^- (.+)$/gm, '<li>$1</li>')
     // Horizontal rules
     .replace(/^---$/gm, '<hr>')
     // Links — block javascript: protocol
-    .replace(/\[([^\]]+)\]\(([^)]+)\)/g, function(match, text, url) {
-      if (/^\s*javascript\s*:/i.test(url)) return text;
-      return '<a href="' + url + '" target="_blank" rel="noopener">' + text + '</a>';
+    .replace(/\[([^\]]+)\]\(([^)]+)\)/g, (_, text, href) => {
+      if (/^\s*javascript:/i.test(href)) return text;
+      return `<a href="${href}" target="_blank" rel="noopener">${text}</a>`;
     });
 
   // Wrap loose <li> in <ul>
@@ -355,8 +361,13 @@ function renderMarkdown(md) {
     if (!block) return '';
     if (/^<(h[1-6]|ul|ol|blockquote|pre|hr|div|section)/.test(block)) return block;
     if (block.startsWith('<li>')) return block;
+    if (/^%%CODEBLOCK_\d+%%$/.test(block)) return block;
     return '<p>' + block.replace(/\n/g, '<br>') + '</p>';
   }).join('\n');
+
+  // Restore code blocks and inline code
+  codeBlocks.forEach((block, i) => { html = html.replace(`%%CODEBLOCK_${i}%%`, block); });
+  inlineCodes.forEach((code, i) => { html = html.replace(`%%INLINE_${i}%%`, code); });
 
   return html;
 }

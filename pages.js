@@ -418,18 +418,18 @@ function renderAuthPage(mode) {
           ${!isLogin ? `
             <div class="form-field">
               <label class="form-label mono-label" for="displayName">Display Name</label>
-              <input type="text" id="displayName" name="displayName" class="form-input" placeholder="Your signal callsign" required>
+              <input type="text" id="displayName" name="displayName" class="form-input" placeholder="Your signal callsign" required aria-label="Display name">
             </div>
           ` : ''}
 
           <div class="form-field">
             <label class="form-label mono-label" for="authEmail">Email</label>
-            <input type="email" id="authEmail" name="email" class="form-input" placeholder="your@email.com" required>
+            <input type="email" id="authEmail" name="email" class="form-input" placeholder="your@email.com" required aria-label="Email address">
           </div>
 
           <div class="form-field">
             <label class="form-label mono-label" for="authPassword">Password</label>
-            <input type="password" id="authPassword" name="password" class="form-input" placeholder="${isLogin ? '••••••••' : 'Min 6 characters'}" minlength="6" required>
+            <input type="password" id="authPassword" name="password" class="form-input" placeholder="${isLogin ? '••••••••' : 'Min 6 characters'}" minlength="6" required aria-label="Password">
           </div>
 
           <div class="auth-error" id="authError" style="display:none;"></div>
@@ -780,9 +780,10 @@ function initNewsletterForm() {
     btn.disabled = true;
 
     try {
-      // Get referral code from URL if present
+      // Get referral code from URL if present, sanitize to alphanumeric + underscore
       const { params } = getRouteParams();
-      await subscribeNewsletter(email, '', params.ref || '');
+      const safeRef = (params.ref || '').replace(/[^a-zA-Z0-9_]/g, '').slice(0, 50);
+      await subscribeNewsletter(email, '', safeRef);
       btnText.textContent = 'Subscribed ✓';
       form.classList.add('submitted');
       input.value = '';
@@ -804,10 +805,14 @@ function initNewsletterForm() {
 /* =============================================
    META TAGS HELPER
    ============================================= */
+function escapeAttr(str) {
+  return String(str).replace(/&/g, '&amp;').replace(/"/g, '&quot;').replace(/</g, '&lt;').replace(/>/g, '&gt;');
+}
+
 function updateMetaTags(opts) {
   const setMeta = (attr, val, content) => {
     let el = document.querySelector(`meta[${attr}="${val}"]`);
-    if (el) el.setAttribute('content', content);
+    if (el) el.setAttribute('content', escapeAttr(content));
   };
   if (opts.title) {
     setMeta('property', 'og:title', opts.title);
@@ -821,6 +826,17 @@ function updateMetaTags(opts) {
   if (opts.url) setMeta('property', 'og:url', opts.url);
   if (opts.image) setMeta('property', 'og:image', opts.image);
 }
+
+/* =============================================
+   ERROR TRACKING
+   ============================================= */
+window.addEventListener('error', (e) => {
+  console.error('[Signal Error]', e.message, e.filename, e.lineno);
+});
+
+window.addEventListener('unhandledrejection', (e) => {
+  console.error('[Signal Unhandled Promise]', e.reason);
+});
 
 /* =============================================
    UTILITIES

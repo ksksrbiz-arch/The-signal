@@ -65,7 +65,8 @@ async function handleRoute() {
       appContent.innerHTML = renderErrorPage('Something went wrong', e.message);
     }
   } else {
-    appContent.innerHTML = renderErrorPage('Page Not Found', 'The transmission you are looking for does not exist.');
+    document.title = '404 — THE SIGNAL';
+    appContent.innerHTML = renderErrorPage('404 — Page Not Found', 'The transmission you are looking for does not exist or has been lost.');
   }
 
   // Scroll to top on route change
