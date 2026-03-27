@@ -38,13 +38,37 @@
     buildDir = "."
     prettyURLs = true
 
+# Convenience redirects to the PDF
+[[redirects]]
+  from = "/pdf"
+  to = "/the-signal.pdf"
+  status = 200
+
+[[redirects]]
+  from = "/download"
+  to = "/the-signal.pdf"
+  status = 200
+
+[[redirects]]
+  from = "/document"
+  to = "/the-signal.pdf"
+  status = 301
+
+[[redirects]]
+  from = "/document.pdf"
+  to = "/the-signal.pdf"
+  status = 301
+
+# Security and caching headers for all pages
 [[headers]]
   for = "/*"
   [headers.values]
     X-Frame-Options = "DENY"
     X-Content-Type-Options = "nosniff"
     Referrer-Policy = "strict-origin-when-cross-origin"
+    Permissions-Policy = "camera=(), microphone=(), geolocation=()"
 
+# Cache CSS and JS aggressively (immutable assets)
 [[headers]]
   for = "/*.css"
   [headers.values]
@@ -55,7 +79,20 @@
   [headers.values]
     Cache-Control = "public, max-age=31536000, immutable"
 
+# Cache PDF (changes rarely)
+[[headers]]
+  for = "/*.pdf"
+  [headers.values]
+    Cache-Control = "public, max-age=86400, stale-while-revalidate=604800"
+
+# Cache OG image
 [[headers]]
   for = "/og-image.svg"
   [headers.values]
     Cache-Control = "public, max-age=86400"
+
+# HTML should always revalidate for fresh deploys
+[[headers]]
+  for = "/*.html"
+  [headers.values]
+    Cache-Control = "public, max-age=0, must-revalidate"
