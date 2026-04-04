@@ -18,11 +18,11 @@
 
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>THE SIGNAL — Weekly Transmission №013 | 1Commerce LLC</title>
-<meta name="description" content="Build the cathedral. Light it from within. Week 13, March 20–26, 2026. A personal transmission from 1Commerce LLC, Canby, Oregon.">
-<meta property="og:title" content="THE SIGNAL — Weekly Transmission №013">
-<meta property="og:description" content="Build the cathedral. Light it from within.">
-<meta property="og:type" content="article">
+<title>THE SIGNAL — A Weekly Transmission from 1Commerce LLC</title>
+<meta name="description" content="A weekly transmission from a solo founder building in public. Dark. Gothic. Precise. Operational updates, build-in-public insights, and the cathedral aesthetic from 1Commerce LLC, Canby, Oregon.">
+<meta property="og:title" content="THE SIGNAL — A Weekly Transmission from 1Commerce LLC">
+<meta property="og:description" content="A weekly transmission from a solo founder building in public. Dark. Gothic. Precise.">
+<meta property="og:type" content="website">
 
 <!-- Fonts -->
 <link href="https://api.fontshare.com/v2/css?f[]=zodiak@400,500,600,700&f[]=general-sans@300,400,500,600&display=swap" rel="stylesheet">
@@ -38,26 +38,47 @@
   <!-- Ambient grain overlay -->
   <div class="grain" aria-hidden="true"></div>
 
+  <!-- Mobile Nav Overlay -->
+  <div class="mobile-nav" aria-label="Mobile navigation">
+    <button class="mobile-nav-close" aria-label="Close menu">
+      <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 6L6 18M6 6l12 12"/></svg>
+    </button>
+    <a href="./">Home</a>
+    <a href="./archive/">Archive</a>
+    <a href="./about/">About</a>
+    <a href="#subscribe">Subscribe</a>
+  </div>
+
   <!-- Header -->
   <header class="site-header">
     <div class="header-inner">
       <div class="header-left">
-        <svg class="logo" viewBox="0 0 32 32" width="28" height="28" fill="none" aria-label="The Signal logo">
-          <rect x="2" y="2" width="28" height="28" rx="2" stroke="currentColor" stroke-width="1.5" opacity="0.3"/>
-          <line x1="16" y1="6" x2="16" y2="26" stroke="currentColor" stroke-width="1.5"/>
-          <line x1="10" y1="9" x2="10" y2="23" stroke="currentColor" stroke-width="1" opacity="0.5"/>
-          <line x1="22" y1="9" x2="22" y2="23" stroke="currentColor" stroke-width="1" opacity="0.5"/>
-          <circle cx="16" cy="16" r="3" stroke="currentColor" stroke-width="1.5" fill="none"/>
-          <circle cx="16" cy="16" r="1" fill="currentColor"/>
-          <line x1="6" y1="16" x2="13" y2="16" stroke="currentColor" stroke-width="0.75" opacity="0.4"/>
-          <line x1="19" y1="16" x2="26" y2="16" stroke="currentColor" stroke-width="0.75" opacity="0.4"/>
-        </svg>
-        <span class="header-title">THE SIGNAL</span>
+        <a href="./">
+          <svg class="logo" viewBox="0 0 32 32" width="28" height="28" fill="none" aria-label="The Signal logo">
+            <rect x="2" y="2" width="28" height="28" rx="2" stroke="currentColor" stroke-width="1.5" opacity="0.3"/>
+            <line x1="16" y1="6" x2="16" y2="26" stroke="currentColor" stroke-width="1.5"/>
+            <line x1="10" y1="9" x2="10" y2="23" stroke="currentColor" stroke-width="1" opacity="0.5"/>
+            <line x1="22" y1="9" x2="22" y2="23" stroke="currentColor" stroke-width="1" opacity="0.5"/>
+            <circle cx="16" cy="16" r="3" stroke="currentColor" stroke-width="1.5" fill="none"/>
+            <circle cx="16" cy="16" r="1" fill="currentColor"/>
+            <line x1="6" y1="16" x2="13" y2="16" stroke="currentColor" stroke-width="0.75" opacity="0.4"/>
+            <line x1="19" y1="16" x2="26" y2="16" stroke="currentColor" stroke-width="0.75" opacity="0.4"/>
+          </svg>
+          <span class="header-title">THE SIGNAL</span>
+        </a>
       </div>
       <div class="header-right">
-        <span class="header-meta">1COMMERCE LLC</span>
-        <span class="header-divider">/</span>
-        <span class="header-meta">CANBY, OR</span>
+        <nav>
+          <ul class="nav-links">
+            <li><a href="./" class="active">Home</a></li>
+            <li><a href="./archive/">Archive</a></li>
+            <li><a href="./about/">About</a></li>
+            <li><a href="#subscribe">Subscribe</a></li>
+          </ul>
+        </nav>
+        <button class="nav-toggle" aria-label="Open menu">
+          <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 12h18M3 6h18M3 18h18"/></svg>
+        </button>
         <button data-theme-toggle aria-label="Switch to light mode">
           <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="5"/><path d="M12 1v2M12 21v2M4.22 4.22l1.42 1.42M18.36 18.36l1.42 1.42M1 12h2M21 12h2M4.22 19.78l1.42-1.42M18.36 5.64l1.42-1.42"/></svg>
         </button>
@@ -68,257 +89,150 @@
   <main>
 
     <!-- Hero -->
-    <section class="hero">
+    <section class="hero hero--home">
       <div class="hero-inner">
         <div class="hero-overline">
-          <span class="mono-label">◈ PERSONAL TRANSMISSION ◈</span>
+          <span class="mono-label">◈ WEEKLY NEWSLETTER ◈</span>
         </div>
         <h1 class="hero-title">
-          <span class="hero-title-line">The Cathedral</span>
-          <span class="hero-title-line accent">Holds.</span>
+          <span class="hero-title-line">THE</span>
+          <span class="hero-title-line accent">SIGNAL</span>
         </h1>
+        <p class="hero-tagline">A weekly transmission from a solo founder building in public. Dark. Gothic. Precise.</p>
         <div class="hero-meta">
-          <span class="mono-label">WEEK №13 · 2026</span>
-          <span class="mono-label dim">MARCH 20–26, 2026</span>
+          <span class="mono-label">FROM 1COMMERCE LLC</span>
+          <span class="mono-label dim">CANBY, OREGON</span>
         </div>
-        <p class="hero-quote">"Build the cathedral. Light it from within."</p>
       </div>
       <div class="hero-scanline" aria-hidden="true"></div>
     </section>
 
-    <!-- Status Bar -->
-    <section class="status-bar">
-      <div class="status-inner">
-        <div class="status-item">
-          <span class="status-label">STACK UPTIME</span>
-          <span class="status-value">100%</span>
-          <span class="status-detail">GCP / Cloud Run</span>
+    <!-- Value Proposition -->
+    <section class="value-section">
+      <div class="value-inner">
+        <div class="value-header">
+          <div class="mono-label accent-text" style="margin-bottom: var(--space-4);">// WHAT YOU GET</div>
+          <h2>Inside Every Transmission</h2>
+          <p>Each week, The Signal delivers a structured dispatch from the front lines of building a software and commerce empire from scratch. No fluff. No platitudes. Just the raw operational truth.</p>
         </div>
-        <div class="status-item">
-          <span class="status-label">WORKFLOWS</span>
-          <span class="status-value">Active</span>
-          <span class="status-detail">n8n · self-hosted</span>
-        </div>
-        <div class="status-item">
-          <span class="status-label">AUTOMATIONS</span>
-          <span class="status-value">Live</span>
-          <span class="status-detail">MailerLite · 3 groups</span>
-        </div>
-        <div class="status-item">
-          <span class="status-label">INKVAULT</span>
-          <span class="status-value gold">230+</span>
-          <span class="status-detail">&nbsp;</span>
-        </div>
-        <div class="status-item">
-          <span class="status-label">FORGE3D</span>
-          <span class="status-value gold">Prod.</span>
-          <span class="status-detail">&nbsp;</span>
-        </div>
-        <div class="status-item">
-          <span class="status-label">HUNTED</span>
-          <span class="status-value gold">Ships.</span>
-          <span class="status-detail">&nbsp;</span>
-        </div>
-      </div>
-    </section>
-
-    <!-- Section I: Foundation -->
-    <section class="dispatch" id="foundation">
-      <div class="dispatch-inner">
-        <div class="section-marker">
-          <span class="section-numeral">I</span>
-          <span class="section-label">FOUNDATION</span>
-        </div>
-        <div class="dispatch-header">
-          <span class="mono-label accent-text">// LEAD DISPATCH · MONDAY 23 MAR</span>
-        </div>
-        <div class="dispatch-body">
-          <p class="lead-text">There is a particular silence that descends after every system you build actually works. Not the quiet of rest — the quiet of a structure bearing its own weight for the first time. This week, 1Commerce entered that silence. The n8n reply detector fired on a live reply. MailerLite segmented cleanly. The machine breathed on its own.</p>
-          <p>Pre-revenue does not mean pre-proof. Every pipe laid is a stone set. What does not yet generate money is nevertheless generating evidence — that the architecture is sound, that the founder did not flinch.</p>
-        </div>
-      </div>
-    </section>
-
-    <!-- Blockquote -->
-    <section class="quote-block">
-      <div class="quote-inner">
-        <div class="quote-mark" aria-hidden="true">//</div>
-        <blockquote>
-          <p>The solo founder's greatest myth is that revenue validates existence. Revenue validates the offer. The founder was already validated the moment they did not quit.</p>
-        </blockquote>
-        <cite class="mono-label dim">— INTERNAL LOG · MAR 2026</cite>
-      </div>
-    </section>
-
-    <!-- Section II: Revenue -->
-    <section class="dispatch" id="revenue">
-      <div class="dispatch-inner">
-        <div class="section-marker">
-          <span class="section-numeral">II</span>
-          <span class="section-label">REVENUE</span>
-        </div>
-
-        <article class="dispatch-entry">
-          <div class="dispatch-header">
-            <span class="mono-label accent-text">// OUTBOUND · TUE 24</span>
+        <div class="value-grid">
+          <div class="value-card">
+            <span class="value-card-icon">I.</span>
+            <h3>Foundation Reports</h3>
+            <p>Operational updates from the infrastructure layer. What's running, what broke, what got wired together in the dark.</p>
           </div>
-          <h2>Cold Outreach System Goes Operational</h2>
-          <p>The Claude API-powered personalization widget is live across five modes. LinkedIn DM sequences are queued. The prospect pool targets dental, home services, real estate. The machine does not rest between sends.</p>
-        </article>
-
-        <article class="dispatch-entry">
-          <div class="dispatch-header">
-            <span class="mono-label accent-text">// OFFER · WED 25</span>
+          <div class="value-card">
+            <span class="value-card-icon">II.</span>
+            <h3>Revenue Activation Logs</h3>
+            <p>Cold outreach metrics, offer performance, client pipeline movement. The numbers behind the revenue phase.</p>
           </div>
-          <h2>Operating Excellence Bundle: $29 / $49 / $99</h2>
-          <p>Three tiers. One thesis: small businesses are drowning in process and starving for systems. The Bundle is the life raft dressed as a manual. Revenue activation pending first transaction.</p>
-        </article>
-
-        <article class="dispatch-entry">
-          <div class="dispatch-header">
-            <span class="mono-label accent-text">// CLIENT · THU 26</span>
+          <div class="value-card">
+            <span class="value-card-icon">III.</span>
+            <h3>Build-in-Public Insights</h3>
+            <p>Systems architecture decisions, tool choices, pivots logged. The engineering diary of a solo operator.</p>
           </div>
-          <h2>HCHP Equestrian Proposal: The Flyover</h2>
-          <p>A Three.js WebGL terrain flyover for a horse park. The land becomes the landing page. When the client's own ground rises to meet them through a screen, the proposal is already accepted.</p>
-        </article>
-      </div>
-    </section>
-
-    <!-- Section III: Systems -->
-    <section class="dispatch" id="systems">
-      <div class="dispatch-inner">
-        <div class="section-marker">
-          <span class="section-numeral">III</span>
-          <span class="section-label">SYSTEMS</span>
-        </div>
-
-        <div class="dispatch-header">
-          <span class="mono-label accent-text">// INFRASTRUCTURE DISPATCH · ONGOING</span>
-        </div>
-
-        <article class="dispatch-feature">
-          <h2 class="feature-title">On Building Alone — A Field Report</h2>
-          <p class="feature-drop-cap">October 2025 was when the learning began in earnest. Seventeen months later, a single founder has shipped: a SaaS platform (UnifyOne), a tattoo flash marketplace (InkVault), a 3D studio brand (FORGE3D), a multiplayer horror game (HUNTED), a Meta marketing platform, a Shopify theme, a cold outreach engine, and a glass-arts vertical marketplace concept still glowing in the back of the mind like a piece of hot borosilicate. None of these are the point. The point is the pattern: a person who can learn anything is not pre-revenue — they are pre-launch.</p>
-        </article>
-
-        <!-- Sub-entries -->
-        <div class="sub-entries">
-          <article class="sub-entry">
-            <h3>UnifyOne Tiers Active</h3>
-            <p>Acolyte · Architect · Cathedral. Each name a stage of devotion to the system. Pricing structures set. Fulfillment stack ready. Waiting for the first pilgrim.</p>
-          </article>
-          <article class="sub-entry">
-            <h3>DNSSEC Resolved</h3>
-            <p>1commercesolutions.com back from the dead. A small, invisible victory. The kind only founders and DNS gods understand.</p>
-          </article>
-          <article class="sub-entry">
-            <h3>Pivot Logged — Mar 16</h3>
-            <p>OneStack, Money Generator, Jimbo's: discontinued. The audit was surgical. What remains is load-bearing. The cathedral only keeps what holds weight.</p>
-          </article>
+          <div class="value-card">
+            <span class="value-card-icon">IV.</span>
+            <h3>The Cathedral Aesthetic</h3>
+            <p>Prose-grade writing meets terminal precision. Every dispatch is both accountability journal and creative artifact.</p>
+          </div>
         </div>
       </div>
     </section>
 
-    <!-- Blockquote: Cathedral Principle -->
-    <section class="quote-block furnace">
-      <div class="quote-inner">
-        <div class="quote-mark" aria-hidden="true">//</div>
-        <blockquote>
-          <p>Every workflow you wire is a vote cast for the version of yourself that ships. Vote often. Vote early. Vote in production.</p>
-        </blockquote>
-        <cite class="mono-label dim">— THE CATHEDRAL PRINCIPLE · PHASE III</cite>
-      </div>
-      <div class="furnace-label">
-        <span class="mono-label gold-text">◈ THE FURNACE ◈</span>
-      </div>
-    </section>
-
-    <!-- Section IV: Scale -->
-    <section class="dispatch" id="scale">
-      <div class="dispatch-inner">
-        <div class="section-marker">
-          <span class="section-numeral">IV</span>
-          <span class="section-label">SCALE</span>
+    <!-- Latest Issue -->
+    <section class="latest-issue">
+      <div class="latest-inner">
+        <div class="latest-overline">
+          <span class="mono-label accent-text">// LATEST TRANSMISSION</span>
         </div>
-
-        <div class="dispatch-header">
-          <span class="mono-label accent-text">// FORWARD SIGNAL · WEEK 14 AND BEYOND</span>
-        </div>
-
-        <article class="dispatch-feature">
-          <h2 class="feature-title">Transmission Continues</h2>
-          <p>The weeks ahead hold a specific pressure — the good kind. First client conversion in the crosshairs. Equestrian proposal delivery. LinkedIn sequences running warm. The Operating Excellence Bundle awaiting its first purchase event. These are not hopes. They are coordinates.</p>
-          <p>The Cathedral Principle was never about building fast. It was about building so that the structure could one day hold others. Foundation first. Revenue activates the lights. Systems keep them on. Scale invites the congregation. The solo founder in Canby, Oregon is somewhere between the first and second phase — which means the hardest part is already behind them, and they just don't know it yet.</p>
-        </article>
-
-        <div class="sub-entries">
-          <article class="sub-entry">
-            <div class="dispatch-header">
-              <span class="mono-label accent-text">// THE DREAM · ALWAYS</span>
-            </div>
-            <h3>Glass Marketplace: The Furnace Project</h3>
-            <p>A Reverb for the glass arts community. Blowers, collectors, studios. The vertical is warm, underserved, and waiting. Not yet — but noted. The furnace holds heat long after the fire is banked.</p>
-          </article>
-          <article class="sub-entry">
-            <div class="dispatch-header">
-              <span class="mono-label accent-text">// CREATIVE · PARALLEL TRACK</span>
-            </div>
-            <h3>The Cathedral Aesthetic Lives in Video</h3>
-            <p>Sora 2 and Kling AI 3.0 generating the visual language of UnifyOne. "The Signal" as creative framework. Dark. Gothic. Precise. The brand has a soul before it has a budget.</p>
-          </article>
-          <article class="sub-entry">
-            <div class="dispatch-header">
-              <span class="mono-label accent-text">// MUSIC · BACKGROUND RADIATION</span>
-            </div>
-            <h3>Music Production: Still There, Always</h3>
-            <p>The DAW doesn't close. Between deployments, there are frequencies. Making sound is the oldest automation: breath into structure, silence into signal. Some things build the builder.</p>
-          </article>
-        </div>
+        <a href="./archive/013.html" class="latest-card">
+          <div class="latest-card-week">Week №013</div>
+          <h2 class="latest-card-title">The Cathedral Holds.</h2>
+          <p class="latest-card-quote">"Build the cathedral. Light it from within."</p>
+          <div class="latest-card-meta">
+            <span class="latest-card-date">March 20–26, 2026</span>
+            <span class="latest-card-arrow">READ →</span>
+          </div>
+        </a>
       </div>
     </section>
 
-    <!-- Closing Quote -->
-    <section class="quote-block closing">
-      <div class="quote-inner">
-        <div class="quote-mark" aria-hidden="true">//</div>
-        <blockquote>
-          <p>You are not waiting for permission to begin. You began in October 2025 and have not stopped. That is the whole story. Everything else is footnotes.</p>
-        </blockquote>
-        <cite class="mono-label dim">— THE SIGNAL · TRANSMISSION №013</cite>
+    <!-- Subscribe CTA -->
+    <section class="subscribe-section" id="subscribe">
+      <div class="subscribe-inner">
+        <span class="mono-label accent-text" style="display: block; margin-bottom: var(--space-4);">◈ JOIN THE CONGREGATION ◈</span>
+        <h2>Receive The Signal</h2>
+        <p>One email per week. Structured dispatches from a solo founder building the cathedral. Unsubscribe whenever the signal fades.</p>
+        <form class="subscribe-form" action="https://assets.mailerlite.com/jsonp/887036/forms/131950373498498498/subscribe" method="POST">
+          <input type="email" name="fields[email]" placeholder="your@email.com" required aria-label="Email address">
+          <button type="submit">Subscribe</button>
+        </form>
+        <p class="subscribe-note">Free. Weekly. No spam. Just signal.</p>
       </div>
     </section>
 
-    <!-- Entity Footer Card -->
-    <section class="entity-card">
-      <div class="entity-inner">
-        <div class="entity-row">
-          <span class="entity-key">ENTITY</span>
-          <span class="entity-val">1COMMERCE LLC</span>
-        </div>
-        <div class="entity-row">
-          <span class="entity-key">PHASE</span>
-          <span class="entity-val gold-text">REVENUE ACTIVATION</span>
-        </div>
-        <div class="entity-row">
-          <span class="entity-key">LOCATION</span>
-          <span class="entity-val">CANBY, OR</span>
-        </div>
-        <div class="entity-row">
-          <span class="entity-key">STACK</span>
-          <span class="entity-val">GCP · REACT · N8N · FIREBASE</span>
-        </div>
-        <div class="entity-row">
-          <span class="entity-key">STATUS</span>
-          <span class="entity-val gold-text">OPERATIONAL</span>
-        </div>
+    <!-- Social Proof -->
+    <section class="social-proof">
+      <div class="social-proof-inner">
+        <span class="social-proof-item">From 1Commerce LLC</span>
+        <span class="social-proof-dot" aria-hidden="true">●</span>
+        <span class="social-proof-item">Canby, Oregon</span>
+        <span class="social-proof-dot" aria-hidden="true">●</span>
+        <span class="social-proof-item">Since March 2026</span>
+        <span class="social-proof-dot" aria-hidden="true">●</span>
+        <span class="social-proof-item">Building in Public</span>
+      </div>
+    </section>
+
+    <!-- 1Commerce Properties -->
+    <section class="properties-section">
+      <div class="properties-inner">
+        <a href="https://1commerce.shop" target="_blank" rel="noopener noreferrer">1Commerce.shop</a>
+        <a href="https://unifyone.io" target="_blank" rel="noopener noreferrer">UnifyOne</a>
+        <a href="https://inkvault.io" target="_blank" rel="noopener noreferrer">InkVault</a>
+        <a href="https://forge3d.studio" target="_blank" rel="noopener noreferrer">FORGE3D</a>
+        <a href="https://hunted.game" target="_blank" rel="noopener noreferrer">HUNTED</a>
       </div>
     </section>
 
   </main>
 
+  <!-- Footer -->
   <footer class="site-footer">
-    <div class="footer-inner">
-      <span class="mono-label dim">THE SIGNAL · WEEK №13 · 2026</span>
+    <div class="footer-main">
+      <div class="footer-col">
+        <h4>The Signal</h4>
+        <div class="footer-subscribe">
+          <form class="footer-subscribe-form" action="https://assets.mailerlite.com/jsonp/887036/forms/131950373498498498/subscribe" method="POST">
+            <input type="email" name="fields[email]" placeholder="your@email.com" required aria-label="Email address">
+            <button type="submit">Subscribe</button>
+          </form>
+        </div>
+        <p>A weekly transmission from a solo founder building in public.</p>
+      </div>
+      <div class="footer-col">
+        <h4>Navigate</h4>
+        <ul>
+          <li><a href="./">Home</a></li>
+          <li><a href="./archive/">Archive</a></li>
+          <li><a href="./about/">About</a></li>
+          <li><a href="#subscribe">Subscribe</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <h4>1Commerce LLC</h4>
+        <ul>
+          <li><a href="https://1commerce.shop" target="_blank" rel="noopener noreferrer">1Commerce.shop</a></li>
+          <li><a href="https://unifyone.io" target="_blank" rel="noopener noreferrer">UnifyOne</a></li>
+          <li><a href="https://inkvault.io" target="_blank" rel="noopener noreferrer">InkVault</a></li>
+          <li><a href="https://forge3d.studio" target="_blank" rel="noopener noreferrer">FORGE3D</a></li>
+          <li><a href="https://hunted.game" target="_blank" rel="noopener noreferrer">HUNTED</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <span class="mono-label dim">© 2026 1COMMERCE LLC · CANBY, OREGON</span>
       <a href="https://www.perplexity.ai/computer" target="_blank" rel="noopener noreferrer" class="mono-label dim">Created with Perplexity Computer</a>
     </div>
   </footer>
