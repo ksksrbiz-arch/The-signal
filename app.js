@@ -5,7 +5,8 @@
   const t = document.querySelector('[data-theme-toggle]');
   const r = document.documentElement;
   // Check localStorage first, then fall back to attribute / media query
-  let d = localStorage.getItem('signal-theme') || r.getAttribute('data-theme') || (matchMedia('(prefers-color-scheme:dark)').matches ? 'dark' : 'light');
+  var stored; try { stored = localStorage.getItem('signal-theme'); } catch(e) {}
+  let d = stored || r.getAttribute('data-theme') || (matchMedia('(prefers-color-scheme:dark)').matches ? 'dark' : 'light');
   r.setAttribute('data-theme', d);
   updateIcon();
 
@@ -13,7 +14,7 @@
     t.addEventListener('click', function() {
       d = d === 'dark' ? 'light' : 'dark';
       r.setAttribute('data-theme', d);
-      localStorage.setItem('signal-theme', d);
+      try { localStorage.setItem('signal-theme', d); } catch(e) {}
       t.setAttribute('aria-label', 'Switch to ' + (d === 'dark' ? 'light' : 'dark') + ' mode');
       updateIcon();
     });
