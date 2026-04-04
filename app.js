@@ -5,8 +5,9 @@
   const t = document.querySelector('[data-theme-toggle]');
   const r = document.documentElement;
   // Check localStorage first, then fall back to attribute / media query
-  var stored; try { stored = localStorage.getItem('signal-theme'); } catch(e) {}
-  let d = stored || r.getAttribute('data-theme') || (matchMedia('(prefers-color-scheme:dark)').matches ? 'dark' : 'light');
+  // Theme: read from cookie (safe in iframes) or default to dark
+  var stored = document.cookie.split('; ').find(function(c){ return c.startsWith('signal-theme='); });
+  let d = (stored ? stored.split('=')[1] : '') || r.getAttribute('data-theme') || (matchMedia('(prefers-color-scheme:dark)').matches ? 'dark' : 'light');
   r.setAttribute('data-theme', d);
   updateIcon();
 
@@ -14,7 +15,7 @@
     t.addEventListener('click', function() {
       d = d === 'dark' ? 'light' : 'dark';
       r.setAttribute('data-theme', d);
-      try { localStorage.setItem('signal-theme', d); } catch(e) {}
+      document.cookie = 'signal-theme=' + d + ';path=/;max-age=31536000';
       t.setAttribute('aria-label', 'Switch to ' + (d === 'dark' ? 'light' : 'dark') + ' mode');
       updateIcon();
     });
