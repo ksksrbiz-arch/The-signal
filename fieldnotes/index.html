@@ -3,11 +3,13 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Fieldnotes — THE SIGNAL | 1Commerce LLC</title>
-<meta name="description" content="Short-form dispatches on solo founding, systems architecture, and commerce operations. Written from the front lines of building 1Commerce LLC in Canby, Oregon.">
-<meta property="og:title" content="Fieldnotes — THE SIGNAL">
-<meta property="og:description" content="Short-form dispatches on solo founding, systems, and commerce. From 1Commerce LLC.">
+<title>Fieldnotes+ — THE SIGNAL | Document Library</title>
+<meta name="description" content="The Fieldnotes+ document library. Weekly uploads of everything 1Commerce LLC created — strategies, systems, build logs, and plans. Sensitive material redacted.">
+<meta property="og:title" content="Fieldnotes+ — Document Library">
+<meta property="og:description" content="Weekly uploads from 1Commerce LLC. Strategies, systems, build logs, and plans — with sensitive material redacted.">
 <meta property="og:type" content="website">
+<link rel="canonical" href="https://signal01.netlify.app/fieldnotes/">
+<meta property="og:url" content="https://signal01.netlify.app/fieldnotes/">
 
 <link href="https://api.fontshare.com/v2/css?f[]=zodiak@400,500,600,700&f[]=general-sans@300,400,500,600&display=swap" rel="stylesheet">
 <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -15,6 +17,383 @@
 <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@300;400;500&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="../base.css">
 <link rel="stylesheet" href="../style.css">
+
+<style>
+/* ============================================================
+   FIELDNOTES+ DOCUMENT LIBRARY
+   ============================================================ */
+
+/* Hero */
+.fnplus-hero {
+  padding: clamp(var(--space-16), 8vw, var(--space-24)) var(--space-6) var(--space-12);
+  border-bottom: 1px solid var(--color-divider);
+  position: relative;
+  overflow: hidden;
+}
+.fnplus-hero-inner {
+  max-width: var(--content-default);
+  margin: 0 auto;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: var(--space-12);
+  align-items: center;
+}
+.fnplus-hero-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--space-2);
+  font-family: var(--font-mono);
+  font-size: var(--text-xs);
+  letter-spacing: 0.15em;
+  color: var(--color-gold);
+  text-transform: uppercase;
+  margin-bottom: var(--space-5);
+}
+.fnplus-hero-badge::before {
+  content: '';
+  display: inline-block;
+  width: 6px;
+  height: 6px;
+  background: var(--color-gold);
+  border-radius: 50%;
+  animation: pulse-dot 2s ease-in-out infinite;
+}
+@keyframes pulse-dot {
+  0%, 100% { opacity: 1; transform: scale(1); }
+  50% { opacity: 0.4; transform: scale(0.7); }
+}
+.fnplus-hero-title {
+  font-family: var(--font-display);
+  font-size: clamp(2.4rem, 5vw, 3.6rem);
+  font-weight: 600;
+  line-height: 1.1;
+  color: var(--color-text);
+  margin-bottom: var(--space-5);
+}
+.fnplus-hero-title .plus {
+  color: var(--color-gold);
+}
+.fnplus-hero-sub {
+  font-family: var(--font-body);
+  font-size: var(--text-base);
+  color: var(--color-text-muted);
+  line-height: 1.7;
+  max-width: 46ch;
+}
+.fnplus-hero-stats {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-6);
+  padding: var(--space-8);
+  background: var(--color-surface);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-lg);
+}
+.fnplus-stat {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-1);
+}
+.fnplus-stat-num {
+  font-family: var(--font-display);
+  font-size: var(--text-2xl);
+  font-weight: 700;
+  color: var(--color-gold);
+  line-height: 1;
+}
+.fnplus-stat-label {
+  font-family: var(--font-mono);
+  font-size: var(--text-xs);
+  letter-spacing: 0.1em;
+  color: var(--color-text-muted);
+  text-transform: uppercase;
+}
+.fnplus-stat-divider {
+  width: 100%;
+  height: 1px;
+  background: var(--color-divider);
+}
+
+/* Upload Banner */
+.fnplus-upload-banner {
+  background: rgba(201, 168, 76, 0.05);
+  border-top: 1px solid rgba(201,168,76,0.2);
+  border-bottom: 1px solid rgba(201,168,76,0.2);
+  padding: var(--space-4) var(--space-6);
+}
+.fnplus-upload-inner {
+  max-width: var(--content-default);
+  margin: 0 auto;
+  display: flex;
+  align-items: center;
+  gap: var(--space-4);
+  flex-wrap: wrap;
+}
+.fnplus-upload-dot {
+  width: 8px;
+  height: 8px;
+  background: var(--color-gold);
+  border-radius: 50%;
+  flex-shrink: 0;
+  animation: pulse-dot 1.5s ease-in-out infinite;
+}
+.fnplus-upload-text {
+  font-family: var(--font-mono);
+  font-size: var(--text-xs);
+  letter-spacing: 0.1em;
+  color: var(--color-text-muted);
+  text-transform: uppercase;
+}
+.fnplus-upload-text strong {
+  color: var(--color-gold);
+}
+
+/* Filter Bar */
+.fnplus-filter-bar {
+  padding: var(--space-6) var(--space-6) 0;
+  border-bottom: 1px solid var(--color-divider);
+}
+.fnplus-filter-inner {
+  max-width: var(--content-default);
+  margin: 0 auto;
+  display: flex;
+  align-items: center;
+  gap: var(--space-3);
+  flex-wrap: wrap;
+  padding-bottom: var(--space-5);
+}
+.fnplus-filter-label {
+  font-family: var(--font-mono);
+  font-size: var(--text-xs);
+  letter-spacing: 0.1em;
+  color: var(--color-text-muted);
+  text-transform: uppercase;
+  margin-right: var(--space-2);
+}
+.fnplus-filter-btn {
+  font-family: var(--font-mono);
+  font-size: var(--text-xs);
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  padding: var(--space-2) var(--space-4);
+  border: 1px solid var(--color-border);
+  border-radius: 2px;
+  background: transparent;
+  color: var(--color-text-muted);
+  cursor: pointer;
+  transition: all var(--transition-interactive);
+}
+.fnplus-filter-btn:hover,
+.fnplus-filter-btn.active {
+  border-color: var(--color-gold);
+  color: var(--color-gold);
+  background: rgba(201,168,76,0.05);
+}
+
+/* Document Library Grid */
+.fnplus-library {
+  padding: clamp(var(--space-10), 5vw, var(--space-16)) var(--space-6);
+}
+.fnplus-library-inner {
+  max-width: var(--content-default);
+  margin: 0 auto;
+}
+.fnplus-week-group {
+  margin-bottom: var(--space-12);
+}
+.fnplus-week-header {
+  display: flex;
+  align-items: center;
+  gap: var(--space-4);
+  padding-bottom: var(--space-4);
+  border-bottom: 1px solid var(--color-divider);
+  margin-bottom: var(--space-6);
+}
+.fnplus-week-label {
+  font-family: var(--font-mono);
+  font-size: var(--text-xs);
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  color: var(--color-gold);
+}
+.fnplus-week-date {
+  font-family: var(--font-mono);
+  font-size: var(--text-xs);
+  letter-spacing: 0.1em;
+  color: var(--color-text-muted);
+  text-transform: uppercase;
+}
+.fnplus-week-count {
+  margin-left: auto;
+  font-family: var(--font-mono);
+  font-size: var(--text-xs);
+  letter-spacing: 0.1em;
+  color: var(--color-text-muted);
+  text-transform: uppercase;
+}
+
+/* Document Cards */
+.fnplus-docs-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: var(--space-4);
+}
+.fnplus-doc {
+  display: block;
+  text-decoration: none;
+  padding: var(--space-6);
+  background: var(--color-surface);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-md);
+  transition: all var(--transition-interactive);
+  position: relative;
+  overflow: hidden;
+}
+.fnplus-doc:hover {
+  border-color: var(--color-gold);
+  transform: translateY(-2px);
+}
+.fnplus-doc-type {
+  font-family: var(--font-mono);
+  font-size: 10px;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  color: var(--color-text-muted);
+  margin-bottom: var(--space-3);
+  display: flex;
+  align-items: center;
+  gap: var(--space-2);
+}
+.fnplus-doc-type-icon {
+  width: 14px;
+  height: 14px;
+  opacity: 0.5;
+}
+.fnplus-doc-title {
+  font-family: var(--font-display);
+  font-size: var(--text-base);
+  font-weight: 600;
+  color: var(--color-text);
+  line-height: 1.3;
+  margin-bottom: var(--space-3);
+}
+.fnplus-doc-excerpt {
+  font-family: var(--font-body);
+  font-size: var(--text-sm);
+  color: var(--color-text-muted);
+  line-height: 1.6;
+  margin-bottom: var(--space-4);
+}
+.fnplus-doc-footer {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+.fnplus-doc-read {
+  font-family: var(--font-mono);
+  font-size: 10px;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--color-gold);
+}
+.fnplus-doc-tag {
+  font-family: var(--font-mono);
+  font-size: 10px;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--color-text-muted);
+  padding: 2px 6px;
+  border: 1px solid var(--color-border);
+  border-radius: 2px;
+}
+
+/* Redacted doc style */
+.fnplus-doc--redacted {
+  opacity: 0.6;
+  cursor: default;
+  pointer-events: none;
+}
+.fnplus-doc--redacted:hover {
+  border-color: var(--color-border);
+  transform: none;
+}
+.fnplus-redact {
+  display: inline-block;
+  background: var(--color-text-muted);
+  color: transparent;
+  border-radius: 1px;
+  user-select: none;
+}
+.fnplus-redact-block {
+  display: block;
+  background: rgba(255,255,255,0.12);
+  height: 12px;
+  border-radius: 1px;
+  margin-bottom: var(--space-2);
+  width: 100%;
+}
+.fnplus-redact-block:last-child { width: 70%; }
+.fnplus-doc--redacted .fnplus-doc-title {
+  color: transparent;
+  background: rgba(255,255,255,0.15);
+  border-radius: 2px;
+  display: block;
+}
+.fnplus-doc--redacted .fnplus-doc-read {
+  color: var(--color-text-muted);
+}
+.fnplus-redacted-label {
+  font-family: var(--font-mono);
+  font-size: 9px;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: var(--color-text-muted);
+  opacity: 0.5;
+  margin-top: var(--space-2);
+  display: block;
+}
+
+/* Coming soon doc */
+.fnplus-doc--soon {
+  border-style: dashed;
+  opacity: 0.5;
+  cursor: default;
+  pointer-events: none;
+}
+.fnplus-doc--soon .fnplus-doc-read {
+  color: var(--color-text-muted);
+}
+
+/* Section dividers */
+.fnplus-section-label {
+  font-family: var(--font-mono);
+  font-size: var(--text-xs);
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  color: var(--color-text-muted);
+  margin-bottom: var(--space-8);
+  display: flex;
+  align-items: center;
+  gap: var(--space-3);
+}
+.fnplus-section-label::after {
+  content: '';
+  flex: 1;
+  height: 1px;
+  background: var(--color-divider);
+}
+
+/* Responsive */
+@media (max-width: 900px) {
+  .fnplus-hero-inner { grid-template-columns: 1fr; }
+  .fnplus-hero-stats { flex-direction: row; flex-wrap: wrap; }
+  .fnplus-docs-grid { grid-template-columns: repeat(2, 1fr); }
+}
+@media (max-width: 640px) {
+  .fnplus-docs-grid { grid-template-columns: 1fr; }
+  .fnplus-stat-divider { display: none; }
+}
+</style>
 </head>
 <body>
   <div class="grain" aria-hidden="true"></div>
@@ -25,7 +404,7 @@
     </button>
     <a href="../">Home</a>
     <a href="../archive/">Archive</a>
-    <a href="./" class="active">Fieldnotes</a>
+    <a href="./" class="active">Fieldnotes+</a>
     <a href="../about/">About</a>
     <a href="../#subscribe">Subscribe</a>
   </div>
@@ -52,7 +431,7 @@
           <ul class="nav-links">
             <li><a href="../">Home</a></li>
             <li><a href="../archive/">Archive</a></li>
-            <li><a href="./" class="active">Fieldnotes</a></li>
+            <li><a href="./" class="active">Fieldnotes+</a></li>
             <li><a href="../about/">About</a></li>
             <li><a href="../#subscribe">Subscribe</a></li>
           </ul>
@@ -68,100 +447,425 @@
   </header>
 
   <main>
-    <section class="hero" style="padding-bottom: var(--space-12);">
-      <div class="hero-inner">
-        <div class="hero-overline">
-          <span class="mono-label">◈ FIELDNOTES ◈</span>
+
+    <!-- Hero -->
+    <section class="fnplus-hero">
+      <div class="fnplus-hero-inner">
+        <div class="fnplus-hero-copy">
+          <div class="fnplus-hero-badge">◈ DOCUMENT LIBRARY · LIVE</div>
+          <h1 class="fnplus-hero-title">Fieldnotes<span class="plus">+</span></h1>
+          <p class="fnplus-hero-sub">Every week, everything 1Commerce LLC created gets uploaded here. Strategy documents, build logs, system specs, pitch decks, legal filings, operating plans — with sensitive material redacted. The unredacted version is what we actually shipped.</p>
         </div>
-        <h1 class="hero-title" style="font-size: var(--text-2xl);">
-          <span class="hero-title-line">Dispatches from</span>
-          <span class="hero-title-line accent">The Build.</span>
-        </h1>
-        <p style="max-width: 52ch; font-size: var(--text-base); color: var(--color-text-muted); line-height: 1.7; margin-top: var(--space-6);">Short-form writing on solo founding, systems architecture, and commerce operations. Not theory. Not inspiration. Operational intelligence from the front lines of building 1Commerce LLC.</p>
+        <div class="fnplus-hero-stats">
+          <div class="fnplus-stat">
+            <span class="fnplus-stat-num">17</span>
+            <span class="fnplus-stat-label">Documents Published</span>
+          </div>
+          <div class="fnplus-stat-divider"></div>
+          <div class="fnplus-stat">
+            <span class="fnplus-stat-num">3</span>
+            <span class="fnplus-stat-label">Weeks of Uploads</span>
+          </div>
+          <div class="fnplus-stat-divider"></div>
+          <div class="fnplus-stat">
+            <span class="fnplus-stat-num">6</span>
+            <span class="fnplus-stat-label">Document Types</span>
+          </div>
+          <div class="fnplus-stat-divider"></div>
+          <div class="fnplus-stat">
+            <span class="fnplus-stat-num">█ █ █</span>
+            <span class="fnplus-stat-label">Sections Redacted</span>
+          </div>
+        </div>
       </div>
     </section>
 
-    <section class="archive-section">
-      <div class="archive-inner">
+    <!-- Upload Banner -->
+    <div class="fnplus-upload-banner">
+      <div class="fnplus-upload-inner">
+        <div class="fnplus-upload-dot"></div>
+        <span class="fnplus-upload-text">Next upload: <strong>Week 15 · Apr 12, 2026</strong> &nbsp;·&nbsp; Uploads occur every Saturday · Redaction applied before publish &nbsp;·&nbsp; Sensitive commercial data, client information, and legal strategy are redacted per operating protocol</span>
+      </div>
+    </div>
 
-        <!-- Featured / Latest -->
-        <a href="./unifyone-mcp-endpoint.html" class="archive-card archive-card--feature" style="margin-bottom: var(--space-6);">
-          <div class="archive-card-week">Commerce · 6 min read · NEW</div>
-          <h2 class="archive-card-title">UnifyOne's MCP Client and the Universal Endpoint</h2>
-          <p class="archive-card-quote">A store builder and website builder that an AI can actually operate. What the Model Context Protocol means for commerce — and what's coming next with the universal endpoint.</p>
-          <div style="display: flex; justify-content: space-between; align-items: center; margin-top: var(--space-4);">
-            <span class="archive-card-cta">READ FIELDNOTE →</span>
-            <span class="mono-label dim">COMMERCE · AI · UNIFYONE</span>
+    <!-- Filter Bar -->
+    <div class="fnplus-filter-bar">
+      <div class="fnplus-filter-inner">
+        <span class="fnplus-filter-label">Filter:</span>
+        <button class="fnplus-filter-btn active">All</button>
+        <button class="fnplus-filter-btn">Build Logs</button>
+        <button class="fnplus-filter-btn">Systems</button>
+        <button class="fnplus-filter-btn">Strategy</button>
+        <button class="fnplus-filter-btn">Legal</button>
+        <button class="fnplus-filter-btn">Commerce</button>
+        <button class="fnplus-filter-btn">AI / Tech</button>
+      </div>
+    </div>
+
+    <!-- Document Library -->
+    <section class="fnplus-library">
+      <div class="fnplus-library-inner">
+
+        <!-- ====== WEEK 14 ====== -->
+        <div class="fnplus-week-group">
+          <div class="fnplus-week-header">
+            <span class="fnplus-week-label">◈ Week 14</span>
+            <span class="fnplus-week-date">Mar 30 – Apr 5, 2026</span>
+            <span class="fnplus-week-count">9 Documents</span>
           </div>
-        </a>
+          <div class="fnplus-docs-grid">
 
-        <!-- Grid -->
-        <div class="fieldnotes-grid">
+            <a href="./unifyone-mcp-endpoint.html" class="fnplus-doc">
+              <div class="fnplus-doc-type">
+                <svg class="fnplus-doc-type-icon" viewBox="0 0 14 14" fill="none"><rect x="1" y="1" width="12" height="12" rx="1" stroke="currentColor" stroke-width="1"/><path d="M4 5h6M4 7h6M4 9h4" stroke="currentColor" stroke-width="0.8"/></svg>
+                Build Log · Commerce
+              </div>
+              <div class="fnplus-doc-title">UnifyOne: MCP Client + Universal Endpoint</div>
+              <p class="fnplus-doc-excerpt">Store builder, website builder, and an AI execution layer. What the Model Context Protocol enables in a commerce context — and the universal endpoint architecture coming next.</p>
+              <div class="fnplus-doc-footer">
+                <span class="fnplus-doc-read">Read → 6 min</span>
+                <span class="fnplus-doc-tag">AI · UnifyOne</span>
+              </div>
+            </a>
 
-          <a href="./solo-founder-stack-2026.html" class="fn-card">
-            <span class="fn-tag">Systems</span>
-            <h3 class="fn-title">The Solo Founder Stack, 2026</h3>
-            <p class="fn-excerpt">GCP, React, Firebase, n8n, MailerLite, Netlify. What every tool does, why it made the cut, and what it costs to run a multi-product operation solo.</p>
-            <span class="fn-read">6 min read →</span>
-          </a>
+            <a href="./solo-founder-stack-2026.html" class="fnplus-doc">
+              <div class="fnplus-doc-type">
+                <svg class="fnplus-doc-type-icon" viewBox="0 0 14 14" fill="none"><rect x="1" y="1" width="12" height="12" rx="1" stroke="currentColor" stroke-width="1"/><path d="M4 5h6M4 7h6M4 9h4" stroke="currentColor" stroke-width="0.8"/></svg>
+                Systems Doc
+              </div>
+              <div class="fnplus-doc-title">The Solo Founder Stack, 2026</div>
+              <p class="fnplus-doc-excerpt">GCP, React, Firebase, n8n, MailerLite, Netlify. What every tool does, why it made the cut, and what it costs to run a multi-product operation solo.</p>
+              <div class="fnplus-doc-footer">
+                <span class="fnplus-doc-read">Read → 6 min</span>
+                <span class="fnplus-doc-tag">Systems</span>
+              </div>
+            </a>
 
-          <a href="./cold-outreach-engine.html" class="fn-card">
-            <span class="fn-tag">Revenue</span>
-            <h3 class="fn-title">How to Build a Cold Outreach Engine with Claude + n8n</h3>
-            <p class="fn-excerpt">The exact system. Not the concept — the actual workflow: prompts, triggers, rate limits, and what the numbers look like after 30 days.</p>
-            <span class="fn-read">7 min read →</span>
-          </a>
+            <a href="./cold-outreach-engine.html" class="fnplus-doc">
+              <div class="fnplus-doc-type">
+                <svg class="fnplus-doc-type-icon" viewBox="0 0 14 14" fill="none"><rect x="1" y="1" width="12" height="12" rx="1" stroke="currentColor" stroke-width="1"/><path d="M4 5h6M4 7h6M4 9h4" stroke="currentColor" stroke-width="0.8"/></svg>
+                Build Log · Revenue
+              </div>
+              <div class="fnplus-doc-title">Cold Outreach Engine: Claude + n8n</div>
+              <p class="fnplus-doc-excerpt">The exact workflow. Prompts, triggers, rate limits, and what the numbers look like after 30 days of running the system live.</p>
+              <div class="fnplus-doc-footer">
+                <span class="fnplus-doc-read">Read → 7 min</span>
+                <span class="fnplus-doc-tag">Revenue</span>
+              </div>
+            </a>
 
-          <a href="./ai-agents-vs-chatbots.html" class="fn-card">
-            <span class="fn-tag">Technology</span>
-            <h3 class="fn-title">AI Agents vs. Chatbots: What the Difference Actually Means</h3>
-            <p class="fn-excerpt">One answers questions. The other executes work. A practical breakdown for founders who keep hearing "use AI" without anyone explaining which AI to use for what.</p>
-            <span class="fn-read">5 min read →</span>
-          </a>
+            <a href="./mvp-in-a-week.html" class="fnplus-doc">
+              <div class="fnplus-doc-type">
+                <svg class="fnplus-doc-type-icon" viewBox="0 0 14 14" fill="none"><rect x="1" y="1" width="12" height="12" rx="1" stroke="currentColor" stroke-width="1"/><path d="M4 5h6M4 7h6M4 9h4" stroke="currentColor" stroke-width="0.8"/></svg>
+                Build Log · Execution
+              </div>
+              <div class="fnplus-doc-title">GigOS MVP: Shipped in 7 Days</div>
+              <p class="fnplus-doc-excerpt">Concept to functional product. Scoping, agent delegation, QA, and what "done" means at week one of a new product.</p>
+              <div class="fnplus-doc-footer">
+                <span class="fnplus-doc-read">Read → 6 min</span>
+                <span class="fnplus-doc-tag">Execution</span>
+              </div>
+            </a>
 
-          <a href="./shopify-vs-custom.html" class="fn-card">
-            <span class="fn-tag">Commerce</span>
-            <h3 class="fn-title">Shopify vs. Custom Storefront: The Real Tradeoffs</h3>
-            <p class="fn-excerpt">After running both, here is the honest answer. It depends on fewer things than you think, and the right call is clearer than most people admit.</p>
-            <span class="fn-read">5 min read →</span>
-          </a>
+            <!-- Redacted: competitive analysis doc -->
+            <div class="fnplus-doc fnplus-doc--redacted">
+              <div class="fnplus-doc-type">
+                <svg class="fnplus-doc-type-icon" viewBox="0 0 14 14" fill="none"><rect x="1" y="1" width="12" height="12" rx="1" stroke="currentColor" stroke-width="1"/><path d="M4 5h6M4 7h6M4 9h4" stroke="currentColor" stroke-width="0.8"/></svg>
+                Strategy · Competitive
+              </div>
+              <div class="fnplus-doc-title" style="background:rgba(255,255,255,0.12);color:transparent;border-radius:2px;">████████████████████████████</div>
+              <div style="margin-bottom:var(--space-4)">
+                <div class="fnplus-redact-block"></div>
+                <div class="fnplus-redact-block"></div>
+                <div class="fnplus-redact-block" style="width:60%"></div>
+              </div>
+              <div class="fnplus-doc-footer">
+                <span class="fnplus-doc-read" style="color:var(--color-text-muted)">Redacted</span>
+                <span class="fnplus-doc-tag">Strategy</span>
+              </div>
+              <span class="fnplus-redacted-label">■ CONTENT REDACTED — COMPETITIVE SENSITIVITY</span>
+            </div>
 
-          <a href="./trademark-name-taken.html" class="fn-card">
-            <span class="fn-tag">Legal</span>
-            <h3 class="fn-title">When Your Business Name Is Already Taken</h3>
-            <p class="fn-excerpt">What to actually do when someone else filed first, what USPTO data tells you, and how to hold ground on a name you have the stronger claim to.</p>
-            <span class="fn-read">6 min read →</span>
-          </a>
+            <!-- Redacted: pricing + revenue model -->
+            <div class="fnplus-doc fnplus-doc--redacted">
+              <div class="fnplus-doc-type">
+                <svg class="fnplus-doc-type-icon" viewBox="0 0 14 14" fill="none"><rect x="1" y="1" width="12" height="12" rx="1" stroke="currentColor" stroke-width="1"/><path d="M4 5h6M4 7h6M4 9h4" stroke="currentColor" stroke-width="0.8"/></svg>
+                Finance · Internal
+              </div>
+              <div class="fnplus-doc-title" style="background:rgba(255,255,255,0.12);color:transparent;border-radius:2px;">████████████████████████████</div>
+              <div style="margin-bottom:var(--space-4)">
+                <div class="fnplus-redact-block"></div>
+                <div class="fnplus-redact-block" style="width:80%"></div>
+                <div class="fnplus-redact-block" style="width:50%"></div>
+              </div>
+              <div class="fnplus-doc-footer">
+                <span class="fnplus-doc-read" style="color:var(--color-text-muted)">Redacted</span>
+                <span class="fnplus-doc-tag">Finance</span>
+              </div>
+              <span class="fnplus-redacted-label">■ CONTENT REDACTED — REVENUE FIGURES</span>
+            </div>
 
-          <a href="./build-in-public-system.html" class="fn-card">
-            <span class="fn-tag">Accountability</span>
-            <h3 class="fn-title">Build in Public as an Operating System</h3>
-            <p class="fn-excerpt">The Signal is not a marketing tactic. It is a forcing function. How public accountability changes what you ship and why most "build in public" attempts fail.</p>
-            <span class="fn-read">4 min read →</span>
-          </a>
+            <!-- Redacted: client proposal -->
+            <div class="fnplus-doc fnplus-doc--redacted">
+              <div class="fnplus-doc-type">
+                <svg class="fnplus-doc-type-icon" viewBox="0 0 14 14" fill="none"><rect x="1" y="1" width="12" height="12" rx="1" stroke="currentColor" stroke-width="1"/><path d="M4 5h6M4 7h6M4 9h4" stroke="currentColor" stroke-width="0.8"/></svg>
+                Client Proposal
+              </div>
+              <div class="fnplus-doc-title" style="background:rgba(255,255,255,0.12);color:transparent;border-radius:2px;">████████████████████████████</div>
+              <div style="margin-bottom:var(--space-4)">
+                <div class="fnplus-redact-block"></div>
+                <div class="fnplus-redact-block" style="width:90%"></div>
+                <div class="fnplus-redact-block" style="width:45%"></div>
+              </div>
+              <div class="fnplus-doc-footer">
+                <span class="fnplus-doc-read" style="color:var(--color-text-muted)">Redacted</span>
+                <span class="fnplus-doc-tag">Client</span>
+              </div>
+              <span class="fnplus-redacted-label">■ CONTENT REDACTED — CLIENT CONFIDENTIALITY</span>
+            </div>
 
-          <a href="./mvp-in-a-week.html" class="fn-card">
-            <span class="fn-tag">Execution</span>
-            <h3 class="fn-title">How to Ship an MVP in a Week (With AI Agents)</h3>
-            <p class="fn-excerpt">GigOS went from concept to functional product in under seven days. The actual process: scoping, agent delegation, QA, and what "done" means at week one.</p>
-            <span class="fn-read">6 min read →</span>
-          </a>
+            <!-- Redacted: legal strategy memo -->
+            <div class="fnplus-doc fnplus-doc--redacted">
+              <div class="fnplus-doc-type">
+                <svg class="fnplus-doc-type-icon" viewBox="0 0 14 14" fill="none"><rect x="1" y="1" width="12" height="12" rx="1" stroke="currentColor" stroke-width="1"/><path d="M4 5h6M4 7h6M4 9h4" stroke="currentColor" stroke-width="0.8"/></svg>
+                Legal · Internal
+              </div>
+              <div class="fnplus-doc-title" style="background:rgba(255,255,255,0.12);color:transparent;border-radius:2px;">████████████████████████████</div>
+              <div style="margin-bottom:var(--space-4)">
+                <div class="fnplus-redact-block"></div>
+                <div class="fnplus-redact-block" style="width:75%"></div>
+                <div class="fnplus-redact-block" style="width:55%"></div>
+              </div>
+              <div class="fnplus-doc-footer">
+                <span class="fnplus-doc-read" style="color:var(--color-text-muted)">Redacted</span>
+                <span class="fnplus-doc-tag">Legal</span>
+              </div>
+              <span class="fnplus-redacted-label">■ CONTENT REDACTED — LEGAL STRATEGY</span>
+            </div>
 
-          <a href="./cathedral-principle.html" class="fn-card">
-            <span class="fn-tag">Philosophy</span>
-            <h3 class="fn-title">The Cathedral Principle</h3>
-            <p class="fn-excerpt">The operating framework behind 1Commerce. Foundation, Revenue, Systems, Scale — and why most founders are building sheds instead of cathedrals.</p>
-            <span class="fn-read">5 min read →</span>
-          </a>
+            <!-- Redacted: partner outreach -->
+            <div class="fnplus-doc fnplus-doc--redacted">
+              <div class="fnplus-doc-type">
+                <svg class="fnplus-doc-type-icon" viewBox="0 0 14 14" fill="none"><rect x="1" y="1" width="12" height="12" rx="1" stroke="currentColor" stroke-width="1"/><path d="M4 5h6M4 7h6M4 9h4" stroke="currentColor" stroke-width="0.8"/></svg>
+                Outreach · Partner
+              </div>
+              <div class="fnplus-doc-title" style="background:rgba(255,255,255,0.12);color:transparent;border-radius:2px;">████████████████████████████</div>
+              <div style="margin-bottom:var(--space-4)">
+                <div class="fnplus-redact-block"></div>
+                <div class="fnplus-redact-block" style="width:65%"></div>
+                <div class="fnplus-redact-block" style="width:40%"></div>
+              </div>
+              <div class="fnplus-doc-footer">
+                <span class="fnplus-doc-read" style="color:var(--color-text-muted)">Redacted</span>
+                <span class="fnplus-doc-tag">Outreach</span>
+              </div>
+              <span class="fnplus-redacted-label">■ CONTENT REDACTED — PARTNER NAMES</span>
+            </div>
 
-          <a href="./unifyone-mcp-endpoint.html" class="fn-card" style="border-color: rgba(201,168,76,0.35); background: rgba(201,168,76,0.03);">
-            <span class="fn-tag" style="color: var(--color-gold);">Commerce · New</span>
-            <h3 class="fn-title">UnifyOne: MCP Client + Universal Endpoint</h3>
-            <p class="fn-excerpt">Store builder, website builder, and an AI that can actually operate your store. Plus the universal endpoint — coming soon.</p>
-            <span class="fn-read">6 min read →</span>
-          </a>
-
+          </div>
         </div>
+
+        <!-- ====== WEEK 13 ====== -->
+        <div class="fnplus-week-group">
+          <div class="fnplus-week-header">
+            <span class="fnplus-week-label">◈ Week 13</span>
+            <span class="fnplus-week-date">Mar 23 – Mar 29, 2026</span>
+            <span class="fnplus-week-count">8 Documents</span>
+          </div>
+          <div class="fnplus-docs-grid">
+
+            <a href="./ai-agents-vs-chatbots.html" class="fnplus-doc">
+              <div class="fnplus-doc-type">
+                <svg class="fnplus-doc-type-icon" viewBox="0 0 14 14" fill="none"><rect x="1" y="1" width="12" height="12" rx="1" stroke="currentColor" stroke-width="1"/><path d="M4 5h6M4 7h6M4 9h4" stroke="currentColor" stroke-width="0.8"/></svg>
+                Reference Doc · AI
+              </div>
+              <div class="fnplus-doc-title">AI Agents vs. Chatbots: What the Difference Actually Means</div>
+              <p class="fnplus-doc-excerpt">One answers questions. The other executes work. A practical breakdown — which AI to use for what.</p>
+              <div class="fnplus-doc-footer">
+                <span class="fnplus-doc-read">Read → 5 min</span>
+                <span class="fnplus-doc-tag">Technology</span>
+              </div>
+            </a>
+
+            <a href="./shopify-vs-custom.html" class="fnplus-doc">
+              <div class="fnplus-doc-type">
+                <svg class="fnplus-doc-type-icon" viewBox="0 0 14 14" fill="none"><rect x="1" y="1" width="12" height="12" rx="1" stroke="currentColor" stroke-width="1"/><path d="M4 5h6M4 7h6M4 9h4" stroke="currentColor" stroke-width="0.8"/></svg>
+                Analysis · Commerce
+              </div>
+              <div class="fnplus-doc-title">Shopify vs. Custom Storefront: The Real Tradeoffs</div>
+              <p class="fnplus-doc-excerpt">After running both, the honest answer. It depends on fewer things than you think.</p>
+              <div class="fnplus-doc-footer">
+                <span class="fnplus-doc-read">Read → 5 min</span>
+                <span class="fnplus-doc-tag">Commerce</span>
+              </div>
+            </a>
+
+            <a href="./trademark-name-taken.html" class="fnplus-doc">
+              <div class="fnplus-doc-type">
+                <svg class="fnplus-doc-type-icon" viewBox="0 0 14 14" fill="none"><rect x="1" y="1" width="12" height="12" rx="1" stroke="currentColor" stroke-width="1"/><path d="M4 5h6M4 7h6M4 9h4" stroke="currentColor" stroke-width="0.8"/></svg>
+                Legal · Reference
+              </div>
+              <div class="fnplus-doc-title">When Your Business Name Is Already Taken</div>
+              <p class="fnplus-doc-excerpt">USPTO data, first-use claims, and how to hold ground on a name you have the stronger claim to.</p>
+              <div class="fnplus-doc-footer">
+                <span class="fnplus-doc-read">Read → 6 min</span>
+                <span class="fnplus-doc-tag">Legal</span>
+              </div>
+            </a>
+
+            <a href="./build-in-public-system.html" class="fnplus-doc">
+              <div class="fnplus-doc-type">
+                <svg class="fnplus-doc-type-icon" viewBox="0 0 14 14" fill="none"><rect x="1" y="1" width="12" height="12" rx="1" stroke="currentColor" stroke-width="1"/><path d="M4 5h6M4 7h6M4 9h4" stroke="currentColor" stroke-width="0.8"/></svg>
+                Operating System
+              </div>
+              <div class="fnplus-doc-title">Build in Public as an Operating System</div>
+              <p class="fnplus-doc-excerpt">The Signal is not a marketing tactic. It is a forcing function. How public accountability changes what you ship.</p>
+              <div class="fnplus-doc-footer">
+                <span class="fnplus-doc-read">Read → 4 min</span>
+                <span class="fnplus-doc-tag">Accountability</span>
+              </div>
+            </a>
+
+            <!-- 4 redacted from week 13 -->
+            <div class="fnplus-doc fnplus-doc--redacted">
+              <div class="fnplus-doc-type">Build Log · Internal</div>
+              <div class="fnplus-doc-title" style="background:rgba(255,255,255,0.12);color:transparent;border-radius:2px;">████████████████████████████</div>
+              <div style="margin-bottom:var(--space-4)">
+                <div class="fnplus-redact-block"></div>
+                <div class="fnplus-redact-block" style="width:70%"></div>
+              </div>
+              <div class="fnplus-doc-footer">
+                <span class="fnplus-doc-read" style="color:var(--color-text-muted)">Redacted</span>
+                <span class="fnplus-doc-tag">Build</span>
+              </div>
+              <span class="fnplus-redacted-label">■ CONTENT REDACTED — INTERNAL ROADMAP</span>
+            </div>
+
+            <div class="fnplus-doc fnplus-doc--redacted">
+              <div class="fnplus-doc-type">Finance · Projection</div>
+              <div class="fnplus-doc-title" style="background:rgba(255,255,255,0.12);color:transparent;border-radius:2px;">████████████████████████████</div>
+              <div style="margin-bottom:var(--space-4)">
+                <div class="fnplus-redact-block"></div>
+                <div class="fnplus-redact-block" style="width:60%"></div>
+              </div>
+              <div class="fnplus-doc-footer">
+                <span class="fnplus-doc-read" style="color:var(--color-text-muted)">Redacted</span>
+                <span class="fnplus-doc-tag">Finance</span>
+              </div>
+              <span class="fnplus-redacted-label">■ CONTENT REDACTED — FINANCIAL PROJECTIONS</span>
+            </div>
+
+            <div class="fnplus-doc fnplus-doc--redacted">
+              <div class="fnplus-doc-type">Partner Deck</div>
+              <div class="fnplus-doc-title" style="background:rgba(255,255,255,0.12);color:transparent;border-radius:2px;">████████████████████████████</div>
+              <div style="margin-bottom:var(--space-4)">
+                <div class="fnplus-redact-block"></div>
+                <div class="fnplus-redact-block" style="width:55%"></div>
+              </div>
+              <div class="fnplus-doc-footer">
+                <span class="fnplus-doc-read" style="color:var(--color-text-muted)">Redacted</span>
+                <span class="fnplus-doc-tag">Partners</span>
+              </div>
+              <span class="fnplus-redacted-label">■ CONTENT REDACTED — PARTNER DETAILS</span>
+            </div>
+
+            <div class="fnplus-doc fnplus-doc--redacted">
+              <div class="fnplus-doc-type">Security · Config</div>
+              <div class="fnplus-doc-title" style="background:rgba(255,255,255,0.12);color:transparent;border-radius:2px;">████████████████████████████</div>
+              <div style="margin-bottom:var(--space-4)">
+                <div class="fnplus-redact-block"></div>
+                <div class="fnplus-redact-block" style="width:75%"></div>
+              </div>
+              <div class="fnplus-doc-footer">
+                <span class="fnplus-doc-read" style="color:var(--color-text-muted)">Redacted</span>
+                <span class="fnplus-doc-tag">Security</span>
+              </div>
+              <span class="fnplus-redacted-label">■ CONTENT REDACTED — INFRASTRUCTURE SECURITY</span>
+            </div>
+
+          </div>
+        </div>
+
+        <!-- ====== LAUNCH ARCHIVE (earlier weeks) ====== -->
+        <div class="fnplus-week-group">
+          <div class="fnplus-week-header">
+            <span class="fnplus-week-label">◈ Launch Archive</span>
+            <span class="fnplus-week-date">Oct 2025 – Mar 2026</span>
+            <span class="fnplus-week-count">5 Documents</span>
+          </div>
+          <div class="fnplus-docs-grid">
+
+            <a href="./cathedral-principle.html" class="fnplus-doc">
+              <div class="fnplus-doc-type">
+                <svg class="fnplus-doc-type-icon" viewBox="0 0 14 14" fill="none"><rect x="1" y="1" width="12" height="12" rx="1" stroke="currentColor" stroke-width="1"/><path d="M4 5h6M4 7h6M4 9h4" stroke="currentColor" stroke-width="0.8"/></svg>
+                Operating Framework
+              </div>
+              <div class="fnplus-doc-title">The Cathedral Principle</div>
+              <p class="fnplus-doc-excerpt">Foundation, Revenue, Systems, Scale. The operating framework behind 1Commerce — and why most founders are building sheds.</p>
+              <div class="fnplus-doc-footer">
+                <span class="fnplus-doc-read">Read → 5 min</span>
+                <span class="fnplus-doc-tag">Philosophy</span>
+              </div>
+            </a>
+
+            <!-- 4 redacted founding docs -->
+            <div class="fnplus-doc fnplus-doc--redacted">
+              <div class="fnplus-doc-type">Entity Formation</div>
+              <div class="fnplus-doc-title" style="background:rgba(255,255,255,0.12);color:transparent;border-radius:2px;">████████████████████████████</div>
+              <div style="margin-bottom:var(--space-4)">
+                <div class="fnplus-redact-block"></div>
+                <div class="fnplus-redact-block" style="width:85%"></div>
+                <div class="fnplus-redact-block" style="width:50%"></div>
+              </div>
+              <div class="fnplus-doc-footer">
+                <span class="fnplus-doc-read" style="color:var(--color-text-muted)">Redacted</span>
+                <span class="fnplus-doc-tag">Legal</span>
+              </div>
+              <span class="fnplus-redacted-label">■ CONTENT REDACTED — FORMATION DOCUMENTS</span>
+            </div>
+
+            <div class="fnplus-doc fnplus-doc--redacted">
+              <div class="fnplus-doc-type">Business Plan · v1</div>
+              <div class="fnplus-doc-title" style="background:rgba(255,255,255,0.12);color:transparent;border-radius:2px;">████████████████████████████</div>
+              <div style="margin-bottom:var(--space-4)">
+                <div class="fnplus-redact-block"></div>
+                <div class="fnplus-redact-block" style="width:70%"></div>
+                <div class="fnplus-redact-block" style="width:40%"></div>
+              </div>
+              <div class="fnplus-doc-footer">
+                <span class="fnplus-doc-read" style="color:var(--color-text-muted)">Redacted</span>
+                <span class="fnplus-doc-tag">Strategy</span>
+              </div>
+              <span class="fnplus-redacted-label">■ CONTENT REDACTED — BUSINESS INTELLIGENCE</span>
+            </div>
+
+            <div class="fnplus-doc fnplus-doc--redacted">
+              <div class="fnplus-doc-type">Architecture · v1</div>
+              <div class="fnplus-doc-title" style="background:rgba(255,255,255,0.12);color:transparent;border-radius:2px;">████████████████████████████</div>
+              <div style="margin-bottom:var(--space-4)">
+                <div class="fnplus-redact-block"></div>
+                <div class="fnplus-redact-block" style="width:60%"></div>
+              </div>
+              <div class="fnplus-doc-footer">
+                <span class="fnplus-doc-read" style="color:var(--color-text-muted)">Redacted</span>
+                <span class="fnplus-doc-tag">Systems</span>
+              </div>
+              <span class="fnplus-redacted-label">■ CONTENT REDACTED — PROPRIETARY ARCHITECTURE</span>
+            </div>
+
+            <div class="fnplus-doc fnplus-doc--soon">
+              <div class="fnplus-doc-type">Product Spec</div>
+              <div class="fnplus-doc-title">GigOS: Product Requirements Document</div>
+              <p class="fnplus-doc-excerpt">Full PRD for GigOS v1. Gig work command center — Phase 1 shipped April 2026.</p>
+              <div class="fnplus-doc-footer">
+                <span class="fnplus-doc-read">Uploading Week 15</span>
+                <span class="fnplus-doc-tag">Product</span>
+              </div>
+            </div>
+
+          </div>
+        </div>
+
       </div>
     </section>
 
@@ -170,7 +874,7 @@
       <div class="subscribe-inner">
         <div class="subscribe-overline"><span class="mono-label">◈ JOIN THE CONGREGATION ◈</span></div>
         <h2 class="subscribe-title">Get the Weekly Transmission</h2>
-        <p class="subscribe-body">Fieldnotes are free. The weekly newsletter goes deeper. One email per week from a solo founder building in public.</p>
+        <p class="subscribe-body">Fieldnotes+ is free. The weekly newsletter goes deeper. One email per week from a solo founder building in public.</p>
         <form class="subscribe-form" action="https://assets.mailerlite.com/jsonp/887036/forms/131950373498498498/subscribe" method="POST">
           <input type="email" name="fields[email]" placeholder="your@email.com" required aria-label="Email address">
           <button type="submit">SUBSCRIBE</button>
@@ -197,25 +901,28 @@
         <ul>
           <li><a href="../">Home</a></li>
           <li><a href="../archive/">Archive</a></li>
-          <li><a href="./">Fieldnotes</a></li>
+          <li><a href="./">Fieldnotes+</a></li>
           <li><a href="../about/">About</a></li>
           <li><a href="../#subscribe">Subscribe</a></li>
         </ul>
       </div>
       <div class="footer-col">
-        <h4>1Commerce LLC</h4>
+        <h4>Verified Builds</h4>
         <ul>
-          <li><a href="https://1commerce.shop" target="_blank" rel="noopener noreferrer">1Commerce.shop</a></li>
-          <li><a href="https://unifyone.io" target="_blank" rel="noopener noreferrer">UnifyOne</a></li>
-          <li><a href="https://inkvault.io" target="_blank" rel="noopener noreferrer">InkVault</a></li>
-          <li><a href="https://forge3d.studio" target="_blank" rel="noopener noreferrer">FORGE3D</a></li>
-          <li><a href="https://hunted.game" target="_blank" rel="noopener noreferrer">HUNTED</a></li>
+          <li><a href="https://1commerce.online/" target="_blank" rel="noopener noreferrer">UnifyOne</a></li>
+          <li><a href="https://clearpath-environmental.netlify.app/" target="_blank" rel="noopener noreferrer">ClearPath Environmental</a></li>
+          <li><a href="https://hidden-creek.netlify.app/" target="_blank" rel="noopener noreferrer">Hidden Creek Horse Park</a></li>
+          <li><a href="https://precision-core.netlify.app/" target="_blank" rel="noopener noreferrer">Precision Core Builders</a></li>
+          <li><a href="https://compass-ai-app.netlify.app/" target="_blank" rel="noopener noreferrer">Compass AI</a></li>
+          <li><a href="https://next-chapter-travel.netlify.app/" target="_blank" rel="noopener noreferrer">Next Chapter Travel</a></li>
+          <li><a href="https://montucky-moonshine-proposal.netlify.app/" target="_blank" rel="noopener noreferrer">Montucky Moonshine</a></li>
+          <li><a href="https://redeaf.netlify.app/" target="_blank" rel="noopener noreferrer">DealFlow</a></li>
         </ul>
       </div>
     </div>
     <div class="footer-bottom">
       <span class="mono-label dim">© 2026 1COMMERCE LLC · CANBY, OREGON</span>
-      <a href="https://www.perplexity.ai/computer" target="_blank" rel="noopener noreferrer" class="mono-label dim">Created with Perplexity Computer</a>
+      <a href="https://www.perplexity.ai/computer" target="_blank" rel="noopener noreferrer" class="mono-label dim">Built with Perplexity Computer</a>
     </div>
   </footer>
 

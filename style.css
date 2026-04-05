@@ -1051,6 +1051,11 @@ blockquote p {
   border-bottom: 1px solid var(--color-divider);
 }
 
+.properties-label {
+  text-align: center;
+  margin-bottom: var(--space-4);
+}
+
 .properties-inner {
   max-width: var(--content-default);
   margin: 0 auto;
