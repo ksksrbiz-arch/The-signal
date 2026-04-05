@@ -1,0 +1,192 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="dark">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>The Solo Founder Stack, 2026 — Fieldnotes | THE SIGNAL</title>
+<meta name="description" content="Every tool in the 1Commerce operating stack, what it does, what it costs, and what got cut. A real accounting from a solo founder six months in.">
+<link href="https://api.fontshare.com/v2/css?f[]=zodiak@400,500,600,700&f[]=general-sans@300,400,500,600&display=swap" rel="stylesheet">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@300;400;500&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../base.css">
+<link rel="stylesheet" href="../style.css">
+</head>
+<body>
+  <div class="grain" aria-hidden="true"></div>
+
+  <!-- Mobile Nav -->
+  <div class="mobile-nav">
+    <button class="mobile-nav-close" aria-label="Close menu">
+      <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 6L6 18M6 6l12 12"/></svg>
+    </button>
+    <a href="../">Home</a>
+    <a href="../archive/">Archive</a>
+    <a href="./" class="active">Fieldnotes</a>
+    <a href="../about/">About</a>
+    <a href="../#subscribe">Subscribe</a>
+  </div>
+
+  <!-- Header -->
+  <header class="site-header">
+    <div class="header-inner">
+      <div class="header-left">
+        <a href="../">
+          <svg class="logo" viewBox="0 0 32 32" width="28" height="28" fill="none">
+            <rect x="2" y="2" width="28" height="28" rx="2" stroke="currentColor" stroke-width="1.5" opacity="0.3"/>
+            <line x1="16" y1="6" x2="16" y2="26" stroke="currentColor" stroke-width="1.5"/>
+            <line x1="10" y1="9" x2="10" y2="23" stroke="currentColor" stroke-width="1" opacity="0.5"/>
+            <line x1="22" y1="9" x2="22" y2="23" stroke="currentColor" stroke-width="1" opacity="0.5"/>
+            <circle cx="16" cy="16" r="3" stroke="currentColor" stroke-width="1.5" fill="none"/>
+            <circle cx="16" cy="16" r="1" fill="currentColor"/>
+            <line x1="6" y1="16" x2="13" y2="16" stroke="currentColor" stroke-width="0.75" opacity="0.4"/>
+            <line x1="19" y1="16" x2="26" y2="16" stroke="currentColor" stroke-width="0.75" opacity="0.4"/>
+          </svg>
+          <span class="header-title">THE SIGNAL</span>
+        </a>
+      </div>
+      <div class="header-right">
+        <nav><ul class="nav-links">
+          <li><a href="../">Home</a></li>
+          <li><a href="../archive/">Archive</a></li>
+          <li><a href="./" class="active">Fieldnotes</a></li>
+          <li><a href="../about/">About</a></li>
+          <li><a href="../#subscribe">Subscribe</a></li>
+        </ul></nav>
+        <button class="nav-toggle" aria-label="Open menu">
+          <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 12h18M3 6h18M3 18h18"/></svg>
+        </button>
+        <button data-theme-toggle aria-label="Switch to light mode">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="5"/><path d="M12 1v2M12 21v2M4.22 4.22l1.42 1.42M18.36 18.36l1.42 1.42M1 12h2M21 12h2M4.22 19.78l1.42-1.42M18.36 5.64l1.42-1.42"/></svg>
+        </button>
+      </div>
+    </div>
+  </header>
+
+  <main>
+    <!-- Fieldnote Header -->
+    <section class="hero" style="padding-bottom: var(--space-8);">
+      <div class="hero-inner">
+        <div class="hero-overline" style="margin-bottom: var(--space-4);">
+          <a href="./" style="color: var(--color-gold); font-family: var(--font-mono); font-size: var(--text-xs); letter-spacing: 0.1em; text-decoration: none;">← FIELDNOTES</a>
+          <span class="mono-label dim" style="margin-left: var(--space-4);">SYSTEMS · 6 MIN READ</span>
+        </div>
+        <h1 style="font-family: var(--font-display); font-size: var(--text-2xl); line-height: 1.1; color: var(--color-text); max-width: 20ch;">The Solo Founder Stack, 2026</h1>
+        <p style="font-family: var(--font-body); font-size: var(--text-lg); color: var(--color-text-muted); max-width: 52ch; margin-top: var(--space-6); line-height: 1.6;">Every tool in the 1Commerce operating stack, what it does, what it costs, and what got cut.</p>
+        <div style="margin-top: var(--space-8); display: flex; gap: var(--space-6); align-items: center;">
+          <span class="mono-label dim">1COMMERCE LLC</span>
+          <span class="mono-label dim">CANBY, OREGON</span>
+          <span class="mono-label dim">APRIL 2026</span>
+        </div>
+      </div>
+    </section>
+
+    <!-- Content -->
+    <article class="dispatch">
+      <div class="dispatch-inner" style="max-width: 68ch;">
+
+        <p>Six months ago I did not know how to write a line of code. Today I run six product lines on a cloud infrastructure stack that costs me nearly nothing at current scale, automates significant portions of outreach and subscriber management, and deploys on every commit. I want to document the exact stack — not the aspirational version, the real one — because most "tech stack" posts describe what founders wish they had built, not what they actually run.</p>
+
+        <p>This is what 1Commerce actually runs, as of April 2026. Every tool. Every cost. Every cut and why.</p>
+
+        <h2 class="feature-title">The Infrastructure Layer</h2>
+
+        <p><strong>GCP + Cloud Run.</strong> Google Cloud Platform is the backbone. All containerized backend services — the UnifyOne API, the GigOS server logic, any service that needs to run on demand — deploy to Cloud Run. The critical feature for a solo operation: Cloud Run scales to zero. When no one is hitting an endpoint, the container spins down and you pay nothing. At current solo scale, my GCP bill is negligible. The tradeoff is cold start latency on first request — acceptable for every use case I have right now. When volume grows, the containers warm and it stops mattering. This is the correct infrastructure choice for Phase I and Phase II of the Cathedral framework. It would be the wrong choice for a product needing sub-100ms response at volume from day one.</p>
+
+        <p><strong>Netlify + GitHub.</strong> Static sites — including this one — live on Netlify with auto-deploy from the main branch. Push a commit, the site updates. Zero configuration required after initial setup, zero cost for static hosting, and the build pipeline is invisible. The Signal platform, the InkVault storefront pages, the FORGE3D portfolio — all static, all on Netlify, all free. This is not a compromise. For content and marketing sites, static hosting is the correct answer at any scale.</p>
+
+        <h2 class="feature-title">The Product Layer</h2>
+
+        <p><strong>React.</strong> Frontend framework for UnifyOne and GigOS. I chose React not because it is the newest option — it is not — but because component reuse across products is real. The authentication flow I built for GigOS was adapted for UnifyOne in hours. The data table component, the form primitives, the loading states — all shared. For a solo founder building multiple products, component reuse is leverage. React's ecosystem depth also means that when I hit an edge case, the answer exists somewhere in a Stack Overflow thread from 2019.</p>
+
+        <p><strong>Firebase.</strong> Real-time database and authentication for GigOS. Firebase handles state management for the gig work command center — job queue status, worker assignments, session state — in a way that would have required significant backend engineering to replicate from scratch. The Firebase free tier covers current data volume entirely. The tradeoff: Firebase is a managed service, which means Google controls the pricing and deprecation schedule. I am aware of this dependency. The mitigation is that the GigOS data model is simple enough to migrate if needed.</p>
+
+        <p><strong>Shopify (via 1commerce.shop).</strong> The commerce validation layer. The Home Decor collection is live on 1commerce.shop. For Revenue Phase activation, the speed-to-live advantage outweighs the cost. You do not rebuild payment infrastructure when you are proving whether customers will buy at all.</p>
+
+        <p><strong>UnifyOne — Store Builder + Website Builder.</strong> This is where the stack gets interesting. UnifyOne has moved beyond a commerce hub concept into something more operationally significant: a full store builder and website builder that lets merchants spin up a storefront or a full web presence without touching code. The store builder handles product listings, collections, checkout configuration, and inventory. The website builder handles everything above the commerce layer — landing pages, about pages, editorial content, structured navigation. Both are built on the custom React stack and deploy cleanly to the same infrastructure that runs 1Commerce's own properties.</p>
+
+        <p><strong>UnifyOne — Universal MCP Client.</strong> The capability that changes what UnifyOne actually is: a universal MCP (Model Context Protocol) client built into the platform. MCP is Anthropic's open standard for letting AI models connect to external tools and data sources in a structured, reliable way. UnifyOne's MCP client means every merchant on the platform gets an AI assistant that can actually reach into their store data — inventory, orders, customer records, revenue — and take action, not just describe it. Ask it to reorder stock when a SKU drops below threshold. Ask it to draft a product description from a photo. Ask it to generate a weekly revenue summary and flag anomalies. This is not a chatbot bolted onto a dashboard. This is an execution layer.</p>
+
+        <p><strong>UnifyOne — Universal Endpoint (Coming Soon).</strong> The next layer in development: a universal API endpoint that exposes every UnifyOne merchant's store operations to any external system, agent, or automation pipeline via a single, authenticated connection point. Instead of integrating separately with Shopify APIs, inventory feeds, fulfillment services, and reporting tools, external systems connect once to the UnifyOne endpoint and get normalized access to the full operation. For a solo founder running multiple storefronts, this means one n8n workflow can manage inventory and orders across all of them simultaneously. For UnifyOne as a product, it means the platform becomes infrastructure — not just a tool, but a dependency that other tools build on top of.</p>
+
+        <h2 class="feature-title">The Automation Layer</h2>
+
+        <p><strong>n8n (self-hosted).</strong> This is the automation backbone of the entire operation, and it is the tool I would recommend most strongly to any solo founder. n8n is an open-source workflow automation platform — think Zapier, but self-hosted, with no per-workflow pricing and full data control. I run it on a GCP instance. Current active workflows include: cold outreach triggers (new lead → Claude API → Gmail), lead tracking updates, MailerLite subscriber sync from multiple intake points, and GigOS job status notifications. The self-hosted model means I pay only for the compute instance, not for workflow executions. At Zapier pricing, the same workflow volume would cost $200–400/month. My n8n instance costs approximately $12/month in compute.</p>
+
+        <p><strong>Claude API (Anthropic).</strong> Powers the cold outreach engine and content generation workflows. Claude is called via API from n8n workflows — it is not a chatbot interface but a programmatic text generation layer. The system prompt structure, the rate limiting logic, and the output handling all live in n8n. Claude generates the personalized intro email copy. The specific implementation is covered in detail in the Cold Outreach Engine fieldnote.</p>
+
+        <p><strong>MailerLite.</strong> Subscriber management for The Signal. Three subscriber groups: general list, active readers (opened in last 30 days), and consulting prospects. The JSONP subscribe form embedded in the footer of every page on this platform pipes directly into MailerLite via their assets endpoint. Free tier covers 0–1,000 subscribers. At current growth trajectory, I will hit the paid tier threshold in approximately 3–4 months — a good problem to have, and a cost I will absorb because email is the only distribution channel I fully own.</p>
+
+        <p><strong>Canva + AI image generation.</strong> Marketing assets and newsletter visuals. Not glamorous, not technical, completely practical. Canva handles the templated social assets and newsletter header images. AI image generation fills in editorial illustrations when I need something custom without commissioning original art. For a solo operation, the bar for design tooling is: does it produce output fast enough that I actually use it? Canva passes that bar. Adobe does not, at my current volume.</p>
+
+        <h2 class="feature-title">What Got Cut and Why</h2>
+
+        <p><strong>Vercel.</strong> Originally considered for frontend hosting. Cut because Netlify's free tier covers every static site use case I have, and Vercel's pricing structure becomes punishing at scale in ways that are hard to predict. I prefer cost curves I can see coming.</p>
+
+        <p><strong>Supabase.</strong> Considered as a Postgres backend for UnifyOne. Cut because the current data model does not justify the operational overhead of managing a relational database at this phase. Firebase is simpler for the document-store pattern GigOS uses. When UnifyOne's data requirements grow to need relational structure, Supabase is the likely migration target.</p>
+
+        <p><strong>Notion as primary PM tool.</strong> Tried it. Switched to Asana for task tracking within two weeks. Notion is excellent for documentation and knowledge bases — it is not optimized for task management with due dates, priorities, and dependency tracking. For a solo founder juggling six product lines simultaneously, I need a task tool that surfaces what needs to happen today without requiring me to build and maintain the view myself.</p>
+
+        <h2 class="feature-title">The Principle Behind the Stack</h2>
+
+        <blockquote>
+          The stack serves the phase. What you need at Revenue Activation is different from what you need at Scale. Don't build for Scale infrastructure when you're at Foundation.
+        </blockquote>
+
+        <p>This is the mistake that kills solo operations. You read a "how we scaled to 10 million users" post and you build for 10 million users before you have 10 paying customers. The result is complexity that slows you down, costs that drain runway, and architectural decisions that made sense for a team of six but that you have to maintain alone.</p>
+
+        <p>The 1Commerce stack is built for one person running six product lines in Phase II of the Cathedral framework. It will look different at Phase III. It will look significantly different at Phase IV. That is correct. The cathedral does not build the nave before the foundation walls are cured.</p>
+
+        <p>Total monthly infrastructure cost as of April 2026: under $50. Total products live and operational: six. That is the stack.</p>
+
+      </div>
+    </article>
+
+    <!-- Back link + next post -->
+    <section style="padding: var(--space-16) 0; border-top: 1px solid var(--color-border);">
+      <div style="max-width: 72rem; margin: 0 auto; padding: 0 var(--space-8); display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: var(--space-6);">
+        <a href="./" style="font-family: var(--font-mono); font-size: var(--text-xs); letter-spacing: 0.1em; color: var(--color-gold); text-decoration: none;">← ALL FIELDNOTES</a>
+        <a href="../#subscribe" style="font-family: var(--font-mono); font-size: var(--text-xs); letter-spacing: 0.1em; color: var(--color-gold); text-decoration: none; border: 1px solid var(--color-gold); padding: var(--space-3) var(--space-6);">SUBSCRIBE TO THE SIGNAL →</a>
+      </div>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <div class="footer-main">
+      <div class="footer-col">
+        <h4>The Signal</h4>
+        <div class="footer-subscribe">
+          <form class="footer-subscribe-form" action="https://assets.mailerlite.com/jsonp/887036/forms/131950373498498498/subscribe" method="POST">
+            <input type="email" name="fields[email]" placeholder="your@email.com" required>
+            <button type="submit">Subscribe</button>
+          </form>
+        </div>
+        <p>A weekly transmission from a solo founder building in public.</p>
+      </div>
+      <div class="footer-col">
+        <h4>Navigate</h4>
+        <ul>
+          <li><a href="../">Home</a></li>
+          <li><a href="../archive/">Archive</a></li>
+          <li><a href="./">Fieldnotes</a></li>
+          <li><a href="../about/">About</a></li>
+          <li><a href="../#subscribe">Subscribe</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <h4>1Commerce LLC</h4>
+        <ul>
+          <li><a href="https://1commerce.shop" target="_blank">1Commerce.shop</a></li>
+          <li><a href="https://unifyone.io" target="_blank">UnifyOne</a></li>
+          <li><a href="https://inkvault.io" target="_blank">InkVault</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <span class="mono-label dim">© 2026 1COMMERCE LLC · CANBY, OREGON</span>
+      <a href="https://www.perplexity.ai/computer" target="_blank" class="mono-label dim">Created with Perplexity Computer</a>
+    </div>
+  </footer>
+  <script src="../app.js" defer></script>
+</body>
+</html>

@@ -1,0 +1,225 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="dark">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>How to Build a Cold Outreach Engine with Claude + n8n — Fieldnotes | THE SIGNAL</title>
+<meta name="description" content="The actual system — not the concept. Prompts, triggers, rate limits, and 30-day numbers from the 1Commerce cold outreach engine built on Claude API and n8n.">
+<link href="https://api.fontshare.com/v2/css?f[]=zodiak@400,500,600,700&f[]=general-sans@300,400,500,600&display=swap" rel="stylesheet">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@300;400;500&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../base.css">
+<link rel="stylesheet" href="../style.css">
+</head>
+<body>
+  <div class="grain" aria-hidden="true"></div>
+
+  <!-- Mobile Nav -->
+  <div class="mobile-nav">
+    <button class="mobile-nav-close" aria-label="Close menu">
+      <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 6L6 18M6 6l12 12"/></svg>
+    </button>
+    <a href="../">Home</a>
+    <a href="../archive/">Archive</a>
+    <a href="./" class="active">Fieldnotes</a>
+    <a href="../about/">About</a>
+    <a href="../#subscribe">Subscribe</a>
+  </div>
+
+  <!-- Header -->
+  <header class="site-header">
+    <div class="header-inner">
+      <div class="header-left">
+        <a href="../">
+          <svg class="logo" viewBox="0 0 32 32" width="28" height="28" fill="none">
+            <rect x="2" y="2" width="28" height="28" rx="2" stroke="currentColor" stroke-width="1.5" opacity="0.3"/>
+            <line x1="16" y1="6" x2="16" y2="26" stroke="currentColor" stroke-width="1.5"/>
+            <line x1="10" y1="9" x2="10" y2="23" stroke="currentColor" stroke-width="1" opacity="0.5"/>
+            <line x1="22" y1="9" x2="22" y2="23" stroke="currentColor" stroke-width="1" opacity="0.5"/>
+            <circle cx="16" cy="16" r="3" stroke="currentColor" stroke-width="1.5" fill="none"/>
+            <circle cx="16" cy="16" r="1" fill="currentColor"/>
+            <line x1="6" y1="16" x2="13" y2="16" stroke="currentColor" stroke-width="0.75" opacity="0.4"/>
+            <line x1="19" y1="16" x2="26" y2="16" stroke="currentColor" stroke-width="0.75" opacity="0.4"/>
+          </svg>
+          <span class="header-title">THE SIGNAL</span>
+        </a>
+      </div>
+      <div class="header-right">
+        <nav><ul class="nav-links">
+          <li><a href="../">Home</a></li>
+          <li><a href="../archive/">Archive</a></li>
+          <li><a href="./" class="active">Fieldnotes</a></li>
+          <li><a href="../about/">About</a></li>
+          <li><a href="../#subscribe">Subscribe</a></li>
+        </ul></nav>
+        <button class="nav-toggle" aria-label="Open menu">
+          <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 12h18M3 6h18M3 18h18"/></svg>
+        </button>
+        <button data-theme-toggle aria-label="Switch to light mode">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="5"/><path d="M12 1v2M12 21v2M4.22 4.22l1.42 1.42M18.36 18.36l1.42 1.42M1 12h2M21 12h2M4.22 19.78l1.42-1.42M18.36 5.64l1.42-1.42"/></svg>
+        </button>
+      </div>
+    </div>
+  </header>
+
+  <main>
+    <!-- Fieldnote Header -->
+    <section class="hero" style="padding-bottom: var(--space-8);">
+      <div class="hero-inner">
+        <div class="hero-overline" style="margin-bottom: var(--space-4);">
+          <a href="./" style="color: var(--color-gold); font-family: var(--font-mono); font-size: var(--text-xs); letter-spacing: 0.1em; text-decoration: none;">← FIELDNOTES</a>
+          <span class="mono-label dim" style="margin-left: var(--space-4);">REVENUE · 7 MIN READ</span>
+        </div>
+        <h1 style="font-family: var(--font-display); font-size: var(--text-2xl); line-height: 1.1; color: var(--color-text); max-width: 20ch;">How to Build a Cold Outreach Engine with Claude + n8n</h1>
+        <p style="font-family: var(--font-body); font-size: var(--text-lg); color: var(--color-text-muted); max-width: 52ch; margin-top: var(--space-6); line-height: 1.6;">The actual system — not the concept. Prompts, triggers, rate limits, and 30-day numbers.</p>
+        <div style="margin-top: var(--space-8); display: flex; gap: var(--space-6); align-items: center;">
+          <span class="mono-label dim">1COMMERCE LLC</span>
+          <span class="mono-label dim">CANBY, OREGON</span>
+          <span class="mono-label dim">APRIL 2026</span>
+        </div>
+      </div>
+    </section>
+
+    <!-- Content -->
+    <article class="dispatch">
+      <div class="dispatch-inner" style="max-width: 68ch;">
+
+        <p>Cold email has a reputation problem. The reputation is mostly deserved, because most cold email is spam with a personalization token — "Hi {{first_name}}, I noticed you work at {{company}}." Anyone who has received one knows exactly what it is the moment they read it. The delete reflex is instantaneous.</p>
+
+        <p>The problem is not cold email itself. The problem is that doing cold email correctly — with genuine research, a specific hook, and a relevant offer — requires time that scales linearly with volume. Write 10 good cold emails: takes 2 hours. Write 200 good cold emails: takes 40 hours. For a solo founder, that 40 hours is 40 hours not spent building the product. So the choice becomes: send bad email at volume, or send good email at a rate too slow to matter.</p>
+
+        <p>The middle path is AI-personalized outreach at scale. This is the actual system I built. Here is how it works.</p>
+
+        <h2 class="feature-title">The Architecture</h2>
+
+        <p>n8n is the orchestrator. Every workflow in this system lives in n8n, self-hosted on a GCP compute instance. The sequence is:</p>
+
+        <ul>
+          <li><strong>Trigger:</strong> A new row is added to the lead Google Sheet. The sheet has columns for: first name, last name, company name, role title, website, and a "context" field — a one-sentence note about why this person is relevant. The context field is the key. It is what the AI actually uses to personalize.</li>
+          <li><strong>n8n reads the row</strong> and extracts company name, role, and context. It then runs a basic validation check — if context is empty or company is missing, the workflow routes to a "needs review" queue instead of proceeding. Garbage in equals garbage out. The validation step is not optional.</li>
+          <li><strong>HTTP Request node calls the Claude API</strong> with a structured prompt. The system prompt and user prompt are separated. The system prompt defines Claude's role and constraints. The user prompt injects the specific lead data.</li>
+          <li><strong>Claude returns a 3-paragraph email body.</strong> n8n captures the output text. The subject line is generated separately using a second, shorter Claude call with a subject-line-specific prompt — this keeps subject lines crisp and prevents the main email generation from optimizing for length over subject quality.</li>
+          <li><strong>Gmail node sends the email</strong> from the outreach domain, with the lead's email address pulled from the sheet. The email is logged back to the sheet — timestamp, subject line used, Claude's output — so every send is traceable.</li>
+          <li><strong>Wait node fires</strong> before processing the next lead. This is the rate limiting mechanism.</li>
+        </ul>
+
+        <h2 class="feature-title">The System Prompt Philosophy</h2>
+
+        <p>The system prompt is where most implementations go wrong. People treat Claude like a content farm — give it a template and tell it to fill in the blanks. The output reads like a template with the blanks filled in. That is not personalization. That is mad-libs.</p>
+
+        <p>The 1Commerce system prompt does not give Claude a template. It gives Claude a role and a constraint. The current system prompt, compressed:</p>
+
+        <blockquote>
+          You are writing the opening email a thoughtful founder would send after spending 10 minutes researching this person. You are not selling. You are opening a conversation. The email must reference something specific about this person's company or role — not generic praise, a specific observation. The first paragraph is the hook: one specific thing you noticed. The second paragraph is the bridge: why that thing is relevant to what you do. The third paragraph is the ask: one low-friction next step. Maximum 150 words total. Do not use the word "synergy." Do not say "I hope this finds you well." Do not open with "My name is."
+        </blockquote>
+
+        <p>The constraint list matters as much as the instruction. Claude defaults to certain patterns — pleasantries, caveats, filler phrases — that are the death of a cold email. The system prompt explicitly prohibits them. Specificity is the deliverability hack. An email that reads like a human wrote it gets opened. An email that reads like a template gets deleted, and its domain gets flagged.</p>
+
+        <h2 class="feature-title">Rate Limiting and Domain Warming</h2>
+
+        <p>Sending volume is the part that founders skip and then wonder why their email lands in spam. Cold email at volume from a fresh domain will get that domain blacklisted within days if you don't warm it correctly.</p>
+
+        <p>The rules are simple and non-negotiable:</p>
+
+        <ul>
+          <li>New domain: start at 10–20 emails per day, maximum.</li>
+          <li>Increase by 10 emails per day each week for the first two weeks.</li>
+          <li>At week three, you can operate at 50 emails per day safely from a single domain.</li>
+          <li>Never exceed 100 emails per day from a single domain without additional infrastructure.</li>
+        </ul>
+
+        <p>In n8n, this is handled with a Wait node set to a fixed interval — currently 12 minutes between sends. At that rate, the workflow processes 50 leads across a standard 10-hour window. A counter variable in the workflow tracks daily send volume and stops the workflow if the daily limit is reached before the queue is exhausted. The remainder processes the following day. This is not elegant engineering. It is a practical rate limiter that costs zero dollars and has worked without failure.</p>
+
+        <p>Domain warming also means sending some real email from the domain before the outreach campaign starts — reply to newsletters, send test messages to accounts you control, sign up for a few services. You want the domain to have a human activity pattern before you send outreach at any volume.</p>
+
+        <h2 class="feature-title">What the Numbers Look Like</h2>
+
+        <p>In the 1Commerce context, this engine drives two outreach streams: prospecting for consulting clients (the Operating Excellence Bundle — workflow and automation consulting for small business operators) and partnership outreach to potential distribution partners for UnifyOne and InkVault.</p>
+
+        <p>Benchmarks from the first 30 days of operation:</p>
+
+        <ul>
+          <li><strong>Open rate:</strong> 38–44% on AI-personalized sends, compared to an 18–22% industry average for generic cold email. The personalization hook — Claude referencing a specific detail about the company or role — is the primary driver of this spread.</li>
+          <li><strong>Reply rate:</strong> 9–11% on personalized sends, versus a 2–4% industry average for batch-and-blast campaigns. Replies include both positive responses and "not the right fit" — both are useful signals.</li>
+          <li><strong>Positive reply rate:</strong> approximately 4–5% — meaning 4 to 5 out of every 100 emails sent result in a substantive conversation. At 50 emails per day, that is 2–3 qualified conversations per day.</li>
+          <li><strong>Cost per email sent:</strong> Claude API cost for a 150-word output is fractional — approximately $0.002 per email at current API pricing. 1,000 emails costs roughly $2 in AI compute, plus the infrastructure cost of the n8n instance ($12/month regardless of volume).</li>
+        </ul>
+
+        <h2 class="feature-title">What Breaks It</h2>
+
+        <p>Four things reliably break this system:</p>
+
+        <p><strong>Bad lead data.</strong> If the context field is empty, Claude generates a generic email that reads like every other cold email. The system prompt cannot compensate for missing information. Lead quality is upstream of everything. A smaller, well-researched lead list outperforms a large, shallow one every time.</p>
+
+        <p><strong>Domain skipping.</strong> If you skip the warming period and send 200 emails on day one from a new domain, your domain reputation is gone. The emails land in spam. The damage is not easily reversed. Do not skip the warm-up. There is no shortcut here.</p>
+
+        <p><strong>Prompts that are too long.</strong> When the system prompt is verbose and the user prompt injects a lot of context, Claude's output tends toward length. A 300-word cold email does not get read. The 150-word hard limit in the system prompt is there because without it, Claude will write 250 words by default. Enforce the limit explicitly, and validate output length before sending — n8n can truncate and re-call if the output exceeds your target.</p>
+
+        <p><strong>A bad offer.</strong> This is the most important failure mode. No outreach engine — no matter how well personalized, no matter how well delivered — fixes a product that people do not want. The engine drives the conversation. The offer closes it. If open rates are high and reply rates are low, the email is working and the offer is failing. Diagnose correctly before you iterate on the wrong variable.</p>
+
+        <h2 class="feature-title">The Honest Caveat</h2>
+
+        <blockquote>
+          This is a system, not magic. It still requires a real offer. No outreach engine fixes a bad product.
+        </blockquote>
+
+        <p>I want to be precise about what this system does and does not do. It does not replace sales judgment. It does not identify which prospects are worth contacting — that is still a human decision that requires understanding your ICP, your offer, and the landscape your prospect operates in. It does not write emails that close deals on their own. What it does is compress the time cost of the top-of-funnel: the research synthesis, the first-draft writing, the sequencing and scheduling.</p>
+
+        <p>The goal is not to replace sales. It is to give a solo founder the leverage to do in one hour what a three-person SDR team does in a week. To run outreach at a volume and quality level that would otherwise require headcount — without the headcount. For a solo operation in Revenue Activation phase, that leverage is the difference between prospecting as a full-time job and prospecting as a morning workflow that runs while you build the product.</p>
+
+        <p>That is the system. Build the lead list carefully. Write the system prompt precisely. Warm the domain patiently. Let n8n handle the sequencing. Review replies the same morning they come in. Iterate on the offer, not the engine, if numbers are low.</p>
+
+        <p>One hour of setup, one hour per week of maintenance, 2–3 qualified conversations per day. For a solo founder, that is enough to move.</p>
+
+      </div>
+    </article>
+
+    <!-- Back link + next post -->
+    <section style="padding: var(--space-16) 0; border-top: 1px solid var(--color-border);">
+      <div style="max-width: 72rem; margin: 0 auto; padding: 0 var(--space-8); display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: var(--space-6);">
+        <a href="./" style="font-family: var(--font-mono); font-size: var(--text-xs); letter-spacing: 0.1em; color: var(--color-gold); text-decoration: none;">← ALL FIELDNOTES</a>
+        <a href="../#subscribe" style="font-family: var(--font-mono); font-size: var(--text-xs); letter-spacing: 0.1em; color: var(--color-gold); text-decoration: none; border: 1px solid var(--color-gold); padding: var(--space-3) var(--space-6);">SUBSCRIBE TO THE SIGNAL →</a>
+      </div>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <div class="footer-main">
+      <div class="footer-col">
+        <h4>The Signal</h4>
+        <div class="footer-subscribe">
+          <form class="footer-subscribe-form" action="https://assets.mailerlite.com/jsonp/887036/forms/131950373498498498/subscribe" method="POST">
+            <input type="email" name="fields[email]" placeholder="your@email.com" required>
+            <button type="submit">Subscribe</button>
+          </form>
+        </div>
+        <p>A weekly transmission from a solo founder building in public.</p>
+      </div>
+      <div class="footer-col">
+        <h4>Navigate</h4>
+        <ul>
+          <li><a href="../">Home</a></li>
+          <li><a href="../archive/">Archive</a></li>
+          <li><a href="./">Fieldnotes</a></li>
+          <li><a href="../about/">About</a></li>
+          <li><a href="../#subscribe">Subscribe</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <h4>1Commerce LLC</h4>
+        <ul>
+          <li><a href="https://1commerce.shop" target="_blank">1Commerce.shop</a></li>
+          <li><a href="https://unifyone.io" target="_blank">UnifyOne</a></li>
+          <li><a href="https://inkvault.io" target="_blank">InkVault</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <span class="mono-label dim">© 2026 1COMMERCE LLC · CANBY, OREGON</span>
+      <a href="https://www.perplexity.ai/computer" target="_blank" class="mono-label dim">Created with Perplexity Computer</a>
+    </div>
+  </footer>
+  <script src="../app.js" defer></script>
+</body>
+</html>

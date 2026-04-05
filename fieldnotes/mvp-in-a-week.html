@@ -1,0 +1,187 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="dark">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>How to Ship an MVP in a Week Using AI Agents — Fieldnotes | THE SIGNAL</title>
+<meta name="description" content="GigOS went from concept to functional deployed product in under seven days. Here is the actual process — day by day, decision by decision, no mythology.">
+<link href="https://api.fontshare.com/v2/css?f[]=zodiak@400,500,600,700&f[]=general-sans@300,400,500,600&display=swap" rel="stylesheet">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@300;400;500&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../base.css">
+<link rel="stylesheet" href="../style.css">
+</head>
+<body>
+  <div class="grain" aria-hidden="true"></div>
+  <div class="mobile-nav">
+    <button class="mobile-nav-close" aria-label="Close menu">
+      <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 6L6 18M6 6l12 12"/></svg>
+    </button>
+    <a href="../">Home</a>
+    <a href="../archive/">Archive</a>
+    <a href="./" class="active">Fieldnotes</a>
+    <a href="../about/">About</a>
+    <a href="../#subscribe">Subscribe</a>
+  </div>
+  <header class="site-header">
+    <div class="header-inner">
+      <div class="header-left">
+        <a href="../">
+          <svg class="logo" viewBox="0 0 32 32" width="28" height="28" fill="none">
+            <rect x="2" y="2" width="28" height="28" rx="2" stroke="currentColor" stroke-width="1.5" opacity="0.3"/>
+            <line x1="16" y1="6" x2="16" y2="26" stroke="currentColor" stroke-width="1.5"/>
+            <line x1="10" y1="9" x2="10" y2="23" stroke="currentColor" stroke-width="1" opacity="0.5"/>
+            <line x1="22" y1="9" x2="22" y2="23" stroke="currentColor" stroke-width="1" opacity="0.5"/>
+            <circle cx="16" cy="16" r="3" stroke="currentColor" stroke-width="1.5" fill="none"/>
+            <circle cx="16" cy="16" r="1" fill="currentColor"/>
+            <line x1="6" y1="16" x2="13" y2="16" stroke="currentColor" stroke-width="0.75" opacity="0.4"/>
+            <line x1="19" y1="16" x2="26" y2="16" stroke="currentColor" stroke-width="0.75" opacity="0.4"/>
+          </svg>
+          <span class="header-title">THE SIGNAL</span>
+        </a>
+      </div>
+      <div class="header-right">
+        <nav><ul class="nav-links">
+          <li><a href="../">Home</a></li>
+          <li><a href="../archive/">Archive</a></li>
+          <li><a href="./" class="active">Fieldnotes</a></li>
+          <li><a href="../about/">About</a></li>
+          <li><a href="../#subscribe">Subscribe</a></li>
+        </ul></nav>
+        <button class="nav-toggle" aria-label="Open menu">
+          <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 12h18M3 6h18M3 18h18"/></svg>
+        </button>
+        <button data-theme-toggle aria-label="Switch to light mode">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="5"/><path d="M12 1v2M12 21v2M4.22 4.22l1.42 1.42M18.36 18.36l1.42 1.42M1 12h2M21 12h2M4.22 19.78l1.42-1.42M18.36 5.64l1.42-1.42"/></svg>
+        </button>
+      </div>
+    </div>
+  </header>
+  <main>
+    <section class="hero" style="padding-bottom: var(--space-8);">
+      <div class="hero-inner">
+        <div class="hero-overline" style="margin-bottom: var(--space-4);">
+          <a href="./" style="color: var(--color-gold); font-family: var(--font-mono); font-size: var(--text-xs); letter-spacing: 0.1em; text-decoration: none;">← FIELDNOTES</a>
+          <span class="mono-label dim" style="margin-left: var(--space-4);">EXECUTION · 6 MIN READ</span>
+        </div>
+        <h1 style="font-family: var(--font-display); font-size: var(--text-2xl); line-height: 1.1; color: var(--color-text); max-width: 20ch;">How to Ship an MVP in a Week Using AI Agents</h1>
+        <p style="font-family: var(--font-body); font-size: var(--text-lg); color: var(--color-text-muted); max-width: 52ch; margin-top: var(--space-6); line-height: 1.6;">GigOS went from concept to functional product in under seven days. Here is the actual process.</p>
+        <div style="margin-top: var(--space-8); display: flex; gap: var(--space-6); align-items: center; flex-wrap: wrap;">
+          <span class="mono-label dim">1COMMERCE LLC</span>
+          <span class="mono-label dim">CANBY, OREGON</span>
+          <span class="mono-label dim">APRIL 2026</span>
+        </div>
+      </div>
+    </section>
+    <article class="dispatch">
+      <div class="dispatch-inner" style="max-width: 68ch;">
+
+        <p>The term "MVP" has been so thoroughly misused that it needs a definition before anything else can be said. In this context, MVP does not mean a mockup, a landing page, a Figma prototype, or a waitlist with a demo video. It means a real, deployed, working product that a real user can log into and use for its intended purpose. GigOS Phase 1 meets that definition: a functional gig work command center with a KPI dashboard, a 7-column Kanban pipeline, customer management, job views with integrated mapping, and service templates. It runs in production. Authentication works. Data persists. Users can log in.</p>
+
+        <p>That product went from a blank directory to deployed infrastructure in under seven days. Here is exactly how that happened.</p>
+
+        <h2 class="feature-title">Day 1: Scope Definition — What the MVP Is Not</h2>
+
+        <p>The most important work of Day 1 is not writing code. It is writing a precise list of everything the MVP explicitly does not include. This sounds obvious and it is almost never done correctly, because scope creep is not a planning failure — it is a temptation that reasserts itself at every decision point during the build. You need a written contract with yourself that defines the boundary before you start, so that when the temptation arrives on Day 4 ("it would only take an hour to add a payment integration..."), you have a prior commitment to override it.</p>
+
+        <p>GigOS Phase 1 explicitly excluded: payment processing and invoicing beyond UI placeholders, third-party integrations with job booking platforms, a native mobile application, advanced reporting and data exports, multi-user role management, and customer-facing portals. These are all legitimate features. They are all Phase 2 or Phase 3 features. The MVP does not need them to be useful. And every one of them, if included in Week 1, would have pushed the ship date to Week 4 at minimum.</p>
+
+        <p>What GigOS Phase 1 does include is the core workflow that makes the product useful: the ability to manage a gig work operation end-to-end through a single interface. A technician opens GigOS, sees their active jobs on a Kanban board, can drag a job from In Progress to Pending Review, can view the customer's address on a map, can record service notes, and can see their day's KPIs at a glance. That is a complete, valuable workflow. That is the MVP.</p>
+
+        <h2 class="feature-title">Days 2–3: Agent-Driven Scaffolding</h2>
+
+        <p>With the scope defined and committed to writing, the build begins. The AI agent's first task is project scaffolding — creating the directory structure, initializing the React application, setting up the Tailwind configuration with the GigOS design system (navy primary, teal accent, gold highlights, dark mode default), installing dependencies, and establishing the Firebase connection for authentication and real-time Firestore data.</p>
+
+        <p>A solo developer doing this by hand — making each decision about folder structure, configuring Webpack or Vite, setting up the CSS architecture, writing the Firebase initialization code, building the authentication context and protected routes — is looking at two to three full days of work before a single application-specific feature is built. The agent compresses that to hours. Not because the decisions are made for you carelessly, but because the agent knows the standard patterns, applies them consistently, and doesn't need to look up syntax for the fifteenth time.</p>
+
+        <p>The component library is also scaffolded during this phase. A consistent set of base components — Button variants, Card containers, Input fields, Modal shells, navigation structure — means that every feature built afterward can reuse proven building blocks rather than reinventing styling decisions on every new page. The agent generates these components against a defined style specification. They don't need to be perfect. They need to be consistent and functional. Polish comes on Day 6.</p>
+
+        <h2 class="feature-title">Days 4–5: Feature Implementation</h2>
+
+        <p>With scaffolding complete, each feature becomes a discrete task with a specific, written requirement. The specificity of the requirement is the most important variable in how well the agent performs. "Build the Kanban board" is a bad requirement. "Build a drag-and-drop Kanban board with seven fixed columns — New Request, Scheduled, In Progress, Awaiting Parts, Pending Review, Invoiced, Complete — where each card displays the job title, customer name, scheduled date, and a color-coded priority indicator, and dragging a card to a new column updates its status in Firestore in real time" is a good requirement. The agent produces what you specify. Specify precisely.</p>
+
+        <p>The KPI dashboard is implemented with specific metrics defined: jobs completed today, revenue invoiced this week, jobs scheduled for tomorrow, average job duration this month. Each metric maps to a specific Firestore query. The agent writes the queries, builds the aggregation logic, and renders the dashboard with the correct data binding. The customer management module gets a search interface, a customer detail view, and a job history panel per customer. The job view gets an embedded map using the Google Maps API with a pin at the job address, plus a structured notes panel with timestamp logging.</p>
+
+        <p>Each feature iteration follows the same loop: write the requirement precisely, hand it to the agent, review the output, test the happy path, identify the gaps, write the correction requirement, iterate. The agent is fast at each cycle. The human review between cycles is non-negotiable — skipping it means the next feature builds on a flawed foundation and the errors compound.</p>
+
+        <h2 class="feature-title">Day 6: QA and Visual Polish</h2>
+
+        <p>Day 6 is human work. Not because agents cannot help with QA — they can catch specific, describable issues — but because the judgment required to assess whether a UI "feels right" is not something agents do reliably. The gap between "technically correct" and "actually good" in a user interface requires a human with context about the user's experience to evaluate.</p>
+
+        <p>The Day 6 process: open the application at desktop viewport, walk through every screen and every interaction on the happy path. Document every visual issue, every misaligned element, every interaction that feels laggy or confusing. Open the mobile viewport and repeat. The list of issues from this session is the Day 6 work queue. Some issues go back to the agent with precise descriptions. Some — especially subtle spacing, typography sizing decisions, interaction feedback timing — are faster to fix directly in the CSS than to describe to the agent and iterate on.</p>
+
+        <p>The end-to-end test on Day 6: create a customer, create a job for that customer, schedule the job, move it through each Kanban column from New Request to Complete, verify that the KPI dashboard reflects the completed job, pull up the customer detail and confirm the job appears in history. If that path works without errors, the product is ready to deploy.</p>
+
+        <h2 class="feature-title">Day 7: Deploy</h2>
+
+        <p>The deployment stack for GigOS Phase 1 uses the same infrastructure as the rest of the 1Commerce portfolio: Google Cloud Platform for the backend services running on Cloud Run, Netlify for the React frontend with continuous deployment from the Git repository, Firebase for authentication and the real-time database, and the custom domain configured through Netlify's DNS management. Each of these services has a setup cost the first time you use them. The second and third products deploy faster because the patterns are already established.</p>
+
+        <p>The frontend deploy is: push to Git, Netlify picks up the commit and runs the build, the new version is live within minutes. The Cloud Run backend services deploy via Docker container — the agent writes the Dockerfile, the CI/CD pipeline builds and pushes the image, Cloud Run updates the revision. End to end, from "I'm ready to deploy" to "the production URL is serving the new build," the process takes under an hour when the infrastructure is already configured.</p>
+
+        <p>Phase 1 shipped on Day 7. The product is real. It is deployed. Users can log in.</p>
+
+        <h2 class="feature-title">What Agents Are Good At</h2>
+
+        <p>Speed and consistency at volume. An agent can generate 500 lines of structurally consistent, syntactically correct code faster than any human developer. It implements specifications precisely when those specifications are precise. It catches its own syntax errors without being asked. It applies design system rules consistently across components when the system is defined clearly at the start. It produces boilerplate — configuration files, test scaffolding, type definitions, database schema, seed data — in seconds rather than minutes.</p>
+
+        <h2 class="feature-title">What Agents Are Bad At</h2>
+
+        <p>Aesthetic judgment, ambiguity resolution, and system-level thinking without direction. An agent will implement exactly what you specify, which means that if your specification is wrong, the implementation is wrong and technically correct at the same time. An agent does not know when something "feels off" in a user interface — it cannot evaluate the experience from a user's perspective without explicit, describable criteria to apply. It also struggles with requirements that assume unstated context: "make it feel premium" is not actionable, but "increase the letter-spacing on all uppercase labels to 0.12em and reduce the body text opacity to 0.85 against the dark background" is.</p>
+
+        <h2 class="feature-title">The Human Role in an Agent-Driven Build</h2>
+
+        <p>You are the architect and the QA lead. You define what gets built, with enough precision that the agent can execute without guessing. You review every output before it becomes the foundation for the next feature. You decide when something is done. You catch the errors the agent doesn't catch because it can't see the product from the outside. The agent is the execution layer. The decision layer is yours, and it cannot be delegated. An agent given a vague goal and left alone will produce a vague product. An agent given precise specifications by a focused architect will produce something worth shipping.</p>
+
+        <h2 class="feature-title">The Honest Caveat</h2>
+
+        <p>A Week 1 MVP has bugs. It has missing features. It will require a Phase 2 before it is the product you ultimately want to build. None of that is a failure. A functional, deployed product with known gaps is categorically more valuable than a perfect product that doesn't exist yet. The Week 1 MVP creates a feedback surface. Real users can interact with it. Real problems surface. Real usage patterns emerge. You learn things from a deployed product in its first week that you cannot learn in a month of planning. An imperfect product that ships in a week is a conversation with your market. A perfect product that ships in four months is an expensive guess about what your market wants. Ship the imperfect product. Fix it in public.</p>
+
+      </div>
+    </article>
+    <section style="padding: var(--space-16) 0; border-top: 1px solid var(--color-border);">
+      <div style="max-width: 72rem; margin: 0 auto; padding: 0 var(--space-8); display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: var(--space-6);">
+        <a href="./" style="font-family: var(--font-mono); font-size: var(--text-xs); letter-spacing: 0.1em; color: var(--color-gold); text-decoration: none;">← ALL FIELDNOTES</a>
+        <a href="../#subscribe" style="font-family: var(--font-mono); font-size: var(--text-xs); letter-spacing: 0.1em; color: var(--color-gold); text-decoration: none; border: 1px solid var(--color-gold); padding: var(--space-3) var(--space-6);">SUBSCRIBE TO THE SIGNAL →</a>
+      </div>
+    </section>
+  </main>
+  <footer class="site-footer">
+    <div class="footer-main">
+      <div class="footer-col">
+        <h4>The Signal</h4>
+        <div class="footer-subscribe">
+          <form class="footer-subscribe-form" action="https://assets.mailerlite.com/jsonp/887036/forms/131950373498498498/subscribe" method="POST">
+            <input type="email" name="fields[email]" placeholder="your@email.com" required>
+            <button type="submit">Subscribe</button>
+          </form>
+        </div>
+        <p>A weekly transmission from a solo founder building in public.</p>
+      </div>
+      <div class="footer-col">
+        <h4>Navigate</h4>
+        <ul>
+          <li><a href="../">Home</a></li>
+          <li><a href="../archive/">Archive</a></li>
+          <li><a href="./">Fieldnotes</a></li>
+          <li><a href="../about/">About</a></li>
+          <li><a href="../#subscribe">Subscribe</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <h4>1Commerce LLC</h4>
+        <ul>
+          <li><a href="https://1commerce.shop" target="_blank">1Commerce.shop</a></li>
+          <li><a href="https://unifyone.io" target="_blank">UnifyOne</a></li>
+          <li><a href="https://inkvault.io" target="_blank">InkVault</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <span class="mono-label dim">© 2026 1COMMERCE LLC · CANBY, OREGON</span>
+      <a href="https://www.perplexity.ai/computer" target="_blank" class="mono-label dim">Created with Perplexity Computer</a>
+    </div>
+  </footer>
+  <script src="../app.js" defer></script>
+</body>
+</html>

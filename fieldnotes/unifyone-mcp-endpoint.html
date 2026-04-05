@@ -1,0 +1,200 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="dark">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>UnifyOne's MCP Client and Universal Endpoint — Fieldnotes | THE SIGNAL</title>
+<meta name="description" content="What the Model Context Protocol actually means for commerce, how UnifyOne's MCP client works, and why the universal endpoint changes what a store builder can be.">
+<meta property="og:title" content="UnifyOne's MCP Client and Universal Endpoint — Fieldnotes | THE SIGNAL">
+<meta property="og:description" content="MCP changes what AI can do inside a commerce platform. Here's what that looks like in practice.">
+<meta property="og:type" content="article">
+
+<link href="https://api.fontshare.com/v2/css?f[]=zodiak@400,500,600,700&f[]=general-sans@300,400,500,600&display=swap" rel="stylesheet">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@300;400;500&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../base.css">
+<link rel="stylesheet" href="../style.css">
+</head>
+<body>
+  <div class="grain" aria-hidden="true"></div>
+
+  <div class="mobile-nav">
+    <button class="mobile-nav-close" aria-label="Close menu">
+      <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 6L6 18M6 6l12 12"/></svg>
+    </button>
+    <a href="../">Home</a>
+    <a href="../archive/">Archive</a>
+    <a href="./" class="active">Fieldnotes</a>
+    <a href="../about/">About</a>
+    <a href="../#subscribe">Subscribe</a>
+  </div>
+
+  <header class="site-header">
+    <div class="header-inner">
+      <div class="header-left">
+        <a href="../">
+          <svg class="logo" viewBox="0 0 32 32" width="28" height="28" fill="none" aria-label="The Signal logo">
+            <rect x="2" y="2" width="28" height="28" rx="2" stroke="currentColor" stroke-width="1.5" opacity="0.3"/>
+            <line x1="16" y1="6" x2="16" y2="26" stroke="currentColor" stroke-width="1.5"/>
+            <line x1="10" y1="9" x2="10" y2="23" stroke="currentColor" stroke-width="1" opacity="0.5"/>
+            <line x1="22" y1="9" x2="22" y2="23" stroke="currentColor" stroke-width="1" opacity="0.5"/>
+            <circle cx="16" cy="16" r="3" stroke="currentColor" stroke-width="1.5" fill="none"/>
+            <circle cx="16" cy="16" r="1" fill="currentColor"/>
+            <line x1="6" y1="16" x2="13" y2="16" stroke="currentColor" stroke-width="0.75" opacity="0.4"/>
+            <line x1="19" y1="16" x2="26" y2="16" stroke="currentColor" stroke-width="0.75" opacity="0.4"/>
+          </svg>
+          <span class="header-title">THE SIGNAL</span>
+        </a>
+      </div>
+      <div class="header-right">
+        <nav>
+          <ul class="nav-links">
+            <li><a href="../">Home</a></li>
+            <li><a href="../archive/">Archive</a></li>
+            <li><a href="./" class="active">Fieldnotes</a></li>
+            <li><a href="../about/">About</a></li>
+            <li><a href="../#subscribe">Subscribe</a></li>
+          </ul>
+        </nav>
+        <button class="nav-toggle" aria-label="Open menu">
+          <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 12h18M3 6h18M3 18h18"/></svg>
+        </button>
+        <button data-theme-toggle aria-label="Switch to light mode">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="5"/><path d="M12 1v2M12 21v2M4.22 4.22l1.42 1.42M18.36 18.36l1.42 1.42M1 12h2M21 12h2M4.22 19.78l1.42-1.42M18.36 5.64l1.42-1.42"/></svg>
+        </button>
+      </div>
+    </div>
+  </header>
+
+  <main>
+
+    <section class="hero" style="padding-bottom: var(--space-8);">
+      <div class="hero-inner">
+        <div class="hero-overline" style="margin-bottom: var(--space-4);">
+          <a href="./" style="color: var(--color-gold); font-family: var(--font-mono); font-size: var(--text-xs); letter-spacing: 0.1em; text-decoration: none;">← FIELDNOTES</a>
+          <span class="mono-label dim" style="margin-left: var(--space-4);">Commerce · 6 min read</span>
+        </div>
+        <h1 style="font-family: var(--font-display); font-size: var(--text-2xl); line-height: 1.1; color: var(--color-text); max-width: 22ch;">UnifyOne's MCP Client and the Universal Endpoint</h1>
+        <p style="font-family: var(--font-body); font-size: var(--text-lg); color: var(--color-text-muted); max-width: 52ch; margin-top: var(--space-6); line-height: 1.6;">A store builder that an AI can actually operate. What the Model Context Protocol means for commerce, and what's coming next.</p>
+        <div style="margin-top: var(--space-8); display: flex; gap: var(--space-6); align-items: center; flex-wrap: wrap;">
+          <span class="mono-label dim">1COMMERCE LLC</span>
+          <span class="mono-label dim">CANBY, OREGON</span>
+          <span class="mono-label dim">APRIL 2026</span>
+        </div>
+      </div>
+    </section>
+
+    <article class="dispatch">
+      <div class="dispatch-inner" style="max-width: 68ch;">
+
+        <p class="lead-text">Most commerce platforms add an AI feature. They put a chatbot in the corner of the dashboard, let it answer basic questions about your store, and call it AI-powered. UnifyOne is doing something structurally different — and the difference matters enough to explain in full.</p>
+
+        <h2 class="feature-title">What UnifyOne Is Now</h2>
+
+        <p>UnifyOne launched as a commerce hub. It has since expanded into something more precise: a full <strong>store builder and website builder</strong> in a single platform. The store builder handles the commerce layer — product listings, collections, checkout configuration, inventory management, order tracking. The website builder handles everything above it: landing pages, editorial content, structured navigation, brand pages. Both deploy from the same interface, share the same design system, and don't require a developer to operate.</p>
+
+        <p>For a small business or solo founder, this is the relevant alternative to Shopify + a separate website platform + a developer to wire them together. One platform, one login, one bill, no code required. The deployment target is the same infrastructure that powers 1Commerce's own properties — GCP Cloud Run and Netlify, depending on whether the deliverable is a dynamic commerce application or a static editorial site. It is not shared hosting with limitations. It is production infrastructure.</p>
+
+        <h2 class="feature-title">The MCP Client: What It Actually Does</h2>
+
+        <p>MCP stands for Model Context Protocol — an open standard developed by Anthropic that defines how AI models connect to external tools, data sources, and systems in a structured, reliable way. The problem it solves: AI models are powerful reasoning engines, but they have been historically bad at taking action in the real world because they had no standardized way to call external systems. Every integration was bespoke, fragile, and expensive to maintain.</p>
+
+        <p>MCP creates a common interface. An AI model that speaks MCP can connect to any MCP server and immediately understand what tools are available, what data it can access, and what actions it can take — without custom integration code for each connection. It is to AI tool-use what REST was to web APIs: a standard that made the ecosystem interoperable.</p>
+
+        <p>UnifyOne's <strong>universal MCP client</strong> is built directly into the platform. This means every merchant operating on UnifyOne gets an AI assistant that is not just answering questions about their store — it is connected to it. The distinction is significant:</p>
+
+        <ul>
+          <li><strong>A chatbot bolted to a dashboard</strong> can tell you that your inventory is low. It reads data and surfaces it in a conversational format. You still have to act.</li>
+          <li><strong>An MCP client connected to your store</strong> can identify that inventory is low, draft a reorder request, trigger a purchase order workflow, update the product page to reflect limited availability, and notify you that it has done so. It reads data and takes action.</li>
+        </ul>
+
+        <p>Practically, on UnifyOne this looks like: natural language commands that execute against live store data. Draft a product description from an uploaded image. Generate a weekly revenue summary with anomaly flags. Restock a SKU when it drops below a defined threshold. Update a collection's hero image across all pages simultaneously. Create a promotional banner for a sale that starts Friday. These are not future features — they are what an MCP client connected to a store builder's data layer makes possible today.</p>
+
+        <blockquote>
+          The goal is not to replace the merchant's judgment. It is to eliminate the gap between deciding what to do and having it done.
+        </blockquote>
+
+        <h2 class="feature-title">Why MCP Specifically, Not a Bespoke Integration</h2>
+
+        <p>The decision to build on MCP rather than a proprietary AI integration deserves explanation, because it has long-term structural implications.</p>
+
+        <p>A proprietary integration means UnifyOne owns the AI layer. Every new capability requires 1Commerce to build it. The platform's intelligence scales with 1Commerce's engineering bandwidth — which, at a solo-founder operation, is the wrong bottleneck to create. A proprietary system also means merchants are locked into whatever model 1Commerce has integrated. When a better model ships, the update has to come through 1Commerce.</p>
+
+        <p>MCP changes the calculus. Because UnifyOne exposes its store data and operations through an open standard, any MCP-compatible AI model can connect to it. Claude, GPT-4o, Gemini — as each improves, merchants can use whichever performs best for their use case. The platform does not pick a winner. The merchant picks a winner. The platform just needs to stay MCP-compliant, and the rest of the AI ecosystem does the rest.</p>
+
+        <p>It also means third-party developers can build MCP servers that connect to UnifyOne's client. A logistics company could build an MCP server for their shipping API; UnifyOne merchants could connect to it from the same interface they use to manage their store. The platform becomes a hub for interoperable AI operations, not a walled garden.</p>
+
+        <h2 class="feature-title">The Universal Endpoint: What's Coming</h2>
+
+        <p>The MCP client solves the inbound problem: AI can reach into UnifyOne and take action. The <strong>universal endpoint</strong> solves the outbound problem: external systems can reach into UnifyOne through a single, standardized connection point.</p>
+
+        <p>Currently, if you want to connect your store data to an external tool — a reporting dashboard, an automation workflow in n8n, an ERP system, a custom fulfillment service — you write bespoke integrations for each one. You authenticate separately, learn each API's schema, handle each one's rate limits and error states. Every new connection is engineering work.</p>
+
+        <p>The universal endpoint changes this: one authenticated connection to UnifyOne exposes normalized access to the full merchant operation. Orders, inventory, customers, revenue data, fulfillment status, product catalog — all of it, accessible through a single endpoint with a consistent schema. Connect once. Access everything.</p>
+
+        <p>For a solo founder running multiple storefronts, this means one n8n workflow that manages inventory across all of them. One reporting dashboard that pulls from every store simultaneously. One AI agent that has full operational context across the entire portfolio.</p>
+
+        <p>For UnifyOne as a product, the universal endpoint is the transition from tool to infrastructure. When external systems depend on UnifyOne's endpoint to operate, the platform has achieved a different kind of stickiness than feature lock-in. It has become load-bearing — a dependency that other systems build on top of. That is the Cathedral Principle applied to a SaaS product: build something so foundational that removing it breaks things that depend on it.</p>
+
+        <h2 class="feature-title">The Timeline</h2>
+
+        <p>The store builder and website builder are live. The MCP client is in active development. The universal endpoint is next in the architecture queue after MCP ships. Updates will be reported in The Signal — unvarnished, with numbers, as each milestone clears.</p>
+
+        <p>If you are building a commerce operation and want early access to UnifyOne's platform as these capabilities ship, the right move is to subscribe to The Signal and stay in the transmission. When access opens, it goes to the congregation first.</p>
+
+      </div>
+    </article>
+
+    <!-- Back / Subscribe -->
+    <section style="padding: var(--space-16) 0; border-top: 1px solid var(--color-border);">
+      <div style="max-width: 72rem; margin: 0 auto; padding: 0 var(--space-8); display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: var(--space-6);">
+        <a href="./" style="font-family: var(--font-mono); font-size: var(--text-xs); letter-spacing: 0.1em; color: var(--color-gold); text-decoration: none;">← ALL FIELDNOTES</a>
+        <a href="../#subscribe" style="font-family: var(--font-mono); font-size: var(--text-xs); letter-spacing: 0.1em; color: var(--color-gold); text-decoration: none; border: 1px solid var(--color-gold); padding: var(--space-3) var(--space-6);">SUBSCRIBE TO THE SIGNAL →</a>
+      </div>
+    </section>
+
+  </main>
+
+  <footer class="site-footer">
+    <div class="footer-main">
+      <div class="footer-col">
+        <h4>The Signal</h4>
+        <div class="footer-subscribe">
+          <form class="footer-subscribe-form" action="https://assets.mailerlite.com/jsonp/887036/forms/131950373498498498/subscribe" method="POST">
+            <input type="email" name="fields[email]" placeholder="your@email.com" required aria-label="Email address">
+            <button type="submit">Subscribe</button>
+          </form>
+        </div>
+        <p>A weekly transmission from a solo founder building in public.</p>
+      </div>
+      <div class="footer-col">
+        <h4>Navigate</h4>
+        <ul>
+          <li><a href="../">Home</a></li>
+          <li><a href="../archive/">Archive</a></li>
+          <li><a href="./">Fieldnotes</a></li>
+          <li><a href="../about/">About</a></li>
+          <li><a href="../#subscribe">Subscribe</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <h4>1Commerce LLC</h4>
+        <ul>
+          <li><a href="https://1commerce.shop" target="_blank" rel="noopener noreferrer">1Commerce.shop</a></li>
+          <li><a href="https://unifyone.io" target="_blank" rel="noopener noreferrer">UnifyOne</a></li>
+          <li><a href="https://inkvault.io" target="_blank" rel="noopener noreferrer">InkVault</a></li>
+          <li><a href="https://forge3d.studio" target="_blank" rel="noopener noreferrer">FORGE3D</a></li>
+          <li><a href="https://hunted.game" target="_blank" rel="noopener noreferrer">HUNTED</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <span class="mono-label dim">© 2026 1COMMERCE LLC · CANBY, OREGON</span>
+      <a href="https://www.perplexity.ai/computer" target="_blank" rel="noopener noreferrer" class="mono-label dim">Created with Perplexity Computer</a>
+    </div>
+  </footer>
+
+  <script src="../app.js" defer></script>
+</body>
+</html>

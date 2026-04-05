@@ -1714,3 +1714,165 @@ blockquote p {
     grid-template-columns: 1fr 1fr;
   }
 }
+
+/* ============================================================
+   FIELDNOTES — Micro-blog grid components
+   ============================================================ */
+
+.fieldnotes-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+  gap: var(--space-6);
+  margin-top: var(--space-2);
+}
+
+.fn-card {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-3);
+  padding: var(--space-8);
+  background: var(--color-surface);
+  border: 1px solid var(--color-border);
+  border-radius: 2px;
+  text-decoration: none;
+  transition: border-color 0.2s ease, background 0.2s ease;
+  position: relative;
+  overflow: hidden;
+}
+
+.fn-card::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 2px;
+  background: transparent;
+  transition: background 0.2s ease;
+}
+
+.fn-card:hover {
+  border-color: rgba(201, 168, 76, 0.4);
+  background: var(--color-surface-2);
+}
+
+.fn-card:hover::before {
+  background: linear-gradient(90deg, var(--color-gold), transparent);
+}
+
+.fn-tag {
+  font-family: var(--font-mono);
+  font-size: var(--text-xs);
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--color-text-muted);
+  font-weight: 500;
+}
+
+.fn-title {
+  font-family: var(--font-display);
+  font-size: var(--text-lg);
+  line-height: 1.2;
+  color: var(--color-text);
+  font-weight: 500;
+  margin: 0;
+}
+
+.fn-excerpt {
+  font-family: var(--font-body);
+  font-size: var(--text-sm);
+  color: var(--color-text-muted);
+  line-height: 1.65;
+  flex: 1;
+  margin: 0;
+}
+
+.fn-read {
+  font-family: var(--font-mono);
+  font-size: var(--text-xs);
+  letter-spacing: 0.06em;
+  color: var(--color-gold);
+  margin-top: var(--space-2);
+  text-transform: uppercase;
+}
+
+/* Light mode overrides for fieldnotes */
+[data-theme="light"] .fn-card {
+  background: var(--color-surface);
+  border-color: var(--color-border);
+}
+
+[data-theme="light"] .fn-card:hover {
+  border-color: rgba(160, 110, 30, 0.5);
+  background: var(--color-surface-2);
+}
+
+@media (max-width: 640px) {
+  .fieldnotes-grid {
+    grid-template-columns: 1fr;
+  }
+}
+
+/* --- Fieldnotes Post Prose --- */
+.dispatch-inner > p,
+.dispatch-inner > ul,
+.dispatch-inner > ol,
+.dispatch-inner > blockquote {
+  margin-bottom: var(--space-5);
+  font-family: var(--font-body);
+  font-size: var(--text-base);
+  color: var(--color-text-muted);
+  line-height: 1.75;
+}
+
+.dispatch-inner > h2.feature-title {
+  font-family: var(--font-display);
+  font-size: var(--text-xl);
+  font-weight: 600;
+  color: var(--color-text);
+  margin-top: var(--space-10);
+  margin-bottom: var(--space-4);
+  line-height: 1.25;
+}
+
+.dispatch-inner > ul {
+  padding-left: var(--space-6);
+  list-style: none;
+}
+
+.dispatch-inner > ul li {
+  position: relative;
+  padding-left: var(--space-5);
+  margin-bottom: var(--space-3);
+  font-family: var(--font-body);
+  font-size: var(--text-base);
+  color: var(--color-text-muted);
+  line-height: 1.7;
+}
+
+.dispatch-inner > ul li::before {
+  content: '—';
+  position: absolute;
+  left: 0;
+  color: var(--color-gold);
+  font-weight: 600;
+}
+
+.dispatch-inner > blockquote {
+  border-left: 2px solid var(--color-gold);
+  padding-left: var(--space-6);
+  font-family: var(--font-display);
+  font-style: italic;
+  font-size: var(--text-lg);
+  color: var(--color-text);
+  line-height: 1.5;
+  margin-left: 0;
+  margin-right: 0;
+}
+
+.dispatch-inner .lead-text {
+  font-size: var(--text-base);
+  color: var(--color-text);
+  line-height: 1.8;
+  margin-bottom: var(--space-8);
+}

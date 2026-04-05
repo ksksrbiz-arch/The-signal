@@ -1,0 +1,175 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="dark">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Shopify vs. Custom Storefront: The Real Tradeoffs for a Solo Operator — Fieldnotes | THE SIGNAL</title>
+<meta name="description" content="After running both simultaneously, the honest answer is simpler than most comparisons admit — and it depends entirely on which phase of the business you're in.">
+<link href="https://api.fontshare.com/v2/css?f[]=zodiak@400,500,600,700&f[]=general-sans@300,400,500,600&display=swap" rel="stylesheet">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@300;400;500&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../base.css">
+<link rel="stylesheet" href="../style.css">
+</head>
+<body>
+  <div class="grain" aria-hidden="true"></div>
+  <div class="mobile-nav">
+    <button class="mobile-nav-close" aria-label="Close menu">
+      <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 6L6 18M6 6l12 12"/></svg>
+    </button>
+    <a href="../">Home</a>
+    <a href="../archive/">Archive</a>
+    <a href="./" class="active">Fieldnotes</a>
+    <a href="../about/">About</a>
+    <a href="../#subscribe">Subscribe</a>
+  </div>
+  <header class="site-header">
+    <div class="header-inner">
+      <div class="header-left">
+        <a href="../">
+          <svg class="logo" viewBox="0 0 32 32" width="28" height="28" fill="none">
+            <rect x="2" y="2" width="28" height="28" rx="2" stroke="currentColor" stroke-width="1.5" opacity="0.3"/>
+            <line x1="16" y1="6" x2="16" y2="26" stroke="currentColor" stroke-width="1.5"/>
+            <line x1="10" y1="9" x2="10" y2="23" stroke="currentColor" stroke-width="1" opacity="0.5"/>
+            <line x1="22" y1="9" x2="22" y2="23" stroke="currentColor" stroke-width="1" opacity="0.5"/>
+            <circle cx="16" cy="16" r="3" stroke="currentColor" stroke-width="1.5" fill="none"/>
+            <circle cx="16" cy="16" r="1" fill="currentColor"/>
+            <line x1="6" y1="16" x2="13" y2="16" stroke="currentColor" stroke-width="0.75" opacity="0.4"/>
+            <line x1="19" y1="16" x2="26" y2="16" stroke="currentColor" stroke-width="0.75" opacity="0.4"/>
+          </svg>
+          <span class="header-title">THE SIGNAL</span>
+        </a>
+      </div>
+      <div class="header-right">
+        <nav><ul class="nav-links">
+          <li><a href="../">Home</a></li>
+          <li><a href="../archive/">Archive</a></li>
+          <li><a href="./" class="active">Fieldnotes</a></li>
+          <li><a href="../about/">About</a></li>
+          <li><a href="../#subscribe">Subscribe</a></li>
+        </ul></nav>
+        <button class="nav-toggle" aria-label="Open menu">
+          <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 12h18M3 6h18M3 18h18"/></svg>
+        </button>
+        <button data-theme-toggle aria-label="Switch to light mode">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="5"/><path d="M12 1v2M12 21v2M4.22 4.22l1.42 1.42M18.36 18.36l1.42 1.42M1 12h2M21 12h2M4.22 19.78l1.42-1.42M18.36 5.64l1.42-1.42"/></svg>
+        </button>
+      </div>
+    </div>
+  </header>
+  <main>
+    <section class="hero" style="padding-bottom: var(--space-8);">
+      <div class="hero-inner">
+        <div class="hero-overline" style="margin-bottom: var(--space-4);">
+          <a href="./" style="color: var(--color-gold); font-family: var(--font-mono); font-size: var(--text-xs); letter-spacing: 0.1em; text-decoration: none;">← FIELDNOTES</a>
+          <span class="mono-label dim" style="margin-left: var(--space-4);">COMMERCE · 5 MIN READ</span>
+        </div>
+        <h1 style="font-family: var(--font-display); font-size: var(--text-2xl); line-height: 1.1; color: var(--color-text); max-width: 20ch;">Shopify vs. Custom Storefront: The Real Tradeoffs for a Solo Operator</h1>
+        <p style="font-family: var(--font-body); font-size: var(--text-lg); color: var(--color-text-muted); max-width: 52ch; margin-top: var(--space-6); line-height: 1.6;">After running both, the honest answer is simpler than most comparisons admit.</p>
+        <div style="margin-top: var(--space-8); display: flex; gap: var(--space-6); align-items: center; flex-wrap: wrap;">
+          <span class="mono-label dim">1COMMERCE LLC</span>
+          <span class="mono-label dim">CANBY, OREGON</span>
+          <span class="mono-label dim">APRIL 2026</span>
+        </div>
+      </div>
+    </section>
+    <article class="dispatch">
+      <div class="dispatch-inner" style="max-width: 68ch;">
+
+        <p>Most Shopify vs. custom comparisons are written by people who have built neither in a high-pressure, revenue-on-the-line context, or by agencies with a financial interest in one direction. This one is written from a specific position: 1commerce.shop runs on Shopify today, and UnifyOne is a custom commerce platform being built simultaneously. The tradeoffs are not theoretical. They are operational and real.</p>
+
+        <h2 class="feature-title">What Most Comparisons Miss</h2>
+
+        <p>The framing is almost always "which is better." That is the wrong question. The right question is "which is correct for this stage of this business." Shopify and a custom storefront are not competing technologies you evaluate once and choose forever. They are tools optimized for different phases of a company's life. Treating the comparison as a permanent binary decision is where founders waste time, money, and months of engineering work they didn't need to do.</p>
+
+        <h2 class="feature-title">The Case for Shopify</h2>
+
+        <p>Shopify's primary advantage is ruthless: it compresses the time between "I want to sell something" and "someone paid me for it" down to hours. Not weeks. Hours. The checkout is battle-tested and converts. The payment processing handles global currencies, fraud detection, and PCI compliance — problems that take months to solve on a custom platform. Inventory management, order tracking, customer account portals, email receipts, refund flows — all of this comes out of the box, configured correctly by default.</p>
+
+        <p>The app ecosystem adds another layer. Need subscription billing? There's an app. Need abandoned cart recovery? There's an app. Need product reviews, loyalty points, advanced shipping rules, or wholesale pricing tiers? Apps exist for all of it, and most are installable in minutes. For a solo operator without engineering bandwidth to spare, the app ecosystem is a genuine force multiplier.</p>
+
+        <p>For early revenue validation — which is the correct first use of any new commerce initiative — Shopify is almost certainly the right answer. It lets you find out if people will actually buy what you're selling before you've invested weeks building a platform to sell it on.</p>
+
+        <h2 class="feature-title">The Real Cost of Shopify</h2>
+
+        <p>The costs are real and compound over time. Transaction fees are the most immediate: if you use a third-party payment processor instead of Shopify Payments, Shopify charges 0.5% to 2% on every transaction, on top of whatever your processor charges. At low volumes this is ignorable. At scale it is a material line item. Shopify Payments sidesteps the fee but locks you into their processing infrastructure, which has its own set of limitations and geographic restrictions.</p>
+
+        <p>App subscription costs are the quieter drain. The app ecosystem is genuinely useful, but each app is typically $20–$100 per month. A moderately sophisticated store — subscription billing, review management, email flows, loyalty program, advanced analytics — can accumulate $200–$400 per month in app fees before you've done anything custom. That is $2,400–$4,800 per year for tooling that would be one-time engineering work on a custom platform.</p>
+
+        <p>The more consequential cost is data ownership. Your customer data lives in Shopify's infrastructure. Extraction is possible via API, but you're working around Shopify's data model, rate limits, and schema definitions rather than directly against your own database. This matters more than most founders expect when you need to build custom analytics, trigger complex automation, or sync data with external systems.</p>
+
+        <p>The hardest ceiling hits when your operational logic becomes complex enough that Shopify's abstractions actively fight you. Multi-channel inventory sync across Amazon, Walmart, and your own storefront with real-time availability — Shopify has partial solutions, but you're assembling them from apps that don't fully integrate and paying for each one. This is the exact problem UnifyOne was built to solve. Shopify could not cleanly support the multi-channel commerce logic that is the core product differentiation. Building that on a custom stack wasn't an ideological preference for custom. It was the only viable architecture for the feature set.</p>
+
+        <h2 class="feature-title">The Case for Custom</h2>
+
+        <p>A custom storefront means you own everything: the data model, the UI/UX, the business logic, the performance characteristics, the integrations. There are no transaction fees beyond what your payment processor charges. There is no ceiling imposed by a platform's opinion about how commerce should work. If you need a feature, you build it. If you need to change how checkout flows, you change it. The constraint is only engineering time.</p>
+
+        <p>For compound features — functionality that emerges from the intersection of multiple systems — custom is often the only path. UnifyOne's multi-channel sync architecture, which maintains inventory consistency across separate marketplace storefronts in real time, would require four separate Shopify apps communicating through webhook hacks to approximate on Shopify. On a custom stack, it is a well-designed service and a reliable message queue. Simpler, cheaper at scale, and infinitely more controllable.</p>
+
+        <h2 class="feature-title">The Real Cost of Custom</h2>
+
+        <p>Custom storefronts are built in weeks, not hours, and the gap between starting and generating first revenue is measured in engineering time you cannot get back. Every problem Shopify solved for you is now your problem to solve. Stripe integration is not hard, but it takes time. Cart state management takes time. Tax calculation logic — especially across multiple states with different rules — takes significant time. Email receipt templates. Order confirmation webhooks. Refund workflows. Return tracking. Each of these is a solved problem on Shopify and an engineering task on custom.</p>
+
+        <p>The engineering overhead also means that every hour spent on storefront infrastructure is an hour not spent on the product differentiation that makes the custom build worth it. That opportunity cost is real and frequently underestimated. A custom platform makes sense when the compound features you need justify the overhead of building the baseline. It does not make sense when you could launch on Shopify, validate demand, and then rebuild with confidence on a custom platform once you know what you're building.</p>
+
+        <h2 class="feature-title">The Decision Framework</h2>
+
+        <p>The decision reduces to two questions: Do you have product-market fit signal yet? And does your required functionality exceed Shopify's capability ceiling?</p>
+
+        <p>If you don't have PMF signal — if you're still validating whether people will buy this — use Shopify. Get to revenue first. The platform constraints will not matter if the product doesn't sell. If you do have PMF signal and your operational requirements are straightforward, stay on Shopify unless you have a specific reason to leave. The transition cost to custom is real and ongoing.</p>
+
+        <p>If you have PMF signal and your required functionality is genuinely beyond what Shopify and its app ecosystem can cleanly support, then custom is the correct call. But be honest about which of those conditions you're actually in. "I want more control" is not a sufficient reason to build a custom platform. Shipping something that sells is.</p>
+
+        <h2 class="feature-title">The 1Commerce Approach</h2>
+
+        <p>1commerce.shop runs on Shopify for fast commerce validation. It reaches revenue quickly, tests product-market signals, and doesn't require engineering time to maintain. UnifyOne is the long-term custom platform — built for the specific multi-channel functionality that is the product's core value proposition, designed to support functionality Shopify cannot accommodate cleanly, and built only after the business rationale was validated. They serve different purposes at different phases. There is no contradiction in running both. The contradiction would be building a custom platform before knowing what to build on it.</p>
+
+      </div>
+    </article>
+    <section style="padding: var(--space-16) 0; border-top: 1px solid var(--color-border);">
+      <div style="max-width: 72rem; margin: 0 auto; padding: 0 var(--space-8); display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: var(--space-6);">
+        <a href="./" style="font-family: var(--font-mono); font-size: var(--text-xs); letter-spacing: 0.1em; color: var(--color-gold); text-decoration: none;">← ALL FIELDNOTES</a>
+        <a href="../#subscribe" style="font-family: var(--font-mono); font-size: var(--text-xs); letter-spacing: 0.1em; color: var(--color-gold); text-decoration: none; border: 1px solid var(--color-gold); padding: var(--space-3) var(--space-6);">SUBSCRIBE TO THE SIGNAL →</a>
+      </div>
+    </section>
+  </main>
+  <footer class="site-footer">
+    <div class="footer-main">
+      <div class="footer-col">
+        <h4>The Signal</h4>
+        <div class="footer-subscribe">
+          <form class="footer-subscribe-form" action="https://assets.mailerlite.com/jsonp/887036/forms/131950373498498498/subscribe" method="POST">
+            <input type="email" name="fields[email]" placeholder="your@email.com" required>
+            <button type="submit">Subscribe</button>
+          </form>
+        </div>
+        <p>A weekly transmission from a solo founder building in public.</p>
+      </div>
+      <div class="footer-col">
+        <h4>Navigate</h4>
+        <ul>
+          <li><a href="../">Home</a></li>
+          <li><a href="../archive/">Archive</a></li>
+          <li><a href="./">Fieldnotes</a></li>
+          <li><a href="../about/">About</a></li>
+          <li><a href="../#subscribe">Subscribe</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <h4>1Commerce LLC</h4>
+        <ul>
+          <li><a href="https://1commerce.shop" target="_blank">1Commerce.shop</a></li>
+          <li><a href="https://unifyone.io" target="_blank">UnifyOne</a></li>
+          <li><a href="https://inkvault.io" target="_blank">InkVault</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <span class="mono-label dim">© 2026 1COMMERCE LLC · CANBY, OREGON</span>
+      <a href="https://www.perplexity.ai/computer" target="_blank" class="mono-label dim">Created with Perplexity Computer</a>
+    </div>
+  </footer>
+  <script src="../app.js" defer></script>
+</body>
+</html>
