@@ -229,9 +229,10 @@
   reactions.forEach(function(bar) {
     var pageKey = 'signal-reactions-' + btoa(window.location.pathname).replace(/=/g,'');
 
-    // Get stored state
+    // Get stored state (falls back to in-memory if storage unavailable)
     var stored = {};
-    try { stored = JSON.parse(localStorage.getItem(pageKey) || '{}'); } catch(e){}
+    var _store = (function(){ try { return window.localStorage; } catch(e){ return null; } })();
+    try { if (_store) stored = JSON.parse(_store.getItem(pageKey) || '{}'); } catch(e){}
 
     bar.querySelectorAll('.reaction-btn').forEach(function(btn) {
       var key = btn.dataset.reaction;
@@ -249,7 +250,7 @@
         var newCount = parseInt(btn.querySelector('.reaction-count').textContent) + 1;
         btn.querySelector('.reaction-count').textContent = newCount;
         stored[key] = (stored[key] || 0) + 1;
-        try { localStorage.setItem(pageKey, JSON.stringify(stored)); } catch(e){}
+        try { if (_store) _store.setItem(pageKey, JSON.stringify(stored)); } catch(e){}
         setTimeout(function() { btn.classList.remove('just-reacted'); }, 600);
       });
     });
