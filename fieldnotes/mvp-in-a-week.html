@@ -74,6 +74,16 @@
         </div>
       </div>
     </section>
+
+    <!-- Share Strip -->
+    <div class="dispatch-share-strip">
+      <span class="share-strip-label">SHARE THIS FIELDNOTE</span>
+      <div class="share-strip-buttons" data-share-strip></div>
+    </div>
+        <aside class="article-toc" aria-label="Table of contents">
+      <div class="toc-heading">In this post</div>
+    </aside>
+
     <article class="dispatch">
       <div class="dispatch-inner" style="max-width: 68ch;">
 
@@ -137,6 +147,15 @@
 
         <p>A Week 1 MVP has bugs. It has missing features. It will require a Phase 2 before it is the product you ultimately want to build. None of that is a failure. A functional, deployed product with known gaps is categorically more valuable than a perfect product that doesn't exist yet. The Week 1 MVP creates a feedback surface. Real users can interact with it. Real problems surface. Real usage patterns emerge. You learn things from a deployed product in its first week that you cannot learn in a month of planning. An imperfect product that ships in a week is a conversation with your market. A perfect product that ships in four months is an expensive guess about what your market wants. Ship the imperfect product. Fix it in public.</p>
 
+
+        <!-- Tweetable pull quote -->
+        <div class="tweet-card" onclick="window.open('https://x.com/intent/tweet?text=%22Done%20at%20week%20one%20means%3A%20users%20can%20touch%20it%2C%20it%20doesn%27t%20fall%20apart%2C%20and%20it%20tells%20you%20something%20true.%22%20%E2%80%94%20How%20to%20Ship%20an%20MVP%20in%20a%20Week%20%E2%80%94%20The%20Signal&url=', '_blank', 'width=600,height=500');" style="cursor:pointer;">
+          <div class="tweet-card-quote">"Done at week one means: users can touch it, it doesn't fall apart, and it tells you something true."</div>
+          <div class="tweet-card-cta">
+            <svg width="11" height="11" viewBox="0 0 24 24" fill="currentColor"><path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-4.714-6.231-5.401 6.231H2.741l7.73-8.835L1.254 2.25H8.08l4.261 5.633L18.244 2.25zm-1.161 17.52h1.833L7.084 4.126H5.117z"/></svg>
+            Click to tweet this
+          </div>
+        </div>
       </div>
     </article>
     <section style="padding: var(--space-16) 0; border-top: 1px solid var(--color-border);">
@@ -145,6 +164,37 @@
         <a href="../#subscribe" style="font-family: var(--font-mono); font-size: var(--text-xs); letter-spacing: 0.1em; color: var(--color-gold); text-decoration: none; border: 1px solid var(--color-gold); padding: var(--space-3) var(--space-6);">SUBSCRIBE TO THE SIGNAL →</a>
       </div>
     </section>
+
+    <!-- Reaction Bar -->
+    <div class="reaction-bar" role="group" aria-label="React to this article">
+      <span class="reaction-bar-label">HOW DID THIS LAND?</span>
+      <div class="reaction-buttons">
+        <button class="reaction-btn" data-reaction="signal" aria-label="React: Signal">
+          <span class="reaction-icon">◈</span>
+          <span class="reaction-name">SIGNAL</span>
+          <span class="reaction-count">0</span>
+        </button>
+        <button class="reaction-btn" data-reaction="cathedral" aria-label="React: Cathedral">
+          <span class="reaction-icon">⬟</span>
+          <span class="reaction-name">CATHEDRAL</span>
+          <span class="reaction-count">0</span>
+        </button>
+        <button class="reaction-btn" data-reaction="filed" aria-label="React: Filed">
+          <span class="reaction-icon">▣</span>
+          <span class="reaction-name">FILED</span>
+          <span class="reaction-count">0</span>
+        </button>
+        <button class="reaction-btn" data-reaction="noise" aria-label="React: Noise">
+          <span class="reaction-icon">∅</span>
+          <span class="reaction-name">NOISE</span>
+          <span class="reaction-count">0</span>
+        </button>
+      </div>
+      <div class="reaction-share-strip">
+        <span class="share-strip-label">SHARE</span>
+        <div class="share-strip-buttons" data-share-strip></div>
+      </div>
+    </div>
   </main>
   <footer class="site-footer">
     <div class="footer-main">

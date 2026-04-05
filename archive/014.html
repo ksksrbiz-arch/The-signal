@@ -142,6 +142,12 @@
       </div>
       <div class="hero-scanline" aria-hidden="true"></div>
     </section>
+    <!-- Share Strip (injected) -->
+    <div class="dispatch-share-strip">
+      <span class="share-strip-label">SHARE THIS TRANSMISSION</span>
+      <div class="share-strip-buttons" data-share-strip></div>
+    </div>
+
 
     <!-- Status Bar -->
     <section class="status-bar">
@@ -373,6 +379,46 @@
       </div>
     </section>
 
+
+    <!-- Tweet Card (injected) -->
+    <div class="tweet-card" onclick="window.open('https://twitter.com/intent/tweet?text=%22The%20platform%20becomes%20the%20story%2E%20What%20began%20as%20a%20newsletter%20is%20now%20a%20five-page%20editorial%20platform%2E%22%20—%20The%20Signal%20—%20Week%20014%20%7C%20The%20Signal&url=https%3A%2F%2Fsignal01.netlify.app%2F','_blank')" role="button" tabindex="0" aria-label="Share this quote on X">
+      <p class="tweet-card-quote">"The platform becomes the story. What began as a newsletter is now a five-page editorial platform."</p>
+      <div class="tweet-card-footer">
+        <span class="tweet-card-attr">— The Signal — Week 014</span>
+        <span class="tweet-card-cta">𝕏 CLICK TO TWEET THIS</span>
+      </div>
+    </div>
+
+    <!-- Reaction Bar (injected) -->
+    <div class="reaction-bar">
+      <span class="reaction-bar-label">HOW DID THIS LAND?</span>
+      <div class="reaction-buttons">
+        <button class="reaction-btn" data-reaction="signal" aria-label="React: Signal">
+          <span class="reaction-icon">◈</span>
+          <span class="reaction-name">SIGNAL</span>
+          <span class="reaction-count">0</span>
+        </button>
+        <button class="reaction-btn" data-reaction="cathedral" aria-label="React: Cathedral">
+          <span class="reaction-icon">⬟</span>
+          <span class="reaction-name">CATHEDRAL</span>
+          <span class="reaction-count">0</span>
+        </button>
+        <button class="reaction-btn" data-reaction="filed" aria-label="React: Filed">
+          <span class="reaction-icon">▣</span>
+          <span class="reaction-name">FILED</span>
+          <span class="reaction-count">0</span>
+        </button>
+        <button class="reaction-btn" data-reaction="noise" aria-label="React: Noise">
+          <span class="reaction-icon">∅</span>
+          <span class="reaction-name">NOISE</span>
+          <span class="reaction-count">0</span>
+        </button>
+      </div>
+      <div class="reaction-share-strip">
+        <span class="share-strip-label">SHARE</span>
+        <div class="share-strip-buttons" data-share-strip></div>
+      </div>
+    </div>
   </main>
 
   <!-- Footer -->

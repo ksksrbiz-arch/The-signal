@@ -1881,3 +1881,604 @@ blockquote p {
   line-height: 1.8;
   margin-bottom: var(--space-8);
 }
+
+
+/* ============================================================
+   ENGAGEMENT LAYER v2 — Share, Reactions, ToC, Progress, Shimmer
+   ============================================================ */
+
+/* ─── Reading Progress Bar ─────────────────────────────────── */
+.reading-progress-bar {
+  position: fixed;
+  top: 0;
+  left: 0;
+  height: 2px;
+  width: 0%;
+  background: var(--color-gold);
+  z-index: 9999;
+  transition: width 0.1s linear;
+  pointer-events: none;
+  box-shadow: 0 0 8px rgba(201,168,76,0.5);
+}
+
+/* ─── Share Strip ───────────────────────────────────────────── */
+.share-strip {
+  display: flex;
+  align-items: center;
+  gap: var(--space-2);
+  flex-wrap: wrap;
+}
+.share-label {
+  font-family: var(--font-mono);
+  font-size: 9px;
+  letter-spacing: 0.18em;
+  color: var(--color-text-faint);
+  text-transform: uppercase;
+  margin-right: var(--space-1);
+}
+.share-btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 28px;
+  height: 28px;
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-sm);
+  background: transparent;
+  color: var(--color-text-muted);
+  cursor: pointer;
+  text-decoration: none;
+  transition: all var(--transition-interactive);
+  flex-shrink: 0;
+}
+.share-btn:hover {
+  border-color: var(--color-gold);
+  color: var(--color-gold);
+  background: var(--color-gold-dim);
+  transform: translateY(-1px);
+}
+.share-btn.copied {
+  border-color: #4caf50;
+  color: #4caf50;
+}
+.share-btn--x:hover { border-color: #e7e7e7; color: var(--color-text); }
+.share-btn--li:hover { border-color: #0077b5; color: #0077b5; }
+.share-btn--wa:hover { border-color: #25d366; color: #25d366; }
+
+/* Inline share strip in article context */
+.dispatch-share-strip {
+  display: flex;
+  align-items: center;
+  gap: var(--space-3);
+  padding: var(--space-5) 0;
+  border-top: 1px solid var(--color-divider);
+  border-bottom: 1px solid var(--color-divider);
+  margin: var(--space-10) 0;
+}
+.dispatch-share-strip .share-label {
+  font-size: 10px;
+  color: var(--color-text-muted);
+}
+
+/* Archive card share strip */
+.archive-card-share {
+  display: flex;
+  align-items: center;
+  gap: var(--space-2);
+  margin-top: var(--space-4);
+  padding-top: var(--space-4);
+  border-top: 1px solid var(--color-divider);
+  opacity: 0;
+  transform: translateY(4px);
+  transition: opacity 0.2s ease, transform 0.2s ease;
+}
+.archive-card:hover .archive-card-share,
+.archive-card:focus-within .archive-card-share {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* Fieldnotes card share — appears on hover */
+.fn-card-share {
+  display: flex;
+  align-items: center;
+  gap: var(--space-2);
+  margin-top: var(--space-3);
+  padding-top: var(--space-3);
+  border-top: 1px solid var(--color-divider);
+  opacity: 0;
+  transform: translateY(3px);
+  transition: opacity 0.2s ease, transform 0.2s ease;
+}
+.fn-card:hover .fn-card-share,
+.fn-card:focus-within .fn-card-share {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* ─── Text Selection Tooltip ────────────────────────────────── */
+.selection-tooltip {
+  position: absolute;
+  z-index: 10000;
+  display: flex;
+  align-items: center;
+  gap: var(--space-2);
+  padding: var(--space-2) var(--space-3);
+  background: var(--color-surface-2);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-md);
+  box-shadow: var(--shadow-lg);
+  pointer-events: none;
+  opacity: 0;
+  transform: translateY(6px) translateX(-50%);
+  transition: opacity 0.15s ease, transform 0.15s ease;
+  white-space: nowrap;
+}
+.selection-tooltip.visible {
+  pointer-events: all;
+  opacity: 1;
+  transform: translateY(-100%) translateX(-50%);
+  margin-top: -8px;
+}
+.selection-tooltip-label {
+  font-family: var(--font-mono);
+  font-size: 9px;
+  letter-spacing: 0.15em;
+  color: var(--color-text-faint);
+  text-transform: uppercase;
+  padding-right: var(--space-2);
+  border-right: 1px solid var(--color-border);
+}
+.sel-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+  font-family: var(--font-mono);
+  font-size: 10px;
+  letter-spacing: 0.08em;
+  color: var(--color-text-muted);
+  background: transparent;
+  border: none;
+  cursor: pointer;
+  padding: 2px var(--space-2);
+  border-radius: var(--radius-sm);
+  transition: color 0.15s ease, background 0.15s ease;
+}
+.sel-btn:hover { color: var(--color-gold); background: var(--color-gold-dim); }
+
+/* ─── Reaction Bar ──────────────────────────────────────────── */
+.reaction-bar {
+  display: flex;
+  align-items: center;
+  gap: var(--space-3);
+  padding: var(--space-6);
+  background: var(--color-surface);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-md);
+  margin: var(--space-10) 0;
+  flex-wrap: wrap;
+}
+.reaction-bar-label {
+  font-family: var(--font-mono);
+  font-size: 9px;
+  letter-spacing: 0.18em;
+  color: var(--color-text-faint);
+  text-transform: uppercase;
+  margin-right: var(--space-2);
+  white-space: nowrap;
+}
+.reaction-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--space-2);
+  padding: var(--space-2) var(--space-4);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-sm);
+  background: transparent;
+  cursor: pointer;
+  transition: all var(--transition-interactive);
+  font-family: var(--font-mono);
+  font-size: 10px;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--color-text-muted);
+}
+.reaction-btn:hover:not(.reacted) {
+  border-color: var(--color-gold);
+  color: var(--color-gold);
+  background: var(--color-gold-dim);
+}
+.reaction-btn.reacted {
+  opacity: 0.5;
+  cursor: default;
+}
+.reaction-btn[data-reaction="signal"].reacted {
+  border-color: var(--color-gold);
+  color: var(--color-gold);
+  opacity: 1;
+}
+.reaction-btn.just-reacted {
+  transform: scale(1.08);
+}
+.reaction-count {
+  font-family: var(--font-mono);
+  font-size: 10px;
+  color: var(--color-text-faint);
+  min-width: 16px;
+  text-align: center;
+}
+.reaction-divider {
+  flex: 1;
+}
+
+/* ─── Table of Contents ─────────────────────────────────────── */
+.article-toc {
+  position: sticky;
+  top: calc(var(--space-20) + var(--space-4));
+  float: right;
+  width: 200px;
+  margin-left: var(--space-10);
+  margin-right: calc(-200px - var(--space-10));
+  padding: var(--space-5);
+  background: var(--color-surface);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-md);
+  max-height: 80vh;
+  overflow-y: auto;
+}
+.toc-heading {
+  font-family: var(--font-mono);
+  font-size: 9px;
+  letter-spacing: 0.18em;
+  color: var(--color-text-faint);
+  text-transform: uppercase;
+  margin-bottom: var(--space-4);
+}
+.toc-list {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-1);
+}
+.toc-link {
+  display: block;
+  font-family: var(--font-body);
+  font-size: var(--text-xs);
+  color: var(--color-text-muted);
+  text-decoration: none;
+  padding: var(--space-2) var(--space-3);
+  border-left: 2px solid transparent;
+  border-radius: 0 var(--radius-sm) var(--radius-sm) 0;
+  line-height: 1.4;
+  transition: all var(--transition-interactive);
+}
+.toc-link:hover { color: var(--color-text); border-left-color: var(--color-border); }
+.toc-link.active { color: var(--color-gold); border-left-color: var(--color-gold); background: var(--color-gold-dim); }
+
+/* ToC floated layout — only visible on wide viewports */
+@media (max-width: 1280px) {
+  .article-toc { display: none; }
+}
+
+/* ─── Pull Quote Blocks ─────────────────────────────────────── */
+.pull-quote {
+  position: relative;
+  padding: var(--space-6) var(--space-8);
+  margin: var(--space-10) 0;
+  border-left: 3px solid var(--color-gold);
+  background: linear-gradient(135deg, rgba(201,168,76,0.04) 0%, transparent 60%);
+}
+.pull-quote-text {
+  font-family: var(--font-display);
+  font-size: var(--text-lg);
+  font-style: italic;
+  color: var(--color-text);
+  line-height: 1.5;
+  margin-bottom: var(--space-4);
+}
+.pull-quote-share {
+  display: flex;
+  align-items: center;
+  gap: var(--space-2);
+}
+.pull-quote-share-label {
+  font-family: var(--font-mono);
+  font-size: 9px;
+  letter-spacing: 0.15em;
+  color: var(--color-text-faint);
+  text-transform: uppercase;
+}
+
+/* ─── Card Shimmer / Mouse-track Glow ──────────────────────── */
+.archive-card,
+.fn-card,
+.fnplus-doc,
+.property-card,
+.value-card {
+  position: relative;
+  overflow: hidden;
+}
+.archive-card::before,
+.fn-card::before,
+.fnplus-doc:not(.fnplus-doc--redacted):not(.fnplus-doc--soon)::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: radial-gradient(
+    120px circle at var(--shimmer-x, 50%) var(--shimmer-y, 50%),
+    rgba(201,168,76,0.06) 0%,
+    transparent 70%
+  );
+  opacity: 0;
+  transition: opacity 0.3s ease;
+  pointer-events: none;
+  z-index: 0;
+  border-radius: inherit;
+}
+.archive-card:hover::before,
+.fn-card:hover::before,
+.fnplus-doc:not(.fnplus-doc--redacted):not(.fnplus-doc--soon):hover::before {
+  opacity: 1;
+}
+
+/* ─── Enhanced Archive Cards ────────────────────────────────── */
+.archive-card {
+  transition: border-color var(--transition-interactive),
+              transform 0.2s ease,
+              box-shadow 0.2s ease;
+}
+.archive-card:hover {
+  border-color: rgba(201,168,76,0.5);
+  transform: translateY(-2px);
+  box-shadow: 0 8px 32px rgba(0,0,0,0.3), 0 0 0 1px rgba(201,168,76,0.1);
+}
+.archive-card--feature:hover {
+  box-shadow: 0 16px 48px rgba(0,0,0,0.4), 0 0 0 1px rgba(201,168,76,0.15);
+}
+
+/* ─── Enhanced fn-card ──────────────────────────────────────── */
+.fn-card {
+  transition: border-color var(--transition-interactive),
+              transform 0.2s ease,
+              box-shadow 0.2s ease;
+}
+.fn-card:hover {
+  border-color: rgba(201,168,76,0.45);
+  transform: translateY(-3px);
+  box-shadow: 0 12px 36px rgba(0,0,0,0.3), 0 0 0 1px rgba(201,168,76,0.08);
+}
+
+/* ─── Enhanced fnplus-doc cards ─────────────────────────────── */
+.fnplus-doc:not(.fnplus-doc--redacted):not(.fnplus-doc--soon) {
+  transition: border-color var(--transition-interactive),
+              transform 0.2s ease,
+              box-shadow 0.2s ease;
+}
+.fnplus-doc:not(.fnplus-doc--redacted):not(.fnplus-doc--soon):hover {
+  border-color: rgba(201,168,76,0.5);
+  transform: translateY(-3px);
+  box-shadow: 0 12px 32px rgba(0,0,0,0.35), 0 0 0 1px rgba(201,168,76,0.1);
+}
+
+/* ─── Hero Ambient Depth ────────────────────────────────────── */
+.hero {
+  position: relative;
+}
+.hero::after {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  height: 120px;
+  background: linear-gradient(to bottom, transparent, var(--color-bg));
+  pointer-events: none;
+}
+.hero-inner { position: relative; z-index: 1; }
+
+/* Grain texture — enhanced */
+.grain {
+  position: fixed;
+  inset: -50%;
+  width: 200%;
+  height: 200%;
+  pointer-events: none;
+  z-index: 1000;
+  opacity: 0.028;
+  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+  background-repeat: repeat;
+  background-size: 256px 256px;
+  animation: grain-drift 8s steps(1) infinite;
+  mix-blend-mode: overlay;
+}
+@keyframes grain-drift {
+  0%   { transform: translate(0,0) rotate(0deg); }
+  10%  { transform: translate(-2%,-3%) rotate(0.5deg); }
+  20%  { transform: translate(3%,1%) rotate(-0.5deg); }
+  30%  { transform: translate(-1%,4%) rotate(0.3deg); }
+  40%  { transform: translate(2%,-2%) rotate(-0.3deg); }
+  50%  { transform: translate(-3%,2%) rotate(0.4deg); }
+  60%  { transform: translate(1%,-4%) rotate(-0.2deg); }
+  70%  { transform: translate(-2%,3%) rotate(0.5deg); }
+  80%  { transform: translate(3%,-1%) rotate(-0.4deg); }
+  90%  { transform: translate(-1%,-2%) rotate(0.2deg); }
+  100% { transform: translate(0,0) rotate(0deg); }
+}
+
+/* ─── Header — gold active underline ────────────────────────── */
+.nav-links a {
+  position: relative;
+}
+.nav-links a.active::after {
+  content: '';
+  position: absolute;
+  bottom: -2px;
+  left: 0;
+  right: 0;
+  height: 1px;
+  background: var(--color-gold);
+  box-shadow: 0 0 6px rgba(201,168,76,0.5);
+}
+
+/* ─── Blockquote — enhanced ─────────────────────────────────── */
+.dispatch-inner > blockquote {
+  position: relative;
+}
+.dispatch-inner > blockquote::before {
+  content: '\201C';
+  position: absolute;
+  top: -0.4em;
+  left: var(--space-4);
+  font-family: var(--font-display);
+  font-size: 4rem;
+  color: var(--color-gold);
+  opacity: 0.3;
+  line-height: 1;
+  pointer-events: none;
+}
+
+/* ─── Scroll reveal — enhanced ──────────────────────────────── */
+.reveal {
+  opacity: 0;
+  transform: translateY(18px);
+  transition: opacity 0.55s cubic-bezier(0.16, 1, 0.3, 1),
+              transform 0.55s cubic-bezier(0.16, 1, 0.3, 1);
+}
+.reveal.visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+.fnplus-doc.reveal { transition-delay: calc(var(--card-index, 0) * 50ms); }
+
+/* ─── Gold scan line on hero image ──────────────────────────── */
+.hero-photo-wrap {
+  position: relative;
+  overflow: hidden;
+}
+.hero-photo-wrap::after {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  height: 200px;
+  background: linear-gradient(to bottom, transparent, var(--color-bg));
+  pointer-events: none;
+}
+
+/* ─── Featured quote in newsletter ──────────────────────────── */
+.issue-pull-quote {
+  padding: var(--space-8) var(--space-8) var(--space-8) var(--space-10);
+  border-left: 3px solid var(--color-gold);
+  margin: var(--space-8) 0;
+  background: linear-gradient(135deg, rgba(201,168,76,0.04), transparent);
+  border-radius: 0 var(--radius-md) var(--radius-md) 0;
+}
+.issue-pull-quote p {
+  font-family: var(--font-display);
+  font-size: var(--text-lg);
+  font-style: italic;
+  color: var(--color-text);
+  line-height: 1.5;
+  margin-bottom: 0;
+  max-width: 60ch;
+}
+
+/* ─── Tweetable quote card ───────────────────────────────────── */
+.tweet-card {
+  display: block;
+  padding: var(--space-6);
+  background: var(--color-surface);
+  border: 1px solid rgba(201,168,76,0.25);
+  border-radius: var(--radius-md);
+  margin: var(--space-8) 0;
+  text-decoration: none;
+  transition: all var(--transition-interactive);
+  cursor: pointer;
+}
+.tweet-card:hover {
+  border-color: var(--color-gold);
+  background: var(--color-surface-2);
+  transform: translateY(-1px);
+}
+.tweet-card-quote {
+  font-family: var(--font-display);
+  font-size: var(--text-base);
+  font-style: italic;
+  color: var(--color-text);
+  line-height: 1.5;
+  margin-bottom: var(--space-4);
+}
+.tweet-card-cta {
+  display: flex;
+  align-items: center;
+  gap: var(--space-2);
+  font-family: var(--font-mono);
+  font-size: 10px;
+  letter-spacing: 0.12em;
+  color: var(--color-gold);
+  text-transform: uppercase;
+}
+
+/* ─── Responsive adjustments ────────────────────────────────── */
+@media (max-width: 768px) {
+  .dispatch-share-strip { flex-wrap: wrap; }
+  .reaction-bar { gap: var(--space-2); padding: var(--space-4); }
+  .reaction-btn { padding: var(--space-2) var(--space-3); }
+  .selection-tooltip { display: none; }
+}
+
+/* fnplus-doc share on hover */
+.fnplus-doc:hover .fnplus-doc-share,
+.fnplus-doc:focus-within .fnplus-doc-share {
+  opacity: 1 !important;
+}
+
+/* ─── Reaction bar sub-elements ──────────────────────────── */
+.reaction-buttons {
+  display: flex;
+  align-items: center;
+  gap: var(--space-2);
+  flex-wrap: wrap;
+}
+.reaction-icon {
+  font-size: 12px;
+  line-height: 1;
+}
+.reaction-name {
+  font-family: var(--font-mono);
+  font-size: 9px;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+}
+.reaction-share-strip {
+  display: flex;
+  align-items: center;
+  gap: var(--space-2);
+  margin-left: auto;
+}
+.share-strip-label {
+  font-family: var(--font-mono);
+  font-size: 9px;
+  letter-spacing: 0.15em;
+  color: var(--color-text-faint);
+  text-transform: uppercase;
+  white-space: nowrap;
+}
+
+/* ─── dispatch-share-strip layout ──────────────────────── */
+.dispatch-share-strip {
+  max-width: 72rem;
+  margin-left: auto;
+  margin-right: auto;
+  padding-left: var(--space-8);
+  padding-right: var(--space-8);
+}
+
+/* ─── hero-photo mobile fix ──────────────────────────────── */
+@media (max-width: 768px) {
+  .hero-photo-wrap { max-height: 60vw; overflow: hidden; }
+  .hero-photo { width: 100%; height: 100%; object-fit: cover; }
+}
