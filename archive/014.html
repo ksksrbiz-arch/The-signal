@@ -23,6 +23,7 @@
 <meta property="og:title" content="THE SIGNAL — Weekly Transmission №014">
 <meta property="og:description" content="The Signal Expands. The platform becomes the story.">
 <meta property="og:type" content="article">
+<meta property="og:image" content="./week14-hero.jpg">
 
 <!-- Fonts -->
 <link href="https://api.fontshare.com/v2/css?f[]=zodiak@400,500,600,700&f[]=general-sans@300,400,500,600&display=swap" rel="stylesheet">
@@ -32,6 +33,29 @@
 
 <link rel="stylesheet" href="../base.css">
 <link rel="stylesheet" href="../style.css">
+
+<style>
+  .hero-photo {
+    width: 100%;
+    max-height: 540px;
+    object-fit: cover;
+    object-position: center 35%;
+    display: block;
+    filter: brightness(0.85) contrast(1.05);
+  }
+  .hero-photo-wrap {
+    position: relative;
+    overflow: hidden;
+    border-bottom: 1px solid rgba(201,168,76,0.15);
+  }
+  .hero-photo-wrap::after {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(to bottom, transparent 50%, var(--color-bg, #0c0b09) 100%);
+    pointer-events: none;
+  }
+</style>
 </head>
 <body>
 
@@ -88,6 +112,16 @@
 
   <main>
 
+    <!-- Hero Photo -->
+    <div class="hero-photo-wrap">
+      <img
+        src="./week14-hero.jpg"
+        alt="Rain-soaked signal tower under a storm sky, amber light, dark editorial"
+        class="hero-photo"
+        loading="eager"
+      >
+    </div>
+
     <!-- Hero -->
     <section class="hero">
       <div class="hero-inner">
@@ -112,18 +146,18 @@
       <div class="status-inner">
         <div class="status-item">
           <span class="status-label">STACK UPTIME</span>
-          <span class="status-value">[YOUR DATA]</span>
-          <span class="status-detail">[YOUR DETAIL]</span>
+          <span class="status-value gold">100%</span>
+          <span class="status-detail">GCP · Cloud Run</span>
         </div>
         <div class="status-item">
           <span class="status-label">WORKFLOWS</span>
-          <span class="status-value">[YOUR DATA]</span>
-          <span class="status-detail">[YOUR DETAIL]</span>
+          <span class="status-value gold">Active</span>
+          <span class="status-detail">n8n · self-hosted</span>
         </div>
         <div class="status-item">
           <span class="status-label">AUTOMATIONS</span>
-          <span class="status-value">[YOUR DATA]</span>
-          <span class="status-detail">[YOUR DETAIL]</span>
+          <span class="status-value gold">Live</span>
+          <span class="status-detail">MailerLite · 3 groups</span>
         </div>
         <div class="status-item">
           <span class="status-label">THE SIGNAL</span>
@@ -131,14 +165,14 @@
           <span class="status-detail">Multi-page live</span>
         </div>
         <div class="status-item">
-          <span class="status-label">INKVAULT</span>
-          <span class="status-value gold">[COUNT]</span>
-          <span class="status-detail">&nbsp;</span>
+          <span class="status-label">GIGAS</span>
+          <span class="status-value gold">MVP</span>
+          <span class="status-detail">Phase 1 shipped</span>
         </div>
         <div class="status-item">
-          <span class="status-label">REVENUE</span>
-          <span class="status-value gold">[STATUS]</span>
-          <span class="status-detail">&nbsp;</span>
+          <span class="status-label">UNIFYONE</span>
+          <span class="status-value gold">Live</span>
+          <span class="status-detail">1commerce.shop</span>
         </div>
       </div>
     </section>
@@ -151,11 +185,12 @@
           <span class="section-label">FOUNDATION</span>
         </div>
         <div class="dispatch-header">
-          <span class="mono-label accent-text">// LEAD DISPATCH · [YOUR DATE]</span>
+          <span class="mono-label accent-text">// LEAD DISPATCH · FRIDAY 28 MAR</span>
         </div>
         <div class="dispatch-body">
-          <p class="lead-text">[YOUR CONTENT HERE — Write the opening lead dispatch for this week. What is the central theme? What happened at the infrastructure level? This should be the emotional and operational tone-setter for the entire transmission.]</p>
-          <p>[YOUR CONTENT HERE — Additional context, reflection, or detail about the foundation layer this week. What systems held? What needed attention?]</p>
+          <p class="lead-text">There is a point in any serious build where the infrastructure starts to outpace the original vision. That happened this week. What began as a single-page newsletter — a PDF rendered on screen — is now a five-page editorial platform with a full archive, an about page, a pricing grid, a mobile nav, dark and light mode, and a deployable design system. The medium became the message before I even finished writing it.</p>
+          <p>The Signal was supposed to document the cathedral. This week, The Signal became part of it. That is not a distraction. That is the Cathedral Principle operating exactly as intended: every stone laid creates surface area for more stone. The newsletter platform is now a product in its own right — a destination, not a delivery mechanism. And it runs on Netlify, deploys from GitHub, and costs nothing to operate.</p>
+          <p>Stack is clean. GCP and Cloud Run holding at 100% uptime. n8n workflows processing without interruption. MailerLite segmentation active across three subscriber groups. No fires this week. That is not nothing. That is a foundation doing its job.</p>
         </div>
       </div>
     </article>
@@ -165,9 +200,9 @@
       <div class="quote-inner">
         <div class="quote-mark" aria-hidden="true">//</div>
         <blockquote>
-          <p>[YOUR QUOTE HERE — A reflection, internal log entry, or philosophical observation from the week. Keep it sharp.]</p>
+          <p>You don't need permission to build the thing. You needed it six months ago and didn't get it anyway. Look where that left you. Look where this leaves you.</p>
         </blockquote>
-        <cite class="mono-label dim">— [YOUR ATTRIBUTION] · [DATE]</cite>
+        <cite class="mono-label dim">— INTERNAL LOG · TUESDAY 31 MAR</cite>
       </div>
     </section>
 
@@ -181,26 +216,26 @@
 
         <div class="dispatch-entry">
           <div class="dispatch-header">
-            <span class="mono-label accent-text">// [CATEGORY] · [DAY/DATE]</span>
+            <span class="mono-label accent-text">// STOREFRONT · THURSDAY 27 MAR</span>
           </div>
-          <h2>[YOUR HEADLINE HERE]</h2>
-          <p>[YOUR CONTENT HERE — What happened on the revenue front? Cold outreach results? Client movements? Offer performance? First transactions?]</p>
+          <h2>UnifyOne Goes Live on 1Commerce.shop</h2>
+          <p>The storefront is live. UnifyOne — the commerce hub concept — is operational on 1commerce.shop, running the first active collection: Home Decor, anchored by a retro lamp air humidifier that doubles as a USB aroma diffuser. $39.99. That is not a vanity product. That is a proof-of-commerce transaction. The machine is warm. The first receipts are the hardest to generate and the most important to celebrate briefly before moving on.</p>
         </div>
 
         <div class="dispatch-entry">
           <div class="dispatch-header">
-            <span class="mono-label accent-text">// [CATEGORY] · [DAY/DATE]</span>
+            <span class="mono-label accent-text">// LEGAL INFRASTRUCTURE · SATURDAY 29 MAR</span>
           </div>
-          <h2>[YOUR HEADLINE HERE]</h2>
-          <p>[YOUR CONTENT HERE — Second revenue dispatch of the week. Another angle on revenue activation.]</p>
+          <h2>Policies Written. Legal Layer Complete.</h2>
+          <p>Privacy Policy and Return/Refund Policy finalized and deployed across 1Commerce properties. This is not glamorous work. It is also not optional. Every serious commerce operation has a legal layer, and every solo founder who skips it eventually pays for the gap. The policies are written for 1Commerce LLC, 25950 S HWY 170, Canby, OR 97013. They cover SaaS, digital goods, and physical product lines. Foundation stone. Invisible. Load-bearing.</p>
         </div>
 
         <div class="dispatch-entry">
           <div class="dispatch-header">
-            <span class="mono-label accent-text">// [CATEGORY] · [DAY/DATE]</span>
+            <span class="mono-label accent-text">// MARKETPLACE EXPANSION · ONGOING</span>
           </div>
-          <h2>[YOUR HEADLINE HERE]</h2>
-          <p>[YOUR CONTENT HERE — Third revenue dispatch. Pipeline updates, proposals, conversions.]</p>
+          <h2>Amazon + Walmart Integration Architecture Drafted</h2>
+          <p>The multi-channel architecture is on the board. UnifyOne as the canonical SKU hub, Amazon SP-API feeding FBA/MCF as the fulfillment engine, Walmart Marketplace API routing orders back through the same stack. The design is sound: one source of truth for pricing and inventory, two major channels, one unified operations layer. This is Phase II territory — the lights-on work. Architecture is drafted. Integration is next sprint's objective.</p>
         </div>
       </div>
     </article>
@@ -214,27 +249,28 @@
         </div>
 
         <div class="dispatch-header">
-          <span class="mono-label accent-text">// INFRASTRUCTURE DISPATCH · ONGOING</span>
+          <span class="mono-label accent-text">// INFRASTRUCTURE DISPATCH · WEEK OF 27 MAR</span>
         </div>
 
         <div class="dispatch-feature">
-          <h2 class="feature-title">[YOUR FEATURE HEADLINE — The Big Story This Week]</h2>
-          <p class="feature-drop-cap">[YOUR CONTENT HERE — This is the main feature article for the systems section. The Signal platform itself becoming a multi-page editorial experience could be the story this week. The meta-narrative of building the newsletter platform that delivers the newsletter. What does it mean when the medium becomes the message?]</p>
+          <h2 class="feature-title">When the Newsletter Becomes the Product</h2>
+          <p class="feature-drop-cap">The meta-story of this week is the platform itself. The Signal was born as a PDF. It became a single-page HTML document styled like a terminal. This week it became a full editorial publication: five pages, a design system, a live archive, an operating philosophy hub, a pricing grid for consulting services, and a mobile-responsive dark-gothic aesthetic that frankly most actual media companies cannot pull off. It deployed to Netlify from GitHub in under three minutes. It costs $0 to operate. Every word on it is real. Every number is mine.</p>
+          <p>That matters because the medium carries the message about what 1Commerce is building. This is not a founder blog. This is a transmission — a weekly operational record from someone who is building in the dark and documenting the light coming on. The platform needed to feel that way. Now it does.</p>
         </div>
 
         <!-- Sub-entries -->
         <div class="sub-entries">
           <div class="sub-entry">
-            <h3>[YOUR SUBHEAD HERE]</h3>
-            <p>[YOUR CONTENT HERE — A specific system, tool, or infrastructure update from the week.]</p>
+            <h3>GigOS Phase 1: MVP Shipped</h3>
+            <p>GigOS — the gig work command center — completed Phase 1 this week. Real-time KPI dashboard, drag-and-drop Kanban pipeline (seven columns, new request to final follow-up), customer management, job views with mapping, service templates. Navy, teal, and gold. Full dark mode. Mobile responsive. Built in under a week on a broken laptop using AI agents that outperform anything you've seen in a chatbot app. Phase 2 is the Integration Hub: Housecall Pro, Fiverr, Google Calendar, payment processors, live webhook tracking.</p>
           </div>
           <div class="sub-entry">
-            <h3>[YOUR SUBHEAD HERE]</h3>
-            <p>[YOUR CONTENT HERE — Another systems update. DNS, deployments, workflow automations, stack changes.]</p>
+            <h3>Competitive Intelligence: The 90-Day Battle Plan</h3>
+            <p>The CI operation is active. Eric Kasper's 1-Commerce.com trademark filing (Serial 99201124) was finally refused as of February 8, 2026. The Abbadai Group's claim is in monitoring. A 90-day competitive domination strategy is now formalized — documented, tracked in Asana, hub in Notion. The name belongs to 1Commerce LLC. The trademark landscape is being navigated with precision, not panic. This is positioning work, not defensive work. There is a difference.</p>
           </div>
           <div class="sub-entry">
-            <h3>[YOUR SUBHEAD HERE]</h3>
-            <p>[YOUR CONTENT HERE — A third systems note. What got wired? What got decommissioned?]</p>
+            <h3>MailerLite Segmentation + GitHub Deployment Pipeline</h3>
+            <p>Subscriber segmentation is live across three groups in MailerLite. The GitHub → Netlify deployment pipeline is automatic: commit to main, Netlify builds, site updates in seconds. No manual deploys. No FTP. No ceremony. This is what operational excellence looks like at the solo-founder level — systems that run without you standing over them.</p>
           </div>
         </div>
       </div>
@@ -245,9 +281,9 @@
       <div class="quote-inner">
         <div class="quote-mark" aria-hidden="true">//</div>
         <blockquote>
-          <p>[YOUR QUOTE HERE — A Cathedral Principle observation. Something about building, patience, precision.]</p>
+          <p>The cathedral does not announce itself. It just keeps adding stone until the day someone looks up and realizes they are standing inside something that will outlast everyone who built it.</p>
         </blockquote>
-        <cite class="mono-label dim">— THE CATHEDRAL PRINCIPLE · [PHASE]</cite>
+        <cite class="mono-label dim">— THE CATHEDRAL PRINCIPLE · PHASE II</cite>
       </div>
       <div class="furnace-label">
         <span class="mono-label gold-text">◈ THE FURNACE ◈</span>
@@ -267,32 +303,32 @@
         </div>
 
         <div class="dispatch-feature">
-          <h2 class="feature-title">[YOUR FORWARD-LOOKING HEADLINE]</h2>
-          <p>[YOUR CONTENT HERE — What's coming next week? What's on the horizon? What coordinates are you navigating toward? This section is about momentum and trajectory.]</p>
-          <p>[YOUR CONTENT HERE — Additional forward-looking thoughts. The Cathedral Principle in action.]</p>
+          <h2 class="feature-title">The Congregation Grows. The Architecture Must Meet It.</h2>
+          <p>The Signal platform is live. The storefront is live. The legal layer is complete. GigOS Phase 1 is shipped. The competitive intelligence operation is running. This is the end of laying foundation in the dark. What comes next is activation — not frantic growth, but deliberate, measurable expansion along coordinates that are already set.</p>
+          <p>Week 15 targets: GigOS Phase 2 integration work begins. Amazon SP-API connection to UnifyOne moves from architecture to implementation. The Signal subscriber list gets its first outbound push to drive the archive. The Operating Excellence Bundle moves from the about page into an actual sales funnel with a landing page, checkout flow, and email sequence. One product, one funnel, one test.</p>
         </div>
 
         <div class="sub-entries">
           <div class="sub-entry">
             <div class="dispatch-header">
-              <span class="mono-label accent-text">// [CATEGORY] · [TIMEFRAME]</span>
+              <span class="mono-label accent-text">// PRODUCT · WEEK 15</span>
             </div>
-            <h3>[YOUR SUBHEAD HERE]</h3>
-            <p>[YOUR CONTENT HERE — A specific forward-looking project or goal.]</p>
+            <h3>GigOS Phase 2: Integration Hub</h3>
+            <p>The MVP proved the concept. Phase 2 proves it can operate at scale without the founder in the loop. Housecall Pro, Fiverr, Google Calendar, and payment processor connections go into active development. Webhook tracking and backend automation complete the loop. GigOS becomes a product when a gig worker can onboard and have their entire operation synced in under five minutes.</p>
           </div>
           <div class="sub-entry">
             <div class="dispatch-header">
-              <span class="mono-label accent-text">// [CATEGORY] · [TIMEFRAME]</span>
+              <span class="mono-label accent-text">// REVENUE · WEEK 15–16</span>
             </div>
-            <h3>[YOUR SUBHEAD HERE]</h3>
-            <p>[YOUR CONTENT HERE — Another future-facing dispatch.]</p>
+            <h3>Operating Excellence Bundle: Funnel Launch</h3>
+            <p>The pricing is set ($29 / $49 / $99). The offer is written. The about page carries it. Now it needs a dedicated landing page, a checkout flow, and a three-email welcome sequence that converts subscribers into buyers. This is the first direct revenue test against the audience The Signal is building. The numbers will be reported in Transmission №015, unvarnished.</p>
           </div>
           <div class="sub-entry">
             <div class="dispatch-header">
-              <span class="mono-label accent-text">// [CATEGORY] · [TIMEFRAME]</span>
+              <span class="mono-label accent-text">// PLATFORM · ONGOING</span>
             </div>
-            <h3>[YOUR SUBHEAD HERE]</h3>
-            <p>[YOUR CONTENT HERE — Creative, personal, or parallel track update.]</p>
+            <h3>InkVault: Count Climbs Past 230</h3>
+            <p>InkVault continues to grow. The catalog is past 230 tattoo flash designs. The marketplace architecture is holding. The Furnace Project — the glass-arts marketplace concept — is still warming in the back of the mind, exactly where it belongs until the active revenue layer can support it. Every cathedral has a wing that isn't built yet. That is not failure. That is phase management.</p>
           </div>
         </div>
       </div>
@@ -303,7 +339,7 @@
       <div class="quote-inner">
         <div class="quote-mark" aria-hidden="true">//</div>
         <blockquote>
-          <p>[YOUR CLOSING QUOTE — The final word. Make it land.]</p>
+          <p>The signal is louder this week than last. That is the only metric that matters right now.</p>
         </blockquote>
         <cite class="mono-label dim">— THE SIGNAL · TRANSMISSION №014</cite>
       </div>
