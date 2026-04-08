@@ -415,16 +415,14 @@
   <script>
     // News Aggregator Configuration
     const NEWS_CONFIG = {
-      // Using NewsAPI.org - free tier allows 100 requests per day
-      // For production, consider upgrading or using alternative APIs
-      apiEndpoint: 'https://newsapi.org/v2/everything',
-      // Note: API key should be kept secure in production (use backend proxy)
-      // This is a demonstration - in production, use environment variables
+      // Secure backend endpoint via Cloudflare Pages Functions
+      // API key is stored securely in Cloudflare environment variables
+      apiEndpoint: '/api/news',
       categories: {
-        technology: ['technology', 'software', 'AI', 'cloud computing'],
-        business: ['business', 'commerce', 'startup', 'entrepreneurship'],
-        startup: ['startup', 'venture capital', 'funding'],
-        web: ['web services', 'SaaS', 'platform', 'infrastructure']
+        technology: 'technology software AI cloud computing',
+        business: 'business commerce startup entrepreneurship',
+        startup: 'startup venture capital funding',
+        web: 'web services SaaS platform infrastructure'
       }
     };
 
@@ -458,30 +456,27 @@
       filterAndDisplayNews();
     });
 
-    // Fetch news from NewsAPI
+    // Fetch news from secure backend
     async function fetchNews() {
       try {
-        const keywords = NEWS_CONFIG.categories[currentFilters.category].join(' OR ');
+        const keywords = NEWS_CONFIG.categories[currentFilters.category];
         
-        // Using a public demo - in production, use a backend proxy
-        const url = `${NEWS_CONFIG.apiEndpoint}?q=${encodeURIComponent(keywords)}&sortBy=${currentFilters.sortBy}&language=en&pageSize=50`;
+        // Call the secure Cloudflare Pages Function
+        const url = `${NEWS_CONFIG.apiEndpoint}?q=${encodeURIComponent(keywords)}&sortBy=${currentFilters.sortBy}&pageSize=50`;
         
-        // Note: This uses a CORS proxy for demonstration
-        // In production, implement a backend endpoint
-        const response = await fetch(`https://api.allorigins.win/get?url=${encodeURIComponent(url)}`);
+        const response = await fetch(url);
         
         if (!response.ok) {
-          throw new Error('Failed to fetch news');
+          throw new Error(`HTTP error! status: ${response.status}`);
         }
 
         const data = await response.json();
-        const parsedData = JSON.parse(data.contents);
 
-        if (parsedData.status === 'ok') {
-          newsCache = parsedData.articles || [];
+        if (data.status === 'ok') {
+          newsCache = data.articles || [];
           filterAndDisplayNews();
         } else {
-          showError('Unable to load news at this time. Please try again later.');
+          showError(data.error || 'Unable to load news at this time. Please try again later.');
         }
       } catch (error) {
         console.error('Error fetching news:', error);
