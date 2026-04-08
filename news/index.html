@@ -1,0 +1,550 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="dark">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>News Aggregator — THE SIGNAL | Web Services News</title>
+<meta name="description" content="Torque-d_tm_Affiliatiations-Web-Services News. Real-time aggregated news from technology, commerce, and infrastructure sources.">
+<meta property="og:title" content="News Aggregator — Web Services News">
+<meta property="og:description" content="Real-time aggregated news from technology, commerce, and infrastructure sources.">
+<meta property="og:type" content="website">
+<link rel="canonical" href="https://signal01.netlify.app/news/">
+<meta property="og:url" content="https://signal01.netlify.app/news/">
+<link href="https://api.fontshare.com/v2/css?f[]=zodiak@400,500,600,700&f[]=general-sans@300,400,500,600&display=swap" rel="stylesheet">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@300;400;500&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../base.css">
+<link rel="stylesheet" href="../style.css">
+<style>
+/* ============================================================
+   NEWS AGGREGATOR PAGE
+   ============================================================ */
+.news-hero {
+  padding: clamp(var(--space-16), 8vw, var(--space-24)) var(--space-6) var(--space-12);
+  border-bottom: 1px solid var(--color-divider);
+  position: relative;
+  overflow: hidden;
+}
+.news-hero-inner {
+  max-width: var(--content-default);
+  margin: 0 auto;
+}
+.news-hero-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--space-2);
+  font-family: var(--font-mono);
+  font-size: var(--text-xs);
+  letter-spacing: 0.15em;
+  color: var(--color-gold);
+  text-transform: uppercase;
+  margin-bottom: var(--space-5);
+}
+.news-hero-badge::before {
+  content: '';
+  display: inline-block;
+  width: 6px;
+  height: 6px;
+  background: var(--color-gold);
+  border-radius: 50%;
+  animation: pulse-dot 2s ease-in-out infinite;
+}
+@keyframes pulse-dot {
+  0%, 100% { opacity: 1; transform: scale(1); }
+  50% { opacity: 0.4; transform: scale(0.7); }
+}
+.news-hero-title {
+  font-family: var(--font-display);
+  font-size: clamp(2.4rem, 5vw, 3.6rem);
+  font-weight: 600;
+  line-height: 1.1;
+  color: var(--color-text);
+  margin-bottom: var(--space-5);
+}
+.news-hero-sub {
+  font-family: var(--font-body);
+  font-size: var(--text-base);
+  color: var(--color-text-muted);
+  line-height: 1.7;
+  max-width: 60ch;
+}
+/* News Section */
+.news-section {
+  max-width: var(--content-default);
+  margin: 0 auto;
+  padding: var(--space-12) var(--space-6);
+}
+.news-section-title {
+  font-family: var(--font-display);
+  font-size: var(--text-2xl);
+  font-weight: 600;
+  color: var(--color-text);
+  margin-bottom: var(--space-8);
+  padding-bottom: var(--space-6);
+  border-bottom: 1px solid var(--color-divider);
+}
+/* Filter Controls */
+.news-filters {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--space-4);
+  margin-bottom: var(--space-8);
+  padding: var(--space-6);
+  background: var(--color-surface);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-md);
+}
+.filter-group {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-2);
+}
+.filter-label {
+  font-family: var(--font-mono);
+  font-size: var(--text-xs);
+  letter-spacing: 0.1em;
+  color: var(--color-text-muted);
+  text-transform: uppercase;
+}
+.filter-input {
+  padding: var(--space-3) var(--space-4);
+  background: var(--color-bg);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-sm);
+  color: var(--color-text);
+  font-family: var(--font-body);
+  font-size: var(--text-sm);
+  transition: border-color var(--transition-interactive);
+}
+.filter-input:focus {
+  outline: none;
+  border-color: var(--color-gold);
+}
+.filter-select {
+  padding: var(--space-3) var(--space-4);
+  background: var(--color-bg);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-sm);
+  color: var(--color-text);
+  font-family: var(--font-body);
+  font-size: var(--text-sm);
+  cursor: pointer;
+  transition: border-color var(--transition-interactive);
+}
+.filter-select:focus {
+  outline: none;
+  border-color: var(--color-gold);
+}
+.filter-select option {
+  background: var(--color-surface);
+  color: var(--color-text);
+}
+/* News Grid */
+.news-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(340px, 1fr));
+  gap: var(--space-6);
+  margin-bottom: var(--space-12);
+}
+.news-card {
+  display: flex;
+  flex-direction: column;
+  padding: var(--space-6);
+  background: var(--color-surface);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-md);
+  transition: all var(--transition-interactive);
+  text-decoration: none;
+  color: inherit;
+  position: relative;
+  overflow: hidden;
+}
+.news-card::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 2px;
+  background: linear-gradient(90deg, var(--color-gold), transparent);
+  opacity: 0;
+  transition: opacity var(--transition-interactive);
+}
+.news-card:hover {
+  border-color: var(--color-gold);
+  background: var(--color-surface-2);
+  transform: translateY(-2px);
+}
+.news-card:hover::before {
+  opacity: 1;
+}
+.news-card-image {
+  width: 100%;
+  height: 180px;
+  object-fit: cover;
+  border-radius: var(--radius-sm);
+  margin-bottom: var(--space-4);
+  background: var(--color-bg);
+}
+.news-card-source {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--space-2);
+  font-family: var(--font-mono);
+  font-size: var(--text-xs);
+  letter-spacing: 0.1em;
+  color: var(--color-gold);
+  text-transform: uppercase;
+  margin-bottom: var(--space-3);
+  width: fit-content;
+}
+.news-card-title {
+  font-family: var(--font-display);
+  font-size: var(--text-lg);
+  font-weight: 600;
+  color: var(--color-text);
+  margin-bottom: var(--space-3);
+  line-height: 1.3;
+  display: -webkit-box;
+  -webkit-line-clamp: 3;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+}
+.news-card-desc {
+  font-family: var(--font-body);
+  font-size: var(--text-sm);
+  color: var(--color-text-muted);
+  line-height: 1.6;
+  margin-bottom: var(--space-6);
+  flex-grow: 1;
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+}
+.news-card-meta {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-3);
+  padding-top: var(--space-6);
+  border-top: 1px solid var(--color-divider);
+}
+.news-card-date {
+  font-family: var(--font-mono);
+  font-size: var(--text-xs);
+  color: var(--color-text-muted);
+  letter-spacing: 0.05em;
+}
+.news-card-link {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--space-2);
+  font-family: var(--font-mono);
+  font-size: var(--text-xs);
+  letter-spacing: 0.1em;
+  color: var(--color-gold);
+  text-transform: uppercase;
+  text-decoration: none;
+  transition: gap var(--transition-interactive);
+}
+.news-card-link:hover {
+  gap: var(--space-3);
+}
+.news-card-link::after {
+  content: '→';
+  display: inline-block;
+}
+/* Loading State */
+.news-loading {
+  text-align: center;
+  padding: var(--space-12);
+  color: var(--color-text-muted);
+}
+.news-loading-spinner {
+  display: inline-block;
+  width: 40px;
+  height: 40px;
+  border: 2px solid var(--color-border);
+  border-top-color: var(--color-gold);
+  border-radius: 50%;
+  animation: spin 1s linear infinite;
+  margin-bottom: var(--space-4);
+}
+@keyframes spin {
+  to { transform: rotate(360deg); }
+}
+/* Error State */
+.news-error {
+  padding: var(--space-8);
+  background: rgba(220, 38, 38, 0.1);
+  border: 1px solid rgba(220, 38, 38, 0.3);
+  border-radius: var(--radius-md);
+  color: var(--color-text);
+  text-align: center;
+}
+/* Responsive */
+@media (max-width: 768px) {
+  .news-grid {
+    grid-template-columns: 1fr;
+  }
+  .news-hero-title {
+    font-size: 2rem;
+  }
+  .news-filters {
+    flex-direction: column;
+  }
+  .filter-group {
+    width: 100%;
+  }
+}
+</style>
+</head>
+<body>
+  <!-- Ambient grain overlay -->
+  <div class="grain" aria-hidden="true"></div>
+  <!-- Mobile Nav Overlay -->
+  <div class="mobile-nav" aria-label="Mobile navigation">
+    <button class="mobile-nav-close" aria-label="Close menu">
+      <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 6L6 18M6 6l12 12"/></svg>
+    </button>
+    <a href="../">Home</a>
+    <a href="../archive/">Archive</a>
+    <a href="../fieldnotes/">Fieldnotes+</a>
+    <a href="../builds/">Verified Builds</a>
+    <a href="../news/">News Aggregator</a>
+    <a href="../about/">About</a>
+    <a href="#subscribe">Subscribe</a>
+  </div>
+  <!-- Header -->
+  <header class="site-header">
+    <div class="header-inner">
+      <div class="header-left">
+        <a href="../">
+          <svg class="logo" viewBox="0 0 32 32" width="28" height="28" fill="none" aria-label="The Signal logo">
+            <rect x="2" y="2" width="28" height="28" rx="2" stroke="currentColor" stroke-width="1.5" opacity="0.3"/>
+            <line x1="16" y1="6" x2="16" y2="26" stroke="currentColor" stroke-width="1.5"/>
+            <line x1="10" y1="9" x2="10" y2="23" stroke="currentColor" stroke-width="1" opacity="0.5"/>
+            <line x1="22" y1="9" x2="22" y2="23" stroke="currentColor" stroke-width="1" opacity="0.5"/>
+            <circle cx="16" cy="16" r="3" stroke="currentColor" stroke-width="1.5" fill="none"/>
+            <circle cx="16" cy="16" r="1" fill="currentColor"/>
+            <line x1="6" y1="16" x2="13" y2="16" stroke="currentColor" stroke-width="0.75" opacity="0.4"/>
+            <line x1="19" y1="16" x2="26" y2="16" stroke="currentColor" stroke-width="0.75" opacity="0.4"/>
+          </svg>
+          <span class="header-title">THE SIGNAL</span>
+        </a>
+      </div>
+      <div class="header-right">
+        <nav>
+          <ul class="nav-links">
+            <li><a href="../">Home</a></li>
+            <li><a href="../archive/">Archive</a></li>
+            <li><a href="../fieldnotes/">Fieldnotes+</a></li>
+            <li><a href="../builds/">Verified Builds</a></li>
+            <li><a href="./" class="active">News Aggregator</a></li>
+            <li><a href="../about/">About</a></li>
+            <li><a href="#subscribe">Subscribe</a></li>
+          </ul>
+        </nav>
+        <button class="nav-toggle" aria-label="Open menu">
+          <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 12h18M3 6h18M3 18h18"/></svg>
+        </button>
+        <button data-theme-toggle aria-label="Switch to light mode">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="5"/><path d="M12 1v2M12 21v2M4.22 4.22l1.42 1.42M18.36 18.36l1.42 1.42M1 12h2M21 12h2M4.22 19.78l1.42-1.42M18.36 5.64l1.42-1.42"/></svg>
+        </button>
+      </div>
+    </div>
+  </header>
+  <main>
+    <!-- Hero -->
+    <section class="news-hero">
+      <div class="news-hero-inner">
+        <div class="news-hero-badge">◈ WEB SERVICES NEWS ◈</div>
+        <h1 class="news-hero-title">News Aggregator</h1>
+        <p class="news-hero-sub">Real-time aggregated news from technology, commerce, and infrastructure sources. Curated updates on web services, platforms, and industry developments.</p>
+      </div>
+    </section>
+    <!-- News Content -->
+    <section class="news-section">
+      <h2 class="news-section-title">Latest Updates</h2>
+      
+      <!-- Filter Controls -->
+      <div class="news-filters">
+        <div class="filter-group">
+          <label class="filter-label">Search</label>
+          <input type="text" id="searchInput" class="filter-input" placeholder="Search news...">
+        </div>
+        <div class="filter-group">
+          <label class="filter-label">Category</label>
+          <select id="categorySelect" class="filter-select">
+            <option value="technology">Technology</option>
+            <option value="business">Business</option>
+            <option value="startup">Startup</option>
+            <option value="web">Web Services</option>
+          </select>
+        </div>
+        <div class="filter-group">
+          <label class="filter-label">Sort By</label>
+          <select id="sortSelect" class="filter-select">
+            <option value="publishedAt">Latest</option>
+            <option value="popularity">Popular</option>
+            <option value="relevancy">Relevant</option>
+          </select>
+        </div>
+      </div>
+
+      <!-- News Grid -->
+      <div id="newsGrid" class="news-grid">
+        <div class="news-loading">
+          <div class="news-loading-spinner"></div>
+          <p>Loading news...</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="site-footer">
+      <div class="footer-inner">
+        <p class="footer-text">If the signal resonates, the architecture is available.</p>
+        <p class="footer-meta">THE SIGNAL — A weekly transmission from 1Commerce LLC, Canby, Oregon.</p>
+      </div>
+    </footer>
+  </main>
+
+  <script src="../app.js"></script>
+  <script>
+    // News Aggregator Configuration
+    const NEWS_CONFIG = {
+      // Using NewsAPI.org - free tier allows 100 requests per day
+      // For production, consider upgrading or using alternative APIs
+      apiEndpoint: 'https://newsapi.org/v2/everything',
+      // Note: API key should be kept secure in production (use backend proxy)
+      // This is a demonstration - in production, use environment variables
+      categories: {
+        technology: ['technology', 'software', 'AI', 'cloud computing'],
+        business: ['business', 'commerce', 'startup', 'entrepreneurship'],
+        startup: ['startup', 'venture capital', 'funding'],
+        web: ['web services', 'SaaS', 'platform', 'infrastructure']
+      }
+    };
+
+    // State management
+    let newsCache = [];
+    let currentFilters = {
+      search: '',
+      category: 'technology',
+      sortBy: 'publishedAt'
+    };
+
+    // DOM Elements
+    const newsGrid = document.getElementById('newsGrid');
+    const searchInput = document.getElementById('searchInput');
+    const categorySelect = document.getElementById('categorySelect');
+    const sortSelect = document.getElementById('sortSelect');
+
+    // Event Listeners
+    searchInput.addEventListener('input', (e) => {
+      currentFilters.search = e.target.value;
+      filterAndDisplayNews();
+    });
+
+    categorySelect.addEventListener('change', (e) => {
+      currentFilters.category = e.target.value;
+      filterAndDisplayNews();
+    });
+
+    sortSelect.addEventListener('change', (e) => {
+      currentFilters.sortBy = e.target.value;
+      filterAndDisplayNews();
+    });
+
+    // Fetch news from NewsAPI
+    async function fetchNews() {
+      try {
+        const keywords = NEWS_CONFIG.categories[currentFilters.category].join(' OR ');
+        
+        // Using a public demo - in production, use a backend proxy
+        const url = `${NEWS_CONFIG.apiEndpoint}?q=${encodeURIComponent(keywords)}&sortBy=${currentFilters.sortBy}&language=en&pageSize=50`;
+        
+        // Note: This uses a CORS proxy for demonstration
+        // In production, implement a backend endpoint
+        const response = await fetch(`https://api.allorigins.win/get?url=${encodeURIComponent(url)}`);
+        
+        if (!response.ok) {
+          throw new Error('Failed to fetch news');
+        }
+
+        const data = await response.json();
+        const parsedData = JSON.parse(data.contents);
+
+        if (parsedData.status === 'ok') {
+          newsCache = parsedData.articles || [];
+          filterAndDisplayNews();
+        } else {
+          showError('Unable to load news at this time. Please try again later.');
+        }
+      } catch (error) {
+        console.error('Error fetching news:', error);
+        showError('Failed to load news. Please check your connection and try again.');
+      }
+    }
+
+    // Filter and display news
+    function filterAndDisplayNews() {
+      let filtered = newsCache;
+
+      // Apply search filter
+      if (currentFilters.search) {
+        const searchTerm = currentFilters.search.toLowerCase();
+        filtered = filtered.filter(article =>
+          article.title.toLowerCase().includes(searchTerm) ||
+          article.description?.toLowerCase().includes(searchTerm)
+        );
+      }
+
+      // Sort
+      if (currentFilters.sortBy === 'popularity') {
+        // Sort by source popularity (simulated)
+        filtered.sort((a, b) => (b.source?.name || '').localeCompare(a.source?.name || ''));
+      } else if (currentFilters.sortBy === 'publishedAt') {
+        filtered.sort((a, b) => new Date(b.publishedAt) - new Date(a.publishedAt));
+      }
+
+      displayNews(filtered);
+    }
+
+    // Display news articles
+    function displayNews(articles) {
+      if (articles.length === 0) {
+        newsGrid.innerHTML = '<div class="news-error">No articles found. Try adjusting your filters.</div>';
+        return;
+      }
+
+      newsGrid.innerHTML = articles.map(article => `
+        <a href="${article.url}" target="_blank" rel="noopener noreferrer" class="news-card">
+          ${article.urlToImage ? `<img src="${article.urlToImage}" alt="${article.title}" class="news-card-image" onerror="this.style.display='none'">` : ''}
+          <div class="news-card-source">${article.source?.name || 'News Source'}</div>
+          <h3 class="news-card-title">${article.title}</h3>
+          <p class="news-card-desc">${article.description || 'No description available'}</p>
+          <div class="news-card-meta">
+            <div class="news-card-date">${new Date(article.publishedAt).toLocaleDateString('en-US', { month: 'short', day: 'numeric', year: 'numeric' })}</div>
+            <a href="${article.url}" target="_blank" rel="noopener noreferrer" class="news-card-link">Read Article</a>
+          </div>
+        </a>
+      `).join('');
+    }
+
+    // Show error message
+    function showError(message) {
+      newsGrid.innerHTML = `<div class="news-error">${message}</div>`;
+    }
+
+    // Initialize on page load
+    document.addEventListener('DOMContentLoaded', () => {
+      fetchNews();
+      // Refresh news every 5 minutes
+      setInterval(fetchNews, 5 * 60 * 1000);
+    });
+  </script>
+</body>
+</html>
