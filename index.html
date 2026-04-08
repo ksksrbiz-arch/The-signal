@@ -1,42 +1,126 @@
 <!DOCTYPE html>
 <html lang="en" data-theme="dark">
 <head>
-<!--
-   ______                            __
-  / ____/___  ____ ___  ____  __  __/ /____  _____
- / /   / __ \/ __ `__ \/ __ \/ / / / __/ _ \/ ___/
-/ /___/ /_/ / / / / / / /_/ / /_/ / /_/  __/ /
-\____/\____/_/ /_/ /_/ .___/\__,_/\__/\___/_/
-                    /_/
-        Created with Perplexity Computer
-        https://www.perplexity.ai/computer
--->
-<meta name="generator" content="Perplexity Computer">
-<meta name="author" content="Perplexity Computer">
-<meta property="og:see_also" content="https://www.perplexity.ai/computer">
-<link rel="author" href="https://www.perplexity.ai/computer">
-
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>THE SIGNAL — A Weekly Transmission from 1Commerce LLC</title>
-<meta name="description" content="A weekly transmission from a solo founder building in public. Dark. Gothic. Precise. Operational updates, build-in-public insights, and the cathedral aesthetic from 1Commerce LLC, Canby, Oregon.">
-<meta property="og:title" content="THE SIGNAL — A Weekly Transmission from 1Commerce LLC">
-<meta property="og:description" content="A weekly transmission from a solo founder building in public. Dark. Gothic. Precise.">
+<title>THE SIGNAL — Architecture & Infrastructure</title>
+<meta name="description" content="THE SIGNAL. Dossier. Blueprint. Precise. Live infrastructure index from ksksrbiz-arch.">
+<meta property="og:title" content="THE SIGNAL — Architecture & Infrastructure">
+<meta property="og:description" content="Dossier. Blueprint. Precise. Live infrastructure index.">
 <meta property="og:type" content="website">
 <link rel="canonical" href="https://signal01.netlify.app/">
 <meta property="og:url" content="https://signal01.netlify.app/">
-
-<!-- Fonts -->
 <link href="https://api.fontshare.com/v2/css?f[]=zodiak@400,500,600,700&f[]=general-sans@300,400,500,600&display=swap" rel="stylesheet">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@300;400;500&display=swap" rel="stylesheet">
-
 <link rel="stylesheet" href="./base.css">
 <link rel="stylesheet" href="./style.css">
+<style>
+.hero {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: var(--space-12);
+  align-items: start;
+  padding: var(--space-12) var(--space-6);
+  max-width: var(--content-wide);
+  margin: 0 auto;
+  border-bottom: 1px solid var(--color-divider);
+}
+
+.hero-left {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-8);
+}
+
+.hero-title {
+  font-family: var(--font-display);
+  font-size: var(--text-hero);
+  font-weight: 600;
+  line-height: 1.1;
+  color: var(--color-text);
+}
+
+.hero-subtitle {
+  font-family: var(--font-mono);
+  font-size: var(--text-sm);
+  letter-spacing: 0.15em;
+  color: var(--color-primary);
+  text-transform: uppercase;
+}
+
+.hero-description {
+  font-family: var(--font-body);
+  font-size: var(--text-base);
+  color: var(--color-text);
+  line-height: 1.8;
+  max-width: 50ch;
+}
+
+.hero-right {
+  background: var(--color-surface);
+  border: 1px solid var(--color-border);
+  border-left: 3px solid var(--color-primary);
+  padding: var(--space-8);
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-6);
+}
+
+.map-title {
+  font-family: var(--font-mono);
+  font-size: var(--text-xs);
+  letter-spacing: 0.1em;
+  color: var(--color-primary);
+  text-transform: uppercase;
+  border-bottom: 1px solid var(--color-rule);
+  padding-bottom: var(--space-4);
+}
+
+.map-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: var(--space-4);
+}
+
+.map-item {
+  padding: var(--space-4);
+  background: var(--color-surface-2);
+  border: 1px solid var(--color-border);
+  border-left: 2px solid var(--color-primary);
+}
+
+.map-label {
+  font-family: var(--font-mono);
+  font-size: var(--text-xs);
+  color: var(--color-primary);
+  text-transform: uppercase;
+  margin-bottom: var(--space-2);
+}
+
+.map-value {
+  font-family: var(--font-body);
+  font-size: var(--text-sm);
+  color: var(--color-text);
+}
+
+@media (max-width: 768px) {
+  .hero {
+    grid-template-columns: 1fr;
+  }
+
+  .hero-title {
+    font-size: var(--text-3xl);
+  }
+
+  .map-grid {
+    grid-template-columns: 1fr;
+  }
+}
+</style>
 </head>
 <body>
-
   <!-- Ambient grain overlay -->
   <div class="grain" aria-hidden="true"></div>
 
@@ -59,16 +143,6 @@
     <div class="header-inner">
       <div class="header-left">
         <a href="./">
-          <svg class="logo" viewBox="0 0 32 32" width="28" height="28" fill="none" aria-label="The Signal logo">
-            <rect x="2" y="2" width="28" height="28" rx="2" stroke="currentColor" stroke-width="1.5" opacity="0.3"/>
-            <line x1="16" y1="6" x2="16" y2="26" stroke="currentColor" stroke-width="1.5"/>
-            <line x1="10" y1="9" x2="10" y2="23" stroke="currentColor" stroke-width="1" opacity="0.5"/>
-            <line x1="22" y1="9" x2="22" y2="23" stroke="currentColor" stroke-width="1" opacity="0.5"/>
-            <circle cx="16" cy="16" r="3" stroke="currentColor" stroke-width="1.5" fill="none"/>
-            <circle cx="16" cy="16" r="1" fill="currentColor"/>
-            <line x1="6" y1="16" x2="13" y2="16" stroke="currentColor" stroke-width="0.75" opacity="0.4"/>
-            <line x1="19" y1="16" x2="26" y2="16" stroke="currentColor" stroke-width="0.75" opacity="0.4"/>
-          </svg>
           <span class="header-title">THE SIGNAL</span>
         </a>
       </div>
@@ -87,7 +161,7 @@
         <button class="nav-toggle" aria-label="Open menu">
           <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 12h18M3 6h18M3 18h18"/></svg>
         </button>
-        <button data-theme-toggle aria-label="Switch to light mode">
+        <button data-theme-toggle aria-label="Switch theme">
           <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="5"/><path d="M12 1v2M12 21v2M4.22 4.22l1.42 1.42M18.36 18.36l1.42 1.42M1 12h2M21 12h2M4.22 19.78l1.42-1.42M18.36 5.64l1.42-1.42"/></svg>
         </button>
       </div>
@@ -95,163 +169,210 @@
   </header>
 
   <main>
-
-    <!-- Hero -->
-    <section class="hero hero--home">
-      <div class="hero-inner">
-        <div class="hero-overline">
-          <span class="mono-label">◈ WEEKLY NEWSLETTER ◈</span>
-        </div>
-        <h1 class="hero-title">
-          <span class="hero-title-line">THE</span>
-          <span class="hero-title-line accent">SIGNAL</span>
-        </h1>
-        <p class="hero-tagline">A weekly transmission from a solo founder building in public. Dark. Gothic. Precise.</p>
-        <div class="hero-meta">
-          <span class="mono-label">FROM 1COMMERCE LLC</span>
-          <span class="mono-label dim">CANBY, OREGON</span>
-        </div>
+    <!-- Hero Section with Map -->
+    <section class="hero">
+      <div class="hero-left">
+        <div class="hero-subtitle">◈ DOSSIER ◈</div>
+        <h1 class="hero-title">THE SIGNAL</h1>
+        <p class="hero-description">Architecture and infrastructure from ksksrbiz-arch. A weekly transmission of systems, builds, and live deployments. Dark. Gothic. Precise.</p>
       </div>
-      <div class="hero-scanline" aria-hidden="true"></div>
-    </section>
-
-    <!-- Value Proposition -->
-    <section class="value-section">
-      <div class="value-inner">
-        <div class="value-header">
-          <div class="mono-label accent-text" style="margin-bottom: var(--space-4);">// WHAT YOU GET</div>
-          <h2>Inside Every Transmission</h2>
-          <p>Each week, The Signal delivers a structured dispatch from the front lines of building a software and commerce empire from scratch. No fluff. No platitudes. Just the raw operational truth.</p>
-        </div>
-        <div class="value-grid">
-          <div class="value-card">
-            <span class="value-card-icon">I.</span>
-            <h3>Foundation Reports</h3>
-            <p>Operational updates from the infrastructure layer. What's running, what broke, what got wired together in the dark.</p>
+      <div class="hero-right">
+        <div class="map-title">Infrastructure Map</div>
+        <div class="map-grid">
+          <div class="map-item">
+            <div class="map-label">Status</div>
+            <div class="map-value">Live</div>
           </div>
-          <div class="value-card">
-            <span class="value-card-icon">II.</span>
-            <h3>Revenue Activation Logs</h3>
-            <p>Cold outreach metrics, offer performance, client pipeline movement. The numbers behind the revenue phase.</p>
+          <div class="map-item">
+            <div class="map-label">Org</div>
+            <div class="map-value">ksksrbiz-arch</div>
           </div>
-          <div class="value-card">
-            <span class="value-card-icon">III.</span>
-            <h3>Build-in-Public Insights</h3>
-            <p>Systems architecture decisions, tool choices, pivots logged. The engineering diary of a solo operator.</p>
+          <div class="map-item">
+            <div class="map-label">Host</div>
+            <div class="map-value">Netlify</div>
           </div>
-          <div class="value-card">
-            <span class="value-card-icon">IV.</span>
-            <h3>The Cathedral Aesthetic</h3>
-            <p>Prose-grade writing meets terminal precision. Every dispatch is both accountability journal and creative artifact.</p>
+          <div class="map-item">
+            <div class="map-label">Edge</div>
+            <div class="map-value">Cloudflare</div>
+          </div>
+          <div class="map-item">
+            <div class="map-label">Systems</div>
+            <div class="map-value">5 Live</div>
+          </div>
+          <div class="map-item">
+            <div class="map-label">Updated</div>
+            <div class="map-value">Now</div>
           </div>
         </div>
       </div>
     </section>
 
-    <!-- Latest Issue -->
-    <section class="latest-issue">
-      <div class="latest-inner">
-        <div class="latest-overline">
-          <span class="mono-label accent-text">// LATEST TRANSMISSION</span>
-        </div>
-        <a href="./archive/014.html" class="latest-card">
-          <div class="latest-card-week">Week №014</div>
-          <h2 class="latest-card-title">The Signal Expands.</h2>
-          <p class="latest-card-quote">"The platform becomes the story."</p>
-          <div class="latest-card-meta">
-            <span class="latest-card-date">March 27 – April 2, 2026</span>
-            <span class="latest-card-arrow">READ →</span>
+    <!-- Switchboard -->
+    <section class="page-section">
+      <div class="switchboard">
+        <button class="switchboard-button active" data-route="systems">Systems</button>
+        <button class="switchboard-button" data-route="builds">Builds</button>
+        <button class="switchboard-button" data-route="news">News</button>
+        <button class="switchboard-button" data-route="docs">Docs</button>
+      </div>
+    </section>
+
+    <!-- Systems Section -->
+    <section class="page-section" id="systems-view">
+      <h2 class="section-title">Core Systems</h2>
+      <div class="section-grid">
+        <!-- The Signal -->
+        <a href="./builds/" class="dossier-card">
+          <div class="dossier-label-rail">
+            <div class="dossier-label">Live</div>
+          </div>
+          <div class="dossier-content">
+            <div class="dossier-header">
+              <h3 class="dossier-title">The Signal</h3>
+              <span class="dossier-status">Active</span>
+            </div>
+            <div class="dossier-body">
+              <p class="dossier-description">Weekly transmission platform. Newsletter dispatch and ambient credibility engine.</p>
+              <div class="dossier-meta">
+                <a href="https://signal01.netlify.app/" class="dossier-link" target="_blank" rel="noopener noreferrer">Visit Live</a>
+                <div class="dossier-tags">
+                  <span class="dossier-tag">HTML/CSS</span>
+                  <span class="dossier-tag">JavaScript</span>
+                  <span class="dossier-tag">Netlify</span>
+                </div>
+              </div>
+            </div>
+          </div>
+        </a>
+
+        <!-- UnifyOne -->
+        <a href="https://github.com/ksksrbiz-arch/UnifyOne" class="dossier-card" target="_blank" rel="noopener noreferrer">
+          <div class="dossier-label-rail">
+            <div class="dossier-label">Live</div>
+          </div>
+          <div class="dossier-content">
+            <div class="dossier-header">
+              <h3 class="dossier-title">UnifyOne</h3>
+              <span class="dossier-status">Active</span>
+            </div>
+            <div class="dossier-body">
+              <p class="dossier-description">Strategic platform and core commerce infrastructure. Centralized operations and data unification.</p>
+              <div class="dossier-meta">
+                <a href="https://github.com/ksksrbiz-arch/UnifyOne" class="dossier-link" target="_blank" rel="noopener noreferrer">Repository</a>
+                <div class="dossier-tags">
+                  <span class="dossier-tag">Commerce</span>
+                  <span class="dossier-tag">Infrastructure</span>
+                  <span class="dossier-tag">Data</span>
+                </div>
+              </div>
+            </div>
+          </div>
+        </a>
+
+        <!-- News Aggregator -->
+        <a href="./news/" class="dossier-card">
+          <div class="dossier-label-rail">
+            <div class="dossier-label">Live</div>
+          </div>
+          <div class="dossier-content">
+            <div class="dossier-header">
+              <h3 class="dossier-title">News Aggregator</h3>
+              <span class="dossier-status">Active</span>
+            </div>
+            <div class="dossier-body">
+              <p class="dossier-description">Real-time aggregation and content curation. Web services news and infrastructure updates.</p>
+              <div class="dossier-meta">
+                <a href="./news/" class="dossier-link">View Live</a>
+                <div class="dossier-tags">
+                  <span class="dossier-tag">Aggregation</span>
+                  <span class="dossier-tag">Curation</span>
+                  <span class="dossier-tag">API</span>
+                </div>
+              </div>
+            </div>
+          </div>
+        </a>
+
+        <!-- The Architecture -->
+        <a href="https://github.com/ksksrbiz-arch/The-Architecture" class="dossier-card" target="_blank" rel="noopener noreferrer">
+          <div class="dossier-label-rail">
+            <div class="dossier-label">Ref</div>
+          </div>
+          <div class="dossier-content">
+            <div class="dossier-header">
+              <h3 class="dossier-title">The Architecture</h3>
+              <span class="dossier-status">Index</span>
+            </div>
+            <div class="dossier-body">
+              <p class="dossier-description">Central index of ksksrbiz-arch organization systems and infrastructure. Cathedral Framework philosophy.</p>
+              <div class="dossier-meta">
+                <a href="https://github.com/ksksrbiz-arch/The-Architecture" class="dossier-link" target="_blank" rel="noopener noreferrer">View Index</a>
+                <div class="dossier-tags">
+                  <span class="dossier-tag">Reference</span>
+                  <span class="dossier-tag">Documentation</span>
+                  <span class="dossier-tag">GitHub</span>
+                </div>
+              </div>
+            </div>
           </div>
         </a>
       </div>
     </section>
 
-    <!-- Subscribe CTA -->
-    <section class="subscribe-section" id="subscribe">
-      <div class="subscribe-inner">
-        <span class="mono-label accent-text" style="display: block; margin-bottom: var(--space-4);">◈ JOIN THE CONGREGATION ◈</span>
-        <h2>Receive The Signal</h2>
-        <p>One email per week. Structured dispatches from a solo founder building the cathedral. Unsubscribe whenever the signal fades.</p>
-        <form class="subscribe-form" action="https://assets.mailerlite.com/jsonp/887036/forms/131950373498498498/subscribe" method="POST">
-          <input type="email" name="fields[email]" placeholder="your@email.com" required aria-label="Email address">
-          <button type="submit">Subscribe</button>
-        </form>
-        <p class="subscribe-note">Free. Weekly. No spam. Just signal.</p>
+    <!-- Footer -->
+    <footer class="site-footer">
+      <div class="footer-inner">
+        <p class="footer-text">If the signal resonates, the architecture is available.</p>
+        <p class="footer-meta">THE SIGNAL — A weekly transmission from 1Commerce LLC, Canby, Oregon.</p>
       </div>
-    </section>
-
-    <!-- Social Proof -->
-    <section class="social-proof">
-      <div class="social-proof-inner">
-        <span class="social-proof-item">From 1Commerce LLC</span>
-        <span class="social-proof-dot" aria-hidden="true">●</span>
-        <span class="social-proof-item">Canby, Oregon</span>
-        <span class="social-proof-dot" aria-hidden="true">●</span>
-        <span class="social-proof-item">Since March 2026</span>
-        <span class="social-proof-dot" aria-hidden="true">●</span>
-        <span class="social-proof-item">Building in Public</span>
-      </div>
-    </section>
-
-        <!-- Verified Builds -->
-    <section class="properties-section">
-      <div class="properties-label"><span class="mono-label dim">◈ VERIFIED BUILDS ◈</span></div>
-      <div class="properties-inner">
-        <a href="https://1commerce.online/" target="_blank" rel="noopener noreferrer">UnifyOne</a>
-        <a href="https://clearpath-environmental.netlify.app/" target="_blank" rel="noopener noreferrer">ClearPath Environmental</a>
-        <a href="https://hidden-creek.netlify.app/" target="_blank" rel="noopener noreferrer">Hidden Creek Horse Park</a>
-        <a href="https://precision-core.netlify.app/" target="_blank" rel="noopener noreferrer">Precision Core Builders</a>
-        <a href="https://compass-ai-app.netlify.app/" target="_blank" rel="noopener noreferrer">Compass AI</a>
-        <a href="https://next-chapter-travel.netlify.app/" target="_blank" rel="noopener noreferrer">Next Chapter Travel</a>
-        <a href="https://montucky-moonshine-proposal.netlify.app/" target="_blank" rel="noopener noreferrer">Montucky Moonshine</a>
-        <a href="https://redeaf.netlify.app/" target="_blank" rel="noopener noreferrer">DealFlow</a>
-      </div>
-    </section>
-
+    </footer>
   </main>
 
-  <!-- Footer -->
-  <footer class="site-footer">
-    <div class="footer-main">
-      <div class="footer-col">
-        <h4>The Signal</h4>
-        <div class="footer-subscribe">
-          <form class="footer-subscribe-form" action="https://assets.mailerlite.com/jsonp/887036/forms/131950373498498498/subscribe" method="POST">
-            <input type="email" name="fields[email]" placeholder="your@email.com" required aria-label="Email address">
-            <button type="submit">Subscribe</button>
-          </form>
-        </div>
-        <p>A weekly transmission from a solo founder building in public.</p>
-      </div>
-      <div class="footer-col">
-        <h4>Navigate</h4>
-        <ul>
-          <li><a href="./">Home</a></li>
-          <li><a href="./archive/">Archive</a></li>
-          <li><a href="./about/">About</a></li>
-          <li><a href="#subscribe">Subscribe</a></li>
-        </ul>
-      </div>
-            <div class="footer-col">
-        <h4>Verified Builds</h4>
-        <ul>
-          <li><a href="https://1commerce.online/" target="_blank" rel="noopener noreferrer">UnifyOne</a></li>
-          <li><a href="https://clearpath-environmental.netlify.app/" target="_blank" rel="noopener noreferrer">ClearPath Environmental</a></li>
-          <li><a href="https://hidden-creek.netlify.app/" target="_blank" rel="noopener noreferrer">Hidden Creek Horse Park</a></li>
-          <li><a href="https://precision-core.netlify.app/" target="_blank" rel="noopener noreferrer">Precision Core Builders</a></li>
-          <li><a href="https://compass-ai-app.netlify.app/" target="_blank" rel="noopener noreferrer">Compass AI</a></li>
-          <li><a href="https://next-chapter-travel.netlify.app/" target="_blank" rel="noopener noreferrer">Next Chapter Travel</a></li>
-          <li><a href="https://montucky-moonshine-proposal.netlify.app/" target="_blank" rel="noopener noreferrer">Montucky Moonshine</a></li>
-          <li><a href="https://redeaf.netlify.app/" target="_blank" rel="noopener noreferrer">DealFlow</a></li>
-        </ul>
-      </div>
-    </div>
-    <div class="footer-bottom">
-      <span class="mono-label dim">© 2026 1COMMERCE LLC · CANBY, OREGON</span>
-      <a href="https://www.perplexity.ai/computer" target="_blank" rel="noopener noreferrer" class="mono-label dim">Created with Perplexity Computer</a>
-    </div>
-  </footer>
+  <script src="./app.js"></script>
+  <script>
+    // Switchboard snap routing
+    document.querySelectorAll('.switchboard-button').forEach(button => {
+      button.addEventListener('click', (e) => {
+        document.querySelectorAll('.switchboard-button').forEach(b => b.classList.remove('active'));
+        e.target.classList.add('active');
+        const route = e.target.dataset.route;
+        // Route logic would go here
+        console.log('Routed to:', route);
+      });
+    });
 
-  <script src="./app.js" defer></script>
+    // Mobile nav toggle
+    const navToggle = document.querySelector('.nav-toggle');
+    const mobileNav = document.querySelector('.mobile-nav');
+    const mobileNavClose = document.querySelector('.mobile-nav-close');
+
+    navToggle?.addEventListener('click', () => {
+      mobileNav?.classList.add('active');
+    });
+
+    mobileNavClose?.addEventListener('click', () => {
+      mobileNav?.classList.remove('active');
+    });
+
+    mobileNav?.querySelectorAll('a').forEach(link => {
+      link.addEventListener('click', () => {
+        mobileNav.classList.remove('active');
+      });
+    });
+
+    // Theme toggle
+    const themeToggle = document.querySelector('[data-theme-toggle]');
+    themeToggle?.addEventListener('click', () => {
+      const html = document.documentElement;
+      const currentTheme = html.getAttribute('data-theme') || 'dark';
+      const newTheme = currentTheme === 'dark' ? 'light' : 'dark';
+      html.setAttribute('data-theme', newTheme);
+      localStorage.setItem('theme', newTheme);
+    });
+
+    // Load saved theme
+    const savedTheme = localStorage.getItem('theme') || 'dark';
+    document.documentElement.setAttribute('data-theme', savedTheme);
+  </script>
 </body>
 </html>
