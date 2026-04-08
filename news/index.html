@@ -35,7 +35,7 @@
   font-family: var(--font-mono);
   font-size: var(--text-xs);
   letter-spacing: 0.1em;
-  color: var(--color-primary);
+  color: var(--color-gold);
   text-transform: uppercase;
   margin-bottom: var(--space-8);
 }
@@ -67,9 +67,9 @@
 }
 
 .news-filter.active {
-  background: var(--color-primary);
-  border-color: var(--color-primary);
-  color: var(--color-text-inverse);
+  background: var(--color-gold);
+  border-color: var(--color-gold);
+  color: var(--color-bg);
 }
 
 .news-search {
@@ -105,7 +105,7 @@
   gap: 0;
   background: var(--color-surface);
   border: 1px solid var(--color-border);
-  border-left: 3px solid var(--color-primary);
+  border-left: 3px solid var(--color-gold);
   overflow: hidden;
   transition: all var(--transition-interactive);
   text-decoration: none;
@@ -343,6 +343,16 @@
     <div class="header-inner">
       <div class="header-left">
         <a href="../">
+          <svg class="logo" viewBox="0 0 32 32" width="28" height="28" fill="none" aria-label="The Signal logo">
+            <rect x="2" y="2" width="28" height="28" rx="2" stroke="currentColor" stroke-width="1.5" opacity="0.3"/>
+            <line x1="16" y1="6" x2="16" y2="26" stroke="currentColor" stroke-width="1.5"/>
+            <line x1="10" y1="9" x2="10" y2="23" stroke="currentColor" stroke-width="1" opacity="0.5"/>
+            <line x1="22" y1="9" x2="22" y2="23" stroke="currentColor" stroke-width="1" opacity="0.5"/>
+            <circle cx="16" cy="16" r="3" stroke="currentColor" stroke-width="1.5" fill="none"/>
+            <circle cx="16" cy="16" r="1" fill="currentColor"/>
+            <line x1="6" y1="16" x2="13" y2="16" stroke="currentColor" stroke-width="0.75" opacity="0.4"/>
+            <line x1="19" y1="16" x2="26" y2="16" stroke="currentColor" stroke-width="0.75" opacity="0.4"/>
+          </svg>
           <span class="header-title">THE SIGNAL</span>
         </a>
       </div>
@@ -466,7 +476,8 @@
 
         const labelRail = document.createElement('div');
         labelRail.className = 'news-card-label';
-        labelRail.innerHTML = `<div class="news-card-status">Live</div>`;
+        labelRail.style.borderRight = '1px solid var(--color-divider)';
+        labelRail.innerHTML = `<div class="news-card-status" style="color: var(--color-gold);">Live</div>`;
 
         const content = document.createElement('div');
         content.className = 'news-card-content';
