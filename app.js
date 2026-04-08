@@ -1,6 +1,6 @@
 /* ============================================================
-   THE SIGNAL — Platform Logic v2
-   Dark. Gothic. Precise. Now with signal.
+   THE SIGNAL — Platform Logic v3
+   Dossier. Blueprint. Precise.
    ============================================================ */
 
 // ─── THEME TOGGLE ───────────────────────────────────────────
@@ -36,16 +36,60 @@
   var mobileNav = document.querySelector('.mobile-nav');
   var closeBtn = document.querySelector('.mobile-nav-close');
   if (!toggle || !mobileNav) return;
-  toggle.addEventListener('click', function() { mobileNav.classList.add('open'); document.body.style.overflow = 'hidden'; });
-  function closeMobileNav() { mobileNav.classList.remove('open'); document.body.style.overflow = ''; }
+  toggle.addEventListener('click', function() { mobileNav.classList.add('active'); document.body.style.overflow = 'hidden'; });
+  function closeMobileNav() { mobileNav.classList.remove('active'); document.body.style.overflow = ''; }
   if (closeBtn) closeBtn.addEventListener('click', closeMobileNav);
   mobileNav.querySelectorAll('a').forEach(function(link) { link.addEventListener('click', closeMobileNav); });
-  document.addEventListener('keydown', function(e) { if (e.key === 'Escape' && mobileNav.classList.contains('open')) closeMobileNav(); });
+  document.addEventListener('keydown', function(e) { if (e.key === 'Escape' && mobileNav.classList.contains('active')) closeMobileNav(); });
+})();
+
+// ─── SWITCHBOARD SNAP ROUTING ───────────────────────────────
+(function(){
+  var switchboard = document.querySelector('.switchboard');
+  if (!switchboard) return;
+
+  var buttons = switchboard.querySelectorAll('.switchboard-button');
+  var views = {
+    systems: document.getElementById('systems-view'),
+    builds: document.getElementById('builds-view'),
+    news: document.getElementById('news-view'),
+    docs: document.getElementById('docs-view')
+  };
+
+  buttons.forEach(function(btn) {
+    btn.addEventListener('click', function() {
+      var route = this.dataset.route;
+      
+      // Update button states
+      buttons.forEach(function(b) { b.classList.remove('active'); });
+      this.classList.add('active');
+
+      // Update view visibility
+      Object.keys(views).forEach(function(key) {
+        if (views[key]) {
+          views[key].style.display = key === route ? 'block' : 'none';
+        }
+      });
+
+      // Snap to view
+      if (views[route]) {
+        views[route].scrollIntoView({ behavior: 'smooth', block: 'start' });
+      }
+
+      // Log routing
+      console.log('Snap routed to:', route);
+    });
+  });
+
+  // Initialize first view
+  if (buttons.length > 0) {
+    buttons[0].click();
+  }
 })();
 
 // ─── SCROLL REVEAL ──────────────────────────────────────────
 (function(){
-  var selectors = '.dispatch, .quote-block, .entity-card, .status-bar, .value-section, .latest-issue, .subscribe-section, .social-proof, .properties-section, .archive-section, .about-section, .about-block, .cta-block, .archive-card, .value-card, .property-card, .pricing-card, .cathedral-phase, .fn-card, .fnplus-doc, .fnplus-week-group';
+  var selectors = '.dossier-card, .dispatch, .quote-block, .entity-card, .status-bar, .value-section, .latest-issue, .subscribe-section, .social-proof, .properties-section, .archive-section, .about-section, .about-block, .cta-block, .archive-card, .value-card, .property-card, .pricing-card, .cathedral-phase, .fn-card, .fnplus-doc, .fnplus-week-group';
   var els = document.querySelectorAll(selectors);
   els.forEach(function(el) { el.classList.add('reveal'); });
   var observer = new IntersectionObserver(function(entries) {
@@ -153,215 +197,4 @@
 
   // Make globally available
   window.SignalShare = { build: buildShareStrip, copy: copyToClipboard };
-})();
-
-// ─── TEXT SELECTION SHARE TOOLTIP ───────────────────────────
-(function(){
-  var article = document.querySelector('.dispatch-inner');
-  if (!article) return;
-
-  var tooltip = document.createElement('div');
-  tooltip.className = 'selection-tooltip';
-  tooltip.innerHTML = [
-    '<span class="selection-tooltip-label">Share this</span>',
-    '<button class="sel-btn sel-btn--x" aria-label="Tweet this">',
-      '<svg width="11" height="11" viewBox="0 0 24 24" fill="currentColor"><path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-4.714-6.231-5.401 6.231H2.741l7.73-8.835L1.254 2.25H8.08l4.261 5.633L18.244 2.25zm-1.161 17.52h1.833L7.084 4.126H5.117z"/></svg>',
-      ' X',
-    '</button>',
-    '<button class="sel-btn sel-btn--copy" aria-label="Copy quote">',
-      '<svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg>',
-      ' Copy',
-    '</button>'
-  ].join('');
-  document.body.appendChild(tooltip);
-
-  var hideTimer;
-
-  document.addEventListener('mouseup', function(e) {
-    clearTimeout(hideTimer);
-    setTimeout(function() {
-      var sel = window.getSelection();
-      if (!sel || sel.isCollapsed || sel.toString().trim().length < 20) {
-        tooltip.classList.remove('visible');
-        return;
-      }
-      // Only show inside article
-      var range = sel.getRangeAt(0);
-      if (!article.contains(range.commonAncestorContainer)) {
-        tooltip.classList.remove('visible');
-        return;
-      }
-      var rect = range.getBoundingClientRect();
-      var text = sel.toString().trim().substring(0, 200);
-      var shareText = '"' + text + '" — The Signal by 1Commerce LLC';
-      var tweetUrl = 'https://x.com/intent/tweet?text=' + encodeURIComponent(shareText) + '&url=' + encodeURIComponent(window.location.href);
-
-      tooltip.querySelector('.sel-btn--x').onclick = function() {
-        window.open(tweetUrl, '_blank', 'width=600,height=500,noopener,noreferrer');
-        sel.removeAllRanges();
-        tooltip.classList.remove('visible');
-      };
-      tooltip.querySelector('.sel-btn--copy').onclick = function() {
-        navigator.clipboard.writeText(shareText).catch(function() {});
-        sel.removeAllRanges();
-        tooltip.classList.remove('visible');
-      };
-
-      var x = rect.left + window.scrollX + (rect.width / 2);
-      var y = rect.top + window.scrollY - 8;
-      tooltip.style.left = Math.max(10, x - tooltip.offsetWidth / 2) + 'px';
-      tooltip.style.top = y + 'px';
-      tooltip.classList.add('visible');
-    }, 10);
-  });
-
-  document.addEventListener('mousedown', function() {
-    hideTimer = setTimeout(function() { tooltip.classList.remove('visible'); }, 150);
-  });
-  document.addEventListener('keydown', function(e) { if (e.key === 'Escape') tooltip.classList.remove('visible'); });
-})();
-
-// ─── REACTION SYSTEM ────────────────────────────────────────
-(function(){
-  var reactions = document.querySelectorAll('.reaction-bar');
-  if (!reactions.length) return;
-
-  reactions.forEach(function(bar) {
-    var pageKey = 'signal-reactions-' + btoa(window.location.pathname).replace(/=/g,'');
-
-    // Get stored state (falls back to in-memory if storage unavailable)
-    var stored = {};
-    var _store = (function(){ try { return window.localStorage; } catch(e){ return null; } })();
-    try { if (_store) stored = JSON.parse(_store.getItem(pageKey) || '{}'); } catch(e){}
-
-    bar.querySelectorAll('.reaction-btn').forEach(function(btn) {
-      var key = btn.dataset.reaction;
-      var count = parseInt(btn.dataset.count || '0') + (stored[key] || 0);
-      btn.querySelector('.reaction-count').textContent = count;
-      if (stored[key]) btn.classList.add('reacted');
-
-      btn.addEventListener('click', function() {
-        if (btn.classList.contains('reacted')) return; // one reaction per session
-        // Mark all in same bar as unavailable
-        if (bar.dataset.exclusive !== 'false') {
-          bar.querySelectorAll('.reaction-btn').forEach(function(b) { b.classList.add('reacted'); });
-        }
-        btn.classList.add('reacted', 'just-reacted');
-        var newCount = parseInt(btn.querySelector('.reaction-count').textContent) + 1;
-        btn.querySelector('.reaction-count').textContent = newCount;
-        stored[key] = (stored[key] || 0) + 1;
-        try { if (_store) _store.setItem(pageKey, JSON.stringify(stored)); } catch(e){}
-        setTimeout(function() { btn.classList.remove('just-reacted'); }, 600);
-      });
-    });
-  });
-})();
-
-// ─── TABLE OF CONTENTS ──────────────────────────────────────
-(function(){
-  var toc = document.querySelector('.article-toc');
-  var article = document.querySelector('.dispatch-inner');
-  if (!toc || !article) return;
-
-  var headings = article.querySelectorAll('h2.feature-title');
-  if (headings.length < 2) { toc.style.display = 'none'; return; }
-
-  var list = toc.querySelector('.toc-list') || document.createElement('ul');
-  list.className = 'toc-list';
-
-  headings.forEach(function(h, i) {
-    if (!h.id) h.id = 'section-' + i;
-    var li = document.createElement('li');
-    var a = document.createElement('a');
-    a.href = '#' + h.id;
-    a.textContent = h.textContent;
-    a.className = 'toc-link';
-    li.appendChild(a);
-    list.appendChild(li);
-  });
-  toc.appendChild(list);
-
-  // Highlight active section on scroll
-  var tocLinks = toc.querySelectorAll('.toc-link');
-  function updateTocActive() {
-    var scrollPos = window.scrollY + 120;
-    var activeSet = false;
-    for (var i = headings.length - 1; i >= 0; i--) {
-      if (headings[i].offsetTop <= scrollPos) {
-        tocLinks.forEach(function(a) { a.classList.remove('active'); });
-        if (tocLinks[i]) tocLinks[i].classList.add('active');
-        activeSet = true;
-        break;
-      }
-    }
-    if (!activeSet && tocLinks[0]) { tocLinks.forEach(function(a) { a.classList.remove('active'); }); tocLinks[0].classList.add('active'); }
-  }
-  window.addEventListener('scroll', updateTocActive, { passive: true });
-  updateTocActive();
-})();
-
-// ─── CARD SHIMMER / MICRO-INTERACTIONS ──────────────────────
-(function(){
-  // Add shimmer sweep on hover for archive cards and fn-cards
-  var cards = document.querySelectorAll('.archive-card, .fn-card, .fnplus-doc, .property-card, .value-card');
-  cards.forEach(function(card) {
-    card.addEventListener('mousemove', function(e) {
-      var rect = card.getBoundingClientRect();
-      var x = ((e.clientX - rect.left) / rect.width) * 100;
-      var y = ((e.clientY - rect.top) / rect.height) * 100;
-      card.style.setProperty('--shimmer-x', x + '%');
-      card.style.setProperty('--shimmer-y', y + '%');
-    });
-    card.addEventListener('mouseleave', function() {
-      card.style.removeProperty('--shimmer-x');
-      card.style.removeProperty('--shimmer-y');
-    });
-  });
-})();
-
-// ─── SUBSCRIBE FORM ─────────────────────────────────────────
-(function(){
-  var forms = document.querySelectorAll('.subscribe-form, .footer-subscribe-form');
-  forms.forEach(function(form) {
-    form.addEventListener('submit', function(e) {
-      e.preventDefault();
-      var emailInput = form.querySelector('input[type="email"]');
-      var submitBtn = form.querySelector('button[type="submit"]');
-      var email = emailInput ? emailInput.value.trim() : '';
-      if (!email || !email.includes('@')) return;
-      var originalText = submitBtn.textContent;
-      submitBtn.textContent = 'SENDING...';
-      submitBtn.disabled = true;
-      var cbName = 'mlCallback' + Date.now();
-      window[cbName] = function() {
-        submitBtn.textContent = 'SUBSCRIBED ✓';
-        emailInput.value = '';
-        setTimeout(function() { submitBtn.textContent = originalText; submitBtn.disabled = false; }, 3000);
-        delete window[cbName];
-      };
-      setTimeout(function() {
-        if (submitBtn.textContent === 'SENDING...') {
-          submitBtn.textContent = 'SUBSCRIBED ✓';
-          emailInput.value = '';
-          setTimeout(function() { submitBtn.textContent = originalText; submitBtn.disabled = false; }, 3000);
-        }
-      }, 3000);
-      var script = document.createElement('script');
-      script.src = 'https://assets.mailerlite.com/jsonp/887036/forms/131950373498498498/subscribe?fields[email]=' + encodeURIComponent(email) + '&callback=' + cbName;
-      document.head.appendChild(script);
-    });
-  });
-})();
-
-// ─── FILTER BUTTONS (Fieldnotes+) ───────────────────────────
-(function(){
-  var btns = document.querySelectorAll('.fnplus-filter-btn');
-  if (!btns.length) return;
-  btns.forEach(function(btn) {
-    btn.addEventListener('click', function() {
-      btns.forEach(function(b) { b.classList.remove('active'); });
-      btn.classList.add('active');
-      // Future: filter grid by data-category
-    });
-  });
 })();

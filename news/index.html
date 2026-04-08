@@ -3,13 +3,12 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>News Aggregator — THE SIGNAL | Web Services News</title>
-<meta name="description" content="Torque-d_tm_Affiliatiations-Web-Services News. Real-time aggregated news from technology, commerce, and infrastructure sources.">
-<meta property="og:title" content="News Aggregator — Web Services News">
-<meta property="og:description" content="Real-time aggregated news from technology, commerce, and infrastructure sources.">
+<title>News Aggregator — THE SIGNAL</title>
+<meta name="description" content="Real-time news aggregation and content curation from THE SIGNAL.">
+<meta property="og:title" content="News Aggregator — THE SIGNAL">
+<meta property="og:description" content="Real-time news aggregation and content curation.">
 <meta property="og:type" content="website">
 <link rel="canonical" href="https://signal01.netlify.app/news/">
-<meta property="og:url" content="https://signal01.netlify.app/news/">
 <link href="https://api.fontshare.com/v2/css?f[]=zodiak@400,500,600,700&f[]=general-sans@300,400,500,600&display=swap" rel="stylesheet">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -17,284 +16,305 @@
 <link rel="stylesheet" href="../base.css">
 <link rel="stylesheet" href="../style.css">
 <style>
-/* ============================================================
-   NEWS AGGREGATOR PAGE
-   ============================================================ */
 .news-hero {
-  padding: clamp(var(--space-16), 8vw, var(--space-24)) var(--space-6) var(--space-12);
-  border-bottom: 1px solid var(--color-divider);
-  position: relative;
-  overflow: hidden;
-}
-.news-hero-inner {
-  max-width: var(--content-default);
+  padding: var(--space-12) var(--space-6);
+  max-width: var(--content-wide);
   margin: 0 auto;
+  border-bottom: 1px solid var(--color-divider);
 }
-.news-hero-badge {
-  display: inline-flex;
-  align-items: center;
-  gap: var(--space-2);
+
+.news-title {
+  font-family: var(--font-display);
+  font-size: var(--text-3xl);
+  font-weight: 600;
+  color: var(--color-text);
+  margin-bottom: var(--space-4);
+}
+
+.news-subtitle {
   font-family: var(--font-mono);
   font-size: var(--text-xs);
-  letter-spacing: 0.15em;
-  color: var(--color-gold);
+  letter-spacing: 0.1em;
+  color: var(--color-primary);
   text-transform: uppercase;
-  margin-bottom: var(--space-5);
-}
-.news-hero-badge::before {
-  content: '';
-  display: inline-block;
-  width: 6px;
-  height: 6px;
-  background: var(--color-gold);
-  border-radius: 50%;
-  animation: pulse-dot 2s ease-in-out infinite;
-}
-@keyframes pulse-dot {
-  0%, 100% { opacity: 1; transform: scale(1); }
-  50% { opacity: 0.4; transform: scale(0.7); }
-}
-.news-hero-title {
-  font-family: var(--font-display);
-  font-size: clamp(2.4rem, 5vw, 3.6rem);
-  font-weight: 600;
-  line-height: 1.1;
-  color: var(--color-text);
-  margin-bottom: var(--space-5);
-}
-.news-hero-sub {
-  font-family: var(--font-body);
-  font-size: var(--text-base);
-  color: var(--color-text-muted);
-  line-height: 1.7;
-  max-width: 60ch;
-}
-/* News Section */
-.news-section {
-  max-width: var(--content-default);
-  margin: 0 auto;
-  padding: var(--space-12) var(--space-6);
-}
-.news-section-title {
-  font-family: var(--font-display);
-  font-size: var(--text-2xl);
-  font-weight: 600;
-  color: var(--color-text);
   margin-bottom: var(--space-8);
-  padding-bottom: var(--space-6);
-  border-bottom: 1px solid var(--color-divider);
 }
-/* Filter Controls */
-.news-filters {
+
+.news-controls {
   display: flex;
   flex-wrap: wrap;
   gap: var(--space-4);
   margin-bottom: var(--space-8);
-  padding: var(--space-6);
-  background: var(--color-surface);
+}
+
+.news-filter {
+  padding: var(--space-3) var(--space-6);
+  background: var(--color-surface-2);
   border: 1px solid var(--color-border);
-  border-radius: var(--radius-md);
-}
-.filter-group {
-  display: flex;
-  flex-direction: column;
-  gap: var(--space-2);
-}
-.filter-label {
+  color: var(--color-text);
   font-family: var(--font-mono);
   font-size: var(--text-xs);
   letter-spacing: 0.1em;
-  color: var(--color-text-muted);
   text-transform: uppercase;
-}
-.filter-input {
-  padding: var(--space-3) var(--space-4);
-  background: var(--color-bg);
-  border: 1px solid var(--color-border);
-  border-radius: var(--radius-sm);
-  color: var(--color-text);
-  font-family: var(--font-body);
-  font-size: var(--text-sm);
-  transition: border-color var(--transition-interactive);
-}
-.filter-input:focus {
-  outline: none;
-  border-color: var(--color-gold);
-}
-.filter-select {
-  padding: var(--space-3) var(--space-4);
-  background: var(--color-bg);
-  border: 1px solid var(--color-border);
-  border-radius: var(--radius-sm);
-  color: var(--color-text);
-  font-family: var(--font-body);
-  font-size: var(--text-sm);
   cursor: pointer;
-  transition: border-color var(--transition-interactive);
+  transition: all var(--transition-interactive);
 }
-.filter-select:focus {
-  outline: none;
-  border-color: var(--color-gold);
+
+.news-filter:hover {
+  background: var(--color-surface-offset);
+  border-color: var(--color-primary);
+  color: var(--color-primary);
 }
-.filter-select option {
-  background: var(--color-surface);
+
+.news-filter.active {
+  background: var(--color-primary);
+  border-color: var(--color-primary);
+  color: var(--color-text-inverse);
+}
+
+.news-search {
+  flex: 1;
+  min-width: 200px;
+  padding: var(--space-3) var(--space-6);
+  background: var(--color-surface-2);
+  border: 1px solid var(--color-border);
   color: var(--color-text);
+  font-family: var(--font-mono);
+  font-size: var(--text-sm);
 }
-/* News Grid */
+
+.news-search::placeholder {
+  color: var(--color-text-faint);
+}
+
+.news-container {
+  max-width: var(--content-wide);
+  margin: 0 auto;
+  padding: var(--space-12) var(--space-6);
+}
+
 .news-grid {
   display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(340px, 1fr));
-  gap: var(--space-6);
-  margin-bottom: var(--space-12);
+  grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
+  gap: var(--space-8);
 }
+
 .news-card {
-  display: flex;
-  flex-direction: column;
-  padding: var(--space-6);
+  display: grid;
+  grid-template-columns: 50px 1fr;
+  gap: 0;
   background: var(--color-surface);
   border: 1px solid var(--color-border);
-  border-radius: var(--radius-md);
+  border-left: 3px solid var(--color-primary);
+  overflow: hidden;
   transition: all var(--transition-interactive);
   text-decoration: none;
   color: inherit;
-  position: relative;
-  overflow: hidden;
 }
-.news-card::before {
-  content: '';
-  position: absolute;
-  top: 0;
-  left: 0;
-  right: 0;
-  height: 2px;
-  background: linear-gradient(90deg, var(--color-gold), transparent);
-  opacity: 0;
-  transition: opacity var(--transition-interactive);
-}
+
 .news-card:hover {
-  border-color: var(--color-gold);
+  border-color: var(--color-primary);
+}
+
+.news-card-label {
   background: var(--color-surface-2);
-  transform: translateY(-2px);
-}
-.news-card:hover::before {
-  opacity: 1;
-}
-.news-card-image {
-  width: 100%;
-  height: 180px;
-  object-fit: cover;
-  border-radius: var(--radius-sm);
-  margin-bottom: var(--space-4);
-  background: var(--color-bg);
-}
-.news-card-source {
-  display: inline-flex;
+  border-right: 1px solid var(--color-rule);
+  padding: var(--space-4) var(--space-2);
+  display: flex;
+  flex-direction: column;
   align-items: center;
-  gap: var(--space-2);
+  justify-content: center;
+  text-align: center;
+}
+
+.news-card-status {
   font-family: var(--font-mono);
   font-size: var(--text-xs);
   letter-spacing: 0.1em;
-  color: var(--color-gold);
+  color: var(--color-primary);
   text-transform: uppercase;
-  margin-bottom: var(--space-3);
-  width: fit-content;
+  writing-mode: vertical-rl;
+  text-orientation: mixed;
+  white-space: nowrap;
 }
+
+.news-card-content {
+  padding: var(--space-6);
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-4);
+}
+
+.news-card-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  gap: var(--space-4);
+  border-bottom: 1px solid var(--color-rule);
+  padding-bottom: var(--space-4);
+}
+
 .news-card-title {
   font-family: var(--font-display);
   font-size: var(--text-lg);
   font-weight: 600;
   color: var(--color-text);
-  margin-bottom: var(--space-3);
   line-height: 1.3;
+  flex: 1;
+}
+
+.news-card-source {
+  font-family: var(--font-mono);
+  font-size: var(--text-xs);
+  letter-spacing: 0.1em;
+  color: var(--color-primary);
+  text-transform: uppercase;
+  white-space: nowrap;
+}
+
+.news-card-body {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-4);
+}
+
+.news-card-description {
+  font-family: var(--font-body);
+  font-size: var(--text-sm);
+  color: var(--color-text);
+  line-height: 1.6;
   display: -webkit-box;
   -webkit-line-clamp: 3;
   -webkit-box-orient: vertical;
   overflow: hidden;
 }
-.news-card-desc {
-  font-family: var(--font-body);
-  font-size: var(--text-sm);
-  color: var(--color-text-muted);
-  line-height: 1.6;
-  margin-bottom: var(--space-6);
-  flex-grow: 1;
-  display: -webkit-box;
-  -webkit-line-clamp: 2;
-  -webkit-box-orient: vertical;
-  overflow: hidden;
-}
+
 .news-card-meta {
   display: flex;
   flex-direction: column;
   gap: var(--space-3);
-  padding-top: var(--space-6);
-  border-top: 1px solid var(--color-divider);
+  padding-top: var(--space-4);
+  border-top: 1px solid var(--color-rule);
 }
-.news-card-date {
+
+.news-card-time {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
   font-family: var(--font-mono);
   font-size: var(--text-xs);
   color: var(--color-text-muted);
   letter-spacing: 0.05em;
 }
+
 .news-card-link {
   display: inline-flex;
   align-items: center;
   gap: var(--space-2);
-  font-family: var(--font-mono);
-  font-size: var(--text-xs);
-  letter-spacing: 0.1em;
-  color: var(--color-gold);
-  text-transform: uppercase;
+  color: var(--color-primary);
   text-decoration: none;
-  transition: gap var(--transition-interactive);
+  font-weight: 600;
+  transition: all var(--transition-interactive);
 }
+
 .news-card-link:hover {
   gap: var(--space-3);
 }
+
 .news-card-link::after {
   content: '→';
-  display: inline-block;
 }
-/* Loading State */
+
 .news-loading {
-  text-align: center;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: var(--space-4);
   padding: var(--space-12);
+  font-family: var(--font-mono);
   color: var(--color-text-muted);
 }
-.news-loading-spinner {
-  display: inline-block;
-  width: 40px;
-  height: 40px;
+
+.news-spinner {
+  width: 20px;
+  height: 20px;
   border: 2px solid var(--color-border);
-  border-top-color: var(--color-gold);
+  border-top-color: var(--color-primary);
   border-radius: 50%;
   animation: spin 1s linear infinite;
-  margin-bottom: var(--space-4);
 }
+
 @keyframes spin {
   to { transform: rotate(360deg); }
 }
-/* Error State */
+
+.news-empty {
+  padding: var(--space-12);
+  text-align: center;
+  font-family: var(--font-body);
+  color: var(--color-text-muted);
+}
+
 .news-error {
   padding: var(--space-8);
-  background: rgba(220, 38, 38, 0.1);
-  border: 1px solid rgba(220, 38, 38, 0.3);
-  border-radius: var(--radius-md);
+  background: var(--color-surface);
+  border: 1px solid var(--color-border);
+  border-left: 3px solid #ff0000;
   color: var(--color-text);
-  text-align: center;
+  font-family: var(--font-mono);
+  font-size: var(--text-sm);
 }
-/* Responsive */
+
+.margin-log {
+  margin-top: var(--space-12);
+  padding: var(--space-6);
+  background: var(--color-surface);
+  border: 1px solid var(--color-border);
+  border-left: 3px solid var(--color-primary);
+  font-family: var(--font-mono);
+  font-size: var(--text-xs);
+  color: var(--color-text-muted);
+  max-height: 200px;
+  overflow-y: auto;
+}
+
+.margin-log-entry {
+  padding: var(--space-2) 0;
+  border-bottom: 1px solid var(--color-rule);
+}
+
+.margin-log-entry:last-child {
+  border-bottom: none;
+}
+
 @media (max-width: 768px) {
   .news-grid {
     grid-template-columns: 1fr;
   }
-  .news-hero-title {
-    font-size: 2rem;
+
+  .news-card {
+    grid-template-columns: 1fr;
   }
-  .news-filters {
+
+  .news-card-label {
+    border-right: none;
+    border-bottom: 1px solid var(--color-rule);
+    flex-direction: row;
+    justify-content: flex-start;
+    gap: var(--space-4);
+    padding: var(--space-4);
+  }
+
+  .news-card-status {
+    writing-mode: horizontal-tb;
+    text-orientation: initial;
+  }
+
+  .news-controls {
     flex-direction: column;
   }
-  .filter-group {
+
+  .news-search {
     width: 100%;
   }
 }
@@ -303,6 +323,7 @@
 <body>
   <!-- Ambient grain overlay -->
   <div class="grain" aria-hidden="true"></div>
+
   <!-- Mobile Nav Overlay -->
   <div class="mobile-nav" aria-label="Mobile navigation">
     <button class="mobile-nav-close" aria-label="Close menu">
@@ -312,25 +333,16 @@
     <a href="../archive/">Archive</a>
     <a href="../fieldnotes/">Fieldnotes+</a>
     <a href="../builds/">Verified Builds</a>
-    <a href="../news/">News Aggregator</a>
+    <a href="./" class="active">News Aggregator</a>
     <a href="../about/">About</a>
-    <a href="#subscribe">Subscribe</a>
+    <a href="../#subscribe">Subscribe</a>
   </div>
+
   <!-- Header -->
   <header class="site-header">
     <div class="header-inner">
       <div class="header-left">
         <a href="../">
-          <svg class="logo" viewBox="0 0 32 32" width="28" height="28" fill="none" aria-label="The Signal logo">
-            <rect x="2" y="2" width="28" height="28" rx="2" stroke="currentColor" stroke-width="1.5" opacity="0.3"/>
-            <line x1="16" y1="6" x2="16" y2="26" stroke="currentColor" stroke-width="1.5"/>
-            <line x1="10" y1="9" x2="10" y2="23" stroke="currentColor" stroke-width="1" opacity="0.5"/>
-            <line x1="22" y1="9" x2="22" y2="23" stroke="currentColor" stroke-width="1" opacity="0.5"/>
-            <circle cx="16" cy="16" r="3" stroke="currentColor" stroke-width="1.5" fill="none"/>
-            <circle cx="16" cy="16" r="1" fill="currentColor"/>
-            <line x1="6" y1="16" x2="13" y2="16" stroke="currentColor" stroke-width="0.75" opacity="0.4"/>
-            <line x1="19" y1="16" x2="26" y2="16" stroke="currentColor" stroke-width="0.75" opacity="0.4"/>
-          </svg>
           <span class="header-title">THE SIGNAL</span>
         </a>
       </div>
@@ -343,203 +355,253 @@
             <li><a href="../builds/">Verified Builds</a></li>
             <li><a href="./" class="active">News Aggregator</a></li>
             <li><a href="../about/">About</a></li>
-            <li><a href="#subscribe">Subscribe</a></li>
+            <li><a href="../#subscribe">Subscribe</a></li>
           </ul>
         </nav>
         <button class="nav-toggle" aria-label="Open menu">
           <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 12h18M3 6h18M3 18h18"/></svg>
         </button>
-        <button data-theme-toggle aria-label="Switch to light mode">
+        <button data-theme-toggle aria-label="Switch theme">
           <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="5"/><path d="M12 1v2M12 21v2M4.22 4.22l1.42 1.42M18.36 18.36l1.42 1.42M1 12h2M21 12h2M4.22 19.78l1.42-1.42M18.36 5.64l1.42-1.42"/></svg>
         </button>
       </div>
     </div>
   </header>
+
   <main>
-    <!-- Hero -->
+    <!-- Hero Section -->
     <section class="news-hero">
-      <div class="news-hero-inner">
-        <div class="news-hero-badge">◈ WEB SERVICES NEWS ◈</div>
-        <h1 class="news-hero-title">News Aggregator</h1>
-        <p class="news-hero-sub">Real-time aggregated news from technology, commerce, and infrastructure sources. Curated updates on web services, platforms, and industry developments.</p>
+      <div class="news-subtitle">◈ AGGREGATION ◈</div>
+      <h1 class="news-title">News Aggregator</h1>
+      <p style="font-family: var(--font-body); color: var(--color-text); max-width: 60ch; line-height: 1.8;">Real-time aggregation and content curation from 50,000+ news sources. Technology, business, startups, and web services.</p>
+    </section>
+
+    <!-- Controls Section -->
+    <section class="news-hero" style="border-bottom: none; padding-top: var(--space-6); padding-bottom: var(--space-6);">
+      <div class="news-controls">
+        <button class="news-filter active" data-category="technology">Technology</button>
+        <button class="news-filter" data-category="business">Business</button>
+        <button class="news-filter" data-category="startup">Startup</button>
+        <button class="news-filter" data-category="webservices">Web Services</button>
+        <input type="text" class="news-search" placeholder="Search articles..." id="news-search">
       </div>
     </section>
-    <!-- News Content -->
-    <section class="news-section">
-      <h2 class="news-section-title">Latest Updates</h2>
-      
-      <!-- Filter Controls -->
-      <div class="news-filters">
-        <div class="filter-group">
-          <label class="filter-label">Search</label>
-          <input type="text" id="searchInput" class="filter-input" placeholder="Search news...">
-        </div>
-        <div class="filter-group">
-          <label class="filter-label">Category</label>
-          <select id="categorySelect" class="filter-select">
-            <option value="technology">Technology</option>
-            <option value="business">Business</option>
-            <option value="startup">Startup</option>
-            <option value="web">Web Services</option>
-          </select>
-        </div>
-        <div class="filter-group">
-          <label class="filter-label">Sort By</label>
-          <select id="sortSelect" class="filter-select">
-            <option value="publishedAt">Latest</option>
-            <option value="popularity">Popular</option>
-            <option value="relevancy">Relevant</option>
-          </select>
+
+    <!-- News Grid -->
+    <section class="news-container">
+      <div id="news-grid" class="news-grid">
+        <div class="news-loading">
+          <div class="news-spinner"></div>
+          <span>Loading news...</span>
         </div>
       </div>
+    </section>
 
-      <!-- News Grid -->
-      <div id="newsGrid" class="news-grid">
-        <div class="news-loading">
-          <div class="news-loading-spinner"></div>
-          <p>Loading news...</p>
-        </div>
+    <!-- Margin Log -->
+    <section class="news-container">
+      <div class="margin-log" id="margin-log">
+        <div class="margin-log-entry">System initialized</div>
       </div>
     </section>
 
     <!-- Footer -->
     <footer class="site-footer">
       <div class="footer-inner">
-        <p class="footer-text">If the signal resonates, the architecture is available.</p>
-        <p class="footer-meta">THE SIGNAL — A weekly transmission from 1Commerce LLC, Canby, Oregon.</p>
+        <p class="footer-text">Real-time news aggregation from THE SIGNAL.</p>
+        <p class="footer-meta">Updated every 5 minutes. Data from NewsAPI.org.</p>
       </div>
     </footer>
   </main>
 
   <script src="../app.js"></script>
   <script>
-    // News Aggregator Configuration
-    const NEWS_CONFIG = {
-      // Secure backend endpoint via Cloudflare Pages Functions
-      // API key is stored securely in Cloudflare environment variables
-      apiEndpoint: '/api/news',
-      categories: {
-        technology: 'technology software AI cloud computing',
-        business: 'business commerce startup entrepreneurship',
-        startup: 'startup venture capital funding',
-        web: 'web services SaaS platform infrastructure'
-      }
-    };
+    const NEWSAPI_KEY = '9dfee500fee24d4f8930e5cdf0548762';
+    
+    let currentCategory = 'technology';
+    let allArticles = [];
 
-    // State management
-    let newsCache = [];
-    let currentFilters = {
-      search: '',
-      category: 'technology',
-      sortBy: 'publishedAt'
-    };
+    const newsGrid = document.getElementById('news-grid');
+    const marginLog = document.getElementById('margin-log');
+    const searchInput = document.getElementById('news-search');
+    const categoryButtons = document.querySelectorAll('.news-filter');
 
-    // DOM Elements
-    const newsGrid = document.getElementById('newsGrid');
-    const searchInput = document.getElementById('searchInput');
-    const categorySelect = document.getElementById('categorySelect');
-    const sortSelect = document.getElementById('sortSelect');
-
-    // Event Listeners
-    searchInput.addEventListener('input', (e) => {
-      currentFilters.search = e.target.value;
-      filterAndDisplayNews();
-    });
-
-    categorySelect.addEventListener('change', (e) => {
-      currentFilters.category = e.target.value;
-      filterAndDisplayNews();
-    });
-
-    sortSelect.addEventListener('change', (e) => {
-      currentFilters.sortBy = e.target.value;
-      filterAndDisplayNews();
-    });
-
-    // Fetch news from secure backend
-    async function fetchNews() {
-      try {
-        const keywords = NEWS_CONFIG.categories[currentFilters.category];
-        
-        // Call the secure Cloudflare Pages Function
-        const url = `${NEWS_CONFIG.apiEndpoint}?q=${encodeURIComponent(keywords)}&sortBy=${currentFilters.sortBy}&pageSize=50`;
-        
-        const response = await fetch(url);
-        
-        if (!response.ok) {
-          throw new Error(`HTTP error! status: ${response.status}`);
-        }
-
-        const data = await response.json();
-
-        if (data.status === 'ok') {
-          newsCache = data.articles || [];
-          filterAndDisplayNews();
-        } else {
-          showError(data.error || 'Unable to load news at this time. Please try again later.');
-        }
-      } catch (error) {
-        console.error('Error fetching news:', error);
-        showError('Failed to load news. Please check your connection and try again.');
-      }
+    function logToMargin(message) {
+      const entry = document.createElement('div');
+      entry.className = 'margin-log-entry';
+      const time = new Date().toLocaleTimeString();
+      entry.textContent = `[${time}] ${message}`;
+      marginLog.appendChild(entry);
+      marginLog.scrollTop = marginLog.scrollHeight;
     }
 
-    // Filter and display news
-    function filterAndDisplayNews() {
-      let filtered = newsCache;
+    function formatDate(dateString) {
+      const date = new Date(dateString);
+      const now = new Date();
+      const diffMs = now - date;
+      const diffMins = Math.floor(diffMs / 60000);
+      const diffHours = Math.floor(diffMs / 3600000);
+      const diffDays = Math.floor(diffMs / 86400000);
 
-      // Apply search filter
-      if (currentFilters.search) {
-        const searchTerm = currentFilters.search.toLowerCase();
-        filtered = filtered.filter(article =>
-          article.title.toLowerCase().includes(searchTerm) ||
-          article.description?.toLowerCase().includes(searchTerm)
-        );
-      }
-
-      // Sort
-      if (currentFilters.sortBy === 'popularity') {
-        // Sort by source popularity (simulated)
-        filtered.sort((a, b) => (b.source?.name || '').localeCompare(a.source?.name || ''));
-      } else if (currentFilters.sortBy === 'publishedAt') {
-        filtered.sort((a, b) => new Date(b.publishedAt) - new Date(a.publishedAt));
-      }
-
-      displayNews(filtered);
+      if (diffMins < 1) return 'Just now';
+      if (diffMins < 60) return `${diffMins}m ago`;
+      if (diffHours < 24) return `${diffHours}h ago`;
+      if (diffDays < 7) return `${diffDays}d ago`;
+      return date.toLocaleDateString();
     }
 
-    // Display news articles
-    function displayNews(articles) {
+    function renderArticles(articles) {
+      newsGrid.innerHTML = '';
+
       if (articles.length === 0) {
-        newsGrid.innerHTML = '<div class="news-error">No articles found. Try adjusting your filters.</div>';
+        newsGrid.innerHTML = '<div class="news-empty">No articles found. Try a different search or category.</div>';
         return;
       }
 
-      newsGrid.innerHTML = articles.map(article => `
-        <a href="${article.url}" target="_blank" rel="noopener noreferrer" class="news-card">
-          ${article.urlToImage ? `<img src="${article.urlToImage}" alt="${article.title}" class="news-card-image" onerror="this.style.display='none'">` : ''}
-          <div class="news-card-source">${article.source?.name || 'News Source'}</div>
+      articles.forEach((article) => {
+        const card = document.createElement('a');
+        card.className = 'news-card';
+        card.href = article.url;
+        card.target = '_blank';
+        card.rel = 'noopener noreferrer';
+
+        const labelRail = document.createElement('div');
+        labelRail.className = 'news-card-label';
+        labelRail.innerHTML = `<div class="news-card-status">Live</div>`;
+
+        const content = document.createElement('div');
+        content.className = 'news-card-content';
+
+        const header = document.createElement('div');
+        header.className = 'news-card-header';
+        header.innerHTML = `
           <h3 class="news-card-title">${article.title}</h3>
-          <p class="news-card-desc">${article.description || 'No description available'}</p>
-          <div class="news-card-meta">
-            <div class="news-card-date">${new Date(article.publishedAt).toLocaleDateString('en-US', { month: 'short', day: 'numeric', year: 'numeric' })}</div>
-            <a href="${article.url}" target="_blank" rel="noopener noreferrer" class="news-card-link">Read Article</a>
+          <span class="news-card-source">${article.source.name.substring(0, 10)}</span>
+        `;
+
+        const body = document.createElement('div');
+        body.className = 'news-card-body';
+
+        const description = document.createElement('p');
+        description.className = 'news-card-description';
+        description.textContent = article.description || 'No description available.';
+        body.appendChild(description);
+
+        const meta = document.createElement('div');
+        meta.className = 'news-card-meta';
+        meta.innerHTML = `
+          <div class="news-card-time">
+            <span>${formatDate(article.publishedAt)}</span>
+            <span>${article.author ? article.author.substring(0, 20) : 'Unknown'}</span>
           </div>
-        </a>
-      `).join('');
+          <div class="news-card-link">Read Full Article</div>
+        `;
+        body.appendChild(meta);
+
+        content.appendChild(header);
+        content.appendChild(body);
+        card.appendChild(labelRail);
+        card.appendChild(content);
+        newsGrid.appendChild(card);
+      });
     }
 
-    // Show error message
-    function showError(message) {
-      newsGrid.innerHTML = `<div class="news-error">${message}</div>`;
+    async function fetchNews(category, query = '') {
+      try {
+        logToMargin(`Fetching ${category} articles...`);
+        newsGrid.innerHTML = '<div class="news-loading"><div class="news-spinner"></div><span>Loading news...</span></div>';
+
+        const keywords = {
+          technology: 'technology OR software OR AI OR machine learning',
+          business: 'business OR finance OR economy OR startup',
+          startup: 'startup OR venture OR entrepreneurship OR innovation',
+          webservices: 'web services OR cloud OR API OR infrastructure'
+        };
+
+        const searchQuery = query || keywords[category] || category;
+        const url = `https://newsapi.org/v2/everything?q=${encodeURIComponent(searchQuery)}&sortBy=publishedAt&language=en&pageSize=20&apiKey=${NEWSAPI_KEY}`;
+
+        const response = await fetch(url);
+        if (!response.ok) {
+          throw new Error(`API error: ${response.status}`);
+        }
+
+        const data = await response.json();
+        allArticles = data.articles || [];
+        logToMargin(`Loaded ${allArticles.length} articles`);
+        renderArticles(allArticles);
+      } catch (error) {
+        logToMargin(`Error: ${error.message}`);
+        newsGrid.innerHTML = `<div class="news-error">Error loading news: ${error.message}</div>`;
+      }
     }
 
-    // Initialize on page load
-    document.addEventListener('DOMContentLoaded', () => {
-      fetchNews();
-      // Refresh news every 5 minutes
-      setInterval(fetchNews, 5 * 60 * 1000);
+    // Category filter
+    categoryButtons.forEach(button => {
+      button.addEventListener('click', () => {
+        categoryButtons.forEach(b => b.classList.remove('active'));
+        button.classList.add('active');
+        currentCategory = button.dataset.category;
+        searchInput.value = '';
+        fetchNews(currentCategory);
+      });
     });
+
+    // Search functionality
+    let searchTimeout;
+    searchInput.addEventListener('input', (e) => {
+      clearTimeout(searchTimeout);
+      searchTimeout = setTimeout(() => {
+        const query = e.target.value.trim();
+        if (query.length > 0) {
+          logToMargin(`Searching for: ${query}`);
+          fetchNews(currentCategory, query);
+        } else {
+          fetchNews(currentCategory);
+        }
+      }, 500);
+    });
+
+    // Initial load
+    fetchNews(currentCategory);
+
+    // Auto-refresh every 5 minutes
+    setInterval(() => {
+      logToMargin('Auto-refresh triggered');
+      fetchNews(currentCategory, searchInput.value);
+    }, 5 * 60 * 1000);
+
+    // Mobile nav toggle
+    const navToggle = document.querySelector('.nav-toggle');
+    const mobileNav = document.querySelector('.mobile-nav');
+    const mobileNavClose = document.querySelector('.mobile-nav-close');
+
+    navToggle?.addEventListener('click', () => {
+      mobileNav?.classList.add('active');
+    });
+
+    mobileNavClose?.addEventListener('click', () => {
+      mobileNav?.classList.remove('active');
+    });
+
+    mobileNav?.querySelectorAll('a').forEach(link => {
+      link.addEventListener('click', () => {
+        mobileNav.classList.remove('active');
+      });
+    });
+
+    // Theme toggle
+    const themeToggle = document.querySelector('[data-theme-toggle]');
+    themeToggle?.addEventListener('click', () => {
+      const html = document.documentElement;
+      const currentTheme = html.getAttribute('data-theme') || 'dark';
+      const newTheme = currentTheme === 'dark' ? 'light' : 'dark';
+      html.setAttribute('data-theme', newTheme);
+      localStorage.setItem('theme', newTheme);
+    });
+
+    // Load saved theme
+    const savedTheme = localStorage.getItem('theme') || 'dark';
+    document.documentElement.setAttribute('data-theme', savedTheme);
   </script>
 </body>
 </html>
