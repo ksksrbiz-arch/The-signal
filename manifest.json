@@ -1,0 +1,21 @@
+{
+  "name": "THE SIGNAL",
+  "short_name": "Signal",
+  "description": "Systems atlas. Proof-first. No placeholders.",
+  "start_url": "/",
+  "display": "standalone",
+  "background_color": "#0a0e14",
+  "theme_color": "#22d3c5",
+  "orientation": "portrait-primary",
+  "icons": [
+    {
+      "src": "data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 512 512'><rect x='32' y='32' width='448' height='448' rx='32' stroke='%2322d3c5' stroke-width='24' fill='%230a0e14'/><line x1='256' y1='96' x2='256' y2='416' stroke='%2322d3c5' stroke-width='24'/><circle cx='256' cy='256' r='48' stroke='%2322d3c5' stroke-width='24' fill='none'/></svg>",
+      "sizes": "512x512",
+      "type": "image/svg+xml",
+      "purpose": "any maskable"
+    }
+  ],
+  "categories": ["business", "productivity", "news"],
+  "lang": "en-US",
+  "dir": "ltr"
+}

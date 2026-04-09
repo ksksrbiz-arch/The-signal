@@ -1,0 +1,14 @@
+# Netlify Headers File
+# Additional security and performance headers
+
+/*
+  X-Robots-Tag: index, follow
+  X-Powered-By: 1Commerce LLC
+  Strict-Transport-Security: max-age=31536000; includeSubDomains; preload
+
+# API Endpoints
+/.netlify/functions/*
+  Access-Control-Allow-Origin: *
+  Access-Control-Allow-Methods: GET, POST, OPTIONS
+  Access-Control-Allow-Headers: Content-Type
+  Cache-Control: public, max-age=600

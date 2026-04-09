@@ -1,0 +1,29 @@
+# THE SIGNAL - robots.txt
+# https://signal01.netlify.app/
+
+User-agent: *
+Allow: /
+
+# Sitemaps
+Sitemap: https://signal01.netlify.app/sitemap.xml
+
+# Crawl-delay (be nice to our server)
+Crawl-delay: 1
+
+# Specific bots
+User-agent: GPTBot
+Allow: /
+
+User-agent: ChatGPT-User
+Allow: /
+
+User-agent: anthropic-ai
+Allow: /
+
+User-agent: Claude-Web
+Allow: /
+
+# Disallow admin/function paths
+User-agent: *
+Disallow: /.netlify/
+Disallow: /functions/
