@@ -70,12 +70,20 @@ body {
   background: var(--bg);
   color: var(--text);
   font-family: var(--font-body);
-  font-size: 15px;
-  line-height: 1.45;
+  font-size: 16px; /* Increased from 15px for better readability */
+  line-height: 1.6; /* Increased from 1.45 for better readability */
   position: relative;
   overflow-x: hidden;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+}
+
+/* Mobile: Even larger for comfort */
+@media (max-width: 768px) {
+  body {
+    font-size: 17px; /* iOS/Android comfort size */
+    line-height: 1.65;
+  }
 }
 
 /* Blueprint grid + noise underlay */
