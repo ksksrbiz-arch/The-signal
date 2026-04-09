@@ -36,11 +36,36 @@
   var mobileNav = document.querySelector('.mobile-nav');
   var closeBtn = document.querySelector('.mobile-nav-close');
   if (!toggle || !mobileNav) return;
-  toggle.addEventListener('click', function() { mobileNav.classList.add('active'); document.body.style.overflow = 'hidden'; });
-  function closeMobileNav() { mobileNav.classList.remove('active'); document.body.style.overflow = ''; }
+
+  var scrollY = 0;
+
+  function openMobileNav() {
+    scrollY = window.scrollY;
+    mobileNav.classList.add('active');
+    document.body.style.position = 'fixed';
+    document.body.style.top = '-' + scrollY + 'px';
+    document.body.style.width = '100%';
+    document.body.style.overflow = 'hidden';
+  }
+
+  function closeMobileNav() {
+    mobileNav.classList.remove('active');
+    document.body.style.position = '';
+    document.body.style.top = '';
+    document.body.style.width = '';
+    document.body.style.overflow = '';
+    window.scrollTo(0, scrollY);
+  }
+
+  toggle.addEventListener('click', openMobileNav);
   if (closeBtn) closeBtn.addEventListener('click', closeMobileNav);
   mobileNav.querySelectorAll('a').forEach(function(link) { link.addEventListener('click', closeMobileNav); });
   document.addEventListener('keydown', function(e) { if (e.key === 'Escape' && mobileNav.classList.contains('active')) closeMobileNav(); });
+
+  // Close on click outside
+  mobileNav.addEventListener('click', function(e) {
+    if (e.target === mobileNav) closeMobileNav();
+  });
 })();
 
 // ─── SWITCHBOARD SNAP ROUTING ───────────────────────────────
@@ -197,4 +222,126 @@
 
   // Make globally available
   window.SignalShare = { build: buildShareStrip, copy: copyToClipboard };
+})();
+
+// ─── CONTACT MODAL ──────────────────────────────────────────
+(function(){
+  var modal = document.getElementById('contact-modal');
+  var form = document.getElementById('contact-form');
+  var successDiv = document.getElementById('contact-success');
+  var errorDiv = document.getElementById('contact-error');
+  var errorMessage = document.getElementById('error-message');
+
+  if (!modal || !form) return;
+
+  var scrollY = 0;
+
+  // Open modal
+  function openModal() {
+    scrollY = window.scrollY;
+    modal.classList.add('active');
+    modal.setAttribute('aria-hidden', 'false');
+    document.body.style.position = 'fixed';
+    document.body.style.top = '-' + scrollY + 'px';
+    document.body.style.width = '100%';
+    document.body.style.overflow = 'hidden';
+  }
+
+  // Close modal
+  function closeModal() {
+    modal.classList.remove('active');
+    modal.setAttribute('aria-hidden', 'true');
+    document.body.style.position = '';
+    document.body.style.top = '';
+    document.body.style.width = '';
+    document.body.style.overflow = '';
+    window.scrollTo(0, scrollY);
+
+    // Reset form after animation
+    setTimeout(function() {
+      form.reset();
+      form.style.display = '';
+      successDiv.style.display = 'none';
+      errorDiv.style.display = 'none';
+      var submitBtn = form.querySelector('.contact-submit-btn');
+      if (submitBtn) {
+        submitBtn.disabled = false;
+        submitBtn.classList.remove('loading');
+      }
+    }, 300);
+  }
+
+  // Open modal on button click
+  document.querySelectorAll('[data-contact-modal]').forEach(function(btn) {
+    btn.addEventListener('click', openModal);
+  });
+
+  // Close modal handlers
+  document.querySelectorAll('[data-close-modal]').forEach(function(btn) {
+    btn.addEventListener('click', closeModal);
+  });
+
+  // Close on escape
+  document.addEventListener('keydown', function(e) {
+    if (e.key === 'Escape' && modal.classList.contains('active')) {
+      closeModal();
+    }
+  });
+
+  // Retry on error
+  document.querySelectorAll('[data-retry-contact]').forEach(function(btn) {
+    btn.addEventListener('click', function() {
+      form.style.display = '';
+      errorDiv.style.display = 'none';
+    });
+  });
+
+  // Form submission
+  form.addEventListener('submit', function(e) {
+    e.preventDefault();
+
+    var submitBtn = form.querySelector('.contact-submit-btn');
+    submitBtn.disabled = true;
+    submitBtn.classList.add('loading');
+
+    var formData = {
+      name: form.querySelector('#contact-name').value,
+      email: form.querySelector('#contact-email').value,
+      message: form.querySelector('#contact-message').value
+    };
+
+    // Send to Netlify Function
+    fetch('/.netlify/functions/send-email', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify(formData)
+    })
+    .then(function(response) {
+      return response.json().then(function(data) {
+        return { ok: response.ok, data: data };
+      });
+    })
+    .then(function(result) {
+      if (result.ok) {
+        // Show success
+        form.style.display = 'none';
+        successDiv.style.display = 'block';
+
+        // Log to console for verification
+        console.log('Contact form submitted:', formData.name, formData.email);
+      } else {
+        throw new Error(result.data.error || 'Failed to send message');
+      }
+    })
+    .catch(function(error) {
+      console.error('Contact form error:', error);
+      form.style.display = 'none';
+      errorDiv.style.display = 'block';
+      errorMessage.textContent = error.message || 'Failed to send message. Please try again or email directly at skdev@1commerce.online';
+    })
+    .finally(function() {
+      submitBtn.disabled = false;
+      submitBtn.classList.remove('loading');
+    });
+  });
 })();
