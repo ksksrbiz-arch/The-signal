@@ -100,9 +100,6 @@
       if (views[route]) {
         views[route].scrollIntoView({ behavior: 'smooth', block: 'start' });
       }
-
-      // Log routing
-      console.log('Snap routed to:', route);
     });
   });
 
@@ -326,15 +323,11 @@
         // Show success
         form.style.display = 'none';
         successDiv.style.display = 'block';
-
-        // Log to console for verification
-        console.log('Contact form submitted:', formData.name, formData.email);
       } else {
         throw new Error(result.data.error || 'Failed to send message');
       }
     })
     .catch(function(error) {
-      console.error('Contact form error:', error);
       form.style.display = 'none';
       errorDiv.style.display = 'block';
       errorMessage.textContent = error.message || 'Failed to send message. Please try again or email directly at skdev@1commerce.online';
