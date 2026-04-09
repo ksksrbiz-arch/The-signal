@@ -383,17 +383,241 @@
   background: var(--color-divider);
 }
 
-/* Responsive */
-@media (max-width: 900px) {
-  .fnplus-hero-inner { grid-template-columns: 1fr; }
-  .fnplus-hero-stats { flex-direction: row; flex-wrap: wrap; }
-  .fnplus-docs-grid { grid-template-columns: repeat(2, 1fr); }
+/* Responsive - Mobile Overhaul */
+
+/* Tablet (768px - 1024px) */
+@media (max-width: 1024px) {
+  .fnplus-hero-inner {
+    grid-template-columns: 1fr;
+    gap: var(--space-8);
+  }
+
+  .fnplus-docs-grid {
+    grid-template-columns: repeat(2, 1fr);
+    gap: var(--space-3);
+  }
 }
-@media (max-width: 640px) {
-  .fnplus-docs-grid { grid-template-columns: 1fr; }
-  .fnplus-stat-divider { display: none; }
+
+/* Mobile (Below 768px) */
+@media (max-width: 768px) {
+  /* Hero Section */
+  .fnplus-hero {
+    padding: var(--space-12) var(--space-4) var(--space-8);
+  }
+
+  .fnplus-hero-inner {
+    grid-template-columns: 1fr;
+    gap: var(--space-6);
+  }
+
+  .fnplus-hero-title {
+    font-size: clamp(1.8rem, 8vw, 2.4rem);
+    margin-bottom: var(--space-4);
+  }
+
+  .fnplus-hero-sub {
+    font-size: var(--text-sm);
+    max-width: 100%;
+  }
+
+  .fnplus-hero-stats {
+    padding: var(--space-5);
+    flex-direction: row;
+    flex-wrap: wrap;
+    gap: var(--space-4);
+  }
+
+  .fnplus-stat {
+    flex: 1 1 calc(50% - var(--space-2));
+    min-width: 140px;
+  }
+
+  .fnplus-stat-num {
+    font-size: var(--text-xl);
+  }
+
+  .fnplus-stat-label {
+    font-size: var(--text-xs);
+  }
+
+  /* Filter Bar */
+  .fnplus-filter-bar {
+    padding: var(--space-4) var(--space-4) 0;
+  }
+
+  .fnplus-filter-inner {
+    gap: var(--space-2);
+    padding-bottom: var(--space-4);
+  }
+
+  .fnplus-filter-label {
+    width: 100%;
+    margin-bottom: var(--space-1);
+  }
+
+  .fnplus-filter-btn {
+    font-size: 10px;
+    padding: var(--space-2) var(--space-3);
+    flex: 1 1 auto;
+  }
+
+  /* Library Section */
+  .fnplus-library {
+    padding: var(--space-8) var(--space-4);
+  }
+
+  .fnplus-week-group {
+    margin-bottom: var(--space-8);
+  }
+
+  .fnplus-week-header {
+    flex-wrap: wrap;
+    gap: var(--space-2);
+    padding-bottom: var(--space-3);
+    margin-bottom: var(--space-4);
+  }
+
+  .fnplus-week-count {
+    margin-left: 0;
+    width: 100%;
+    text-align: left;
+  }
+
+  /* Document Grid */
+  .fnplus-docs-grid {
+    grid-template-columns: 1fr;
+    gap: var(--space-3);
+  }
+
+  .fnplus-doc {
+    padding: var(--space-4);
+  }
+
+  .fnplus-doc-header {
+    margin-bottom: var(--space-3);
+  }
+
+  .fnplus-doc-title {
+    font-size: var(--text-base);
+    margin-bottom: var(--space-2);
+  }
+
+  .fnplus-doc-meta {
+    font-size: 10px;
+  }
+
+  .fnplus-doc-desc {
+    font-size: var(--text-sm);
+    line-height: 1.6;
+  }
+
+  .fnplus-doc-footer {
+    margin-top: var(--space-3);
+    gap: var(--space-2);
+  }
+
+  .fnplus-doc-tag {
+    font-size: 9px;
+    padding: 3px 8px;
+  }
+}
+
+/* Small Phones (Below 480px) */
+@media (max-width: 480px) {
+  .fnplus-hero {
+    padding: var(--space-10) var(--space-3) var(--space-6);
+  }
+
+  .fnplus-hero-title {
+    font-size: 1.6rem;
+    line-height: 1.2;
+  }
+
+  .fnplus-hero-badge {
+    font-size: 10px;
+    margin-bottom: var(--space-3);
+  }
+
+  .fnplus-hero-stats {
+    padding: var(--space-4);
+    gap: var(--space-3);
+  }
+
+  .fnplus-stat {
+    flex: 1 1 100%;
+  }
+
+  .fnplus-stat-divider {
+    display: none;
+  }
+
+  .fnplus-filter-inner {
+    flex-direction: column;
+    align-items: stretch;
+  }
+
+  .fnplus-filter-btn {
+    width: 100%;
+    text-align: center;
+  }
+
+  .fnplus-library {
+    padding: var(--space-6) var(--space-3);
+  }
+
+  .fnplus-week-group {
+    margin-bottom: var(--space-6);
+  }
+
+  .fnplus-docs-grid {
+    gap: var(--space-2);
+  }
+
+  .fnplus-doc {
+    padding: var(--space-3);
+  }
+
+  .fnplus-doc-title {
+    font-size: 15px;
+  }
+
+  .fnplus-doc-desc {
+    font-size: 13px;
+  }
+
+  .fnplus-doc-footer {
+    flex-wrap: wrap;
+  }
+
+  .fnplus-doc-tag {
+    font-size: 8px;
+    padding: 2px 6px;
+  }
+}
+
+/* Touch Improvements */
+@media (hover: none) and (pointer: coarse) {
+  .fnplus-filter-btn {
+    min-height: 44px;
+    padding: var(--space-3) var(--space-4);
+  }
+
+  .fnplus-doc {
+    min-height: 120px;
+  }
+
+  .fnplus-doc:active {
+    transform: scale(0.98);
+    background: rgba(255, 255, 255, 0.02);
+  }
+
+  .fnplus-filter-btn:active {
+    transform: scale(0.95);
+  }
 }
 </style>
+
+```
 </head>
 <body>
   <div class="grain" aria-hidden="true"></div>
