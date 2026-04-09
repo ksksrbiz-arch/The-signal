@@ -1,4 +1,6 @@
 # Netlify Configuration for The Signal
+# Static HTML/CSS/JS site with serverless functions
+# NOT a Next.js site - disable Next.js plugin in Netlify UI
 
 [build]
   publish = "."
