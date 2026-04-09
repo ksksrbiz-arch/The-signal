@@ -1,7 +1,40 @@
 # Netlify Configuration for The Signal
-# Static HTML/CSS/JS site with serverless functions
+# Static HTML/CSS/JS site with serverless functions AND edge functions
 # NOT a Next.js site - disable Next.js plugin in Netlify UI
 
 [build]
   publish = "."
   functions = "functions"
+
+# Edge Functions for superior performance
+[[edge_functions]]
+  function = "performance"
+  path = "/*"
+
+[[edge_functions]]
+  function = "geo-personalize"
+  path = "/*"
+
+[[edge_functions]]
+  function = "news-cache"
+  path = "/news/*"
+
+# Security & Performance Headers
+[[headers]]
+  for = "/*"
+  [headers.values]
+    X-Frame-Options = "DENY"
+    X-Content-Type-Options = "nosniff"
+    Referrer-Policy = "strict-origin-when-cross-origin"
+    Permissions-Policy = "camera=(), microphone=(), geolocation=()"
+
+# Static asset caching
+[[headers]]
+  for = "/*.js"
+  [headers.values]
+    Cache-Control = "public, max-age=31536000, immutable"
+
+[[headers]]
+  for = "/*.css"
+  [headers.values]
+    Cache-Control = "public, max-age=31536000, immutable"
