@@ -86,6 +86,21 @@ body {
   }
 }
 
+/* Global Link Styling */
+a {
+  color: var(--active);
+  text-decoration: none;
+  transition: color 180ms ease;
+}
+
+a:hover {
+  color: #1fb8af;
+}
+
+a:visited {
+  color: var(--active);
+}
+
 /* Blueprint grid + noise underlay */
 body::before {
   content: '';
