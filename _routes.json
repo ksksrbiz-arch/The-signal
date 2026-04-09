@@ -1,0 +1,22 @@
+{
+2  "version": 1,
+  "include": [
+    "/api/*",
+    "/preview/*"
+  ],
+  "exclude": [
+    "/*.html",
+    "/archive/*.html",
+    "/fieldnotes/*.html",
+    "/builds/*.html",
+    "/news/*.html",
+    "/about/*.html",
+    "/assets/*",
+    "/*.css",
+    "/*.js",
+    "/*.jpg",
+    "/*.png",
+    "/*.svg",
+    "/*.ico"
+  ]
+}
