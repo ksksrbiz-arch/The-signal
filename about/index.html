@@ -326,45 +326,119 @@
 
   <!-- Footer -->
   <footer class="site-footer">
-    <div class="footer-main">
+    <div class="footer-inner">
       <div class="footer-col">
         <h4>The Signal</h4>
-        <div class="footer-subscribe">
-          <form class="footer-subscribe-form" action="https://assets.mailerlite.com/jsonp/887036/forms/131950373498498498/subscribe" method="POST">
-            <input type="email" name="fields[email]" placeholder="your@email.com" required aria-label="Email address">
-            <button type="submit">Subscribe</button>
-          </form>
-        </div>
-        <p>A weekly transmission from a solo founder building in public.</p>
+        <p>Systems atlas. Proof-first. No placeholders.</p>
+        <form class="subscribe-form" action="https://assets.mailerlite.com/jsonp/887036/forms/131950373498498498/subscribe" method="POST">
+          <input type="email" name="fields[email]" placeholder="your@email.com" required aria-label="Email address">
+          <button type="submit">Subscribe</button>
+        </form>
       </div>
       <div class="footer-col">
         <h4>Navigate</h4>
         <ul>
           <li><a href="../">Home</a></li>
           <li><a href="../archive/">Archive</a></li>
+          <li><a href="../fieldnotes/">Fieldnotes+</a></li>
+          <li><a href="../builds/">Verified Builds</a></li>
+          <li><a href="../news/">News Aggregator</a></li>
           <li><a href="./">About</a></li>
-          <li><a href="../#subscribe">Subscribe</a></li>
         </ul>
       </div>
-            <div class="footer-col">
-        <h4>Verified Builds</h4>
+      <div class="footer-col">
+        <h4>Systems</h4>
         <ul>
           <li><a href="https://1commerce.online/" target="_blank" rel="noopener noreferrer">UnifyOne</a></li>
-          <li><a href="https://clearpath-environmental.netlify.app/" target="_blank" rel="noopener noreferrer">ClearPath Environmental</a></li>
-          <li><a href="https://hidden-creek.netlify.app/" target="_blank" rel="noopener noreferrer">Hidden Creek Horse Park</a></li>
-          <li><a href="https://precision-core.netlify.app/" target="_blank" rel="noopener noreferrer">Precision Core Builders</a></li>
-          <li><a href="https://compass-ai-app.netlify.app/" target="_blank" rel="noopener noreferrer">Compass AI</a></li>
-          <li><a href="https://next-chapter-travel.netlify.app/" target="_blank" rel="noopener noreferrer">Next Chapter Travel</a></li>
-          <li><a href="https://montucky-moonshine-proposal.netlify.app/" target="_blank" rel="noopener noreferrer">Montucky Moonshine</a></li>
-          <li><a href="https://redeaf.netlify.app/" target="_blank" rel="noopener noreferrer">DealFlow</a></li>
+          <li><a href="https://signal01.netlify.app/news/" target="_blank" rel="noopener noreferrer">News Aggregator</a></li>
+          <li><a href="https://github.com/ksksrbiz-arch" target="_blank" rel="noopener noreferrer">GitHub Org</a></li>
+          <li><a href="https://github.com/ksksrbiz-arch/The-Architecture" target="_blank" rel="noopener noreferrer">Architecture Index</a></li>
         </ul>
+      </div>
+      <div class="footer-col">
+        <h4>Contact</h4>
+        <p class="text-muted text-sm mb-3">Direct line to Keith for projects, consulting, or collaboration.</p>
+        <button class="contact-btn" data-contact-modal aria-label="Email Keith directly">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <rect x="2" y="4" width="20" height="16" rx="2"/>
+            <path d="M22 6L12 13L2 6"/>
+          </svg>
+          Email Keith Directly
+        </button>
+        <a href="mailto:skdev@1commerce.online" class="contact-email">skdev@1commerce.online</a>
       </div>
     </div>
     <div class="footer-bottom">
-      <span class="mono-label dim">© 2026 1COMMERCE LLC · CANBY, OREGON</span>
-      <a href="https://www.perplexity.ai/computer" target="_blank" rel="noopener noreferrer" class="mono-label dim">Created with Perplexity Computer</a>
+      <div class="footer-bottom-left">
+        <span class="mono-label">© 2026 1COMMERCE LLC · CANBY, OREGON</span>
+        <span class="mono-label">Systems. Proof. Precision.</span>
+      </div>
+      <a href="https://app.netlify.com/sites/signal01/deploys" target="_blank" rel="noopener noreferrer" class="netlify-badge" aria-label="Netlify deployment status">
+        <img src="https://api.netlify.com/api/v1/badges/31c4764b-f9c4-4531-93ca-b367db629132/deploy-status" alt="Netlify Status" />
+      </a>
     </div>
   </footer>
+
+  <!-- Contact Modal -->
+  <div class="contact-modal" id="contact-modal" aria-hidden="true" role="dialog" aria-labelledby="contact-modal-title">
+    <div class="contact-modal-overlay" data-close-modal></div>
+    <div class="contact-modal-content">
+      <button class="contact-modal-close" data-close-modal aria-label="Close contact form">
+        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+          <path d="M18 6L6 18M6 6l12 12"/>
+        </svg>
+      </button>
+
+      <h3 id="contact-modal-title" class="contact-modal-title">Email Keith Directly</h3>
+      <p class="contact-modal-subtitle">Direct line for projects, consulting, or collaboration opportunities.</p>
+
+      <form class="contact-form" id="contact-form">
+        <div class="form-group">
+          <label for="contact-name">Your Name</label>
+          <input type="text" id="contact-name" name="name" required placeholder="John Doe" aria-required="true">
+        </div>
+
+        <div class="form-group">
+          <label for="contact-email">Your Email</label>
+          <input type="email" id="contact-email" name="email" required placeholder="you@company.com" aria-required="true">
+        </div>
+
+        <div class="form-group">
+          <label for="contact-message">Message</label>
+          <textarea id="contact-message" name="message" required placeholder="Tell me about your project or inquiry..." rows="6" aria-required="true"></textarea>
+        </div>
+
+        <div class="contact-form-footer">
+          <button type="submit" class="contact-submit-btn">
+            <span class="submit-text">Send Message</span>
+            <span class="submit-loading">Sending...</span>
+          </button>
+          <p class="contact-response-time">Response within 24-48 hours</p>
+        </div>
+      </form>
+
+      <div class="contact-success" id="contact-success" style="display: none;">
+        <svg width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" class="success-icon">
+          <circle cx="12" cy="12" r="10"/>
+          <path d="M9 12l2 2 4-4"/>
+        </svg>
+        <h4>Message Sent!</h4>
+        <p>Keith will respond within 24-48 hours.<br>Check your email for confirmation.</p>
+        <button class="contact-close-btn" data-close-modal>Close</button>
+      </div>
+
+      <div class="contact-error" id="contact-error" style="display: none;">
+        <svg width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" class="error-icon">
+          <circle cx="12" cy="12" r="10"/>
+          <path d="M15 9l-6 6M9 9l6 6"/>
+        </svg>
+        <h4>Something Went Wrong</h4>
+        <p id="error-message">Failed to send message. Please try again or email directly.</p>
+        <a href="mailto:skdev@1commerce.online" class="contact-email-fallback">skdev@1commerce.online</a>
+        <button class="contact-retry-btn" data-retry-contact>Try Again</button>
+      </div>
+    </div>
+  </div>
 
   <script src="../app.js" defer></script>
 </body>
