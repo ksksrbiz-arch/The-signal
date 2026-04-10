@@ -44,14 +44,41 @@
   [headers.values]
     Cache-Control = "public, max-age=31536000, immutable"
 
-# HTML pages - shorter cache
+# HTML pages - no cache to ensure fresh content after deploys
 [[headers]]
   for = "/*.html"
   [headers.values]
-    Cache-Control = "public, max-age=3600, must-revalidate"
+    Cache-Control = "public, max-age=0, must-revalidate"
 
-# Redirects (if needed in future)
-# [[redirects]]
-#   from = "/old-path"
-#   to = "/new-path"
-#   status = 301
+# Service worker - never cache
+[[headers]]
+  for = "/sw.js"
+  [headers.values]
+    Cache-Control = "no-cache, no-store, must-revalidate"
+
+# Redirects — legacy paths from th3signal and common URL guesses
+[[redirects]]
+  from = "/blog"
+  to = "/fieldnotes"
+  status = 301
+
+[[redirects]]
+  from = "/blog/*"
+  to = "/fieldnotes/:splat"
+  status = 301
+
+[[redirects]]
+  from = "/posts"
+  to = "/archive"
+  status = 301
+
+[[redirects]]
+  from = "/posts/*"
+  to = "/archive/:splat"
+  status = 301
+
+# Custom 404
+[[redirects]]
+  from = "/*"
+  to = "/404.html"
+  status = 404
