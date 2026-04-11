@@ -56,6 +56,13 @@
   [headers.values]
     Cache-Control = "no-cache, no-store, must-revalidate"
 
+# API proxy — frontend calls /api/news, rewritten to the actual function path.
+# status=200 makes this a rewrite (URL stays /api/news), not a visible 301.
+[[redirects]]
+  from = "/api/news"
+  to = "/.netlify/functions/news"
+  status = 200
+
 # Redirects — legacy paths from th3signal and common URL guesses
 [[redirects]]
   from = "/blog"

@@ -428,7 +428,7 @@
         <span class="mono-label">Systems. Proof. Precision.</span>
       </div>
       <a href="https://app.netlify.com/sites/signal01/deploys" target="_blank" rel="noopener noreferrer" class="netlify-badge" aria-label="Netlify deployment status">
-        <img src="https://api.netlify.com/api/v1/badges/31c4764b-f9c4-4531-93ca-b367db629132/deploy-status" alt="Netlify Status" />
+        <img src="https://api.netlify.com/api/v1/badges/31c4764b-f9c4-4531-93ca-b367db629132/deploy-status" alt="Netlify Status" width="114" height="20" loading="lazy" decoding="async" />
       </a>
     </div>
   </footer>
@@ -489,33 +489,104 @@
 
   <script src="../app.js" defer></script>
   <script>
-    // News Aggregator: Real-time fetching via Cloudflare Functions proxy
+    // News Aggregator: RSS2JSON-backed, filtered client-side.
+    // Endpoint is a Netlify rewrite to /.netlify/functions/news (see netlify.toml).
+    const NEWS_ENDPOINT = '/api/news';
+    const REFRESH_INTERVAL_MS = 5 * 60 * 1000;
+
     const categorySelect = document.getElementById('categorySelect');
     const searchInput = document.getElementById('searchInput');
     const newsGrid = document.getElementById('newsGrid');
     const loadingContainer = document.getElementById('loadingContainer');
     const errorContainer = document.getElementById('errorContainer');
 
-    // Category keywords mapping
+    // Category filter keywords — matched case-insensitively against title + description.
+    // Empty array = match everything (used as default fallback).
     const categoryKeywords = {
-      technology: 'technology OR AI OR software OR developer',
-      business: 'business OR startup OR entrepreneurship OR venture',
-      startup: 'startup OR founder OR fundraising OR scale',
-      web: 'web OR cloud OR infrastructure OR DevOps'
+      technology: ['technology', 'ai ', 'software', 'developer', 'tech', 'code'],
+      business:   ['business', 'startup', 'entrepreneur', 'venture', 'company', 'market'],
+      startup:    ['startup', 'founder', 'fundraising', 'seed', 'series ', 'raised'],
+      web:        ['web', 'cloud', 'infrastructure', 'devops', 'server', 'api', 'platform']
     };
 
-    // Fetch news from Cloudflare Functions proxy
-    async function fetchNews(category = 'technology', searchTerm = '') {
+    let allArticles = [];
+
+    // Escape user-visible strings before injecting into innerHTML templates.
+    function escapeHtml(str) {
+      const div = document.createElement('div');
+      div.textContent = str == null ? '' : String(str);
+      return div.innerHTML;
+    }
+
+    // Only allow http(s) article links — defuses javascript: URLs from RSS feeds.
+    function safeUrl(url) {
+      try {
+        const u = new URL(url);
+        return (u.protocol === 'http:' || u.protocol === 'https:') ? u.href : '#';
+      } catch {
+        return '#';
+      }
+    }
+
+    function filterArticles(category, searchTerm) {
+      const needle = (searchTerm || '').trim().toLowerCase();
+      const keywords = categoryKeywords[category] || [];
+      return allArticles.filter(article => {
+        const hay = `${article.title || ''} ${article.description || ''}`.toLowerCase();
+        const matchesCategory = keywords.length === 0 || keywords.some(k => hay.includes(k));
+        const matchesSearch = !needle || hay.includes(needle);
+        return matchesCategory && matchesSearch;
+      });
+    }
+
+    function renderArticles(articles) {
+      newsGrid.innerHTML = '';
+      if (!articles || articles.length === 0) {
+        newsGrid.innerHTML = '<p style="grid-column: 1/-1; color: var(--muted);">No articles found. Try adjusting your filters.</p>';
+        return;
+      }
+      const currentYear = new Date().getFullYear();
+      articles.forEach(article => {
+        const card = document.createElement('div');
+        card.className = 'news-card';
+
+        const publishDate = new Date(article.publishedAt);
+        const formattedDate = publishDate.toLocaleDateString('en-US', {
+          month: 'short',
+          day: 'numeric',
+          year: publishDate.getFullYear() !== currentYear ? 'numeric' : undefined
+        });
+
+        card.innerHTML = `
+          <div class="news-card-header">
+            <div>
+              <div class="news-card-source">${escapeHtml(article.source && article.source.name)}</div>
+              <h3 class="news-card-title">${escapeHtml(article.title)}</h3>
+            </div>
+          </div>
+          <div class="news-card-body">
+            <p class="news-card-description">${escapeHtml(article.description) || 'No description available.'}</p>
+            <div class="news-card-meta">
+              <span class="news-card-date">${escapeHtml(formattedDate)}</span>
+              <a href="${escapeHtml(safeUrl(article.url))}" target="_blank" rel="noopener noreferrer" class="news-card-link">Read →</a>
+            </div>
+          </div>
+        `;
+
+        newsGrid.appendChild(card);
+      });
+    }
+
+    function applyFilters() {
+      renderArticles(filterArticles(categorySelect.value, searchInput.value));
+    }
+
+    async function fetchNews() {
       loadingContainer.style.display = 'block';
       errorContainer.innerHTML = '';
-      newsGrid.innerHTML = '';
 
       try {
-        const keywords = categoryKeywords[category] || categoryKeywords.technology;
-        const query = searchTerm ? `${keywords} ${searchTerm}` : keywords;
-        
-        const response = await fetch(`/api/news?q=${encodeURIComponent(query)}&sortBy=publishedAt`);
-        
+        const response = await fetch(NEWS_ENDPOINT);
         if (!response.ok) {
           throw new Error(`API error: ${response.status}`);
         }
@@ -523,69 +594,32 @@
         const data = await response.json();
         loadingContainer.style.display = 'none';
 
-        if (!data.articles || data.articles.length === 0) {
-          newsGrid.innerHTML = '<p style="grid-column: 1/-1; color: var(--muted);">No articles found. Try adjusting your filters.</p>';
-          return;
+        if (data.status !== 'ok' || !Array.isArray(data.articles)) {
+          throw new Error(data.message || 'Invalid response from news service');
         }
 
-        // Render articles
-        data.articles.forEach(article => {
-          const card = document.createElement('div');
-          card.className = 'news-card';
-          
-          const publishDate = new Date(article.publishedAt);
-          const formattedDate = publishDate.toLocaleDateString('en-US', { 
-            month: 'short', 
-            day: 'numeric',
-            year: publishDate.getFullYear() !== new Date().getFullYear() ? 'numeric' : undefined
-          });
-
-          card.innerHTML = `
-            <div class="news-card-header">
-              <div>
-                <div class="news-card-source">${article.source.name}</div>
-                <h3 class="news-card-title">${article.title}</h3>
-              </div>
-            </div>
-            <div class="news-card-body">
-              <p class="news-card-description">${article.description || 'No description available.'}</p>
-              <div class="news-card-meta">
-                <span class="news-card-date">${formattedDate}</span>
-                <a href="${article.url}" target="_blank" rel="noopener noreferrer" class="news-card-link">Read →</a>
-              </div>
-            </div>
-          `;
-          
-          newsGrid.appendChild(card);
-        });
-
+        allArticles = data.articles;
+        applyFilters();
       } catch (error) {
         loadingContainer.style.display = 'none';
         errorContainer.innerHTML = `
           <div class="error">
-            <strong>Error:</strong> Unable to fetch news. ${error.message}
+            <strong>Error:</strong> Unable to fetch news. ${escapeHtml(error.message)}
           </div>
         `;
         console.error('News fetch error:', error);
       }
     }
 
-    // Event listeners
-    categorySelect.addEventListener('change', () => {
-      fetchNews(categorySelect.value, searchInput.value);
-    });
-
-    searchInput.addEventListener('input', () => {
-      fetchNews(categorySelect.value, searchInput.value);
-    });
+    // Filter changes render from the cached article list — no refetch required.
+    categorySelect.addEventListener('change', applyFilters);
+    searchInput.addEventListener('input', applyFilters);
 
     // Initial load
     fetchNews();
 
     // Auto-refresh every 5 minutes
-    setInterval(() => {
-      fetchNews(categorySelect.value, searchInput.value);
-    }, 5 * 60 * 1000);
+    setInterval(fetchNews, REFRESH_INTERVAL_MS);
   </script>
 </body>
 </html>
