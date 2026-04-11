@@ -44,8 +44,12 @@
   --transition-interactive: 180ms cubic-bezier(0.16, 1, 0.3, 1);
 }
 
-/* --- Typography --- */
-@import url('https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,600;9..144,700&family=IBM+Plex+Sans:wght@400;500;600&display=swap');
+/* --- Typography ---
+   Fonts are loaded from Google Fonts via <link> in each HTML <head>,
+   not @import here. @import from inside a stylesheet creates a
+   critical-request chain (HTML -> style.css -> fonts) that blocks the
+   First Contentful Paint. The <link> approach fetches fonts in
+   parallel with the stylesheet. */
 
 :root {
   --font-display: 'Fraunces', serif;
