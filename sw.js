@@ -4,7 +4,7 @@
    Increment CACHE_VERSION on each deploy to bust stale caches.
    ============================================================ */
 
-const CACHE_VERSION = 'signal-v1-2026-04-10';
+const CACHE_VERSION = 'signal-v2-2026-04-11';
 
 const STATIC_ASSETS = [
   '/base.css',

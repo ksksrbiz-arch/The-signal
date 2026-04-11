@@ -564,8 +564,27 @@ main {
   background: var(--panel);
   border: 1px solid var(--rule);
   border-radius: var(--r);
+  color: var(--text);
   text-decoration: none;
+  -webkit-text-decoration: none;
   transition: all 180ms ease;
+}
+
+.archive-card,
+.archive-card:link,
+.archive-card:visited,
+.archive-card:hover,
+.archive-card:active,
+.archive-card:focus {
+  color: var(--text);
+  text-decoration: none;
+  -webkit-text-decoration: none;
+}
+
+/* Kill Safari's block-anchor underline propagation to descendants. */
+.archive-card * {
+  text-decoration: none;
+  -webkit-text-decoration: none;
 }
 
 .archive-card:hover {
