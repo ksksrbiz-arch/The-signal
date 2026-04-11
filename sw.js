@@ -7,8 +7,8 @@
 const CACHE_VERSION = 'signal-v2-2026-04-11';
 
 const STATIC_ASSETS = [
-  '/base.css',
-  '/style.css',
+  '/base.css?v=20260411',
+  '/style.css?v=20260411',
   '/app.js',
   '/manifest.json'
 ];
