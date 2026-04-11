@@ -23,26 +23,36 @@
     # Performance
     X-DNS-Prefetch-Control = "on"
 
-# Static asset caching
+# Static asset caching — short fresh window + stale-while-revalidate.
+#
+# We deliberately avoid `immutable` on unversioned filenames. `immutable`
+# locks a client to one specific response body for max-age (previously a
+# year) with no revalidation, meaning any CSS/JS bug ships into a cache
+# that is effectively un-bustable without changing the URL itself.
+#
+# The pattern below serves from cache for 1 hour (fast repeat visits),
+# then serves the stale copy for up to 1 day while revalidating in the
+# background. In practice deploys propagate to all clients within ~1h,
+# with no perceived latency because the stale copy is served instantly.
 [[headers]]
   for = "/*.js"
   [headers.values]
-    Cache-Control = "public, max-age=31536000, immutable"
+    Cache-Control = "public, max-age=3600, stale-while-revalidate=86400"
 
 [[headers]]
   for = "/*.css"
   [headers.values]
-    Cache-Control = "public, max-age=31536000, immutable"
+    Cache-Control = "public, max-age=3600, stale-while-revalidate=86400"
 
 [[headers]]
   for = "/*.svg"
   [headers.values]
-    Cache-Control = "public, max-age=31536000, immutable"
+    Cache-Control = "public, max-age=3600, stale-while-revalidate=86400"
 
 [[headers]]
   for = "/*.woff2"
   [headers.values]
-    Cache-Control = "public, max-age=31536000, immutable"
+    Cache-Control = "public, max-age=3600, stale-while-revalidate=86400"
 
 # HTML pages - no cache to ensure fresh content after deploys
 [[headers]]
