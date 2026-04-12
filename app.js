@@ -118,19 +118,6 @@ if ('serviceWorker' in navigator) {
   }
 })();
 
-// ─── SCROLL REVEAL ──────────────────────────────────────────
-(function(){
-  var selectors = '.dossier-card, .dispatch, .quote-block, .entity-card, .status-bar, .value-section, .latest-issue, .subscribe-section, .social-proof, .properties-section, .archive-section, .about-section, .about-block, .cta-block, .archive-card, .value-card, .property-card, .pricing-card, .cathedral-phase, .fn-card, .fnplus-doc, .fnplus-week-group';
-  var els = document.querySelectorAll(selectors);
-  els.forEach(function(el) { el.classList.add('reveal'); });
-  var observer = new IntersectionObserver(function(entries) {
-    entries.forEach(function(entry) {
-      if (entry.isIntersecting) { entry.target.classList.add('visible'); observer.unobserve(entry.target); }
-    });
-  }, { threshold: 0.06, rootMargin: '0px 0px -24px 0px' });
-  els.forEach(function(el) { observer.observe(el); });
-})();
-
 // ─── READING PROGRESS BAR ───────────────────────────────────
 (function(){
   var article = document.querySelector('article.dispatch, .fnplus-hero');
