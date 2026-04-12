@@ -106,30 +106,52 @@
 
     <!-- Hero: 2-column layout -->
     <section class="hero">
-      <div>
-        <h1>Systems Atlas</h1>
-        <p>Proof-first. No placeholders. The infrastructure behind 1Commerce LLC, built with operator precision.</p>
+      <div class="hero-left">
+        <div class="hero-overline">
+          <span class="mono-label accent-text">◈ OPERATOR · CANBY, OREGON ◈</span>
+        </div>
+        <h1>I build commerce systems that ship.</h1>
+        <p class="hero-lede">Weekly transmissions from the front lines of 1Commerce LLC — proof-first infrastructure, built for operators who count shipped code as the only metric that matters.</p>
+        <div class="hero-ctas">
+          <form class="hero-subscribe" action="https://assets.mailerlite.com/jsonp/887036/forms/131950373498498498/subscribe" method="POST">
+            <input type="email" name="fields[email]" placeholder="your@email.com" required aria-label="Email address">
+            <button type="submit" class="btn-primary">Get The Signal →</button>
+          </form>
+          <button class="btn-ghost" data-contact-modal type="button">Work with me →</button>
+        </div>
+        <p class="hero-micro-copy">One dispatch per week. No spam. Unsubscribe anytime.</p>
       </div>
       <div class="hero-right">
-        <div class="system-stats">
-          <div class="stat-item">
-            <div class="stat-label">Observed Signals</div>
-            <div class="stat-value">3</div>
+        <div class="hero-proof-stack" aria-label="Proof points">
+          <div class="proof-item">
+            <div class="proof-number">14</div>
+            <div class="proof-label">Weekly dispatches shipped</div>
           </div>
-          <div class="stat-item">
-            <div class="stat-label">Known Constraints</div>
-            <div class="stat-value">0</div>
+          <div class="proof-item">
+            <div class="proof-number">6</div>
+            <div class="proof-label">Verified builds in production</div>
           </div>
-          <div class="stat-item">
-            <div class="stat-label">Proof Artifacts</div>
-            <div class="stat-value">8</div>
+          <div class="proof-item">
+            <div class="proof-number">100%</div>
+            <div class="proof-label">Stack uptime · GCP / Cloud Run</div>
           </div>
-          <div class="stat-item">
-            <div class="stat-label">Execution Lane</div>
-            <div class="stat-value">Live</div>
+          <div class="proof-item">
+            <div class="proof-number">1</div>
+            <div class="proof-label">Solo operator · zero placeholders</div>
           </div>
         </div>
       </div>
+    </section>
+
+    <!-- Trust strip -->
+    <section class="trust-strip" aria-label="Proof points">
+      <span class="mono-label">OPERATOR SINCE 2024</span>
+      <span class="trust-sep" aria-hidden="true">·</span>
+      <span class="mono-label">6 PRODUCTION BUILDS</span>
+      <span class="trust-sep" aria-hidden="true">·</span>
+      <span class="mono-label">14 DISPATCHES SHIPPED</span>
+      <span class="trust-sep" aria-hidden="true">·</span>
+      <span class="mono-label">ZERO PLACEHOLDERS</span>
     </section>
 
     <!-- Dossier Cards: Core Systems -->
@@ -156,7 +178,7 @@
               <div class="dossier-section-content">HTML/CSS, JavaScript, Netlify. 257 lines of semantic markup.</div>
             </div>
           </div>
-          <div class="dossier-footer">Last shipped: April 2026</div>
+          <div class="dossier-footer">14 weekly dispatches · Last shipped April 2026</div>
         </a>
 
         <!-- UnifyOne -->
@@ -193,14 +215,14 @@
           <div class="dossier-body">
             <div class="dossier-section">
               <div class="dossier-section-label">Purpose</div>
-              <div class="dossier-section-content">Real-time aggregation from 50,000+ news sources. Technology, business, startups, web services.</div>
+              <div class="dossier-section-content">Real-time aggregation from TechCrunch, The Verge, HN, Ars, Wired, GitHub Blog, Product Hunt, and AWS.</div>
             </div>
             <div class="dossier-section">
               <div class="dossier-section-label">Proof</div>
-              <div class="dossier-section-content">NewsAPI, Cloudflare Functions, margin logs for operator transparency.</div>
+              <div class="dossier-section-content">Netlify Functions, RSS2JSON, 8 tech feeds aggregated in parallel. Zero API keys.</div>
             </div>
           </div>
-          <div class="dossier-footer">Constraint: Rate-limited to 100 req/day</div>
+          <div class="dossier-footer">Cached 10 min via CDN · No rate limits</div>
         </a>
 
       </div>
@@ -209,7 +231,7 @@
     <!-- Margin Log -->
     <div class="margin-log">
       <div class="margin-log-entry"><span class="timestamp">23:41</span> — Signal → UnifyOne: intake framing updated</div>
-      <div class="margin-log-entry"><span class="timestamp">23:38</span> — News Aggregator: Cloudflare Functions deployed</div>
+      <div class="margin-log-entry"><span class="timestamp">23:38</span> — News Aggregator: Netlify Functions + RSS2JSON deployed</div>
       <div class="margin-log-entry"><span class="timestamp">23:35</span> — Systems Atlas: dossier structure implemented</div>
       <div class="margin-log-entry"><span class="timestamp">23:32</span> — Blueprint grid underlay: 24px increments, 6% opacity</div>
       <div class="margin-log-entry"><span class="timestamp">23:29</span> — Fraunces + IBM Plex Sans: typography stack loaded</div>
