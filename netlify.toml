@@ -73,6 +73,27 @@
   to = "/.netlify/functions/news"
   status = 200
 
+# Block public access to internal documentation and setup scripts.
+# force=true overrides static file serving so Netlify returns 404
+# instead of serving the raw file content.
+[[redirects]]
+  from = "/*.md"
+  to = "/404.html"
+  status = 404
+  force = true
+
+[[redirects]]
+  from = "/*.bat"
+  to = "/404.html"
+  status = 404
+  force = true
+
+[[redirects]]
+  from = "/*.py"
+  to = "/404.html"
+  status = 404
+  force = true
+
 # Redirects — legacy paths from th3signal and common URL guesses
 [[redirects]]
   from = "/blog"
