@@ -1,0 +1,514 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="dark">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>THE SIGNAL — Weekly Transmission №015 | 1Commerce LLC</title>
+<meta name="description" content="The Ecosystem Era. One intelligence layer to rule the stack. UnifyOne, UnifyAI, and the sovereign brand play — Week 15, April 6–12, 2026.">
+<meta property="og:title" content="THE SIGNAL — Weekly Transmission №015">
+<meta property="og:description" content="The Ecosystem Era. One intelligence layer to rule the stack.">
+<meta property="og:type" content="article">
+<meta property="og:image" content="https://signal01.netlify.app/images/unify-one-intelligence-layer.png">
+<link rel="canonical" href="https://signal01.netlify.app/archive/015.html">
+<meta property="og:url" content="https://signal01.netlify.app/archive/015.html">
+
+<!-- Fonts -->
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,600;9..144,700&family=IBM+Plex+Sans:wght@400;500;600&family=JetBrains+Mono:wght@300;400;500&display=swap" rel="stylesheet">
+
+<link rel="stylesheet" href="../base.css?v=20260413">
+<link rel="stylesheet" href="../style.css?v=20260413">
+
+<style>
+/* ── Dispatch-hero backdrop (infographic) ── */
+.hero-backdrop-img {
+  position: absolute;
+  inset: 0;
+  background-image: url('../images/unify-one-intelligence-layer.png');
+  background-size: cover;
+  background-position: center top;
+  filter: brightness(0.12) saturate(0.6);
+  z-index: 0;
+}
+.hero-backdrop-img::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(180deg, rgba(0,0,0,0.4) 0%, rgba(0,0,0,0.7) 60%, rgba(0,0,0,0.97) 100%);
+}
+.hero { position: relative; overflow: hidden; }
+.hero-inner { position: relative; z-index: 1; }
+
+/* ── Inline article visuals ── */
+.article-visual {
+  margin: 2rem 0;
+  border-radius: 4px;
+  overflow: hidden;
+  border: 1px solid rgba(255,255,255,0.08);
+  position: relative;
+}
+.article-visual img {
+  width: 100%;
+  height: auto;
+  display: block;
+  opacity: 0.88;
+}
+.article-visual-caption {
+  position: absolute;
+  bottom: 0; left: 0; right: 0;
+  background: linear-gradient(transparent, rgba(0,0,0,0.88));
+  padding: 28px 16px 12px;
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 9px;
+  letter-spacing: 0.12em;
+  color: rgba(255,255,255,0.4);
+  text-transform: uppercase;
+}
+
+/* ── Metric row ── */
+.metric-row {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 1px;
+  background: rgba(255,255,255,0.07);
+  border: 1px solid rgba(255,255,255,0.07);
+  border-radius: 3px;
+  overflow: hidden;
+  margin: 2rem 0;
+}
+.metric-cell {
+  background: #141414;
+  padding: 20px 16px;
+  text-align: center;
+}
+.metric-num {
+  display: block;
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 1.3rem;
+  font-weight: 500;
+  color: #22d3c5;
+  line-height: 1;
+  margin-bottom: 6px;
+}
+.metric-lbl {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 9px;
+  letter-spacing: 0.1em;
+  color: rgba(255,255,255,0.35);
+  text-transform: uppercase;
+}
+@media (max-width: 600px) {
+  .metric-row { grid-template-columns: 1fr; }
+}
+</style>
+</head>
+<body>
+
+  <!-- Ambient grain overlay -->
+  <div class="grain" aria-hidden="true"></div>
+
+  <!-- Mobile Nav Overlay -->
+  <div class="mobile-nav" aria-label="Mobile navigation">
+    <button class="mobile-nav-close" aria-label="Close menu">
+      <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 6L6 18M6 6l12 12"/></svg>
+    </button>
+    <a href="../">Home</a>
+    <a href="./">Archive</a>
+    <a href="../fieldnotes/">Fieldnotes+</a>
+    <a href="../builds/">Verified Builds</a>
+    <a href="../news/">News Aggregator</a>
+    <a href="../about/">About</a>
+    <a href="../#subscribe">Subscribe</a>
+  </div>
+
+  <!-- Header -->
+  <header class="site-header">
+    <div class="header-inner">
+      <div class="header-left">
+        <a href="../">
+          <svg class="logo" viewBox="0 0 32 32" width="28" height="28" fill="none" aria-label="The Signal logo">
+            <rect x="2" y="2" width="28" height="28" rx="2" stroke="currentColor" stroke-width="1.5" opacity="0.3"/>
+            <line x1="16" y1="6" x2="16" y2="26" stroke="currentColor" stroke-width="1.5"/>
+            <line x1="10" y1="9" x2="10" y2="23" stroke="currentColor" stroke-width="1" opacity="0.5"/>
+            <line x1="22" y1="9" x2="22" y2="23" stroke="currentColor" stroke-width="1" opacity="0.5"/>
+            <circle cx="16" cy="16" r="3" stroke="currentColor" stroke-width="1.5" fill="none"/>
+            <circle cx="16" cy="16" r="1" fill="currentColor"/>
+            <line x1="6" y1="16" x2="13" y2="16" stroke="currentColor" stroke-width="0.75" opacity="0.4"/>
+            <line x1="19" y1="16" x2="26" y2="16" stroke="currentColor" stroke-width="0.75" opacity="0.4"/>
+          </svg>
+          <span class="header-title">THE SIGNAL</span>
+        </a>
+      </div>
+      <div class="header-right">
+        <nav>
+          <ul class="nav-links">
+            <li><a href="../">Home</a></li>
+            <li><a href="./" class="active">Archive</a></li>
+            <li><a href="../fieldnotes/">Fieldnotes+</a></li>
+            <li><a href="../builds/">Verified Builds</a></li>
+            <li><a href="../news/">News Aggregator</a></li>
+            <li><a href="../about/">About</a></li>
+            <li><a href="../#subscribe">Subscribe</a></li>
+          </ul>
+        </nav>
+        <button class="nav-toggle" aria-label="Open menu">
+          <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 12h18M3 6h18M3 18h18"/></svg>
+        </button>
+        <button data-theme-toggle aria-label="Switch to light mode">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="5"/><path d="M12 1v2M12 21v2M4.22 4.22l1.42 1.42M18.36 18.36l1.42 1.42M1 12h2M21 12h2M4.22 19.78l1.42-1.42M18.36 5.64l1.42-1.42"/></svg>
+        </button>
+      </div>
+    </div>
+  </header>
+
+  <main>
+
+    <!-- Hero with infographic backdrop -->
+    <section class="hero">
+      <div class="hero-backdrop-img" aria-hidden="true"></div>
+      <div class="hero-inner">
+        <div class="hero-overline">
+          <span class="mono-label">◈ COMMERCE SYSTEMS TRANSMISSION ◈</span>
+        </div>
+        <h1 class="hero-title">
+          <span class="hero-title-line">The Ecosystem</span>
+          <span class="hero-title-line accent">Era.</span>
+        </h1>
+        <div class="hero-meta">
+          <span class="mono-label">WEEK №15 · 2026</span>
+          <span class="mono-label dim">APRIL 6–12, 2026</span>
+        </div>
+        <p class="hero-quote">"Stop stitching vendors together. Build the interconnected machine."</p>
+      </div>
+      <div class="hero-scanline" aria-hidden="true"></div>
+    </section>
+
+    <!-- Share Strip -->
+    <div class="dispatch-share-strip">
+      <span class="share-strip-label">SHARE THIS TRANSMISSION</span>
+      <div class="share-strip-buttons" data-share-strip></div>
+    </div>
+
+    <!-- Status Bar -->
+    <section class="status-bar">
+      <div class="status-inner">
+        <div class="status-item">
+          <span class="status-label">STACK UPTIME</span>
+          <span class="status-value">100%</span>
+          <span class="status-detail">Netlify · Cloudflare</span>
+        </div>
+        <div class="status-item">
+          <span class="status-label">UNIFYONE</span>
+          <span class="status-value">Live</span>
+          <span class="status-detail">1commerce.online</span>
+        </div>
+        <div class="status-item">
+          <span class="status-label">UNIFYAI</span>
+          <span class="status-value gold">300+</span>
+          <span class="status-detail">models routed</span>
+        </div>
+        <div class="status-item">
+          <span class="status-label">BUILDS</span>
+          <span class="status-value gold">6</span>
+          <span class="status-detail">verified production</span>
+        </div>
+        <div class="status-item">
+          <span class="status-label">MCP TOOLS</span>
+          <span class="status-value">18</span>
+          <span class="status-detail">live on Workers</span>
+        </div>
+        <div class="status-item">
+          <span class="status-label">DISPATCHES</span>
+          <span class="status-value gold">15</span>
+          <span class="status-detail">shipped</span>
+        </div>
+      </div>
+    </section>
+
+    <!-- Section I: The Intelligence Layer -->
+    <article class="dispatch" id="intelligence-layer">
+      <div class="dispatch-inner">
+        <div class="section-marker">
+          <span class="section-numeral">I</span>
+          <span class="section-label">INTELLIGENCE LAYER</span>
+        </div>
+        <div class="dispatch-header">
+          <span class="mono-label accent-text">// LEAD DISPATCH · MONDAY 7 APR</span>
+        </div>
+        <div class="dispatch-body">
+
+          <p class="lead-text">There is a pattern every agency goes through. You start with clients, then tools, then more tools to manage the tools, then a consultant to manage the stack. By the time you look up, you're running an operations department instead of a business. That is the fragmentation trap. And the answer is not a better tool — it's a different architecture.</p>
+
+          <p>UnifyOne is not a dashboard. It is a financial intelligence layer — the distinction matters in practice. A dashboard shows you numbers. An intelligence layer reads your actual data and responds in specific numbers. When Kai tells a driver that Thursday 5–9pm Amazon Flex shifts average <strong>$31.20/hr after fuel</strong> — 42% higher than Monday mornings at $21.90/hr — that is not a generic insight. That is their data running calculations they never had time to do.</p>
+
+          <div class="article-visual">
+            <img src="../images/unify-one-intelligence-layer.png" alt="UnifyOne: The Intelligence Layer for Modern Gig Commerce" loading="lazy">
+            <div class="article-visual-caption">UnifyOne — Financial Intelligence Layer · Canby, Oregon · April 2026</div>
+          </div>
+
+          <p>The "$4,000 Tax Leak" framing exists because it is accurate. The average gig worker leaves between $2,000 and $4,000 on the table annually. They are not tracking mileage at the IRS rate of $0.67/mile, not capturing 1099 deductions in real time, not connecting platform income to tax liability until April. UnifyOne's Tax Autopilot addresses the $10,050 in potential deductions from 15,000 unlogged miles alone. The math is not marketing — it is the product.</p>
+
+          <div class="metric-row">
+            <div class="metric-cell">
+              <span class="metric-num">168x</span>
+              <span class="metric-lbl">Pro User ROI</span>
+            </div>
+            <div class="metric-cell">
+              <span class="metric-num">$3,200</span>
+              <span class="metric-lbl">Avg deductions tracked / yr</span>
+            </div>
+            <div class="metric-cell">
+              <span class="metric-num">$19/mo</span>
+              <span class="metric-lbl">Pro tier cost</span>
+            </div>
+          </div>
+
+          <p>The three-tier infrastructure architecture: UnifyOne handles commerce and financial intelligence, UnifyAI handles multi-model API routing, and The Signal handles ambient credibility. All three are live. All three are wired together. This is the Systems Phase of the Cathedral — not building pieces, building the machine that builds.</p>
+        </div>
+      </div>
+    </article>
+
+    <!-- Quote Block -->
+    <section class="quote-block">
+      <div class="quote-inner">
+        <div class="quote-mark" aria-hidden="true">//</div>
+        <blockquote>
+          <p>168x ROI for Pro users. Average $3,200 in additional deductions tracked per year against a $19/month platform cost. That is the value proposition — and it is backed by the math, not the marketing.</p>
+        </blockquote>
+        <cite class="mono-label dim">— INTERNAL METRICS · APR 2026</cite>
+      </div>
+    </section>
+
+    <!-- Section II: UnifyAI Developer Engine -->
+    <article class="dispatch" id="unifyai">
+      <div class="dispatch-inner">
+        <div class="section-marker">
+          <span class="section-numeral">II</span>
+          <span class="section-label">UNIFYAI: THE DEVELOPER ENGINE</span>
+        </div>
+        <div class="dispatch-header">
+          <span class="mono-label accent-text">// INFRASTRUCTURE · TUE 8 APR</span>
+        </div>
+        <div class="dispatch-body">
+          <p>UnifyAI is the developer engine beneath the platform. One API key routes to Claude, GPT-4o, and Gemini with credit-based billing, zero vendor lock-in, and visual MCP configuration. 300+ models accessible through a single endpoint hosted on Cloudflare Workers. Billing is CPU-time only — long AI API waits cost nothing on the Workers runtime, making it highly cost-effective for a proxy workload that sits and waits for upstream models to respond.</p>
+
+          <p>Smart routing means the right model runs the right job: Claude for reasoning-heavy tasks, GPT-4o for general generation, Gemini for long-context document work. The routing logic is configurable at the account level for Scale tier users, with custom MCP routing rules as a first-class feature.</p>
+
+          <div class="dispatch-entry">
+            <div class="dispatch-header">
+              <span class="mono-label accent-text">// MCP SERVER · WED 9 APR</span>
+            </div>
+            <h2>18 Tools Live on Cloudflare Workers</h2>
+            <p>The MCP server at <code>unify0ne-mcp.skdev-371.workers.dev</code> now exposes 18 tools covering storefront management, affiliate tracking, credit operations, and user context. The <code>ONECOMMERCE_API_KEY</code> Worker secret is the final dependency — wired once <code>api.1commerce.online</code> backend completes its last route validation pass. The architecture is complete. One credential swap closes the loop.</p>
+          </div>
+
+          <div class="metric-row">
+            <div class="metric-cell">
+              <span class="metric-num">300+</span>
+              <span class="metric-lbl">Models accessible</span>
+            </div>
+            <div class="metric-cell">
+              <span class="metric-num">18</span>
+              <span class="metric-lbl">MCP tools live</span>
+            </div>
+            <div class="metric-cell">
+              <span class="metric-num">$0</span>
+              <span class="metric-lbl">Wait-time billing cost</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </article>
+
+    <!-- Section III: Sovereign Brand / Montucky -->
+    <article class="dispatch" id="sovereign-brand">
+      <div class="dispatch-inner">
+        <div class="section-marker">
+          <span class="section-numeral">III</span>
+          <span class="section-label">SOVEREIGN BRAND</span>
+        </div>
+        <div class="dispatch-header">
+          <span class="mono-label accent-text">// CLIENT ARCHITECTURE · THU 10 APR</span>
+        </div>
+        <div class="dispatch-body">
+          <p>The Sovereign Brand Ecosystem document represents the architecture applied to a real client context. Montucky Moonshine — an outdoor lifestyle brand — needed the fragmented approach replaced with a single interconnected machine. This is what 1Commerce builds for Scale tier clients: the admin command center (React/Shopify Headless) as the single source of truth, with bidirectional sync to Meta Business Manager, TikTok Shopping, and Klaviyo running from one control interface.</p>
+
+          <div class="article-visual">
+            <img src="../images/verified-build-ecosystem.png" alt="1Commerce — The Verified Build Ecosystem" loading="lazy">
+            <div class="article-visual-caption">1Commerce Verified Build Ecosystem · Production Portfolio · Canby, Oregon</div>
+          </div>
+
+          <p>Product update in the admin propagates instantly to Meta catalog, TikTok catalog, and Shopify storefront simultaneously. Meta Pixel and TikTok Pixel feed conversion data back to the command center. Klaviyo handles post-purchase flows with channel-specific nurturing — a customer who entered through a TikTok trend gets a different sequence than one who came through an Instagram retargeting ad. The personalization is behavioral, not demographic.</p>
+
+          <div class="dispatch-entry">
+            <div class="dispatch-header">
+              <span class="mono-label accent-text">// 2026 LANDSCAPE · FRI 11 APR</span>
+            </div>
+            <h2>The Commerce Numbers Are Not Projections Anymore</h2>
+            <p>TikTok Shop is tracking $23.4 billion in US e-commerce sales for 2026 — 48% year-over-year growth. It is passing Target, Costco, Best Buy, and Kroger online. Shopify's Winter '26 "RenAIssance" update ships Agentic Storefronts — products purchasable directly within ChatGPT, Copilot, and Perplexity without leaving the AI conversation. The commerce infrastructure being built now needs to be agent-ready, not just human-facing. The MCP server is the first layer of that readiness.</p>
+          </div>
+
+          <div class="metric-row">
+            <div class="metric-cell">
+              <span class="metric-num">$23.4B</span>
+              <span class="metric-lbl">TikTok Shop 2026 proj.</span>
+            </div>
+            <div class="metric-cell">
+              <span class="metric-num">95–98%</span>
+              <span class="metric-lbl">Cost reduction vs 5-person team</span>
+            </div>
+            <div class="metric-cell">
+              <span class="metric-num">$150/mo</span>
+              <span class="metric-lbl">Full AI operations stack</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </article>
+
+    <!-- Section IV: Cathedral Holds -->
+    <article class="dispatch" id="cathedral">
+      <div class="dispatch-inner">
+        <div class="section-marker">
+          <span class="section-numeral">IV</span>
+          <span class="section-label">CATHEDRAL HOLDS</span>
+        </div>
+        <div class="dispatch-header">
+          <span class="mono-label accent-text">// SYSTEMS PHASE UPDATE · SAT 12 APR</span>
+        </div>
+        <div class="dispatch-body">
+          <p>Everything in this dispatch is Systems Phase work. The Cathedral Principle sequencing — Foundation, Revenue, Systems, Scale — means none of this infrastructure gets built before the revenue base exists to justify it. The consulting engagements (Precision Core Builders, ClearPath Environmental, Hidden Creek Horse Park) fund the SaaS development. The SaaS development creates the technology provider credibility. The technology provider track creates the certification pathways.</p>
+
+          <p>The 1Commerce Operator Dossier puts the production proof on record: 6 verified builds live, 100% stack uptime, 14 weekly dispatches shipped, managed by 1 operator. That is not a portfolio slide. It is the documented evidence that the architecture works before the sales process begins — the proof that earns the right to scale.</p>
+
+          <p>Signal 016 covers deployment infrastructure — the monorepo discipline, the Netlify operations pattern, and what the InkVault portal launch revealed about the gap between architectural planning and production reality when image assets and database migrations collide at 11pm on a Tuesday.</p>
+        </div>
+      </div>
+    </article>
+
+    <!-- Closing Quote -->
+    <section class="quote-block closing">
+      <div class="quote-inner">
+        <div class="quote-mark" aria-hidden="true">//</div>
+        <blockquote>
+          <p>One operator. One stack. One machine that builds other machines. The ecosystem era is not a trend — it is the only architecture that survives at solo scale.</p>
+        </blockquote>
+        <cite class="mono-label dim">— THE SIGNAL · TRANSMISSION №015</cite>
+      </div>
+    </section>
+
+    <!-- Entity Footer Card -->
+    <section class="entity-card">
+      <div class="entity-inner">
+        <div class="entity-row">
+          <span class="entity-key">ENTITY</span>
+          <span class="entity-val">1COMMERCE LLC</span>
+        </div>
+        <div class="entity-row">
+          <span class="entity-key">PHASE</span>
+          <span class="entity-val gold-text">SYSTEMS</span>
+        </div>
+        <div class="entity-row">
+          <span class="entity-key">LOCATION</span>
+          <span class="entity-val">CANBY, OR</span>
+        </div>
+        <div class="entity-row">
+          <span class="entity-key">STACK</span>
+          <span class="entity-val">NETLIFY · CLOUDFLARE · SUPABASE · N8N</span>
+        </div>
+        <div class="entity-row">
+          <span class="entity-key">STATUS</span>
+          <span class="entity-val gold-text">ECOSYSTEM LIVE</span>
+        </div>
+      </div>
+    </section>
+
+    <!-- Tweet Card -->
+    <button type="button" class="tweet-card" onclick="window.open('https://twitter.com/intent/tweet?text=%22Stop%20stitching%20vendors%20together.%20Build%20the%20interconnected%20machine.%22%20%E2%80%94%20The%20Signal%20%E2%80%94%20Week%20015%20%7C%20The%20Signal&url=https%3A%2F%2Fsignal01.netlify.app%2Farchive%2F015.html','_blank')" aria-label="Share this quote on X">
+      <p class="tweet-card-quote">"Stop stitching vendors together. Build the interconnected machine."</p>
+      <div class="tweet-card-footer">
+        <span class="tweet-card-attr">— The Signal — Week 015</span>
+        <span class="tweet-card-cta">𝕏 CLICK TO TWEET THIS</span>
+      </div>
+    </button>
+
+    <!-- Reaction Bar -->
+    <div class="reaction-bar">
+      <span class="reaction-bar-label">HOW DID THIS LAND?</span>
+      <div class="reaction-buttons">
+        <button class="reaction-btn" data-reaction="signal" aria-label="React: Signal">
+          <span class="reaction-icon">◈</span>
+          <span class="reaction-name">SIGNAL</span>
+          <span class="reaction-count">0</span>
+        </button>
+        <button class="reaction-btn" data-reaction="cathedral" aria-label="React: Cathedral">
+          <span class="reaction-icon">⬟</span>
+          <span class="reaction-name">CATHEDRAL</span>
+          <span class="reaction-count">0</span>
+        </button>
+        <button class="reaction-btn" data-reaction="filed" aria-label="React: Filed">
+          <span class="reaction-icon">▣</span>
+          <span class="reaction-name">FILED</span>
+          <span class="reaction-count">0</span>
+        </button>
+        <button class="reaction-btn" data-reaction="noise" aria-label="React: Noise">
+          <span class="reaction-icon">∅</span>
+          <span class="reaction-name">NOISE</span>
+          <span class="reaction-count">0</span>
+        </button>
+      </div>
+      <div class="reaction-share-strip">
+        <span class="share-strip-label">SHARE</span>
+        <div class="share-strip-buttons" data-share-strip></div>
+      </div>
+    </div>
+  </main>
+
+  <!-- Footer -->
+  <footer class="site-footer">
+    <div class="footer-main">
+      <div class="footer-col">
+        <h4>The Signal</h4>
+        <div class="footer-subscribe">
+          <form class="footer-subscribe-form" action="https://assets.mailerlite.com/jsonp/887036/forms/131950373498498498/subscribe" method="POST">
+            <input type="email" name="fields[email]" placeholder="your@email.com" required aria-label="Email address">
+            <button type="submit">Subscribe</button>
+          </form>
+        </div>
+        <p>A weekly transmission from a solo founder building in public.</p>
+      </div>
+      <div class="footer-col">
+        <h4>Navigate</h4>
+        <ul>
+          <li><a href="../">Home</a></li>
+          <li><a href="./">Archive</a></li>
+          <li><a href="../fieldnotes/">Fieldnotes+</a></li>
+          <li><a href="../builds/">Verified Builds</a></li>
+          <li><a href="../news/">News Aggregator</a></li>
+          <li><a href="../about/">About</a></li>
+          <li><a href="../#subscribe">Subscribe</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <h4>Verified Builds</h4>
+        <ul>
+          <li><a href="https://1commerce.online/" target="_blank" rel="noopener noreferrer">UnifyOne</a></li>
+          <li><a href="https://clearpath-environmental.netlify.app/" target="_blank" rel="noopener noreferrer">ClearPath Environmental</a></li>
+          <li><a href="https://hidden-creek.netlify.app/" target="_blank" rel="noopener noreferrer">Hidden Creek Horse Park</a></li>
+          <li><a href="https://precision-core.netlify.app/" target="_blank" rel="noopener noreferrer">Precision Core Builders</a></li>
+          <li><a href="https://compass-ai-app.netlify.app/" target="_blank" rel="noopener noreferrer">Compass AI</a></li>
+          <li><a href="https://next-chapter-travel.netlify.app/" target="_blank" rel="noopener noreferrer">Next Chapter Travel</a></li>
+          <li><a href="https://montucky-moonshine-proposal.netlify.app/" target="_blank" rel="noopener noreferrer">Montucky Moonshine</a></li>
+          <li><a href="https://redeaf.netlify.app/" target="_blank" rel="noopener noreferrer">DealFlow</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <span class="mono-label dim">© 2026 1COMMERCE LLC · CANBY, OREGON</span>
+    </div>
+  </footer>
+
+  <script src="../app.js" defer></script>
+</body>
+</html>
