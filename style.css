@@ -36,18 +36,10 @@
   --space-4: 4px;
   --radius-sm: 6px;
 
-  /* Legacy compatibility */
-  --color-bg: #070A12;
-  --color-surface: #0B0F1A;
-  --color-surface-2: #0E1424;
-  --color-border: #1A2338;
-  --color-divider: #1A2338;
-  --color-text: #E9EDF6;
-  --color-text-muted: #AAB4C7;
-  --color-text-faint: #6E7891;
-  --color-gold: #C7A35A;
-  --color-primary: #22D3C5;
-  --radius-md: 8px;
+  /* Aliases used by base.css */
+  --color-bg: var(--bg);
+  --color-text: var(--text);
+  --color-primary: var(--active);
   --transition-interactive: 180ms cubic-bezier(0.16, 1, 0.3, 1);
 }
 
@@ -980,9 +972,9 @@ main {
 /* --- Mono Label --- */
 .mono-label {
   font-family: var(--font-mono);
-  font-size: 11px;
-  font-weight: 500;
-  letter-spacing: 0.1em;
+  font-size: 12px;
+  font-weight: 600;
+  letter-spacing: 0.15em;
   text-transform: uppercase;
   color: var(--muted);
 }
@@ -1419,19 +1411,6 @@ footer {
   color: #1fb8af;
 }
 
-/* --- Utility Classes --- */
-.mono-label {
-  font-family: var(--font-mono);
-  font-size: 12px;
-  font-weight: 600;
-  letter-spacing: 0.15em;
-  text-transform: uppercase;
-}
-
-.accent-text {
-  color: var(--active);
-}
-
 .verified-text {
   color: var(--verified);
 }
@@ -1625,54 +1604,12 @@ footer {
   }
 }
 
-/* --- Legacy Support --- */
-.value-section,
-.latest-issue,
-.subscribe-section,
-.social-proof,
-.properties-section {
-  max-width: 1200px;
+/* --- Subscribe + Form Utilities --- */
+.subscribe-section {
+  max-width: var(--page);
   margin: 0 auto;
   padding: calc(var(--p) * 2) var(--p);
-}
-
-.value-grid,
-.properties-inner {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-  gap: var(--p);
-}
-
-.value-card {
-  padding: var(--p);
-  background: var(--panel);
-  border: 1px solid var(--rule);
-  border-radius: var(--r);
-}
-
-.value-card-icon {
-  font-family: var(--font-display);
-  font-size: 24px;
-  font-weight: 700;
-  color: var(--verified);
-  display: block;
-  margin-bottom: 8px;
-}
-
-.latest-card {
-  display: block;
-  padding: var(--p);
-  background: var(--panel);
-  border: 1px solid var(--rule);
-  border-radius: var(--r);
-  text-decoration: none;
-  color: inherit;
-  transition: all 180ms ease;
-}
-
-.latest-card:hover {
-  background: var(--panel2);
-  border-color: var(--active);
+  text-align: center;
 }
 
 .subscribe-form {
@@ -1707,19 +1644,100 @@ footer {
   background: #1fb8af;
 }
 
-.properties-inner a {
-  display: block;
-  padding: var(--p);
-  background: var(--panel);
-  border: 1px solid var(--rule);
-  border-radius: var(--r);
-  color: var(--text);
-  text-decoration: none;
-  transition: all 180ms ease;
+/* Subscribe section responsive */
+@media (max-width: 768px) {
+  .subscribe-section {
+    padding: calc(var(--p) * 1.5) var(--p);
+  }
+
+  .subscribe-section h2 {
+    font-size: 22px;
+  }
+
+  .page-hero-ctas {
+    flex-direction: column;
+    align-items: center;
+    gap: 10px;
+  }
+
+  .page-hero-ctas .btn-primary,
+  .page-hero-ctas .btn-ghost {
+    width: 100%;
+    max-width: 320px;
+    text-align: center;
+    justify-content: center;
+  }
 }
 
-.properties-inner a:hover {
-  background: var(--panel2);
-  border-color: var(--active);
-  color: var(--active);
+/* --- Print Stylesheet --- */
+@media print {
+  /* Hide non-content elements */
+  .site-header,
+  .site-footer,
+  .mobile-nav,
+  .contact-modal,
+  .contact-btn,
+  .nav-toggle,
+  [data-theme-toggle],
+  .hero-subscribe,
+  .btn-ghost,
+  .subscribe-section,
+  .subscribe-form,
+  .trust-strip,
+  .margin-log,
+  .hero-scanline,
+  .grain,
+  .netlify-badge,
+  .reading-progress-bar,
+  .dispatch-share-strip,
+  .share-strip,
+  .hero-micro-copy {
+    display: none !important;
+  }
+
+  /* Reset dark theme for print */
+  :root {
+    --bg: #ffffff;
+    --bg2: #ffffff;
+    --panel: #f8f8f8;
+    --panel2: #f0f0f0;
+    --rule: #e0e0e0;
+    --rule2: #d0d0d0;
+    --text: #111111;
+    --muted: #555555;
+    --faint: #888888;
+    --active: #0a8f85;
+    --verified: #8a6e30;
+  }
+
+  body {
+    background: white;
+    color: black;
+    font-size: 12pt;
+    line-height: 1.5;
+  }
+
+  /* Ensure content is readable */
+  a { color: var(--active); text-decoration: underline; }
+  a[href^="http"]::after { content: " (" attr(href) ")"; font-size: 9pt; color: var(--muted); }
+
+  /* Single column layout */
+  .hero,
+  .dossier-grid {
+    grid-template-columns: 1fr;
+  }
+
+  /* Remove backgrounds on cards */
+  .dossier-card,
+  .archive-card,
+  .proof-item {
+    background: none;
+    border: 1px solid var(--rule);
+    break-inside: avoid;
+  }
+
+  /* Page margins */
+  @page {
+    margin: 2cm;
+  }
 }
