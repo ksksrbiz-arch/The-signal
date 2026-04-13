@@ -836,6 +836,29 @@ main {
   }
 }
 
+/* --- Section Figures (branded image placement) --- */
+.section-figure {
+  margin: 0 0 calc(var(--p) * 1.5);
+  padding: 0;
+}
+
+.section-image {
+  width: 100%;
+  height: auto;
+  border-radius: var(--r);
+  border: 1px solid var(--rule);
+}
+
+.section-figure figcaption {
+  margin-top: 10px;
+}
+
+@media (max-width: 768px) {
+  .section-image {
+    border-radius: calc(var(--r) / 2);
+  }
+}
+
 /* --- Dossier Cards --- */
 .dossier-grid {
   display: grid;
