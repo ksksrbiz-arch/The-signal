@@ -56,6 +56,14 @@
     <priority>0.8</priority>
   </url>
 
+  <!-- Videos -->
+  <url>
+    <loc>https://signal01.netlify.app/videos/</loc>
+    <lastmod>2026-04-13</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+
   <!-- About -->
   <url>
     <loc>https://signal01.netlify.app/about/</loc>

@@ -859,6 +859,96 @@ main {
   }
 }
 
+/* --- Video Embeds --- */
+.video-embed {
+  position: relative;
+  width: 100%;
+  padding-bottom: 56.25%; /* 16:9 */
+  border-radius: var(--r);
+  overflow: hidden;
+  border: 1px solid var(--rule);
+  background: var(--panel);
+  margin-bottom: calc(var(--p) * 1.5);
+}
+
+.video-embed iframe {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  border: none;
+}
+
+.video-embed--featured {
+  max-width: 720px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.video-embed--inline {
+  max-width: 560px;
+}
+
+/* Video library grid */
+.video-library {
+  max-width: var(--page);
+  margin: 0 auto;
+  padding: calc(var(--p) * 2) var(--p);
+}
+
+.video-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(340px, 1fr));
+  gap: var(--p);
+}
+
+.video-card {
+  background: var(--panel);
+  border: 1px solid var(--rule);
+  border-radius: var(--r);
+  overflow: hidden;
+  transition: border-color 180ms ease, transform 180ms ease;
+}
+
+.video-card:hover {
+  border-color: var(--active);
+  transform: translateY(-2px);
+}
+
+.video-card .video-embed {
+  border: none;
+  border-radius: 0;
+  margin-bottom: 0;
+}
+
+.video-card-body {
+  padding: var(--p);
+}
+
+.video-card-title {
+  font-family: var(--font-display);
+  font-size: 17px;
+  font-weight: 600;
+  color: var(--text);
+  margin-bottom: 6px;
+}
+
+.video-card-desc {
+  font-size: 14px;
+  color: var(--muted);
+  line-height: 1.6;
+}
+
+@media (max-width: 768px) {
+  .video-embed--featured,
+  .video-embed--inline {
+    max-width: 100%;
+  }
+  .video-grid {
+    grid-template-columns: 1fr;
+  }
+}
+
 /* --- Dossier Cards --- */
 .dossier-grid {
   display: grid;
