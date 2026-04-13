@@ -613,6 +613,229 @@ main {
   }
 }
 
+/* --- Comparison Grid (Infrastructure Gap) --- */
+.comparison-section {
+  max-width: var(--page);
+  margin: 0 auto;
+  padding: calc(var(--p) * 2) var(--p);
+}
+
+.comparison-heading {
+  font-family: var(--font-display);
+  font-size: clamp(1.5rem, 4vw, 2rem);
+  font-weight: 600;
+  color: var(--text);
+  margin-bottom: calc(var(--p) * 1.5);
+  text-align: center;
+}
+
+.comparison-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: var(--p);
+}
+
+.comparison-card {
+  padding: calc(var(--p) * 1.25);
+  background: var(--panel);
+  border: 1px solid var(--rule);
+  border-radius: var(--r);
+}
+
+.comparison-card--strong {
+  border-color: var(--active);
+  background: var(--panel2);
+}
+
+.comparison-card-title {
+  font-family: var(--font-display);
+  font-size: 18px;
+  font-weight: 600;
+  color: var(--text);
+  margin-bottom: 10px;
+}
+
+.comparison-card--strong .comparison-card-title {
+  color: var(--active);
+}
+
+.comparison-card-body {
+  font-size: 14px;
+  color: var(--muted);
+  line-height: 1.6;
+}
+
+/* --- Feature Matrix (Intelligence Matrix) --- */
+.feature-matrix-section {
+  max-width: var(--page);
+  margin: 0 auto;
+  padding: calc(var(--p) * 2) var(--p);
+}
+
+.feature-matrix {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: var(--p);
+}
+
+.feature-matrix-card {
+  padding: calc(var(--p) * 1.25);
+  background: var(--panel);
+  border: 1px solid var(--rule);
+  border-radius: var(--r);
+  transition: border-color 180ms ease;
+}
+
+.feature-matrix-card:hover {
+  border-color: var(--rule2);
+}
+
+.feature-matrix-icon {
+  color: var(--active);
+  margin-bottom: 12px;
+}
+
+.feature-matrix-icon svg {
+  display: inline;
+}
+
+.feature-matrix-title {
+  font-family: var(--font-display);
+  font-size: 17px;
+  font-weight: 600;
+  color: var(--text);
+  margin-bottom: 8px;
+}
+
+.feature-matrix-desc {
+  font-size: 14px;
+  color: var(--muted);
+  line-height: 1.6;
+}
+
+/* --- Engineering Pedigree (Builds page) --- */
+.pedigree-section {
+  max-width: var(--page);
+  margin: 0 auto;
+  padding: calc(var(--p) * 2) var(--p);
+  border-bottom: 1px solid var(--rule);
+}
+
+.pedigree-title {
+  font-family: var(--font-display);
+  font-size: clamp(1.5rem, 4vw, 2rem);
+  font-weight: 600;
+  color: var(--text);
+  margin-bottom: calc(var(--p) * 1.5);
+}
+
+.pedigree-grid {
+  display: grid;
+  grid-template-columns: 1fr 2fr;
+  gap: calc(var(--p) * 2);
+  align-items: start;
+}
+
+.pedigree-number {
+  font-family: var(--font-display);
+  font-size: clamp(2.5rem, 6vw, 3.5rem);
+  font-weight: 700;
+  color: var(--active);
+  line-height: 1;
+  margin-bottom: 12px;
+}
+
+.pedigree-label {
+  font-family: var(--font-mono);
+  font-size: 12px;
+  color: var(--muted);
+  letter-spacing: 0.04em;
+  line-height: 1.5;
+}
+
+.pedigree-desc p {
+  color: var(--muted);
+  line-height: 1.7;
+  margin-bottom: var(--gap);
+}
+
+.pedigree-desc strong {
+  color: var(--text);
+}
+
+.pedigree-stack {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+}
+
+.pedigree-tag {
+  font-family: var(--font-mono);
+  font-size: 11px;
+  font-weight: 600;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  padding: 6px 12px;
+  background: var(--panel);
+  border: 1px solid var(--rule);
+  border-radius: var(--r);
+  color: var(--active);
+}
+
+/* --- Cathedral CTA (About page) --- */
+.cathedral-cta {
+  max-width: var(--page);
+  margin: 0 auto;
+  padding: calc(var(--p) * 3) var(--p);
+  text-align: center;
+  border-bottom: 1px solid var(--rule);
+}
+
+.cathedral-cta-inner {
+  max-width: 640px;
+  margin: 0 auto;
+}
+
+.cathedral-cta-heading {
+  font-family: var(--font-display);
+  font-size: clamp(2rem, 5vw, 3rem);
+  font-weight: 700;
+  color: var(--text);
+  margin-bottom: 16px;
+  line-height: 1.1;
+}
+
+.cathedral-cta-lede {
+  font-size: 18px;
+  color: var(--muted);
+  line-height: 1.6;
+  margin-bottom: calc(var(--p) * 1.5);
+}
+
+/* --- Responsive: new sections --- */
+@media (max-width: 768px) {
+  .comparison-grid {
+    grid-template-columns: 1fr;
+    gap: calc(var(--gap) * 1.5);
+  }
+  .feature-matrix {
+    grid-template-columns: 1fr;
+  }
+  .pedigree-grid {
+    grid-template-columns: 1fr;
+    gap: var(--p);
+  }
+  .pedigree-number {
+    font-size: clamp(2rem, 8vw, 2.75rem);
+  }
+  .cathedral-cta {
+    padding: calc(var(--p) * 2) var(--p);
+  }
+  .cathedral-cta-heading {
+    font-size: clamp(1.75rem, 6vw, 2.25rem);
+  }
+}
+
 /* --- Dossier Cards --- */
 .dossier-grid {
   display: grid;
