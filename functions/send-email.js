@@ -65,9 +65,9 @@ exports.handler = async (event, context) => {
         'Content-Type': 'application/json',
         'Access-Control-Allow-Origin': '*'
       },
-      body: JSON.stringify({ 
+      body: JSON.stringify({
         success: true,
-        message: 'Email sent successfully! Keith will respond within 24-48 hours.'
+        message: 'Message received! Keith will respond within 24-48 hours.'
       })
     };
 
