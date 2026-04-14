@@ -97,9 +97,10 @@
   force = true
 
 # Redirects — legacy paths from th3signal and common URL guesses
+# Point directly to trailing-slash URLs to avoid redirect chains.
 [[redirects]]
   from = "/blog"
-  to = "/fieldnotes"
+  to = "/fieldnotes/"
   status = 301
 
 [[redirects]]
@@ -109,7 +110,7 @@
 
 [[redirects]]
   from = "/posts"
-  to = "/archive"
+  to = "/archive/"
   status = 301
 
 [[redirects]]
