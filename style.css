@@ -282,7 +282,6 @@ button[data-theme-toggle]:hover {
   padding: 12px;
   min-width: 44px;
   min-height: 44px;
-  display: flex;
   align-items: center;
   justify-content: center;
   -webkit-tap-highlight-color: transparent;
@@ -1369,6 +1368,10 @@ footer {
   gap: var(--p);
 }
 
+.footer-col {
+  min-width: 0;
+}
+
 .footer-col h4 {
   font-family: var(--font-display);
   font-size: 16px;
@@ -1952,10 +1955,13 @@ footer {
   display: flex;
   gap: 8px;
   margin: var(--gap) 0;
+  max-width: 100%;
+  min-width: 0;
 }
 
 .subscribe-form input {
   flex: 1;
+  min-width: 0;
   padding: 12px 16px;
   background: var(--panel);
   border: 1px solid var(--rule);
