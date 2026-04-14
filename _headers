@@ -1,14 +1,47 @@
-# Netlify Headers File
-# Additional security and performance headers
+# ═══════════════════════════════════════════════════════════════
+# THE SIGNAL — Netlify _headers
+# Custom headers for SEO, security, and performance
+# ═══════════════════════════════════════════════════════════════
 
+# ── Global Headers ─────────────────────────────────────────────
 /*
   X-Robots-Tag: index, follow
   X-Powered-By: 1Commerce LLC
   Strict-Transport-Security: max-age=31536000; includeSubDomains; preload
+  X-Content-Type-Options: nosniff
+  Referrer-Policy: strict-origin-when-cross-origin
 
-# API Endpoints
+# ── HTML Pages: SEO & Freshness ────────────────────────────────
+/*.html
+  X-Robots-Tag: index, follow
+  Cache-Control: public, max-age=0, must-revalidate
+  Link: <https://signal01.netlify.app/sitemap.xml>; rel="sitemap"
+
+# ── Sitemap & robots.txt: Crawler Files ────────────────────────
+/sitemap.xml
+  Content-Type: application/xml; charset=utf-8
+  Cache-Control: public, max-age=3600, stale-while-revalidate=86400
+  X-Robots-Tag: noindex
+
+/robots.txt
+  Content-Type: text/plain; charset=utf-8
+  Cache-Control: public, max-age=3600, stale-while-revalidate=86400
+
+# ── Image Assets ───────────────────────────────────────────────
+/og-image.png
+  Cache-Control: public, max-age=86400, stale-while-revalidate=604800
+
+/images/*
+  Cache-Control: public, max-age=86400, stale-while-revalidate=604800
+
+# ── API / Serverless Functions ─────────────────────────────────
 /.netlify/functions/*
   Access-Control-Allow-Origin: *
   Access-Control-Allow-Methods: GET, POST, OPTIONS
   Access-Control-Allow-Headers: Content-Type
   Cache-Control: public, max-age=600
+  X-Robots-Tag: noindex
+
+# ── 404 page ───────────────────────────────────────────────────
+/404.html
+  X-Robots-Tag: noindex, nofollow

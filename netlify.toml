@@ -1,12 +1,14 @@
+# ═══════════════════════════════════════════════════════════════
 # Netlify Configuration for The Signal
 # Static HTML/CSS/JS site with serverless functions
-# NOT a Next.js site
+# 1Commerce LLC · https://signal01.netlify.app
+# ═══════════════════════════════════════════════════════════════
 
 [build]
   publish = "."
   functions = "functions"
 
-# Security & Performance Headers
+# ── Security & Performance Headers ─────────────────────────────
 [[headers]]
   for = "/*"
   [headers.values]
@@ -113,6 +115,38 @@
 [[redirects]]
   from = "/posts/*"
   to = "/archive/:splat"
+  status = 301
+
+# ── SEO: Trailing-slash normalization for section indexes ───────
+# Ensures /archive resolves the same as /archive/ (prevents split signals)
+[[redirects]]
+  from = "/archive"
+  to = "/archive/"
+  status = 301
+
+[[redirects]]
+  from = "/fieldnotes"
+  to = "/fieldnotes/"
+  status = 301
+
+[[redirects]]
+  from = "/builds"
+  to = "/builds/"
+  status = 301
+
+[[redirects]]
+  from = "/news"
+  to = "/news/"
+  status = 301
+
+[[redirects]]
+  from = "/videos"
+  to = "/videos/"
+  status = 301
+
+[[redirects]]
+  from = "/about"
+  to = "/about/"
   status = 301
 
 # Custom 404

@@ -1,16 +1,41 @@
-# THE SIGNAL - robots.txt
+# ═══════════════════════════════════════════════════════════════
+# THE SIGNAL — robots.txt
 # https://signal01.netlify.app/
+# 1Commerce LLC · Canby, Oregon
+# ═══════════════════════════════════════════════════════════════
 
+# ── Default: Allow all crawlers ────────────────────────────────
 User-agent: *
 Allow: /
-
-# Sitemaps
-Sitemap: https://signal01.netlify.app/sitemap.xml
-
-# Crawl-delay (be nice to our server)
+Disallow: /.netlify/
+Disallow: /functions/
+Disallow: /*.bat$
+Disallow: /*.py$
+Disallow: /*.md$
 Crawl-delay: 1
 
-# Specific bots
+# ── Google ─────────────────────────────────────────────────────
+User-agent: Googlebot
+Allow: /
+Disallow: /.netlify/
+Disallow: /functions/
+
+User-agent: Googlebot-Image
+Allow: /images/
+Allow: /og-image.png
+
+User-agent: Googlebot-Video
+Allow: /videos/
+
+# ── Bing ───────────────────────────────────────────────────────
+User-agent: Bingbot
+Allow: /
+Disallow: /.netlify/
+Disallow: /functions/
+Crawl-delay: 1
+
+# ── AI / LLM Crawlers ─────────────────────────────────────────
+# Explicitly allow AI training and retrieval bots
 User-agent: GPTBot
 Allow: /
 
@@ -23,7 +48,14 @@ Allow: /
 User-agent: Claude-Web
 Allow: /
 
-# Disallow admin/function paths
-User-agent: *
-Disallow: /.netlify/
-Disallow: /functions/
+User-agent: Google-Extended
+Allow: /
+
+User-agent: PerplexityBot
+Allow: /
+
+User-agent: Applebot-Extended
+Allow: /
+
+# ── Sitemap ────────────────────────────────────────────────────
+Sitemap: https://signal01.netlify.app/sitemap.xml
