@@ -1,0 +1,688 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="dark">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>THE SIGNAL — Weekly Transmission №017 | 1Commerce LLC</title>
+<meta name="description" content="The Build Log: What Shipped This Week. Verified deployments, live systems, and the architecture behind a week of relentless building. Week 17, April 20–26, 2026.">
+<meta property="og:title" content="THE SIGNAL — Weekly Transmission №017">
+<meta property="og:description" content="The Build Log. What shipped, what's live, and what the Cathedral looks like from the inside.">
+<meta property="og:type" content="article">
+<meta property="og:image" content="https://signal01.netlify.app/og-image.png">
+<link rel="canonical" href="https://signal01.netlify.app/archive/017.html">
+<meta property="og:url" content="https://signal01.netlify.app/archive/017.html">
+<meta name="robots" content="index, follow">
+<meta name="author" content="Keith">
+<meta name="theme-color" content="#22d3c5">
+<meta property="og:site_name" content="THE SIGNAL">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta property="og:image:alt" content="THE SIGNAL Issue 017 — The Build Log">
+<meta property="og:locale" content="en_US">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="THE SIGNAL №017 — The Build Log">
+<meta name="twitter:description" content="The Build Log: What Shipped This Week. Verified deployments, live systems, and the Cathedral architecture from the inside.">
+<meta name="twitter:image" content="https://signal01.netlify.app/og-image.png">
+<meta name="twitter:image:alt" content="THE SIGNAL Issue 017 — The Build Log">
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BlogPosting",
+  "headline": "The Build Log: What Shipped This Week",
+  "description": "Verified deployments, live systems, and the architecture behind a week of relentless building at 1Commerce LLC. Week 17, April 20–26, 2026.",
+  "datePublished": "2026-04-20",
+  "dateModified": "2026-04-20",
+  "author": {"@type": "Person", "name": "Keith"},
+  "publisher": {"@type": "Organization", "name": "1Commerce LLC", "url": "https://signal01.netlify.app"},
+  "mainEntityOfPage": "https://signal01.netlify.app/archive/017.html",
+  "image": "https://signal01.netlify.app/og-image.png",
+  "isPartOf": {"@type": "Blog", "name": "THE SIGNAL", "url": "https://signal01.netlify.app/archive/"}
+}
+</script>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  "itemListElement": [
+    {"@type": "ListItem", "position": 1, "name": "Home", "item": "https://signal01.netlify.app/"},
+    {"@type": "ListItem", "position": 2, "name": "Archive", "item": "https://signal01.netlify.app/archive/"},
+    {"@type": "ListItem", "position": 3, "name": "Issue 017"}
+  ]
+}
+</script>
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,600;9..144,700&family=IBM+Plex+Sans:wght@400;500;600&family=JetBrains+Mono:wght@300;400;500&display=swap" rel="stylesheet">
+
+<link rel="stylesheet" href="../base.css?v=20260414">
+<link rel="stylesheet" href="../style.css?v=20260414">
+
+<style>
+/* Hero backdrop */
+.hero { position: relative; overflow: hidden; }
+.hero-inner { position: relative; z-index: 1; }
+
+/* Build log card grid */
+.build-log-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: 1px;
+  background: rgba(255,255,255,0.07);
+  border: 1px solid rgba(255,255,255,0.07);
+  border-radius: 4px;
+  overflow: hidden;
+  margin: 2rem 0;
+}
+.build-log-card {
+  background: #141414;
+  padding: 24px 20px;
+}
+.build-log-card-label {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 9px;
+  letter-spacing: 0.14em;
+  color: #22d3c5;
+  text-transform: uppercase;
+  margin-bottom: 10px;
+}
+.build-log-card-title {
+  font-family: 'Fraunces', serif;
+  font-size: 1.05rem;
+  font-weight: 600;
+  color: #f0f0f0;
+  margin-bottom: 8px;
+  line-height: 1.3;
+}
+.build-log-card-desc {
+  font-family: 'IBM Plex Sans', sans-serif;
+  font-size: 0.83rem;
+  color: rgba(255,255,255,0.5);
+  line-height: 1.6;
+  margin-bottom: 14px;
+}
+.build-log-card-status {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 9px;
+  letter-spacing: 0.1em;
+  color: #d97706;
+  text-transform: uppercase;
+}
+.build-log-card-status::before {
+  content: '';
+  display: inline-block;
+  width: 5px;
+  height: 5px;
+  background: #d97706;
+  border-radius: 50%;
+  animation: pulse-status 2s ease-in-out infinite;
+}
+@keyframes pulse-status {
+  0%, 100% { opacity: 1; }
+  50% { opacity: 0.3; }
+}
+
+/* Metric row */
+.metric-row {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 1px;
+  background: rgba(255,255,255,0.07);
+  border: 1px solid rgba(255,255,255,0.07);
+  border-radius: 3px;
+  overflow: hidden;
+  margin: 2rem 0;
+}
+.metric-cell {
+  background: #141414;
+  padding: 20px 16px;
+  text-align: center;
+}
+.metric-num {
+  display: block;
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 1.3rem;
+  font-weight: 500;
+  color: #22d3c5;
+  line-height: 1;
+  margin-bottom: 6px;
+}
+.metric-lbl {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 9px;
+  letter-spacing: 0.1em;
+  color: rgba(255,255,255,0.35);
+  text-transform: uppercase;
+}
+@media (max-width: 600px) {
+  .metric-row { grid-template-columns: 1fr; }
+  .build-log-grid { grid-template-columns: 1fr; }
+}
+
+/* Stack tag */
+.stack-tag {
+  display: inline-flex;
+  padding: 4px 8px;
+  background: rgba(255,255,255,0.04);
+  border: 1px solid rgba(255,255,255,0.1);
+  border-radius: 2px;
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 9px;
+  color: rgba(255,255,255,0.4);
+  letter-spacing: 0.07em;
+  text-transform: uppercase;
+  margin-right: 6px;
+  margin-bottom: 6px;
+}
+</style>
+</head>
+<body>
+
+  <div class="grain" aria-hidden="true"></div>
+
+  <div class="mobile-nav" aria-label="Mobile navigation">
+    <button class="mobile-nav-close" aria-label="Close menu">
+      <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 6L6 18M6 6l12 12"/></svg>
+    </button>
+    <a href="../">Home</a>
+    <a href="./">Archive</a>
+    <a href="../fieldnotes/">Fieldnotes+</a>
+    <a href="../builds/">Verified Builds</a>
+    <a href="../news/">News Aggregator</a>
+    <a href="../videos/">Videos</a>
+    <a href="../about/">About</a>
+    <a href="../#subscribe">Subscribe</a>
+  </div>
+
+  <header class="site-header">
+    <div class="header-inner">
+      <div class="header-left">
+        <a href="../">
+          <svg class="logo" viewBox="0 0 32 32" width="28" height="28" fill="none" aria-label="The Signal logo">
+            <rect x="2" y="2" width="28" height="28" rx="2" stroke="currentColor" stroke-width="1.5" opacity="0.3"/>
+            <line x1="16" y1="6" x2="16" y2="26" stroke="currentColor" stroke-width="1.5"/>
+            <line x1="10" y1="9" x2="10" y2="23" stroke="currentColor" stroke-width="1" opacity="0.5"/>
+            <line x1="22" y1="9" x2="22" y2="23" stroke="currentColor" stroke-width="1" opacity="0.5"/>
+            <circle cx="16" cy="16" r="3" stroke="currentColor" stroke-width="1.5" fill="none"/>
+            <circle cx="16" cy="16" r="1" fill="currentColor"/>
+            <line x1="6" y1="16" x2="13" y2="16" stroke="currentColor" stroke-width="0.75" opacity="0.4"/>
+            <line x1="19" y1="16" x2="26" y2="16" stroke="currentColor" stroke-width="0.75" opacity="0.4"/>
+          </svg>
+          <span class="header-title">THE SIGNAL</span>
+        </a>
+      </div>
+      <div class="header-right">
+        <nav>
+          <ul class="nav-links">
+            <li><a href="../">Home</a></li>
+            <li><a href="./" class="active">Archive</a></li>
+            <li><a href="../fieldnotes/">Fieldnotes+</a></li>
+            <li><a href="../builds/">Verified Builds</a></li>
+            <li><a href="../news/">News Aggregator</a></li>
+            <li><a href="../videos/">Videos</a></li>
+            <li><a href="../about/">About</a></li>
+            <li><a href="../#subscribe">Subscribe</a></li>
+          </ul>
+        </nav>
+        <button class="nav-toggle" aria-label="Open menu">
+          <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 12h18M3 6h18M3 18h18"/></svg>
+        </button>
+        <button data-theme-toggle aria-label="Switch to light mode">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="5"/><path d="M12 1v2M12 21v2M4.22 4.22l1.42 1.42M18.36 18.36l1.42 1.42M1 12h2M21 12h2M4.22 19.78l1.42-1.42M18.36 5.64l1.42-1.42"/></svg>
+        </button>
+      </div>
+    </div>
+  </header>
+
+  <main>
+
+    <section class="hero">
+      <div class="hero-inner">
+        <div class="hero-overline">
+          <span class="mono-label">◈ BUILD LOG TRANSMISSION ◈</span>
+        </div>
+        <h1 class="hero-title">
+          <span class="hero-title-line">The Build</span>
+          <span class="hero-title-line accent">Log.</span>
+        </h1>
+        <div class="hero-meta">
+          <span class="mono-label">WEEK №17 · 2026</span>
+          <span class="mono-label dim">APRIL 20–26, 2026</span>
+        </div>
+        <p class="hero-quote">"Every system shipped is a stone laid. The Cathedral is built one verified deploy at a time."</p>
+      </div>
+      <div class="hero-scanline" aria-hidden="true"></div>
+    </section>
+
+    <div class="dispatch-share-strip">
+      <span class="share-strip-label">SHARE THIS TRANSMISSION</span>
+      <div class="share-strip-buttons" data-share-strip></div>
+    </div>
+
+    <section class="status-bar">
+      <div class="status-inner">
+        <div class="status-item">
+          <span class="status-label">DEPLOYMENTS</span>
+          <span class="status-value">1,382+</span>
+          <span class="status-detail">in the last year</span>
+        </div>
+        <div class="status-item">
+          <span class="status-label">LIVE SYSTEMS</span>
+          <span class="status-value gold">8</span>
+          <span class="status-detail">verified this week</span>
+        </div>
+        <div class="status-item">
+          <span class="status-label">CORE STACK</span>
+          <span class="status-value">TS</span>
+          <span class="status-detail">enterprise TypeScript</span>
+        </div>
+        <div class="status-item">
+          <span class="status-label">OPERATOR</span>
+          <span class="status-value gold">SOLO</span>
+          <span class="status-detail">Keith · 1Commerce LLC</span>
+        </div>
+        <div class="status-item">
+          <span class="status-label">METHODOLOGY</span>
+          <span class="status-value">C.F.</span>
+          <span class="status-detail">Cathedral Framework</span>
+        </div>
+        <div class="status-item">
+          <span class="status-label">DISPATCHES</span>
+          <span class="status-value gold">17</span>
+          <span class="status-detail">shipped</span>
+        </div>
+      </div>
+    </section>
+
+    <!-- Section I: The Week in Builds -->
+    <article class="dispatch" id="build-week">
+      <div class="dispatch-inner">
+        <div class="section-marker">
+          <span class="section-numeral">I</span>
+          <span class="section-label">THE WEEK IN BUILDS</span>
+        </div>
+        <div class="dispatch-header">
+          <span class="mono-label accent-text">// BUILD LOG · MON 20 APR</span>
+        </div>
+        <div class="dispatch-body">
+
+          <p class="lead-text">The Cathedral Framework is not a metaphor. It is a production methodology. Every system deployed this week is a verified stone in a structure designed to compound — each build feeding the next, each deployment hardening the overall architecture. This is the build log for Week 17. No filler. Proof first.</p>
+
+          <p>The engineering pedigree behind this week's output: 1,382 deployments over the last twelve months via PNW Enterprises — all under the lead architecture of ksksrbiz-arch. The stack is enterprise TypeScript across the board, with Supabase for data persistence, n8n for workflow automation, React for interface layers, Netlify for edge deployment, and GCP for cloud compute. Agentic coding flywheel active. Iteration rate: relentless.</p>
+
+          <div class="metric-row">
+            <div class="metric-cell">
+              <span class="metric-num">1,382</span>
+              <span class="metric-lbl">Deployments (12 months)</span>
+            </div>
+            <div class="metric-cell">
+              <span class="metric-num">25</span>
+              <span class="metric-lbl">Active GitHub repos</span>
+            </div>
+            <div class="metric-cell">
+              <span class="metric-num">5</span>
+              <span class="metric-lbl">Registered subsidiaries</span>
+            </div>
+          </div>
+
+          <p>The core build principle has not changed since the Cathedral Framework was documented: every system must be decoupled, every integration must have a kill switch, and nothing ships that is not verifiably live. The client showcase, the internal infrastructure, and the audience tools are all part of the same compounding machine. This week's log breaks them out by system.</p>
+
+        </div>
+      </div>
+    </article>
+
+    <section class="quote-block">
+      <div class="quote-inner">
+        <div class="quote-mark" aria-hidden="true">//</div>
+        <blockquote>
+          <p>Commerce infrastructure engineered like a cathedral. Every system feeds the next. Build the structure first. Scale is a natural consequence of precision.</p>
+        </blockquote>
+        <cite class="mono-label dim">— INTERNAL LOG · APR 2026</cite>
+      </div>
+    </section>
+
+    <!-- Section II: Core Systems -->
+    <article class="dispatch" id="core-systems">
+      <div class="dispatch-inner">
+        <div class="section-marker">
+          <span class="section-numeral">II</span>
+          <span class="section-label">CORE SYSTEMS — VERIFIED LIVE</span>
+        </div>
+        <div class="dispatch-header">
+          <span class="mono-label accent-text">// INFRASTRUCTURE · TUE 21 APR</span>
+        </div>
+        <div class="dispatch-body">
+
+          <p>Three flagship systems are in live production this week. Each is independently deployed, actively maintained, and part of the Cathedral stack. Verification is not aspirational — these URLs resolve. These systems serve real traffic.</p>
+
+          <div class="build-log-grid">
+            <div class="build-log-card">
+              <div class="build-log-card-label">◈ THE SIGNAL</div>
+              <div class="build-log-card-title">Weekly Transmission Platform</div>
+              <div class="build-log-card-desc">Ambient credibility engine and newsletter dispatch system. Dark, gothic, precise. Auto-deployed on push. 17 transmissions shipped. The audience-building layer of the 1Commerce stack.</div>
+              <div class="build-log-card-status">Live · signal01.netlify.app</div>
+              <div style="margin-top: 12px;">
+                <span class="stack-tag">HTML/CSS</span>
+                <span class="stack-tag">JavaScript</span>
+                <span class="stack-tag">Netlify</span>
+              </div>
+            </div>
+            <div class="build-log-card">
+              <div class="build-log-card-label">◈ UNIFYONE</div>
+              <div class="build-log-card-title">Contextual Financial Intelligence</div>
+              <div class="build-log-card-desc">Gig economy AI that reads real shift data to optimize earnings and automate tax management. The flagship SaaS product of 1Commerce LLC. Revenue-generating. Active subscriber base.</div>
+              <div class="build-log-card-status">Live · 1commerce.online</div>
+              <div style="margin-top: 12px;">
+                <span class="stack-tag">Financial AI</span>
+                <span class="stack-tag">Supabase</span>
+                <span class="stack-tag">GCP</span>
+              </div>
+            </div>
+            <div class="build-log-card">
+              <div class="build-log-card-label">◈ NEWS AGGREGATOR</div>
+              <div class="build-log-card-title">Real-Time Tech Intelligence Feed</div>
+              <div class="build-log-card-desc">8 live RSS feeds aggregated via Netlify Functions. Sources: TechCrunch, GitHub, Hacker News, Product Hunt, The Verge, AWS, Ars Technica, Wired. Zero manual curation required.</div>
+              <div class="build-log-card-status">Live · signal01.netlify.app/news</div>
+              <div style="margin-top: 12px;">
+                <span class="stack-tag">RSS</span>
+                <span class="stack-tag">Netlify Functions</span>
+                <span class="stack-tag">Edge</span>
+              </div>
+            </div>
+          </div>
+
+          <p>The Signal, UnifyOne, and the News Aggregator form the spine of the 1Commerce public-facing stack. The Signal generates audience and credibility. UnifyOne generates revenue. The News Aggregator generates utility and return visits. Three distinct functions, one unified architecture, zero redundant infrastructure. Each is deployable and rollback-capable independently.</p>
+
+        </div>
+      </div>
+    </article>
+
+    <!-- Section III: Client Builds -->
+    <article class="dispatch" id="client-builds">
+      <div class="dispatch-inner">
+        <div class="section-marker">
+          <span class="section-numeral">III</span>
+          <span class="section-label">CLIENT BUILDS — SHIPPED AND LIVE</span>
+        </div>
+        <div class="dispatch-header">
+          <span class="mono-label accent-text">// CLIENT LOG · WED 22 APR</span>
+        </div>
+        <div class="dispatch-body">
+
+          <p>Client deployments this week demonstrate the full-spectrum build capability: brand-first e-commerce, environmental services, equestrian facilities, precision construction, AI-native tools, travel platforms, and deal flow infrastructure. Each was built, deployed, and delivered to production. No staging theater.</p>
+
+          <div class="build-log-grid">
+            <div class="build-log-card">
+              <div class="build-log-card-label">◈ CLIENT · E-COMMERCE</div>
+              <div class="build-log-card-title">Montucky Moonshine</div>
+              <div class="build-log-card-desc">Full e-commerce proposal for a Montana-born brand. Product photography, trust badges, mobile-first checkout, Montana Cocktails recipe collection. End-to-end storefront capability demonstrated.</div>
+              <div class="build-log-card-status">Live · montucky-moonshine-proposal.netlify.app</div>
+              <div style="margin-top: 12px;">
+                <span class="stack-tag">E-Commerce</span>
+                <span class="stack-tag">Mobile-First</span>
+                <span class="stack-tag">Brand Design</span>
+              </div>
+            </div>
+            <div class="build-log-card">
+              <div class="build-log-card-label">◈ CLIENT · ENVIRONMENTAL</div>
+              <div class="build-log-card-title">ClearPath Environmental</div>
+              <div class="build-log-card-desc">Full-service environmental solutions web presence. Service-sector brand build with trust architecture and lead-capture infrastructure. Professional services at production quality.</div>
+              <div class="build-log-card-status">Live · clearpath-environmental.netlify.app</div>
+              <div style="margin-top: 12px;">
+                <span class="stack-tag">Services</span>
+                <span class="stack-tag">Lead Capture</span>
+                <span class="stack-tag">Brand</span>
+              </div>
+            </div>
+            <div class="build-log-card">
+              <div class="build-log-card-label">◈ CLIENT · EQUESTRIAN</div>
+              <div class="build-log-card-title">Hidden Creek Horse Park</div>
+              <div class="build-log-card-desc">Full web presence for equestrian facility. Event booking infrastructure, facility showcase, and audience capture. Niche vertical, production-grade execution.</div>
+              <div class="build-log-card-status">Live · hidden-creek.netlify.app</div>
+              <div style="margin-top: 12px;">
+                <span class="stack-tag">Events</span>
+                <span class="stack-tag">Booking</span>
+                <span class="stack-tag">Niche Vertical</span>
+              </div>
+            </div>
+            <div class="build-log-card">
+              <div class="build-log-card-label">◈ CLIENT · CONSTRUCTION</div>
+              <div class="build-log-card-title">Precision Core Builders</div>
+              <div class="build-log-card-desc">Construction firm digital presence with portfolio architecture, service breakdowns, and conversion-optimized contact infrastructure. Professional services vertical, precision aesthetic.</div>
+              <div class="build-log-card-status">Live · precision-core.netlify.app</div>
+              <div style="margin-top: 12px;">
+                <span class="stack-tag">Portfolio</span>
+                <span class="stack-tag">Conversion</span>
+                <span class="stack-tag">Construction</span>
+              </div>
+            </div>
+            <div class="build-log-card">
+              <div class="build-log-card-label">◈ CLIENT · AI TOOL</div>
+              <div class="build-log-card-title">Compass AI</div>
+              <div class="build-log-card-desc">AI-native application deployment. Intelligent interface, contextual guidance system, and production AI integration layer. Built for decision-making at scale.</div>
+              <div class="build-log-card-status">Live · compass-ai-app.netlify.app</div>
+              <div style="margin-top: 12px;">
+                <span class="stack-tag">AI Integration</span>
+                <span class="stack-tag">TypeScript</span>
+                <span class="stack-tag">Decision Layer</span>
+              </div>
+            </div>
+            <div class="build-log-card">
+              <div class="build-log-card-label">◈ CLIENT · TRAVEL</div>
+              <div class="build-log-card-title">Next Chapter Travel</div>
+              <div class="build-log-card-desc">Travel platform with itinerary showcase, booking lead capture, and destination-first brand architecture. Lifestyle vertical, mobile-first deployment.</div>
+              <div class="build-log-card-status">Live · next-chapter-travel.netlify.app</div>
+              <div style="margin-top: 12px;">
+                <span class="stack-tag">Travel</span>
+                <span class="stack-tag">Itinerary</span>
+                <span class="stack-tag">Lead Gen</span>
+              </div>
+            </div>
+          </div>
+
+        </div>
+      </div>
+    </article>
+
+    <!-- Section IV: The Architecture Index -->
+    <article class="dispatch" id="architecture-index">
+      <div class="dispatch-inner">
+        <div class="section-marker">
+          <span class="section-numeral">IV</span>
+          <span class="section-label">THE ARCHITECTURE INDEX</span>
+        </div>
+        <div class="dispatch-header">
+          <span class="mono-label accent-text">// SYSTEMS MAP · THU 23 APR</span>
+        </div>
+        <div class="dispatch-body">
+
+          <p>The Architecture Index is the central reference document for the ksksrbiz-arch GitHub organization. It maps every major deployment, documents the Cathedral Framework philosophy, and provides the canonical record of how all systems interlock. It is not a pitch deck. It is an engineering manifest.</p>
+
+          <p>The Cathedral Framework runs four operational layers across the 1Commerce stack. The Brain layer — Gemini, OpenAI, Claude, Kimi AI — handles content generation, analysis, and code production. The Nerves layer — n8n workflow automation — manages all trigger-based integrations between Shopify, Stripe, Meta, and CRM systems, with kill switches on every node. The Muscle layer — GCP Cloud Run, PostgreSQL 17, Supabase with Row Level Security, Next.js across 25 active GitHub repositories — carries all persistent data and rendering. The Cash Register — automated CI/CD Shopify deployments and fully integrated Stripe subscription billing — converts the entire stack into revenue.</p>
+
+          <div class="metric-row">
+            <div class="metric-cell">
+              <span class="metric-num">4</span>
+              <span class="metric-lbl">Stack layers (Brain · Nerves · Muscle · Cash)</span>
+            </div>
+            <div class="metric-cell">
+              <span class="metric-num">25</span>
+              <span class="metric-lbl">Active GitHub repos (Muscle layer)</span>
+            </div>
+            <div class="metric-cell">
+              <span class="metric-num">8+</span>
+              <span class="metric-lbl">n8n integrations (kill-switched)</span>
+            </div>
+          </div>
+
+          <p>DealFlow — deployed at redeaf.netlify.app — represents the deal infrastructure layer: a platform built for tracking, filtering, and executing on deal flow opportunities at the intersection of finance and real estate technology. It is the newest addition to the client stack this week. Every card in this log is a verified deploy. The Architecture Index contains the full map.</p>
+
+          <div class="build-log-grid" style="grid-template-columns: 1fr 1fr;">
+            <div class="build-log-card">
+              <div class="build-log-card-label">◈ INFRASTRUCTURE</div>
+              <div class="build-log-card-title">The Architecture Index</div>
+              <div class="build-log-card-desc">Central index of ksksrbiz-arch organization systems. Maps major deployments and the Cathedral Framework. The canonical systems reference.</div>
+              <div class="build-log-card-status">Reference · github.com/ksksrbiz-arch/The-Architecture</div>
+            </div>
+            <div class="build-log-card">
+              <div class="build-log-card-label">◈ CLIENT · FINTECH</div>
+              <div class="build-log-card-title">DealFlow</div>
+              <div class="build-log-card-desc">Deal flow intelligence platform. Fintech meets real estate tech. Tracking, filtering, and execution infrastructure for deal-driven operators.</div>
+              <div class="build-log-card-status">Live · redeaf.netlify.app</div>
+              <div style="margin-top: 12px;">
+                <span class="stack-tag">Fintech</span>
+                <span class="stack-tag">Deal Infrastructure</span>
+                <span class="stack-tag">Real Estate Tech</span>
+              </div>
+            </div>
+          </div>
+
+        </div>
+      </div>
+    </article>
+
+    <!-- Section V: The Build Principle -->
+    <article class="dispatch" id="build-principle">
+      <div class="dispatch-inner">
+        <div class="section-marker">
+          <span class="section-numeral">V</span>
+          <span class="section-label">THE BUILD PRINCIPLE</span>
+        </div>
+        <div class="dispatch-header">
+          <span class="mono-label accent-text">// CLOSE · FRI 25 APR</span>
+        </div>
+        <div class="dispatch-body">
+
+          <p>What this week's build log represents is not a portfolio. It is a compounding machine documented in real time. Every one of these systems — from The Signal to DealFlow — is load-bearing. The Signal generates audience. UnifyOne generates revenue. The client sites generate consulting income and proof-of-capability. The Architecture Index holds the map. None of them exists in isolation.</p>
+
+          <p>The Cathedral Framework is explicit about this: no orphan systems. Every deploy must either generate revenue, generate audience, or harden the infrastructure that enables both. Systems that fail this test get deprecated. Systems that pass it get compounded into the next build cycle. The agentic coding flywheel — Claude and Gemini operating in a tight feedback loop with the TypeScript codebase — means the iteration speed is structural, not heroic. It is designed to sustain across weeks, not sprint and collapse.</p>
+
+          <p>The build log will continue. Every week that ships verified systems earns an entry. The archive is the record. The Signal is the proof of work.</p>
+
+          <div class="metric-row">
+            <div class="metric-cell">
+              <span class="metric-num">8</span>
+              <span class="metric-lbl">Live systems verified this week</span>
+            </div>
+            <div class="metric-cell">
+              <span class="metric-num">17</span>
+              <span class="metric-lbl">Transmissions shipped</span>
+            </div>
+            <div class="metric-cell">
+              <span class="metric-num">∞</span>
+              <span class="metric-lbl">Compounding infrastructure</span>
+            </div>
+          </div>
+
+        </div>
+      </div>
+    </article>
+
+    <section class="quote-block closing">
+      <div class="quote-inner">
+        <div class="quote-mark" aria-hidden="true">//</div>
+        <blockquote>
+          <p>Every system shipped is a stone laid. Build the Cathedral. Light it from within. The structure outlasts the sprint.</p>
+        </blockquote>
+        <cite class="mono-label dim">— THE SIGNAL · TRANSMISSION №017</cite>
+      </div>
+    </section>
+
+    <section class="entity-card">
+      <div class="entity-inner">
+        <div class="entity-row">
+          <span class="entity-key">ENTITY</span>
+          <span class="entity-val">1COMMERCE LLC</span>
+        </div>
+        <div class="entity-row">
+          <span class="entity-key">PHASE</span>
+          <span class="entity-val gold-text">SYSTEMS → SCALE</span>
+        </div>
+        <div class="entity-row">
+          <span class="entity-key">LOCATION</span>
+          <span class="entity-val">CANBY, OR</span>
+        </div>
+        <div class="entity-row">
+          <span class="entity-key">STACK</span>
+          <span class="entity-val">NETLIFY · SUPABASE · N8N · GCP · TYPESCRIPT</span>
+        </div>
+        <div class="entity-row">
+          <span class="entity-key">STATUS</span>
+          <span class="entity-val gold-text">BUILDING IN PUBLIC</span>
+        </div>
+      </div>
+    </section>
+
+    <button type="button" class="tweet-card" onclick="window.open('https://twitter.com/intent/tweet?text=%22Every%20system%20shipped%20is%20a%20stone%20laid.%20The%20Cathedral%20is%20built%20one%20verified%20deploy%20at%20a%20time.%22%20%E2%80%94%20The%20Signal%20%E2%80%94%20Week%20017&url=https%3A%2F%2Fsignal01.netlify.app%2Farchive%2F017.html','_blank')" aria-label="Share on X">
+      <p class="tweet-card-quote">"Every system shipped is a stone laid. The Cathedral is built one verified deploy at a time."</p>
+      <div class="tweet-card-footer">
+        <span class="tweet-card-attr">— The Signal — Week 017</span>
+        <span class="tweet-card-cta">𝕏 CLICK TO TWEET THIS</span>
+      </div>
+    </button>
+
+    <div class="reaction-bar">
+      <span class="reaction-bar-label">HOW DID THIS LAND?</span>
+      <div class="reaction-buttons">
+        <button class="reaction-btn" data-reaction="signal" aria-label="React: Signal"><span class="reaction-icon">◈</span><span class="reaction-name">SIGNAL</span><span class="reaction-count">0</span></button>
+        <button class="reaction-btn" data-reaction="cathedral" aria-label="React: Cathedral"><span class="reaction-icon">⬟</span><span class="reaction-name">CATHEDRAL</span><span class="reaction-count">0</span></button>
+        <button class="reaction-btn" data-reaction="filed" aria-label="React: Filed"><span class="reaction-icon">▣</span><span class="reaction-name">FILED</span><span class="reaction-count">0</span></button>
+        <button class="reaction-btn" data-reaction="noise" aria-label="React: Noise"><span class="reaction-icon">∅</span><span class="reaction-name">NOISE</span><span class="reaction-count">0</span></button>
+      </div>
+      <div class="reaction-share-strip">
+        <span class="share-strip-label">SHARE</span>
+        <div class="share-strip-buttons" data-share-strip></div>
+      </div>
+    </div>
+  </main>
+
+  <footer class="site-footer">
+    <div class="footer-main">
+      <div class="footer-col">
+        <h4>The Signal</h4>
+        <div class="footer-subscribe">
+          <form class="footer-subscribe-form" action="https://assets.mailerlite.com/jsonp/887036/forms/131950373498498498/subscribe" method="POST">
+            <input type="email" name="fields[email]" placeholder="your@email.com" required aria-label="Email address">
+            <button type="submit">Subscribe</button>
+          </form>
+        </div>
+        <p>A weekly transmission from a solo founder building in public.</p>
+      </div>
+      <div class="footer-col">
+        <h4>Navigate</h4>
+        <ul>
+          <li><a href="../">Home</a></li>
+          <li><a href="./">Archive</a></li>
+          <li><a href="../fieldnotes/">Fieldnotes+</a></li>
+          <li><a href="../builds/">Verified Builds</a></li>
+          <li><a href="../news/">News Aggregator</a></li>
+          <li><a href="../videos/">Videos</a></li>
+          <li><a href="../about/">About</a></li>
+          <li><a href="../#subscribe">Subscribe</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <h4>Verified Builds</h4>
+        <ul>
+          <li><a href="https://1commerce.online/" target="_blank" rel="noopener noreferrer">UnifyOne</a></li>
+          <li><a href="https://clearpath-environmental.netlify.app/" target="_blank" rel="noopener noreferrer">ClearPath Environmental</a></li>
+          <li><a href="https://hidden-creek.netlify.app/" target="_blank" rel="noopener noreferrer">Hidden Creek Horse Park</a></li>
+          <li><a href="https://precision-core.netlify.app/" target="_blank" rel="noopener noreferrer">Precision Core Builders</a></li>
+          <li><a href="https://compass-ai-app.netlify.app/" target="_blank" rel="noopener noreferrer">Compass AI</a></li>
+          <li><a href="https://next-chapter-travel.netlify.app/" target="_blank" rel="noopener noreferrer">Next Chapter Travel</a></li>
+          <li><a href="https://montucky-moonshine-proposal.netlify.app/" target="_blank" rel="noopener noreferrer">Montucky Moonshine</a></li>
+          <li><a href="https://redeaf.netlify.app/" target="_blank" rel="noopener noreferrer">DealFlow</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <span class="mono-label dim">© 2026 1COMMERCE LLC · CANBY, OREGON</span>
+    </div>
+  </footer>
+
+  <script src="../app.js" defer></script>
+</body>
+</html>
