@@ -16,8 +16,8 @@
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,600;9..144,700&family=IBM+Plex+Sans:wght@400;500;600&family=JetBrains+Mono:wght@300;400;500&display=swap" rel="stylesheet">
 
-<link rel="stylesheet" href="/base.css?v=20260414">
-<link rel="stylesheet" href="/style.css?v=20260414">
+<link rel="stylesheet" href="/base.css?v=20260417">
+<link rel="stylesheet" href="/style.css?v=20260417">
 
 <!-- Structured Data -->
 <script type="application/ld+json">
@@ -51,6 +51,7 @@
 </script>
 </head>
 <body>
+  <a href="#main" class="skip-link">Skip to main content</a>
 
   <header class="site-header">
     <div class="header-inner">
@@ -80,8 +81,14 @@
       </div>
     </div>
   </header>
+  <nav class="breadcrumb" aria-label="Breadcrumb">
+    <a href="./">Home</a>
+    <span class="sep">›</span>
+    <span class="current">Page Not Found</span>
+  </nav>
 
-  <main>
+
+  <main id="main">
     <section style="text-align: center; padding: 6rem 1.5rem; max-width: 600px; margin: 0 auto;">
       <div class="section-label">ERROR 404</div>
       <h1 style="margin-bottom: 1rem;">Signal Lost</h1>
