@@ -20,7 +20,6 @@ Usage:
 """
 
 import argparse
-import os
 import sys
 import time
 from pathlib import Path
@@ -28,22 +27,12 @@ from pathlib import Path
 from google import genai
 from google.genai import types
 
-HERE = Path(__file__).parent
-DEFAULT_OUT_DIR = HERE / "builds"
+from _lib import BUILDS_DIR, read_prompt, require_env
+
 MODEL = "veo-3.1-generate-preview"
 POLL_SECONDS = 10
 MAX_POLLS = 60  # ~10 minutes
-
-
-def read_prompt(args) -> str:
-    if args.prompt:
-        return args.prompt.strip()
-    data = sys.stdin.read().strip()
-    if not data:
-        sys.exit("error: no prompt provided via --prompt or stdin")
-    # Strip the "--- Prompt N ---" header that generate.py emits.
-    lines = [ln for ln in data.splitlines() if not ln.startswith("--- ")]
-    return " ".join(ln.strip() for ln in lines if ln.strip())
+VALID_DURATIONS = (4, 6, 8)
 
 
 def main() -> None:
@@ -55,15 +44,18 @@ def main() -> None:
     )
     parser.add_argument("--out", help="output mp4 path (default: builds/reel-<ts>.mp4)")
     parser.add_argument("--aspect", default="9:16", choices=["9:16", "16:9"])
-    parser.add_argument("--duration", type=int, default=8, help="seconds (4-8)")
+    parser.add_argument(
+        "--duration",
+        type=int,
+        default=8,
+        choices=VALID_DURATIONS,
+        help="seconds (Veo 3.1 supports 4, 6, or 8)",
+    )
     parser.add_argument("--resolution", default="1080p", choices=["720p", "1080p", "4k"])
     parser.add_argument("--count", type=int, default=1, help="number of videos")
     args = parser.parse_args()
 
-    api_key = os.environ.get("GEMINI_API_KEY")
-    if not api_key:
-        sys.exit("error: GEMINI_API_KEY not set in environment")
-
+    api_key = require_env("GEMINI_API_KEY")
     prompt = read_prompt(args)
     print(f"prompt: {prompt[:120]}{'...' if len(prompt) > 120 else ''}", file=sys.stderr)
 
@@ -108,14 +100,14 @@ def main() -> None:
     if not videos:
         sys.exit("error: operation finished but returned no videos")
 
-    DEFAULT_OUT_DIR.mkdir(exist_ok=True)
+    BUILDS_DIR.mkdir(exist_ok=True)
     ts = int(time.time())
     for i, gv in enumerate(videos):
         if args.out and len(videos) == 1:
             out_path = Path(args.out)
         else:
             suffix = f"-{i}" if len(videos) > 1 else ""
-            out_path = DEFAULT_OUT_DIR / f"reel-{ts}{suffix}.mp4"
+            out_path = BUILDS_DIR / f"reel-{ts}{suffix}.mp4"
         out_path.parent.mkdir(parents=True, exist_ok=True)
         data = client.files.download(file=gv.video)
         out_path.write_bytes(data)

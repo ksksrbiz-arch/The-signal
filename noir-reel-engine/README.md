@@ -18,6 +18,9 @@ animate the still, narrate over a stoic monologue, ship.
 | `plan.csv` | The current rolling plan — `seed` column feeds `generate.py --seed` |
 | `veo.py` | Renders a prompt into an mp4 via Veo 3.1 (reads `GEMINI_API_KEY`) |
 | `grok.py` | Generates a still via xAI Grok-2-Image (reads `XAI_API_KEY`) |
+| `ship.py` | One-command pipeline — roll, (optional still), render mp4 |
+| `_lib.py` | Shared helpers (prompt reading, env validation, paths) |
+| `.env.example` | Template for required env vars (copy to `.env`, gitignored) |
 
 ## The Three Architectural Pillars
 
@@ -55,4 +58,15 @@ export XAI_API_KEY="your-xai-key"
 PROMPT=$(python3 generate.py --seed 1000 --prompt-only --no-aspect | tail -n +2)
 python3 grok.py --prompt "$PROMPT" --out builds/still-042.png
 python3 veo.py --prompt "$PROMPT" --image builds/still-042.png --out builds/reel-042.mp4
+
+# One-command pipeline (the daily driver)
+python3 ship.py --seed 1000              # text-to-video, needs GEMINI_API_KEY
+python3 ship.py --seed 1000 --with-still # image-to-video, needs both keys
 ```
+
+## Environment
+
+Copy `.env.example` to `.env` (gitignored) and set:
+
+- `GEMINI_API_KEY` — required for `veo.py` / `ship.py`
+- `XAI_API_KEY` — required only for `grok.py` / `ship.py --with-still`

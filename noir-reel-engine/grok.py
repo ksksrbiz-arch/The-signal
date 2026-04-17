@@ -14,29 +14,18 @@ will reframe to 9:16 during animation.
 
 import argparse
 import base64
-import os
+import json
 import sys
 import time
-from pathlib import Path
-
 import urllib.error
 import urllib.request
-import json
+from pathlib import Path
 
-HERE = Path(__file__).parent
-DEFAULT_OUT_DIR = HERE / "builds"
+from _lib import BUILDS_DIR, read_prompt, require_env
+
 ENDPOINT = "https://api.x.ai/v1/images/generations"
 MODEL = "grok-2-image-1212"
-
-
-def read_prompt(args) -> str:
-    if args.prompt:
-        return args.prompt.strip()
-    data = sys.stdin.read().strip()
-    if not data:
-        sys.exit("error: no prompt provided via --prompt or stdin")
-    lines = [ln for ln in data.splitlines() if not ln.startswith("--- ")]
-    return " ".join(ln.strip() for ln in lines if ln.strip())
+PROMPT_CHAR_LIMIT = 1024  # xAI Grok-2-Image hard limit
 
 
 def main() -> None:
@@ -46,11 +35,12 @@ def main() -> None:
     parser.add_argument("--count", type=int, default=1, help="number of stills")
     args = parser.parse_args()
 
-    api_key = os.environ.get("XAI_API_KEY")
-    if not api_key:
-        sys.exit("error: XAI_API_KEY not set in environment")
-
+    api_key = require_env("XAI_API_KEY")
     prompt = read_prompt(args)
+    if len(prompt) > PROMPT_CHAR_LIMIT:
+        sys.exit(
+            f"error: prompt is {len(prompt)} chars, exceeds Grok-2-Image limit of {PROMPT_CHAR_LIMIT}"
+        )
     print(f"prompt: {prompt[:120]}{'...' if len(prompt) > 120 else ''}", file=sys.stderr)
 
     body = json.dumps(
@@ -82,7 +72,7 @@ def main() -> None:
     if not images:
         sys.exit(f"error: no images in response: {payload}")
 
-    DEFAULT_OUT_DIR.mkdir(exist_ok=True)
+    BUILDS_DIR.mkdir(exist_ok=True)
     ts = int(time.time())
     written = []
     for i, img in enumerate(images):
@@ -93,7 +83,7 @@ def main() -> None:
             out_path = Path(args.out)
         else:
             suffix = f"-{i}" if len(images) > 1 else ""
-            out_path = DEFAULT_OUT_DIR / f"still-{ts}{suffix}.png"
+            out_path = BUILDS_DIR / f"still-{ts}{suffix}.png"
         out_path.parent.mkdir(parents=True, exist_ok=True)
         out_path.write_bytes(base64.b64decode(b64))
         written.append(out_path)
