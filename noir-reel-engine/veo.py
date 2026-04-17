@@ -1,17 +1,22 @@
 #!/usr/bin/env python3
-"""Generate a noir reel video via Veo 3.1 from a text prompt.
+"""Generate a noir reel video via Veo 3.1.
 
 Reads GEMINI_API_KEY from the environment. Never hard-code keys.
 
 Usage:
-  # Roll a prompt and render it:
+  # Text-to-video: roll a prompt and render it:
   python3 generate.py --prompt-only --seed 1000 | python3 veo.py
 
   # Or pass a prompt directly:
   python3 veo.py --prompt "Photorealistic medium shot of ..."
 
-  # Custom output path:
-  python3 veo.py --prompt "..." --out builds/reel-042.mp4
+  # Image-to-video: animate a still (produced by grok.py or any other tool):
+  python3 veo.py --prompt "..." --image builds/still-042.png
+
+  # Chain both stages:
+  python3 generate.py --prompt-only --seed 1000 --no-aspect \\
+    | python3 grok.py --prompt "$(cat -)" --out builds/still.png \\
+    && python3 veo.py --prompt "..." --image builds/still.png
 """
 
 import argparse
@@ -44,6 +49,10 @@ def read_prompt(args) -> str:
 def main() -> None:
     parser = argparse.ArgumentParser(description=__doc__)
     parser.add_argument("--prompt", help="prompt text (otherwise read from stdin)")
+    parser.add_argument(
+        "--image",
+        help="path to a starting still for image-to-video mode",
+    )
     parser.add_argument("--out", help="output mp4 path (default: builds/reel-<ts>.mp4)")
     parser.add_argument("--aspect", default="9:16", choices=["9:16", "16:9"])
     parser.add_argument("--duration", type=int, default=8, help="seconds (4-8)")
@@ -59,9 +68,25 @@ def main() -> None:
     print(f"prompt: {prompt[:120]}{'...' if len(prompt) > 120 else ''}", file=sys.stderr)
 
     client = genai.Client(api_key=api_key)
+
+    image = None
+    if args.image:
+        image_path = Path(args.image)
+        if not image_path.exists():
+            sys.exit(f"error: image not found: {image_path}")
+        suffix = image_path.suffix.lower()
+        mime = {".png": "image/png", ".jpg": "image/jpeg", ".jpeg": "image/jpeg"}.get(suffix)
+        if not mime:
+            sys.exit(f"error: unsupported image type {suffix} (use .png/.jpg)")
+        image = types.Image(image_bytes=image_path.read_bytes(), mime_type=mime)
+        print(f"mode: image-to-video (source: {image_path.name})", file=sys.stderr)
+    else:
+        print("mode: text-to-video", file=sys.stderr)
+
     operation = client.models.generate_videos(
         model=MODEL,
         prompt=prompt,
+        image=image,
         config=types.GenerateVideosConfig(
             number_of_videos=args.count,
             aspect_ratio=args.aspect,
