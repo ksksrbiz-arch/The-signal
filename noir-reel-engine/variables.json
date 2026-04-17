@@ -1,0 +1,78 @@
+{
+  "shot_types": [
+    "extreme close-up",
+    "medium shot",
+    "low angle (power)",
+    "over-the-shoulder",
+    "wide cinematic",
+    "macro detail"
+  ],
+  "actions": [
+    "adjusting a cufflink",
+    "staring at a city grid",
+    "closing a leather folder",
+    "pouring a glass of water",
+    "walking through mist",
+    "tapping a luxury watch",
+    "checking a watch",
+    "closing a laptop",
+    "lighting a candle",
+    "rolling up a shirt sleeve"
+  ],
+  "environments": [
+    "brutalist parking garage",
+    "dimly lit industrial loft",
+    "rain-slicked balcony",
+    "concrete subway platform",
+    "high-rise glass boardroom",
+    "hidden underground vault",
+    "dark rooftop at 2am",
+    "neon-lit alley",
+    "private elevator at night",
+    "dimly lit library"
+  ],
+  "lighting_sources": [
+    "flickering blue neon tube",
+    "single warm tungsten bulb",
+    "cold white monitor glow",
+    "red emergency exit light",
+    "golden hour through blinds",
+    "harsh moonlight through slats",
+    "single overhead spotlight with deep falloff",
+    "dual monitor glow"
+  ],
+  "color_palettes": [
+    "teal and charcoal",
+    "indigo and electric cyan",
+    "amber and deep black",
+    "emerald and slate",
+    "silver and midnight blue",
+    "violet and obsidian"
+  ],
+  "lenses": [
+    "85mm f/1.4",
+    "50mm cinematic",
+    "35mm anamorphic",
+    "macro lens",
+    "wide cinematic"
+  ],
+  "textures": [
+    "fine skin pores",
+    "hyper-realistic skin texture",
+    "subtle perspiration",
+    "micro-details",
+    "film grain",
+    "shot on 35mm Kodak Portra 400"
+  ],
+  "visual_anchors": [
+    "faint hexagonal light pattern reflected on the wall behind him",
+    "wearing a black turtleneck with a matte black ring on the right hand",
+    "final frame washed in a sudden electric cyan color flash"
+  ],
+  "characters": [
+    "self-made male entrepreneur, late 20s",
+    "self-made male entrepreneur, early 30s",
+    "fierce independent female entrepreneur, early 30s",
+    "lone male founder, late 20s, subtle stubble"
+  ]
+}
