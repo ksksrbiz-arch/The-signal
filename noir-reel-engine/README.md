@@ -10,9 +10,10 @@ animate the still, narrate over a stoic monologue, ship.
 | :--- | :--- |
 | `master-template.md` | The fill-in-the-blank prompt template + variable menu |
 | `variables.json` | Machine-readable variable library (for the generator) |
+| `monologues.json` | Bank of Cold Truth / Silent War / Dominance lines |
 | `script-blueprints.md` | 5 daily monologue blueprints using the Stoic formula |
 | `workflow.md` | 30-minute daily assembly line |
-| `generate.py` | Python helper: rolls a random combo and prints a ready-to-paste prompt |
+| `generate.py` | Rolls a visual prompt + matching monologue (CLI flags below) |
 
 ## The Three Architectural Pillars
 
@@ -28,6 +29,10 @@ animate the still, narrate over a stoic monologue, ship.
 
 ```bash
 cd noir-reel-engine
-python3 generate.py            # roll a random prompt
-python3 generate.py --count 5  # roll five for a week of variety
+python3 generate.py                    # one reel: visual prompt + monologue
+python3 generate.py --count 5          # five reels (one work-week)
+python3 generate.py --seed 42          # reproducible
+python3 generate.py --prompt-only      # just the image prompt
+python3 generate.py --monologue-only   # just the script
+python3 generate.py --no-aspect        # drop the trailing --ar 9:16 (non-Midjourney)
 ```
