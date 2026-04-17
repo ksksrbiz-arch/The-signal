@@ -50,8 +50,8 @@
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,600;9..144,700&family=IBM+Plex+Sans:wght@400;500;600&family=JetBrains+Mono:wght@300;400;500&display=swap" rel="stylesheet">
 
-<link rel="stylesheet" href="../base.css?v=20260417">
-<link rel="stylesheet" href="../style.css?v=20260417">
+<link rel="stylesheet" href="../base.css?v=20260417c">
+<link rel="stylesheet" href="../style.css?v=20260417c">
 </head>
 <body>
   <a href="#main" class="skip-link">Skip to main content</a>
@@ -123,91 +123,176 @@
 
   <main id="main">
 
-    <!-- Page Hero -->
-    <section class="page-hero">
-      <div class="page-hero-inner">
-        <span class="mono-label accent-text" style="display: block; margin-bottom: var(--space-4);">◈ TRANSMISSION LOG ◈</span>
-        <h1>Archive</h1>
-        <p>Every dispatch, preserved. A chronological record of building in public from the solo operator behind 1Commerce LLC.</p>
-      </div>
-      <div class="hero-scanline" aria-hidden="true"></div>
-    </section>
-
-    <!-- Archive Grid -->
-    <section class="archive-section">
-      <div class="archive-inner">
-
-        <!-- Week 17 — Latest -->
-        <a href="./017.html" class="archive-card archive-card--feature" style="margin-bottom: var(--space-6);">
-          <div class="archive-card-week">Week №017</div>
-          <div class="archive-card-date">April 20–26, 2026</div>
-          <h2 class="archive-card-title">The Build Log.</h2>
-          <p class="archive-card-quote">"Every system shipped is a stone laid. The Cathedral is built one verified deploy at a time."</p>
-          <div style="display: flex; justify-content: space-between; align-items: center;">
-            <span class="archive-card-cta">READ TRANSMISSION →</span>
-            <span class="mono-label dim">VERIFIED BUILDS · CATHEDRAL FRAMEWORK · LIVE SYSTEMS</span>
-          </div>
-        </a>
-
-        <!-- Week 16 -->
-        <a href="./016.html" class="archive-card" style="margin-bottom: var(--space-6);">
-          <div class="archive-card-week">Week №016</div>
-          <div class="archive-card-date">April 13–19, 2026</div>
-          <h2 class="archive-card-title">Steam to Silicon.</h2>
-          <p class="archive-card-quote">"The era of building foundational models is closed. The era of applying them is wide open."</p>
-          <div style="display: flex; justify-content: space-between; align-items: center;">
-            <span class="archive-card-cta">READ TRANSMISSION →</span>
-            <span class="mono-label dim">BARBELL ECONOMY · SOLO-SCALE EMPIRE · BLUEPRINT 2026</span>
-          </div>
-        </a>
-
-        <!-- Week 15 -->
-        <a href="./015.html" class="archive-card" style="margin-bottom: var(--space-6);">
-          <div class="archive-card-week">Week №015</div>
-          <div class="archive-card-date">April 6–12, 2026</div>
-          <h2 class="archive-card-title">The Ecosystem Era.</h2>
-          <p class="archive-card-quote">"Stop stitching vendors together. Build the interconnected machine."</p>
-          <div style="display: flex; justify-content: space-between; align-items: center;">
-            <span class="archive-card-cta">READ TRANSMISSION →</span>
-            <span class="mono-label dim">INTELLIGENCE LAYER · UNIFYAI · SOVEREIGN BRAND</span>
-          </div>
-        </a>
-
-        <!-- Week 14 — Live -->
-        <a href="./014.html" class="archive-card" style="margin-bottom: var(--space-6);">
-          <div class="archive-card-week">Week №014</div>
-          <div class="archive-card-date">March 27 – April 2, 2026</div>
-          <h2 class="archive-card-title">The Signal Expands.</h2>
-          <p class="archive-card-quote">"The platform becomes the story."</p>
-          <div style="display: flex; justify-content: space-between; align-items: center;">
-            <span class="archive-card-cta">READ TRANSMISSION →</span>
-            <span class="mono-label dim">FOUNDATION · REVENUE · SYSTEMS · SCALE</span>
-          </div>
-        </a>
-
-        <!-- Week 13 — Feature Card -->
-        <a href="./013.html" class="archive-card archive-card--feature">
-          <div class="archive-card-week">Week №013</div>
-          <div class="archive-card-date">March 20–26, 2026</div>
-          <h2 class="archive-card-title">The Cathedral Holds.</h2>
-          <p class="archive-card-quote">"Build the cathedral. Light it from within."</p>
-          <div style="display: flex; justify-content: space-between; align-items: center;">
-            <span class="archive-card-cta">READ TRANSMISSION →</span>
-            <span class="mono-label dim">FOUNDATION · REVENUE · SYSTEMS · SCALE</span>
-          </div>
-        </a>
-
+    <!-- Hero strip: editorial headline + count -->
+    <section class="arc-hero">
+      <div class="arc-hero-inner">
+        <div class="arc-hero-kicker">◆ Transmission Log · 1Commerce LLC · Canby, Oregon</div>
+        <h1 class="arc-hero-title">The&nbsp;Archive</h1>
+        <p class="arc-hero-lede">Every dispatch, preserved. A chronological record of building in public from the solo operator behind 1Commerce LLC.</p>
+        <div class="arc-hero-meta">
+          <span class="arc-meta-item"><strong>5</strong> dispatches</span>
+          <span class="arc-meta-sep">·</span>
+          <span class="arc-meta-item"><strong>Weekly</strong> cadence</span>
+          <span class="arc-meta-sep">·</span>
+          <span class="arc-meta-item">Active since <strong>Mar 2026</strong></span>
+        </div>
       </div>
     </section>
 
-    <!-- Subscribe -->
-    <section class="subscribe-section" id="subscribe">
-      <h2>Receive The Signal</h2>
-      <p>One email per week. Structured dispatches from the front lines of building commerce infrastructure.</p>
-      <form class="subscribe-form" action="https://assets.mailerlite.com/jsonp/887036/forms/131950373498498498/subscribe" method="POST">
-        <input type="email" name="fields[email]" placeholder="your@email.com" required aria-label="Email address">
-        <button type="submit">Subscribe</button>
-      </form>
+    <!-- Featured: latest dispatch with image -->
+    <section class="arc-featured-wrap">
+      <div class="arc-featured-inner">
+        <a href="./017.html" class="arc-featured">
+          <div class="arc-featured-media">
+            <img src="../images/barbell/ai-native-tech-stack.png" alt="Week 017 — The Build Log" loading="eager">
+          </div>
+          <div class="arc-featured-body">
+            <div class="arc-badge">Latest · Week №017</div>
+            <h2 class="arc-featured-title">The Build Log.</h2>
+            <p class="arc-featured-quote">"Every system shipped is a stone laid. The Cathedral is built one verified deploy at a time."</p>
+            <div class="arc-featured-meta">
+              <time datetime="2026-04-20">April 20–26, 2026</time>
+              <span class="arc-meta-sep">·</span>
+              <span>12 min read</span>
+            </div>
+            <div class="arc-tags">
+              <span class="arc-tag">Verified Builds</span>
+              <span class="arc-tag">Cathedral Framework</span>
+              <span class="arc-tag">Live Systems</span>
+            </div>
+            <span class="arc-featured-cta">Read the dispatch <span aria-hidden="true">→</span></span>
+          </div>
+        </a>
+      </div>
+    </section>
+
+    <!-- Scannable list: prior dispatches -->
+    <section class="arc-list-wrap">
+      <div class="arc-list-inner">
+        <div class="arc-list-header">
+          <h2 class="arc-list-title">Earlier transmissions</h2>
+          <div class="arc-list-sub">Ordered newest to oldest. Every entry links to the full dispatch.</div>
+        </div>
+
+        <ol class="arc-list">
+
+          <li class="arc-item">
+            <a href="./016.html" class="arc-item-link">
+              <div class="arc-item-media">
+                <img src="../images/barbell/barbell-economy.png" alt="" loading="lazy">
+              </div>
+              <div class="arc-item-body">
+                <div class="arc-item-meta">
+                  <span class="arc-item-week">№016</span>
+                  <span class="arc-meta-sep">·</span>
+                  <time datetime="2026-04-13">Apr 13–19, 2026</time>
+                  <span class="arc-meta-sep">·</span>
+                  <span>18 min read</span>
+                </div>
+                <h3 class="arc-item-title">Steam to Silicon.</h3>
+                <p class="arc-item-quote">"The era of building foundational models is closed. The era of applying them is wide open."</p>
+                <div class="arc-tags">
+                  <span class="arc-tag">Barbell Economy</span>
+                  <span class="arc-tag">Solo-Scale Empire</span>
+                  <span class="arc-tag">Blueprint 2026</span>
+                </div>
+              </div>
+              <span class="arc-item-arrow" aria-hidden="true">→</span>
+            </a>
+          </li>
+
+          <li class="arc-item">
+            <a href="./015.html" class="arc-item-link">
+              <div class="arc-item-media">
+                <img src="../images/unify-one-intelligence-layer.png" alt="" loading="lazy">
+              </div>
+              <div class="arc-item-body">
+                <div class="arc-item-meta">
+                  <span class="arc-item-week">№015</span>
+                  <span class="arc-meta-sep">·</span>
+                  <time datetime="2026-04-06">Apr 6–12, 2026</time>
+                  <span class="arc-meta-sep">·</span>
+                  <span>14 min read</span>
+                </div>
+                <h3 class="arc-item-title">The Ecosystem Era.</h3>
+                <p class="arc-item-quote">"Stop stitching vendors together. Build the interconnected machine."</p>
+                <div class="arc-tags">
+                  <span class="arc-tag">Intelligence Layer</span>
+                  <span class="arc-tag">UnifyAI</span>
+                  <span class="arc-tag">Sovereign Brand</span>
+                </div>
+              </div>
+              <span class="arc-item-arrow" aria-hidden="true">→</span>
+            </a>
+          </li>
+
+          <li class="arc-item">
+            <a href="./014.html" class="arc-item-link">
+              <div class="arc-item-media arc-item-media--placeholder">
+                <span class="arc-item-marker">№014</span>
+              </div>
+              <div class="arc-item-body">
+                <div class="arc-item-meta">
+                  <span class="arc-item-week">№014</span>
+                  <span class="arc-meta-sep">·</span>
+                  <time datetime="2026-03-27">Mar 27 – Apr 2, 2026</time>
+                  <span class="arc-meta-sep">·</span>
+                  <span>9 min read</span>
+                </div>
+                <h3 class="arc-item-title">The Signal Expands.</h3>
+                <p class="arc-item-quote">"The platform becomes the story."</p>
+                <div class="arc-tags">
+                  <span class="arc-tag">Foundation</span>
+                  <span class="arc-tag">Revenue</span>
+                  <span class="arc-tag">Systems</span>
+                  <span class="arc-tag">Scale</span>
+                </div>
+              </div>
+              <span class="arc-item-arrow" aria-hidden="true">→</span>
+            </a>
+          </li>
+
+          <li class="arc-item">
+            <a href="./013.html" class="arc-item-link">
+              <div class="arc-item-media arc-item-media--placeholder">
+                <span class="arc-item-marker">№013</span>
+              </div>
+              <div class="arc-item-body">
+                <div class="arc-item-meta">
+                  <span class="arc-item-week">№013</span>
+                  <span class="arc-meta-sep">·</span>
+                  <time datetime="2026-03-20">Mar 20–26, 2026</time>
+                  <span class="arc-meta-sep">·</span>
+                  <span>10 min read</span>
+                </div>
+                <h3 class="arc-item-title">The Cathedral Holds.</h3>
+                <p class="arc-item-quote">"Build the cathedral. Light it from within."</p>
+                <div class="arc-tags">
+                  <span class="arc-tag">Foundation</span>
+                  <span class="arc-tag">Revenue</span>
+                  <span class="arc-tag">Systems</span>
+                </div>
+              </div>
+              <span class="arc-item-arrow" aria-hidden="true">→</span>
+            </a>
+          </li>
+
+        </ol>
+      </div>
+    </section>
+
+    <!-- Single subscribe CTA -->
+    <section class="arc-subscribe" id="subscribe">
+      <div class="arc-subscribe-inner">
+        <div class="arc-subscribe-kicker">◆ Subscribe</div>
+        <h2 class="arc-subscribe-title">Get the next dispatch in your inbox.</h2>
+        <p class="arc-subscribe-lede">One email per week. Structured transmissions from the front lines of building commerce infrastructure. No noise, no fluff.</p>
+        <form class="arc-subscribe-form" action="https://assets.mailerlite.com/jsonp/887036/forms/131950373498498498/subscribe" method="POST">
+          <input type="email" name="fields[email]" placeholder="your@email.com" required aria-label="Email address">
+          <button type="submit">Subscribe</button>
+        </form>
+        <p class="arc-subscribe-fine">No spam. Unsubscribe anytime.</p>
+      </div>
     </section>
 
   </main>
@@ -218,10 +303,7 @@
       <div class="footer-col">
         <h4>The Signal</h4>
         <p>Systems atlas. Proof-first. No placeholders.</p>
-        <form class="subscribe-form" action="https://assets.mailerlite.com/jsonp/887036/forms/131950373498498498/subscribe" method="POST">
-          <input type="email" name="fields[email]" placeholder="your@email.com" required aria-label="Email address">
-          <button type="submit">Subscribe</button>
-        </form>
+        <a href="#subscribe" class="footer-subscribe-link">Subscribe to the dispatch →</a>
       </div>
       <div class="footer-col">
         <h4>Navigate</h4>

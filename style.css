@@ -2480,3 +2480,798 @@ button:focus-visible {
   color: var(--rule2);
   opacity: 0.6;
 }
+
+/* ═══════════════════════════════════════════════════════════════════
+   SIGNAL EDITORIAL LAYOUT — v3.0 · April 17, 2026
+   Full rebuild. Archive page + card typography.
+   Goal: make this read like a publication, not a terminal.
+   ═══════════════════════════════════════════════════════════════════ */
+
+/* ── Arc Hero (Archive page) ───────────────────────────────────── */
+.arc-hero {
+  padding: 72px 24px 48px;
+  max-width: 780px;
+  margin: 0 auto;
+}
+
+.arc-hero-kicker {
+  font-family: var(--font-mono);
+  font-size: 11px;
+  font-weight: 500;
+  letter-spacing: 0.14em;
+  color: var(--verified);
+  text-transform: uppercase;
+  margin-bottom: 24px;
+}
+
+.arc-hero-title {
+  font-family: var(--font-display);
+  font-size: clamp(54px, 9vw, 96px);
+  font-weight: 400;
+  line-height: 0.95;
+  letter-spacing: -0.035em;
+  color: var(--text);
+  margin-bottom: 20px;
+  font-variation-settings: 'opsz' 144;
+}
+
+.arc-hero-lede {
+  font-family: var(--font-display);
+  font-size: 20px;
+  font-weight: 300;
+  font-style: italic;
+  line-height: 1.5;
+  color: #D4DAE9;
+  max-width: 620px;
+  margin-bottom: 28px;
+}
+
+.arc-hero-meta {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  align-items: center;
+  font-family: var(--font-mono);
+  font-size: 12px;
+  color: var(--faint);
+}
+
+.arc-hero-meta strong {
+  color: var(--text);
+  font-weight: 500;
+}
+
+.arc-meta-item { white-space: nowrap; }
+
+.arc-meta-sep {
+  color: var(--rule2);
+  opacity: 0.6;
+}
+
+/* ── Featured Card ─────────────────────────────────────────────── */
+.arc-featured-wrap {
+  padding: 0 24px 64px;
+  max-width: 1100px;
+  margin: 0 auto;
+}
+
+.arc-featured {
+  display: grid;
+  grid-template-columns: 1.1fr 1fr;
+  gap: 0;
+  background: var(--panel);
+  border: 1px solid var(--rule);
+  border-radius: 12px;
+  overflow: hidden;
+  text-decoration: none;
+  transition: all 300ms cubic-bezier(0.16, 1, 0.3, 1);
+  position: relative;
+}
+
+.arc-featured:hover {
+  border-color: var(--active);
+  transform: translateY(-3px);
+  box-shadow: 0 20px 48px rgba(0,0,0,0.45),
+              0 2px 0 rgba(43, 229, 212, 0.15);
+}
+
+.arc-featured-media {
+  position: relative;
+  overflow: hidden;
+  background: var(--bg2);
+  min-height: 340px;
+}
+
+.arc-featured-media img {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center;
+  opacity: 0.9;
+  transition: transform 600ms cubic-bezier(0.16, 1, 0.3, 1), opacity 300ms ease;
+}
+
+.arc-featured:hover .arc-featured-media img {
+  transform: scale(1.04);
+  opacity: 1;
+}
+
+.arc-featured-media::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(135deg, rgba(7,10,18,0) 40%, rgba(7,10,18,0.4) 100%);
+  pointer-events: none;
+}
+
+.arc-featured-body {
+  padding: 44px 40px 40px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.arc-badge {
+  display: inline-flex;
+  align-items: center;
+  align-self: flex-start;
+  height: 26px;
+  padding: 0 12px;
+  background: var(--active-soft, rgba(43, 229, 212, 0.12));
+  color: var(--active);
+  border: 1px solid rgba(43, 229, 212, 0.3);
+  border-radius: 4px;
+  font-family: var(--font-mono);
+  font-size: 10.5px;
+  font-weight: 600;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  margin-bottom: 22px;
+}
+
+.arc-featured-title {
+  font-family: var(--font-display);
+  font-size: clamp(34px, 4vw, 46px);
+  font-weight: 500;
+  line-height: 1.05;
+  letter-spacing: -0.025em;
+  color: var(--text);
+  margin-bottom: 18px;
+  font-variation-settings: 'opsz' 96;
+}
+
+.arc-featured-quote {
+  font-family: var(--font-display);
+  font-size: 18px;
+  font-weight: 300;
+  font-style: italic;
+  line-height: 1.5;
+  color: var(--muted);
+  margin-bottom: 22px;
+  padding-left: 16px;
+  border-left: 2px solid var(--verified);
+}
+
+.arc-featured-meta {
+  display: flex;
+  gap: 10px;
+  font-family: var(--font-mono);
+  font-size: 12px;
+  color: var(--faint);
+  margin-bottom: 18px;
+}
+
+.arc-featured-cta {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  margin-top: 20px;
+  padding-top: 20px;
+  border-top: 1px solid var(--rule);
+  font-family: var(--font-body);
+  font-size: 14px;
+  font-weight: 500;
+  color: var(--active);
+  letter-spacing: 0.01em;
+  transition: gap 200ms ease;
+}
+
+.arc-featured:hover .arc-featured-cta { gap: 14px; }
+
+/* ── Scannable List ────────────────────────────────────────────── */
+.arc-list-wrap {
+  padding: 0 24px 72px;
+  max-width: 1100px;
+  margin: 0 auto;
+}
+
+.arc-list-header {
+  padding-bottom: 20px;
+  margin-bottom: 24px;
+  border-bottom: 1px solid var(--rule);
+  display: flex;
+  justify-content: space-between;
+  align-items: baseline;
+  gap: 24px;
+  flex-wrap: wrap;
+}
+
+.arc-list-title {
+  font-family: var(--font-display);
+  font-size: 28px;
+  font-weight: 400;
+  letter-spacing: -0.02em;
+  color: var(--text);
+  margin: 0;
+}
+
+.arc-list-sub {
+  font-family: var(--font-mono);
+  font-size: 11px;
+  letter-spacing: 0.08em;
+  color: var(--faint);
+  text-transform: uppercase;
+}
+
+.arc-list {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+}
+
+.arc-item {
+  margin: 0;
+  padding: 0;
+}
+
+.arc-item-link {
+  display: grid;
+  grid-template-columns: 180px 1fr auto;
+  gap: 24px;
+  align-items: center;
+  padding: 20px;
+  background: var(--panel);
+  border: 1px solid var(--rule);
+  border-radius: 8px;
+  text-decoration: none;
+  transition: all 220ms cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.arc-item-link:hover {
+  background: var(--panel2);
+  border-color: var(--rule2);
+  transform: translateX(4px);
+}
+
+.arc-item-media {
+  width: 180px;
+  height: 108px;
+  border-radius: 6px;
+  overflow: hidden;
+  background: var(--bg2);
+  position: relative;
+  flex-shrink: 0;
+}
+
+.arc-item-media img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center;
+  opacity: 0.85;
+  transition: opacity 200ms ease;
+}
+
+.arc-item-link:hover .arc-item-media img {
+  opacity: 1;
+}
+
+.arc-item-media--placeholder {
+  background: linear-gradient(135deg, var(--panel) 0%, var(--bg2) 100%);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border: 1px solid var(--rule);
+}
+
+.arc-item-marker {
+  font-family: var(--font-mono);
+  font-size: 28px;
+  font-weight: 300;
+  letter-spacing: -0.02em;
+  color: var(--faint);
+  opacity: 0.4;
+}
+
+.arc-item-body {
+  min-width: 0;
+}
+
+.arc-item-meta {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-family: var(--font-mono);
+  font-size: 11px;
+  color: var(--faint);
+  letter-spacing: 0.04em;
+  margin-bottom: 8px;
+  flex-wrap: wrap;
+}
+
+.arc-item-week {
+  color: var(--verified);
+  font-weight: 600;
+  letter-spacing: 0.08em;
+}
+
+.arc-item-title {
+  font-family: var(--font-display);
+  font-size: 22px;
+  font-weight: 500;
+  line-height: 1.2;
+  letter-spacing: -0.015em;
+  color: var(--text);
+  margin: 0 0 8px;
+  transition: color 200ms ease;
+}
+
+.arc-item-link:hover .arc-item-title { color: var(--active); }
+
+.arc-item-quote {
+  font-family: var(--font-display);
+  font-style: italic;
+  font-size: 15px;
+  font-weight: 300;
+  line-height: 1.5;
+  color: var(--muted);
+  margin: 0 0 10px;
+  max-width: 55ch;
+}
+
+.arc-item-arrow {
+  font-size: 24px;
+  color: var(--faint);
+  transition: color 200ms ease, transform 200ms ease;
+  padding: 0 4px;
+}
+
+.arc-item-link:hover .arc-item-arrow {
+  color: var(--active);
+  transform: translateX(4px);
+}
+
+/* ── Tags: clean, legible, no mono-collision ───────────────────── */
+.arc-tags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px;
+  margin-top: 4px;
+}
+
+.arc-tag {
+  display: inline-flex;
+  align-items: center;
+  height: 22px;
+  padding: 0 9px;
+  background: transparent;
+  border: 1px solid var(--rule);
+  border-radius: 3px;
+  font-family: var(--font-body);
+  font-size: 11px;
+  font-weight: 500;
+  letter-spacing: 0.01em;
+  color: var(--muted);
+  text-transform: none;
+  white-space: nowrap;
+  transition: all 180ms ease;
+}
+
+.arc-item-link:hover .arc-tag,
+.arc-featured:hover .arc-tag {
+  border-color: var(--rule2);
+  color: var(--text);
+}
+
+/* ── Subscribe Section ─────────────────────────────────────────── */
+.arc-subscribe {
+  padding: 88px 24px 120px;
+  max-width: 720px;
+  margin: 0 auto;
+  text-align: center;
+  position: relative;
+}
+
+.arc-subscribe::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 80px;
+  height: 1px;
+  background: var(--verified);
+  opacity: 0.4;
+}
+
+.arc-subscribe-kicker {
+  font-family: var(--font-mono);
+  font-size: 11px;
+  font-weight: 500;
+  letter-spacing: 0.16em;
+  color: var(--verified);
+  text-transform: uppercase;
+  margin-bottom: 20px;
+}
+
+.arc-subscribe-title {
+  font-family: var(--font-display);
+  font-size: clamp(32px, 5vw, 48px);
+  font-weight: 400;
+  line-height: 1.1;
+  letter-spacing: -0.025em;
+  color: var(--text);
+  margin-bottom: 16px;
+  font-variation-settings: 'opsz' 96;
+}
+
+.arc-subscribe-lede {
+  font-family: var(--font-display);
+  font-size: 17px;
+  font-weight: 300;
+  font-style: italic;
+  line-height: 1.55;
+  color: var(--muted);
+  max-width: 540px;
+  margin: 0 auto 32px;
+}
+
+.arc-subscribe-form {
+  display: flex;
+  gap: 10px;
+  max-width: 480px;
+  margin: 0 auto 14px;
+  background: var(--panel);
+  border: 1px solid var(--rule);
+  border-radius: 10px;
+  padding: 6px;
+  transition: border-color 200ms ease;
+}
+
+.arc-subscribe-form:focus-within {
+  border-color: var(--active);
+  box-shadow: 0 0 0 4px var(--active-soft);
+}
+
+.arc-subscribe-form input {
+  flex: 1;
+  background: transparent;
+  border: none;
+  outline: none;
+  padding: 12px 14px;
+  font-family: var(--font-body);
+  font-size: 15px;
+  color: var(--text);
+}
+
+.arc-subscribe-form input::placeholder {
+  color: var(--faint);
+}
+
+.arc-subscribe-form button {
+  height: 44px;
+  padding: 0 24px;
+  background: var(--active);
+  color: var(--bg);
+  border: none;
+  border-radius: 7px;
+  font-family: var(--font-body);
+  font-size: 14px;
+  font-weight: 600;
+  letter-spacing: 0.01em;
+  cursor: pointer;
+  transition: all 180ms ease;
+}
+
+.arc-subscribe-form button:hover {
+  background: #4ff0e0;
+  transform: translateY(-1px);
+  box-shadow: 0 6px 16px rgba(43, 229, 212, 0.35);
+}
+
+.arc-subscribe-fine {
+  font-family: var(--font-mono);
+  font-size: 11px;
+  color: var(--faint);
+  letter-spacing: 0.04em;
+  margin: 0;
+}
+
+/* ── Footer subscribe link (replacement for duplicate form) ────── */
+.footer-subscribe-link {
+  display: inline-block;
+  margin-top: 12px;
+  color: var(--active);
+  font-family: var(--font-body);
+  font-size: 14px;
+  font-weight: 500;
+  transition: gap 200ms ease;
+}
+
+.footer-subscribe-link:hover {
+  color: #4ff0e0;
+}
+
+/* ── Mobile breakpoints for archive ────────────────────────────── */
+@media (max-width: 860px) {
+  .arc-featured {
+    grid-template-columns: 1fr;
+  }
+
+  .arc-featured-media {
+    min-height: 220px;
+  }
+
+  .arc-featured-body {
+    padding: 32px 24px;
+  }
+
+  .arc-item-link {
+    grid-template-columns: 100px 1fr;
+    gap: 16px;
+    padding: 16px;
+  }
+
+  .arc-item-media {
+    width: 100%;
+    height: 80px;
+  }
+
+  .arc-item-arrow {
+    display: none;
+  }
+
+  .arc-item-title {
+    font-size: 18px;
+  }
+
+  .arc-item-quote {
+    font-size: 14px;
+  }
+
+  .arc-hero {
+    padding: 48px 24px 40px;
+  }
+
+  .arc-hero-lede {
+    font-size: 17px;
+  }
+
+  .arc-list-header {
+    flex-direction: column;
+    gap: 6px;
+  }
+
+  .arc-subscribe {
+    padding: 64px 24px 80px;
+  }
+
+  .arc-subscribe-form {
+    flex-direction: column;
+    background: transparent;
+    border: none;
+    padding: 0;
+    gap: 12px;
+  }
+
+  .arc-subscribe-form input {
+    background: var(--panel);
+    border: 1px solid var(--rule);
+    border-radius: 8px;
+    padding: 14px 16px;
+  }
+
+  .arc-subscribe-form button {
+    height: 50px;
+    width: 100%;
+  }
+}
+
+@media (max-width: 480px) {
+  .arc-item-link {
+    grid-template-columns: 1fr;
+  }
+
+  .arc-item-media {
+    height: 140px;
+  }
+}
+
+/* ── Hide old page-hero if archive loads new arc-hero ──────────── */
+.page-hero + .archive-section,
+.page-hero:has(+ .arc-featured-wrap) {
+  display: none;
+}
+
+/* ═══════════════════════════════════════════════════════════════════
+   HOMEPAGE DOSSIER CARDS — v3.0 readability pass
+   Fixes the collision of "VISIT SITE →" + mono labels seen on mobile.
+   ═══════════════════════════════════════════════════════════════════ */
+
+.dossier-card,
+.build-card {
+  padding: 24px;
+  border-radius: 10px;
+  background: var(--panel);
+  border: 1px solid var(--rule);
+  text-decoration: none;
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+  transition: all 240ms cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.dossier-card:hover,
+.build-card:hover {
+  background: var(--panel2);
+  border-color: var(--active);
+  transform: translateY(-3px);
+  box-shadow: 0 12px 32px rgba(0,0,0,0.4);
+}
+
+.dossier-card .mono-label,
+.build-card .mono-label {
+  font-family: var(--font-mono);
+  font-size: 10px;
+  letter-spacing: 0.14em;
+  color: var(--verified);
+  text-transform: uppercase;
+  font-weight: 500;
+}
+
+.dossier-card h3,
+.build-card h3 {
+  font-family: var(--font-display);
+  font-size: 20px;
+  font-weight: 500;
+  letter-spacing: -0.015em;
+  color: var(--text);
+  margin: 0;
+  line-height: 1.25;
+}
+
+.dossier-card p,
+.build-card p {
+  font-size: 14px;
+  line-height: 1.55;
+  color: var(--muted);
+  margin: 0;
+}
+
+.dossier-card .status,
+.build-card .status {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  font-family: var(--font-mono);
+  font-size: 10px;
+  letter-spacing: 0.1em;
+  color: var(--active);
+  text-transform: uppercase;
+}
+
+.dossier-card .status::before,
+.build-card .status::before {
+  content: '';
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background: var(--active);
+  box-shadow: 0 0 0 3px var(--active-soft);
+}
+
+/* "Visit site →" and similar footer CTAs — clean up collisions */
+.dossier-card a[href],
+.dossier-footer,
+.build-footer {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  margin-top: auto;
+  padding-top: 14px;
+  border-top: 1px solid var(--rule);
+  font-family: var(--font-body);
+  font-size: 13px;
+  font-weight: 500;
+  color: var(--active);
+  letter-spacing: 0.005em;
+  text-transform: none;
+}
+
+/* ═══════════════════════════════════════════════════════════════════
+   DISPATCH PAGE TYPOGRAPHY CLEANUP
+   Fix the collision of archive-card-cta + mono-label on old dispatches
+   ═══════════════════════════════════════════════════════════════════ */
+
+.archive-card-cta {
+  font-family: var(--font-body);
+  font-size: 13px;
+  font-weight: 600;
+  letter-spacing: 0.02em;
+  color: var(--active);
+  text-transform: none;
+}
+
+.mono-label.dim {
+  color: var(--faint);
+  font-weight: 400;
+  letter-spacing: 0.1em;
+}
+
+/* When dim label sits next to a CTA, give it space */
+.archive-card-cta + .mono-label,
+.mono-label + .archive-card-cta {
+  margin-left: 14px;
+  padding-left: 14px;
+  border-left: 1px solid var(--rule);
+}
+
+/* ═══════════════════════════════════════════════════════════════════
+   HEADER v3 — More breathing room, clear typography
+   ═══════════════════════════════════════════════════════════════════ */
+
+@media (min-width: 981px) {
+  .site-header { padding: 16px 32px; }
+  .header-inner { gap: 48px; }
+
+  nav ul.nav-links a {
+    font-size: 13px;
+    font-family: var(--font-body);
+    font-weight: 500;
+    letter-spacing: 0.005em;
+    text-transform: none;
+    padding: 0 14px;
+    height: 36px;
+  }
+
+  /* Make active state more obvious */
+  nav ul.nav-links a.active {
+    background: var(--active-soft);
+    color: var(--active);
+    font-weight: 600;
+  }
+
+  nav ul.nav-links a.active::after {
+    display: none;
+  }
+}
+
+/* ═══════════════════════════════════════════════════════════════════
+   TYPE POLISH — variation axis on Fraunces for optical sizing
+   ═══════════════════════════════════════════════════════════════════ */
+
+h1 { font-variation-settings: 'opsz' 144; }
+h2 { font-variation-settings: 'opsz' 96; }
+h3 { font-variation-settings: 'opsz' 48; }
+
+/* Increase paragraph readability one more notch on dispatch articles */
+.dispatch-body p,
+.article-body p {
+  max-width: 68ch;
+}
+
+.dispatch-body .lead-text,
+.article-body .lead-text {
+  font-family: var(--font-display);
+  font-size: 22px;
+  font-weight: 300;
+  line-height: 1.5;
+  color: #E4E8F4;
+  margin-bottom: 28px;
+  letter-spacing: -0.005em;
+}
