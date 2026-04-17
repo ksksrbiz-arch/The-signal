@@ -145,6 +145,13 @@
   </url>
 
   <url>
+    <loc>https://signal01.netlify.app/reel-engine/</loc>
+    <lastmod>2026-04-17</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.8</priority>
+  </url>
+
+  <url>
     <loc>https://signal01.netlify.app/about/</loc>
     <lastmod>2026-04-14</lastmod>
     <changefreq>monthly</changefreq>
