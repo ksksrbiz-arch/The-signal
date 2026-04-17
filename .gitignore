@@ -27,3 +27,7 @@ Thumbs.db
 # Logs
 logs/
 *.log
+
+# Noir Reel Engine — generated media (don't commit large binaries)
+noir-reel-engine/builds/
+*.mp4

@@ -14,8 +14,9 @@ animate the still, narrate over a stoic monologue, ship.
 | `script-blueprints.md` | 5 daily monologue blueprints using the Stoic formula |
 | `workflow.md` | 30-minute daily assembly line |
 | `generate.py` | Rolls a visual prompt + matching monologue (CLI flags below) |
-| `calendar.py` | Builds a 30-day CSV of dated seeds + blueprint assignments |
-| `calendar.csv` | The current rolling plan — `seed` column feeds `generate.py --seed` |
+| `plan.py` | Builds a 30-day CSV of dated seeds + blueprint assignments |
+| `plan.csv` | The current rolling plan — `seed` column feeds `generate.py --seed` |
+| `veo.py` | Renders a prompt into an mp4 via Veo 3.1 (reads `GEMINI_API_KEY`) |
 
 ## The Three Architectural Pillars
 
@@ -39,6 +40,11 @@ python3 generate.py --monologue-only   # just the script
 python3 generate.py --no-aspect        # drop the trailing --ar 9:16 (non-Midjourney)
 
 # Plan a month at a time
-python3 calendar.py                    # rebuild calendar.csv (30 days from today)
-python3 calendar.py --start 2026-05-01 --days 60 --base-seed 2000
+python3 plan.py                        # rebuild plan.csv (30 days from today)
+python3 plan.py --start 2026-05-01 --days 60 --base-seed 2000
+
+# Render video via Veo 3.1 (requires GEMINI_API_KEY in env)
+export GEMINI_API_KEY="your-key"
+python3 generate.py --prompt-only --seed 1000 --no-aspect | python3 veo.py
+python3 veo.py --prompt "Photorealistic ..." --out builds/reel-042.mp4
 ```

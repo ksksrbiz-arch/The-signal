@@ -45,7 +45,7 @@ def main() -> None:
     parser.add_argument("--start", default=dt.date.today().isoformat(), help="YYYY-MM-DD")
     parser.add_argument("--days", type=int, default=DEFAULT_DAYS)
     parser.add_argument("--base-seed", type=int, default=1000)
-    parser.add_argument("--out", default=str(HERE / "calendar.csv"))
+    parser.add_argument("--out", default=str(HERE / "plan.csv"))
     args = parser.parse_args()
 
     start = dt.date.fromisoformat(args.start)
