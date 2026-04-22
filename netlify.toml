@@ -1,7 +1,7 @@
 # ═══════════════════════════════════════════════════════════════
 # Netlify Configuration for The Signal
 # Static HTML/CSS/JS site with serverless functions
-# 1Commerce LLC · https://signal01.netlify.app
+# 1Commerce Solutions LLC · https://1commercesolutions.com
 # ═══════════════════════════════════════════════════════════════
 
 [build]
@@ -67,6 +67,14 @@
   for = "/sw.js"
   [headers.values]
     Cache-Control = "no-cache, no-store, must-revalidate"
+
+# Canonical domain redirect — send old Netlify subdomain to production domain.
+# force=true ensures this fires even if a matching static file exists.
+[[redirects]]
+  from = "https://signal01.netlify.app/*"
+  to = "https://1commercesolutions.com/:splat"
+  status = 301
+  force = true
 
 # API proxy — frontend calls /api/news, rewritten to the actual function path.
 # status=200 makes this a rewrite (URL stays /api/news), not a visible 301.

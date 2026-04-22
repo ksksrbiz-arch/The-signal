@@ -38,7 +38,7 @@ exports.handler = async (event, context) => {
       sgMail.setApiKey(apiKey);
       await sgMail.send({
         to: 'skdev@1commerce.online',
-        from: process.env.SENDGRID_FROM_EMAIL || 'noreply@signal01.netlify.app',
+        from: process.env.SENDGRID_FROM_EMAIL || 'noreply@1commercesolutions.com',
         replyTo: email,
         subject: `Signal Contact from ${name}`,
         text: `From: ${name} (${email})\n\n${message}`,
