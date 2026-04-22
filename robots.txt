@@ -1,6 +1,6 @@
 # ═══════════════════════════════════════════════════════════════
 # THE SIGNAL — robots.txt
-# https://signal01.netlify.app/
+# https://1commercesolutions.com/
 # 1Commerce LLC · Canby, Oregon
 # ═══════════════════════════════════════════════════════════════
 
@@ -58,4 +58,4 @@ User-agent: Applebot-Extended
 Allow: /
 
 # ── Sitemap ────────────────────────────────────────────────────
-Sitemap: https://signal01.netlify.app/sitemap.xml
+Sitemap: https://1commercesolutions.com/sitemap.xml

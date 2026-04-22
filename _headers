@@ -12,7 +12,7 @@
 
 # ── HTML Pages: sitemap link header for crawlers ────────────────
 /*.html
-  Link: <https://signal01.netlify.app/sitemap.xml>; rel="sitemap"
+  Link: <https://1commercesolutions.com/sitemap.xml>; rel="sitemap"
 
 # ── Crawler files ──────────────────────────────────────────────
 /sitemap.xml
