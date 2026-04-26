@@ -190,60 +190,99 @@
       </div>
     </section>
 
-    <!-- Video Grid -->
-    <section class="video-library">
-      <div class="video-grid">
+    <!-- Live Transmission -->
+    <section class="video-library" style="border-bottom: 1px solid var(--rule);">
+      <div class="video-section-label">◆ Live Transmission</div>
+      <div class="video-embed video-embed--featured" style="max-width: 760px; margin: 0 auto 40px;">
+        <iframe src="https://www.youtube-nocookie.com/embed/fblm9vrKH7s" title="1Commerce LLC — Founder Transmission 01" loading="lazy" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+      </div>
+    </section>
 
-        <div class="video-card">
-          <div class="video-embed">
-            <iframe src="https://www.youtube-nocookie.com/embed/fblm9vrKH7s" title="Video Transmission 01" loading="lazy" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+    <!-- Planned Series -->
+    <section class="video-series-section">
+      <div class="video-section-label">◆ Planned Series</div>
+      <p class="video-series-intro">Three series in pre-production. Each documents a live system being built and deployed — no theory, only proof.</p>
+
+      <div class="video-series-grid">
+
+        <div class="video-series-card">
+          <div class="video-series-status">In Production</div>
+          <div class="video-series-number">Series 01</div>
+          <h3 class="video-series-title">Verified Builds</h3>
+          <p class="video-series-desc">A documented walkthrough of each of the 6 verified production builds — from architecture decision to deployed system. Raw, narrated, no edits hiding the failures.</p>
+          <div class="video-series-meta">
+            <span class="arc-tag">Commerce Infra</span>
+            <span class="arc-tag">TypeScript</span>
+            <span class="arc-tag">Supabase</span>
+            <span class="arc-tag">Netlify</span>
           </div>
-          <div class="video-card-body">
-            <h3 class="video-card-title">Transmission 01</h3>
-            <p class="video-card-desc">Building commerce infrastructure from the ground up. The origin and operator philosophy behind 1Commerce LLC.</p>
-          </div>
+          <div class="video-series-episodes">6 episodes planned</div>
         </div>
 
-        <div class="video-card">
-          <div class="video-embed">
-            <iframe src="https://www.youtube-nocookie.com/embed/xjcIVUUI3VA" title="Video Transmission 02" loading="lazy" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+        <div class="video-series-card">
+          <div class="video-series-status">Scripted</div>
+          <div class="video-series-number">Series 02</div>
+          <h3 class="video-series-title">The Cathedral Framework</h3>
+          <p class="video-series-desc">Deep dives into the architectural principles behind 1Commerce LLC. Multi-tenancy, API-first sovereignty, and the philosophy of building systems that outlast their builders.</p>
+          <div class="video-series-meta">
+            <span class="arc-tag">Architecture</span>
+            <span class="arc-tag">Cathedral Framework</span>
+            <span class="arc-tag">Systems Design</span>
           </div>
-          <div class="video-card-body">
-            <h3 class="video-card-title">Transmission 02</h3>
-            <p class="video-card-desc">Systems architecture and the engineering pedigree behind the verified build ecosystem.</p>
-          </div>
+          <div class="video-series-episodes">4 episodes planned</div>
         </div>
 
-        <div class="video-card">
-          <div class="video-embed">
-            <iframe src="https://www.youtube-nocookie.com/embed/D1yVduJzLZk" title="Video Transmission 03" loading="lazy" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+        <div class="video-series-card">
+          <div class="video-series-status">Planned</div>
+          <div class="video-series-number">Series 03</div>
+          <h3 class="video-series-title">Solo-Scale Operations</h3>
+          <p class="video-series-desc">One operator. Enterprise-grade tools. No team. These transmissions document the tactical execution of building a multi-product company as a single-person operation in the gig economy era.</p>
+          <div class="video-series-meta">
+            <span class="arc-tag">Solo Founder</span>
+            <span class="arc-tag">Barbell Economy</span>
+            <span class="arc-tag">AI Leverage</span>
           </div>
-          <div class="video-card-body">
-            <h3 class="video-card-title">Transmission 03</h3>
-            <p class="video-card-desc">Building in public — proving systems work by showing the construction, not just the blueprint.</p>
-          </div>
+          <div class="video-series-episodes">8 episodes planned</div>
         </div>
 
-        <div class="video-card">
-          <div class="video-embed">
-            <iframe src="https://www.youtube-nocookie.com/embed/9U-sb2QiEYE" title="Video Transmission 04" loading="lazy" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
-          </div>
-          <div class="video-card-body">
-            <h3 class="video-card-title">Transmission 04</h3>
-            <p class="video-card-desc">The intelligence layer and how AI transforms operator workflows at the infrastructure level.</p>
-          </div>
-        </div>
+      </div>
+    </section>
 
-        <div class="video-card">
-          <div class="video-embed">
-            <iframe src="https://www.youtube-nocookie.com/embed/IzA-kPdnVTw" title="Video Transmission 05" loading="lazy" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
-          </div>
-          <div class="video-card-body">
-            <h3 class="video-card-title">Transmission 05</h3>
-            <p class="video-card-desc">From solo founder to solo-scale enterprise. The barbell economy and what it means for operators building alone.</p>
-          </div>
+    <!-- Production Stack -->
+    <section class="video-stack-section">
+      <div class="video-section-label">◆ Production Stack</div>
+      <p class="video-series-intro">The complete toolchain for every video produced under The Signal banner.</p>
+      <div class="video-stack-grid">
+        <div class="video-stack-item">
+          <div class="video-stack-category">Capture</div>
+          <div class="video-stack-tool">iPhone 14 Pro</div>
+          <div class="video-stack-note">4K ProRes, cinematic mode</div>
         </div>
-
+        <div class="video-stack-item">
+          <div class="video-stack-category">Screen Recording</div>
+          <div class="video-stack-tool">OBS Studio</div>
+          <div class="video-stack-note">System audio, multi-track</div>
+        </div>
+        <div class="video-stack-item">
+          <div class="video-stack-category">Editing</div>
+          <div class="video-stack-tool">DaVinci Resolve</div>
+          <div class="video-stack-note">Color grade, cut, export</div>
+        </div>
+        <div class="video-stack-item">
+          <div class="video-stack-category">Short-Form</div>
+          <div class="video-stack-tool">CapCut</div>
+          <div class="video-stack-note">Reels, captions, mobile cut</div>
+        </div>
+        <div class="video-stack-item">
+          <div class="video-stack-category">Script Generator</div>
+          <div class="video-stack-tool">Noir Reel Engine</div>
+          <div class="video-stack-note"><a href="../reel-engine/" style="color:var(--active)">1commercesolutions.com/reel-engine/</a></div>
+        </div>
+        <div class="video-stack-item">
+          <div class="video-stack-category">Distribution</div>
+          <div class="video-stack-tool">YouTube</div>
+          <div class="video-stack-note">Primary channel, privacy-embed</div>
+        </div>
       </div>
     </section>
 

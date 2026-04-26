@@ -65,6 +65,26 @@ pre.reel-code { background: var(--color-surface-raised); border: 1px solid var(-
 .reel-stoic { display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: var(--space-5); margin-top: var(--space-6); }
 .reel-stoic > div { padding: var(--space-5); border-left: 2px solid var(--color-gold); background: var(--color-surface-raised); }
 .reel-stoic .mono-label { color: var(--color-gold); font-size: var(--text-xs); display: block; margin-bottom: var(--space-2); }
+/* Generator styles */
+.reel-generator-section { background: rgba(34,211,197,0.02); }
+.gen-controls { display: flex; flex-direction: column; gap: 14px; margin-bottom: 24px; }
+.gen-row { display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 14px; }
+.gen-field { display: flex; flex-direction: column; gap: 6px; }
+.gen-label { font-family: var(--font-mono); font-size: 10px; letter-spacing: 0.12em; text-transform: uppercase; color: var(--faint); }
+.gen-select { padding: 8px 10px; background: var(--panel, rgba(255,255,255,0.03)); border: 1px solid var(--rule); color: var(--text); font-family: var(--font-body); font-size: 13px; border-radius: 2px; cursor: pointer; }
+.gen-select:focus { outline: none; border-color: var(--active, #22D3C5); }
+.gen-actions { display: flex; gap: 12px; flex-wrap: wrap; margin-bottom: 28px; }
+.gen-btn { padding: 10px 20px; border: 1px solid var(--rule); background: transparent; color: var(--text); font-family: var(--font-mono); font-size: 12px; letter-spacing: 0.08em; cursor: pointer; transition: border-color 0.2s, background 0.2s; }
+.gen-btn--roll:hover { border-color: var(--faint); }
+.gen-btn--generate { border-color: var(--active, #22D3C5); color: var(--active, #22D3C5); }
+.gen-btn--generate:hover { background: rgba(34,211,197,0.08); }
+.gen-output { border: 1px solid var(--rule); background: var(--panel, rgba(255,255,255,0.02)); }
+.gen-output-section { padding: 20px 24px; border-bottom: 1px solid var(--rule); }
+.gen-output-label { font-family: var(--font-mono); font-size: 10px; letter-spacing: 0.12em; text-transform: uppercase; color: var(--active, #22D3C5); margin-bottom: 10px; }
+.gen-output-text { font-family: var(--font-mono); font-size: 13px; line-height: 1.7; color: var(--text); white-space: pre-wrap; margin-bottom: 14px; }
+.gen-copy-btn { font-family: var(--font-mono); font-size: 11px; letter-spacing: 0.08em; padding: 6px 14px; border: 1px solid var(--rule); background: transparent; color: var(--faint); cursor: pointer; transition: color 0.2s, border-color 0.2s; }
+.gen-copy-btn:hover { color: var(--active, #22D3C5); border-color: var(--active, #22D3C5); }
+.gen-output-meta { padding: 14px 24px; display: flex; gap: 16px; }
 </style>
 </head>
 <body>
@@ -140,7 +160,111 @@ pre.reel-code { background: var(--color-surface-raised); border: 1px solid var(-
       <div class="reel-hero-inner">
         <span class="mono-label accent-text" style="display:block; margin-bottom: var(--space-4);">◈ NOIR REEL ENGINE · v0.3 ◈</span>
         <h1>A reproducible engine for daily cinematic reels.</h1>
-        <p>Plug variables into a master template. Chain Grok for stills, Veo 3.1 for motion, a Stoic monologue formula for the script. 30 minutes from cold start to shipped reel — same pipeline, different outputs every day.</p>
+        <p>Generate a complete noir visual prompt and Stoic monologue script in-browser — no API key required. Plug the output into Grok for stills, Veo 3.1 for motion. 30 minutes from cold start to shipped reel.</p>
+      </div>
+    </section>
+
+    <!-- Web Generator -->
+    <section class="reel-section reel-generator-section">
+      <div class="reel-section-inner">
+        <span class="mono-label accent-text">◈ SCRIPT GENERATOR ◈</span>
+        <h2>Generate a reel script. No API required.</h2>
+        <p style="color:var(--muted);margin-bottom:var(--space-6);">Select variables or roll random to generate a unique visual prompt and Stoic monologue. Copy the output and paste into Grok or Veo.</p>
+
+        <div class="gen-controls">
+          <div class="gen-row">
+            <div class="gen-field">
+              <label class="gen-label">Shot Type</label>
+              <select id="gen-shot" class="gen-select">
+                <option value="extreme close-up of face, deep shadow, one eye illuminated">Extreme Close-Up</option>
+                <option value="medium shot, figure standing against fog, city lights behind">Medium Shot — Fog</option>
+                <option value="low angle, figure walking toward camera, backlit by street lamp">Low Angle — Backlit</option>
+                <option value="overhead drone, operator alone in industrial yard at night">Overhead Drone</option>
+                <option value="silhouette against floor-to-ceiling window, rain streaking glass">Window Silhouette</option>
+                <option value="over-the-shoulder, screens glowing in dark room, blueprint visible">Over Shoulder — Screens</option>
+              </select>
+            </div>
+            <div class="gen-field">
+              <label class="gen-label">Action</label>
+              <select id="gen-action" class="gen-select">
+                <option value="seated, reviewing documents, jaw tight, one lamp">Reviewing Documents</option>
+                <option value="standing, looking through rain-streaked glass, hands clasped">Looking Through Glass</option>
+                <option value="walking, slow deliberate stride, jacket collar raised">Walking — Deliberate</option>
+                <option value="writing by hand in a ledger, focused, ambient keyboard noise">Writing in Ledger</option>
+                <option value="staring at a live dashboard, numbers scrolling, no expression">Watching Dashboard</option>
+                <option value="ending a call, phone down on table, facing camera directly">Ending a Call</option>
+              </select>
+            </div>
+            <div class="gen-field">
+              <label class="gen-label">Environment</label>
+              <select id="gen-env" class="gen-select">
+                <option value="empty office, no furniture, single desk lamp, concrete floor">Empty Office</option>
+                <option value="rooftop, city at 3am, distant sirens, overcast sky">Rooftop — 3am</option>
+                <option value="underground parking, single overhead light, echo acoustics">Underground Parking</option>
+                <option value="sparse apartment, one chair, laptop, rain on window">Sparse Apartment</option>
+                <option value="cargo warehouse, stacked pallets, industrial light beams">Cargo Warehouse</option>
+                <option value="server room, blinking LEDs, cold air, isolated operator">Server Room</option>
+              </select>
+            </div>
+          </div>
+          <div class="gen-row">
+            <div class="gen-field">
+              <label class="gen-label">Lighting</label>
+              <select id="gen-light" class="gen-select">
+                <option value="single hard source, 90-degree side lighting, harsh shadows">Single Hard Source</option>
+                <option value="neon sign glow, magenta-cyan mix, reflections on wet floor">Neon Glow</option>
+                <option value="overhead ring light, cold 4000K, clinical precision">Cold Ring Light</option>
+                <option value="candle or lantern, warm 2200K, extreme falloff">Warm Lantern</option>
+                <option value="window grid shadow, venetian blind pattern across face">Venetian Shadow</option>
+                <option value="backlight only, complete frontal silhouette, halo edge">Pure Backlight</option>
+              </select>
+            </div>
+            <div class="gen-field">
+              <label class="gen-label">Color Palette</label>
+              <select id="gen-color" class="gen-select">
+                <option value="monochrome black and white, grain overlay, silver gelatin tone">Monochrome</option>
+                <option value="teal-to-black gradient, low saturation, signal blue highlights">Teal / Black</option>
+                <option value="amber and shadow, sepia tones, warm mid-century film grade">Amber / Shadow</option>
+                <option value="desaturated except deep red accent, blood and steel">Red Accent</option>
+                <option value="near-infrared look, pale skin, dark foliage, overblown whites">Infrared</option>
+                <option value="cold grey environment, single warm skin tone preserved">Cold Grey + Skin</option>
+              </select>
+            </div>
+            <div class="gen-field">
+              <label class="gen-label">Texture / Theme</label>
+              <select id="gen-texture" class="gen-select">
+                <option value="heavy film grain 3200ISO, celluloid flicker, scratch artifacts">Heavy Film Grain</option>
+                <option value="hyper-sharp digital, zero noise, clinical precision, modern">Hyper-Sharp Digital</option>
+                <option value="fog and moisture, diffused edges, impressionist light scatter">Fog / Moisture</option>
+                <option value="concrete brutalism, raw materials, industrial decay aesthetic">Brutalism</option>
+                <option value="glass and steel, reflections stacked, architectural geometry">Glass + Steel</option>
+                <option value="wet pavement reflections, neon ghost doubles, rain physics">Wet Pavement</option>
+              </select>
+            </div>
+          </div>
+        </div>
+
+        <div class="gen-actions">
+          <button class="gen-btn gen-btn--roll" id="gen-roll">⟳ Roll Random</button>
+          <button class="gen-btn gen-btn--generate" id="gen-generate">Generate Script →</button>
+        </div>
+
+        <div class="gen-output" id="gen-output" style="display:none;">
+          <div class="gen-output-section">
+            <div class="gen-output-label">Visual Prompt</div>
+            <div class="gen-output-text" id="gen-visual-prompt"></div>
+            <button class="gen-copy-btn" data-copy="gen-visual-prompt">Copy Prompt</button>
+          </div>
+          <div class="gen-output-section">
+            <div class="gen-output-label">Stoic Monologue — <span id="gen-title"></span></div>
+            <div class="gen-output-text" id="gen-monologue"></div>
+            <button class="gen-copy-btn" data-copy="gen-monologue">Copy Script</button>
+          </div>
+          <div class="gen-output-meta">
+            <span class="mono-label">Seed: <span id="gen-seed-display"></span></span>
+            <span class="mono-label" style="opacity:0.5">· Estimated runtime: 18–24 sec</span>
+          </div>
+        </div>
       </div>
     </section>
 
@@ -306,5 +430,127 @@ python3 plan.py --start 2026-05-01 --days 30</pre>
   </footer>
 
   <script src="../app.js" defer></script>
+  <script>
+    const TITLES = [
+      'The Long Game', 'No Permission Needed', 'Build the Cathedral',
+      'Silent Execution', 'The Operator Mindset', 'Proof Over Promise',
+      'Zero Placeholders', 'Infrastructure Wins', 'The Sovereign Brand',
+      'While They Sleep', 'The Committed Path', 'Signal Over Noise'
+    ];
+
+    const MONOLOGUES = [
+      { cold: 'Everyone wants the result. Almost nobody wants the seven years it takes to look like an overnight success.', war: 'The grind is not loud. It is not motivational. It is a decision you make every morning that nobody will clap for.', dom: 'Clap or don\'t. I\'m not stopping.' },
+      { cold: 'Most people are waiting for permission that will never come.', war: 'No one is coming to greenlight your infrastructure, your system, your life.', dom: 'You are the authority. Act like it.' },
+      { cold: 'Cathedrals are not built in a day. They are built by people who will never see them finished.', war: 'You are laying stone for a structure that outlasts you. That is not a burden. That is the point.', dom: 'Lay the stone. Keep laying it.' },
+      { cold: 'Silence is a strategy. Most people mistake it for absence.', war: 'Every hour they spend talking, you spend building. The scoreboard reveals itself on deployment day.', dom: 'Ship. Then speak.' },
+      { cold: 'The operator sees what others call problems as leverage points.', war: 'Chaos is a resource. Friction is a competitive moat. Every pain point is a system waiting to be built.', dom: 'Build the system. Own the edge.' },
+      { cold: 'Proof is the only argument that doesn\'t require a rebuttal.', war: 'You can debate a claim. You cannot debate a deployed system with live users and verified commits.', dom: 'Proof first. Always.' },
+      { cold: 'A placeholder is a lie you\'ve agreed to tolerate.', war: 'Every placeholder in your system is a leak in the foundation. Water finds every gap.', dom: 'Ship the real thing or don\'t ship at all.' },
+      { cold: 'The right infrastructure doesn\'t just support the work. It multiplies it.', war: 'One operator with the right stack outpaces a ten-person team building on borrowed tools.', dom: 'Own the stack. Scale the output.' },
+      { cold: 'The brand is not your logo. It is the accumulated signal of every decision you\'ve made publicly.', war: 'Every dispatch, every commit, every shipped system is a frequency broadcast. Your reputation is the receiver.', dom: 'Broadcast with precision.' },
+      { cold: 'Your competition is not sleeping. They are optimizing.', war: 'Every hour you hesitate is an hour they compound. The gap is asymmetric and it opens fast.', dom: 'Move. Now. While they sleep.' },
+      { cold: 'Commitment is not enthusiasm. Enthusiasm fades. Commitment shows up Thursday at 11pm when no one is watching.', war: 'The committed operator does not need external motivation. The system itself becomes the motivator. Progress compounds.', dom: 'Stay committed. The rest is detail.' },
+      { cold: 'Information is cheap. Signal is rare. Most of what you consume is designed to make you feel informed while keeping you still.', war: 'The operator who acts on clean signal and ignores the rest moves faster, builds more, and burns less energy than anyone in the noise.', dom: 'Cut the noise. Trust the signal.' }
+    ];
+
+    const ANCHORS = [
+      'faint hexagonal light lattice, 8% opacity, teal cast, visible in background shadows',
+      'black turtleneck or structured jacket, no visible branding, operator uniform',
+      'teal-to-cyan grade flash on final 2 frames, institutional finish',
+      'one geometric hard edge bisecting frame, architectural precision',
+      'single wrist watch glinting in shadow, deliberate prop placement',
+    ];
+
+    let currentSeed = 0;
+
+    function seededRandom(seed) {
+      let s = seed;
+      return function() {
+        s = (s * 16807 + 0) % 2147483647;
+        return (s - 1) / 2147483646;
+      };
+    }
+
+    function rollAll(seed) {
+      const r = seededRandom(seed);
+      const pick = (sel) => {
+        const opts = sel.options;
+        const idx = Math.floor(r() * opts.length);
+        opts[idx].selected = true;
+      };
+      pick(document.getElementById('gen-shot'));
+      pick(document.getElementById('gen-action'));
+      pick(document.getElementById('gen-env'));
+      pick(document.getElementById('gen-light'));
+      pick(document.getElementById('gen-color'));
+      pick(document.getElementById('gen-texture'));
+    }
+
+    function generate() {
+      const shot    = document.getElementById('gen-shot').value;
+      const action  = document.getElementById('gen-action').value;
+      const env     = document.getElementById('gen-env').value;
+      const light   = document.getElementById('gen-light').value;
+      const color   = document.getElementById('gen-color').value;
+      const texture = document.getElementById('gen-texture').value;
+
+      const r = seededRandom(currentSeed + 1000);
+      const monoIdx  = Math.floor(r() * MONOLOGUES.length);
+      const titleIdx = Math.floor(r() * TITLES.length);
+      const anchorIdx = Math.floor(r() * ANCHORS.length);
+
+      const mono = MONOLOGUES[monoIdx];
+      const title = TITLES[titleIdx];
+      const anchor = ANCHORS[anchorIdx];
+
+      const prompt = [
+        'Cinematic noir, 9:16 vertical, 1080p.',
+        shot + '.',
+        action + '.',
+        env + '.',
+        light + '.',
+        color + '.',
+        texture + '.',
+        'Visual anchor: ' + anchor + '.',
+        'No text, no graphics, no title cards. Pure visual.'
+      ].join(' ');
+
+      const script = [
+        '01 · COLD TRUTH\n' + mono.cold,
+        '02 · SILENT WAR\n' + mono.war,
+        '03 · DOMINANCE\n' + mono.dom
+      ].join('\n\n');
+
+      document.getElementById('gen-visual-prompt').textContent = prompt;
+      document.getElementById('gen-monologue').textContent = script;
+      document.getElementById('gen-title').textContent = '"' + title + '"';
+      document.getElementById('gen-seed-display').textContent = currentSeed;
+      document.getElementById('gen-output').style.display = 'block';
+    }
+
+    document.getElementById('gen-roll').addEventListener('click', function() {
+      currentSeed = Math.floor(Math.random() * 99999);
+      rollAll(currentSeed);
+      generate();
+    });
+
+    document.getElementById('gen-generate').addEventListener('click', generate);
+
+    document.querySelectorAll('.gen-copy-btn').forEach(function(btn) {
+      btn.addEventListener('click', function() {
+        const targetId = btn.getAttribute('data-copy');
+        const text = document.getElementById(targetId).textContent;
+        navigator.clipboard.writeText(text).then(function() {
+          btn.textContent = 'Copied ✓';
+          setTimeout(function() { btn.textContent = 'Copy ' + (targetId.includes('visual') ? 'Prompt' : 'Script'); }, 2000);
+        });
+      });
+    });
+
+    // Generate on load with a fixed seed so page isn't blank
+    currentSeed = 1000;
+    rollAll(currentSeed);
+    generate();
+  </script>
 </body>
 </html>
