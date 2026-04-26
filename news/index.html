@@ -619,7 +619,7 @@
         if (data.status !== 'ok') return [];
         return (data.items || []).map(item => ({
           title: item.title || '',
-          description: (item.description || '').replace(/<[^>]*>/g, '').substring(0, 200),
+          description: (item.description || '').substring(0, 200),
           url: item.link || '#',
           source: { name: feed.name },
           publishedAt: item.pubDate || '',
