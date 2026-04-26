@@ -434,8 +434,8 @@
       <div class="margin-log-entry"><span class="timestamp">Now</span> — News Aggregator: Real-time intake active</div>
       <div class="margin-log-entry"><span class="timestamp">Auto</span> — Refresh cycle: Every 5 minutes</div>
       <div class="margin-log-entry"><span class="timestamp">Config</span> — Categories: Tech, Business, Startup, Web</div>
-      <div class="margin-log-entry"><span class="timestamp">Proxy</span> — Netlify Functions: /api/news endpoint</div>
-      <div class="margin-log-entry"><span class="timestamp">Status</span> — Cached 10 min via CDN · No rate limits</div>
+      <div class="margin-log-entry"><span class="timestamp">Engine</span> — Direct RSS2JSON: 8 feeds fetched in parallel, client-side</div>
+      <div class="margin-log-entry"><span class="timestamp">Cache</span> — sessionStorage: 10 min TTL · No server function required</div>
     </div>
 
     <!-- Subscribe -->
@@ -563,10 +563,32 @@
 
   <script src="../app.js" defer></script>
   <script>
-    // News Aggregator: RSS2JSON-backed, filtered client-side.
-    // Endpoint is a Netlify rewrite to /.netlify/functions/news (see netlify.toml).
-    const NEWS_ENDPOINT = '/api/news';
-    const REFRESH_INTERVAL_MS = 5 * 60 * 1000;
+    // News Aggregator: direct RSS2JSON client-side fetch, no Netlify function needed.
+    // sessionStorage cache (10 min) prevents hammering the free-tier RSS2JSON API.
+    const CACHE_KEY = 'signal_news_cache';
+    const CACHE_TTL_MS = 10 * 60 * 1000;
+    const REFRESH_INTERVAL_MS = 10 * 60 * 1000;
+    const FEED_TIMEOUT_MS = 6000;
+
+    const RSS_FEEDS = [
+      { url: 'https://techcrunch.com/feed/', name: 'TechCrunch' },
+      { url: 'https://www.theverge.com/rss/index.xml', name: 'The Verge' },
+      { url: 'https://news.ycombinator.com/rss', name: 'Hacker News' },
+      { url: 'https://www.producthunt.com/feed', name: 'Product Hunt' },
+      { url: 'https://github.blog/feed/', name: 'GitHub Blog' },
+      { url: 'https://arstechnica.com/feed/', name: 'Ars Technica' },
+      { url: 'https://www.wired.com/feed/rss', name: 'Wired' },
+      { url: 'https://aws.amazon.com/blogs/aws/feed/', name: 'AWS Blog' },
+    ];
+
+    const categoryKeywords = {
+      technology: ['technology', 'ai ', 'software', 'developer', 'tech', 'code', 'model', 'llm'],
+      business:   ['business', 'startup', 'entrepreneur', 'venture', 'company', 'market', 'revenue'],
+      startup:    ['startup', 'founder', 'fundraising', 'seed', 'series ', 'raised', 'launch'],
+      web:        ['web', 'cloud', 'infrastructure', 'devops', 'server', 'api', 'platform', 'deploy']
+    };
+
+    let allArticles = [];
 
     const categorySelect = document.getElementById('categorySelect');
     const searchInput = document.getElementById('searchInput');
@@ -574,79 +596,94 @@
     const loadingContainer = document.getElementById('loadingContainer');
     const errorContainer = document.getElementById('errorContainer');
 
-    // Category filter keywords — matched case-insensitively against title + description.
-    // Empty array = match everything (used as default fallback).
-    const categoryKeywords = {
-      technology: ['technology', 'ai ', 'software', 'developer', 'tech', 'code'],
-      business:   ['business', 'startup', 'entrepreneur', 'venture', 'company', 'market'],
-      startup:    ['startup', 'founder', 'fundraising', 'seed', 'series ', 'raised'],
-      web:        ['web', 'cloud', 'infrastructure', 'devops', 'server', 'api', 'platform']
-    };
-
-    let allArticles = [];
-
-    // Escape user-visible strings before injecting into innerHTML templates.
     function escapeHtml(str) {
-      const div = document.createElement('div');
-      div.textContent = str == null ? '' : String(str);
-      return div.innerHTML;
+      const d = document.createElement('div');
+      d.textContent = str == null ? '' : String(str);
+      return d.innerHTML;
     }
 
-    // Only allow http(s) article links — defuses javascript: URLs from RSS feeds.
     function safeUrl(url) {
       try {
         const u = new URL(url);
         return (u.protocol === 'http:' || u.protocol === 'https:') ? u.href : '#';
-      } catch {
-        return '#';
+      } catch { return '#'; }
+    }
+
+    async function fetchFeed(feed) {
+      const controller = new AbortController();
+      const timer = setTimeout(() => controller.abort(), FEED_TIMEOUT_MS);
+      try {
+        const apiUrl = 'https://api.rss2json.com/v1/api.json?count=10&rss_url=' + encodeURIComponent(feed.url);
+        const res = await fetch(apiUrl, { signal: controller.signal });
+        const data = await res.json();
+        if (data.status !== 'ok') return [];
+        return (data.items || []).map(item => ({
+          title: item.title || '',
+          description: (item.description || '').replace(/<[^>]*>/g, '').substring(0, 200),
+          url: item.link || '#',
+          source: { name: feed.name },
+          publishedAt: item.pubDate || '',
+        }));
+      } catch (e) {
+        return [];
+      } finally {
+        clearTimeout(timer);
       }
+    }
+
+    function loadCache() {
+      try {
+        const raw = sessionStorage.getItem(CACHE_KEY);
+        if (!raw) return null;
+        const { ts, articles } = JSON.parse(raw);
+        if (Date.now() - ts < CACHE_TTL_MS) return articles;
+      } catch (e) {}
+      return null;
+    }
+
+    function saveCache(articles) {
+      try {
+        sessionStorage.setItem(CACHE_KEY, JSON.stringify({ ts: Date.now(), articles }));
+      } catch (e) {}
     }
 
     function filterArticles(category, searchTerm) {
       const needle = (searchTerm || '').trim().toLowerCase();
       const keywords = categoryKeywords[category] || [];
-      return allArticles.filter(article => {
-        const hay = `${article.title || ''} ${article.description || ''}`.toLowerCase();
-        const matchesCategory = keywords.length === 0 || keywords.some(k => hay.includes(k));
-        const matchesSearch = !needle || hay.includes(needle);
-        return matchesCategory && matchesSearch;
+      return allArticles.filter(a => {
+        const hay = (a.title + ' ' + a.description).toLowerCase();
+        return (keywords.length === 0 || keywords.some(k => hay.includes(k))) &&
+               (!needle || hay.includes(needle));
       });
     }
 
     function renderArticles(articles) {
       newsGrid.innerHTML = '';
       if (!articles || articles.length === 0) {
-        newsGrid.innerHTML = '<p style="grid-column: 1/-1; color: var(--muted);">No articles found. Try adjusting your filters.</p>';
+        newsGrid.innerHTML = '<p style="grid-column:1/-1;color:var(--muted)">No articles match. Try a different filter.</p>';
         return;
       }
-      const currentYear = new Date().getFullYear();
-      articles.forEach(article => {
+      const year = new Date().getFullYear();
+      articles.forEach(a => {
         const card = document.createElement('div');
         card.className = 'news-card';
-
-        const publishDate = new Date(article.publishedAt);
-        const formattedDate = publishDate.toLocaleDateString('en-US', {
-          month: 'short',
-          day: 'numeric',
-          year: publishDate.getFullYear() !== currentYear ? 'numeric' : undefined
+        const d = new Date(a.publishedAt);
+        const dateStr = isNaN(d) ? '' : d.toLocaleDateString('en-US', {
+          month: 'short', day: 'numeric',
+          ...(d.getFullYear() !== year ? { year: 'numeric' } : {})
         });
-
-        card.innerHTML = `
-          <div class="news-card-header">
-            <div>
-              <div class="news-card-source">${escapeHtml(article.source && article.source.name)}</div>
-              <h3 class="news-card-title">${escapeHtml(article.title)}</h3>
-            </div>
-          </div>
-          <div class="news-card-body">
-            <p class="news-card-description">${escapeHtml(article.description) || 'No description available.'}</p>
-            <div class="news-card-meta">
-              <span class="news-card-date">${escapeHtml(formattedDate)}</span>
-              <a href="${escapeHtml(safeUrl(article.url))}" target="_blank" rel="noopener noreferrer" class="news-card-link">Read →</a>
-            </div>
-          </div>
-        `;
-
+        card.innerHTML =
+          '<div class="news-card-header">' +
+            '<div class="news-card-source">' + escapeHtml(a.source.name) + '</div>' +
+            '<h3 class="news-card-title">' + escapeHtml(a.title) + '</h3>' +
+          '</div>' +
+          '<div class="news-card-body">' +
+            '<p class="news-card-description">' + (escapeHtml(a.description) || 'No description.') + '</p>' +
+            '<div class="news-card-meta">' +
+              '<span class="news-card-date">' + escapeHtml(dateStr) + '</span>' +
+              '<a href="' + escapeHtml(safeUrl(a.url)) + '" target="_blank" rel="noopener noreferrer" class="news-card-link">Read →</a>' +
+            '</div>' +
+          '</div>';
         newsGrid.appendChild(card);
       });
     }
@@ -655,45 +692,35 @@
       renderArticles(filterArticles(categorySelect.value, searchInput.value));
     }
 
-    async function fetchNews() {
+    async function fetchNews(force) {
+      if (!force) {
+        const cached = loadCache();
+        if (cached) {
+          allArticles = cached;
+          applyFilters();
+          return;
+        }
+      }
       loadingContainer.style.display = 'block';
       errorContainer.innerHTML = '';
-
       try {
-        const response = await fetch(NEWS_ENDPOINT);
-        if (!response.ok) {
-          throw new Error(`API error: ${response.status}`);
-        }
-
-        const data = await response.json();
+        const results = await Promise.all(RSS_FEEDS.map(fetchFeed));
+        const flat = results.flat().sort((a, b) => new Date(b.publishedAt) - new Date(a.publishedAt));
+        allArticles = flat;
+        saveCache(flat);
+      } catch (e) {
+        errorContainer.innerHTML = '<div class="error"><strong>Error:</strong> ' + escapeHtml(e.message) + '</div>';
+      } finally {
         loadingContainer.style.display = 'none';
-
-        if (data.status !== 'ok' || !Array.isArray(data.articles)) {
-          throw new Error(data.message || 'Invalid response from news service');
-        }
-
-        allArticles = data.articles;
         applyFilters();
-      } catch (error) {
-        loadingContainer.style.display = 'none';
-        errorContainer.innerHTML = `
-          <div class="error">
-            <strong>Error:</strong> Unable to fetch news. ${escapeHtml(error.message)}
-          </div>
-        `;
-        console.error('News fetch error:', error);
       }
     }
 
-    // Filter changes render from the cached article list — no refetch required.
     categorySelect.addEventListener('change', applyFilters);
     searchInput.addEventListener('input', applyFilters);
 
-    // Initial load
-    fetchNews();
-
-    // Auto-refresh every 5 minutes
-    setInterval(fetchNews, REFRESH_INTERVAL_MS);
+    fetchNews(false);
+    setInterval(() => fetchNews(true), REFRESH_INTERVAL_MS);
   </script>
 </body>
 </html>

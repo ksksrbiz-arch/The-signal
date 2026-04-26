@@ -1,0 +1,268 @@
+/* ============================================================
+   THE SIGNAL — Shared Design System
+   signal.css v1.0 · 1Commerce LLC
+   ============================================================ */
+
+/* ── Ticker / Trust Strip ─────────────────────────────────── */
+@keyframes ticker-scroll {
+  0%   { transform: translateX(0); }
+  100% { transform: translateX(-50%); }
+}
+
+.ticker-wrap {
+  overflow: hidden;
+  border-top: 1px solid var(--rule, rgba(255,255,255,0.08));
+  border-bottom: 1px solid var(--rule, rgba(255,255,255,0.08));
+  padding: 14px 0;
+}
+
+.ticker-track {
+  display: inline-flex;
+  align-items: center;
+  white-space: nowrap;
+  animation: ticker-scroll 22s linear infinite;
+}
+
+.ticker-item {
+  font-family: var(--font-mono, 'JetBrains Mono', monospace);
+  font-size: 10px;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  color: var(--active, #22D3C5);
+  padding: 0 20px;
+}
+
+.ticker-sep {
+  color: var(--rule2, rgba(255,255,255,0.15));
+  opacity: 0.5;
+}
+
+/* ── Dispatch Preview Section ─────────────────────────────── */
+.dispatch-preview-section {
+  max-width: var(--page, 1200px);
+  margin: 0 auto;
+  padding: 64px var(--p, 18px) 48px;
+  border-bottom: 1px solid var(--rule, rgba(255,255,255,0.08));
+}
+
+.dispatch-preview-heading {
+  font-family: var(--font-serif, 'Fraunces', serif);
+  font-size: clamp(1.5rem, 3vw, 2rem);
+  font-weight: 600;
+  margin: 8px 0 32px;
+}
+
+.dispatch-preview-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 24px;
+}
+
+.dispatch-preview-card {
+  display: block;
+  padding: 24px;
+  border: 1px solid var(--rule, rgba(255,255,255,0.08));
+  background: var(--surface, rgba(255,255,255,0.02));
+  text-decoration: none;
+  transition: border-color 0.2s, background 0.2s;
+}
+
+.dispatch-preview-card:hover {
+  border-color: var(--active, #22D3C5);
+  background: rgba(34,211,197,0.04);
+}
+
+.dispatch-preview-meta {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin-bottom: 10px;
+  font-family: var(--font-mono, 'JetBrains Mono', monospace);
+  font-size: 11px;
+  color: var(--faint, rgba(255,255,255,0.35));
+}
+
+.dispatch-num {
+  color: var(--active, #22D3C5);
+  font-weight: 500;
+}
+
+.dispatch-preview-title {
+  font-family: var(--font-serif, 'Fraunces', serif);
+  font-size: 1.2rem;
+  font-weight: 600;
+  margin: 0 0 10px;
+}
+
+.dispatch-preview-quote {
+  font-size: 0.875rem;
+  color: var(--dim, rgba(255,255,255,0.55));
+  font-style: italic;
+  margin: 0 0 16px;
+  line-height: 1.6;
+}
+
+.dispatch-preview-tags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px;
+}
+
+/* ── Archive Filters ──────────────────────────────────────── */
+.arc-filters {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  margin: 20px 0 24px;
+}
+
+.arc-filter-btn {
+  font-family: var(--font-mono, 'JetBrains Mono', monospace);
+  font-size: 11px;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  padding: 6px 14px;
+  border: 1px solid var(--rule, rgba(255,255,255,0.08));
+  background: transparent;
+  color: var(--faint, rgba(255,255,255,0.35));
+  cursor: pointer;
+  transition: border-color 0.2s, color 0.2s, background 0.2s;
+  border-radius: 2px;
+}
+
+.arc-filter-btn:hover,
+.arc-filter-btn.active {
+  border-color: var(--active, #22D3C5);
+  color: var(--active, #22D3C5);
+  background: rgba(34,211,197,0.05);
+}
+
+.arc-type-badge {
+  font-family: var(--font-mono, 'JetBrains Mono', monospace);
+  font-size: 10px;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--active, #22D3C5);
+  opacity: 0.8;
+}
+
+/* ── Reel Engine Generator ────────────────────────────────── */
+.gen-controls {
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+  margin-bottom: 24px;
+}
+
+.gen-row {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  gap: 14px;
+}
+
+.gen-field {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+.gen-label {
+  font-family: var(--font-mono, 'JetBrains Mono', monospace);
+  font-size: 10px;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--faint, rgba(255,255,255,0.35));
+}
+
+.gen-select {
+  padding: 8px 10px;
+  background: var(--panel, rgba(255,255,255,0.03));
+  border: 1px solid var(--rule, rgba(255,255,255,0.08));
+  color: var(--text, #e8e8e8);
+  font-size: 13px;
+  border-radius: 2px;
+  cursor: pointer;
+}
+
+.gen-select:focus {
+  outline: none;
+  border-color: var(--active, #22D3C5);
+}
+
+.gen-actions {
+  display: flex;
+  gap: 12px;
+  flex-wrap: wrap;
+  margin-bottom: 28px;
+}
+
+.gen-btn {
+  padding: 10px 20px;
+  border: 1px solid var(--rule, rgba(255,255,255,0.08));
+  background: transparent;
+  color: var(--text, #e8e8e8);
+  font-family: var(--font-mono, 'JetBrains Mono', monospace);
+  font-size: 12px;
+  letter-spacing: 0.08em;
+  cursor: pointer;
+  transition: border-color 0.2s, background 0.2s;
+}
+
+.gen-btn--generate {
+  border-color: var(--active, #22D3C5);
+  color: var(--active, #22D3C5);
+}
+
+.gen-btn--generate:hover {
+  background: rgba(34,211,197,0.08);
+}
+
+.gen-output {
+  border: 1px solid var(--rule, rgba(255,255,255,0.08));
+  background: var(--panel, rgba(255,255,255,0.02));
+}
+
+.gen-output-section {
+  padding: 20px 24px;
+  border-bottom: 1px solid var(--rule, rgba(255,255,255,0.08));
+}
+
+.gen-output-label {
+  font-family: var(--font-mono, 'JetBrains Mono', monospace);
+  font-size: 10px;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--active, #22D3C5);
+  margin-bottom: 10px;
+}
+
+.gen-output-text {
+  font-family: var(--font-mono, 'JetBrains Mono', monospace);
+  font-size: 13px;
+  line-height: 1.7;
+  white-space: pre-wrap;
+  margin-bottom: 14px;
+}
+
+.gen-copy-btn {
+  font-family: var(--font-mono, 'JetBrains Mono', monospace);
+  font-size: 11px;
+  letter-spacing: 0.08em;
+  padding: 6px 14px;
+  border: 1px solid var(--rule, rgba(255,255,255,0.08));
+  background: transparent;
+  color: var(--faint, rgba(255,255,255,0.35));
+  cursor: pointer;
+  transition: color 0.2s, border-color 0.2s;
+}
+
+.gen-copy-btn:hover {
+  color: var(--active, #22D3C5);
+  border-color: var(--active, #22D3C5);
+}
+
+.gen-output-meta {
+  padding: 14px 24px;
+  display: flex;
+  gap: 16px;
+}
