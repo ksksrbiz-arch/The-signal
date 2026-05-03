@@ -4957,3 +4957,390 @@ footer,
   .subscribe-section .subscribe-form { flex-direction: column; gap: 10px; }
   .subscribe-section .subscribe-form button { width: 100%; }
 }
+
+/* ═══════════════════════════════════════════════════════════════════
+   UTILITY HUB PAGES — May 2026
+   /builds/, /videos/, /reel-engine/ — define their unique classes
+   in the warm palette. /news/ already uses healthy tokens.
+   ═══════════════════════════════════════════════════════════════════ */
+
+/* ───── /builds/ ───── */
+
+.builds-hero {
+  max-width: var(--page);
+  margin: 0 auto;
+  padding: clamp(48px, 7vw, 80px) 24px clamp(28px, 4vw, 48px);
+  text-align: center;
+  border-bottom: 1px solid var(--rule);
+}
+
+.builds-hero-inner {
+  max-width: 720px;
+  margin: 0 auto;
+}
+
+.builds-hero-badge {
+  display: inline-block;
+  font-family: var(--font-mono);
+  font-size: 11px;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: var(--verified);
+  margin-bottom: 18px;
+}
+
+.builds-hero-title {
+  font-family: var(--font-display);
+  font-weight: 600;
+  font-size: clamp(2.2rem, 6vw, 3.6rem);
+  line-height: 1.05;
+  letter-spacing: -0.025em;
+  color: var(--text);
+  margin: 0 0 22px;
+  font-variation-settings: 'opsz' 144;
+}
+
+.builds-hero-sub {
+  font-family: var(--font-display);
+  font-weight: 400;
+  font-style: italic;
+  font-size: clamp(1.05rem, 2.4vw, 1.3rem);
+  line-height: 1.55;
+  color: #DFD3BA;
+  margin: 0 auto;
+  max-width: 56ch;
+}
+
+.builds-section {
+  max-width: var(--page);
+  margin: 0 auto;
+  padding: clamp(40px, 6vw, 72px) 24px;
+}
+
+.builds-section-title {
+  font-family: var(--font-mono);
+  font-size: 11px;
+  font-weight: 500;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: var(--verified);
+  margin: 0 0 24px;
+  display: flex;
+  align-items: center;
+  gap: 14px;
+}
+
+.builds-section-title::after {
+  content: '';
+  flex: 1;
+  height: 1px;
+  background: var(--rule);
+}
+
+.builds-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: 16px;
+}
+
+/* Build cards (overrides earlier .build-card grid hover) */
+.build-card-link {
+  display: block;
+  padding: 22px 24px;
+  background: var(--panel);
+  border: 1px solid var(--rule);
+  border-left: 2px solid var(--verified);
+  border-radius: 0 8px 8px 0;
+  text-decoration: none;
+  color: inherit;
+  transition: border-left-color 200ms ease, background 200ms ease, transform 200ms ease;
+}
+
+.build-card-link:hover {
+  border-left-color: var(--active);
+  background: var(--panel2);
+  transform: translateY(-1px);
+}
+
+.build-card-title {
+  font-family: var(--font-display);
+  font-weight: 600;
+  font-size: 1.2rem;
+  color: var(--text);
+  margin: 0 0 6px;
+  line-height: 1.25;
+}
+
+.build-card-desc {
+  font-family: var(--font-body);
+  font-size: 14.5px;
+  line-height: 1.6;
+  color: var(--muted);
+  margin: 0 0 12px;
+}
+
+.build-card-meta {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px 14px;
+  font-family: var(--font-mono);
+  font-size: 10.5px;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--faint);
+  margin-bottom: 10px;
+}
+
+.build-card-status {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  font-family: var(--font-mono);
+  font-size: 10.5px;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--active);
+}
+
+.build-card-status::before {
+  content: '';
+  width: 5px;
+  height: 5px;
+  border-radius: 50%;
+  background: var(--active);
+}
+
+.build-card.build-card--showcase {
+  grid-column: 1 / -1;
+  background: linear-gradient(180deg, rgba(232, 184, 106, 0.05), var(--panel));
+  border-color: var(--rule2);
+  border-left: 3px solid var(--active);
+}
+
+.build-tech-tag {
+  display: inline-block;
+  font-family: var(--font-mono);
+  font-size: 10.5px;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  padding: 3px 9px;
+  background: rgba(232, 184, 106, 0.08);
+  border: 1px solid var(--rule);
+  border-radius: 3px;
+  color: var(--verified);
+  margin: 0 6px 6px 0;
+}
+
+/* ───── /reel-engine/ ───── */
+
+.reel-hero {
+  max-width: var(--page);
+  margin: 0 auto;
+  padding: clamp(56px, 8vw, 96px) 24px clamp(32px, 5vw, 56px);
+  text-align: center;
+}
+
+.reel-hero-inner {
+  max-width: 720px;
+  margin: 0 auto;
+}
+
+.reel-section {
+  max-width: var(--page);
+  margin: 0 auto;
+  padding: clamp(40px, 6vw, 80px) 24px;
+}
+
+.reel-section-inner {
+  max-width: 880px;
+  margin: 0 auto;
+}
+
+.reel-section h2 {
+  font-family: var(--font-display);
+  font-weight: 600;
+  font-size: clamp(1.5rem, 3.5vw, 2rem);
+  letter-spacing: -0.015em;
+  color: var(--text);
+  margin: 0 0 18px;
+}
+
+.reel-section p {
+  font-family: var(--font-body);
+  font-size: 16.5px;
+  line-height: 1.75;
+  color: #DFD3BA;
+  margin: 0 0 18px;
+  max-width: 65ch;
+}
+
+.reel-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+  gap: 16px;
+  margin: 28px 0;
+}
+
+.reel-card {
+  padding: 22px 24px;
+  background: var(--panel);
+  border: 1px solid var(--rule);
+  border-left: 2px solid var(--verified);
+  border-radius: 0 8px 8px 0;
+}
+
+.reel-card h3 {
+  font-family: var(--font-display);
+  font-weight: 600;
+  font-size: 1.1rem;
+  color: var(--text);
+  margin: 0 0 8px;
+}
+
+.reel-card p {
+  font-size: 14.5px;
+  line-height: 1.6;
+  color: var(--muted);
+  margin: 0;
+  max-width: none;
+}
+
+.reel-pipeline {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
+  gap: 14px;
+  margin: 28px 0;
+  position: relative;
+}
+
+.step {
+  padding: 16px 18px;
+  background: var(--panel);
+  border: 1px solid var(--rule);
+  border-radius: 8px;
+  font-family: var(--font-body);
+  font-size: 14px;
+  line-height: 1.5;
+  color: var(--muted);
+  position: relative;
+}
+
+.step strong {
+  display: block;
+  font-family: var(--font-display);
+  font-weight: 600;
+  font-size: 1rem;
+  color: var(--text);
+  margin-bottom: 4px;
+}
+
+.arrow {
+  font-family: var(--font-mono);
+  color: var(--verified);
+  font-size: 1.1rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  opacity: 0.6;
+}
+
+.reel-code {
+  font-family: var(--font-mono);
+  font-size: 13.5px;
+  background: var(--panel);
+  border: 1px solid var(--rule);
+  border-left: 2px solid var(--verified);
+  border-radius: 6px;
+  padding: 16px 18px;
+  color: var(--text);
+  overflow-x: auto;
+  margin: 22px 0;
+  line-height: 1.6;
+}
+
+.reel-stoic {
+  font-family: var(--font-display);
+  font-style: italic;
+  font-weight: 400;
+  font-size: clamp(1.15rem, 2.5vw, 1.4rem);
+  line-height: 1.5;
+  color: var(--text);
+  padding: 22px 24px;
+  background: linear-gradient(180deg, var(--panel), var(--bg2));
+  border-left: 3px solid var(--verified);
+  border-radius: 0 8px 8px 0;
+  margin: 32px 0;
+}
+
+/* Mobile */
+@media (max-width: 640px) {
+  .builds-grid { gap: 12px; }
+  .build-card-link { padding: 18px 20px; }
+  .reel-pipeline { grid-template-columns: 1fr; }
+  .arrow { transform: rotate(90deg); }
+}
+
+/* ═══════════════════════════════════════════════════════════════════
+   LEGACY TOKEN COMPATIBILITY — May 2026
+   Many pages were authored against an older design-system token
+   vocabulary (--color-surface, --space-N, --text-xs, --color-gold...)
+   that no longer exists. Define them here as warm palette aliases so
+   every legacy reference resolves correctly without rewriting markup.
+   These are cascade-tail and will not override any explicit setting.
+   ═══════════════════════════════════════════════════════════════════ */
+
+:root {
+  /* Color aliases */
+  --color-bg:              var(--bg);
+  --color-bg-2:            var(--bg2);
+  --color-surface:         var(--panel);
+  --color-surface-2:       var(--panel2);
+  --color-surface-raised:  var(--panel2);
+  --color-text:            var(--text);
+  --color-text-muted:      var(--muted);
+  --color-text-faint:      var(--faint);
+  --color-border:          var(--rule);
+  --color-divider:         var(--rule);
+  --color-gold:            var(--verified);
+
+  /* Spacing scale (4px base) */
+  --space-1:  4px;
+  --space-2:  8px;
+  --space-3:  12px;
+  --space-4:  16px;
+  --space-5:  20px;
+  --space-6:  24px;
+  --space-7:  28px;
+  --space-8:  32px;
+  --space-9:  36px;
+  --space-10: 40px;
+  --space-12: 48px;
+  --space-14: 56px;
+  --space-16: 64px;
+  --space-20: 80px;
+  --space-24: 96px;
+  --space-32: 128px;
+
+  /* Type scale */
+  --text-xs:   11px;
+  --text-sm:   13px;
+  --text-base: 16px;
+  --text-md:   16px;
+  --text-lg:   18px;
+  --text-xl:   22px;
+  --text-2xl:  28px;
+  --text-3xl:  36px;
+  --text-4xl:  48px;
+
+  /* Radii */
+  --radius-xs: 3px;
+  --radius-sm: 6px;
+  --radius-md: 8px;
+  --radius-lg: 12px;
+  --radius-xl: 16px;
+
+  /* Layout */
+  --content-default: 1200px;
+  --content-narrow:  720px;
+  --content-wide:    1400px;
+}
