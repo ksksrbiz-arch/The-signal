@@ -478,8 +478,10 @@
       <div class="footer-col">
         <h4>The Signal</h4>
         <div class="footer-subscribe">
-          <form class="footer-subscribe-form" action="https://assets.mailerlite.com/jsonp/887036/forms/131950373498498498/subscribe" method="POST">
-            <input type="email" name="fields[email]" placeholder="your@email.com" required aria-label="Email address">
+          <form class="footer-subscribe-form" name="signal-subscribe" method="POST" data-netlify="true" data-netlify-honeypot="bot-field">
+      <input type="hidden" name="form-name" value="signal-subscribe">
+      <p class="hp-field" hidden><label>Don&rsquo;t fill this out: <input name="bot-field"></label></p>
+            <input type="email" name="email" placeholder="your@email.com" required aria-label="Email address">
             <button type="submit">Subscribe</button>
           </form>
         </div>

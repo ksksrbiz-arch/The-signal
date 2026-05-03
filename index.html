@@ -38,7 +38,6 @@
 <link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,600;9..144,700&family=IBM+Plex+Sans:wght@400;500;600&family=JetBrains+Mono:wght@300;400;500&display=swap" rel="stylesheet">
 
 <!-- Performance -->
-<link rel="dns-prefetch" href="https://assets.mailerlite.com">
 
 <!-- Favicon -->
 <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'><rect x='2' y='2' width='28' height='28' rx='2' stroke='%23E8B86A' stroke-width='1.5' fill='none'/><line x1='16' y1='6' x2='16' y2='26' stroke='%23E8B86A' stroke-width='1.5'/><circle cx='16' cy='16' r='3' stroke='%23E8B86A' stroke-width='1.5' fill='none'/></svg>">
@@ -208,8 +207,10 @@
         <h1>I build commerce systems that ship.</h1>
         <p class="hero-lede">Weekly transmissions from the front lines of 1Commerce LLC — proof-first infrastructure, built for operators who count shipped code as the only metric that matters.</p>
         <div class="hero-ctas">
-          <form class="hero-subscribe" action="https://assets.mailerlite.com/jsonp/887036/forms/131950373498498498/subscribe" method="POST">
-            <input type="email" name="fields[email]" placeholder="your@email.com" required aria-label="Email address">
+          <form class="hero-subscribe" name="signal-subscribe" method="POST" data-netlify="true" data-netlify-honeypot="bot-field">
+      <input type="hidden" name="form-name" value="signal-subscribe">
+      <p class="hp-field" hidden><label>Don&rsquo;t fill this out: <input name="bot-field"></label></p>
+            <input type="email" name="email" placeholder="your@email.com" required aria-label="Email address">
             <button type="submit" class="btn-primary">Get The Signal →</button>
           </form>
           <button class="btn-ghost" data-contact-modal type="button">Work with me →</button>
@@ -540,8 +541,10 @@
       <div class="footer-col">
         <h4>The Signal</h4>
         <p>Systems atlas. Proof-first. No placeholders.</p>
-        <form class="subscribe-form" action="https://assets.mailerlite.com/jsonp/887036/forms/131950373498498498/subscribe" method="POST">
-          <input type="email" name="fields[email]" placeholder="your@email.com" required aria-label="Email address">
+        <form class="subscribe-form" name="signal-subscribe" method="POST" data-netlify="true" data-netlify-honeypot="bot-field">
+      <input type="hidden" name="form-name" value="signal-subscribe">
+      <p class="hp-field" hidden><label>Don&rsquo;t fill this out: <input name="bot-field"></label></p>
+          <input type="email" name="email" placeholder="your@email.com" required aria-label="Email address">
           <button type="submit">Subscribe</button>
         </form>
       </div>

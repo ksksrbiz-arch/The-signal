@@ -5344,3 +5344,22 @@ footer,
   --content-narrow:  720px;
   --content-wide:    1400px;
 }
+
+/* ═══════════════════════════════════════════════════════════════════
+   NETLIFY FORMS — May 2026
+   Honeypot + helper styling for native Netlify form handling.
+   ═══════════════════════════════════════════════════════════════════ */
+
+/* Honeypot — must be invisible to humans, visible to spam bots */
+.hp-field,
+.hp-field input,
+.hp-field label {
+  position: absolute !important;
+  left: -9999px !important;
+  width: 1px !important;
+  height: 1px !important;
+  overflow: hidden !important;
+  opacity: 0 !important;
+  pointer-events: none !important;
+  visibility: hidden !important;
+}
