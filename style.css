@@ -3658,3 +3658,353 @@ footer,
   }
   .proof-item { padding: 16px; }
 }
+
+/* ═══════════════════════════════════════════════════════════════════
+   FIELDNOTE / DISPATCH ARTICLES — May 2026
+   Long-form reading layout. Inherits warm site tokens.
+   Includes subtle affiliate-link styling + FTC disclosure block.
+   ═══════════════════════════════════════════════════════════════════ */
+
+.fn-article {
+  max-width: 720px;
+  margin: 0 auto;
+  padding: clamp(40px, 7vw, 72px) 24px clamp(48px, 8vw, 80px);
+  color: var(--text);
+}
+
+/* Header / masthead */
+.fn-article-back {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  font-family: var(--font-mono);
+  font-size: 11px;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--verified);
+  text-decoration: none;
+  margin-bottom: 28px;
+  transition: color 180ms ease;
+}
+.fn-article-back:hover { color: var(--active); }
+
+.fn-article-eyebrow {
+  font-family: var(--font-mono);
+  font-size: 11px;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  color: var(--verified);
+  margin-bottom: 16px;
+}
+
+.fn-article h1 {
+  font-family: var(--font-display);
+  font-weight: 600;
+  font-size: clamp(2.2rem, 5.5vw, 3.4rem);
+  line-height: 1.08;
+  letter-spacing: -0.02em;
+  color: var(--text);
+  margin: 0 0 22px;
+  font-variation-settings: 'opsz' 144;
+}
+
+.fn-article-lede {
+  font-family: var(--font-display);
+  font-weight: 400;
+  font-size: clamp(1.1rem, 2.4vw, 1.4rem);
+  line-height: 1.55;
+  color: #DFD3BA;
+  font-style: italic;
+  margin: 0 0 28px;
+  max-width: 60ch;
+}
+
+.fn-article-byline {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 18px;
+  font-family: var(--font-mono);
+  font-size: 11px;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--faint);
+  padding-bottom: 28px;
+  border-bottom: 1px solid var(--rule);
+  margin-bottom: 36px;
+}
+
+/* Affiliate disclosure — subtle, italic, sits just under the byline */
+.fn-disclosure {
+  font-family: var(--font-body);
+  font-style: italic;
+  font-size: 13px;
+  line-height: 1.55;
+  color: var(--faint);
+  padding: 12px 14px;
+  margin: 0 0 36px;
+  border-left: 2px solid var(--verified);
+  background: rgba(199, 163, 90, 0.04);
+  border-radius: 0 4px 4px 0;
+}
+.fn-disclosure strong {
+  font-style: normal;
+  font-weight: 500;
+  color: var(--muted);
+}
+
+/* Body prose — generous reading rhythm */
+.fn-article-body {
+  font-family: var(--font-body);
+  font-size: 17px;
+  line-height: 1.78;
+  color: #DFD3BA;
+}
+
+.fn-article-body > * + * { margin-top: 22px; }
+
+.fn-article-body p {
+  font-size: 17px;
+  line-height: 1.78;
+  color: #DFD3BA;
+  max-width: 65ch;
+}
+
+.fn-article-body p strong {
+  color: var(--text);
+  font-weight: 600;
+}
+
+.fn-article-body h2 {
+  font-family: var(--font-display);
+  font-weight: 600;
+  font-size: clamp(1.4rem, 3vw, 1.85rem);
+  letter-spacing: -0.012em;
+  color: var(--text);
+  margin: 56px 0 8px;
+  line-height: 1.2;
+  font-variation-settings: 'opsz' 96;
+}
+
+.fn-article-body h3 {
+  font-family: var(--font-display);
+  font-weight: 600;
+  font-size: clamp(1.15rem, 2.4vw, 1.4rem);
+  color: var(--text);
+  margin: 40px 0 4px;
+  line-height: 1.3;
+}
+
+.fn-article-body blockquote {
+  margin: 36px 0;
+  padding: 6px 0 6px 22px;
+  border-left: 3px solid var(--verified);
+  font-family: var(--font-display);
+  font-style: italic;
+  font-weight: 400;
+  font-size: clamp(1.15rem, 2.5vw, 1.4rem);
+  line-height: 1.5;
+  color: var(--text);
+  max-width: 60ch;
+}
+
+.fn-article-body ul,
+.fn-article-body ol {
+  padding-left: 22px;
+  max-width: 64ch;
+}
+
+.fn-article-body li {
+  margin-bottom: 10px;
+  line-height: 1.7;
+  color: #DFD3BA;
+}
+
+.fn-article-body li::marker { color: var(--verified); }
+
+.fn-article-body code {
+  font-family: var(--font-mono);
+  font-size: 0.9em;
+  background: var(--panel);
+  padding: 2px 6px;
+  border-radius: 3px;
+  color: var(--active);
+  border: 1px solid var(--rule);
+}
+
+.fn-article-body pre {
+  background: var(--panel);
+  border: 1px solid var(--rule);
+  border-left: 2px solid var(--verified);
+  border-radius: 6px;
+  padding: 18px 20px;
+  overflow-x: auto;
+  font-family: var(--font-mono);
+  font-size: 13.5px;
+  line-height: 1.6;
+  margin: 28px 0;
+  color: var(--text);
+}
+
+.fn-article-body pre code {
+  background: transparent;
+  border: none;
+  padding: 0;
+  color: inherit;
+}
+
+.fn-article-body hr {
+  border: none;
+  border-top: 1px solid var(--rule);
+  margin: 48px 0;
+}
+
+/* Inline article link — warm underline */
+.fn-article-body a:not(.aff) {
+  color: var(--active);
+  text-decoration: underline;
+  text-decoration-color: rgba(232, 184, 106, 0.4);
+  text-decoration-thickness: 1px;
+  text-underline-offset: 3px;
+  transition: text-decoration-color 180ms ease, color 180ms ease;
+}
+.fn-article-body a:not(.aff):hover {
+  text-decoration-color: var(--active);
+  color: #F0CB89;
+}
+
+/* Affiliate link — same warm color, but with a small ↗ marker so
+   readers can spot a partner link without it feeling like a banner.
+   Uses rel="sponsored nofollow noopener" for FTC compliance. */
+.fn-article-body a.aff {
+  color: var(--active);
+  text-decoration: underline;
+  text-decoration-color: rgba(232, 184, 106, 0.4);
+  text-decoration-style: dotted;
+  text-decoration-thickness: 1px;
+  text-underline-offset: 3px;
+  transition: text-decoration-color 180ms ease, color 180ms ease;
+}
+.fn-article-body a.aff::after {
+  content: '↗';
+  display: inline-block;
+  font-size: 0.78em;
+  color: var(--verified);
+  margin-left: 2px;
+  opacity: 0.7;
+  transform: translateY(-1px);
+}
+.fn-article-body a.aff:hover {
+  text-decoration-color: var(--active);
+  color: #F0CB89;
+}
+
+/* Pull-quote / tweet-style block embedded mid-article */
+.fn-pullquote {
+  margin: 48px 0;
+  padding: 24px 26px;
+  background: linear-gradient(180deg, var(--panel), var(--bg2));
+  border: 1px solid var(--rule);
+  border-left: 3px solid var(--verified);
+  border-radius: 0 8px 8px 0;
+  font-family: var(--font-display);
+  font-style: italic;
+  font-size: clamp(1.15rem, 2.5vw, 1.4rem);
+  line-height: 1.45;
+  color: var(--text);
+  cursor: pointer;
+  transition: border-left-color 180ms ease;
+}
+.fn-pullquote:hover { border-left-color: var(--active); }
+.fn-pullquote-cite {
+  display: block;
+  margin-top: 10px;
+  font-family: var(--font-mono);
+  font-size: 11px;
+  font-style: normal;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--faint);
+}
+
+/* Tools-mentioned footer (where affiliate stack lives in new posts) */
+.fn-tools {
+  margin-top: 56px;
+  padding: 24px 26px;
+  background: var(--panel);
+  border: 1px solid var(--rule);
+  border-radius: 8px;
+}
+.fn-tools-heading {
+  font-family: var(--font-mono);
+  font-size: 10.5px;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: var(--verified);
+  margin-bottom: 14px;
+}
+.fn-tools-list {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+.fn-tools-list li {
+  display: flex;
+  gap: 12px;
+  align-items: baseline;
+  font-family: var(--font-body);
+  font-size: 14.5px;
+  line-height: 1.5;
+  color: var(--muted);
+}
+.fn-tools-list li strong {
+  flex: 0 0 auto;
+  min-width: 110px;
+  font-family: var(--font-display);
+  font-weight: 600;
+  color: var(--text);
+}
+
+/* Article footer — back link + subscribe pill */
+.fn-article-footer {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 16px;
+  margin-top: 64px;
+  padding-top: 28px;
+  border-top: 1px solid var(--rule);
+}
+.fn-article-footer .fn-article-back { margin: 0; }
+.fn-article-footer-subscribe {
+  display: inline-flex;
+  align-items: center;
+  padding: 10px 18px;
+  background: var(--active);
+  color: #1A1410;
+  border-radius: 8px;
+  font-family: var(--font-body);
+  font-size: 13.5px;
+  font-weight: 600;
+  text-decoration: none;
+  transition: background 180ms ease;
+}
+.fn-article-footer-subscribe:hover { background: #F0CB89; color: #1A1410; }
+.fn-article-footer-subscribe:link,
+.fn-article-footer-subscribe:visited { color: #1A1410; }
+
+/* Mobile */
+@media (max-width: 640px) {
+  .fn-article { padding: 32px 18px 48px; }
+  .fn-article-body { font-size: 16.5px; }
+  .fn-article-body p { font-size: 16.5px; }
+  .fn-article-body h2 { margin-top: 40px; }
+  .fn-tools { padding: 18px 18px; }
+  .fn-tools-list li { flex-direction: column; gap: 2px; }
+  .fn-tools-list li strong { min-width: 0; }
+  .fn-pullquote { padding: 18px 20px; }
+  .fn-article-footer { flex-direction: column; align-items: flex-start; }
+}

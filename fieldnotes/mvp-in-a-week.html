@@ -61,23 +61,27 @@
 </head>
 <body>
   <a href="#main" class="skip-link">Skip to main content</a>
-  <div class="grain" aria-hidden="true"></div>
-  <div class="mobile-nav">
+
+  <div class="mobile-nav" aria-label="Mobile navigation">
     <button class="mobile-nav-close" aria-label="Close menu">
       <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 6L6 18M6 6l12 12"/></svg>
     </button>
     <a href="../">Home</a>
     <a href="../archive/">Archive</a>
-    <a href="./" class="active">Fieldnotes</a>
+    <a href="./">Fieldnotes</a>
+    <a href="../builds/">Verified Builds</a>
+    <a href="../news/">News Aggregator</a>
+    <a href="../videos/">Videos</a>
     <a href="../reel-engine/">Reel Engine</a>
     <a href="../about/">About</a>
     <a href="../#subscribe">Subscribe</a>
   </div>
+
   <header class="site-header">
     <div class="header-inner">
       <div class="header-left">
         <a href="../">
-          <svg class="logo" viewBox="0 0 32 32" width="28" height="28" fill="none">
+          <svg class="logo" viewBox="0 0 32 32" width="28" height="28" fill="none" aria-label="The Signal logo">
             <rect x="2" y="2" width="28" height="28" rx="2" stroke="currentColor" stroke-width="1.5" opacity="0.3"/>
             <line x1="16" y1="6" x2="16" y2="26" stroke="currentColor" stroke-width="1.5"/>
             <line x1="10" y1="9" x2="10" y2="23" stroke="currentColor" stroke-width="1" opacity="0.5"/>
@@ -91,65 +95,46 @@
         </a>
       </div>
       <div class="header-right">
-        <nav><ul class="nav-links">
-          <li><a href="../">Home</a></li>
-          <li><a href="../archive/">Archive</a></li>
-          <li><a href="./" class="active">Fieldnotes</a></li>
-          <li><a href="../reel-engine/">Reel Engine</a></li>
-          <li><a href="../about/">About</a></li>
-          <li><a href="../#subscribe">Subscribe</a></li>
-        </ul></nav>
+        <nav>
+          <ul class="nav-links">
+            <li><a href="../">Home</a></li>
+            <li><a href="../archive/">Archive</a></li>
+            <li><a href="./">Fieldnotes</a></li>
+            <li><a href="../builds/">Verified Builds</a></li>
+            <li><a href="../news/">News Aggregator</a></li>
+            <li><a href="../videos/">Videos</a></li>
+            <li><a href="../reel-engine/">Reel Engine</a></li>
+            <li><a href="../about/">About</a></li>
+            <li><a href="../#subscribe">Subscribe</a></li>
+          </ul>
+        </nav>
         <button class="nav-toggle" aria-label="Open menu">
           <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 12h18M3 6h18M3 18h18"/></svg>
         </button>
-        <button data-theme-toggle aria-label="Switch to light mode">
+        <button data-theme-toggle aria-label="Switch theme">
           <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="5"/><path d="M12 1v2M12 21v2M4.22 4.22l1.42 1.42M18.36 18.36l1.42 1.42M1 12h2M21 12h2M4.22 19.78l1.42-1.42M18.36 5.64l1.42-1.42"/></svg>
         </button>
       </div>
     </div>
   </header>
-  <nav class="breadcrumb" aria-label="Breadcrumb">
-    <a href="../">Home</a>
-    <span class="sep">›</span>
-    <a href="./">Fieldnotes</a>
-    <span class="sep">›</span>
-    <span class="current">MVP in a Week</span>
-  </nav>
 
   <main id="main">
-    <section class="hero" style="padding-bottom: var(--space-8);">
-      <div class="hero-inner">
-        <div class="hero-overline" style="margin-bottom: var(--space-4);">
-          <a href="./" style="color: var(--color-gold); font-family: var(--font-mono); font-size: var(--text-xs); letter-spacing: 0.1em; text-decoration: none;">← FIELDNOTES</a>
-          <span class="mono-label dim" style="margin-left: var(--space-4);">EXECUTION · 6 MIN READ</span>
-        </div>
-        <h1 style="font-family: var(--font-display); font-size: var(--text-2xl); line-height: 1.1; color: var(--color-text); max-width: 20ch;">How to Ship an MVP in a Week Using AI Agents</h1>
-        <p style="font-family: var(--font-body); font-size: var(--text-lg); color: var(--color-text-muted); max-width: 52ch; margin-top: var(--space-6); line-height: 1.6;">GigOS went from concept to functional product in under seven days. Here is the actual process.</p>
-        <div style="margin-top: var(--space-8); display: flex; gap: var(--space-6); align-items: center; flex-wrap: wrap;">
-          <span class="mono-label dim">1COMMERCE LLC</span>
-          <span class="mono-label dim">CANBY, OREGON</span>
-          <span class="mono-label dim">APRIL 2026</span>
-        </div>
-      </div>
-    </section>
+    <article class="fn-article">
 
-    <!-- Share Strip -->
-    <div class="dispatch-share-strip">
-      <span class="share-strip-label">SHARE THIS FIELDNOTE</span>
-      <div class="share-strip-buttons" data-share-strip></div>
-    </div>
-        <aside class="article-toc" aria-label="Table of contents">
-      <div class="toc-heading">In this post</div>
-    </aside>
+      <a href="./" class="fn-article-back">&larr; Fieldnotes</a>
 
-    <article class="dispatch">
-      <div class="dispatch-inner" style="max-width: 68ch;">
+      <div class="fn-article-eyebrow">Execution · 6 min read</div>
+        <h1>How to Ship an MVP in a Week Using AI Agents</h1>
+
+      <p class="fn-article-lede">GigOS went from concept to functional product in under seven days. Here is the actual process.</p>
+        <div class="fn-article-byline"><span>1COMMERCE LLC</span><span>CANBY, OREGON</span><span>APRIL 2026</span></div>
+        <div class="fn-article-body">
 
         <p>The term "MVP" has been so thoroughly misused that it needs a definition before anything else can be said. In this context, MVP does not mean a mockup, a landing page, a Figma prototype, or a waitlist with a demo video. It means a real, deployed, working product that a real user can log into and use for its intended purpose. GigOS Phase 1 meets that definition: a functional gig work command center with a KPI dashboard, a 7-column Kanban pipeline, customer management, job views with integrated mapping, and service templates. It runs in production. Authentication works. Data persists. Users can log in.</p>
 
         <p>That product went from a blank directory to deployed infrastructure in under seven days. Here is exactly how that happened.</p>
 
-        <h2 class="feature-title">Day 1: Scope Definition — What the MVP Is Not</h2>
+        <h2>Day 1: Scope Definition — What the MVP Is Not</h2>
 
         <p>The most important work of Day 1 is not writing code. It is writing a precise list of everything the MVP explicitly does not include. This sounds obvious and it is almost never done correctly, because scope creep is not a planning failure — it is a temptation that reasserts itself at every decision point during the build. You need a written contract with yourself that defines the boundary before you start, so that when the temptation arrives on Day 4 ("it would only take an hour to add a payment integration..."), you have a prior commitment to override it.</p>
 
@@ -157,7 +142,7 @@
 
         <p>What GigOS Phase 1 does include is the core workflow that makes the product useful: the ability to manage a gig work operation end-to-end through a single interface. A technician opens GigOS, sees their active jobs on a Kanban board, can drag a job from In Progress to Pending Review, can view the customer's address on a map, can record service notes, and can see their day's KPIs at a glance. That is a complete, valuable workflow. That is the MVP.</p>
 
-        <h2 class="feature-title">Days 2–3: Agent-Driven Scaffolding</h2>
+        <h2>Days 2–3: Agent-Driven Scaffolding</h2>
 
         <p>With the scope defined and committed to writing, the build begins. The AI agent's first task is project scaffolding — creating the directory structure, initializing the React application, setting up the Tailwind configuration with the GigOS design system (navy primary, teal accent, gold highlights, dark mode default), installing dependencies, and establishing the Firebase connection for authentication and real-time Firestore data.</p>
 
@@ -165,7 +150,7 @@
 
         <p>The component library is also scaffolded during this phase. A consistent set of base components — Button variants, Card containers, Input fields, Modal shells, navigation structure — means that every feature built afterward can reuse proven building blocks rather than reinventing styling decisions on every new page. The agent generates these components against a defined style specification. They don't need to be perfect. They need to be consistent and functional. Polish comes on Day 6.</p>
 
-        <h2 class="feature-title">Days 4–5: Feature Implementation</h2>
+        <h2>Days 4–5: Feature Implementation</h2>
 
         <p>With scaffolding complete, each feature becomes a discrete task with a specific, written requirement. The specificity of the requirement is the most important variable in how well the agent performs. "Build the Kanban board" is a bad requirement. "Build a drag-and-drop Kanban board with seven fixed columns — New Request, Scheduled, In Progress, Awaiting Parts, Pending Review, Invoiced, Complete — where each card displays the job title, customer name, scheduled date, and a color-coded priority indicator, and dragging a card to a new column updates its status in Firestore in real time" is a good requirement. The agent produces what you specify. Specify precisely.</p>
 
@@ -173,7 +158,7 @@
 
         <p>Each feature iteration follows the same loop: write the requirement precisely, hand it to the agent, review the output, test the happy path, identify the gaps, write the correction requirement, iterate. The agent is fast at each cycle. The human review between cycles is non-negotiable — skipping it means the next feature builds on a flawed foundation and the errors compound.</p>
 
-        <h2 class="feature-title">Day 6: QA and Visual Polish</h2>
+        <h2>Day 6: QA and Visual Polish</h2>
 
         <p>Day 6 is human work. Not because agents cannot help with QA — they can catch specific, describable issues — but because the judgment required to assess whether a UI "feels right" is not something agents do reliably. The gap between "technically correct" and "actually good" in a user interface requires a human with context about the user's experience to evaluate.</p>
 
@@ -181,7 +166,7 @@
 
         <p>The end-to-end test on Day 6: create a customer, create a job for that customer, schedule the job, move it through each Kanban column from New Request to Complete, verify that the KPI dashboard reflects the completed job, pull up the customer detail and confirm the job appears in history. If that path works without errors, the product is ready to deploy.</p>
 
-        <h2 class="feature-title">Day 7: Deploy</h2>
+        <h2>Day 7: Deploy</h2>
 
         <p>The deployment stack for GigOS Phase 1 uses the same infrastructure as the rest of the 1Commerce portfolio: Google Cloud Platform for the backend services running on Cloud Run, Netlify for the React frontend with continuous deployment from the Git repository, Firebase for authentication and the real-time database, and the custom domain configured through Netlify's DNS management. Each of these services has a setup cost the first time you use them. The second and third products deploy faster because the patterns are already established.</p>
 
@@ -189,82 +174,44 @@
 
         <p>Phase 1 shipped on Day 7. The product is real. It is deployed. Users can log in.</p>
 
-        <h2 class="feature-title">What Agents Are Good At</h2>
+        <h2>What Agents Are Good At</h2>
 
         <p>Speed and consistency at volume. An agent can generate 500 lines of structurally consistent, syntactically correct code faster than any human developer. It implements specifications precisely when those specifications are precise. It catches its own syntax errors without being asked. It applies design system rules consistently across components when the system is defined clearly at the start. It produces boilerplate — configuration files, test scaffolding, type definitions, database schema, seed data — in seconds rather than minutes.</p>
 
-        <h2 class="feature-title">What Agents Are Bad At</h2>
+        <h2>What Agents Are Bad At</h2>
 
         <p>Aesthetic judgment, ambiguity resolution, and system-level thinking without direction. An agent will implement exactly what you specify, which means that if your specification is wrong, the implementation is wrong and technically correct at the same time. An agent does not know when something "feels off" in a user interface — it cannot evaluate the experience from a user's perspective without explicit, describable criteria to apply. It also struggles with requirements that assume unstated context: "make it feel premium" is not actionable, but "increase the letter-spacing on all uppercase labels to 0.12em and reduce the body text opacity to 0.85 against the dark background" is.</p>
 
-        <h2 class="feature-title">The Human Role in an Agent-Driven Build</h2>
+        <h2>The Human Role in an Agent-Driven Build</h2>
 
         <p>You are the architect and the QA lead. You define what gets built, with enough precision that the agent can execute without guessing. You review every output before it becomes the foundation for the next feature. You decide when something is done. You catch the errors the agent doesn't catch because it can't see the product from the outside. The agent is the execution layer. The decision layer is yours, and it cannot be delegated. An agent given a vague goal and left alone will produce a vague product. An agent given precise specifications by a focused architect will produce something worth shipping.</p>
 
-        <h2 class="feature-title">The Honest Caveat</h2>
+        <h2>The Honest Caveat</h2>
 
         <p>A Week 1 MVP has bugs. It has missing features. It will require a Phase 2 before it is the product you ultimately want to build. None of that is a failure. A functional, deployed product with known gaps is categorically more valuable than a perfect product that doesn't exist yet. The Week 1 MVP creates a feedback surface. Real users can interact with it. Real problems surface. Real usage patterns emerge. You learn things from a deployed product in its first week that you cannot learn in a month of planning. An imperfect product that ships in a week is a conversation with your market. A perfect product that ships in four months is an expensive guess about what your market wants. Ship the imperfect product. Fix it in public.</p>
 
-
         <!-- Tweetable pull quote -->
-        <div class="tweet-card" onclick="window.open('https://x.com/intent/tweet?text=%22Done%20at%20week%20one%20means%3A%20users%20can%20touch%20it%2C%20it%20doesn%27t%20fall%20apart%2C%20and%20it%20tells%20you%20something%20true.%22%20%E2%80%94%20How%20to%20Ship%20an%20MVP%20in%20a%20Week%20%E2%80%94%20The%20Signal&url=', '_blank', 'width=600,height=500');" style="cursor:pointer;">
-          <div class="tweet-card-quote">"Done at week one means: users can touch it, it doesn't fall apart, and it tells you something true."</div>
-          <div class="tweet-card-cta">
-            <svg width="11" height="11" viewBox="0 0 24 24" fill="currentColor"><path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-4.714-6.231-5.401 6.231H2.741l7.73-8.835L1.254 2.25H8.08l4.261 5.633L18.244 2.25zm-1.161 17.52h1.833L7.084 4.126H5.117z"/></svg>
-            Click to tweet this
-          </div>
-        </div>
-      </div>
-    </article>
-    <section style="padding: var(--space-16) 0; border-top: 1px solid var(--color-border);">
-      <div style="max-width: 72rem; margin: 0 auto; padding: 0 var(--space-8); display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: var(--space-6);">
-        <a href="./" style="font-family: var(--font-mono); font-size: var(--text-xs); letter-spacing: 0.1em; color: var(--color-gold); text-decoration: none;">← ALL FIELDNOTES</a>
-        <a href="../#subscribe" style="font-family: var(--font-mono); font-size: var(--text-xs); letter-spacing: 0.1em; color: var(--color-gold); text-decoration: none; border: 1px solid var(--color-gold); padding: var(--space-3) var(--space-6);">SUBSCRIBE TO THE SIGNAL →</a>
-      </div>
-    </section>
+        <blockquote class="fn-pullquote">"Done at week one means: users can touch it, it doesn't fall apart, and it tells you something true."<span class="fn-pullquote-cite">— The Signal</span></blockquote>
 
-    <!-- Reaction Bar -->
-    <div class="reaction-bar" role="group" aria-label="React to this article">
-      <span class="reaction-bar-label">HOW DID THIS LAND?</span>
-      <div class="reaction-buttons">
-        <button class="reaction-btn" data-reaction="signal" aria-label="React: Signal">
-          <span class="reaction-icon">◈</span>
-          <span class="reaction-name">SIGNAL</span>
-          <span class="reaction-count">0</span>
-        </button>
-        <button class="reaction-btn" data-reaction="cathedral" aria-label="React: Cathedral">
-          <span class="reaction-icon">⬟</span>
-          <span class="reaction-name">CATHEDRAL</span>
-          <span class="reaction-count">0</span>
-        </button>
-        <button class="reaction-btn" data-reaction="filed" aria-label="React: Filed">
-          <span class="reaction-icon">▣</span>
-          <span class="reaction-name">FILED</span>
-          <span class="reaction-count">0</span>
-        </button>
-        <button class="reaction-btn" data-reaction="noise" aria-label="React: Noise">
-          <span class="reaction-icon">∅</span>
-          <span class="reaction-name">NOISE</span>
-          <span class="reaction-count">0</span>
-        </button>
       </div>
-      <div class="reaction-share-strip">
-        <span class="share-strip-label">SHARE</span>
-        <div class="share-strip-buttons" data-share-strip></div>
-      </div>
-    </div>
+
+      <footer class="fn-article-footer">
+        <a href="./" class="fn-article-back">&larr; All fieldnotes</a>
+        <a href="../#subscribe" class="fn-article-footer-subscribe">Subscribe to The Signal</a>
+      </footer>
+
+    </article>
   </main>
+
   <footer class="site-footer">
-    <div class="footer-main">
+    <div class="footer-inner">
       <div class="footer-col">
         <h4>The Signal</h4>
-        <div class="footer-subscribe">
-          <form class="footer-subscribe-form" action="https://assets.mailerlite.com/jsonp/887036/forms/131950373498498498/subscribe" method="POST">
-            <input type="email" name="fields[email]" placeholder="your@email.com" required>
-            <button type="submit">Subscribe</button>
-          </form>
-        </div>
-        <p>A weekly transmission from a solo founder building in public.</p>
+        <p>Systems atlas. Proof-first. No placeholders.</p>
+        <form class="subscribe-form" action="https://assets.mailerlite.com/jsonp/887036/forms/131950373498498498/subscribe" method="POST">
+          <input type="email" name="fields[email]" placeholder="your@email.com" required aria-label="Email address">
+          <button type="submit">Subscribe</button>
+        </form>
       </div>
       <div class="footer-col">
         <h4>Navigate</h4>
@@ -272,33 +219,37 @@
           <li><a href="../">Home</a></li>
           <li><a href="../archive/">Archive</a></li>
           <li><a href="./">Fieldnotes</a></li>
+          <li><a href="../builds/">Verified Builds</a></li>
+          <li><a href="../news/">News Aggregator</a></li>
+          <li><a href="../videos/">Videos</a></li>
           <li><a href="../reel-engine/">Reel Engine</a></li>
           <li><a href="../about/">About</a></li>
-          <li><a href="../#subscribe">Subscribe</a></li>
         </ul>
       </div>
-            <div class="footer-col">
-        <h4>Verified Builds</h4>
+      <div class="footer-col">
+        <h4>Systems</h4>
         <ul>
           <li><a href="https://1commerce.online/" target="_blank" rel="noopener noreferrer">UnifyOne</a></li>
-          <li><a href="https://clearpath-environmental.netlify.app/" target="_blank" rel="noopener noreferrer">ClearPath Environmental</a></li>
-          <li><a href="https://hidden-creek.netlify.app/" target="_blank" rel="noopener noreferrer">Hidden Creek Horse Park</a></li>
-          <li><a href="https://precision-core.netlify.app/" target="_blank" rel="noopener noreferrer">Precision Core Builders</a></li>
-          <li><a href="https://compass-ai-app.netlify.app/" target="_blank" rel="noopener noreferrer">Compass AI</a></li>
-          <li><a href="https://next-chapter-travel.netlify.app/" target="_blank" rel="noopener noreferrer">Next Chapter Travel</a></li>
-          <li><a href="https://montucky-moonshine-proposal.netlify.app/" target="_blank" rel="noopener noreferrer">Montucky Moonshine</a></li>
-          <li><a href="https://redeaf.netlify.app/" target="_blank" rel="noopener noreferrer">DealFlow</a></li>
+          <li><a href="https://1commercesolutions.com/news/" target="_blank" rel="noopener noreferrer">News Aggregator</a></li>
+          <li><a href="https://github.com/ksksrbiz-arch" target="_blank" rel="noopener noreferrer">GitHub Org</a></li>
         </ul>
+      </div>
+      <div class="footer-col">
+        <h4>Contact</h4>
+        <a href="mailto:skdev@1commerce.online" class="contact-email">skdev@1commerce.online</a>
       </div>
     </div>
     <div class="footer-bottom">
-      <span class="mono-label dim">© 2026 1COMMERCE LLC · CANBY, OREGON</span>
-      <a href="" target="_blank" class="mono-label dim"></a>
+      <div class="footer-bottom-left">
+        <span class="mono-label">&copy; 2026 1COMMERCE LLC &middot; CANBY, OREGON</span>
+        <span class="mono-label">Systems. Proof. Precision.</span>
+      </div>
+      <a href="https://app.netlify.com/sites/signal01/deploys" target="_blank" rel="noopener noreferrer" class="netlify-badge" aria-label="Netlify deployment status">
+        <img src="https://api.netlify.com/api/v1/badges/31c4764b-f9c4-4531-93ca-b367db629132/deploy-status" alt="Netlify Status" width="114" height="20" loading="lazy" decoding="async" />
+      </a>
     </div>
   </footer>
+
   <script src="../app.js" defer></script>
 </body>
 </html>
-
-
-
