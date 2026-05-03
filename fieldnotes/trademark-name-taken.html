@@ -61,23 +61,27 @@
 </head>
 <body>
   <a href="#main" class="skip-link">Skip to main content</a>
-  <div class="grain" aria-hidden="true"></div>
-  <div class="mobile-nav">
+
+  <div class="mobile-nav" aria-label="Mobile navigation">
     <button class="mobile-nav-close" aria-label="Close menu">
       <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 6L6 18M6 6l12 12"/></svg>
     </button>
     <a href="../">Home</a>
     <a href="../archive/">Archive</a>
-    <a href="./" class="active">Fieldnotes+</a>
+    <a href="./">Fieldnotes</a>
+    <a href="../builds/">Verified Builds</a>
+    <a href="../news/">News Aggregator</a>
+    <a href="../videos/">Videos</a>
     <a href="../reel-engine/">Reel Engine</a>
     <a href="../about/">About</a>
     <a href="../#subscribe">Subscribe</a>
   </div>
+
   <header class="site-header">
     <div class="header-inner">
       <div class="header-left">
         <a href="../">
-          <svg class="logo" viewBox="0 0 32 32" width="28" height="28" fill="none">
+          <svg class="logo" viewBox="0 0 32 32" width="28" height="28" fill="none" aria-label="The Signal logo">
             <rect x="2" y="2" width="28" height="28" rx="2" stroke="currentColor" stroke-width="1.5" opacity="0.3"/>
             <line x1="16" y1="6" x2="16" y2="26" stroke="currentColor" stroke-width="1.5"/>
             <line x1="10" y1="9" x2="10" y2="23" stroke="currentColor" stroke-width="1" opacity="0.5"/>
@@ -91,69 +95,50 @@
         </a>
       </div>
       <div class="header-right">
-        <nav><ul class="nav-links">
-          <li><a href="../">Home</a></li>
-          <li><a href="../archive/">Archive</a></li>
-          <li><a href="./" class="active">Fieldnotes+</a></li>
-          <li><a href="../reel-engine/">Reel Engine</a></li>
-          <li><a href="../about/">About</a></li>
-          <li><a href="../#subscribe">Subscribe</a></li>
-        </ul></nav>
+        <nav>
+          <ul class="nav-links">
+            <li><a href="../">Home</a></li>
+            <li><a href="../archive/">Archive</a></li>
+            <li><a href="./">Fieldnotes</a></li>
+            <li><a href="../builds/">Verified Builds</a></li>
+            <li><a href="../news/">News Aggregator</a></li>
+            <li><a href="../videos/">Videos</a></li>
+            <li><a href="../reel-engine/">Reel Engine</a></li>
+            <li><a href="../about/">About</a></li>
+            <li><a href="../#subscribe">Subscribe</a></li>
+          </ul>
+        </nav>
         <button class="nav-toggle" aria-label="Open menu">
           <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 12h18M3 6h18M3 18h18"/></svg>
         </button>
-        <button data-theme-toggle aria-label="Switch to light mode">
+        <button data-theme-toggle aria-label="Switch theme">
           <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="5"/><path d="M12 1v2M12 21v2M4.22 4.22l1.42 1.42M18.36 18.36l1.42 1.42M1 12h2M21 12h2M4.22 19.78l1.42-1.42M18.36 5.64l1.42-1.42"/></svg>
         </button>
       </div>
     </div>
   </header>
-  <nav class="breadcrumb" aria-label="Breadcrumb">
-    <a href="../">Home</a>
-    <span class="sep">›</span>
-    <a href="./">Fieldnotes+</a>
-    <span class="sep">›</span>
-    <span class="current">Trademark Name Taken</span>
-  </nav>
 
   <main id="main">
-    <section class="hero" style="padding-bottom: var(--space-8);">
-      <div class="hero-inner">
-        <div class="hero-overline" style="margin-bottom: var(--space-4);">
-          <a href="./" style="color: var(--color-gold); font-family: var(--font-mono); font-size: var(--text-xs); letter-spacing: 0.1em; text-decoration: none;">← FIELDNOTES</a>
-          <span class="mono-label dim" style="margin-left: var(--space-4);">LEGAL · 6 MIN READ</span>
-        </div>
-        <h1 style="font-family: var(--font-display); font-size: var(--text-2xl); line-height: 1.1; color: var(--color-text); max-width: 20ch;">When Your Business Name Is Already Taken</h1>
-        <p style="font-family: var(--font-body); font-size: var(--text-lg); color: var(--color-text-muted); max-width: 52ch; margin-top: var(--space-6); line-height: 1.6;">What to actually do when someone else filed first — and how to hold ground on a name you have the stronger claim to.</p>
-        <div style="margin-top: var(--space-8); display: flex; gap: var(--space-6); align-items: center; flex-wrap: wrap;">
-          <span class="mono-label dim">1COMMERCE LLC</span>
-          <span class="mono-label dim">CANBY, OREGON</span>
-          <span class="mono-label dim">APRIL 2026</span>
-        </div>
-      </div>
-    </section>
+    <article class="fn-article">
 
-    <!-- Share Strip -->
-    <div class="dispatch-share-strip">
-      <span class="share-strip-label">SHARE THIS FIELDNOTE</span>
-      <div class="share-strip-buttons" data-share-strip></div>
-    </div>
-        <aside class="article-toc" aria-label="Table of contents">
-      <div class="toc-heading">In this post</div>
-    </aside>
+      <a href="./" class="fn-article-back">&larr; Fieldnotes</a>
 
-    <article class="dispatch">
-      <div class="dispatch-inner" style="max-width: 68ch;">
+      <div class="fn-article-eyebrow">Legal · 6 min read</div>
+        <h1>When Your Business Name Is Already Taken</h1>
+
+      <p class="fn-article-lede">What to actually do when someone else filed first — and how to hold ground on a name you have the stronger claim to.</p>
+        <div class="fn-article-byline"><span>1COMMERCE LLC</span><span>CANBY, OREGON</span><span>APRIL 2026</span></div>
+        <div class="fn-article-body">
 
         <p>This is not a theoretical walkthrough of trademark law. This is what is actually happening with 1Commerce LLC right now, documented in real time, because the information gap around this situation for early-stage founders is real and the cost of getting it wrong is high.</p>
 
-        <h2 class="feature-title">The Situation</h2>
+        <h2>The Situation</h2>
 
         <p>1Commerce LLC is operating under its name and has identified two separate entities using "1Commerce" or "1-Commerce" in related commercial contexts. The first: Eric Kasper filed a trademark application for "1-Commerce" (Serial No. 99201124) with the USPTO. That application was finally refused by the USPTO on February 8, 2026. The second: the Abbadai Group holds the domain 1Commerce.com, which has commercial implications for brand recognition and direct navigation traffic.</p>
 
         <p>Two separate problems with two different resolution paths. Neither is automatically fatal. Both require deliberate action and good documentation.</p>
 
-        <h2 class="feature-title">Step 1: Pull the USPTO TESS Data Before Doing Anything Else</h2>
+        <h2>Step 1: Pull the USPTO TESS Data Before Doing Anything Else</h2>
 
         <p>The first instinct when you find a conflicting trademark application is alarm. The correct first action is research. The USPTO's Trademark Electronic Search System (TESS) gives you the full picture of any application or registration: which International Class it covers, what the goods and services description says, the filing date, the applicant, and the current status — which changes the entire calculus.</p>
 
@@ -161,7 +146,7 @@
 
         <p>International Class matters just as much as status. A trademark registered in Class 35 for "retail store services" does not automatically block you from operating in Class 42 for "software as a service platforms." Trademark protection is not global — it attaches to specific categories of goods and services. A refused application in one class creates no obstacle in another. Even an active registration in one class may not affect your operations if your actual business activities are sufficiently distinct. Read the goods and services description carefully before concluding you have a conflict.</p>
 
-        <h2 class="feature-title">Step 2: Understand Common Law Rights</h2>
+        <h2>Step 2: Understand Common Law Rights</h2>
 
         <p>US trademark law does not require federal registration for trademark rights to exist. Rights arise from use in commerce. If you have been operating under a name, selling products or services under that name, and accepting payment from customers under that name, you have accrued common law trademark rights in the geographic areas where you operate. This is true regardless of whether you have filed a USPTO application.</p>
 
@@ -169,7 +154,7 @@
 
         <p>For 1Commerce LLC, the common law rights analysis means establishing: when did commercial activity begin under this name? When was the first sale made? When did the first customer pay for a product or service from a business operating as 1Commerce? These dates are the foundation of any rights claim, and they exist independently of whatever USPTO filings anyone has made.</p>
 
-        <h2 class="feature-title">Step 3: Document Your Use Obsessively</h2>
+        <h2>Step 3: Document Your Use Obsessively</h2>
 
         <p>Documentation is where trademark disputes are won and lost at the solo founder level. A well-funded adversary can hire trademark attorneys. A solo founder with meticulously documented use history can make the paper case that matters more than the legal billing. Start immediately if you haven't already.</p>
 
@@ -177,13 +162,13 @@
 
         <p>Organize this chronologically. The goal is to be able to produce a timeline showing continuous commercial use of the name from your earliest date of operation to the present. Gaps are vulnerabilities. Continuous use is strength. Archive these records somewhere they won't be accidentally deleted — cloud storage with timestamps preserved, ideally with backups.</p>
 
-        <h2 class="feature-title">Step 4: Geographic and Industry Separation</h2>
+        <h2>Step 4: Geographic and Industry Separation</h2>
 
         <p>Two companies can often operate under similar or even identical names without a legal conflict if they operate in different geographic markets or distinctly different industries. A landscaping company called "Atlas" in Eugene, Oregon, does not have a conflict with a fintech startup called "Atlas" in New York City — they operate in different markets and there is no likelihood of consumer confusion, which is the standard trademark law uses to determine infringement.</p>
 
         <p>The Abbadai Group's use of 1Commerce.com warrants the same analysis. What are they actually doing under that name? What market do they serve? What goods or services? If their operations are concentrated in a different region or a meaningfully different industry category, the conflict may be less severe than the domain overlap suggests. A .com domain is not itself a trademark. Operating a business under a name in commerce is where rights attach. Holding a domain without active commercial use creates a weaker claim than active business operations create.</p>
 
-        <h2 class="feature-title">Step 5: Know When to File Your Own Application</h2>
+        <h2>Step 5: Know When to File Your Own Application</h2>
 
         <p>If you have a defensible position — an early first-use date, a distinct industry category, an established customer base, and documented commercial activity — filing your own USPTO trademark application serves two purposes. It establishes a federal priority date from the moment of filing, which matters in any future dispute. And it creates a public record that makes your claim visible to anyone doing trademark clearance research.</p>
 
@@ -191,7 +176,7 @@
 
         <p>If you're operating in Oregon and your primary market is domestic US commerce, a federal application covers you nationally. Your date of first use in commerce, which you've documented obsessively per Step 3, becomes the basis for a use-in-commerce application. If you can't yet demonstrate use in commerce across all the classes you want to cover, you can file an intent-to-use application that preserves your priority date while you build toward first use.</p>
 
-        <h2 class="feature-title">What Not to Do</h2>
+        <h2>What Not to Do</h2>
 
         <p>Do not send a cease-and-desist letter unless you have reviewed the situation with an attorney and are prepared to follow through if the other party ignores it or responds aggressively. An unenforceable C&amp;D escalates the situation without creating any legal advantage and may motivate the other party to file an application or take legal action they otherwise wouldn't have bothered with. It also signals that you consider yourself threatened, which is not an advantageous negotiating position.</p>
 
@@ -199,106 +184,72 @@
 
         <p>Do not ignore the situation and hope it resolves itself. Trademark rights are not self-enforcing, and inaction has costs. If a third party later claims you had knowledge of a conflict and continued operating anyway, that is a worse factual position than one where you documented the conflict, assessed your rights, and took affirmative steps to protect them.</p>
 
-        <h2 class="feature-title">The Honest Reality</h2>
+        <h2>The Honest Reality</h2>
 
         <p>Trademark disputes at the solo founder level are mostly won by the party who documented their use better and acted faster. The legal framework provides the rules, but the outcome depends on who has the stronger evidence trail and who pursued their rights proactively. This is a paper game as much as a legal one. Build the paper trail now. File when the position is defensible. Keep operating, keep documenting, and don't mistake a refused application for the end of a complex situation that deserves continued attention.</p>
 
         <p>This post reflects the author's current situation and general research, not legal advice. If you are navigating a trademark conflict, consult a licensed trademark attorney before taking any formal legal action.</p>
 
-
         <!-- Tweetable pull quote -->
-        <div class="tweet-card" onclick="window.open('https://x.com/intent/tweet?text=%22First%20use%20in%20commerce%20beats%20first%20to%20file.%20Know%20what%20you%20have%20before%20you%20assume%20you%27ve%20lost.%22%20%E2%80%94%20When%20Your%20Business%20Name%20Is%20Taken%20%E2%80%94%20The%20Signal&url=', '_blank', 'width=600,height=500');" style="cursor:pointer;">
-          <div class="tweet-card-quote">"First use in commerce beats first to file. Know what you have before you assume you've lost."</div>
-          <div class="tweet-card-cta">
-            <svg width="11" height="11" viewBox="0 0 24 24" fill="currentColor"><path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-4.714-6.231-5.401 6.231H2.741l7.73-8.835L1.254 2.25H8.08l4.261 5.633L18.244 2.25zm-1.161 17.52h1.833L7.084 4.126H5.117z"/></svg>
-            Click to tweet this
-          </div>
-        </div>
-      </div>
-    </article>
-    <section style="padding: var(--space-16) 0; border-top: 1px solid var(--color-border);">
-      <div style="max-width: 72rem; margin: 0 auto; padding: 0 var(--space-8); display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: var(--space-6);">
-        <a href="./" style="font-family: var(--font-mono); font-size: var(--text-xs); letter-spacing: 0.1em; color: var(--color-gold); text-decoration: none;">← ALL FIELDNOTES</a>
-        <a href="../#subscribe" style="font-family: var(--font-mono); font-size: var(--text-xs); letter-spacing: 0.1em; color: var(--color-gold); text-decoration: none; border: 1px solid var(--color-gold); padding: var(--space-3) var(--space-6);">SUBSCRIBE TO THE SIGNAL →</a>
-      </div>
-    </section>
+        <blockquote class="fn-pullquote">"First use in commerce beats first to file. Know what you have before you assume you've lost."<span class="fn-pullquote-cite">— The Signal</span></blockquote>
 
-    <!-- Reaction Bar -->
-    <div class="reaction-bar" role="group" aria-label="React to this article">
-      <span class="reaction-bar-label">HOW DID THIS LAND?</span>
-      <div class="reaction-buttons">
-        <button class="reaction-btn" data-reaction="signal" aria-label="React: Signal">
-          <span class="reaction-icon">◈</span>
-          <span class="reaction-name">SIGNAL</span>
-          <span class="reaction-count">0</span>
-        </button>
-        <button class="reaction-btn" data-reaction="cathedral" aria-label="React: Cathedral">
-          <span class="reaction-icon">⬟</span>
-          <span class="reaction-name">CATHEDRAL</span>
-          <span class="reaction-count">0</span>
-        </button>
-        <button class="reaction-btn" data-reaction="filed" aria-label="React: Filed">
-          <span class="reaction-icon">▣</span>
-          <span class="reaction-name">FILED</span>
-          <span class="reaction-count">0</span>
-        </button>
-        <button class="reaction-btn" data-reaction="noise" aria-label="React: Noise">
-          <span class="reaction-icon">∅</span>
-          <span class="reaction-name">NOISE</span>
-          <span class="reaction-count">0</span>
-        </button>
       </div>
-      <div class="reaction-share-strip">
-        <span class="share-strip-label">SHARE</span>
-        <div class="share-strip-buttons" data-share-strip></div>
-      </div>
-    </div>
+
+      <footer class="fn-article-footer">
+        <a href="./" class="fn-article-back">&larr; All fieldnotes</a>
+        <a href="../#subscribe" class="fn-article-footer-subscribe">Subscribe to The Signal</a>
+      </footer>
+
+    </article>
   </main>
+
   <footer class="site-footer">
-    <div class="footer-main">
+    <div class="footer-inner">
       <div class="footer-col">
         <h4>The Signal</h4>
-        <div class="footer-subscribe">
-          <form class="footer-subscribe-form" action="https://assets.mailerlite.com/jsonp/887036/forms/131950373498498498/subscribe" method="POST">
-            <input type="email" name="fields[email]" placeholder="your@email.com" required>
-            <button type="submit">Subscribe</button>
-          </form>
-        </div>
-        <p>A weekly transmission from a solo founder building in public.</p>
+        <p>Systems atlas. Proof-first. No placeholders.</p>
+        <form class="subscribe-form" action="https://assets.mailerlite.com/jsonp/887036/forms/131950373498498498/subscribe" method="POST">
+          <input type="email" name="fields[email]" placeholder="your@email.com" required aria-label="Email address">
+          <button type="submit">Subscribe</button>
+        </form>
       </div>
       <div class="footer-col">
         <h4>Navigate</h4>
         <ul>
           <li><a href="../">Home</a></li>
           <li><a href="../archive/">Archive</a></li>
-          <li><a href="./">Fieldnotes+</a></li>
+          <li><a href="./">Fieldnotes</a></li>
+          <li><a href="../builds/">Verified Builds</a></li>
+          <li><a href="../news/">News Aggregator</a></li>
+          <li><a href="../videos/">Videos</a></li>
           <li><a href="../reel-engine/">Reel Engine</a></li>
           <li><a href="../about/">About</a></li>
-          <li><a href="../#subscribe">Subscribe</a></li>
         </ul>
       </div>
-            <div class="footer-col">
-        <h4>Verified Builds</h4>
+      <div class="footer-col">
+        <h4>Systems</h4>
         <ul>
           <li><a href="https://1commerce.online/" target="_blank" rel="noopener noreferrer">UnifyOne</a></li>
-          <li><a href="https://clearpath-environmental.netlify.app/" target="_blank" rel="noopener noreferrer">ClearPath Environmental</a></li>
-          <li><a href="https://hidden-creek.netlify.app/" target="_blank" rel="noopener noreferrer">Hidden Creek Horse Park</a></li>
-          <li><a href="https://precision-core.netlify.app/" target="_blank" rel="noopener noreferrer">Precision Core Builders</a></li>
-          <li><a href="https://compass-ai-app.netlify.app/" target="_blank" rel="noopener noreferrer">Compass AI</a></li>
-          <li><a href="https://next-chapter-travel.netlify.app/" target="_blank" rel="noopener noreferrer">Next Chapter Travel</a></li>
-          <li><a href="https://montucky-moonshine-proposal.netlify.app/" target="_blank" rel="noopener noreferrer">Montucky Moonshine</a></li>
-          <li><a href="https://redeaf.netlify.app/" target="_blank" rel="noopener noreferrer">DealFlow</a></li>
+          <li><a href="https://1commercesolutions.com/news/" target="_blank" rel="noopener noreferrer">News Aggregator</a></li>
+          <li><a href="https://github.com/ksksrbiz-arch" target="_blank" rel="noopener noreferrer">GitHub Org</a></li>
         </ul>
+      </div>
+      <div class="footer-col">
+        <h4>Contact</h4>
+        <a href="mailto:skdev@1commerce.online" class="contact-email">skdev@1commerce.online</a>
       </div>
     </div>
     <div class="footer-bottom">
-      <span class="mono-label dim">© 2026 1COMMERCE LLC · CANBY, OREGON</span>
-      <a href="" target="_blank" class="mono-label dim"></a>
+      <div class="footer-bottom-left">
+        <span class="mono-label">&copy; 2026 1COMMERCE LLC &middot; CANBY, OREGON</span>
+        <span class="mono-label">Systems. Proof. Precision.</span>
+      </div>
+      <a href="https://app.netlify.com/sites/signal01/deploys" target="_blank" rel="noopener noreferrer" class="netlify-badge" aria-label="Netlify deployment status">
+        <img src="https://api.netlify.com/api/v1/badges/31c4764b-f9c4-4531-93ca-b367db629132/deploy-status" alt="Netlify Status" width="114" height="20" loading="lazy" decoding="async" />
+      </a>
     </div>
   </footer>
+
   <script src="../app.js" defer></script>
 </body>
 </html>
-
-
-

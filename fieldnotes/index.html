@@ -4,10 +4,10 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <meta name="robots" content="index, follow">
-<title>Fieldnotes+ — THE SIGNAL | Document Library</title>
-<meta name="description" content="The Fieldnotes+ document library. Weekly uploads of everything 1Commerce LLC created — strategies, systems, build logs, and plans. Sensitive material redacted.">
-<meta property="og:title" content="Fieldnotes+ — Document Library">
-<meta property="og:description" content="Weekly uploads from 1Commerce LLC. Strategies, systems, build logs, and plans — with sensitive material redacted.">
+<title>Fieldnotes — THE SIGNAL | A working notebook from 1Commerce LLC</title>
+<meta name="description" content="A working notebook from a solo founder building 1Commerce LLC in public. Strategy notes, build logs, system specs, and operating plans — published most Saturdays, sensitive material redacted.">
+<meta property="og:title" content="Fieldnotes — THE SIGNAL">
+<meta property="og:description" content="A working notebook from a solo founder building 1Commerce LLC in public.">
 <meta property="og:type" content="website">
 <link rel="canonical" href="https://1commercesolutions.com/fieldnotes/">
 <meta property="og:url" content="https://1commercesolutions.com/fieldnotes/">
@@ -15,11 +15,11 @@
 <meta property="og:image" content="https://1commercesolutions.com/og-image.png">
 <meta property="og:image:width" content="1200">
 <meta property="og:image:height" content="630">
-<meta property="og:image:alt" content="Fieldnotes+ Document Library — THE SIGNAL">
+<meta property="og:image:alt" content="Fieldnotes — THE SIGNAL">
 <meta property="og:locale" content="en_US">
 <meta name="twitter:card" content="summary_large_image">
-<meta name="twitter:title" content="Fieldnotes+ — THE SIGNAL Document Library">
-<meta name="twitter:description" content="Weekly uploads from 1Commerce LLC. Strategies, systems, build logs, and plans.">
+<meta name="twitter:title" content="Fieldnotes — THE SIGNAL">
+<meta name="twitter:description" content="A working notebook from a solo founder building 1Commerce LLC in public.">
 <meta name="twitter:image" content="https://1commercesolutions.com/og-image.png">
 <meta name="author" content="1Commerce LLC">
 <meta name="theme-color" content="#E8B86A">
@@ -32,8 +32,8 @@
 {
   "@context": "https://schema.org",
   "@type": "CollectionPage",
-  "name": "Fieldnotes+ — Document Library",
-  "description": "The Fieldnotes+ document library. Weekly uploads of everything 1Commerce LLC created — strategies, systems, build logs, and plans.",
+  "name": "Fieldnotes — THE SIGNAL",
+  "description": "A working notebook from a solo founder building 1Commerce LLC in public. Strategy notes, build logs, system specs, and operating plans.",
   "url": "https://1commercesolutions.com/fieldnotes/",
   "isPartOf": {"@type": "WebSite", "name": "THE SIGNAL", "url": "https://1commercesolutions.com/"},
   "publisher": {"@type": "Organization", "name": "1Commerce LLC"}
@@ -45,7 +45,7 @@
   "@type": "BreadcrumbList",
   "itemListElement": [
     {"@type": "ListItem", "position": 1, "name": "Home", "item": "https://1commercesolutions.com/"},
-    {"@type": "ListItem", "position": 2, "name": "Fieldnotes+"}
+    {"@type": "ListItem", "position": 2, "name": "Fieldnotes"}
   ]
 }
 </script>
@@ -58,608 +58,326 @@
 
 <style>
 /* ============================================================
-   FIELDNOTES+ DOCUMENT LIBRARY
+   FIELDNOTES — A working notebook
+   Reading-list layout. Inherits warm site tokens from style.css.
    ============================================================ */
 
-/* Hero */
-.fnplus-hero {
-  padding: clamp(var(--space-16), 8vw, var(--space-24)) var(--space-6) var(--space-12);
-  border-bottom: 1px solid var(--color-divider);
-  position: relative;
-  overflow: hidden;
-}
-.fnplus-hero-inner {
-  max-width: var(--content-default);
+.fn-page {
+  max-width: 880px;
   margin: 0 auto;
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  gap: var(--space-12);
-  align-items: center;
+  padding: clamp(48px, 8vw, 96px) 24px 64px;
 }
-.fnplus-hero-badge {
-  display: inline-flex;
-  align-items: center;
-  gap: var(--space-2);
+
+.fn-masthead {
+  margin-bottom: clamp(40px, 6vw, 64px);
+  padding-bottom: 32px;
+  border-bottom: 1px solid var(--rule);
+}
+
+.fn-overline {
   font-family: var(--font-mono);
-  font-size: var(--text-xs);
-  letter-spacing: 0.15em;
-  color: var(--color-gold);
+  font-size: 11px;
+  font-weight: 500;
+  letter-spacing: 0.18em;
   text-transform: uppercase;
-  margin-bottom: var(--space-5);
+  color: var(--verified);
+  margin-bottom: 14px;
 }
-.fnplus-hero-badge::before {
-  content: '';
-  display: inline-block;
-  width: 6px;
-  height: 6px;
-  background: var(--color-gold);
-  border-radius: 50%;
-  animation: pulse-dot 2s ease-in-out infinite;
-}
-@keyframes pulse-dot {
-  0%, 100% { opacity: 1; transform: scale(1); }
-  50% { opacity: 0.4; transform: scale(0.7); }
-}
-.fnplus-hero-title {
+
+.fn-title {
   font-family: var(--font-display);
-  font-size: clamp(2.4rem, 5vw, 3.6rem);
-  font-weight: 600;
-  line-height: 1.1;
-  color: var(--color-text);
-  margin-bottom: var(--space-5);
+  font-weight: 500;
+  font-size: clamp(2.8rem, 8vw, 4.5rem);
+  line-height: 1.05;
+  letter-spacing: -0.025em;
+  color: var(--text);
+  margin: 0 0 22px;
 }
-.fnplus-hero-title .plus {
-  color: var(--color-gold);
+
+.fn-lede {
+  font-family: var(--font-display);
+  font-weight: 400;
+  font-size: clamp(1.05rem, 2.2vw, 1.25rem);
+  line-height: 1.65;
+  color: #DFD3BA;
+  max-width: 60ch;
+  margin: 0 0 18px;
+  font-style: italic;
 }
-.fnplus-hero-sub {
-  font-family: var(--font-body);
-  font-size: var(--text-base);
-  color: var(--color-text-muted);
+
+.fn-meta {
+  font-family: var(--font-mono);
+  font-size: 12px;
+  letter-spacing: 0.04em;
+  color: var(--faint);
   line-height: 1.7;
-  max-width: 46ch;
+  margin: 0;
 }
-.fnplus-hero-stats {
+
+.fn-meta .dot {
+  color: var(--rule2);
+  margin: 0 10px;
+}
+
+/* Week sections — feel like chapters */
+.fn-week {
+  margin-top: clamp(40px, 6vw, 64px);
+}
+
+.fn-week-head {
   display: flex;
-  flex-direction: column;
-  gap: var(--space-6);
-  padding: var(--space-8);
-  background: var(--color-surface);
-  border: 1px solid var(--color-border);
-  border-radius: var(--radius-lg);
+  align-items: baseline;
+  gap: 18px;
+  margin-bottom: 28px;
+  padding-bottom: 12px;
+  border-bottom: 1px solid var(--rule);
 }
-.fnplus-stat {
-  display: flex;
-  flex-direction: column;
-  gap: var(--space-1);
-}
-.fnplus-stat-num {
+
+.fn-week-num {
   font-family: var(--font-display);
-  font-size: var(--text-2xl);
-  font-weight: 700;
-  color: var(--color-gold);
-  line-height: 1;
-}
-.fnplus-stat-label {
-  font-family: var(--font-mono);
-  font-size: var(--text-xs);
-  letter-spacing: 0.1em;
-  color: var(--color-text-muted);
-  text-transform: uppercase;
-}
-.fnplus-stat-divider {
-  width: 100%;
-  height: 1px;
-  background: var(--color-divider);
-}
-
-/* Upload Banner */
-.fnplus-upload-banner {
-  background: rgba(201, 168, 76, 0.05);
-  border-top: 1px solid rgba(201,168,76,0.2);
-  border-bottom: 1px solid rgba(201,168,76,0.2);
-  padding: var(--space-4) var(--space-6);
-}
-.fnplus-upload-inner {
-  max-width: var(--content-default);
-  margin: 0 auto;
-  display: flex;
-  align-items: center;
-  gap: var(--space-4);
-  flex-wrap: wrap;
-}
-.fnplus-upload-dot {
-  width: 8px;
-  height: 8px;
-  background: var(--color-gold);
-  border-radius: 50%;
-  flex-shrink: 0;
-  animation: pulse-dot 1.5s ease-in-out infinite;
-}
-.fnplus-upload-text {
-  font-family: var(--font-mono);
-  font-size: var(--text-xs);
-  letter-spacing: 0.1em;
-  color: var(--color-text-muted);
-  text-transform: uppercase;
-}
-.fnplus-upload-text strong {
-  color: var(--color-gold);
-}
-
-/* Filter Bar */
-.fnplus-filter-bar {
-  padding: var(--space-6) var(--space-6) 0;
-  border-bottom: 1px solid var(--color-divider);
-}
-.fnplus-filter-inner {
-  max-width: var(--content-default);
-  margin: 0 auto;
-  display: flex;
-  align-items: center;
-  gap: var(--space-3);
-  flex-wrap: wrap;
-  padding-bottom: var(--space-5);
-}
-.fnplus-filter-label {
-  font-family: var(--font-mono);
-  font-size: var(--text-xs);
-  letter-spacing: 0.1em;
-  color: var(--color-text-muted);
-  text-transform: uppercase;
-  margin-right: var(--space-2);
-}
-.fnplus-filter-btn {
-  font-family: var(--font-mono);
-  font-size: var(--text-xs);
-  letter-spacing: 0.08em;
-  text-transform: uppercase;
-  padding: var(--space-2) var(--space-4);
-  border: 1px solid var(--color-border);
-  border-radius: 2px;
-  background: transparent;
-  color: var(--color-text-muted);
-  cursor: pointer;
-  transition: all var(--transition-interactive);
-}
-.fnplus-filter-btn:hover,
-.fnplus-filter-btn.active {
-  border-color: var(--color-gold);
-  color: var(--color-gold);
-  background: rgba(201,168,76,0.05);
-}
-
-/* Document Library Grid */
-.fnplus-library {
-  padding: clamp(var(--space-10), 5vw, var(--space-16)) var(--space-6);
-}
-.fnplus-library-inner {
-  max-width: var(--content-default);
-  margin: 0 auto;
-}
-.fnplus-week-group {
-  margin-bottom: var(--space-12);
-}
-.fnplus-week-header {
-  display: flex;
-  align-items: center;
-  gap: var(--space-4);
-  padding-bottom: var(--space-4);
-  border-bottom: 1px solid var(--color-divider);
-  margin-bottom: var(--space-6);
-}
-.fnplus-week-label {
-  font-family: var(--font-mono);
-  font-size: var(--text-xs);
-  letter-spacing: 0.15em;
-  text-transform: uppercase;
-  color: var(--color-gold);
-}
-.fnplus-week-date {
-  font-family: var(--font-mono);
-  font-size: var(--text-xs);
-  letter-spacing: 0.1em;
-  color: var(--color-text-muted);
-  text-transform: uppercase;
-}
-.fnplus-week-count {
-  margin-left: auto;
-  font-family: var(--font-mono);
-  font-size: var(--text-xs);
-  letter-spacing: 0.1em;
-  color: var(--color-text-muted);
-  text-transform: uppercase;
-}
-
-/* Document Cards */
-.fnplus-docs-grid {
-  display: grid;
-  grid-template-columns: repeat(3, 1fr);
-  gap: var(--space-4);
-}
-.fnplus-doc {
-  display: block;
-  text-decoration: none;
-  padding: var(--space-6);
-  background: var(--color-surface);
-  border: 1px solid var(--color-border);
-  border-radius: var(--radius-md);
-  transition: all var(--transition-interactive);
-  position: relative;
-  overflow: hidden;
-}
-.fnplus-doc:hover {
-  border-color: var(--color-gold);
-  transform: translateY(-2px);
-}
-.fnplus-doc-type {
-  font-family: var(--font-mono);
-  font-size: 12px;
-  letter-spacing: 0.15em;
-  text-transform: uppercase;
-  color: var(--color-text-muted);
-  margin-bottom: var(--space-3);
-  display: flex;
-  align-items: center;
-  gap: var(--space-2);
-}
-.fnplus-doc-type-icon {
-  width: 14px;
-  height: 14px;
-  opacity: 0.5;
-}
-.fnplus-doc-title {
-  font-family: var(--font-display);
-  font-size: var(--text-base);
   font-weight: 600;
-  color: var(--color-text);
-  line-height: 1.3;
-  margin-bottom: var(--space-3);
+  font-size: 1.5rem;
+  color: var(--text);
+  letter-spacing: -0.01em;
 }
-.fnplus-doc-excerpt {
+
+.fn-week-dates {
+  font-family: var(--font-mono);
+  font-size: 11.5px;
+  letter-spacing: 0.06em;
+  color: var(--faint);
+  text-transform: uppercase;
+}
+
+.fn-week-count {
+  font-family: var(--font-mono);
+  font-size: 11.5px;
+  letter-spacing: 0.06em;
+  color: var(--faint);
+  margin-left: auto;
+  text-transform: uppercase;
+}
+
+/* Entry rows — magazine reading list */
+.fn-entry {
+  display: grid;
+  grid-template-columns: 1fr auto;
+  gap: 24px;
+  align-items: baseline;
+  padding: 22px 0;
+  border-bottom: 1px solid var(--rule);
+  text-decoration: none;
+  color: inherit;
+  transition: background 200ms ease, padding 200ms ease;
+}
+
+.fn-entry:hover {
+  background: linear-gradient(90deg, transparent, rgba(232, 184, 106, 0.04) 30%, rgba(232, 184, 106, 0.04) 70%, transparent);
+  padding-left: 8px;
+  padding-right: 8px;
+}
+
+.fn-entry:last-child { border-bottom: none; }
+
+.fn-entry-tag {
+  display: block;
+  font-family: var(--font-mono);
+  font-size: 10.5px;
+  font-weight: 500;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  color: var(--verified);
+  margin-bottom: 8px;
+  opacity: 0.85;
+}
+
+.fn-entry-title {
+  font-family: var(--font-display);
+  font-weight: 600;
+  font-size: clamp(1.2rem, 2.4vw, 1.55rem);
+  line-height: 1.25;
+  letter-spacing: -0.012em;
+  color: var(--text);
+  margin: 0 0 8px;
+  transition: color 180ms ease;
+}
+
+.fn-entry:hover .fn-entry-title { color: var(--active); }
+
+.fn-entry-dek {
   font-family: var(--font-body);
-  font-size: var(--text-sm);
-  color: var(--color-text-muted);
+  font-size: 15.5px;
   line-height: 1.6;
-  margin-bottom: var(--space-4);
-}
-.fnplus-doc-footer {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-}
-.fnplus-doc-read {
-  font-family: var(--font-mono);
-  font-size: 12px;
-  letter-spacing: 0.1em;
-  text-transform: uppercase;
-  color: var(--color-gold);
-}
-.fnplus-doc-tag {
-  font-family: var(--font-mono);
-  font-size: 12px;
-  letter-spacing: 0.08em;
-  text-transform: uppercase;
-  color: var(--color-text-muted);
-  padding: 2px 6px;
-  border: 1px solid var(--color-border);
-  border-radius: 2px;
+  color: var(--muted);
+  margin: 0;
+  max-width: 60ch;
 }
 
-/* Redacted doc style */
-.fnplus-doc--redacted {
-  opacity: 0.6;
+.fn-entry-read {
+  font-family: var(--font-mono);
+  font-size: 11.5px;
+  letter-spacing: 0.04em;
+  color: var(--faint);
+  white-space: nowrap;
+  text-transform: uppercase;
+  align-self: start;
+  padding-top: 6px;
+  transition: color 180ms ease;
+}
+
+.fn-entry:hover .fn-entry-read { color: var(--active); }
+
+/* Withheld footnote — replaces the redacted card grid */
+.fn-withheld {
+  display: block;
+  padding: 16px 18px;
+  margin-top: 12px;
+  border-left: 2px solid var(--verified);
+  background: rgba(199, 163, 90, 0.04);
+  border-radius: 0 6px 6px 0;
+  font-family: var(--font-body);
+  font-style: italic;
+  font-size: 14px;
+  line-height: 1.65;
+  color: var(--muted);
+}
+
+.fn-withheld strong {
+  font-style: normal;
+  font-weight: 500;
+  color: var(--verified);
+  font-family: var(--font-mono);
+  font-size: 11px;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  display: block;
+  margin-bottom: 4px;
+}
+
+/* Coming-soon entry — dashed left rule, dimmed */
+.fn-entry--soon {
+  opacity: 0.55;
   cursor: default;
   pointer-events: none;
-}
-.fnplus-doc--redacted:hover {
-  border-color: var(--color-border);
-  transform: none;
-}
-.fnplus-redact {
-  display: inline-block;
-  background: var(--color-text-muted);
-  color: transparent;
-  border-radius: 1px;
-  user-select: none;
-}
-.fnplus-redact-block {
-  display: block;
-  background: rgba(255,255,255,0.12);
-  height: 12px;
-  border-radius: 1px;
-  margin-bottom: var(--space-2);
-  width: 100%;
-}
-.fnplus-redact-block:last-child { width: 70%; }
-.fnplus-doc--redacted .fnplus-doc-title {
-  color: transparent;
-  background: rgba(255,255,255,0.15);
-  border-radius: 2px;
-  display: block;
-}
-.fnplus-doc--redacted .fnplus-doc-read {
-  color: var(--color-text-muted);
-}
-.fnplus-redacted-label {
-  font-family: var(--font-mono);
-  font-size: 12px;
-  letter-spacing: 0.2em;
-  text-transform: uppercase;
-  color: var(--color-text-muted);
-  opacity: 0.5;
-  margin-top: var(--space-2);
-  display: block;
+  border-left: 2px dashed var(--rule2);
+  padding-left: 14px;
 }
 
-/* Coming soon doc */
-.fnplus-doc--soon {
-  border-style: dashed;
-  opacity: 0.5;
-  cursor: default;
-  pointer-events: none;
-}
-.fnplus-doc--soon .fnplus-doc-read {
-  color: var(--color-text-muted);
+.fn-entry--soon .fn-entry-read {
+  color: var(--verified);
+  font-style: italic;
+  text-transform: none;
+  letter-spacing: 0.02em;
 }
 
-/* Section dividers */
-.fnplus-section-label {
+/* Footer subscribe section — quieter than the homepage hero */
+.fn-subscribe {
+  margin-top: clamp(64px, 9vw, 96px);
+  padding: 40px 28px;
+  border: 1px solid var(--rule);
+  border-radius: 12px;
+  background: linear-gradient(180deg, var(--panel), var(--bg2));
+  text-align: center;
+}
+
+.fn-subscribe-overline {
   font-family: var(--font-mono);
-  font-size: var(--text-xs);
-  letter-spacing: 0.15em;
+  font-size: 11px;
+  letter-spacing: 0.16em;
   text-transform: uppercase;
-  color: var(--color-text-muted);
-  margin-bottom: var(--space-8);
+  color: var(--verified);
+  margin-bottom: 12px;
+}
+
+.fn-subscribe-title {
+  font-family: var(--font-display);
+  font-weight: 600;
+  font-size: clamp(1.4rem, 3.5vw, 2rem);
+  letter-spacing: -0.015em;
+  color: var(--text);
+  margin: 0 0 10px;
+}
+
+.fn-subscribe-body {
+  font-family: var(--font-body);
+  font-size: 15px;
+  line-height: 1.65;
+  color: var(--muted);
+  max-width: 50ch;
+  margin: 0 auto 22px;
+}
+
+.fn-subscribe-form {
   display: flex;
-  align-items: center;
-  gap: var(--space-3);
+  gap: 8px;
+  max-width: 440px;
+  margin: 0 auto;
 }
-.fnplus-section-label::after {
-  content: '';
+
+.fn-subscribe-form input {
   flex: 1;
-  height: 1px;
-  background: var(--color-divider);
+  padding: 13px 16px;
+  background: var(--bg);
+  border: 1px solid var(--rule2);
+  border-radius: 8px;
+  color: var(--text);
+  font-family: var(--font-body);
+  font-size: 15px;
+  min-height: 46px;
 }
 
-/* Responsive - Mobile Overhaul */
+.fn-subscribe-form input:focus { outline: none; border-color: var(--active); }
 
-/* Tablet (768px - 1024px) */
-@media (max-width: 1024px) {
-  .fnplus-hero-inner {
-    grid-template-columns: 1fr;
-    gap: var(--space-8);
-  }
-
-  .fnplus-docs-grid {
-    grid-template-columns: repeat(2, 1fr);
-    gap: var(--space-3);
-  }
+.fn-subscribe-form button {
+  padding: 13px 22px;
+  background: var(--active);
+  color: #1A1410;
+  border: none;
+  border-radius: 8px;
+  font-family: var(--font-body);
+  font-size: 14px;
+  font-weight: 600;
+  cursor: pointer;
+  white-space: nowrap;
+  transition: background 180ms ease;
 }
 
-/* Mobile (Below 768px) */
-@media (max-width: 768px) {
-  /* Hero Section */
-  .fnplus-hero {
-    padding: var(--space-12) var(--space-4) var(--space-8);
-  }
+.fn-subscribe-form button:hover { background: #F0CB89; }
 
-  .fnplus-hero-inner {
-    grid-template-columns: 1fr;
-    gap: var(--space-6);
-  }
+.fn-subscribe-fine {
+  margin-top: 14px;
+  font-family: var(--font-mono);
+  font-size: 11px;
+  color: var(--faint);
+  letter-spacing: 0.04em;
+}
 
-  .fnplus-hero-title {
-    font-size: clamp(1.8rem, 8vw, 2.4rem);
-    margin-bottom: var(--space-4);
-  }
+/* Mobile */
+@media (max-width: 640px) {
+  .fn-page { padding: 40px 18px 48px; }
 
-  .fnplus-hero-sub {
-    font-size: var(--text-sm);
-    max-width: 100%;
-  }
-
-  .fnplus-hero-stats {
-    padding: var(--space-5);
-    flex-direction: row;
+  .fn-week-head {
     flex-wrap: wrap;
-    gap: var(--space-4);
+    gap: 8px 14px;
   }
+  .fn-week-count { margin-left: 0; width: 100%; }
 
-  .fnplus-stat {
-    flex: 1 1 calc(50% - var(--space-2));
-    min-width: 140px;
-  }
-
-  .fnplus-stat-num {
-    font-size: var(--text-xl);
-  }
-
-  .fnplus-stat-label {
-    font-size: var(--text-xs);
-  }
-
-  /* Filter Bar */
-  .fnplus-filter-bar {
-    padding: var(--space-4) var(--space-4) 0;
-  }
-
-  .fnplus-filter-inner {
-    gap: var(--space-2);
-    padding-bottom: var(--space-4);
-  }
-
-  .fnplus-filter-label {
-    width: 100%;
-    margin-bottom: var(--space-1);
-  }
-
-  .fnplus-filter-btn {
-    font-size: 12px;
-    padding: var(--space-2) var(--space-3);
-    flex: 1 1 auto;
-  }
-
-  /* Library Section */
-  .fnplus-library {
-    padding: var(--space-8) var(--space-4);
-  }
-
-  .fnplus-week-group {
-    margin-bottom: var(--space-8);
-  }
-
-  .fnplus-week-header {
-    flex-wrap: wrap;
-    gap: var(--space-2);
-    padding-bottom: var(--space-3);
-    margin-bottom: var(--space-4);
-  }
-
-  .fnplus-week-count {
-    margin-left: 0;
-    width: 100%;
-    text-align: left;
-  }
-
-  /* Document Grid */
-  .fnplus-docs-grid {
+  .fn-entry {
     grid-template-columns: 1fr;
-    gap: var(--space-3);
+    gap: 8px;
+    padding: 18px 0;
   }
+  .fn-entry-read { padding-top: 4px; }
+  .fn-entry:hover { padding-left: 0; padding-right: 0; }
 
-  .fnplus-doc {
-    padding: var(--space-4);
-  }
-
-  .fnplus-doc-header {
-    margin-bottom: var(--space-3);
-  }
-
-  .fnplus-doc-title {
-    font-size: var(--text-base);
-    margin-bottom: var(--space-2);
-  }
-
-  .fnplus-doc-meta {
-    font-size: 12px;
-  }
-
-  .fnplus-doc-desc {
-    font-size: var(--text-sm);
-    line-height: 1.6;
-  }
-
-  .fnplus-doc-footer {
-    margin-top: var(--space-3);
-    gap: var(--space-2);
-  }
-
-  .fnplus-doc-tag {
-    font-size: 12px;
-    padding: 3px 8px;
-  }
-}
-
-/* Small Phones (Below 480px) */
-@media (max-width: 480px) {
-  .fnplus-hero {
-    padding: var(--space-10) var(--space-3) var(--space-6);
-  }
-
-  .fnplus-hero-title {
-    font-size: 1.6rem;
-    line-height: 1.2;
-  }
-
-  .fnplus-hero-badge {
-    font-size: 12px;
-    margin-bottom: var(--space-3);
-  }
-
-  .fnplus-hero-stats {
-    padding: var(--space-4);
-    gap: var(--space-3);
-  }
-
-  .fnplus-stat {
-    flex: 1 1 100%;
-  }
-
-  .fnplus-stat-divider {
-    display: none;
-  }
-
-  .fnplus-filter-inner {
-    flex-direction: column;
-    align-items: stretch;
-  }
-
-  .fnplus-filter-btn {
-    width: 100%;
-    text-align: center;
-  }
-
-  .fnplus-library {
-    padding: var(--space-6) var(--space-3);
-  }
-
-  .fnplus-week-group {
-    margin-bottom: var(--space-6);
-  }
-
-  .fnplus-docs-grid {
-    gap: var(--space-2);
-  }
-
-  .fnplus-doc {
-    padding: var(--space-3);
-  }
-
-  .fnplus-doc-title {
-    font-size: 15px;
-  }
-
-  .fnplus-doc-desc {
-    font-size: 13px;
-  }
-
-  .fnplus-doc-footer {
-    flex-wrap: wrap;
-  }
-
-  .fnplus-doc-tag {
-    font-size: 8px;
-    padding: 2px 6px;
-  }
-}
-
-/* Touch Improvements */
-@media (hover: none) and (pointer: coarse) {
-  .fnplus-filter-btn {
-    min-height: 44px;
-    padding: var(--space-3) var(--space-4);
-  }
-
-  .fnplus-doc {
-    min-height: 120px;
-  }
-
-  .fnplus-doc:active {
-    transform: scale(0.98);
-    background: rgba(255, 255, 255, 0.02);
-  }
-
-  .fnplus-filter-btn:active {
-    transform: scale(0.95);
-  }
+  .fn-subscribe { padding: 28px 18px; }
+  .fn-subscribe-form { flex-direction: column; gap: 10px; }
+  .fn-subscribe-form button { width: 100%; }
 }
 </style>
-
-```
 </head>
 <body>
   <a href="#main" class="skip-link">Skip to main content</a>
-  <div class="grain" aria-hidden="true"></div>
 
   <div class="mobile-nav" aria-label="Mobile navigation">
     <button class="mobile-nav-close" aria-label="Close menu">
@@ -667,7 +385,7 @@
     </button>
     <a href="../">Home</a>
     <a href="../archive/">Archive</a>
-    <a href="./" class="active">Fieldnotes+</a>
+    <a href="./" class="active">Fieldnotes</a>
     <a href="../builds/">Verified Builds</a>
     <a href="../news/">News Aggregator</a>
     <a href="../videos/">Videos</a>
@@ -698,476 +416,180 @@
           <ul class="nav-links">
             <li><a href="../">Home</a></li>
             <li><a href="../archive/">Archive</a></li>
-            <li><a href="./" class="active">Fieldnotes+</a></li>
+            <li><a href="./" class="active">Fieldnotes</a></li>
             <li><a href="../builds/">Verified Builds</a></li>
             <li><a href="../news/">News Aggregator</a></li>
             <li><a href="../videos/">Videos</a></li>
             <li><a href="../reel-engine/">Reel Engine</a></li>
-          <li><a href="../about/">About</a></li>
+            <li><a href="../about/">About</a></li>
             <li><a href="../#subscribe">Subscribe</a></li>
           </ul>
         </nav>
         <button class="nav-toggle" aria-label="Open menu">
           <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 12h18M3 6h18M3 18h18"/></svg>
         </button>
-        <button data-theme-toggle aria-label="Switch to light mode">
+        <button data-theme-toggle aria-label="Switch theme">
           <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="5"/><path d="M12 1v2M12 21v2M4.22 4.22l1.42 1.42M18.36 18.36l1.42 1.42M1 12h2M21 12h2M4.22 19.78l1.42-1.42M18.36 5.64l1.42-1.42"/></svg>
         </button>
       </div>
     </div>
   </header>
-  <nav class="breadcrumb" aria-label="Breadcrumb">
-    <a href="../">Home</a>
-    <span class="sep">›</span>
-    <span class="current">Fieldnotes+</span>
-  </nav>
-
 
   <main id="main">
+    <article class="fn-page">
 
-    <!-- Hero -->
-    <section class="fnplus-hero">
-      <div class="fnplus-hero-inner">
-        <div class="fnplus-hero-copy">
-          <div class="fnplus-hero-badge">◈ DOCUMENT LIBRARY · LIVE</div>
-          <h1 class="fnplus-hero-title">Fieldnotes<span class="plus">+</span></h1>
-          <p class="fnplus-hero-sub">Every week, everything 1Commerce LLC created gets uploaded here. Strategy documents, build logs, system specs, pitch decks, legal filings, operating plans — with sensitive material redacted. The unredacted version is what we actually shipped.</p>
-        </div>
-        <div class="fnplus-hero-stats">
-          <div class="fnplus-stat">
-            <span class="fnplus-stat-num">17</span>
-            <span class="fnplus-stat-label">Documents Published</span>
+      <header class="fn-masthead">
+        <div class="fn-overline">A working notebook</div>
+        <h1 class="fn-title">Fieldnotes</h1>
+        <p class="fn-lede">Strategy notes, build logs, system specs, and operating plans from a solo founder building 1Commerce LLC in public.</p>
+        <p class="fn-meta">Most Saturdays<span class="dot">·</span>Last entry: April 5, 2026<span class="dot">·</span>Sensitive material withheld &mdash; client names, financials, legal strategy</p>
+      </header>
+
+      <!-- Week 14 -->
+      <section class="fn-week">
+        <header class="fn-week-head">
+          <div class="fn-week-num">Week 14</div>
+          <div class="fn-week-dates">Mar 30 &ndash; Apr 5, 2026</div>
+          <div class="fn-week-count">4 entries</div>
+        </header>
+
+        <a href="./unifyone-mcp-endpoint.html" class="fn-entry">
+          <div>
+            <span class="fn-entry-tag">Build log &middot; Commerce</span>
+            <h2 class="fn-entry-title">UnifyOne: MCP Client + Universal Endpoint</h2>
+            <p class="fn-entry-dek">Store builder, website builder, and an AI execution layer. What the Model Context Protocol enables in a commerce context &mdash; and the universal endpoint architecture coming next.</p>
           </div>
-          <div class="fnplus-stat-divider"></div>
-          <div class="fnplus-stat">
-            <span class="fnplus-stat-num">3</span>
-            <span class="fnplus-stat-label">Weeks of Uploads</span>
+          <div class="fn-entry-read">6 min &rarr;</div>
+        </a>
+
+        <a href="./solo-founder-stack-2026.html" class="fn-entry">
+          <div>
+            <span class="fn-entry-tag">Systems doc</span>
+            <h2 class="fn-entry-title">The Solo Founder Stack, 2026</h2>
+            <p class="fn-entry-dek">GCP, React, Firebase, n8n, MailerLite, Netlify. What every tool does, why it made the cut, and what it costs to run a multi-product operation solo.</p>
           </div>
-          <div class="fnplus-stat-divider"></div>
-          <div class="fnplus-stat">
-            <span class="fnplus-stat-num">6</span>
-            <span class="fnplus-stat-label">Document Types</span>
+          <div class="fn-entry-read">6 min &rarr;</div>
+        </a>
+
+        <a href="./cold-outreach-engine.html" class="fn-entry">
+          <div>
+            <span class="fn-entry-tag">Build log &middot; Revenue</span>
+            <h2 class="fn-entry-title">Cold Outreach Engine: Claude + n8n</h2>
+            <p class="fn-entry-dek">The exact workflow. Prompts, triggers, rate limits, and what the numbers look like after thirty days of running the system live.</p>
           </div>
-          <div class="fnplus-stat-divider"></div>
-          <div class="fnplus-stat">
-            <span class="fnplus-stat-num">█ █ █</span>
-            <span class="fnplus-stat-label">Sections Redacted</span>
+          <div class="fn-entry-read">7 min &rarr;</div>
+        </a>
+
+        <a href="./mvp-in-a-week.html" class="fn-entry">
+          <div>
+            <span class="fn-entry-tag">Build log &middot; Execution</span>
+            <h2 class="fn-entry-title">GigOS MVP: Shipped in 7 Days</h2>
+            <p class="fn-entry-dek">Concept to functional product. Scoping, agent delegation, QA, and what &ldquo;done&rdquo; means at week one of a new product.</p>
           </div>
-        </div>
-      </div>
-    </section>
+          <div class="fn-entry-read">6 min &rarr;</div>
+        </a>
 
-    <!-- Upload Banner -->
-    <div class="fnplus-upload-banner">
-      <div class="fnplus-upload-inner">
-        <div class="fnplus-upload-dot"></div>
-        <span class="fnplus-upload-text">Next upload: <strong>Week 15 · Apr 12, 2026</strong> &nbsp;·&nbsp; Uploads occur every Saturday · Redaction applied before publish &nbsp;·&nbsp; Sensitive commercial data, client information, and legal strategy are redacted per operating protocol</span>
-      </div>
-    </div>
+        <aside class="fn-withheld">
+          <strong>5 entries withheld this week</strong>
+          Competitive analysis, revenue model, a client proposal, a legal memo, and partner outreach &mdash; held back for commercial sensitivity.
+        </aside>
+      </section>
 
-    <!-- Filter Bar -->
-    <div class="fnplus-filter-bar">
-      <div class="fnplus-filter-inner">
-        <span class="fnplus-filter-label">Filter:</span>
-        <button class="fnplus-filter-btn active">All</button>
-        <button class="fnplus-filter-btn">Build Logs</button>
-        <button class="fnplus-filter-btn">Systems</button>
-        <button class="fnplus-filter-btn">Strategy</button>
-        <button class="fnplus-filter-btn">Legal</button>
-        <button class="fnplus-filter-btn">Commerce</button>
-        <button class="fnplus-filter-btn">AI / Tech</button>
-      </div>
-    </div>
+      <!-- Week 13 -->
+      <section class="fn-week">
+        <header class="fn-week-head">
+          <div class="fn-week-num">Week 13</div>
+          <div class="fn-week-dates">Mar 23 &ndash; Mar 29, 2026</div>
+          <div class="fn-week-count">4 entries</div>
+        </header>
 
-    <!-- Document Library -->
-    <section class="fnplus-library">
-      <div class="fnplus-library-inner">
-
-        <!-- ====== WEEK 14 ====== -->
-        <div class="fnplus-week-group">
-          <div class="fnplus-week-header">
-            <span class="fnplus-week-label">◈ Week 14</span>
-            <span class="fnplus-week-date">Mar 30 – Apr 5, 2026</span>
-            <span class="fnplus-week-count">9 Documents</span>
+        <a href="./ai-agents-vs-chatbots.html" class="fn-entry">
+          <div>
+            <span class="fn-entry-tag">Reference doc &middot; AI</span>
+            <h2 class="fn-entry-title">AI Agents vs. Chatbots: What the Difference Actually Means</h2>
+            <p class="fn-entry-dek">One answers questions. The other executes work. A practical breakdown &mdash; which AI to use for what.</p>
           </div>
-          <div class="fnplus-docs-grid">
+          <div class="fn-entry-read">5 min &rarr;</div>
+        </a>
 
-            <a href="./unifyone-mcp-endpoint.html" class="fnplus-doc">
-              <div class="fnplus-doc-type">
-                <svg class="fnplus-doc-type-icon" viewBox="0 0 14 14" fill="none"><rect x="1" y="1" width="12" height="12" rx="1" stroke="currentColor" stroke-width="1"/><path d="M4 5h6M4 7h6M4 9h4" stroke="currentColor" stroke-width="0.8"/></svg>
-                Build Log · Commerce
-              </div>
-              <div class="fnplus-doc-title">UnifyOne: MCP Client + Universal Endpoint</div>
-              <p class="fnplus-doc-excerpt">Store builder, website builder, and an AI execution layer. What the Model Context Protocol enables in a commerce context — and the universal endpoint architecture coming next.</p>
-              <div class="fnplus-doc-footer">
-                <span class="fnplus-doc-read">Read → 6 min</span>
-                <span class="fnplus-doc-tag">AI · UnifyOne</span>
-              </div>
-              <div class="fnplus-doc-share share-strip" style="margin-top:var(--space-3);padding-top:var(--space-3);border-top:1px solid var(--color-divider);opacity:0;transition:opacity 0.2s ease;"></div>
-            </a>
-
-            <a href="./solo-founder-stack-2026.html" class="fnplus-doc">
-              <div class="fnplus-doc-type">
-                <svg class="fnplus-doc-type-icon" viewBox="0 0 14 14" fill="none"><rect x="1" y="1" width="12" height="12" rx="1" stroke="currentColor" stroke-width="1"/><path d="M4 5h6M4 7h6M4 9h4" stroke="currentColor" stroke-width="0.8"/></svg>
-                Systems Doc
-              </div>
-              <div class="fnplus-doc-title">The Solo Founder Stack, 2026</div>
-              <p class="fnplus-doc-excerpt">GCP, React, Firebase, n8n, MailerLite, Netlify. What every tool does, why it made the cut, and what it costs to run a multi-product operation solo.</p>
-              <div class="fnplus-doc-footer">
-                <span class="fnplus-doc-read">Read → 6 min</span>
-                <span class="fnplus-doc-tag">Systems</span>
-              </div>
-              <div class="fnplus-doc-share share-strip" style="margin-top:var(--space-3);padding-top:var(--space-3);border-top:1px solid var(--color-divider);opacity:0;transition:opacity 0.2s ease;"></div>
-            </a>
-
-            <a href="./cold-outreach-engine.html" class="fnplus-doc">
-              <div class="fnplus-doc-type">
-                <svg class="fnplus-doc-type-icon" viewBox="0 0 14 14" fill="none"><rect x="1" y="1" width="12" height="12" rx="1" stroke="currentColor" stroke-width="1"/><path d="M4 5h6M4 7h6M4 9h4" stroke="currentColor" stroke-width="0.8"/></svg>
-                Build Log · Revenue
-              </div>
-              <div class="fnplus-doc-title">Cold Outreach Engine: Claude + n8n</div>
-              <p class="fnplus-doc-excerpt">The exact workflow. Prompts, triggers, rate limits, and what the numbers look like after 30 days of running the system live.</p>
-              <div class="fnplus-doc-footer">
-                <span class="fnplus-doc-read">Read → 7 min</span>
-                <span class="fnplus-doc-tag">Revenue</span>
-              </div>
-              <div class="fnplus-doc-share share-strip" style="margin-top:var(--space-3);padding-top:var(--space-3);border-top:1px solid var(--color-divider);opacity:0;transition:opacity 0.2s ease;"></div>
-            </a>
-
-            <a href="./mvp-in-a-week.html" class="fnplus-doc">
-              <div class="fnplus-doc-type">
-                <svg class="fnplus-doc-type-icon" viewBox="0 0 14 14" fill="none"><rect x="1" y="1" width="12" height="12" rx="1" stroke="currentColor" stroke-width="1"/><path d="M4 5h6M4 7h6M4 9h4" stroke="currentColor" stroke-width="0.8"/></svg>
-                Build Log · Execution
-              </div>
-              <div class="fnplus-doc-title">GigOS MVP: Shipped in 7 Days</div>
-              <p class="fnplus-doc-excerpt">Concept to functional product. Scoping, agent delegation, QA, and what "done" means at week one of a new product.</p>
-              <div class="fnplus-doc-footer">
-                <span class="fnplus-doc-read">Read → 6 min</span>
-                <span class="fnplus-doc-tag">Execution</span>
-              </div>
-              <div class="fnplus-doc-share share-strip" style="margin-top:var(--space-3);padding-top:var(--space-3);border-top:1px solid var(--color-divider);opacity:0;transition:opacity 0.2s ease;"></div>
-            </a>
-
-            <!-- Redacted: competitive analysis doc -->
-            <div class="fnplus-doc fnplus-doc--redacted" style="--card-index:13">
-              <div class="fnplus-doc-type">
-                <svg class="fnplus-doc-type-icon" viewBox="0 0 14 14" fill="none"><rect x="1" y="1" width="12" height="12" rx="1" stroke="currentColor" stroke-width="1"/><path d="M4 5h6M4 7h6M4 9h4" stroke="currentColor" stroke-width="0.8"/></svg>
-                Strategy · Competitive
-              </div>
-              <div class="fnplus-doc-title" style="background:rgba(255,255,255,0.12);color:transparent;border-radius:2px;">████████████████████████████</div>
-              <div style="margin-bottom:var(--space-4)">
-                <div class="fnplus-redact-block"></div>
-                <div class="fnplus-redact-block"></div>
-                <div class="fnplus-redact-block" style="width:60%"></div>
-              </div>
-              <div class="fnplus-doc-footer">
-                <span class="fnplus-doc-read" style="color:var(--color-text-muted)">Redacted</span>
-                <span class="fnplus-doc-tag">Strategy</span>
-              </div>
-              <span class="fnplus-redacted-label">■ CONTENT REDACTED — COMPETITIVE SENSITIVITY</span>
-            </div>
-
-            <!-- Redacted: pricing + revenue model -->
-            <div class="fnplus-doc fnplus-doc--redacted" style="--card-index:17">
-              <div class="fnplus-doc-type">
-                <svg class="fnplus-doc-type-icon" viewBox="0 0 14 14" fill="none"><rect x="1" y="1" width="12" height="12" rx="1" stroke="currentColor" stroke-width="1"/><path d="M4 5h6M4 7h6M4 9h4" stroke="currentColor" stroke-width="0.8"/></svg>
-                Finance · Internal
-              </div>
-              <div class="fnplus-doc-title" style="background:rgba(255,255,255,0.12);color:transparent;border-radius:2px;">████████████████████████████</div>
-              <div style="margin-bottom:var(--space-4)">
-                <div class="fnplus-redact-block"></div>
-                <div class="fnplus-redact-block" style="width:80%"></div>
-                <div class="fnplus-redact-block" style="width:50%"></div>
-              </div>
-              <div class="fnplus-doc-footer">
-                <span class="fnplus-doc-read" style="color:var(--color-text-muted)">Redacted</span>
-                <span class="fnplus-doc-tag">Finance</span>
-              </div>
-              <span class="fnplus-redacted-label">■ CONTENT REDACTED — REVENUE FIGURES</span>
-            </div>
-
-            <!-- Redacted: client proposal -->
-            <div class="fnplus-doc fnplus-doc--redacted" style="--card-index:21">
-              <div class="fnplus-doc-type">
-                <svg class="fnplus-doc-type-icon" viewBox="0 0 14 14" fill="none"><rect x="1" y="1" width="12" height="12" rx="1" stroke="currentColor" stroke-width="1"/><path d="M4 5h6M4 7h6M4 9h4" stroke="currentColor" stroke-width="0.8"/></svg>
-                Client Proposal
-              </div>
-              <div class="fnplus-doc-title" style="background:rgba(255,255,255,0.12);color:transparent;border-radius:2px;">████████████████████████████</div>
-              <div style="margin-bottom:var(--space-4)">
-                <div class="fnplus-redact-block"></div>
-                <div class="fnplus-redact-block" style="width:90%"></div>
-                <div class="fnplus-redact-block" style="width:45%"></div>
-              </div>
-              <div class="fnplus-doc-footer">
-                <span class="fnplus-doc-read" style="color:var(--color-text-muted)">Redacted</span>
-                <span class="fnplus-doc-tag">Client</span>
-              </div>
-              <span class="fnplus-redacted-label">■ CONTENT REDACTED — CLIENT CONFIDENTIALITY</span>
-            </div>
-
-            <!-- Redacted: legal strategy memo -->
-            <div class="fnplus-doc fnplus-doc--redacted" style="--card-index:25">
-              <div class="fnplus-doc-type">
-                <svg class="fnplus-doc-type-icon" viewBox="0 0 14 14" fill="none"><rect x="1" y="1" width="12" height="12" rx="1" stroke="currentColor" stroke-width="1"/><path d="M4 5h6M4 7h6M4 9h4" stroke="currentColor" stroke-width="0.8"/></svg>
-                Legal · Internal
-              </div>
-              <div class="fnplus-doc-title" style="background:rgba(255,255,255,0.12);color:transparent;border-radius:2px;">████████████████████████████</div>
-              <div style="margin-bottom:var(--space-4)">
-                <div class="fnplus-redact-block"></div>
-                <div class="fnplus-redact-block" style="width:75%"></div>
-                <div class="fnplus-redact-block" style="width:55%"></div>
-              </div>
-              <div class="fnplus-doc-footer">
-                <span class="fnplus-doc-read" style="color:var(--color-text-muted)">Redacted</span>
-                <span class="fnplus-doc-tag">Legal</span>
-              </div>
-              <span class="fnplus-redacted-label">■ CONTENT REDACTED — LEGAL STRATEGY</span>
-            </div>
-
-            <!-- Redacted: partner outreach -->
-            <div class="fnplus-doc fnplus-doc--redacted" style="--card-index:29">
-              <div class="fnplus-doc-type">
-                <svg class="fnplus-doc-type-icon" viewBox="0 0 14 14" fill="none"><rect x="1" y="1" width="12" height="12" rx="1" stroke="currentColor" stroke-width="1"/><path d="M4 5h6M4 7h6M4 9h4" stroke="currentColor" stroke-width="0.8"/></svg>
-                Outreach · Partner
-              </div>
-              <div class="fnplus-doc-title" style="background:rgba(255,255,255,0.12);color:transparent;border-radius:2px;">████████████████████████████</div>
-              <div style="margin-bottom:var(--space-4)">
-                <div class="fnplus-redact-block"></div>
-                <div class="fnplus-redact-block" style="width:65%"></div>
-                <div class="fnplus-redact-block" style="width:40%"></div>
-              </div>
-              <div class="fnplus-doc-footer">
-                <span class="fnplus-doc-read" style="color:var(--color-text-muted)">Redacted</span>
-                <span class="fnplus-doc-tag">Outreach</span>
-              </div>
-              <span class="fnplus-redacted-label">■ CONTENT REDACTED — PARTNER NAMES</span>
-            </div>
-
+        <a href="./shopify-vs-custom.html" class="fn-entry">
+          <div>
+            <span class="fn-entry-tag">Analysis &middot; Commerce</span>
+            <h2 class="fn-entry-title">Shopify vs. Custom Storefront: The Real Tradeoffs</h2>
+            <p class="fn-entry-dek">After running both, the honest answer. It depends on fewer things than you think.</p>
           </div>
+          <div class="fn-entry-read">5 min &rarr;</div>
+        </a>
+
+        <a href="./trademark-name-taken.html" class="fn-entry">
+          <div>
+            <span class="fn-entry-tag">Legal &middot; Reference</span>
+            <h2 class="fn-entry-title">When Your Business Name Is Already Taken</h2>
+            <p class="fn-entry-dek">USPTO data, first-use claims, and how to hold ground on a name you have the stronger claim to.</p>
+          </div>
+          <div class="fn-entry-read">6 min &rarr;</div>
+        </a>
+
+        <a href="./build-in-public-system.html" class="fn-entry">
+          <div>
+            <span class="fn-entry-tag">Operating system</span>
+            <h2 class="fn-entry-title">Build in Public as an Operating System</h2>
+            <p class="fn-entry-dek">The Signal is not a marketing tactic. It is a forcing function. How public accountability changes what you ship.</p>
+          </div>
+          <div class="fn-entry-read">4 min &rarr;</div>
+        </a>
+
+        <aside class="fn-withheld">
+          <strong>4 entries withheld this week</strong>
+          An internal roadmap, financial projections, a partner deck, and infrastructure security configuration.
+        </aside>
+      </section>
+
+      <!-- Launch Archive -->
+      <section class="fn-week">
+        <header class="fn-week-head">
+          <div class="fn-week-num">Launch Archive</div>
+          <div class="fn-week-dates">Oct 2025 &ndash; Mar 2026</div>
+          <div class="fn-week-count">1 entry</div>
+        </header>
+
+        <a href="./cathedral-principle.html" class="fn-entry">
+          <div>
+            <span class="fn-entry-tag">Operating framework</span>
+            <h2 class="fn-entry-title">The Cathedral Principle</h2>
+            <p class="fn-entry-dek">Foundation, Revenue, Systems, Scale. The operating framework behind 1Commerce &mdash; and why most founders are building sheds.</p>
+          </div>
+          <div class="fn-entry-read">5 min &rarr;</div>
+        </a>
+
+        <div class="fn-entry fn-entry--soon">
+          <div>
+            <span class="fn-entry-tag">Product spec</span>
+            <h2 class="fn-entry-title">GigOS: Product Requirements Document</h2>
+            <p class="fn-entry-dek">Full PRD for GigOS v1 &mdash; the gig-work command center. Phase one shipped April 2026.</p>
+          </div>
+          <div class="fn-entry-read">Lands week 15</div>
         </div>
 
-        <!-- ====== WEEK 13 ====== -->
-        <div class="fnplus-week-group">
-          <div class="fnplus-week-header">
-            <span class="fnplus-week-label">◈ Week 13</span>
-            <span class="fnplus-week-date">Mar 23 – Mar 29, 2026</span>
-            <span class="fnplus-week-count">8 Documents</span>
-          </div>
-          <div class="fnplus-docs-grid">
+        <aside class="fn-withheld">
+          <strong>3 founding documents withheld</strong>
+          Entity formation papers, the original business plan, and the v1 architecture &mdash; held back for confidentiality.
+        </aside>
+      </section>
 
-            <a href="./ai-agents-vs-chatbots.html" class="fnplus-doc">
-              <div class="fnplus-doc-type">
-                <svg class="fnplus-doc-type-icon" viewBox="0 0 14 14" fill="none"><rect x="1" y="1" width="12" height="12" rx="1" stroke="currentColor" stroke-width="1"/><path d="M4 5h6M4 7h6M4 9h4" stroke="currentColor" stroke-width="0.8"/></svg>
-                Reference Doc · AI
-              </div>
-              <div class="fnplus-doc-title">AI Agents vs. Chatbots: What the Difference Actually Means</div>
-              <p class="fnplus-doc-excerpt">One answers questions. The other executes work. A practical breakdown — which AI to use for what.</p>
-              <div class="fnplus-doc-footer">
-                <span class="fnplus-doc-read">Read → 5 min</span>
-                <span class="fnplus-doc-tag">Technology</span>
-              </div>
-              <div class="fnplus-doc-share share-strip" style="margin-top:var(--space-3);padding-top:var(--space-3);border-top:1px solid var(--color-divider);opacity:0;transition:opacity 0.2s ease;"></div>
-            </a>
-
-            <a href="./shopify-vs-custom.html" class="fnplus-doc">
-              <div class="fnplus-doc-type">
-                <svg class="fnplus-doc-type-icon" viewBox="0 0 14 14" fill="none"><rect x="1" y="1" width="12" height="12" rx="1" stroke="currentColor" stroke-width="1"/><path d="M4 5h6M4 7h6M4 9h4" stroke="currentColor" stroke-width="0.8"/></svg>
-                Analysis · Commerce
-              </div>
-              <div class="fnplus-doc-title">Shopify vs. Custom Storefront: The Real Tradeoffs</div>
-              <p class="fnplus-doc-excerpt">After running both, the honest answer. It depends on fewer things than you think.</p>
-              <div class="fnplus-doc-footer">
-                <span class="fnplus-doc-read">Read → 5 min</span>
-                <span class="fnplus-doc-tag">Commerce</span>
-              </div>
-              <div class="fnplus-doc-share share-strip" style="margin-top:var(--space-3);padding-top:var(--space-3);border-top:1px solid var(--color-divider);opacity:0;transition:opacity 0.2s ease;"></div>
-            </a>
-
-            <a href="./trademark-name-taken.html" class="fnplus-doc">
-              <div class="fnplus-doc-type">
-                <svg class="fnplus-doc-type-icon" viewBox="0 0 14 14" fill="none"><rect x="1" y="1" width="12" height="12" rx="1" stroke="currentColor" stroke-width="1"/><path d="M4 5h6M4 7h6M4 9h4" stroke="currentColor" stroke-width="0.8"/></svg>
-                Legal · Reference
-              </div>
-              <div class="fnplus-doc-title">When Your Business Name Is Already Taken</div>
-              <p class="fnplus-doc-excerpt">USPTO data, first-use claims, and how to hold ground on a name you have the stronger claim to.</p>
-              <div class="fnplus-doc-footer">
-                <span class="fnplus-doc-read">Read → 6 min</span>
-                <span class="fnplus-doc-tag">Legal</span>
-              </div>
-              <div class="fnplus-doc-share share-strip" style="margin-top:var(--space-3);padding-top:var(--space-3);border-top:1px solid var(--color-divider);opacity:0;transition:opacity 0.2s ease;"></div>
-            </a>
-
-            <a href="./build-in-public-system.html" class="fnplus-doc">
-              <div class="fnplus-doc-type">
-                <svg class="fnplus-doc-type-icon" viewBox="0 0 14 14" fill="none"><rect x="1" y="1" width="12" height="12" rx="1" stroke="currentColor" stroke-width="1"/><path d="M4 5h6M4 7h6M4 9h4" stroke="currentColor" stroke-width="0.8"/></svg>
-                Operating System
-              </div>
-              <div class="fnplus-doc-title">Build in Public as an Operating System</div>
-              <p class="fnplus-doc-excerpt">The Signal is not a marketing tactic. It is a forcing function. How public accountability changes what you ship.</p>
-              <div class="fnplus-doc-footer">
-                <span class="fnplus-doc-read">Read → 4 min</span>
-                <span class="fnplus-doc-tag">Accountability</span>
-              </div>
-              <div class="fnplus-doc-share share-strip" style="margin-top:var(--space-3);padding-top:var(--space-3);border-top:1px solid var(--color-divider);opacity:0;transition:opacity 0.2s ease;"></div>
-            </a>
-
-            <!-- 4 redacted from week 13 -->
-            <div class="fnplus-doc fnplus-doc--redacted" style="--card-index:46">
-              <div class="fnplus-doc-type">Build Log · Internal</div>
-              <div class="fnplus-doc-title" style="background:rgba(255,255,255,0.12);color:transparent;border-radius:2px;">████████████████████████████</div>
-              <div style="margin-bottom:var(--space-4)">
-                <div class="fnplus-redact-block"></div>
-                <div class="fnplus-redact-block" style="width:70%"></div>
-              </div>
-              <div class="fnplus-doc-footer">
-                <span class="fnplus-doc-read" style="color:var(--color-text-muted)">Redacted</span>
-                <span class="fnplus-doc-tag">Build</span>
-              </div>
-              <span class="fnplus-redacted-label">■ CONTENT REDACTED — INTERNAL ROADMAP</span>
-            </div>
-
-            <div class="fnplus-doc fnplus-doc--redacted" style="--card-index:50">
-              <div class="fnplus-doc-type">Finance · Projection</div>
-              <div class="fnplus-doc-title" style="background:rgba(255,255,255,0.12);color:transparent;border-radius:2px;">████████████████████████████</div>
-              <div style="margin-bottom:var(--space-4)">
-                <div class="fnplus-redact-block"></div>
-                <div class="fnplus-redact-block" style="width:60%"></div>
-              </div>
-              <div class="fnplus-doc-footer">
-                <span class="fnplus-doc-read" style="color:var(--color-text-muted)">Redacted</span>
-                <span class="fnplus-doc-tag">Finance</span>
-              </div>
-              <span class="fnplus-redacted-label">■ CONTENT REDACTED — FINANCIAL PROJECTIONS</span>
-            </div>
-
-            <div class="fnplus-doc fnplus-doc--redacted" style="--card-index:54">
-              <div class="fnplus-doc-type">Partner Deck</div>
-              <div class="fnplus-doc-title" style="background:rgba(255,255,255,0.12);color:transparent;border-radius:2px;">████████████████████████████</div>
-              <div style="margin-bottom:var(--space-4)">
-                <div class="fnplus-redact-block"></div>
-                <div class="fnplus-redact-block" style="width:55%"></div>
-              </div>
-              <div class="fnplus-doc-footer">
-                <span class="fnplus-doc-read" style="color:var(--color-text-muted)">Redacted</span>
-                <span class="fnplus-doc-tag">Partners</span>
-              </div>
-              <span class="fnplus-redacted-label">■ CONTENT REDACTED — PARTNER DETAILS</span>
-            </div>
-
-            <div class="fnplus-doc fnplus-doc--redacted" style="--card-index:58">
-              <div class="fnplus-doc-type">Security · Config</div>
-              <div class="fnplus-doc-title" style="background:rgba(255,255,255,0.12);color:transparent;border-radius:2px;">████████████████████████████</div>
-              <div style="margin-bottom:var(--space-4)">
-                <div class="fnplus-redact-block"></div>
-                <div class="fnplus-redact-block" style="width:75%"></div>
-              </div>
-              <div class="fnplus-doc-footer">
-                <span class="fnplus-doc-read" style="color:var(--color-text-muted)">Redacted</span>
-                <span class="fnplus-doc-tag">Security</span>
-              </div>
-              <span class="fnplus-redacted-label">■ CONTENT REDACTED — INFRASTRUCTURE SECURITY</span>
-            </div>
-
-          </div>
-        </div>
-
-        <!-- ====== LAUNCH ARCHIVE (earlier weeks) ====== -->
-        <div class="fnplus-week-group">
-          <div class="fnplus-week-header">
-            <span class="fnplus-week-label">◈ Launch Archive</span>
-            <span class="fnplus-week-date">Oct 2025 – Mar 2026</span>
-            <span class="fnplus-week-count">5 Documents</span>
-          </div>
-          <div class="fnplus-docs-grid">
-
-            <a href="./cathedral-principle.html" class="fnplus-doc">
-              <div class="fnplus-doc-type">
-                <svg class="fnplus-doc-type-icon" viewBox="0 0 14 14" fill="none"><rect x="1" y="1" width="12" height="12" rx="1" stroke="currentColor" stroke-width="1"/><path d="M4 5h6M4 7h6M4 9h4" stroke="currentColor" stroke-width="0.8"/></svg>
-                Operating Framework
-              </div>
-              <div class="fnplus-doc-title">The Cathedral Principle</div>
-              <p class="fnplus-doc-excerpt">Foundation, Revenue, Systems, Scale. The operating framework behind 1Commerce — and why most founders are building sheds.</p>
-              <div class="fnplus-doc-footer">
-                <span class="fnplus-doc-read">Read → 5 min</span>
-                <span class="fnplus-doc-tag">Philosophy</span>
-              </div>
-              <div class="fnplus-doc-share share-strip" style="margin-top:var(--space-3);padding-top:var(--space-3);border-top:1px solid var(--color-divider);opacity:0;transition:opacity 0.2s ease;"></div>
-            </a>
-
-            <!-- 4 redacted founding docs -->
-            <div class="fnplus-doc fnplus-doc--redacted" style="--card-index:66">
-              <div class="fnplus-doc-type">Entity Formation</div>
-              <div class="fnplus-doc-title" style="background:rgba(255,255,255,0.12);color:transparent;border-radius:2px;">████████████████████████████</div>
-              <div style="margin-bottom:var(--space-4)">
-                <div class="fnplus-redact-block"></div>
-                <div class="fnplus-redact-block" style="width:85%"></div>
-                <div class="fnplus-redact-block" style="width:50%"></div>
-              </div>
-              <div class="fnplus-doc-footer">
-                <span class="fnplus-doc-read" style="color:var(--color-text-muted)">Redacted</span>
-                <span class="fnplus-doc-tag">Legal</span>
-              </div>
-              <span class="fnplus-redacted-label">■ CONTENT REDACTED — FORMATION DOCUMENTS</span>
-            </div>
-
-            <div class="fnplus-doc fnplus-doc--redacted" style="--card-index:70">
-              <div class="fnplus-doc-type">Business Plan · v1</div>
-              <div class="fnplus-doc-title" style="background:rgba(255,255,255,0.12);color:transparent;border-radius:2px;">████████████████████████████</div>
-              <div style="margin-bottom:var(--space-4)">
-                <div class="fnplus-redact-block"></div>
-                <div class="fnplus-redact-block" style="width:70%"></div>
-                <div class="fnplus-redact-block" style="width:40%"></div>
-              </div>
-              <div class="fnplus-doc-footer">
-                <span class="fnplus-doc-read" style="color:var(--color-text-muted)">Redacted</span>
-                <span class="fnplus-doc-tag">Strategy</span>
-              </div>
-              <span class="fnplus-redacted-label">■ CONTENT REDACTED — BUSINESS INTELLIGENCE</span>
-            </div>
-
-            <div class="fnplus-doc fnplus-doc--redacted" style="--card-index:74">
-              <div class="fnplus-doc-type">Architecture · v1</div>
-              <div class="fnplus-doc-title" style="background:rgba(255,255,255,0.12);color:transparent;border-radius:2px;">████████████████████████████</div>
-              <div style="margin-bottom:var(--space-4)">
-                <div class="fnplus-redact-block"></div>
-                <div class="fnplus-redact-block" style="width:60%"></div>
-              </div>
-              <div class="fnplus-doc-footer">
-                <span class="fnplus-doc-read" style="color:var(--color-text-muted)">Redacted</span>
-                <span class="fnplus-doc-tag">Systems</span>
-              </div>
-              <span class="fnplus-redacted-label">■ CONTENT REDACTED — PROPRIETARY ARCHITECTURE</span>
-            </div>
-
-            <div class="fnplus-doc fnplus-doc--soon" style="--card-index:78">
-              <div class="fnplus-doc-type">Product Spec</div>
-              <div class="fnplus-doc-title">GigOS: Product Requirements Document</div>
-              <p class="fnplus-doc-excerpt">Full PRD for GigOS v1. Gig work command center — Phase 1 shipped April 2026.</p>
-              <div class="fnplus-doc-footer">
-                <span class="fnplus-doc-read">Uploading Week 15</span>
-                <span class="fnplus-doc-tag">Product</span>
-              </div>
-            </div>
-
-          </div>
-        </div>
-
-      </div>
-    </section>
-
-    <!-- Subscribe CTA -->
-    <section class="subscribe-section" id="subscribe">
-      <div class="subscribe-inner">
-        <div class="subscribe-overline"><span class="mono-label">◈ JOIN THE CONGREGATION ◈</span></div>
-        <h2 class="subscribe-title">Get the Weekly Transmission</h2>
-        <p class="subscribe-body">Fieldnotes+ is free. The weekly newsletter goes deeper. One email per week from a solo founder building in public.</p>
-        <form class="subscribe-form" action="https://assets.mailerlite.com/jsonp/887036/forms/131950373498498498/subscribe" method="POST">
+      <!-- Subscribe -->
+      <section class="fn-subscribe" id="subscribe">
+        <div class="fn-subscribe-overline">Get the weekly transmission</div>
+        <h2 class="fn-subscribe-title">One email a week. From the desk.</h2>
+        <p class="fn-subscribe-body">Fieldnotes is free to read. The weekly newsletter goes deeper &mdash; what shipped, what didn&rsquo;t, and what I&rsquo;m thinking about next.</p>
+        <form class="fn-subscribe-form" action="https://assets.mailerlite.com/jsonp/887036/forms/131950373498498498/subscribe" method="POST">
           <input type="email" name="fields[email]" placeholder="your@email.com" required aria-label="Email address">
-          <button type="submit">SUBSCRIBE</button>
+          <button type="submit">Subscribe</button>
         </form>
-        <p class="subscribe-fine">Free. Weekly. No spam. Just signal.</p>
-      </div>
-    </section>
+        <p class="fn-subscribe-fine">Free. Weekly. No spam. Unsubscribe anytime.</p>
+      </section>
+
+    </article>
   </main>
 
   <footer class="site-footer">
@@ -1185,7 +607,7 @@
         <ul>
           <li><a href="../">Home</a></li>
           <li><a href="../archive/">Archive</a></li>
-          <li><a href="./">Fieldnotes+</a></li>
+          <li><a href="./">Fieldnotes</a></li>
           <li><a href="../builds/">Verified Builds</a></li>
           <li><a href="../news/">News Aggregator</a></li>
           <li><a href="../videos/">Videos</a></li>
@@ -1217,7 +639,7 @@
     </div>
     <div class="footer-bottom">
       <div class="footer-bottom-left">
-        <span class="mono-label">© 2026 1COMMERCE LLC · CANBY, OREGON</span>
+        <span class="mono-label">&copy; 2026 1COMMERCE LLC &middot; CANBY, OREGON</span>
         <span class="mono-label">Systems. Proof. Precision.</span>
         <span class="mono-label" style="opacity: 0.35; display: block; margin-top: 8px;">This site uses one cookie (theme preference). No tracking. No analytics.</span>
       </div>
@@ -1284,7 +706,3 @@
   <script src="../app.js" defer></script>
 </body>
 </html>
-
-
-
-
