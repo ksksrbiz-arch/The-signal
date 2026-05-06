@@ -7,7 +7,7 @@
   "sections": [
     {
       "heading": "The operating signal",
-      "body": "Today&apos;s focus is product validation systems: the practical work of turning attention into a durable system. The goal is not more noise. The goal is a clearer loop between what shipped, what the market noticed, and what deserves the next hour of execution."
+      "body": "Today's focus is product validation systems: the practical work of turning attention into a durable system. The goal is not more noise. The goal is a clearer loop between what shipped, what the market noticed, and what deserves the next hour of execution."
     },
     {
       "heading": "What to inspect",
@@ -21,6 +21,6 @@
   "prompts": [
     "What changed in product validation systems this week that an operator can act on?",
     "Which page on The Signal deserves a stronger title, description, or internal link?",
-    "What shipped proof can become tomorrow&apos;s fieldnote, build log, or short video?"
+    "What shipped proof can become tomorrow's fieldnote, build log, or short video?"
   ]
 }

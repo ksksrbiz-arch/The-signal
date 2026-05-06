@@ -1,4 +1,5 @@
 import { mkdir, readdir, readFile, stat, writeFile } from 'node:fs/promises';
+import { execFileSync } from 'node:child_process';
 import path from 'node:path';
 import { fileURLToPath } from 'node:url';
 
@@ -63,6 +64,23 @@ function changefreqFor(url) {
   return 'monthly';
 }
 
+async function lastModifiedDate(file) {
+  const relative = path.relative(ROOT, file);
+  try {
+    const date = execFileSync('git', ['log', '-1', '--format=%cs', '--', relative], {
+      cwd: ROOT,
+      encoding: 'utf8',
+      stdio: ['ignore', 'pipe', 'ignore'],
+    }).trim();
+    if (/^\d{4}-\d{2}-\d{2}$/.test(date)) return date;
+  } catch {
+    // Fall back to filesystem time when git history is unavailable.
+  }
+
+  const stats = await stat(file);
+  return stats.mtime.toISOString().slice(0, 10);
+}
+
 async function main() {
   await mkdir(DATA_DIR, { recursive: true });
   const files = (await walk(ROOT)).sort();
@@ -74,7 +92,6 @@ async function main() {
     const url = urlFor(file);
     const meta = metadata(html);
     const relative = path.relative(ROOT, file).replaceAll(path.sep, '/');
-    const stats = await stat(file);
 
     if (!meta.title) issues.push({ file: relative, issue: 'Missing <title>' });
     if (!meta.description) issues.push({ file: relative, issue: 'Missing meta description' });
@@ -86,7 +103,7 @@ async function main() {
     pages.push({
       file: relative,
       url,
-      lastmod: stats.mtime.toISOString().slice(0, 10),
+      lastmod: await lastModifiedDate(file),
       changefreq: changefreqFor(url),
       priority: priorityFor(url),
       title: meta.title,

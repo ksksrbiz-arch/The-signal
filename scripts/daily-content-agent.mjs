@@ -62,6 +62,10 @@ function slugify(value) {
     .replace(/^-|-$/g, '');
 }
 
+function safeJsonLd(value) {
+  return JSON.stringify(value, null, 2).replaceAll('<', '\\u003c');
+}
+
 function pickTopic(date) {
   const dayNumber = Math.floor(Date.parse(`${date}T00:00:00Z`) / 86_400_000);
   return topics[dayNumber % topics.length];
@@ -77,7 +81,7 @@ function fallbackBrief(date) {
     sections: [
       {
         heading: 'The operating signal',
-        body: `Today&apos;s focus is ${topic.keyword}: the practical work of turning attention into a durable system. The goal is not more noise. The goal is a clearer loop between what shipped, what the market noticed, and what deserves the next hour of execution.`,
+        body: `Today's focus is ${topic.keyword}: the practical work of turning attention into a durable system. The goal is not more noise. The goal is a clearer loop between what shipped, what the market noticed, and what deserves the next hour of execution.`,
       },
       {
         heading: 'What to inspect',
@@ -91,7 +95,7 @@ function fallbackBrief(date) {
     prompts: [
       `What changed in ${topic.keyword} this week that an operator can act on?`,
       'Which page on The Signal deserves a stronger title, description, or internal link?',
-      'What shipped proof can become tomorrow&apos;s fieldnote, build log, or short video?',
+      "What shipped proof can become tomorrow's fieldnote, build log, or short video?",
     ],
   };
 }
@@ -137,6 +141,18 @@ function articleHtml(brief, date) {
   const safeDescription = escapeHtml(brief.description);
   const safeKeyword = escapeHtml(brief.keyword);
   const safeThesis = escapeHtml(brief.thesis);
+  const schema = safeJsonLd({
+    '@context': 'https://schema.org',
+    '@type': 'Article',
+    headline: brief.title,
+    description: brief.description,
+    author: { '@type': 'Organization', name: '1Commerce LLC' },
+    publisher: { '@type': 'Organization', name: '1Commerce LLC' },
+    mainEntityOfPage: url,
+    image: `${SITE_URL}/og-image.png`,
+    datePublished: date,
+    dateModified: date,
+  });
 
   return `<!DOCTYPE html>
 <html lang="en" data-theme="dark">
@@ -164,18 +180,7 @@ function articleHtml(brief, date) {
 <link rel="stylesheet" href="../base.css?v=20260502a">
 <link rel="stylesheet" href="../style.css?v=20260502a">
 <script type="application/ld+json">
-{
-  "@context": "https://schema.org",
-  "@type": "Article",
-  "headline": "${safeTitle}",
-  "description": "${safeDescription}",
-  "author": {"@type": "Organization", "name": "1Commerce LLC"},
-  "publisher": {"@type": "Organization", "name": "1Commerce LLC"},
-  "mainEntityOfPage": "${url}",
-  "image": "${SITE_URL}/og-image.png",
-  "datePublished": "${date}",
-  "dateModified": "${date}"
-}
+${schema}
 </script>
 <style>
 .daily-wrap{max-width:840px;margin:0 auto;padding:clamp(56px,8vw,96px) 24px}
