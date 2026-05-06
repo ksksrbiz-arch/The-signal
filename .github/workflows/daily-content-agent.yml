@@ -1,0 +1,54 @@
+name: Daily content agent
+
+on:
+  schedule:
+    - cron: '15 11 * * *'
+  workflow_dispatch:
+    inputs:
+      signal_date:
+        description: 'Optional YYYY-MM-DD date override'
+        required: false
+
+permissions:
+  contents: write
+
+concurrency:
+  group: daily-content-agent
+  cancel-in-progress: false
+
+jobs:
+  generate:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Check out repository
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - name: Set up Node
+        uses: actions/setup-node@v4
+        with:
+          node-version: 20
+          cache: npm
+
+      - name: Install dependencies
+        run: npm ci
+
+      - name: Generate daily content and refresh SEO
+        env:
+          OPENAI_API_KEY: ${{ secrets.OPENAI_API_KEY }}
+          OPENAI_MODEL: ${{ vars.OPENAI_MODEL != '' && vars.OPENAI_MODEL || 'gpt-4o-mini' }}
+          SIGNAL_DATE: ${{ inputs.signal_date }}
+        run: npm run automation:daily
+
+      - name: Commit generated updates
+        run: |
+          if [ -z "$(git status --porcelain)" ]; then
+            echo "No generated changes to commit."
+            exit 0
+          fi
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add daily data sitemap.xml
+          git commit -m "Update daily Signal content"
+          git push

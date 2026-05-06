@@ -1,0 +1,224 @@
+{
+  "generatedAt": "2026-05-06",
+  "pagesScanned": 24,
+  "issuesFound": 0,
+  "issues": [],
+  "pages": [
+    {
+      "file": "about/index.html",
+      "url": "https://1commercesolutions.com/about/",
+      "lastmod": "2026-05-06",
+      "changefreq": "monthly",
+      "priority": "0.6",
+      "title": "About — THE SIGNAL | 1Commerce LLC",
+      "description": "About 1Commerce LLC and The Signal. Solo founder building commerce infrastructure, consulting, and operating systems from Canby, Oregon. The Cathedral Principle: Foundation → Revenue → Systems → Scale."
+    },
+    {
+      "file": "archive/013.html",
+      "url": "https://1commercesolutions.com/archive/013.html",
+      "lastmod": "2026-05-06",
+      "changefreq": "monthly",
+      "priority": "0.7",
+      "title": "THE SIGNAL — Weekly Transmission №013 | 1Commerce LLC",
+      "description": "Build the cathedral. Light it from within. Week 13, March 20–26, 2026. A personal transmission from 1Commerce LLC, Canby, Oregon."
+    },
+    {
+      "file": "archive/014.html",
+      "url": "https://1commercesolutions.com/archive/014.html",
+      "lastmod": "2026-05-06",
+      "changefreq": "monthly",
+      "priority": "0.7",
+      "title": "THE SIGNAL — Weekly Transmission №014 | 1Commerce LLC",
+      "description": "The Signal Expands. Week 14, March 27 – April 2, 2026. The platform becomes the story. A personal transmission from 1Commerce LLC, Canby, Oregon."
+    },
+    {
+      "file": "archive/015.html",
+      "url": "https://1commercesolutions.com/archive/015.html",
+      "lastmod": "2026-05-06",
+      "changefreq": "monthly",
+      "priority": "0.7",
+      "title": "THE SIGNAL — Weekly Transmission №015 | 1Commerce LLC",
+      "description": "The Ecosystem Era. One intelligence layer to rule the stack. UnifyOne, UnifyAI, and the sovereign brand play — Week 15, April 6–12, 2026."
+    },
+    {
+      "file": "archive/016.html",
+      "url": "https://1commercesolutions.com/archive/016.html",
+      "lastmod": "2026-05-06",
+      "changefreq": "monthly",
+      "priority": "0.7",
+      "title": "THE SIGNAL — Weekly Transmission №016 | 1Commerce LLC",
+      "description": "Steam to Silicon: The Architecture of the 2025 AI Economy. The Barbell Economy, solo-scale empire, and the blueprint for 2026. Week 16, April 13–19, 2026."
+    },
+    {
+      "file": "archive/017.html",
+      "url": "https://1commercesolutions.com/archive/017.html",
+      "lastmod": "2026-05-06",
+      "changefreq": "monthly",
+      "priority": "0.7",
+      "title": "THE SIGNAL — Weekly Transmission №017 | 1Commerce LLC",
+      "description": "The Build Log: What Shipped This Week. Verified deployments, live systems, and the architecture behind a week of relentless building. Week 17, April 20–26, 2026."
+    },
+    {
+      "file": "archive/index.html",
+      "url": "https://1commercesolutions.com/archive/",
+      "lastmod": "2026-05-06",
+      "changefreq": "weekly",
+      "priority": "0.9",
+      "title": "Archive — THE SIGNAL | 1Commerce LLC",
+      "description": "Complete archive of The Signal transmissions. Weekly dispatches from a solo founder building in public at 1Commerce LLC, Canby, Oregon."
+    },
+    {
+      "file": "builds/index.html",
+      "url": "https://1commercesolutions.com/builds/",
+      "lastmod": "2026-05-06",
+      "changefreq": "monthly",
+      "priority": "0.6",
+      "title": "Verified Builds — THE SIGNAL | Infrastructure Index",
+      "description": "Verified Builds: An index of live deployments and major systems from ksksrbiz-arch. Commerce infrastructure engineered like a cathedral."
+    },
+    {
+      "file": "daily/2026-05-06.html",
+      "url": "https://1commercesolutions.com/daily/2026-05-06.html",
+      "lastmod": "2026-05-06",
+      "changefreq": "daily",
+      "priority": "0.7",
+      "title": "Daily Signal: validated product experiments | THE SIGNAL",
+      "description": "How to move from idea to shipped proof while keeping scope under control. A practical daily brief for operators building commerce systems with proof, restraint, and compounding execution."
+    },
+    {
+      "file": "daily/index.html",
+      "url": "https://1commercesolutions.com/daily/",
+      "lastmod": "2026-05-06",
+      "changefreq": "daily",
+      "priority": "0.9",
+      "title": "Daily Signal — THE SIGNAL",
+      "description": "Daily SEO and content operating briefs generated for THE SIGNAL by 1Commerce LLC."
+    },
+    {
+      "file": "fieldnotes/ai-agents-vs-chatbots.html",
+      "url": "https://1commercesolutions.com/fieldnotes/ai-agents-vs-chatbots.html",
+      "lastmod": "2026-05-06",
+      "changefreq": "monthly",
+      "priority": "0.7",
+      "title": "AI Agents vs. Chatbots: What the Difference Actually Means for Builders — Fieldnotes | THE SIGNAL",
+      "description": "One answers questions. The other executes work. The distinction between chatbots and AI agents matters more than most founders realize — especially when you"
+    },
+    {
+      "file": "fieldnotes/build-in-public-system.html",
+      "url": "https://1commercesolutions.com/fieldnotes/build-in-public-system.html",
+      "lastmod": "2026-05-06",
+      "changefreq": "monthly",
+      "priority": "0.7",
+      "title": "Build in Public as an Operating System, Not a Marketing Strategy — Fieldnotes | THE SIGNAL",
+      "description": "The Signal is not a growth hack. It is a forcing function — and that distinction changes everything about how it works and why it survives past Week 7."
+    },
+    {
+      "file": "fieldnotes/cathedral-principle.html",
+      "url": "https://1commercesolutions.com/fieldnotes/cathedral-principle.html",
+      "lastmod": "2026-05-06",
+      "changefreq": "monthly",
+      "priority": "0.7",
+      "title": "The Cathedral Principle — Fieldnotes | THE SIGNAL",
+      "description": "The operating framework that decides what gets built, in what order, and why. How 1Commerce LLC thinks about time horizon, infrastructure, and phase discipline."
+    },
+    {
+      "file": "fieldnotes/cold-outreach-engine.html",
+      "url": "https://1commercesolutions.com/fieldnotes/cold-outreach-engine.html",
+      "lastmod": "2026-05-06",
+      "changefreq": "monthly",
+      "priority": "0.7",
+      "title": "How to Build a Cold Outreach Engine with Claude + n8n — Fieldnotes | THE SIGNAL",
+      "description": "The actual system — not the concept. Prompts, triggers, rate limits, and 30-day numbers from the 1Commerce cold outreach engine built on Claude API and n8n."
+    },
+    {
+      "file": "fieldnotes/index.html",
+      "url": "https://1commercesolutions.com/fieldnotes/",
+      "lastmod": "2026-05-06",
+      "changefreq": "weekly",
+      "priority": "0.9",
+      "title": "Fieldnotes — THE SIGNAL | A working notebook from 1Commerce LLC",
+      "description": "A working notebook from a solo founder building 1Commerce LLC in public. Strategy notes, build logs, system specs, and operating plans — published most Saturdays, sensitive material redacted."
+    },
+    {
+      "file": "fieldnotes/mvp-in-a-week.html",
+      "url": "https://1commercesolutions.com/fieldnotes/mvp-in-a-week.html",
+      "lastmod": "2026-05-06",
+      "changefreq": "monthly",
+      "priority": "0.7",
+      "title": "How to Ship an MVP in a Week Using AI Agents — Fieldnotes | THE SIGNAL",
+      "description": "GigOS went from concept to functional deployed product in under seven days. Here is the actual process — day by day, decision by decision, no mythology."
+    },
+    {
+      "file": "fieldnotes/shopify-vs-custom.html",
+      "url": "https://1commercesolutions.com/fieldnotes/shopify-vs-custom.html",
+      "lastmod": "2026-05-06",
+      "changefreq": "monthly",
+      "priority": "0.7",
+      "title": "Shopify vs. Custom Storefront: The Real Tradeoffs for a Solo Operator — Fieldnotes | THE SIGNAL",
+      "description": "After running both simultaneously, the honest answer is simpler than most comparisons admit — and it depends entirely on which phase of the business you"
+    },
+    {
+      "file": "fieldnotes/solo-founder-stack-2026.html",
+      "url": "https://1commercesolutions.com/fieldnotes/solo-founder-stack-2026.html",
+      "lastmod": "2026-05-06",
+      "changefreq": "monthly",
+      "priority": "0.7",
+      "title": "The Solo Founder Stack, 2026 — Fieldnotes | THE SIGNAL",
+      "description": "Every tool in the 1Commerce operating stack, what it does, what it costs, and what got cut. A real accounting from a solo founder six months in."
+    },
+    {
+      "file": "fieldnotes/trademark-name-taken.html",
+      "url": "https://1commercesolutions.com/fieldnotes/trademark-name-taken.html",
+      "lastmod": "2026-05-06",
+      "changefreq": "monthly",
+      "priority": "0.7",
+      "title": "When Your Business Name Is Already Taken — Fieldnotes | THE SIGNAL",
+      "description": "What to actually do when someone else filed first — and how to hold ground on a name you have the stronger claim to. A real-time account from navigating competing trademark claims on &quot;1Commerce.&quot;"
+    },
+    {
+      "file": "fieldnotes/unifyone-mcp-endpoint.html",
+      "url": "https://1commercesolutions.com/fieldnotes/unifyone-mcp-endpoint.html",
+      "lastmod": "2026-05-06",
+      "changefreq": "monthly",
+      "priority": "0.7",
+      "title": "UnifyOne's MCP Client and Universal Endpoint — Fieldnotes | THE SIGNAL",
+      "description": "What the Model Context Protocol actually means for commerce, how UnifyOne"
+    },
+    {
+      "file": "index.html",
+      "url": "https://1commercesolutions.com/",
+      "lastmod": "2026-05-06",
+      "changefreq": "weekly",
+      "priority": "1.0",
+      "title": "THE SIGNAL — Commerce Systems That Ship | 1Commerce LLC",
+      "description": "Weekly dispatches from the front lines of 1Commerce LLC. Proof-first infrastructure, 6 verified builds in production, zero placeholders. Get The Signal."
+    },
+    {
+      "file": "news/index.html",
+      "url": "https://1commercesolutions.com/news/",
+      "lastmod": "2026-05-06",
+      "changefreq": "daily",
+      "priority": "0.9",
+      "title": "News Aggregator — THE SIGNAL",
+      "description": "Real-time news from TechCrunch, GitHub, HN, Product Hunt, The Verge, AWS, Ars Technica, Wired. Operator-curated tech signals via RSS2JSON."
+    },
+    {
+      "file": "reel-engine/index.html",
+      "url": "https://1commercesolutions.com/reel-engine/",
+      "lastmod": "2026-05-06",
+      "changefreq": "monthly",
+      "priority": "0.6",
+      "title": "Noir Reel Engine — THE SIGNAL | Reproducible Cinematic Reel System",
+      "description": "A reproducible engine for producing daily noir-aesthetic talking-head reels: variable menu, Stoic monologue formula, Veo 3.1 video rendering, Grok image stills."
+    },
+    {
+      "file": "videos/index.html",
+      "url": "https://1commercesolutions.com/videos/",
+      "lastmod": "2026-05-06",
+      "changefreq": "monthly",
+      "priority": "0.6",
+      "title": "Video Library — THE SIGNAL | 1Commerce LLC",
+      "description": "Video transmissions from 1Commerce LLC. Founder walkthroughs, system architecture deep-dives, and building-in-public dispatches from the cathedral."
+    }
+  ]
+}

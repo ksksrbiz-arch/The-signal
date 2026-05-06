@@ -12,7 +12,10 @@
   "license": "UNLICENSED",
   "scripts": {
     "dev": "echo 'Static site — open index.html directly'",
-    "build": "echo 'No build step — static HTML/CSS/JS'"
+    "build": "echo 'No build step — static HTML/CSS/JS'",
+    "content:agent": "node scripts/daily-content-agent.mjs",
+    "seo:agent": "node scripts/seo-agent.mjs",
+    "automation:daily": "npm run content:agent && npm run seo:agent"
   },
   "dependencies": {
     "@sendgrid/mail": "^8.1.3"
