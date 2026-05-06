@@ -489,8 +489,6 @@ async function main() {
     console.warn(`AI content unavailable or invalid; using deterministic brief. ${diagnosticMessage(error)}`);
   }
 
-  brief = normalizeBrief(brief, fallback);
-
   const outputPath = path.join(DAILY_DIR, `${TODAY}.html`);
   await writeFile(outputPath, articleHtml(brief, TODAY));
   await writeIndex();

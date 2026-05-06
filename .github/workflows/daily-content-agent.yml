@@ -37,7 +37,7 @@ jobs:
       - name: Generate daily content and refresh SEO
         env:
           OPENAI_API_KEY: ${{ secrets.OPENAI_API_KEY }}
-          OPENAI_MODEL: ${{ vars.OPENAI_MODEL || 'gpt-4o-mini' }}
+          OPENAI_MODEL: ${{ vars.OPENAI_MODEL != '' && vars.OPENAI_MODEL || 'gpt-4o-mini' }}
           SIGNAL_DATE: ${{ inputs.signal_date }}
         run: npm run automation:daily
 
