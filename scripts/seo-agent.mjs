@@ -131,7 +131,7 @@ ${pages
     path.join(DATA_DIR, 'seo-report.json'),
     `${JSON.stringify(
       {
-        generatedAt: new Date().toISOString(),
+        generatedAt: process.env.SIGNAL_DATE || new Date().toISOString().slice(0, 10),
         pagesScanned: pages.length,
         issuesFound: issues.length,
         issues,
