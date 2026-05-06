@@ -7,6 +7,15 @@ const SITE_URL = 'https://1commercesolutions.com';
 const DAILY_DIR = path.join(ROOT, 'daily');
 const DATA_DIR = path.join(ROOT, 'data');
 const TODAY = process.env.SIGNAL_DATE || new Date().toISOString().slice(0, 10);
+const AI_TEMPERATURE = 0.65;
+const READING_WORDS_PER_MINUTE = 220;
+const MIN_TITLE_LENGTH = 18;
+const MIN_DESCRIPTION_LENGTH = 110;
+const MIN_THESIS_LENGTH = 45;
+const MIN_TAKEAWAYS = 3;
+const MIN_SECTIONS = 5;
+const MIN_PROMPTS = 3;
+const MIN_SECTION_WORDS = 220;
 
 const topics = [
   {
@@ -149,7 +158,7 @@ function readingMinutes(brief) {
     ...(brief.prompts || []),
   ].join(' ');
   const words = body.trim().split(/\s+/).filter(Boolean).length;
-  return Math.max(2, Math.ceil(words / 220));
+  return Math.max(2, Math.ceil(words / READING_WORDS_PER_MINUTE));
 }
 
 function fallbackBrief(date) {
@@ -236,13 +245,13 @@ function normalizeBrief(candidate, fallback) {
 function isQualityBrief(brief) {
   const sectionWords = brief.sections.reduce((total, section) => total + section.body.split(/\s+/).filter(Boolean).length, 0);
   return (
-    brief.title.length >= 18 &&
-    brief.description.length >= 110 &&
-    brief.thesis.length >= 45 &&
-    brief.takeaways.length >= 3 &&
-    brief.sections.length >= 5 &&
-    brief.prompts.length >= 3 &&
-    sectionWords >= 220
+    brief.title.length >= MIN_TITLE_LENGTH &&
+    brief.description.length >= MIN_DESCRIPTION_LENGTH &&
+    brief.thesis.length >= MIN_THESIS_LENGTH &&
+    brief.takeaways.length >= MIN_TAKEAWAYS &&
+    brief.sections.length >= MIN_SECTIONS &&
+    brief.prompts.length >= MIN_PROMPTS &&
+    sectionWords >= MIN_SECTION_WORDS
   );
 }
 
@@ -258,7 +267,7 @@ async function aiBrief(date) {
     },
     body: JSON.stringify({
       model: process.env.OPENAI_MODEL || 'gpt-4o-mini',
-      temperature: 0.65,
+      temperature: AI_TEMPERATURE,
       messages: [
         {
           role: 'system',
@@ -274,7 +283,7 @@ async function aiBrief(date) {
   });
 
   if (!response.ok) {
-    throw new Error(`OpenAI request failed (${response.status} ${response.statusText || 'unknown status'}). Check the API key, model, and quota.`);
+    throw new Error('OpenAI request failed. Check the API key, model, and quota.');
   }
 
   const payload = await response.json();
