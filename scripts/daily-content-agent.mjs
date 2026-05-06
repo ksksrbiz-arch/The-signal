@@ -138,6 +138,13 @@ function safeJsonLd(value) {
   return JSON.stringify(value, null, 2).replaceAll('<', '\\u003c');
 }
 
+function diagnosticMessage(error) {
+  return String(error?.message || 'unknown error')
+    .replace(/Bearer\s+[A-Za-z0-9._-]+/gi, 'Bearer [redacted]')
+    .replace(/[A-Za-z0-9._%+-]+@[A-Za-z0-9.-]+\.[A-Za-z]{2,}/g, '[redacted-email]')
+    .slice(0, 160);
+}
+
 function pickTopic(date) {
   const dayNumber = Math.floor(Date.parse(`${date}T00:00:00Z`) / 86_400_000);
   return topics[dayNumber % topics.length];
@@ -211,9 +218,9 @@ function parseAiJson(content) {
   const fenced = trimmed.match(/^```(?:json)?\s*([\s\S]*?)\s*```$/i);
   try {
     return JSON.parse(fenced ? fenced[1] : trimmed);
-  } catch {
+  } catch (error) {
     const format = fenced ? 'fenced JSON' : 'raw JSON';
-    throw new Error(`AI response was not valid ${format}.`);
+    throw new Error(`AI response was not valid ${format}: ${diagnosticMessage(error)}`);
   }
 }
 
@@ -283,7 +290,7 @@ async function aiBrief(date) {
   });
 
   if (!response.ok) {
-    throw new Error('OpenAI request failed. Check the API key, model, and quota.');
+    throw new Error(`OpenAI request failed with status ${response.status}. Check the API key, model, and quota.`);
   }
 
   const payload = await response.json();
@@ -471,8 +478,8 @@ async function main() {
   let brief = fallback;
   try {
     brief = normalizeBrief((await aiBrief(TODAY)) || fallback, fallback);
-  } catch {
-    console.warn('AI content unavailable or invalid; using deterministic brief.');
+  } catch (error) {
+    console.warn(`AI content unavailable or invalid; using deterministic brief. ${diagnosticMessage(error)}`);
   }
 
   brief = normalizeBrief(brief, fallback);

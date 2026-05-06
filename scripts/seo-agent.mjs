@@ -8,6 +8,10 @@ const SITE_URL = 'https://1commercesolutions.com';
 const DATA_DIR = path.join(ROOT, 'data');
 const EXCLUDED_DIRS = new Set(['.git', '.github', 'node_modules']);
 
+function diagnosticMessage(error) {
+  return String(error?.message || 'unknown error').slice(0, 120);
+}
+
 function escapeXml(value) {
   return String(value)
     .replaceAll('&', '&amp;')
@@ -73,8 +77,8 @@ async function lastModifiedDate(file) {
       stdio: ['ignore', 'pipe', 'pipe'],
     }).trim();
     if (/^\d{4}-\d{2}-\d{2}$/.test(date)) return date;
-  } catch {
-    console.warn(`Using filesystem modification time for ${relative}.`);
+  } catch (error) {
+    console.warn(`Using filesystem modification time for ${relative}. ${diagnosticMessage(error)}`);
   }
 
   const stats = await stat(file);
