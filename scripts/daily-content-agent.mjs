@@ -202,9 +202,9 @@ function parseAiJson(content) {
   const fenced = trimmed.match(/^```(?:json)?\s*([\s\S]*?)\s*```$/i);
   try {
     return JSON.parse(fenced ? fenced[1] : trimmed);
-  } catch (error) {
+  } catch {
     const format = fenced ? 'fenced JSON' : 'raw JSON';
-    throw new Error(`AI response was not valid ${format}: ${error.message}`);
+    throw new Error(`AI response was not valid ${format}.`);
   }
 }
 
@@ -274,7 +274,7 @@ async function aiBrief(date) {
   });
 
   if (!response.ok) {
-    throw new Error(`OpenAI request failed (${response.status} ${response.statusText || 'unknown status'})`);
+    throw new Error(`OpenAI request failed (${response.status} ${response.statusText || 'unknown status'}). Check the API key, model, and quota.`);
   }
 
   const payload = await response.json();
@@ -462,8 +462,8 @@ async function main() {
   let brief = fallback;
   try {
     brief = normalizeBrief((await aiBrief(TODAY)) || fallback, fallback);
-  } catch (error) {
-    console.warn(`AI content unavailable; using deterministic brief. ${error.message}`);
+  } catch {
+    console.warn('AI content unavailable or invalid; using deterministic brief.');
   }
 
   brief = normalizeBrief(brief, fallback);

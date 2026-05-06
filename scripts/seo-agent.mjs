@@ -74,7 +74,7 @@ async function lastModifiedDate(file) {
     }).trim();
     if (/^\d{4}-\d{2}-\d{2}$/.test(date)) return date;
   } catch {
-    console.warn(`Could not read git lastmod for ${relative}; using filesystem time.`);
+    console.warn(`Could not read git lastmod for ${relative}; using filesystem time. Git log may be unavailable for new or untracked files.`);
   }
 
   const stats = await stat(file);
