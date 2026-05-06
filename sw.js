@@ -4,13 +4,22 @@
    Increment CACHE_VERSION on each deploy to bust stale caches.
    ============================================================ */
 
-const CACHE_VERSION = 'signal-v4-2026-05-02-warm';
+const CACHE_VERSION = 'signal-v5-2026-05-06-brand';
 
 const STATIC_ASSETS = [
   '/base.css?v=20260502a',
   '/style.css?v=20260502a',
   '/app.js',
-  '/manifest.json'
+  '/manifest.json',
+  '/assets/brand/favicon.svg',
+  '/assets/brand/favicon-32.png',
+  '/assets/brand/apple-touch-icon.png',
+  '/assets/brand/icon-192.png',
+  '/assets/brand/icon-512.png',
+  '/assets/brand/maskable-icon-512.png',
+  '/assets/brand/logo.svg',
+  '/assets/brand/social-card.svg',
+  '/og-image.png'
 ];
 
 // Install: pre-cache core static assets

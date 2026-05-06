@@ -6,24 +6,34 @@
   "start_url": "/",
   "scope": "/",
   "display": "standalone",
-  "background_color": "#14110D",
+  "background_color": "#0B0F12",
   "theme_color": "#E8B86A",
   "orientation": "portrait-primary",
   "icons": [
     {
-      "src": "data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 512 512'><rect x='32' y='32' width='448' height='448' rx='32' stroke='%23E8B86A' stroke-width='24' fill='%2314110D'/><line x1='256' y1='96' x2='256' y2='416' stroke='%23E8B86A' stroke-width='24'/><circle cx='256' cy='256' r='48' stroke='%23E8B86A' stroke-width='24' fill='none'/></svg>",
-      "sizes": "any",
-      "type": "image/svg+xml",
+      "src": "/assets/brand/icon-192.png",
+      "sizes": "192x192",
+      "type": "image/png",
       "purpose": "any"
     },
     {
-      "src": "data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 512 512'><rect width='512' height='512' fill='%2314110D'/><line x1='256' y1='160' x2='256' y2='352' stroke='%23E8B86A' stroke-width='32'/><circle cx='256' cy='256' r='48' stroke='%23E8B86A' stroke-width='32' fill='none'/></svg>",
-      "sizes": "any",
-      "type": "image/svg+xml",
+      "src": "/assets/brand/icon-512.png",
+      "sizes": "512x512",
+      "type": "image/png",
+      "purpose": "any"
+    },
+    {
+      "src": "/assets/brand/maskable-icon-512.png",
+      "sizes": "512x512",
+      "type": "image/png",
       "purpose": "maskable"
     }
   ],
-  "categories": ["business", "productivity", "news"],
+  "categories": [
+    "business",
+    "productivity",
+    "news"
+  ],
   "lang": "en-US",
   "dir": "ltr"
 }

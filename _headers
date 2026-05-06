@@ -29,6 +29,9 @@
 /images/*
   Cache-Control: public, max-age=86400, stale-while-revalidate=604800
 
+/assets/brand/*
+  Cache-Control: public, max-age=86400, stale-while-revalidate=604800
+
 # ── Serverless functions ───────────────────────────────────────
 /.netlify/functions/*
   Access-Control-Allow-Origin: *
