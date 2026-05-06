@@ -9,7 +9,10 @@ const DATA_DIR = path.join(ROOT, 'data');
 const EXCLUDED_DIRS = new Set(['.git', '.github', 'node_modules']);
 
 function diagnosticMessage(error) {
-  return String(error?.message || 'unknown error').slice(0, 120);
+  return String(error?.message || 'unknown error')
+    .replace(/Bearer\s+[A-Za-z0-9._-]+/gi, 'Bearer [redacted]')
+    .replace(/[A-Za-z0-9._%+-]+@[A-Za-z0-9.-]+\.[A-Za-z]{2,}/g, '[redacted-email]')
+    .slice(0, 160);
 }
 
 function escapeXml(value) {

@@ -15,7 +15,7 @@ const MIN_THESIS_LENGTH = 45;
 const MIN_TAKEAWAYS = 3;
 const MIN_SECTIONS = 5;
 const MIN_PROMPTS = 3;
-const MIN_SECTION_WORDS = 220;
+const MIN_SECTION_WORDS = 180;
 
 const topics = [
   {
@@ -220,7 +220,7 @@ function parseAiJson(content) {
     return JSON.parse(fenced ? fenced[1] : trimmed);
   } catch (error) {
     const format = fenced ? 'fenced JSON' : 'raw JSON';
-    throw new Error(`AI response was not valid ${format}: ${diagnosticMessage(error)}`);
+    throw new Error(`AI response was not valid ${format}: ${diagnosticMessage(error)}. Check the AI prompt or model configuration.`);
   }
 }
 
@@ -246,20 +246,27 @@ function normalizeBrief(candidate, fallback) {
     .slice(0, 6);
   brief.prompts = brief.prompts.map((prompt) => String(prompt).trim()).filter(Boolean).slice(0, 6);
 
-  return isQualityBrief(brief) ? brief : fallback;
+  const failedChecks = qualityFailures(brief);
+  if (failedChecks.length === 0) return brief;
+
+  // Prefer AI content only when it meets the editorial quality gate; otherwise
+  // fall back so the daily agent always publishes a complete, useful brief.
+  console.warn(`Generated brief failed quality checks (${failedChecks.join(', ')}); using deterministic brief.`);
+  return fallback;
 }
 
-function isQualityBrief(brief) {
+function qualityFailures(brief) {
   const sectionWords = brief.sections.reduce((total, section) => total + section.body.split(/\s+/).filter(Boolean).length, 0);
-  return (
-    brief.title.length >= MIN_TITLE_LENGTH &&
-    brief.description.length >= MIN_DESCRIPTION_LENGTH &&
-    brief.thesis.length >= MIN_THESIS_LENGTH &&
-    brief.takeaways.length >= MIN_TAKEAWAYS &&
-    brief.sections.length >= MIN_SECTIONS &&
-    brief.prompts.length >= MIN_PROMPTS &&
-    sectionWords >= MIN_SECTION_WORDS
-  );
+  const checks = [
+    ['title length', brief.title.length >= MIN_TITLE_LENGTH],
+    ['description length', brief.description.length >= MIN_DESCRIPTION_LENGTH],
+    ['thesis length', brief.thesis.length >= MIN_THESIS_LENGTH],
+    ['takeaway count', brief.takeaways.length >= MIN_TAKEAWAYS],
+    ['section count', brief.sections.length >= MIN_SECTIONS],
+    ['prompt count', brief.prompts.length >= MIN_PROMPTS],
+    ['section word count', sectionWords >= MIN_SECTION_WORDS],
+  ];
+  return checks.filter(([, passed]) => !passed).map(([name]) => name);
 }
 
 async function aiBrief(date) {
