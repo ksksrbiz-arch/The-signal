@@ -70,11 +70,12 @@ async function lastModifiedDate(file) {
     const date = execFileSync('git', ['log', '-1', '--format=%cs', '--', relative], {
       cwd: ROOT,
       encoding: 'utf8',
-      stdio: ['ignore', 'pipe', 'ignore'],
+      stdio: ['ignore', 'pipe', 'pipe'],
     }).trim();
     if (/^\d{4}-\d{2}-\d{2}$/.test(date)) return date;
-  } catch {
-    // Fall back to filesystem time when git history is unavailable.
+  } catch (error) {
+    const detail = error.stderr?.toString().trim() || error.message;
+    console.warn(`Could not read git lastmod for ${relative}; using filesystem time. ${detail}`);
   }
 
   const stats = await stat(file);

@@ -128,7 +128,9 @@ async function aiBrief(date) {
   });
 
   if (!response.ok) {
-    throw new Error(`OpenAI request failed with ${response.status}`);
+    const errorBody = await response.text().catch(() => '');
+    const detail = [response.status, response.statusText, errorBody.slice(0, 300)].filter(Boolean).join(' ');
+    throw new Error(`OpenAI request failed: ${detail}`);
   }
 
   const payload = await response.json();
@@ -303,8 +305,14 @@ async function updateSitemap(date) {
   for (const entry of entries) {
     const block = `  <url>\n    <loc>${entry.loc}</loc>\n    <lastmod>${date}</lastmod>\n    <changefreq>${entry.changefreq}</changefreq>\n    <priority>${entry.priority}</priority>\n  </url>`;
     const escapedLoc = entry.loc.replace(/[.*+?^${}()|[\]\\]/g, '\\$&');
-    const existing = new RegExp(`\\s*<url>\\s*<loc>${escapedLoc}<\\/loc>[\\s\\S]*?<\\/url>`);
-    xml = existing.test(xml) ? xml.replace(existing, `\n${block}`) : xml.replace(/\s*<\/urlset>\s*$/, `\n\n${block}\n\n</urlset>\n`);
+    const existingEntry = new RegExp(`\\s*<url>\\s*<loc>${escapedLoc}<\\/loc>[\\s\\S]*?<\\/url>`);
+    const closingUrlset = /\s*<\/urlset>\s*$/;
+
+    if (existingEntry.test(xml)) {
+      xml = xml.replace(existingEntry, `\n${block}`);
+    } else {
+      xml = xml.replace(closingUrlset, `\n\n${block}\n\n</urlset>\n`);
+    }
   }
 
   await writeFile(sitemapPath, xml);
