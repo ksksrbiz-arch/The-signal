@@ -129,8 +129,7 @@ async function aiBrief(date) {
 
   if (!response.ok) {
     const errorBody = await response.text().catch(() => '');
-    const detail = [response.status, response.statusText, errorBody.slice(0, 300)].filter(Boolean).join(' ');
-    throw new Error(`OpenAI request failed: ${detail}`);
+    throw new Error(`OpenAI request failed (${response.status} ${response.statusText}): ${errorBody.slice(0, 300)}`);
   }
 
   const payload = await response.json();
@@ -294,30 +293,6 @@ ${cards}
   );
 }
 
-async function updateSitemap(date) {
-  const sitemapPath = path.join(ROOT, 'sitemap.xml');
-  let xml = await readFile(sitemapPath, 'utf8').catch(() => '<?xml version="1.0" encoding="UTF-8"?>\n<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">\n</urlset>\n');
-  const entries = [
-    { loc: `${SITE_URL}/daily/`, changefreq: 'daily', priority: '0.9' },
-    { loc: `${SITE_URL}/daily/${date}.html`, changefreq: 'daily', priority: '0.7' },
-  ];
-
-  for (const entry of entries) {
-    const block = `  <url>\n    <loc>${entry.loc}</loc>\n    <lastmod>${date}</lastmod>\n    <changefreq>${entry.changefreq}</changefreq>\n    <priority>${entry.priority}</priority>\n  </url>`;
-    const escapedLoc = entry.loc.replace(/[.*+?^${}()|[\]\\]/g, '\\$&');
-    const existingEntry = new RegExp(`\\s*<url>\\s*<loc>${escapedLoc}<\\/loc>[\\s\\S]*?<\\/url>`);
-    const closingUrlset = /\s*<\/urlset>\s*$/;
-
-    if (existingEntry.test(xml)) {
-      xml = xml.replace(existingEntry, `\n${block}`);
-    } else {
-      xml = xml.replace(closingUrlset, `\n\n${block}\n\n</urlset>\n`);
-    }
-  }
-
-  await writeFile(sitemapPath, xml);
-}
-
 async function main() {
   await mkdir(DAILY_DIR, { recursive: true });
   await mkdir(DATA_DIR, { recursive: true });
@@ -338,7 +313,6 @@ async function main() {
   await writeFile(outputPath, articleHtml(brief, TODAY));
   await writeIndex();
   await writeFile(path.join(DATA_DIR, 'latest-daily-signal.json'), `${JSON.stringify({ date: TODAY, ...brief }, null, 2)}\n`);
-  await updateSitemap(TODAY);
 
   const { size } = await stat(outputPath);
   console.log(`Generated ${path.relative(ROOT, outputPath)} (${size} bytes)`);
