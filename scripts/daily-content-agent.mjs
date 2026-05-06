@@ -200,7 +200,12 @@ function fallbackBrief(date) {
 function parseAiJson(content) {
   const trimmed = String(content || '').trim();
   const fenced = trimmed.match(/^```(?:json)?\s*([\s\S]*?)\s*```$/i);
-  return JSON.parse(fenced ? fenced[1] : trimmed);
+  try {
+    return JSON.parse(fenced ? fenced[1] : trimmed);
+  } catch (error) {
+    const format = fenced ? 'fenced JSON' : 'raw JSON';
+    throw new Error(`AI response was not valid ${format}: ${error.message}`);
+  }
 }
 
 function normalizeBrief(candidate, fallback) {
@@ -269,8 +274,7 @@ async function aiBrief(date) {
   });
 
   if (!response.ok) {
-    const errorBody = await response.text().catch(() => '');
-    throw new Error(`OpenAI request failed (${response.status} ${response.statusText}): ${errorBody.slice(0, 300)}`);
+    throw new Error(`OpenAI request failed (${response.status} ${response.statusText || 'unknown status'})`);
   }
 
   const payload = await response.json();
