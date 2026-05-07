@@ -1,6 +1,6 @@
 {
-  "generatedAt": "2026-05-06",
-  "pagesScanned": 24,
+  "generatedAt": "2026-05-07",
+  "pagesScanned": 57,
   "issuesFound": 0,
   "issues": [],
   "pages": [
@@ -86,6 +86,15 @@
       "description": "How to move from idea to shipped proof while keeping scope under control. A practical daily brief for operators building commerce systems with proof, restraint, and compounding execution."
     },
     {
+      "file": "daily/2026-05-07.html",
+      "url": "https://1commercesolutions.com/daily/2026-05-07.html",
+      "lastmod": "2026-05-07",
+      "changefreq": "daily",
+      "priority": "0.7",
+      "title": "Daily Signal: AI-native commerce operations | THE SIGNAL",
+      "description": "What an operator should automate today without losing human judgment. A practical daily brief for operators building commerce systems with proof, restraint, and compounding execution."
+    },
+    {
       "file": "daily/index.html",
       "url": "https://1commercesolutions.com/daily/",
       "lastmod": "2026-05-06",
@@ -129,6 +138,294 @@
       "priority": "0.7",
       "title": "How to Build a Cold Outreach Engine with Claude + n8n — Fieldnotes | THE SIGNAL",
       "description": "The actual system — not the concept. Prompts, triggers, rate limits, and 30-day numbers from the 1Commerce cold outreach engine built on Claude API and n8n."
+    },
+    {
+      "file": "fieldnotes/github-ag-drone-bootstrap-playbook.html",
+      "url": "https://1commercesolutions.com/fieldnotes/github-ag-drone-bootstrap-playbook.html",
+      "lastmod": "2026-05-06",
+      "changefreq": "monthly",
+      "priority": "0.7",
+      "title": "ag drone bootstrap playbook: a public playbook packaged as a site — Fieldnotes | THE SIGNAL",
+      "description": "A static site and media bundle around starting a precision agriculture drone business, including markdown, PDF, video, and deployment files."
+    },
+    {
+      "file": "fieldnotes/github-amp.html",
+      "url": "https://1commercesolutions.com/fieldnotes/github-amp.html",
+      "lastmod": "2026-05-06",
+      "changefreq": "monthly",
+      "priority": "0.7",
+      "title": "Amp: a sparse TypeScript tooling seed — Fieldnotes | THE SIGNAL",
+      "description": "A small public repository with a terse README and a tools directory, currently more seed than finished product."
+    },
+    {
+      "file": "fieldnotes/github-bonkbird-site.html",
+      "url": "https://1commercesolutions.com/fieldnotes/github-bonkbird-site.html",
+      "lastmod": "2026-05-06",
+      "changefreq": "monthly",
+      "priority": "0.7",
+      "title": "bonkbird-site: a zero-build livestream joke that shipped — Fieldnotes | THE SIGNAL",
+      "description": "A pure HTML/CSS/JS Netlify site for Bonkbird, a Canby livestream built around a bird repeatedly hitting a kitchen window."
+    },
+    {
+      "file": "fieldnotes/github-clearpath.html",
+      "url": "https://1commercesolutions.com/fieldnotes/github-clearpath.html",
+      "lastmod": "2026-05-06",
+      "changefreq": "monthly",
+      "priority": "0.7",
+      "title": "Clearpath: a Vite app with deployment hardening — Fieldnotes | THE SIGNAL",
+      "description": "A JavaScript app with Vite, Netlify, Docker, Nginx, security headers, and a minimal README."
+    },
+    {
+      "file": "fieldnotes/github-clerk-netlify-template.html",
+      "url": "https://1commercesolutions.com/fieldnotes/github-clerk-netlify-template.html",
+      "lastmod": "2026-05-06",
+      "changefreq": "monthly",
+      "priority": "0.7",
+      "title": "clerk-netlify-template: authentication scaffolding on Netlify — Fieldnotes | THE SIGNAL",
+      "description": "A starter template pairing Clerk authentication with Netlify deployment and Tailwind styling."
+    },
+    {
+      "file": "fieldnotes/github-compass.html",
+      "url": "https://1commercesolutions.com/fieldnotes/github-compass.html",
+      "lastmod": "2026-05-06",
+      "changefreq": "monthly",
+      "priority": "0.7",
+      "title": "compass: an AI workspace for deal analysis — Fieldnotes | THE SIGNAL",
+      "description": "A JavaScript repository positioning Compass AI as a legal-intelligence workspace for analyzing deals."
+    },
+    {
+      "file": "fieldnotes/github-early-gov-contract-watch.html",
+      "url": "https://1commercesolutions.com/fieldnotes/github-early-gov-contract-watch.html",
+      "lastmod": "2026-05-06",
+      "changefreq": "monthly",
+      "priority": "0.7",
+      "title": "early-gov-contract-watch: contract alerts wired to paper trading — Fieldnotes | THE SIGNAL",
+      "description": "A high-risk educational Python bot that watches USASpending awards and models stock trades around contract signals."
+    },
+    {
+      "file": "fieldnotes/github-forged-american.html",
+      "url": "https://1commercesolutions.com/fieldnotes/github-forged-american.html",
+      "lastmod": "2026-05-06",
+      "changefreq": "monthly",
+      "priority": "0.7",
+      "title": "forged-american: headless commerce on Netlify and Stripe — Fieldnotes | THE SIGNAL",
+      "description": "A Next.js 14 storefront with product catalog, admin tools, checkout, order lookup, reviews, and Netlify DB."
+    },
+    {
+      "file": "fieldnotes/github-graph.html",
+      "url": "https://1commercesolutions.com/fieldnotes/github-graph.html",
+      "lastmod": "2026-05-06",
+      "changefreq": "monthly",
+      "priority": "0.7",
+      "title": "Graph: a personal knowledge graph with local and v2 tracks — Fieldnotes | THE SIGNAL",
+      "description": "A personal knowledge graph visualization system that ingests digital footprints and renders them as interactive graph structures."
+    },
+    {
+      "file": "fieldnotes/github-house.html",
+      "url": "https://1commercesolutions.com/fieldnotes/github-house.html",
+      "lastmod": "2026-05-06",
+      "changefreq": "monthly",
+      "priority": "0.7",
+      "title": "house: Cathedral Acquisitions for Section 8 deal flow — Fieldnotes | THE SIGNAL",
+      "description": "A Cloudflare-backed acquisition pipeline for finding, underwriting, and managing HUD-assisted rental properties."
+    },
+    {
+      "file": "fieldnotes/github-kimnara.html",
+      "url": "https://1commercesolutions.com/fieldnotes/github-kimnara.html",
+      "lastmod": "2026-05-06",
+      "changefreq": "monthly",
+      "priority": "0.7",
+      "title": "Kimnara: a named seed repository — Fieldnotes | THE SIGNAL",
+      "description": "A minimal public repository whose README currently establishes the name and little else."
+    },
+    {
+      "file": "fieldnotes/github-loi.html",
+      "url": "https://1commercesolutions.com/fieldnotes/github-loi.html",
+      "lastmod": "2026-05-06",
+      "changefreq": "monthly",
+      "priority": "0.7",
+      "title": "Loi: a compact Next.js seed with a named product shell — Fieldnotes | THE SIGNAL",
+      "description": "A TypeScript Next.js repository with app, components, Tailwind, and Netlify configuration, but minimal public explanation."
+    },
+    {
+      "file": "fieldnotes/github-montucky-moonshine-proposal.html",
+      "url": "https://1commercesolutions.com/fieldnotes/github-montucky-moonshine-proposal.html",
+      "lastmod": "2026-05-06",
+      "changefreq": "monthly",
+      "priority": "0.7",
+      "title": "montucky-moonshine-proposal: a premium client storefront proposal — Fieldnotes | THE SIGNAL",
+      "description": "A multi-page static proposal for Montucky Moonshine, combining storefront, venue showcase, legal pages, and admin-dashboard prototype."
+    },
+    {
+      "file": "fieldnotes/github-news-aggregator.html",
+      "url": "https://1commercesolutions.com/fieldnotes/github-news-aggregator.html",
+      "lastmod": "2026-05-06",
+      "changefreq": "monthly",
+      "priority": "0.7",
+      "title": "news-aggregator: a news surface for affiliate web services — Fieldnotes | THE SIGNAL",
+      "description": "A compact repository labeled as the Torque-d affiliate web-services news aggregator."
+    },
+    {
+      "file": "fieldnotes/github-next-platform-starter.html",
+      "url": "https://1commercesolutions.com/fieldnotes/github-next-platform-starter.html",
+      "lastmod": "2026-05-06",
+      "changefreq": "monthly",
+      "priority": "0.7",
+      "title": "next-platform-starter: Netlify’s Next.js primitives in starter form — Fieldnotes | THE SIGNAL",
+      "description": "A Next.js 16 starter configured for Netlify Core Primitives such as Edge Functions, Image CDN, and Blob Store."
+    },
+    {
+      "file": "fieldnotes/github-nextchapter.html",
+      "url": "https://1commercesolutions.com/fieldnotes/github-nextchapter.html",
+      "lastmod": "2026-05-06",
+      "changefreq": "monthly",
+      "priority": "0.7",
+      "title": "nextchapter: an AI Studio app ready for local iteration — Fieldnotes | THE SIGNAL",
+      "description": "A TypeScript app exported from AI Studio, with Gemini API configuration and standard local development commands."
+    },
+    {
+      "file": "fieldnotes/github-onecommerce-mcp-server.html",
+      "url": "https://1commercesolutions.com/fieldnotes/github-onecommerce-mcp-server.html",
+      "lastmod": "2026-05-06",
+      "changefreq": "monthly",
+      "priority": "0.7",
+      "title": "onecommerce-mcp-server: the MCP surface for 1Commerce operations — Fieldnotes | THE SIGNAL",
+      "description": "A production Model Context Protocol server exposing store, product, order, automation, and AI tools for UnifyOne."
+    },
+    {
+      "file": "fieldnotes/github-onpoint.html",
+      "url": "https://1commercesolutions.com/fieldnotes/github-onpoint.html",
+      "lastmod": "2026-05-06",
+      "changefreq": "monthly",
+      "priority": "0.7",
+      "title": "onpoint: a single-page static deployment — Fieldnotes | THE SIGNAL",
+      "description": "A lightweight HTML site with Netlify configuration and robots metadata."
+    },
+    {
+      "file": "fieldnotes/github-pacer.html",
+      "url": "https://1commercesolutions.com/fieldnotes/github-pacer.html",
+      "lastmod": "2026-05-06",
+      "changefreq": "monthly",
+      "priority": "0.7",
+      "title": "PACER: distressed-domain discovery and RWA tokenization — Fieldnotes | THE SIGNAL",
+      "description": "A Python pipeline for discovering distressed SaaS and tech domains, scoring them, drop-catching them, and preparing RWA monetization paths."
+    },
+    {
+      "file": "fieldnotes/github-pnwenterprises.html",
+      "url": "https://1commercesolutions.com/fieldnotes/github-pnwenterprises.html",
+      "lastmod": "2026-05-06",
+      "changefreq": "monthly",
+      "priority": "0.7",
+      "title": "pnwenterprises: an AI-compressed enterprise operating stack — Fieldnotes | THE SIGNAL",
+      "description": "A broad MVP package that frames PNW Enterprises as a multi-division technology, logistics, education, and SaaS operation."
+    },
+    {
+      "file": "fieldnotes/github-reels-automation.html",
+      "url": "https://1commercesolutions.com/fieldnotes/github-reels-automation.html",
+      "lastmod": "2026-05-06",
+      "changefreq": "monthly",
+      "priority": "0.7",
+      "title": "reels-automation: a cron-driven short-form content machine — Fieldnotes | THE SIGNAL",
+      "description": "An n8n and TypeScript pipeline for generating, editing, scheduling, publishing, and measuring Instagram Reels."
+    },
+    {
+      "file": "fieldnotes/github-rockhard-handware.html",
+      "url": "https://1commercesolutions.com/fieldnotes/github-rockhard-handware.html",
+      "lastmod": "2026-05-06",
+      "changefreq": "monthly",
+      "priority": "0.7",
+      "title": "rockhard-handware: the repeatable headless storefront pattern — Fieldnotes | THE SIGNAL",
+      "description": "A brand-specific Next.js 14 commerce storefront using Netlify DB, Stripe, admin auth, inventory, orders, variants, and reviews."
+    },
+    {
+      "file": "fieldnotes/github-shopify-theme-ci-cd.html",
+      "url": "https://1commercesolutions.com/fieldnotes/github-shopify-theme-ci-cd.html",
+      "lastmod": "2026-05-06",
+      "changefreq": "monthly",
+      "priority": "0.7",
+      "title": "shopify-theme-ci-cd: deployment discipline for Shopify themes — Fieldnotes | THE SIGNAL",
+      "description": "A production-ready Shopify theme repository with GitHub Actions deployment, linting, rollback, and local development guidance."
+    },
+    {
+      "file": "fieldnotes/github-signal-archives.html",
+      "url": "https://1commercesolutions.com/fieldnotes/github-signal-archives.html",
+      "lastmod": "2026-05-06",
+      "changefreq": "monthly",
+      "priority": "0.7",
+      "title": "Signal-Archives: an empty archive vessel for future Signal material — Fieldnotes | THE SIGNAL",
+      "description": "A public repository reserved for The Signal archive work, currently empty on GitHub."
+    },
+    {
+      "file": "fieldnotes/github-skaggsk.html",
+      "url": "https://1commercesolutions.com/fieldnotes/github-skaggsk.html",
+      "lastmod": "2026-05-06",
+      "changefreq": "monthly",
+      "priority": "0.7",
+      "title": "skaggsk: a generated personal static page — Fieldnotes | THE SIGNAL",
+      "description": "A compact Python-generated static site, with a large generated index and the script that produces it."
+    },
+    {
+      "file": "fieldnotes/github-stripe-supabase-saas-starter-kit.html",
+      "url": "https://1commercesolutions.com/fieldnotes/github-stripe-supabase-saas-starter-kit.html",
+      "lastmod": "2026-05-06",
+      "changefreq": "monthly",
+      "priority": "0.7",
+      "title": "stripe-supabase-saas-starter-kit: payments and auth in one starter — Fieldnotes | THE SIGNAL",
+      "description": "A Next.js SaaS starter combining Supabase authentication, Postgres/Drizzle, Stripe billing, and dashboard-protected routes."
+    },
+    {
+      "file": "fieldnotes/github-terp-forge.html",
+      "url": "https://1commercesolutions.com/fieldnotes/github-terp-forge.html",
+      "lastmod": "2026-05-06",
+      "changefreq": "monthly",
+      "priority": "0.7",
+      "title": "Terp-Forge: industrial branding for engineered aromatics — Fieldnotes | THE SIGNAL",
+      "description": "A Next.js and Tailwind brand site for TerpForge, blending terpene science, lifestyle commerce, and static deployment."
+    },
+    {
+      "file": "fieldnotes/github-the-signal.html",
+      "url": "https://1commercesolutions.com/fieldnotes/github-the-signal.html",
+      "lastmod": "2026-05-06",
+      "changefreq": "monthly",
+      "priority": "0.7",
+      "title": "The-signal: the publishing surface you are reading now — Fieldnotes | THE SIGNAL",
+      "description": "The Signal is the public static publishing layer for 1Commerce dispatches, fieldnotes, archives, news, builds, and videos."
+    },
+    {
+      "file": "fieldnotes/github-tobe.html",
+      "url": "https://1commercesolutions.com/fieldnotes/github-tobe.html",
+      "lastmod": "2026-05-06",
+      "changefreq": "monthly",
+      "priority": "0.7",
+      "title": "Tobe-: a Next.js app seed with database and component scaffolding — Fieldnotes | THE SIGNAL",
+      "description": "A TypeScript Next.js repository that began as an AI Studio app and now includes app, component, database, and library folders."
+    },
+    {
+      "file": "fieldnotes/github-torqued-affiliates.html",
+      "url": "https://1commercesolutions.com/fieldnotes/github-torqued-affiliates.html",
+      "lastmod": "2026-05-06",
+      "changefreq": "monthly",
+      "priority": "0.7",
+      "title": "torqued-affiliates: the affiliate backend behind a Shopify front end — Fieldnotes | THE SIGNAL",
+      "description": "A TypeScript API layer for tracking affiliates, receiving Shopify webhooks, and giving a commerce program a durable backend."
+    },
+    {
+      "file": "fieldnotes/github-unify0ne-mcp.html",
+      "url": "https://1commercesolutions.com/fieldnotes/github-unify0ne-mcp.html",
+      "lastmod": "2026-05-06",
+      "changefreq": "monthly",
+      "priority": "0.7",
+      "title": "unify0ne-mcp: the platform-compatible MCP worker — Fieldnotes | THE SIGNAL",
+      "description": "A sibling MCP server tailored to the UnifyOne platform’s expected tool names, environment variables, and worker integration."
+    },
+    {
+      "file": "fieldnotes/github-yod-ai.html",
+      "url": "https://1commercesolutions.com/fieldnotes/github-yod-ai.html",
+      "lastmod": "2026-05-06",
+      "changefreq": "monthly",
+      "priority": "0.7",
+      "title": "Yod.ai: a multi-surface wisdom platform — Fieldnotes | THE SIGNAL",
+      "description": "A monorepo for OpenYoda: web app, bots, browser extension, CLI, agent runtime, MCP packages, and SDKs."
     },
     {
       "file": "fieldnotes/index.html",
