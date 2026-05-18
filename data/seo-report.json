@@ -1,6 +1,6 @@
 {
-  "generatedAt": "2026-05-17",
-  "pagesScanned": 67,
+  "generatedAt": "2026-05-18",
+  "pagesScanned": 68,
   "issuesFound": 0,
   "issues": [],
   "pages": [
@@ -183,6 +183,15 @@
       "priority": "0.7",
       "title": "Daily Signal: agent workflows for revenue | THE SIGNAL",
       "description": "How agents support prospecting, qualification, follow-up, and post-sale delivery. A practical daily brief for operators building commerce systems with proof, restraint, and compounding execution."
+    },
+    {
+      "file": "daily/2026-05-18.html",
+      "url": "https://1commercesolutions.com/daily/2026-05-18.html",
+      "lastmod": "2026-05-18",
+      "changefreq": "daily",
+      "priority": "0.7",
+      "title": "Daily Signal: commerce intelligence layers | THE SIGNAL",
+      "description": "Why storefronts need memory, context, and action layers beyond static pages. A practical daily brief for operators building commerce systems with proof, restraint, and compounding execution."
     },
     {
       "file": "daily/index.html",
