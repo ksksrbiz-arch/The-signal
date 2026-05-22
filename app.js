@@ -334,3 +334,217 @@ if ('serviceWorker' in navigator) {
     });
   });
 })();
+
+// ─── SCROLL REVEAL ANIMATIONS ──────────────────────────────
+(function(){
+  var revealEls = document.querySelectorAll('.reveal, .reveal-left, .reveal-right, .reveal-scale, .stagger-children');
+  if (!revealEls.length) return;
+
+  var observer = new IntersectionObserver(function(entries) {
+    entries.forEach(function(entry) {
+      if (entry.isIntersecting) {
+        entry.target.classList.add('revealed');
+        observer.unobserve(entry.target);
+      }
+    });
+  }, {
+    threshold: 0.12,
+    rootMargin: '0px 0px -40px 0px'
+  });
+
+  revealEls.forEach(function(el) { observer.observe(el); });
+})();
+
+// ─── ANIMATED COUNTERS ─────────────────────────────────────
+(function(){
+  var counters = document.querySelectorAll('.proof-number');
+  if (!counters.length) return;
+
+  function animateCounter(el) {
+    var text = el.textContent.trim();
+    var suffix = text.replace(/[\d.]/g, '');
+    var target = parseFloat(text);
+    if (isNaN(target)) return;
+
+    var duration = 1200;
+    var start = performance.now();
+    var isPercent = suffix === '%';
+    var isDecimal = text.indexOf('.') !== -1;
+
+    function step(now) {
+      var elapsed = now - start;
+      var progress = Math.min(elapsed / duration, 1);
+      // Ease-out cubic
+      var eased = 1 - Math.pow(1 - progress, 3);
+      var current = eased * target;
+
+      if (isDecimal) {
+        el.textContent = current.toFixed(1) + suffix;
+      } else {
+        el.textContent = Math.round(current) + suffix;
+      }
+
+      if (progress < 1) {
+        requestAnimationFrame(step);
+      } else {
+        el.textContent = text; // Ensure exact final value
+      }
+    }
+
+    requestAnimationFrame(step);
+  }
+
+  var observer = new IntersectionObserver(function(entries) {
+    entries.forEach(function(entry) {
+      if (entry.isIntersecting) {
+        animateCounter(entry.target);
+        entry.target.closest('.proof-item').classList.add('revealed');
+        observer.unobserve(entry.target);
+      }
+    });
+  }, { threshold: 0.5 });
+
+  counters.forEach(function(el) { observer.observe(el); });
+})();
+
+// ─── SIGNAL PARTICLE CANVAS ────────────────────────────────
+(function(){
+  var canvas = document.getElementById('signal-canvas');
+  if (!canvas) return;
+
+  // Respect reduced motion
+  if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
+
+  var ctx = canvas.getContext('2d');
+  var particles = [];
+  var maxParticles = 40;
+  var dpr = window.devicePixelRatio || 1;
+
+  function resize() {
+    var hero = canvas.parentElement;
+    canvas.width = hero.offsetWidth * dpr;
+    canvas.height = hero.offsetHeight * dpr;
+    canvas.style.width = hero.offsetWidth + 'px';
+    canvas.style.height = hero.offsetHeight + 'px';
+    ctx.scale(dpr, dpr);
+  }
+
+  function createParticle() {
+    var hero = canvas.parentElement;
+    return {
+      x: Math.random() * hero.offsetWidth,
+      y: Math.random() * hero.offsetHeight,
+      vx: (Math.random() - 0.5) * 0.3,
+      vy: (Math.random() - 0.5) * 0.3,
+      radius: Math.random() * 1.5 + 0.5,
+      opacity: Math.random() * 0.4 + 0.1,
+      pulseSpeed: Math.random() * 0.02 + 0.005,
+      pulseOffset: Math.random() * Math.PI * 2
+    };
+  }
+
+  // Init particles
+  for (var i = 0; i < maxParticles; i++) {
+    particles.push(createParticle());
+  }
+
+  var connectionDistance = 120;
+
+  function draw() {
+    var hero = canvas.parentElement;
+    var w = hero.offsetWidth;
+    var h = hero.offsetHeight;
+    ctx.clearRect(0, 0, w, h);
+
+    var time = Date.now() * 0.001;
+
+    // Update and draw particles
+    for (var i = 0; i < particles.length; i++) {
+      var p = particles[i];
+      p.x += p.vx;
+      p.y += p.vy;
+
+      // Wrap around
+      if (p.x < 0) p.x = w;
+      if (p.x > w) p.x = 0;
+      if (p.y < 0) p.y = h;
+      if (p.y > h) p.y = 0;
+
+      var pulse = Math.sin(time * p.pulseSpeed * 60 + p.pulseOffset) * 0.3 + 0.7;
+
+      ctx.beginPath();
+      ctx.arc(p.x, p.y, p.radius, 0, Math.PI * 2);
+      ctx.fillStyle = 'rgba(232, 184, 106, ' + (p.opacity * pulse) + ')';
+      ctx.fill();
+
+      // Draw connections
+      for (var j = i + 1; j < particles.length; j++) {
+        var p2 = particles[j];
+        var dx = p.x - p2.x;
+        var dy = p.y - p2.y;
+        var dist = Math.sqrt(dx * dx + dy * dy);
+
+        if (dist < connectionDistance) {
+          var alpha = (1 - dist / connectionDistance) * 0.12;
+          ctx.beginPath();
+          ctx.moveTo(p.x, p.y);
+          ctx.lineTo(p2.x, p2.y);
+          ctx.strokeStyle = 'rgba(232, 184, 106, ' + alpha + ')';
+          ctx.lineWidth = 0.5;
+          ctx.stroke();
+        }
+      }
+    }
+
+    requestAnimationFrame(draw);
+  }
+
+  resize();
+  draw();
+
+  var resizeTimeout;
+  window.addEventListener('resize', function() {
+    clearTimeout(resizeTimeout);
+    resizeTimeout = setTimeout(resize, 150);
+  });
+})();
+
+// ─── HEADER SCROLL EFFECT ──────────────────────────────────
+(function(){
+  var header = document.querySelector('.site-header');
+  if (!header) return;
+
+  var scrollThreshold = 50;
+  var ticking = false;
+
+  function updateHeader() {
+    if (window.scrollY > scrollThreshold) {
+      header.classList.add('scrolled');
+    } else {
+      header.classList.remove('scrolled');
+    }
+    ticking = false;
+  }
+
+  window.addEventListener('scroll', function() {
+    if (!ticking) {
+      requestAnimationFrame(updateHeader);
+      ticking = true;
+    }
+  }, { passive: true });
+
+  updateHeader();
+})();
+
+// ─── SMOOTH SCROLL FOR ANCHOR LINKS ────────────────────────
+(function(){
+  document.querySelectorAll('a[href^="#"]').forEach(function(link) {
+    link.addEventListener('click', function(e) {
+      var target = document.querySelector(this.getAttribute('href'));
+      if (target) {
+        e.preventDefault();
+        target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+      }
+    });
+  });
+})();

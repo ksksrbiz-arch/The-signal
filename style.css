@@ -5615,3 +5615,324 @@ footer,
   --content-narrow:  720px;
   --content-wide:    1400px;
 }
+
+/* ============================================================
+   DYNAMIC ANIMATIONS & ENHANCED UX
+   Scroll-reveal, counters, particles, glows
+   ============================================================ */
+
+/* --- Scroll Reveal Animations --- */
+.reveal {
+  opacity: 0;
+  transform: translateY(32px);
+  transition: opacity 0.7s cubic-bezier(0.16, 1, 0.3, 1),
+              transform 0.7s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.reveal.revealed {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.reveal-left {
+  opacity: 0;
+  transform: translateX(-40px);
+  transition: opacity 0.7s cubic-bezier(0.16, 1, 0.3, 1),
+              transform 0.7s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.reveal-left.revealed {
+  opacity: 1;
+  transform: translateX(0);
+}
+
+.reveal-right {
+  opacity: 0;
+  transform: translateX(40px);
+  transition: opacity 0.7s cubic-bezier(0.16, 1, 0.3, 1),
+              transform 0.7s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.reveal-right.revealed {
+  opacity: 1;
+  transform: translateX(0);
+}
+
+.reveal-scale {
+  opacity: 0;
+  transform: scale(0.92);
+  transition: opacity 0.6s cubic-bezier(0.16, 1, 0.3, 1),
+              transform 0.6s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.reveal-scale.revealed {
+  opacity: 1;
+  transform: scale(1);
+}
+
+/* Stagger children */
+.stagger-children > * {
+  opacity: 0;
+  transform: translateY(24px);
+  transition: opacity 0.5s cubic-bezier(0.16, 1, 0.3, 1),
+              transform 0.5s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.stagger-children.revealed > *:nth-child(1) { transition-delay: 0ms; }
+.stagger-children.revealed > *:nth-child(2) { transition-delay: 80ms; }
+.stagger-children.revealed > *:nth-child(3) { transition-delay: 160ms; }
+.stagger-children.revealed > *:nth-child(4) { transition-delay: 240ms; }
+.stagger-children.revealed > *:nth-child(5) { transition-delay: 320ms; }
+.stagger-children.revealed > *:nth-child(6) { transition-delay: 400ms; }
+
+.stagger-children.revealed > * {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* --- Hero Signal Canvas (particle background) --- */
+.hero {
+  position: relative;
+  overflow: hidden;
+}
+
+#signal-canvas {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+  z-index: 0;
+  opacity: 0.45;
+}
+
+.hero-left,
+.hero-right {
+  position: relative;
+  z-index: 1;
+}
+
+/* --- Hero Glow Effect --- */
+.hero::before {
+  content: '';
+  position: absolute;
+  top: -60%;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 700px;
+  height: 700px;
+  background: radial-gradient(ellipse at center, rgba(232, 184, 106, 0.08) 0%, transparent 70%);
+  pointer-events: none;
+  z-index: 0;
+  animation: hero-glow-pulse 6s ease-in-out infinite alternate;
+}
+
+@keyframes hero-glow-pulse {
+  0% { opacity: 0.5; transform: translateX(-50%) scale(1); }
+  100% { opacity: 1; transform: translateX(-50%) scale(1.15); }
+}
+
+/* --- Hero Title Gradient Shimmer --- */
+.hero-left h1 {
+  background: linear-gradient(
+    135deg,
+    var(--text) 0%,
+    var(--active) 40%,
+    var(--text) 60%,
+    var(--active) 100%
+  );
+  background-size: 300% 300%;
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+  animation: title-shimmer 8s ease-in-out infinite;
+}
+
+@keyframes title-shimmer {
+  0%, 100% { background-position: 0% 50%; }
+  50% { background-position: 100% 50%; }
+}
+
+/* --- Proof Counter Animation --- */
+.proof-number {
+  transition: color 0.3s ease;
+}
+
+.proof-item {
+  position: relative;
+  overflow: hidden;
+}
+
+.proof-item::after {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 0;
+  height: 2px;
+  background: linear-gradient(90deg, var(--active), transparent);
+  transition: width 0.8s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.proof-item:hover::after,
+.proof-item.revealed::after {
+  width: 100%;
+}
+
+/* --- Enhanced Dossier Card Animations --- */
+.dossier-card {
+  transition: transform 0.35s cubic-bezier(0.16, 1, 0.3, 1),
+              border-color 0.35s ease,
+              box-shadow 0.35s ease;
+}
+
+.dossier-card:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 12px 40px rgba(232, 184, 106, 0.08);
+}
+
+/* --- Dispatch Card Hover Enhancement --- */
+.dispatch-preview-card {
+  transition: transform 0.35s cubic-bezier(0.16, 1, 0.3, 1),
+              border-color 0.35s ease,
+              box-shadow 0.35s ease;
+}
+
+.dispatch-preview-card:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 8px 32px rgba(232, 184, 106, 0.06);
+}
+
+/* --- Feature Matrix Card Glow --- */
+.feature-matrix-card {
+  transition: transform 0.35s cubic-bezier(0.16, 1, 0.3, 1),
+              border-color 0.35s ease,
+              box-shadow 0.35s ease;
+}
+
+.feature-matrix-card:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 12px 40px rgba(232, 184, 106, 0.06);
+}
+
+/* --- Animated Divider --- */
+.animated-divider {
+  width: 100%;
+  height: 1px;
+  background: linear-gradient(90deg, transparent, var(--active), transparent);
+  margin: calc(var(--p) * 2) 0;
+  opacity: 0;
+  animation: divider-reveal 1s ease-out forwards;
+  animation-play-state: paused;
+}
+
+.animated-divider.revealed {
+  animation-play-state: running;
+}
+
+@keyframes divider-reveal {
+  0% { opacity: 0; transform: scaleX(0); }
+  100% { opacity: 0.4; transform: scaleX(1); }
+}
+
+/* --- Section Label Animation --- */
+.section-label {
+  position: relative;
+}
+
+/* --- Smooth Active Nav Indicator --- */
+.nav-links a {
+  position: relative;
+}
+
+.nav-links a::after {
+  content: '';
+  position: absolute;
+  bottom: -4px;
+  left: 50%;
+  width: 0;
+  height: 2px;
+  background: var(--active);
+  transition: width 0.3s cubic-bezier(0.16, 1, 0.3, 1),
+              left 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.nav-links a:hover::after,
+.nav-links a.active::after {
+  width: 100%;
+  left: 0%;
+}
+
+/* --- Header Scroll Shadow --- */
+.site-header {
+  transition: box-shadow 0.3s ease, background 0.3s ease;
+}
+
+.site-header.scrolled {
+  box-shadow: 0 2px 24px rgba(0, 0, 0, 0.25);
+  background: rgba(7, 10, 18, 0.95);
+  -webkit-backdrop-filter: blur(12px);
+  backdrop-filter: blur(12px);
+}
+
+/* --- Floating Action Pulse (Subscribe Button) --- */
+.btn-primary {
+  position: relative;
+  overflow: hidden;
+}
+
+.btn-primary::before {
+  content: '';
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 0;
+  height: 0;
+  background: rgba(255, 255, 255, 0.15);
+  border-radius: 50%;
+  transform: translate(-50%, -50%);
+  transition: width 0.5s ease, height 0.5s ease;
+}
+
+.btn-primary:hover::before {
+  width: 300px;
+  height: 300px;
+}
+
+/* --- Video Embed Enhanced --- */
+.video-embed--featured {
+  transition: transform 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.video-embed--featured:hover {
+  transform: scale(1.005);
+}
+
+/* --- Respect Reduced Motion --- */
+@media (prefers-reduced-motion: reduce) {
+  .reveal,
+  .reveal-left,
+  .reveal-right,
+  .reveal-scale,
+  .stagger-children > * {
+    opacity: 1 !important;
+    transform: none !important;
+    transition: none !important;
+  }
+  .hero-left h1 {
+    animation: none !important;
+    -webkit-text-fill-color: var(--text) !important;
+    background: none !important;
+  }
+  .hero::before {
+    animation: none !important;
+  }
+  #signal-canvas {
+    display: none !important;
+  }
+  .animated-divider {
+    animation: none !important;
+    opacity: 0.4 !important;
+  }
+}

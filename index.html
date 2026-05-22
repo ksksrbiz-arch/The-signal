@@ -203,7 +203,8 @@
 
     <!-- Hero: 2-column layout -->
     <section class="hero">
-      <div class="hero-left">
+      <canvas id="signal-canvas" aria-hidden="true"></canvas>
+      <div class="hero-left reveal-left">
         <div class="hero-overline">
           <span class="mono-label accent-text">◈ OPERATOR · CANBY, OREGON ◈</span>
         </div>
@@ -218,8 +219,8 @@
         </div>
         <p class="hero-micro-copy">One dispatch per week. No spam. Unsubscribe anytime.</p>
       </div>
-      <div class="hero-right">
-        <div class="hero-proof-stack" aria-label="Proof points">
+      <div class="hero-right reveal-right">
+        <div class="hero-proof-stack stagger-children" aria-label="Proof points">
           <div class="proof-item">
             <div class="proof-number">16</div>
             <div class="proof-label">Weekly dispatches shipped</div>
@@ -241,7 +242,7 @@
     </section>
 
     <!-- Featured Video -->
-    <div class="video-embed video-embed--featured" style="max-width: var(--page); margin: calc(var(--p) * 2) auto; padding: 0 var(--p);">
+    <div class="video-embed video-embed--featured reveal-scale" style="max-width: var(--page); margin: calc(var(--p) * 2) auto; padding: 0 var(--p);">
       <div class="video-embed" style="margin-bottom: 0;">
         <iframe src="https://www.youtube-nocookie.com/embed/fblm9vrKH7s" title="1Commerce LLC — Founder Transmission" loading="lazy" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
       </div>
@@ -278,9 +279,9 @@
     </section>
 
     <!-- Dossier Cards: Core Systems -->
-    <section>
+    <section class="reveal">
       <div class="section-label">01 / Core Systems</div>
-      <div class="dossier-grid">
+      <div class="dossier-grid stagger-children">
         
         <!-- The Signal -->
         <a href="https://1commercesolutions.com/" class="dossier-card" target="_blank" rel="noopener noreferrer">
@@ -352,10 +353,10 @@
     </section>
 
     <!-- Dispatch Preview — recent transmissions -->
-    <section class="dispatch-preview-section">
+    <section class="dispatch-preview-section reveal">
       <div class="section-label">02 / Recent Dispatches</div>
       <h2 class="dispatch-preview-heading">Latest Transmissions</h2>
-      <div class="dispatch-preview-grid">
+      <div class="dispatch-preview-grid stagger-children">
         <a href="./archive/017.html" class="dispatch-preview-card">
           <div class="dispatch-preview-meta">
             <span class="dispatch-num">№017</span>
@@ -408,7 +409,7 @@
     </div>
 
     <!-- Intelligence Matrix — UnifyOne AI capabilities -->
-    <section class="feature-matrix-section">
+    <section class="feature-matrix-section reveal">
       <div class="section-label">// UnifyOne Intelligence Layer</div>
       <h2 class="comparison-heading">The Intelligence Matrix</h2>
       <figure class="section-figure">
@@ -416,7 +417,7 @@
              alt="UnifyOne: The Intelligence Layer for Modern Gig Commerce — contextual AI across store builder, money manager, gig command, and universal endpoint"
              width="1200" height="675" loading="lazy" decoding="async" class="section-image">
       </figure>
-      <div class="feature-matrix">
+      <div class="feature-matrix stagger-children">
         <div class="feature-matrix-card">
           <div class="feature-matrix-icon">
             <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M21 15a2 2 0 01-2 2H7l-4 4V5a2 2 0 012-2h14a2 2 0 012 2z"/></svg>
@@ -449,7 +450,7 @@
     </section>
 
     <!-- Verified Builds -->
-    <section>
+    <section class="reveal">
       <div class="section-label">02 / Verified Builds</div>
       <figure class="section-figure">
         <img src="./images/verified-build-ecosystem.png"
