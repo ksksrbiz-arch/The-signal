@@ -1,0 +1,329 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="dark">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>THE SIGNAL — Weekly Transmission №018 | Building Without Brakes</title>
+<meta name="description" content="Building Without Brakes: a week in the 1Commerce engine room, shipping across game engines, Firebase, AI assets, serverless platforms, neural nets, and crawler telemetry.">
+<meta property="og:title" content="THE SIGNAL №018 — Building Without Brakes">
+<meta property="og:description" content="A week in the 1Commerce engine room: game engines, Firebase, neural nets, AI assets, serverless hardening, and Cloudflare crawler telemetry.">
+<meta property="og:type" content="article">
+<meta property="og:image" content="https://1commercesolutions.com/og-image.png">
+<link rel="canonical" href="https://1commercesolutions.com/archive/018.html">
+<meta property="og:url" content="https://1commercesolutions.com/archive/018.html">
+<meta name="robots" content="index, follow">
+<meta name="author" content="Keith Skaggs">
+<meta name="theme-color" content="#E8B86A">
+<link rel="icon" type="image/svg+xml" href="/assets/brand/favicon.svg">
+<link rel="icon" type="image/png" sizes="32x32" href="/assets/brand/favicon-32.png">
+<link rel="apple-touch-icon" sizes="180x180" href="/assets/brand/apple-touch-icon.png">
+<link rel="manifest" href="/manifest.json">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+<meta name="apple-mobile-web-app-title" content="THE SIGNAL">
+<meta property="og:site_name" content="THE SIGNAL">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta property="og:image:alt" content="THE SIGNAL Issue 018 — Building Without Brakes">
+<meta property="og:locale" content="en_US">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="THE SIGNAL №018 — Building Without Brakes">
+<meta name="twitter:description" content="A week in the 1Commerce engine room: game engines, Firebase, neural nets, AI assets, serverless hardening, and crawler telemetry.">
+<meta name="twitter:image" content="https://1commercesolutions.com/og-image.png">
+<meta name="twitter:image:alt" content="THE SIGNAL Issue 018 — Building Without Brakes">
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BlogPosting",
+  "headline": "Building Without Brakes: A Week in the 1Commerce Engine Room",
+  "description": "A week in the 1Commerce engine room: game engines, Firebase, neural nets, AI assets, serverless hardening, and crawler telemetry.",
+  "datePublished": "2026-05-25",
+  "dateModified": "2026-05-25",
+  "author": {"@type": "Person", "name": "Keith Skaggs"},
+  "publisher": {"@type": "Organization", "name": "1Commerce LLC", "url": "https://1commercesolutions.com"},
+  "mainEntityOfPage": "https://1commercesolutions.com/archive/018.html",
+  "image": "https://1commercesolutions.com/og-image.png",
+  "isPartOf": {"@type": "Blog", "name": "THE SIGNAL", "url": "https://1commercesolutions.com/archive/"}
+}
+</script>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  "itemListElement": [
+    {"@type": "ListItem", "position": 1, "name": "Home", "item": "https://1commercesolutions.com/"},
+    {"@type": "ListItem", "position": 2, "name": "Archive", "item": "https://1commercesolutions.com/archive/"},
+    {"@type": "ListItem", "position": 3, "name": "Issue 018"}
+  ]
+}
+</script>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,600;9..144,700&family=IBM+Plex+Sans:wght@400;500;600&family=JetBrains+Mono:wght@300;400;500&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../base.css?v=20260502a">
+<link rel="stylesheet" href="../style.css?v=20260502a">
+<style>
+.engine-room-article{max-width:880px;margin:0 auto;padding:clamp(48px,7vw,92px) 24px;color:var(--muted)}
+.engine-room-article h2{font-family:var(--font-display);font-size:clamp(1.8rem,4vw,2.6rem);line-height:1.08;color:var(--text);margin:56px 0 18px}
+.engine-room-article p{font-size:18px;line-height:1.78;margin:0 0 22px}
+.engine-room-article ul{font-size:18px;line-height:1.75;margin:0 0 28px;padding-left:24px}
+.engine-room-article li{margin-bottom:8px}
+.engine-room-article a{color:var(--verified);text-decoration-thickness:1px;text-underline-offset:3px}
+.engine-room-article code{font-family:var(--font-mono);font-size:.92em;background:rgba(232,184,106,.1);border:1px solid rgba(232,184,106,.18);border-radius:3px;padding:1px 5px;color:#f5d89f}
+.article-note{border:1px solid var(--rule);background:var(--panel);border-radius:var(--r);padding:22px 24px;margin:34px 0;color:#DFD3BA}
+.article-kicker{font-family:var(--font-mono);font-size:12px;letter-spacing:.16em;text-transform:uppercase;color:var(--verified);margin-bottom:18px}
+.article-signoff{border-top:1px solid var(--rule);margin-top:52px;padding-top:26px;font-family:var(--font-display);color:var(--text)}
+.metric-row{display:grid;grid-template-columns:repeat(4,1fr);gap:1px;background:rgba(255,255,255,.07);border:1px solid rgba(255,255,255,.07);border-radius:3px;overflow:hidden;margin:2rem 0}
+.metric-cell{background:#141414;padding:20px 16px;text-align:center}.metric-num{display:block;font-family:var(--font-mono);font-size:1.3rem;color:var(--verified);line-height:1;margin-bottom:6px}.metric-lbl{font-family:var(--font-mono);font-size:9px;letter-spacing:.1em;color:rgba(255,255,255,.38);text-transform:uppercase}
+@media (max-width:720px){.metric-row{grid-template-columns:1fr 1fr}.engine-room-article p,.engine-room-article ul{font-size:16px}}
+</style>
+</head>
+<body>
+  <a href="#main" class="skip-link">Skip to main content</a>
+  <div class="grain" aria-hidden="true"></div>
+
+  <div class="mobile-nav" aria-label="Mobile navigation">
+    <button class="mobile-nav-close" aria-label="Close menu">
+      <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 6L6 18M6 6l12 12"/></svg>
+    </button>
+    <a href="../">Home</a>
+    <a href="./">Archive</a>
+    <a href="../fieldnotes/">Fieldnotes</a>
+    <a href="../builds/">Verified Builds</a>
+    <a href="../news/">News Aggregator</a>
+    <a href="../videos/">Videos</a>
+    <a href="../reel-engine/">Reel Engine</a>
+    <a href="../about/">About</a>
+    <a href="../#subscribe">Subscribe</a>
+  </div>
+
+  <header class="site-header">
+    <div class="header-inner">
+      <div class="header-left">
+        <a href="../">
+          <svg class="logo" viewBox="0 0 32 32" width="28" height="28" fill="none" aria-label="The Signal logo">
+            <rect x="2" y="2" width="28" height="28" rx="5" stroke="currentColor" stroke-width="1.25" opacity="0.35"/>
+            <line x1="16" y1="5" x2="16" y2="27" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/>
+            <line x1="9" y1="8" x2="9" y2="24" stroke="currentColor" stroke-width="1.15" stroke-linecap="round" opacity="0.58"/>
+            <line x1="23" y1="8" x2="23" y2="24" stroke="currentColor" stroke-width="1.15" stroke-linecap="round" opacity="0.58"/>
+            <circle cx="16" cy="16" r="4.2" stroke="currentColor" stroke-width="1.5" fill="none"/>
+            <circle cx="16" cy="16" r="1.25" fill="currentColor"/>
+            <line x1="4.75" y1="16" x2="11.2" y2="16" stroke="currentColor" stroke-width="0.9" stroke-linecap="round" opacity="0.5"/>
+            <line x1="20.8" y1="16" x2="27.25" y2="16" stroke="currentColor" stroke-width="0.9" stroke-linecap="round" opacity="0.5"/>
+          </svg>
+          <span class="header-title">THE SIGNAL</span>
+        </a>
+      </div>
+      <div class="header-right">
+        <nav>
+          <ul class="nav-links">
+            <li><a href="../">Home</a></li>
+            <li><a href="./" class="active">Archive</a></li>
+            <li><a href="../fieldnotes/">Fieldnotes</a></li>
+            <li><a href="../builds/">Verified Builds</a></li>
+            <li><a href="../news/">News Aggregator</a></li>
+            <li><a href="../videos/">Videos</a></li>
+            <li><a href="../reel-engine/">Reel Engine</a></li>
+            <li><a href="../about/">About</a></li>
+            <li><a href="../#subscribe">Subscribe</a></li>
+          </ul>
+        </nav>
+        <button class="nav-toggle" aria-label="Open menu">
+          <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 12h18M3 6h18M3 18h18"/></svg>
+        </button>
+        <button data-theme-toggle aria-label="Switch to light mode">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="5"/><path d="M12 1v2M12 21v2M4.22 4.22l1.42 1.42M18.36 18.36l1.42 1.42M1 12h2M21 12h2M4.22 19.78l1.42-1.42M18.36 5.64l1.42-1.42"/></svg>
+        </button>
+      </div>
+    </div>
+  </header>
+
+  <nav class="breadcrumb" aria-label="Breadcrumb">
+    <a href="../">Home</a>
+    <span class="sep">›</span>
+    <a href="./">Archive</a>
+    <span class="sep">›</span>
+    <span class="current">Week №018</span>
+  </nav>
+
+  <main id="main">
+    <section class="hero">
+      <div class="hero-inner">
+        <div class="hero-overline"><span class="mono-label">◈ ENGINE ROOM TRANSMISSION ◈</span></div>
+        <h1 class="hero-title">
+          <span class="hero-title-line">Building Without</span>
+          <span class="hero-title-line accent">Brakes.</span>
+        </h1>
+        <div class="hero-meta">
+          <span class="mono-label">WEEK №18 · 2026</span>
+          <span class="mono-label dim">MAY 18–25, 2026</span>
+        </div>
+        <p class="hero-quote">"This is what a fully sovereign, multi-vertical digital commerce operation looks like from the inside."</p>
+      </div>
+      <div class="hero-scanline" aria-hidden="true"></div>
+    </section>
+
+    <div class="dispatch-share-strip">
+      <span class="share-strip-label">SHARE THIS TRANSMISSION</span>
+      <div class="share-strip-buttons" data-share-strip></div>
+    </div>
+
+    <section class="status-bar">
+      <div class="status-inner">
+        <div class="status-item"><span class="status-label">VISITORS</span><span class="status-value gold">191</span><span class="status-detail">1commerce.online · 24h</span></div>
+        <div class="status-item"><span class="status-label">REQUESTS</span><span class="status-value">2.55k</span><span class="status-detail">Cloudflare window</span></div>
+        <div class="status-item"><span class="status-label">AI CRAWLERS</span><span class="status-value gold">119</span><span class="status-detail">up 45.1%</span></div>
+        <div class="status-item"><span class="status-label">WORKER INVOCATIONS</span><span class="status-value">841</span><span class="status-detail">Graph this week</span></div>
+        <div class="status-item"><span class="status-label">OPERATOR</span><span class="status-value gold">1</span><span class="status-detail">Staff of One</span></div>
+        <div class="status-item"><span class="status-label">DISPATCHES</span><span class="status-value gold">18</span><span class="status-detail">shipped</span></div>
+      </div>
+    </section>
+
+    <article class="engine-room-article">
+      <div class="article-kicker">Published for <a href="https://1commerce.online">1CommerceSolutions.com</a> — Week of May 18–25, 2026</div>
+
+      <p class="lead-text">There's a version of "a productive week" that means clearing a to-do list. And then there's the version that means you shipped code on three different game engines, bootstrapped a Firebase project with zero-trust Firestore rules, merged a neural-net PR, built a live brand experience proposal with photorealistic AI assets, hardened a serverless junk removal platform, and monitored 119 AI crawler requests to your own domain — all while running on a Staff of One.</p>
+
+      <p>This is the 1Commerce version.</p>
+      <p>Here's what actually happened this week.</p>
+
+      <div class="metric-row">
+        <div class="metric-cell"><span class="metric-num">3</span><span class="metric-lbl">game engines touched</span></div>
+        <div class="metric-cell"><span class="metric-num">0</span><span class="metric-lbl">secret-scan hits</span></div>
+        <div class="metric-cell"><span class="metric-num">119</span><span class="metric-lbl">AI crawler requests</span></div>
+        <div class="metric-cell"><span class="metric-num">1</span><span class="metric-lbl">staff of one</span></div>
+      </div>
+
+      <h2>Mojave Run — Physics Engine Overhaul (PR #110)</h2>
+      <p>The wasteland arcade driver <a href="https://mojave-run.netlify.app"><strong>Mojave Run</strong></a> got a serious mechanical upgrade this week. Pull Request #110 shipped a fully coupled traction/suspension physics system that changes how the vehicle responds to road conditions at speed.</p>
+      <p>The concrete changes: low traction now <strong>dynamically scales spring compression targets</strong>, simulating realistic body roll and understeer rather than a flat response curve. Brake lights now scale in intensity with <code>slipForce</code> — meaning they visually communicate what the chassis is doing, not just whether the brake is pressed. Chassis tilt offsets are now responsive to live traction vectors, and ground-shadow contact calculations were recalibrated for natural behavior at contact points.</p>
+      <p>All new physical constants were extracted into named variables for long-term tuning. Linting and syntax checks across <code>app.js</code>, <code>mp.js</code>, and <code>server.js</code> passed cleanly. CodeQL came back clean.</p>
+      <p>The validation protocol: high-speed straight-line stability, aggressive hairpins under varying grip conditions, and confirmed no visual popping at contact points.</p>
+
+      <h2>3 Little Worms — Mobile Controls &amp; Render Loop Repair</h2>
+      <p>The WebGL retro game <a href="https://service-3-little-worms-167345356687.us-west2.run.app"><strong>3 Little Worms</strong></a> — published to Google Cloud Run — underwent a significant mobile debugging pass.</p>
+      <p>The headline fix: a critical "Maximum update depth exceeded" error in <code>src/components/UI.tsx</code> was traced to a render-phase <code>setState</code> block inside the <code>localName</code> synchronization hook. The fix was a clean refactor from update-during-render to a post-paint <code>useEffect</code> — removing nested rendering cascade triggers at the root level.</p>
+      <p>On top of that, the control scheme was completely reworked. The original binary left/right scheme was replaced with <strong>360-degree responsive steering</strong> using a Pointer Events tracking structure (<code>activePointerId</code>) that translates screen touch inputs into game-world coordinates. Local leaderboard intervals were moved into a <code>useRef</code> to stop them from triggering state updates on every function render. The active viewport was locked to a strict 16:9 aspect ratio constraint.</p>
+      <p>Deep within the <code>gamestore.ts</code>, a <code>hasStateChanged</code> deep equality comparison function was implemented — Zustand now only publishes a new <code>gamestate</code> reference when a semantic state change actually occurs, cutting spurious re-renders caused by the frame-update loop.</p>
+
+      <h2>Echoes of Choice — Firebase Provisioning &amp; Monetization Architecture</h2>
+      <p><strong>Echoes of Choice</strong> — the AI interactive fiction companion built for the <a href="https://echoes-of-choice-167345356687.us-west2.run.app">TBR (To Be Read) Clackamas Book Exchange</a> rebrand — crossed two major milestones this week.</p>
+      <p><strong>Infrastructure:</strong> Firebase project <code>gen-lang-client-e881373762</code> was bootstrapped in <code>us-west2</code>. Zero-trust Firestore security rules were deployed to isolate user rows and scope real-time collaborative rooms. A custom telemetry sync panel was implemented in the client-side navbar using <code>lucide-react</code> icons — pulsing amber for syncing, emerald for synced, rose for offline fallback, alert pulse for write errors. Latency benchmarking is live.</p>
+      <p><strong>Monetization architecture:</strong> A full "Story → Discovery → Support" revenue model was mapped and scoped. The plan: contextually relevant real-book recommendations linked to Bookshop.org affiliates (10% standard commission) built through a custom <code>EndingRecommendations</code> React component that maps choice paths to JSON-managed ending archetypes. A 30–50% revenue share structure was proposed to the TBR bookstore owners to convert this from a tech showcase into a joint venture. Next sprint targets paywall enforcement (<code>HTTP 402</code> on <code>/api/story/start</code> and <code>/api/story/continue</code>) and Stripe session integration for story expansion bundles.</p>
+      <p>The GitHub repo is <code>ksksrbiz-arch/Books</code> — TypeScript, fully committed.</p>
+
+      <h2>HAUL Junk Removal — Platform Live, DNS Cutover Queued</h2>
+      <p><strong>HAUL Junk Removal</strong> is live at <a href="https://haul-icommerce.netlify.app">haul-icommerce.netlify.app</a>. The backend was rebuilt this week on <strong>Netlify Neon (native Postgres)</strong> — replacing the prior Supabase dependency entirely. The migration included:</p>
+      <ul>
+        <li><code>fix(sql): drop Supabase-only GRANT TO authenticated statements</code></li>
+        <li><code>fix: real Netlify/Neon API + lockfile + esbuild minifier</code></li>
+        <li><code>deps: bump vite to ^6.4.2</code> (CVE-2026-39365 patch)</li>
+        <li><code>refactor: replace Supabase with Netlify DB</code></li>
+      </ul>
+      <p>The admin password is secured as a Netlify secret env var. Database migrations ran cleanly: <code>001_init</code> (8 tables) + <code>002_seed</code> (16 products). Secrets scan: 0 hits across 67 files.</p>
+      <p>Outstanding on the infrastructure side: DNS CNAME cutover to <code>haul.icommerce.online</code> (pending) and n8n SMTP workflow configuration for automated user onboarding. Those are today's targets.</p>
+
+      <h2>Montucky Moonshine &amp; Oregon Aerial Services — Client Proposal Delivered</h2>
+      <p>A full brand experience proposal was built and deployed for <strong>Daryl Rutherford</strong> covering two parallel commercial opportunities: the <a href="https://montucky-moonshine-proposal.netlify.app">Montucky Moonshine</a> venue experience in Helena, MT, and <strong>Oregon Aerial Services</strong> commercial ag-drone operations in the Willamette Valley.</p>
+      <p>The Montucky proposal features mobile-first responsive layouts (375×812), prominent "Shop Now" and "Book the Venue" CTAs, and newly generated photorealistic AI assets: venue interiors, product flat lays, merchandise frames, and atmospheric dusk exteriors. A GitHub Copilot agent ran a mobile responsiveness audit and updated SEO/accessibility metadata across <code>index.html</code> and <code>venue.html</code>.</p>
+      <p>The Oregon Aerial Services side covers the regulatory stack: FAA Part 107, ODA licensing, and Part 137 certifications. A bank-ready LOI packet is being prepared for AgDirect/AgWest credit underwriting.</p>
+      <p>The proposal was delivered this week. A 60-to-90-second Loom walkthrough is queued as the follow-up activation.</p>
+
+      <h2>The Personal Knowledge Graph (PKG-VS) — Neural Net PR Merged</h2>
+      <p>The <code>ksksrbiz-arch/Graph</code> knowledge graph — live at <a href="https://graph.skdev-371.workers.dev">graph.skdev-371.workers.dev</a> — merged <a href="https://github.com/ksksrbiz-arch/Graph/pull/86"><strong>PR #86</strong></a> this week, contributed by Copilot: <em>"Improve spiking simulator reset and stimulus semantics."</em></p>
+      <p>The specific changes:</p>
+      <ul>
+        <li>Added <code>spikingSimulator.reset()</code> to clear dynamic runtime state while preserving loaded neurons, synapses, and learned weights</li>
+        <li><code>loadConnectome()</code> now reuses <code>reset()</code> so topology reloads always start from a clean simulation timeline</li>
+        <li><code>inject()</code> now returns whether the stimulus was accepted — allowing callers to detect unknown neuron IDs without inspecting internals</li>
+      </ul>
+      <p>The Graph's Cloudflare Worker (<code>graph.skdev-371.workers.dev</code>) logged 841 invocations this week. The <code>1commerce-nlweb</code> Worker was also active at <code>1commerce-nlweb.skdev-371.workers.dev</code>.</p>
+
+      <h2>1Commerce.online — 191 Unique Visitors, AI Crawlers Up 45%</h2>
+      <p>Infrastructure-side, <a href="https://1commerce.online">1commerce.online</a> saw <strong>191 unique visitors</strong> and <strong>2.55k total requests</strong> in the 24-hour window ending May 25. Cloudflare's AI Crawl Control flagged <strong>119 AI crawler requests</strong> — a <strong>45.1% increase</strong> over the prior period — with Claude-SearchBot (17 requests) and ClaudeBot (6 requests) among the top crawlers. The most crawled path: <code>/sitemap.xml</code>.</p>
+      <p>The Ethereum Gateway Basic subscription was added to the account this week (free tier, up to 500k HTTP requests). Zero Trust security is active with 25K access-controlled applications.</p>
+
+      <h2>What's Next</h2>
+      <p>The build never fully stops — but the clearest open loops heading into next week:</p>
+      <ul>
+        <li><strong>HAUL DNS cutover</strong> to <code>haul.icommerce.online</code> + n8n SMTP end-to-end test</li>
+        <li><strong>Mojave Run PR #110</strong> final merge after live validation pass</li>
+        <li><strong>Echoes of Choice</strong> image persistence fix (container-local → Google Cloud Storage) + paywall implementation</li>
+        <li><strong>Daryl Rutherford</strong> partnership close — Loom video delivery</li>
+        <li><strong>UnifyOne mileage-to-deduction React engine</strong> (post-deal scope lock)</li>
+        <li><strong>InkVault SVG collections</strong> staging on Gumroad</li>
+      </ul>
+
+      <div class="article-note">If you want to see what a fully sovereign, multi-vertical digital commerce operation looks like from the inside — this is it.</div>
+
+      <p class="article-signoff">— Keith Skaggs, CEO &amp; Principal Engineer, 1Commerce LLC<br>Canby, Oregon | <a href="https://1commerce.online">1commerce.online</a> | <a href="mailto:skdev@1commerce.online">skdev@1commerce.online</a></p>
+    </article>
+
+    <button type="button" class="tweet-card" onclick="window.open('https://twitter.com/intent/tweet?text=Building%20Without%20Brakes%3A%20a%20week%20in%20the%201Commerce%20engine%20room.&url=https%3A%2F%2F1commercesolutions.com%2Farchive%2F018.html','_blank')" aria-label="Share on X">
+      <p class="tweet-card-quote">"This is what a fully sovereign, multi-vertical digital commerce operation looks like from the inside."</p>
+      <div class="tweet-card-footer">
+        <span class="tweet-card-attr">— The Signal — Week 018</span>
+        <span class="tweet-card-cta">𝕏 CLICK TO TWEET THIS</span>
+      </div>
+    </button>
+
+    <div class="reaction-bar">
+      <span class="reaction-bar-label">HOW DID THIS LAND?</span>
+      <div class="reaction-buttons">
+        <button class="reaction-btn" data-reaction="signal" aria-label="React: Signal"><span class="reaction-icon">◈</span><span class="reaction-name">SIGNAL</span><span class="reaction-count">0</span></button>
+        <button class="reaction-btn" data-reaction="cathedral" aria-label="React: Cathedral"><span class="reaction-icon">⬟</span><span class="reaction-name">CATHEDRAL</span><span class="reaction-count">0</span></button>
+        <button class="reaction-btn" data-reaction="filed" aria-label="React: Filed"><span class="reaction-icon">▣</span><span class="reaction-name">FILED</span><span class="reaction-count">0</span></button>
+        <button class="reaction-btn" data-reaction="noise" aria-label="React: Noise"><span class="reaction-icon">∅</span><span class="reaction-name">NOISE</span><span class="reaction-count">0</span></button>
+      </div>
+      <div class="reaction-share-strip">
+        <span class="share-strip-label">SHARE</span>
+        <div class="share-strip-buttons" data-share-strip></div>
+      </div>
+    </div>
+  </main>
+
+  <footer class="site-footer">
+    <div class="footer-main">
+      <div class="footer-col">
+        <h4>The Signal</h4>
+        <div class="footer-subscribe">
+          <form class="footer-subscribe-form" action="https://assets.mailerlite.com/jsonp/887036/forms/131950373498498498/subscribe" method="POST">
+            <input type="email" name="fields[email]" placeholder="your@email.com" required aria-label="Email address">
+            <button type="submit">Subscribe</button>
+          </form>
+        </div>
+        <p>A weekly transmission from a solo founder building in public.</p>
+      </div>
+      <div class="footer-col">
+        <h4>Navigate</h4>
+        <ul>
+          <li><a href="../">Home</a></li>
+          <li><a href="./">Archive</a></li>
+          <li><a href="../fieldnotes/">Fieldnotes</a></li>
+          <li><a href="../builds/">Verified Builds</a></li>
+          <li><a href="../news/">News Aggregator</a></li>
+          <li><a href="../videos/">Videos</a></li>
+          <li><a href="../reel-engine/">Reel Engine</a></li>
+          <li><a href="../about/">About</a></li>
+          <li><a href="../#subscribe">Subscribe</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <h4>Verified Builds</h4>
+        <ul>
+          <li><a href="https://1commerce.online/" target="_blank" rel="noopener noreferrer">UnifyOne</a></li>
+          <li><a href="https://mojave-run.netlify.app/" target="_blank" rel="noopener noreferrer">Mojave Run</a></li>
+          <li><a href="https://haul-icommerce.netlify.app/" target="_blank" rel="noopener noreferrer">HAUL Junk Removal</a></li>
+          <li><a href="https://montucky-moonshine-proposal.netlify.app/" target="_blank" rel="noopener noreferrer">Montucky Moonshine</a></li>
+          <li><a href="https://graph.skdev-371.workers.dev/" target="_blank" rel="noopener noreferrer">Personal Knowledge Graph</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <span class="mono-label dim">© 2026 1COMMERCE LLC · CANBY, OREGON</span>
+    </div>
+  </footer>
+
+  <script src="../app.js" defer></script>
+</body>
+</html>
