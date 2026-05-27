@@ -1,6 +1,6 @@
 {
-  "generatedAt": "2026-05-25",
-  "pagesScanned": 75,
+  "generatedAt": "2026-05-27",
+  "pagesScanned": 77,
   "issuesFound": 0,
   "issues": [],
   "pages": [
@@ -59,9 +59,18 @@
       "description": "The Build Log: What Shipped This Week. Verified deployments, live systems, and the architecture behind a week of relentless building. Week 17, April 20–26, 2026."
     },
     {
+      "file": "archive/018.html",
+      "url": "https://1commercesolutions.com/archive/018.html",
+      "lastmod": "2026-05-25",
+      "changefreq": "monthly",
+      "priority": "0.7",
+      "title": "THE SIGNAL — Weekly Transmission №018 | Building Without Brakes",
+      "description": "Building Without Brakes: a week in the 1Commerce engine room, shipping across game engines, Firebase, AI assets, serverless platforms, neural nets, and crawler telemetry."
+    },
+    {
       "file": "archive/index.html",
       "url": "https://1commercesolutions.com/archive/",
-      "lastmod": "2026-05-06",
+      "lastmod": "2026-05-25",
       "changefreq": "weekly",
       "priority": "0.9",
       "title": "Archive — THE SIGNAL | 1Commerce LLC",
@@ -255,6 +264,15 @@
       "priority": "0.7",
       "title": "Daily Signal: commerce intelligence layers | THE SIGNAL",
       "description": "Why storefronts need memory, context, and action layers beyond static pages. A practical daily brief for operators building commerce systems with proof, restraint, and compounding execution."
+    },
+    {
+      "file": "daily/2026-05-27.html",
+      "url": "https://1commercesolutions.com/daily/2026-05-27.html",
+      "lastmod": "2026-05-27",
+      "changefreq": "daily",
+      "priority": "0.7",
+      "title": "Daily Signal: validated product experiments | THE SIGNAL",
+      "description": "How to move from idea to shipped proof while keeping scope under control. A practical daily brief for operators building commerce systems with proof, restraint, and compounding execution."
     },
     {
       "file": "daily/index.html",
@@ -646,7 +664,7 @@
     {
       "file": "index.html",
       "url": "https://1commercesolutions.com/",
-      "lastmod": "2026-05-22",
+      "lastmod": "2026-05-25",
       "changefreq": "weekly",
       "priority": "1.0",
       "title": "THE SIGNAL — Commerce Systems That Ship | 1Commerce LLC",
