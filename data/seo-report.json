@@ -1,6 +1,6 @@
 {
-  "generatedAt": "2026-05-27",
-  "pagesScanned": 77,
+  "generatedAt": "2026-05-28",
+  "pagesScanned": 78,
   "issuesFound": 0,
   "issues": [],
   "pages": [
@@ -275,9 +275,18 @@
       "description": "How to move from idea to shipped proof while keeping scope under control. A practical daily brief for operators building commerce systems with proof, restraint, and compounding execution."
     },
     {
+      "file": "daily/2026-05-28.html",
+      "url": "https://1commercesolutions.com/daily/2026-05-28.html",
+      "lastmod": "2026-05-28",
+      "changefreq": "daily",
+      "priority": "0.7",
+      "title": "Daily Signal: AI-native commerce operations | THE SIGNAL",
+      "description": "What an operator should automate today without losing human judgment. A practical daily brief for operators building commerce systems with proof, restraint, and compounding execution."
+    },
+    {
       "file": "daily/index.html",
       "url": "https://1commercesolutions.com/daily/",
-      "lastmod": "2026-05-25",
+      "lastmod": "2026-05-27",
       "changefreq": "daily",
       "priority": "0.9",
       "title": "Daily Signal — THE SIGNAL",
