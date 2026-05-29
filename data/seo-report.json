@@ -1,6 +1,6 @@
 {
-  "generatedAt": "2026-05-28",
-  "pagesScanned": 78,
+  "generatedAt": "2026-05-29",
+  "pagesScanned": 79,
   "issuesFound": 0,
   "issues": [],
   "pages": [
@@ -282,6 +282,15 @@
       "priority": "0.7",
       "title": "Daily Signal: AI-native commerce operations | THE SIGNAL",
       "description": "What an operator should automate today without losing human judgment. A practical daily brief for operators building commerce systems with proof, restraint, and compounding execution."
+    },
+    {
+      "file": "daily/2026-05-29.html",
+      "url": "https://1commercesolutions.com/daily/2026-05-29.html",
+      "lastmod": "2026-05-29",
+      "changefreq": "daily",
+      "priority": "0.7",
+      "title": "Daily Signal: proof-first founder systems | THE SIGNAL",
+      "description": "How to turn shipping evidence into trust, distribution, and compounding momentum. A practical daily brief for operators building commerce systems with proof, restraint, and compounding execution."
     },
     {
       "file": "daily/index.html",
