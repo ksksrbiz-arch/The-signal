@@ -1,6 +1,6 @@
 {
-  "generatedAt": "2026-05-30",
-  "pagesScanned": 80,
+  "generatedAt": "2026-05-31",
+  "pagesScanned": 81,
   "issuesFound": 0,
   "issues": [],
   "pages": [
@@ -300,6 +300,15 @@
       "priority": "0.7",
       "title": "Daily Signal: solo-founder infrastructure | THE SIGNAL",
       "description": "Where leverage comes from when headcount stays intentionally small. A practical daily brief for operators building commerce systems with proof, restraint, and compounding execution."
+    },
+    {
+      "file": "daily/2026-05-31.html",
+      "url": "https://1commercesolutions.com/daily/2026-05-31.html",
+      "lastmod": "2026-05-31",
+      "changefreq": "daily",
+      "priority": "0.7",
+      "title": "Daily Signal: agent workflows for revenue | THE SIGNAL",
+      "description": "How agents support prospecting, qualification, follow-up, and post-sale delivery. A practical daily brief for operators building commerce systems with proof, restraint, and compounding execution."
     },
     {
       "file": "daily/index.html",
