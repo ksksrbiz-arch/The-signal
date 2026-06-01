@@ -8,6 +8,17 @@
   publish = "."
   functions = "functions"
 
+# ── Functions: bundle the latest daily brief so the scheduled
+#    send-signal function can read it at runtime. ───────────────
+[functions]
+  included_files = ["data/latest-daily-signal.json"]
+
+# Scheduled daily Signal email dispatch — runs every day at 12:00 UTC
+# (shortly after the daily-content-agent GitHub Action publishes the
+# new brief at 11:15 UTC). See functions/send-signal.js.
+[functions."send-signal"]
+  schedule = "0 12 * * *"
+
 # ── Security & Performance Headers ─────────────────────────────
 [[headers]]
   for = "/*"
@@ -91,6 +102,13 @@
 [[redirects]]
   from = "/api/news"
   to = "/.netlify/functions/news"
+  status = 200
+
+# Manual trigger for the daily Signal email dispatch.
+# Requires `Authorization: ******` header.
+[[redirects]]
+  from = "/api/send-signal"
+  to = "/.netlify/functions/send-signal"
   status = 200
 
 # Block public access to internal documentation and setup scripts.
