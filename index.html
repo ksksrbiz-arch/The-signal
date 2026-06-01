@@ -657,7 +657,11 @@
       <h3 id="contact-modal-title" class="contact-modal-title">Email Keith Directly</h3>
       <p class="contact-modal-subtitle">Direct line for projects, consulting, or collaboration opportunities.</p>
 
-      <form class="contact-form" id="contact-form">
+      <form class="contact-form" id="contact-form" name="contact" method="POST" data-netlify="true" netlify-honeypot="bot-field">
+        <input type="hidden" name="form-name" value="contact">
+        <p class="hidden" aria-hidden="true" style="position:absolute;left:-10000px;top:auto;width:1px;height:1px;overflow:hidden;">
+          <label>Leave this field empty: <input name="bot-field" tabindex="-1" autocomplete="off"></label>
+        </p>
         <div class="form-group">
           <label for="contact-name">Your Name</label>
           <input type="text" id="contact-name" name="name" required placeholder="John Doe" aria-required="true">
