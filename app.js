@@ -298,29 +298,32 @@ if ('serviceWorker' in navigator) {
     submitBtn.classList.add('loading');
 
     var formData = {
+      'form-name': 'contact',
       name: form.querySelector('#contact-name').value,
       email: form.querySelector('#contact-email').value,
       message: form.querySelector('#contact-message').value
     };
 
-    // Send to Netlify Function
-    fetch('/.netlify/functions/send-email', {
+    var botField = form.querySelector('[name="bot-field"]');
+    if (botField) formData['bot-field'] = botField.value;
+
+    var encoded = Object.keys(formData).map(function(k) {
+      return encodeURIComponent(k) + '=' + encodeURIComponent(formData[k]);
+    }).join('&');
+
+    // Submit to Netlify Forms (native form handling — no API key required;
+    // configure notification email in Netlify dashboard → Forms → Settings).
+    fetch('/', {
       method: 'POST',
-      headers: { 'Content-Type': 'application/json' },
-      body: JSON.stringify(formData)
+      headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
+      body: encoded
     })
     .then(function(response) {
-      return response.json().then(function(data) {
-        return { ok: response.ok, data: data };
-      });
-    })
-    .then(function(result) {
-      if (result.ok) {
-        // Show success
+      if (response.ok) {
         form.style.display = 'none';
         successDiv.style.display = 'block';
       } else {
-        throw new Error(result.data.error || 'Failed to send message');
+        throw new Error('Submission failed (status ' + response.status + ')');
       }
     })
     .catch(function(error) {

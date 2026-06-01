@@ -17,9 +17,7 @@
     "seo:agent": "node scripts/seo-agent.mjs",
     "automation:daily": "npm run content:agent && npm run seo:agent"
   },
-  "dependencies": {
-    "@sendgrid/mail": "^8.1.3"
-  },
+  "dependencies": {},
   "engines": {
     "node": ">=18"
   }
