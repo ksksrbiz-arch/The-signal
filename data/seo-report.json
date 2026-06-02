@@ -1,13 +1,13 @@
 {
-  "generatedAt": "2026-06-01",
-  "pagesScanned": 82,
+  "generatedAt": "2026-06-02",
+  "pagesScanned": 84,
   "issuesFound": 0,
   "issues": [],
   "pages": [
     {
       "file": "about/index.html",
       "url": "https://1commercesolutions.com/about/",
-      "lastmod": "2026-05-06",
+      "lastmod": "2026-06-01",
       "changefreq": "monthly",
       "priority": "0.6",
       "title": "About — THE SIGNAL | 1Commerce LLC",
@@ -61,16 +61,16 @@
     {
       "file": "archive/018.html",
       "url": "https://1commercesolutions.com/archive/018.html",
-      "lastmod": "2026-05-25",
+      "lastmod": "2026-06-01",
       "changefreq": "monthly",
       "priority": "0.7",
-      "title": "THE SIGNAL — Weekly Transmission №018 | Building Without Brakes",
-      "description": "Building Without Brakes: a week in the 1Commerce engine room, shipping across game engines, Firebase, AI assets, serverless platforms, neural nets, and crawler telemetry."
+      "title": "THE SIGNAL — Weekly Transmission №018 | Cathedral Principle in Action",
+      "description": "Eleven active work streams. Zero placeholders. Cathedral principle in action. Precision Core auth stabilized, UnifyOne fully rebuilt, ag drone licensing initiated, memoir at 15,000 words, AI music video shipped."
     },
     {
       "file": "archive/index.html",
       "url": "https://1commercesolutions.com/archive/",
-      "lastmod": "2026-05-25",
+      "lastmod": "2026-06-01",
       "changefreq": "weekly",
       "priority": "0.9",
       "title": "Archive — THE SIGNAL | 1Commerce LLC",
@@ -318,6 +318,15 @@
       "priority": "0.7",
       "title": "Daily Signal: commerce intelligence layers | THE SIGNAL",
       "description": "Why storefronts need memory, context, and action layers beyond static pages. A practical daily brief for operators building commerce systems with proof, restraint, and compounding execution."
+    },
+    {
+      "file": "daily/2026-06-02.html",
+      "url": "https://1commercesolutions.com/daily/2026-06-02.html",
+      "lastmod": "2026-06-02",
+      "changefreq": "daily",
+      "priority": "0.7",
+      "title": "Daily Signal: operator SEO discipline | THE SIGNAL",
+      "description": "The daily habits that keep crawl signals fresh without chasing gimmicks. A practical daily brief for operators building commerce systems with proof, restraint, and compounding execution."
     },
     {
       "file": "daily/index.html",
@@ -709,7 +718,7 @@
     {
       "file": "index.html",
       "url": "https://1commercesolutions.com/",
-      "lastmod": "2026-05-25",
+      "lastmod": "2026-06-01",
       "changefreq": "weekly",
       "priority": "1.0",
       "title": "THE SIGNAL — Commerce Systems That Ship | 1Commerce LLC",
@@ -723,6 +732,15 @@
       "priority": "0.9",
       "title": "News Aggregator — THE SIGNAL",
       "description": "Real-time news from TechCrunch, GitHub, HN, Product Hunt, The Verge, AWS, Ars Technica, Wired. Operator-curated tech signals via RSS2JSON."
+    },
+    {
+      "file": "profile/index.html",
+      "url": "https://1commercesolutions.com/profile/",
+      "lastmod": "2026-06-01",
+      "changefreq": "monthly",
+      "priority": "0.6",
+      "title": "Profile — THE SIGNAL | 1Commerce LLC",
+      "description": "The animated GitHub personal profile of ksksrbiz-arch, embedded directly into The Signal. Live commits, repos, and build-in-public activity."
     },
     {
       "file": "reel-engine/index.html",
