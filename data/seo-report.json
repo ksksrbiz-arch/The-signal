@@ -1,6 +1,6 @@
 {
-  "generatedAt": "2026-06-02",
-  "pagesScanned": 84,
+  "generatedAt": "2026-06-03",
+  "pagesScanned": 85,
   "issuesFound": 0,
   "issues": [],
   "pages": [
@@ -327,6 +327,15 @@
       "priority": "0.7",
       "title": "Daily Signal: operator SEO discipline | THE SIGNAL",
       "description": "The daily habits that keep crawl signals fresh without chasing gimmicks. A practical daily brief for operators building commerce systems with proof, restraint, and compounding execution."
+    },
+    {
+      "file": "daily/2026-06-03.html",
+      "url": "https://1commercesolutions.com/daily/2026-06-03.html",
+      "lastmod": "2026-06-03",
+      "changefreq": "daily",
+      "priority": "0.7",
+      "title": "Daily Signal: validated product experiments | THE SIGNAL",
+      "description": "How to move from idea to shipped proof while keeping scope under control. A practical daily brief for operators building commerce systems with proof, restraint, and compounding execution."
     },
     {
       "file": "daily/index.html",
