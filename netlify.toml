@@ -104,6 +104,11 @@
   to = "/.netlify/functions/news"
   status = 200
 
+[[redirects]]
+  from = "/api/subscribe"
+  to = "/.netlify/functions/subscribe"
+  status = 200
+
 # Manual trigger for the daily Signal email dispatch.
 # Requires `Authorization: ******` header.
 [[redirects]]
