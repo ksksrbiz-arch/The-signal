@@ -137,6 +137,172 @@
 
 <link rel="stylesheet" href="./base.css?v=20260502a">
 <link rel="stylesheet" href="./style.css?v=20260502a">
+
+<style>
+/* ── Cathedral Framework ─────────────────────────────────── */
+.cathedral-section { padding: var(--p) 0; }
+.cathedral-lede {
+  font-family: 'IBM Plex Sans', sans-serif;
+  font-size: 1rem;
+  color: rgba(var(--fg-rgb, 255,255,255), 0.6);
+  max-width: 640px;
+  margin: 0 0 2rem;
+  line-height: 1.65;
+}
+.cathedral-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 1px;
+  background: rgba(255,255,255,0.07);
+  border: 1px solid rgba(255,255,255,0.07);
+  border-radius: 4px;
+  overflow: hidden;
+}
+.cathedral-card {
+  background: #141414;
+  padding: 32px 24px;
+}
+[data-theme="light"] .cathedral-card { background: #fafafa; }
+.cathedral-card-glyph {
+  font-size: 1.4rem;
+  color: #E8B86A;
+  margin-bottom: 14px;
+  display: block;
+  line-height: 1;
+}
+.cathedral-card-title {
+  font-family: 'Fraunces', serif;
+  font-size: 1.05rem;
+  font-weight: 600;
+  color: var(--fg, #f0f0f0);
+  margin-bottom: 10px;
+  line-height: 1.3;
+}
+.cathedral-card-desc {
+  font-family: 'IBM Plex Sans', sans-serif;
+  font-size: 0.84rem;
+  color: rgba(var(--fg-rgb, 255,255,255), 0.5);
+  line-height: 1.65;
+}
+@media (max-width: 720px) {
+  .cathedral-grid { grid-template-columns: 1fr; }
+}
+
+/* ── Who I Build For ─────────────────────────────────────── */
+.clients-section { padding: var(--p) 0; }
+.clients-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 20px;
+}
+.client-tier-card {
+  background: #141414;
+  border: 1px solid rgba(232,184,106,0.18);
+  border-radius: 6px;
+  padding: 32px 28px;
+}
+[data-theme="light"] .client-tier-card { background: #fafafa; }
+.client-tier-label {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 9px;
+  letter-spacing: 0.16em;
+  color: #E8B86A;
+  text-transform: uppercase;
+  margin-bottom: 10px;
+}
+.client-tier-title {
+  font-family: 'Fraunces', serif;
+  font-size: 1.2rem;
+  font-weight: 700;
+  color: var(--fg, #f0f0f0);
+  margin-bottom: 14px;
+  line-height: 1.2;
+}
+.client-tier-desc {
+  font-family: 'IBM Plex Sans', sans-serif;
+  font-size: 0.87rem;
+  color: rgba(var(--fg-rgb, 255,255,255), 0.55);
+  line-height: 1.65;
+  margin-bottom: 20px;
+}
+.client-tier-signals {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+.client-tier-signals li {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 0.78rem;
+  color: rgba(var(--fg-rgb, 255,255,255), 0.45);
+  padding-left: 16px;
+  position: relative;
+}
+.client-tier-signals li::before {
+  content: '→';
+  position: absolute;
+  left: 0;
+  color: #E8B86A;
+  font-size: 0.72rem;
+}
+@media (max-width: 720px) {
+  .clients-grid { grid-template-columns: 1fr; }
+}
+
+/* ── Operating Principles ────────────────────────────────── */
+.principles-section { padding: var(--p) 0; }
+.principles-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 20px;
+}
+.principle-card {
+  border-top: 2px solid #E8B86A;
+  padding: 24px 0 0;
+}
+.principle-num {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 2rem;
+  font-weight: 300;
+  color: rgba(var(--fg-rgb, 255,255,255), 0.08);
+  line-height: 1;
+  margin-bottom: 12px;
+}
+.principle-title {
+  font-family: 'Fraunces', serif;
+  font-size: 1rem;
+  font-weight: 600;
+  color: var(--fg, #f0f0f0);
+  margin-bottom: 10px;
+  line-height: 1.3;
+}
+.principle-desc {
+  font-family: 'IBM Plex Sans', sans-serif;
+  font-size: 0.84rem;
+  color: rgba(var(--fg-rgb, 255,255,255), 0.5);
+  line-height: 1.65;
+  margin-bottom: 14px;
+}
+.principle-link {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 0.75rem;
+  color: #E8B86A;
+  text-decoration: none;
+  letter-spacing: 0.04em;
+}
+.principle-link:hover { text-decoration: underline; }
+.principle-stack {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 0.75rem;
+  color: rgba(var(--fg-rgb, 255,255,255), 0.3);
+  letter-spacing: 0.04em;
+}
+@media (max-width: 720px) {
+  .principles-grid { grid-template-columns: 1fr; }
+}
+</style>
 </head>
 <body>
   <a href="#main" class="skip-link">Skip to main content</a>
@@ -280,6 +446,30 @@
       </div>
     </section>
 
+    <!-- Cathedral Framework -->
+    <section class="cathedral-section reveal" aria-labelledby="cathedral-heading">
+      <div class="section-label">// Production Methodology</div>
+      <h2 class="comparison-heading" id="cathedral-heading">The Cathedral Framework</h2>
+      <p class="cathedral-lede">The core production methodology behind every system 1Commerce LLC ships. Not a metaphor — a strict operational discipline. Every deployed system must justify its existence or it gets deprecated.</p>
+      <div class="cathedral-grid stagger-children">
+        <div class="cathedral-card">
+          <div class="cathedral-card-glyph" aria-hidden="true">◈</div>
+          <h3 class="cathedral-card-title">No Orphan Systems</h3>
+          <p class="cathedral-card-desc">Every deployment must generate revenue, build an audience, or harden the infrastructure that enables both. Systems that fail this test get deprecated. Systems that pass it compound into the next build cycle.</p>
+        </div>
+        <div class="cathedral-card">
+          <div class="cathedral-card-glyph" aria-hidden="true">⬟</div>
+          <h3 class="cathedral-card-title">Proof-First Infrastructure</h3>
+          <p class="cathedral-card-desc">Zero placeholders. Zero aspirational features. Nothing documented that isn't verifiably live at a resolving URL. The architecture ships first; the marketing follows from the proof.</p>
+        </div>
+        <div class="cathedral-card">
+          <div class="cathedral-card-glyph" aria-hidden="true">▣</div>
+          <h3 class="cathedral-card-title">Cathedral Principle</h3>
+          <p class="cathedral-card-desc">Build the structure first. Each stone is load-bearing. Iteration speed is structural — not heroic — designed to sustain across weeks, not sprint and collapse. The agentic coding flywheel keeps the rate relentless.</p>
+        </div>
+      </div>
+    </section>
+
     <!-- Dossier Cards: Core Systems -->
     <section class="reveal">
       <div class="section-label">01 / Core Systems</div>
@@ -362,13 +552,14 @@
         <a href="./archive/018.html" class="dispatch-preview-card">
           <div class="dispatch-preview-meta">
             <span class="dispatch-num">№018</span>
-            <time datetime="2026-05-25">May 18–25, 2026</time>
+            <time datetime="2026-06-01">May 26 – Jun 1, 2026</time>
           </div>
-          <h3 class="dispatch-preview-title">Building Without Brakes.</h3>
-          <p class="dispatch-preview-quote">"This is what a fully sovereign, multi-vertical digital commerce operation looks like from the inside."</p>
+          <h3 class="dispatch-preview-title">Cathedral Principle in Action.</h3>
+          <p class="dispatch-preview-quote">"Eleven active work streams. Zero placeholders. The cathedral doesn't ask for credit — it just keeps stacking stone."</p>
           <div class="dispatch-preview-tags">
-            <span class="arc-tag">Engine Room</span>
             <span class="arc-tag">Verified Builds</span>
+            <span class="arc-tag">Ag Drone</span>
+            <span class="arc-tag">Memoir</span>
           </div>
         </a>
         <a href="./archive/017.html" class="dispatch-preview-card">
@@ -447,6 +638,63 @@
           </div>
           <h3 class="feature-matrix-title">Challenge Strategy</h3>
           <p class="feature-matrix-desc">Monitors active challenges and suggests optimal completion paths based strictly on your current live location data.</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- Who I Build For -->
+    <section class="clients-section reveal" aria-labelledby="clients-heading">
+      <div class="section-label">// Target Operators</div>
+      <h2 class="comparison-heading" id="clients-heading">Who I Build For</h2>
+      <div class="clients-grid stagger-children">
+        <div class="client-tier-card">
+          <div class="client-tier-label">Tier 1</div>
+          <h3 class="client-tier-title">The Solo-Scale Empire</h3>
+          <p class="client-tier-desc">High-performance individuals, gig workers, and small teams who need enterprise-grade infrastructure without enterprise overhead. You ship real product, you count verified code as the only metric that matters, and you're done tolerating bloat.</p>
+          <ul class="client-tier-signals">
+            <li>Gig economy operators needing financial intelligence</li>
+            <li>Solo founders building multi-product stacks</li>
+            <li>Operators scaling past what off-the-shelf tools can handle</li>
+          </ul>
+        </div>
+        <div class="client-tier-card">
+          <div class="client-tier-label">Tier 2</div>
+          <h3 class="client-tier-title">Specialized Industrial Sectors</h3>
+          <p class="client-tier-desc">Real-world industries that are chronically underserved by agile software. You need modernized workflows built with precision — not bloated enterprise software retrofitted onto your operations.</p>
+          <ul class="client-tier-signals">
+            <li>Construction project and commerce management</li>
+            <li>Equestrian facility and event management</li>
+            <li>Environmental regulatory and site management</li>
+          </ul>
+        </div>
+      </div>
+      <div style="text-align:center; margin-top:32px;">
+        <button class="btn-primary" data-contact-modal type="button">Start a project →</button>
+      </div>
+    </section>
+
+    <!-- Operating Principles -->
+    <section class="principles-section reveal" aria-labelledby="principles-heading">
+      <div class="section-label">// How We Operate</div>
+      <h2 class="comparison-heading" id="principles-heading">Operating Principles</h2>
+      <div class="principles-grid stagger-children">
+        <div class="principle-card">
+          <div class="principle-num" aria-hidden="true">01</div>
+          <h3 class="principle-title">Architecture Index Over Pitch Decks</h3>
+          <p class="principle-desc">The primary proof of capability is a live, public record of all GitHub repositories and deployments — not a sales deck. If you can't resolve it at a URL, it doesn't exist.</p>
+          <a href="https://github.com/ksksrbiz-arch/The-Architecture" target="_blank" rel="noopener noreferrer" class="principle-link">View the Architecture Index →</a>
+        </div>
+        <div class="principle-card">
+          <div class="principle-num" aria-hidden="true">02</div>
+          <h3 class="principle-title">Sovereign Stack</h3>
+          <p class="principle-desc">Absolute data ownership. Custom-built TypeScript stacks over third-party app dependency. Shopify for initial market validation; UnifyOne once your business logic outgrows out-of-the-box abstractions.</p>
+          <span class="principle-stack">TypeScript · Supabase · n8n · Netlify · GCP</span>
+        </div>
+        <div class="principle-card">
+          <div class="principle-num" aria-hidden="true">03</div>
+          <h3 class="principle-title">Kill Switches on Every Integration</h3>
+          <p class="principle-desc">Every third-party integration in the framework has a dedicated kill switch. The core structure survives if an external service fails. System resilience is designed in, not bolted on.</p>
+          <span class="principle-stack">n8n · 8+ integrations · all kill-switched</span>
         </div>
       </div>
     </section>
