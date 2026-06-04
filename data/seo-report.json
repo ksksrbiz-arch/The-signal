@@ -1,6 +1,6 @@
 {
-  "generatedAt": "2026-06-03",
-  "pagesScanned": 85,
+  "generatedAt": "2026-06-04",
+  "pagesScanned": 86,
   "issuesFound": 0,
   "issues": [],
   "pages": [
@@ -336,6 +336,15 @@
       "priority": "0.7",
       "title": "Daily Signal: validated product experiments | THE SIGNAL",
       "description": "How to move from idea to shipped proof while keeping scope under control. A practical daily brief for operators building commerce systems with proof, restraint, and compounding execution."
+    },
+    {
+      "file": "daily/2026-06-04.html",
+      "url": "https://1commercesolutions.com/daily/2026-06-04.html",
+      "lastmod": "2026-06-04",
+      "changefreq": "daily",
+      "priority": "0.7",
+      "title": "Daily Signal: AI-native commerce operations | THE SIGNAL",
+      "description": "What an operator should automate today without losing human judgment. A practical daily brief for operators building commerce systems with proof, restraint, and compounding execution."
     },
     {
       "file": "daily/index.html",
@@ -727,7 +736,7 @@
     {
       "file": "index.html",
       "url": "https://1commercesolutions.com/",
-      "lastmod": "2026-06-01",
+      "lastmod": "2026-06-03",
       "changefreq": "weekly",
       "priority": "1.0",
       "title": "THE SIGNAL — Commerce Systems That Ship | 1Commerce LLC",
