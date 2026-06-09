@@ -1,6 +1,6 @@
 {
-  "generatedAt": "2026-06-08",
-  "pagesScanned": 90,
+  "generatedAt": "2026-06-09",
+  "pagesScanned": 91,
   "issuesFound": 0,
   "issues": [],
   "pages": [
@@ -381,6 +381,15 @@
       "priority": "0.7",
       "title": "Daily Signal: commerce intelligence layers | THE SIGNAL",
       "description": "Why storefronts need memory, context, and action layers beyond static pages. A practical daily brief for operators building commerce systems with proof, restraint, and compounding execution."
+    },
+    {
+      "file": "daily/2026-06-09.html",
+      "url": "https://1commercesolutions.com/daily/2026-06-09.html",
+      "lastmod": "2026-06-09",
+      "changefreq": "daily",
+      "priority": "0.7",
+      "title": "Daily Signal: operator SEO discipline | THE SIGNAL",
+      "description": "The daily habits that keep crawl signals fresh without chasing gimmicks. A practical daily brief for operators building commerce systems with proof, restraint, and compounding execution."
     },
     {
       "file": "daily/index.html",

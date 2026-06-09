@@ -1,41 +1,41 @@
 {
-  "date": "2026-06-08",
-  "title": "Daily Signal: commerce intelligence layers",
-  "description": "Why storefronts need memory, context, and action layers beyond static pages. A practical daily brief for operators building commerce systems with proof, restraint, and compounding execution.",
-  "keyword": "commerce intelligence layer",
-  "thesis": "Why storefronts need memory, context, and action layers beyond static pages.",
+  "date": "2026-06-09",
+  "title": "Daily Signal: operator SEO discipline",
+  "description": "The daily habits that keep crawl signals fresh without chasing gimmicks. A practical daily brief for operators building commerce systems with proof, restraint, and compounding execution.",
+  "keyword": "automated SEO for static sites",
+  "thesis": "The daily habits that keep crawl signals fresh without chasing gimmicks.",
   "editorialNote": "This brief is intentionally source-free and evergreen: no invented news, no unsupported market claims, and no metrics that did not come from a measured system.",
   "takeaways": [
-    "Treat commerce intelligence layer as an operating system problem, not a content calendar slogan.",
+    "Treat automated SEO for static sites as an operating system problem, not a content calendar slogan.",
     "Publish concrete proof before polishing the narrative around it.",
     "Use automation to protect judgment, not to flood the site with thin pages."
   ],
   "sections": [
     {
       "heading": "The operating signal",
-      "body": "Modern storefronts need to remember intent across sessions, products, campaigns, and support moments. The intelligence layer is the connective tissue that turns a page view into a useful next action. The daily content job is to make that reality easier to see: one clear idea, one operational lesson, and one useful next action for a founder or operator reading THE SIGNAL."
+      "body": "Useful SEO automation is mostly discipline: titles that match intent, descriptions that explain value, internal links that form a map, and sitemaps that reflect what actually exists. The daily content job is to make that reality easier to see: one clear idea, one operational lesson, and one useful next action for a founder or operator reading THE SIGNAL."
     },
     {
       "heading": "Why it matters today",
-      "body": "The risk is not publishing too little; it is publishing copy that looks active while saying nothing specific. Better daily content should sharpen the archive, support internal links, and give readers a practical way to inspect commerce intelligence layer inside their own operation."
+      "body": "The risk is not publishing too little; it is publishing copy that looks active while saying nothing specific. Better daily content should sharpen the archive, support internal links, and give readers a practical way to inspect automated SEO for static sites inside their own operation."
     },
     {
       "heading": "Operator moves",
-      "body": "1. Map the customer questions that appear before purchase, during fulfillment, and after delivery. 2. Connect content, product data, and support context before adding new interface polish. 3. Design for explicit handoff when the system lacks confidence."
+      "body": "1. Check that every new page has one clear search intent and one canonical URL. 2. Refresh the sitemap after content changes instead of treating it as a static file. 3. Improve one thin page with a stronger summary, internal link, or proof artifact."
     },
     {
       "heading": "Quality signals to watch",
-      "body": "A useful brief should leave a trail of improved execution. For this theme, watch for fewer dead-end visits, more relevant internal paths, clearer support-to-sales feedback. If those signals do not improve, the content is decoration rather than infrastructure."
+      "body": "A useful brief should leave a trail of improved execution. For this theme, watch for zero missing metadata issues, fresh sitemap entries, clearer page summaries. If those signals do not improve, the content is decoration rather than infrastructure."
     },
     {
       "heading": "Content angle to ship next",
-      "body": "Turn today's note into an architecture note. Then link it to one existing fieldnote, one archive dispatch, and one current build so the page strengthens the wider site instead of standing alone."
+      "body": "Turn today's note into a SEO maintenance log. Then link it to one existing fieldnote, one archive dispatch, and one current build so the page strengthens the wider site instead of standing alone."
     }
   ],
   "prompts": [
-    "What proof would make this commerce intelligence layer claim believable to a skeptical operator?",
+    "What proof would make this automated SEO for static sites claim believable to a skeptical operator?",
     "Which existing page should this brief strengthen with a contextual internal link?",
     "What decision should a reader be able to make after two minutes on this page?",
-    "Which next asset would create the most durable proof: architecture note, customer journey memo, commerce AI explainer?"
+    "Which next asset would create the most durable proof: SEO maintenance log, static-site checklist, metadata before/after?"
   ]
 }
