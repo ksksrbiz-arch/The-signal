@@ -302,6 +302,109 @@
 @media (max-width: 720px) {
   .principles-grid { grid-template-columns: 1fr; }
 }
+
+/* ── Trusted Partners (affiliate) ────────────────────────── */
+.partners-section { padding: var(--p) 0; }
+.partners-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 20px;
+}
+.partner-card {
+  display: flex;
+  flex-direction: column;
+  background: #141414;
+  border: 1px solid rgba(232,184,106,0.18);
+  border-radius: 6px;
+  padding: 28px;
+  transition: border-color 0.25s ease, transform 0.25s ease;
+}
+[data-theme="light"] .partner-card { background: #fafafa; }
+.partner-card:hover {
+  border-color: rgba(232,184,106,0.45);
+  transform: translateY(-2px);
+}
+.partner-logo {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 96px;
+  border-radius: 4px;
+  margin-bottom: 22px;
+}
+.partner-logo svg { display: block; width: 100%; height: auto; max-width: 220px; }
+.partner-tradify { background: #0b3d2e; }
+.partner-checkr  { background: #14123a; }
+.partner-category {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 9px;
+  letter-spacing: 0.16em;
+  color: #E8B86A;
+  text-transform: uppercase;
+  margin-bottom: 10px;
+}
+.partner-title {
+  font-family: 'Fraunces', serif;
+  font-size: 1.2rem;
+  font-weight: 700;
+  color: var(--fg, #f0f0f0);
+  margin-bottom: 12px;
+  line-height: 1.2;
+}
+.partner-desc {
+  font-family: 'IBM Plex Sans', sans-serif;
+  font-size: 0.87rem;
+  color: rgba(var(--fg-rgb, 255,255,255), 0.55);
+  line-height: 1.65;
+  margin-bottom: 18px;
+}
+.partner-signals {
+  list-style: none;
+  margin: 0 0 24px;
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+.partner-signals li {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 0.78rem;
+  color: rgba(var(--fg-rgb, 255,255,255), 0.45);
+  padding-left: 16px;
+  position: relative;
+}
+.partner-signals li::before {
+  content: '→';
+  position: absolute;
+  left: 0;
+  color: #E8B86A;
+  font-size: 0.72rem;
+}
+.partner-cta {
+  margin-top: auto;
+  align-self: flex-start;
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 0.78rem;
+  letter-spacing: 0.04em;
+  color: #0b0b0b;
+  background: #E8B86A;
+  text-decoration: none;
+  padding: 11px 20px;
+  border-radius: 4px;
+  transition: opacity 0.2s ease;
+}
+.partner-cta:hover { opacity: 0.85; }
+.partners-disclosure {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 0.72rem;
+  line-height: 1.6;
+  color: rgba(var(--fg-rgb, 255,255,255), 0.3);
+  margin-top: 24px;
+  max-width: 640px;
+}
+@media (max-width: 720px) {
+  .partners-grid { grid-template-columns: 1fr; }
+}
 </style>
 </head>
 <body>
@@ -830,6 +933,57 @@
           <div class="dossier-footer">Visit site →</div>
         </a>
       </div>
+    </section>
+
+    <!-- Trusted Partners (affiliate) -->
+    <section class="partners-section reveal" aria-labelledby="partners-heading">
+      <div class="section-label">// My Trusted Partners in Business</div>
+      <h2 class="comparison-heading" id="partners-heading">Tools I Actually Run On</h2>
+      <p class="cathedral-lede">Software and services I've vetted in the field and rely on to keep 1Commerce LLC shipping. No filler — just the operators-grade tools that earn their place in the stack.</p>
+      <div class="partners-grid stagger-children">
+
+        <!-- Tradify -->
+        <div class="partner-card">
+          <div class="partner-logo partner-tradify">
+            <svg viewBox="0 0 220 56" role="img" aria-label="Tradify">
+              <g fill="none" stroke="#2ee6b6" stroke-width="3.4" stroke-linecap="round">
+                <path d="M16 14h22M27 14v30"/>
+              </g>
+              <text x="46" y="38" font-family="'Fraunces', serif" font-size="30" font-weight="700" fill="#ffffff">Tradify</text>
+            </svg>
+          </div>
+          <div class="partner-category">Trade &amp; Service Ops</div>
+          <h3 class="partner-title">Tradify</h3>
+          <p class="partner-desc">Job management built for trade and service businesses — quoting, scheduling, job tracking, and invoicing in one place. The system that keeps field work from leaking into spreadsheets.</p>
+          <ul class="partner-signals">
+            <li>Quote, schedule, and invoice from one dashboard</li>
+            <li>Real-time job tracking from the field</li>
+            <li>Cuts admin overhead for solo operators and crews</li>
+          </ul>
+          <a href="https://partners.tradifyhq.com/id1p40jcg02a" class="partner-cta" target="_blank" rel="sponsored noopener noreferrer">Explore Tradify →</a>
+        </div>
+
+        <!-- Checkr -->
+        <div class="partner-card">
+          <div class="partner-logo partner-checkr">
+            <svg viewBox="0 0 220 56" role="img" aria-label="Checkr">
+              <path d="M16 30l8 8 16-18" fill="none" stroke="#ff6b5d" stroke-width="4.2" stroke-linecap="round" stroke-linejoin="round"/>
+              <text x="52" y="38" font-family="'Fraunces', serif" font-size="30" font-weight="700" fill="#ffffff">Checkr</text>
+            </svg>
+          </div>
+          <div class="partner-category">Background Screening</div>
+          <h3 class="partner-title">Checkr</h3>
+          <p class="partner-desc">Modern background checks and compliance screening, built API-first. The infrastructure for trusting who you hire and onboard — fast, automated, and audit-ready.</p>
+          <ul class="partner-signals">
+            <li>Automated background checks at scale</li>
+            <li>API-first — drops into existing onboarding flows</li>
+            <li>Compliance handled, so you don't have to</li>
+          </ul>
+          <a href="https://get.checkr.com/UnifyOne" class="partner-cta" target="_blank" rel="sponsored noopener noreferrer">Explore Checkr →</a>
+        </div>
+
+      </div>
+      <p class="partners-disclosure">Some links above are partner links. If you sign up through one, I may earn a small referral reward — at no extra cost to you. I only list tools I actually use and stand behind.</p>
     </section>
 
   </main>
