@@ -1,6 +1,6 @@
 {
-  "generatedAt": "2026-06-11",
-  "pagesScanned": 93,
+  "generatedAt": "2026-06-12",
+  "pagesScanned": 94,
   "issuesFound": 0,
   "issues": [],
   "pages": [
@@ -410,6 +410,15 @@
       "description": "What an operator should automate today without losing human judgment. A practical daily brief for operators building commerce systems with proof, restraint, and compounding execution."
     },
     {
+      "file": "daily/2026-06-12.html",
+      "url": "https://1commercesolutions.com/daily/2026-06-12.html",
+      "lastmod": "2026-06-12",
+      "changefreq": "daily",
+      "priority": "0.7",
+      "title": "Daily Signal: proof-first founder systems | THE SIGNAL",
+      "description": "How to turn shipping evidence into trust, distribution, and compounding momentum. A practical daily brief for operators building commerce systems with proof, restraint, and compounding execution."
+    },
+    {
       "file": "daily/index.html",
       "url": "https://1commercesolutions.com/daily/",
       "lastmod": "2026-06-11",
@@ -799,7 +808,7 @@
     {
       "file": "index.html",
       "url": "https://1commercesolutions.com/",
-      "lastmod": "2026-06-03",
+      "lastmod": "2026-06-11",
       "changefreq": "weekly",
       "priority": "1.0",
       "title": "THE SIGNAL — Commerce Systems That Ship | 1Commerce LLC",
