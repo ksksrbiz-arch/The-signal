@@ -1,7 +1,35 @@
 {
   "generatedAt": "2026-06-16",
+  "auditRunAt": "2026-06-16T12:00:00Z",
   "pagesScanned": 98,
   "issuesFound": 0,
+  "issuesRemediated": 4,
+  "remediations": [
+    {
+      "date": "2026-06-16",
+      "file": "index.html",
+      "type": "schema",
+      "description": "Added potentialAction SearchAction to WebSite schema to enable Google Sitelinks Search Box"
+    },
+    {
+      "date": "2026-06-16",
+      "file": "index.html",
+      "type": "geo",
+      "description": "Added WebPage schema with speakable cssSelector for GEO/AI-powered search citation signals (.hero-lede, .cathedral-section, .hero h1)"
+    },
+    {
+      "date": "2026-06-16",
+      "file": "index.html",
+      "type": "local-seo",
+      "description": "Enhanced Organization schema with areaServed (Canby OR, Oregon, Pacific Northwest), serviceType array, foundingDate"
+    },
+    {
+      "date": "2026-06-16",
+      "file": "index.html",
+      "type": "keywords",
+      "description": "Added geo-targeted keywords: Canby Oregon, Pacific Northwest, Oregon e-commerce, PNW founder, commerce consulting Oregon"
+    }
+  ],
   "issues": [],
   "pages": [
     {

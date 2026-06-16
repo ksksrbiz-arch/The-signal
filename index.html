@@ -29,7 +29,7 @@
 
 <!-- SEO -->
 <meta name="author" content="1Commerce LLC">
-<meta name="keywords" content="commerce infrastructure, solo founder, build in public, gig economy, AI agents, systems architecture, cathedral framework, proof-first, 1Commerce LLC">
+<meta name="keywords" content="commerce infrastructure, solo founder, build in public, gig economy, AI agents, systems architecture, cathedral framework, proof-first, 1Commerce LLC, Canby Oregon, Pacific Northwest, Oregon e-commerce, PNW founder, commerce consulting Oregon">
 <link rel="canonical" href="https://1commercesolutions.com/">
 
 <!-- GEO Targeting -->
@@ -79,6 +79,13 @@
     "addressRegion": "OR",
     "addressCountry": "US"
   },
+  "foundingDate": "2025",
+  "areaServed": [
+    {"@type": "City", "name": "Canby", "sameAs": "https://en.wikipedia.org/wiki/Canby,_Oregon"},
+    {"@type": "State", "name": "Oregon"},
+    {"@type": "AdministrativeArea", "name": "Pacific Northwest"}
+  ],
+  "serviceType": ["Commerce Infrastructure", "Systems Architecture", "AI Agent Development", "Shopify Development", "E-commerce Consulting"],
   "sameAs": [
     "https://github.com/ksksrbiz-arch",
     "https://www.instagram.com/1commerce_llc/",
@@ -87,7 +94,9 @@
   "contactPoint": {
     "@type": "ContactPoint",
     "email": "skdev@1commerce.online",
-    "contactType": "customer service"
+    "contactType": "customer service",
+    "areaServed": "US",
+    "availableLanguage": "English"
   }
 }
 </script>
@@ -104,7 +113,33 @@
     "@type": "Organization",
     "name": "1Commerce LLC"
   },
-  "inLanguage": "en-US"
+  "inLanguage": "en-US",
+  "potentialAction": {
+    "@type": "SearchAction",
+    "target": {
+      "@type": "EntryPoint",
+      "urlTemplate": "https://1commercesolutions.com/fieldnotes/?q={search_term_string}"
+    },
+    "query-input": "required name=search_term_string"
+  }
+}
+</script>
+
+<!-- Structured Data: WebPage with Speakable (GEO signal for AI-powered search) -->
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "WebPage",
+  "name": "THE SIGNAL — Commerce Systems That Ship | 1Commerce LLC",
+  "url": "https://1commercesolutions.com/",
+  "description": "Weekly dispatches from the front lines of 1Commerce LLC. Proof-first infrastructure, 6 verified builds in production, zero placeholders.",
+  "isPartOf": {"@type": "WebSite", "url": "https://1commercesolutions.com/"},
+  "inLanguage": "en-US",
+  "dateModified": "2026-06-16",
+  "speakable": {
+    "@type": "SpeakableSpecification",
+    "cssSelector": [".hero-lede", ".cathedral-section", ".hero h1"]
+  }
 }
 </script>
 
