@@ -344,6 +344,13 @@
   </url>
 
   <url>
+    <loc>https://1commercesolutions.com/daily/2026-06-16.html</loc>
+    <lastmod>2026-06-16</lastmod>
+    <changefreq>daily</changefreq>
+    <priority>0.7</priority>
+  </url>
+
+  <url>
     <loc>https://1commercesolutions.com/daily/</loc>
     <lastmod>2026-06-15</lastmod>
     <changefreq>daily</changefreq>
@@ -646,7 +653,7 @@
 
   <url>
     <loc>https://1commercesolutions.com/</loc>
-    <lastmod>2026-06-11</lastmod>
+    <lastmod>2026-06-16</lastmod>
     <changefreq>weekly</changefreq>
     <priority>1.0</priority>
   </url>
