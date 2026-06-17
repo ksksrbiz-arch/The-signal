@@ -2,6 +2,16 @@
   "generatedAt": "2026-06-17",
   "pagesScanned": 99,
   "issuesFound": 0,
+  "lastAuditRun": "2026-06-17",
+  "lastAuditChanges": [
+    "Created /llms.txt for GEO (Generative Engine Optimization) — AI crawlers now have a structured site overview",
+    "Added @id to Organization schema in index.html (https://1commercesolutions.com/#organization)",
+    "Added @id to LocalBusiness/ProfessionalService schema in index.html (https://1commercesolutions.com/#local-business)",
+    "Updated WebPage schema dateModified to 2026-06-17",
+    "Added Meta-ExternalAgent, Bytespider, cohere-ai, FacebookBot, ia_archiver to robots.txt",
+    "Added Llms-txt reference to robots.txt",
+    "Updated sitemap.xml homepage lastmod to 2026-06-17"
+  ],
   "issues": [],
   "pages": [
     {
