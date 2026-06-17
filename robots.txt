@@ -74,6 +74,3 @@ Allow: /
 
 # ── Sitemap ────────────────────────────────────────────────────
 Sitemap: https://1commercesolutions.com/sitemap.xml
-
-# ── LLMs.txt (GEO / Generative Engine Optimization) ───────────
-Llms-txt: https://1commercesolutions.com/llms.txt
