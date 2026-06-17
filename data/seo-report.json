@@ -1,41 +1,13 @@
 {
-  "generatedAt": "2026-06-16",
-  "auditRunAt": "2026-06-16T12:00:00Z",
-  "pagesScanned": 98,
+  "generatedAt": "2026-06-17",
+  "pagesScanned": 99,
   "issuesFound": 0,
-  "issuesRemediated": 4,
-  "remediations": [
-    {
-      "date": "2026-06-16",
-      "file": "index.html",
-      "type": "schema",
-      "description": "Added potentialAction SearchAction to WebSite schema to enable Google Sitelinks Search Box"
-    },
-    {
-      "date": "2026-06-16",
-      "file": "index.html",
-      "type": "geo",
-      "description": "Added WebPage schema with speakable cssSelector for GEO/AI-powered search citation signals (.hero-lede, .cathedral-section, .hero h1)"
-    },
-    {
-      "date": "2026-06-16",
-      "file": "index.html",
-      "type": "local-seo",
-      "description": "Enhanced Organization schema with areaServed (Canby OR, Oregon, Pacific Northwest), serviceType array, foundingDate"
-    },
-    {
-      "date": "2026-06-16",
-      "file": "index.html",
-      "type": "keywords",
-      "description": "Added geo-targeted keywords: Canby Oregon, Pacific Northwest, Oregon e-commerce, PNW founder, commerce consulting Oregon"
-    }
-  ],
   "issues": [],
   "pages": [
     {
       "file": "about/index.html",
       "url": "https://1commercesolutions.com/about/",
-      "lastmod": "2026-06-01",
+      "lastmod": "2026-06-16",
       "changefreq": "monthly",
       "priority": "0.6",
       "title": "About — THE SIGNAL | 1Commerce LLC",
@@ -481,6 +453,15 @@
       "priority": "0.7",
       "title": "Daily Signal: operator SEO discipline | THE SIGNAL",
       "description": "The daily habits that keep crawl signals fresh without chasing gimmicks. A practical daily brief for operators building commerce systems with proof, restraint, and compounding execution."
+    },
+    {
+      "file": "daily/2026-06-17.html",
+      "url": "https://1commercesolutions.com/daily/2026-06-17.html",
+      "lastmod": "2026-06-17",
+      "changefreq": "daily",
+      "priority": "0.7",
+      "title": "Daily Signal: validated product experiments | THE SIGNAL",
+      "description": "How to move from idea to shipped proof while keeping scope under control. A practical daily brief for operators building commerce systems with proof, restraint, and compounding execution."
     },
     {
       "file": "daily/index.html",
