@@ -551,3 +551,37 @@ if ('serviceWorker' in navigator) {
     });
   });
 })();
+
+// ─── POINTER-TRACKED CARD SPOTLIGHT ────────────────────────
+// Feeds --spot-x / --spot-y to the glass cards so the amber sheen
+// follows the cursor. Progressive enhancement only: skipped on
+// touch / coarse pointers and when reduced motion is requested.
+(function(){
+  if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
+  if (!window.matchMedia('(hover: hover) and (pointer: fine)').matches) return;
+
+  var cards = document.querySelectorAll(
+    '.cathedral-card, .client-tier-card, .partner-card, ' +
+    '.feature-matrix-card, .dispatch-preview-card, .dossier-card'
+  );
+  if (!cards.length) return;
+
+  var raf = null;
+
+  cards.forEach(function(card) {
+    card.addEventListener('pointermove', function(e) {
+      if (raf) return;
+      raf = requestAnimationFrame(function() {
+        var rect = card.getBoundingClientRect();
+        card.style.setProperty('--spot-x', (e.clientX - rect.left) + 'px');
+        card.style.setProperty('--spot-y', (e.clientY - rect.top) + 'px');
+        raf = null;
+      });
+    }, { passive: true });
+
+    card.addEventListener('pointerleave', function() {
+      card.style.removeProperty('--spot-x');
+      card.style.removeProperty('--spot-y');
+    });
+  });
+})();
