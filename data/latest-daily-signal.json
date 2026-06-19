@@ -1,41 +1,41 @@
 {
-  "date": "2026-06-18",
-  "title": "Daily Signal: AI-native commerce operations",
-  "description": "What an operator should automate today without losing human judgment. A practical daily brief for operators building commerce systems with proof, restraint, and compounding execution.",
-  "keyword": "AI commerce operations",
-  "thesis": "What an operator should automate today without losing human judgment.",
+  "date": "2026-06-19",
+  "title": "Daily Signal: proof-first founder systems",
+  "description": "How to turn shipping evidence into trust, distribution, and compounding momentum. A practical daily brief for operators building commerce systems with proof, restraint, and compounding execution.",
+  "keyword": "build in public systems",
+  "thesis": "How to turn shipping evidence into trust, distribution, and compounding momentum.",
   "editorialNote": "This brief is intentionally source-free and evergreen: no invented news, no unsupported market claims, and no metrics that did not come from a measured system.",
   "takeaways": [
-    "Treat AI commerce operations as an operating system problem, not a content calendar slogan.",
+    "Treat build in public systems as an operating system problem, not a content calendar slogan.",
     "Publish concrete proof before polishing the narrative around it.",
     "Use automation to protect judgment, not to flood the site with thin pages."
   ],
   "sections": [
     {
       "heading": "The operating signal",
-      "body": "Commerce teams are being pushed to add agents before they have clean handoffs, decision logs, or QA loops. The winning move is to automate the repeatable edge of the work while keeping pricing, positioning, and customer empathy under human control. The daily content job is to make that reality easier to see: one clear idea, one operational lesson, and one useful next action for a founder or operator reading THE SIGNAL."
+      "body": "Build-in-public only works when the public record proves actual movement. Screenshots, deploy links, changelogs, and customer lessons beat vague momentum posts because they show the difference between intention and shipped infrastructure. The daily content job is to make that reality easier to see: one clear idea, one operational lesson, and one useful next action for a founder or operator reading THE SIGNAL."
     },
     {
       "heading": "Why it matters today",
-      "body": "The risk is not publishing too little; it is publishing copy that looks active while saying nothing specific. Better daily content should sharpen the archive, support internal links, and give readers a practical way to inspect AI commerce operations inside their own operation."
+      "body": "The risk is not publishing too little; it is publishing copy that looks active while saying nothing specific. Better daily content should sharpen the archive, support internal links, and give readers a practical way to inspect build in public systems inside their own operation."
     },
     {
       "heading": "Operator moves",
-      "body": "1. List one workflow where the same decision is made at least three times a week. 2. Write the acceptance criteria before asking an agent to draft, route, or publish anything. 3. Keep a human review step for claims, pricing, refunds, and customer-facing commitments."
+      "body": "1. Capture one artifact from every shipped change: link, screenshot, metric, or decision note. 2. Tie each update to a customer problem instead of only describing the builder activity. 3. Archive the proof in a page that can be crawled, shared, and referenced later."
     },
     {
       "heading": "Quality signals to watch",
-      "body": "A useful brief should leave a trail of improved execution. For this theme, watch for Lower response latency, fewer repeated manual checks, clearer ownership when an agent output is wrong. If those signals do not improve, the content is decoration rather than infrastructure."
+      "body": "A useful brief should leave a trail of improved execution. For this theme, watch for more internal links to shipped work, clearer weekly narrative, fewer unsupported claims. If those signals do not improve, the content is decoration rather than infrastructure."
     },
     {
       "heading": "Content angle to ship next",
-      "body": "Turn today's note into an agent workflow teardown. Then link it to one existing fieldnote, one archive dispatch, and one current build so the page strengthens the wider site instead of standing alone."
+      "body": "Turn today's note into a weekly proof ledger. Then link it to one existing fieldnote, one archive dispatch, and one current build so the page strengthens the wider site instead of standing alone."
     }
   ],
   "prompts": [
-    "What proof would make this AI commerce operations claim believable to a skeptical operator?",
+    "What proof would make this build in public systems claim believable to a skeptical operator?",
     "Which existing page should this brief strengthen with a contextual internal link?",
     "What decision should a reader be able to make after two minutes on this page?",
-    "Which next asset would create the most durable proof: agent workflow teardown, before/after operations note, AI automation checklist?"
+    "Which next asset would create the most durable proof: weekly proof ledger, build log, trust asset teardown?"
   ]
 }

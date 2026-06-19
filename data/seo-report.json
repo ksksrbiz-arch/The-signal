@@ -1,6 +1,6 @@
 {
-  "generatedAt": "2026-06-18",
-  "pagesScanned": 100,
+  "generatedAt": "2026-06-19",
+  "pagesScanned": 101,
   "issuesFound": 0,
   "issues": [],
   "pages": [
@@ -70,7 +70,7 @@
     {
       "file": "archive/index.html",
       "url": "https://1commercesolutions.com/archive/",
-      "lastmod": "2026-06-01",
+      "lastmod": "2026-06-18",
       "changefreq": "weekly",
       "priority": "0.9",
       "title": "Archive — THE SIGNAL | 1Commerce LLC",
@@ -79,7 +79,7 @@
     {
       "file": "builds/index.html",
       "url": "https://1commercesolutions.com/builds/",
-      "lastmod": "2026-05-06",
+      "lastmod": "2026-06-18",
       "changefreq": "monthly",
       "priority": "0.6",
       "title": "Verified Builds — THE SIGNAL | Infrastructure Index",
@@ -473,6 +473,15 @@
       "description": "What an operator should automate today without losing human judgment. A practical daily brief for operators building commerce systems with proof, restraint, and compounding execution."
     },
     {
+      "file": "daily/2026-06-19.html",
+      "url": "https://1commercesolutions.com/daily/2026-06-19.html",
+      "lastmod": "2026-06-19",
+      "changefreq": "daily",
+      "priority": "0.7",
+      "title": "Daily Signal: proof-first founder systems | THE SIGNAL",
+      "description": "How to turn shipping evidence into trust, distribution, and compounding momentum. A practical daily brief for operators building commerce systems with proof, restraint, and compounding execution."
+    },
+    {
       "file": "daily/index.html",
       "url": "https://1commercesolutions.com/daily/",
       "lastmod": "2026-06-18",
@@ -808,7 +817,7 @@
     {
       "file": "fieldnotes/index.html",
       "url": "https://1commercesolutions.com/fieldnotes/",
-      "lastmod": "2026-05-06",
+      "lastmod": "2026-06-18",
       "changefreq": "weekly",
       "priority": "0.9",
       "title": "Fieldnotes — THE SIGNAL | A working notebook from 1Commerce LLC",
@@ -862,7 +871,7 @@
     {
       "file": "index.html",
       "url": "https://1commercesolutions.com/",
-      "lastmod": "2026-06-16",
+      "lastmod": "2026-06-18",
       "changefreq": "weekly",
       "priority": "1.0",
       "title": "THE SIGNAL — Commerce Systems That Ship | 1Commerce LLC",
@@ -871,7 +880,7 @@
     {
       "file": "news/index.html",
       "url": "https://1commercesolutions.com/news/",
-      "lastmod": "2026-05-06",
+      "lastmod": "2026-06-18",
       "changefreq": "daily",
       "priority": "0.9",
       "title": "News Aggregator — THE SIGNAL",
@@ -898,7 +907,7 @@
     {
       "file": "videos/index.html",
       "url": "https://1commercesolutions.com/videos/",
-      "lastmod": "2026-05-06",
+      "lastmod": "2026-06-18",
       "changefreq": "monthly",
       "priority": "0.6",
       "title": "Video Library — THE SIGNAL | 1Commerce LLC",
