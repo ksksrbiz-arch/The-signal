@@ -5936,3 +5936,333 @@ footer,
     opacity: 0.4 !important;
   }
 }
+
+/* ============================================================
+   PREMIUM POLISH 2026 — glass, depth & micro-interactions
+   Appended last so it layers cleanly over earlier passes.
+   Builds on existing tokens; preserves the amber/dossier
+   identity while adding tactile depth and feedback.
+   ============================================================ */
+
+:root {
+  /* Layered elevation system — soft, multi-shadow depth */
+  --elev-1: 0 1px 2px rgba(0,0,0,0.30), 0 2px 8px rgba(0,0,0,0.20);
+  --elev-2: 0 2px 4px rgba(0,0,0,0.28), 0 8px 24px rgba(0,0,0,0.30);
+  --elev-3: 0 8px 16px rgba(0,0,0,0.30), 0 20px 48px rgba(0,0,0,0.42);
+  --elev-amber: 0 12px 40px rgba(232,184,106,0.14);
+
+  /* Glass surface — translucent gradient + top highlight (cheap, no blur) */
+  --glass-bg: linear-gradient(160deg, rgba(255,255,255,0.055) 0%, rgba(255,255,255,0.015) 42%, rgba(255,255,255,0) 100%);
+  --glass-border: rgba(255,255,255,0.10);
+  --glass-highlight: inset 0 1px 0 rgba(255,255,255,0.08);
+
+  /* Spotlight glow that tracks the pointer (set by app.js) */
+  --spot-x: 50%;
+  --spot-y: 0%;
+
+  /* Premium easing + timing */
+  --ease-out-expo: cubic-bezier(0.16, 1, 0.3, 1);
+  --t-fast: 140ms;
+  --t-mid: 240ms;
+}
+
+[data-theme="light"] {
+  --elev-1: 0 1px 2px rgba(16,20,32,0.06), 0 2px 8px rgba(16,20,32,0.05);
+  --elev-2: 0 2px 4px rgba(16,20,32,0.06), 0 8px 24px rgba(16,20,32,0.08);
+  --elev-3: 0 8px 16px rgba(16,20,32,0.08), 0 20px 48px rgba(16,20,32,0.12);
+  --elev-amber: 0 12px 40px rgba(232,184,106,0.22);
+  --glass-bg: linear-gradient(160deg, rgba(255,255,255,0.85) 0%, rgba(255,255,255,0.55) 100%);
+  --glass-border: rgba(16,20,32,0.10);
+  --glass-highlight: inset 0 1px 0 rgba(255,255,255,0.9);
+}
+
+/* --- Glass + depth on the homepage card families ---
+   Shared treatment via a single selector list so every card
+   family reads as one cohesive system. */
+.cathedral-card,
+.client-tier-card,
+.partner-card,
+.feature-matrix-card,
+.dispatch-preview-card,
+.dossier-card,
+.proof-item {
+  position: relative;
+  isolation: isolate;
+  background-image: var(--glass-bg);
+  box-shadow: var(--elev-1), var(--glass-highlight);
+  transition: transform var(--t-mid) var(--ease-out-expo),
+              border-color var(--t-mid) ease,
+              box-shadow var(--t-mid) ease;
+  will-change: transform;
+}
+
+/* Pointer-tracked spotlight sheen — sits above the card bg,
+   below the content. Opacity ramps in on hover only. */
+.cathedral-card::after,
+.client-tier-card::after,
+.partner-card::after,
+.feature-matrix-card::after,
+.dispatch-preview-card::after,
+.dossier-card::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  z-index: -1;
+  border-radius: inherit;
+  background: radial-gradient(
+    420px circle at var(--spot-x) var(--spot-y),
+    rgba(232,184,106,0.13),
+    transparent 60%
+  );
+  opacity: 0;
+  transition: opacity var(--t-mid) ease;
+  pointer-events: none;
+}
+
+.cathedral-card:hover::after,
+.client-tier-card:hover::after,
+.partner-card:hover::after,
+.feature-matrix-card:hover::after,
+.dispatch-preview-card:hover::after,
+.dossier-card:hover::after {
+  opacity: 1;
+}
+
+/* Unified hover lift + amber-tinted elevation */
+.client-tier-card:hover,
+.partner-card:hover,
+.feature-matrix-card:hover,
+.dispatch-preview-card:hover,
+.dossier-card:hover {
+  transform: translateY(-5px);
+  border-color: rgba(232,184,106,0.40);
+  box-shadow: var(--elev-3), var(--elev-amber), var(--glass-highlight);
+}
+
+/* Press feedback — the card settles slightly when activated */
+.dispatch-preview-card:active,
+.dossier-card:active,
+.partner-card:active {
+  transform: translateY(-2px) scale(0.995);
+  transition-duration: var(--t-fast);
+}
+
+/* Cathedral grid uses hairline gaps; soften the hover so it
+   doesn't fight the 1px dividers but still reads as glass. */
+.cathedral-card:hover {
+  transform: translateY(-3px);
+  z-index: 2;
+  border-color: rgba(232,184,106,0.40);
+  box-shadow: var(--elev-3), var(--elev-amber), var(--glass-highlight);
+}
+
+.proof-item:hover {
+  transform: translateY(-3px);
+  box-shadow: var(--elev-2), var(--glass-highlight);
+  border-color: rgba(232,184,106,0.30);
+}
+
+/* --- Buttons: lift, press & sheen --- */
+.btn-primary {
+  transition: background var(--t-fast) ease,
+              transform var(--t-fast) var(--ease-out-expo),
+              box-shadow var(--t-mid) ease;
+}
+.btn-primary:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 8px 22px rgba(232,184,106,0.32);
+}
+.btn-primary:active {
+  transform: translateY(0) scale(0.98);
+  box-shadow: 0 3px 10px rgba(232,184,106,0.24);
+}
+
+.btn-ghost,
+.btn-outline {
+  transition: border-color var(--t-fast) ease,
+              color var(--t-fast) ease,
+              transform var(--t-fast) var(--ease-out-expo),
+              box-shadow var(--t-mid) ease;
+}
+.btn-ghost:hover,
+.btn-outline:hover {
+  transform: translateY(-2px);
+  box-shadow: var(--elev-1);
+}
+.btn-ghost:active,
+.btn-outline:active {
+  transform: translateY(0) scale(0.98);
+}
+
+.partner-cta {
+  transition: opacity var(--t-fast) ease,
+              transform var(--t-fast) var(--ease-out-expo),
+              box-shadow var(--t-mid) ease;
+}
+.partner-cta:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 8px 22px rgba(232,184,106,0.30);
+}
+.partner-cta:active { transform: translateY(0) scale(0.98); }
+
+/* --- Header: persistent subtle glass, deeper when scrolled --- */
+.site-header {
+  -webkit-backdrop-filter: saturate(140%) blur(6px);
+  backdrop-filter: saturate(140%) blur(6px);
+}
+.site-header.scrolled {
+  box-shadow: 0 1px 0 var(--glass-border), var(--elev-2);
+  -webkit-backdrop-filter: saturate(160%) blur(14px);
+  backdrop-filter: saturate(160%) blur(14px);
+}
+
+/* --- Inputs: focus glow ring (feedback, not punishment) --- */
+.hero-subscribe input,
+.subscribe-form input,
+.contact-form input,
+.contact-form textarea {
+  transition: border-color var(--t-fast) ease,
+              box-shadow var(--t-mid) ease,
+              background var(--t-fast) ease;
+}
+.hero-subscribe input:focus,
+.subscribe-form input:focus,
+.contact-form input:focus,
+.contact-form textarea:focus {
+  outline: none;
+  border-color: var(--active);
+  box-shadow: 0 0 0 3px rgba(232,184,106,0.18);
+}
+/* Real-time validity cue — calm green once a valid email is entered */
+.hero-subscribe input:user-valid,
+.subscribe-form input:user-valid,
+.contact-form input:user-valid {
+  border-color: rgba(120,200,150,0.55);
+}
+.hero-subscribe input:user-invalid,
+.subscribe-form input:user-invalid,
+.contact-form input:user-invalid {
+  border-color: rgba(224,101,101,0.55);
+}
+
+/* --- Subscribe inline feedback message --- */
+.subscribe-msg {
+  display: inline-block;
+  font-family: var(--font-mono);
+  font-size: 12px;
+  letter-spacing: 0.03em;
+  opacity: 0;
+  transform: translateY(4px);
+  transition: opacity var(--t-mid) ease, transform var(--t-mid) var(--ease-out-expo);
+}
+.subscribe-msg:not(:empty) { opacity: 1; transform: translateY(0); }
+.subscribe-msg.is-ok { color: #8ed3a6; }
+.subscribe-msg.is-err { color: var(--danger); }
+
+/* Loading spinner on the subscribe button while submitting */
+.hero-subscribe.is-loading button[type="submit"],
+.subscribe-form.is-loading button[type="submit"] {
+  position: relative;
+  color: transparent !important;
+}
+.hero-subscribe.is-loading button[type="submit"]::after,
+.subscribe-form.is-loading button[type="submit"]::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  margin: auto;
+  width: 16px;
+  height: 16px;
+  border: 2px solid rgba(0,0,0,0.25);
+  border-top-color: rgba(0,0,0,0.75);
+  border-radius: 50%;
+  animation: signal-spin 0.7s linear infinite;
+}
+@keyframes signal-spin { to { transform: rotate(360deg); } }
+
+/* --- Skeleton / shimmer utility (layout-matched placeholders) --- */
+.skeleton {
+  position: relative;
+  overflow: hidden;
+  background: var(--panel2);
+  border-radius: var(--r);
+}
+.skeleton::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  transform: translateX(-100%);
+  background: linear-gradient(90deg, transparent, rgba(255,255,255,0.06), transparent);
+  animation: skeleton-sweep 1.4s ease-in-out infinite;
+}
+@keyframes skeleton-sweep { 100% { transform: translateX(100%); } }
+
+/* --- Accessibility: a focus ring that's beautiful, not default-ugly --- */
+:where(a, button, [role="button"], [data-contact-modal], .partner-cta, .btn-primary, .btn-ghost, .btn-outline):focus-visible {
+  outline: 2px solid var(--active);
+  outline-offset: 3px;
+  border-radius: var(--r);
+  box-shadow: 0 0 0 5px rgba(232,184,106,0.18);
+}
+
+/* --- Contact modal: glass depth + spring-in --- */
+.contact-modal-content {
+  box-shadow: var(--elev-3);
+}
+.contact-modal.active .contact-modal-content {
+  animation: modal-spring-in var(--t-mid) var(--ease-out-expo);
+}
+@keyframes modal-spring-in {
+  from { opacity: 0; transform: translateY(12px) scale(0.985); }
+  to   { opacity: 1; transform: translateY(0) scale(1); }
+}
+
+/* Success checkmark draws itself in */
+.contact-success .success-icon path {
+  stroke-dasharray: 24;
+  stroke-dashoffset: 24;
+  animation: draw-check 0.5s var(--ease-out-expo) 0.1s forwards;
+}
+@keyframes draw-check { to { stroke-dashoffset: 0; } }
+
+/* --- Ticker: pause on hover so users can read it --- */
+.ticker-wrap:hover .ticker-track { animation-play-state: paused; }
+
+/* --- Reduced-motion: strip the new motion, keep the depth --- */
+@media (prefers-reduced-motion: reduce) {
+  .cathedral-card, .client-tier-card, .partner-card,
+  .feature-matrix-card, .dispatch-preview-card, .dossier-card,
+  .proof-item, .btn-primary, .btn-ghost, .btn-outline, .partner-cta {
+    transition: none !important;
+  }
+  .cathedral-card:hover, .client-tier-card:hover, .partner-card:hover,
+  .feature-matrix-card:hover, .dispatch-preview-card:hover, .dossier-card:hover,
+  .proof-item:hover, .btn-primary:hover, .btn-ghost:hover,
+  .btn-outline:hover, .partner-cta:hover {
+    transform: none !important;
+  }
+  .cathedral-card::after, .client-tier-card::after, .partner-card::after,
+  .feature-matrix-card::after, .dispatch-preview-card::after, .dossier-card::after {
+    display: none !important;
+  }
+  .contact-modal.active .contact-modal-content,
+  .contact-success .success-icon path,
+  .skeleton::after,
+  .hero-subscribe.is-loading button[type="submit"]::after {
+    animation: none !important;
+  }
+  .contact-success .success-icon path { stroke-dashoffset: 0 !important; }
+}
+
+/* --- Touch devices: no hover lift (avoids sticky :hover) --- */
+@media (hover: none) {
+  .cathedral-card:hover, .client-tier-card:hover, .partner-card:hover,
+  .feature-matrix-card:hover, .dispatch-preview-card:hover, .dossier-card:hover,
+  .proof-item:hover {
+    transform: none;
+  }
+  .cathedral-card::after, .client-tier-card::after, .partner-card::after,
+  .feature-matrix-card::after, .dispatch-preview-card::after, .dossier-card::after {
+    display: none;
+  }
+}
