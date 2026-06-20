@@ -253,8 +253,8 @@
 }
 </script>
 
-<link rel="stylesheet" href="./base.css?v=20260620b">
-<link rel="stylesheet" href="./style.css?v=20260620b">
+<link rel="stylesheet" href="./base.css?v=20260620c">
+<link rel="stylesheet" href="./style.css?v=20260620c">
 
 <style>
 /* ── Cathedral Framework ─────────────────────────────────── */
@@ -658,7 +658,10 @@
     <!-- Featured Video -->
     <div class="video-embed video-embed--featured reveal-scale" style="max-width: var(--page); margin: calc(var(--p) * 2) auto; padding: 0 var(--p);">
       <div class="video-embed" style="margin-bottom: 0;">
-        <iframe src="https://www.youtube-nocookie.com/embed/fblm9vrKH7s" title="1Commerce LLC — Founder Transmission" loading="lazy" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+        <button class="yt-facade" type="button" data-yt-id="fblm9vrKH7s" data-yt-title="1Commerce LLC — Founder Transmission" aria-label="Play video: 1Commerce LLC — Founder Transmission">
+          <img class="yt-facade-poster" src="https://i.ytimg.com/vi/fblm9vrKH7s/hqdefault.jpg" alt="" width="480" height="360" loading="lazy" decoding="async">
+          <span class="yt-facade-play"><svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M8 5v14l11-7z"/></svg></span>
+        </button>
       </div>
     </div>
 
@@ -1273,7 +1276,7 @@
     </div>
   </div>
 
-  <script src="./app.js" defer></script>
+  <script src="./app.js?v=20260620c" defer></script>
   <script>
     (function () {
       async function handleSubscribe(form) {

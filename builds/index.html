@@ -63,8 +63,8 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,600;9..144,700&family=IBM+Plex+Sans:wght@400;500;600&family=JetBrains+Mono:wght@300;400;500&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="../base.css?v=20260620b">
-<link rel="stylesheet" href="../style.css?v=20260620b">
+<link rel="stylesheet" href="../base.css?v=20260620c">
+<link rel="stylesheet" href="../style.css?v=20260620c">
 <style>
 /* ============================================================
    VERIFIED BUILDS PAGE
@@ -483,7 +483,10 @@
         </picture>
       </figure>
       <div class="video-embed video-embed--inline" style="margin-top: calc(var(--p) * 1.5);">
-        <iframe src="https://www.youtube-nocookie.com/embed/D1yVduJzLZk" title="Systems Architecture Walkthrough" loading="lazy" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+        <button class="yt-facade" type="button" data-yt-id="D1yVduJzLZk" data-yt-title="Systems Architecture Walkthrough" aria-label="Play video: Systems Architecture Walkthrough">
+          <img class="yt-facade-poster" src="https://i.ytimg.com/vi/D1yVduJzLZk/hqdefault.jpg" alt="" width="480" height="360" loading="lazy" decoding="async">
+          <span class="yt-facade-play"><svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M8 5v14l11-7z"/></svg></span>
+        </button>
       </div>
     </section>
 
@@ -750,7 +753,7 @@
     </div>
   </div>
 
-  <script src="../app.js"></script>
+  <script src="../app.js?v=20260620c"></script>
 </body>
 </html>
 
