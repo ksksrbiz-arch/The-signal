@@ -608,9 +608,20 @@ if ('serviceWorker' in navigator) {
   }
 
   imgs.forEach(function(img) {
+    // Never fade LCP / above-the-fold heroes — starting them at
+    // opacity:0 would delay Largest Contentful Paint. Only lazy,
+    // below-the-fold imagery gets the fade-in.
+    var isPriority = img.loading === 'eager' ||
+                     (img.getAttribute('fetchpriority') || '').toLowerCase() === 'high';
+
     // Already finished (cached) and valid — leave fully visible.
     if (img.complete) {
       if (img.naturalWidth === 0) markBroken(img);
+      return;
+    }
+    if (isPriority) {
+      // Still guard against a broken priority image, but no fade.
+      img.addEventListener('error', function() { markBroken(img); }, { once: true });
       return;
     }
     img.classList.add('img-fade');
