@@ -560,15 +560,17 @@ if ('serviceWorker' in navigator) {
   if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
   if (!window.matchMedia('(hover: hover) and (pointer: fine)').matches) return;
 
-  var cards = document.querySelectorAll(
+  var SELECTOR =
     '.cathedral-card, .client-tier-card, .partner-card, ' +
-    '.feature-matrix-card, .dispatch-preview-card, .dossier-card'
-  );
-  if (!cards.length) return;
+    '.feature-matrix-card, .dispatch-preview-card, .dossier-card, ' +
+    '.entity-card, .pricing-card, .property-card, .video-series-card, ' +
+    '.reel-card, .preview-card, .news-card, .profile-stats-card';
 
   var raf = null;
 
-  cards.forEach(function(card) {
+  function bind(card) {
+    if (card._spotBound) return;
+    card._spotBound = true;
     card.addEventListener('pointermove', function(e) {
       if (raf) return;
       raf = requestAnimationFrame(function() {
@@ -578,12 +580,20 @@ if ('serviceWorker' in navigator) {
         raf = null;
       });
     }, { passive: true });
-
     card.addEventListener('pointerleave', function() {
       card.style.removeProperty('--spot-x');
       card.style.removeProperty('--spot-y');
     });
-  });
+  }
+
+  function init(root) {
+    (root || document).querySelectorAll(SELECTOR).forEach(bind);
+  }
+
+  init();
+  // Expose so runtime-injected cards (e.g. the news aggregator) can
+  // opt in after they render.
+  window.SignalSpotlight = init;
 })();
 
 // ─── CONTENT IMAGE FADE-IN + GRACEFUL FAILURE ──────────────
