@@ -6460,6 +6460,22 @@ footer,
 .news-skel-line.sk-mid { width: 70%; }
 .news-skel-line:last-child { margin-bottom: 0; }
 
+/* --- Archive RSS feed link --- */
+.arc-feed-link {
+  display: inline-flex;
+  align-items: center;
+  gap: 7px;
+  margin-top: 12px;
+  font-family: var(--font-mono);
+  font-size: 12px;
+  letter-spacing: 0.04em;
+  color: var(--faint);
+  text-decoration: none;
+  transition: color var(--t-fast) ease;
+}
+.arc-feed-link svg { color: var(--active); }
+.arc-feed-link:hover { color: var(--active); }
+
 /* --- Lite YouTube facade (click-to-load) ---
    Avoids loading the ~1MB+ YouTube player on initial page load.
    Fills the .video-embed 16:9 box exactly like the real iframe. */

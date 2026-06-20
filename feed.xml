@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>THE SIGNAL — Weekly Dispatches</title>
+    <link>https://1commercesolutions.com/archive/</link>
+    <description>Weekly transmissions from the front lines of 1Commerce LLC — proof-first commerce infrastructure, built in public from Canby, Oregon.</description>
+    <language>en-us</language>
+    <copyright>© 2026 1Commerce LLC</copyright>
+    <managingEditor>skdev@1commerce.online (Keith)</managingEditor>
+    <lastBuildDate>Mon, 01 Jun 2026 12:00:00 +0000</lastBuildDate>
+    <atom:link href="https://1commercesolutions.com/feed.xml" rel="self" type="application/rss+xml" />
+    <image><url>https://1commercesolutions.com/og-image.png</url><title>THE SIGNAL</title><link>https://1commercesolutions.com/archive/</link></image>
+    <item>
+      <title>Cathedral Principle in Action</title>
+      <link>https://1commercesolutions.com/archive/018.html</link>
+      <guid isPermaLink="true">https://1commercesolutions.com/archive/018.html</guid>
+      <pubDate>Mon, 01 Jun 2026 12:00:00 +0000</pubDate>
+      <description>Eleven active work streams. Zero placeholders. Cathedral principle in action. Precision Core auth stabilized, UnifyOne fully rebuilt and deployed, ag drone licensing initiated, memoir crossed 15,000 words, and an AI music video pipeline shipped end-to-end — all in seven days.</description>
+    </item>
+    <item>
+      <title>The Build Log: What Shipped This Week</title>
+      <link>https://1commercesolutions.com/archive/017.html</link>
+      <guid isPermaLink="true">https://1commercesolutions.com/archive/017.html</guid>
+      <pubDate>Mon, 20 Apr 2026 12:00:00 +0000</pubDate>
+      <description>Verified deployments, live systems, and the architecture behind a week of relentless building at 1Commerce LLC. Week 17, April 20–26, 2026.</description>
+    </item>
+    <item>
+      <title>Steam to Silicon: The Architecture of the 2025 AI Economy</title>
+      <link>https://1commercesolutions.com/archive/016.html</link>
+      <guid isPermaLink="true">https://1commercesolutions.com/archive/016.html</guid>
+      <pubDate>Mon, 13 Apr 2026 12:00:00 +0000</pubDate>
+      <description>Steam to Silicon: The Architecture of the 2025 AI Economy. The Barbell Economy, solo-scale empire, and the blueprint for 2026. Week 16, April 13–19, 2026.</description>
+    </item>
+    <item>
+      <title>The Ecosystem Era</title>
+      <link>https://1commercesolutions.com/archive/015.html</link>
+      <guid isPermaLink="true">https://1commercesolutions.com/archive/015.html</guid>
+      <pubDate>Mon, 06 Apr 2026 12:00:00 +0000</pubDate>
+      <description>The Ecosystem Era. One intelligence layer to rule the stack. UnifyOne, UnifyAI, and the sovereign brand play — Week 15, April 6–12, 2026.</description>
+    </item>
+    <item>
+      <title>The Signal Expands</title>
+      <link>https://1commercesolutions.com/archive/014.html</link>
+      <guid isPermaLink="true">https://1commercesolutions.com/archive/014.html</guid>
+      <pubDate>Fri, 27 Mar 2026 12:00:00 +0000</pubDate>
+      <description>The Signal Expands. Week 14, March 27 – April 2, 2026. The platform becomes the story. A personal transmission from 1Commerce LLC, Canby, Oregon.</description>
+    </item>
+    <item>
+      <title>Build the Cathedral. Light It from Within.</title>
+      <link>https://1commercesolutions.com/archive/013.html</link>
+      <guid isPermaLink="true">https://1commercesolutions.com/archive/013.html</guid>
+      <pubDate>Fri, 20 Mar 2026 12:00:00 +0000</pubDate>
+      <description>Build the cathedral. Light it from within. Week 13, March 20–26, 2026. A personal transmission from 1Commerce LLC, Canby, Oregon.</description>
+    </item>
+  </channel>
+</rss>

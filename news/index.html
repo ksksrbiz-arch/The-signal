@@ -36,6 +36,7 @@
 <link rel="icon" type="image/png" sizes="32x32" href="/assets/brand/favicon-32.png">
 <link rel="apple-touch-icon" sizes="180x180" href="/assets/brand/apple-touch-icon.png">
 <link rel="manifest" href="/manifest.json">
+<link rel="alternate" type="application/rss+xml" title="THE SIGNAL — Weekly Dispatches" href="/feed.xml">
 <meta name="apple-mobile-web-app-capable" content="yes">
 <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
 <meta name="apple-mobile-web-app-title" content="THE SIGNAL">
@@ -324,7 +325,7 @@
     <a href="../archive/">Archive</a>
     <a href="../fieldnotes/">Fieldnotes</a>
     <a href="../builds/">Verified Builds</a>
-    <a href="../news/" class="active">News Aggregator</a>
+    <a href="../news/" class="active" aria-current="page">News Aggregator</a>
     <a href="../reel-engine/">Reel Engine</a>
     <a href="../about/">About</a>
     <a href="../#subscribe">Subscribe</a>
@@ -355,7 +356,7 @@
             <li><a href="../archive/">Archive</a></li>
             <li><a href="../fieldnotes/">Fieldnotes</a></li>
             <li><a href="../builds/">Verified Builds</a></li>
-            <li><a href="../news/" class="active">News Aggregator</a></li>
+            <li><a href="../news/" class="active" aria-current="page">News Aggregator</a></li>
             <li><a href="../reel-engine/">Reel Engine</a></li>
           <li><a href="../about/">About</a></li>
             <li><a href="../#subscribe">Subscribe</a></li>
@@ -424,7 +425,7 @@
     <!-- Controls -->
     <div class="news-controls">
       <div class="control-group">
-        <label class="control-label">Category</label>
+        <label class="control-label" for="categorySelect">Category</label>
         <select id="categorySelect">
           <option value="technology">Technology</option>
           <option value="business">Business</option>
@@ -433,7 +434,7 @@
         </select>
       </div>
       <div class="control-group">
-        <label class="control-label">Search</label>
+        <label class="control-label" for="searchInput">Search</label>
         <input type="text" id="searchInput" placeholder="Filter articles...">
       </div>
     </div>
