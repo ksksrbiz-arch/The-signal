@@ -652,13 +652,18 @@ if ('serviceWorker' in navigator) {
   var facades = document.querySelectorAll('.yt-facade');
   if (!facades.length) return;
 
+  // YouTube video IDs are exactly 11 chars of [A-Za-z0-9_-]. Validating
+  // against that allowlist sanitizes the attribute before it is used to
+  // build the embed URL (prevents any injection via the data attribute).
+  var YT_ID = /^[A-Za-z0-9_-]{11}$/;
+
   facades.forEach(function(facade) {
     facade.addEventListener('click', function() {
       var id = facade.getAttribute('data-yt-id');
-      if (!id) return;
+      if (!id || !YT_ID.test(id)) return;
       var iframe = document.createElement('iframe');
-      iframe.src = 'https://www.youtube-nocookie.com/embed/' + id +
-                   '?autoplay=1&rel=0';
+      iframe.src = 'https://www.youtube-nocookie.com/embed/' +
+                   encodeURIComponent(id) + '?autoplay=1&rel=0';
       iframe.title = facade.getAttribute('data-yt-title') || 'Video player';
       iframe.setAttribute('allow', 'accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share');
       iframe.setAttribute('referrerpolicy', 'strict-origin-when-cross-origin');
