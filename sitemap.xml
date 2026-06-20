@@ -9,42 +9,42 @@
 
   <url>
     <loc>https://1commercesolutions.com/archive/013.html</loc>
-    <lastmod>2026-05-06</lastmod>
+    <lastmod>2026-06-19</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
 
   <url>
     <loc>https://1commercesolutions.com/archive/014.html</loc>
-    <lastmod>2026-05-06</lastmod>
+    <lastmod>2026-06-19</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
 
   <url>
     <loc>https://1commercesolutions.com/archive/015.html</loc>
-    <lastmod>2026-05-06</lastmod>
+    <lastmod>2026-06-19</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
 
   <url>
     <loc>https://1commercesolutions.com/archive/016.html</loc>
-    <lastmod>2026-05-06</lastmod>
+    <lastmod>2026-06-19</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
 
   <url>
     <loc>https://1commercesolutions.com/archive/017.html</loc>
-    <lastmod>2026-05-06</lastmod>
+    <lastmod>2026-06-19</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
 
   <url>
     <loc>https://1commercesolutions.com/archive/018.html</loc>
-    <lastmod>2026-06-01</lastmod>
+    <lastmod>2026-06-19</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
@@ -367,6 +367,13 @@
   <url>
     <loc>https://1commercesolutions.com/daily/2026-06-19.html</loc>
     <lastmod>2026-06-19</lastmod>
+    <changefreq>daily</changefreq>
+    <priority>0.7</priority>
+  </url>
+
+  <url>
+    <loc>https://1commercesolutions.com/daily/2026-06-20.html</loc>
+    <lastmod>2026-06-20</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.7</priority>
   </url>

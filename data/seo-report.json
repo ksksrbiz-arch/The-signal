@@ -1,6 +1,6 @@
 {
-  "generatedAt": "2026-06-19",
-  "pagesScanned": 101,
+  "generatedAt": "2026-06-20",
+  "pagesScanned": 102,
   "issuesFound": 0,
   "issues": [],
   "pages": [
@@ -16,7 +16,7 @@
     {
       "file": "archive/013.html",
       "url": "https://1commercesolutions.com/archive/013.html",
-      "lastmod": "2026-05-06",
+      "lastmod": "2026-06-19",
       "changefreq": "monthly",
       "priority": "0.7",
       "title": "THE SIGNAL — Weekly Transmission №013 | 1Commerce LLC",
@@ -25,7 +25,7 @@
     {
       "file": "archive/014.html",
       "url": "https://1commercesolutions.com/archive/014.html",
-      "lastmod": "2026-05-06",
+      "lastmod": "2026-06-19",
       "changefreq": "monthly",
       "priority": "0.7",
       "title": "THE SIGNAL — Weekly Transmission №014 | 1Commerce LLC",
@@ -34,7 +34,7 @@
     {
       "file": "archive/015.html",
       "url": "https://1commercesolutions.com/archive/015.html",
-      "lastmod": "2026-05-06",
+      "lastmod": "2026-06-19",
       "changefreq": "monthly",
       "priority": "0.7",
       "title": "THE SIGNAL — Weekly Transmission №015 | 1Commerce LLC",
@@ -43,7 +43,7 @@
     {
       "file": "archive/016.html",
       "url": "https://1commercesolutions.com/archive/016.html",
-      "lastmod": "2026-05-06",
+      "lastmod": "2026-06-19",
       "changefreq": "monthly",
       "priority": "0.7",
       "title": "THE SIGNAL — Weekly Transmission №016 | 1Commerce LLC",
@@ -52,7 +52,7 @@
     {
       "file": "archive/017.html",
       "url": "https://1commercesolutions.com/archive/017.html",
-      "lastmod": "2026-05-06",
+      "lastmod": "2026-06-19",
       "changefreq": "monthly",
       "priority": "0.7",
       "title": "THE SIGNAL — Weekly Transmission №017 | 1Commerce LLC",
@@ -61,7 +61,7 @@
     {
       "file": "archive/018.html",
       "url": "https://1commercesolutions.com/archive/018.html",
-      "lastmod": "2026-06-01",
+      "lastmod": "2026-06-19",
       "changefreq": "monthly",
       "priority": "0.7",
       "title": "THE SIGNAL — Weekly Transmission №018 | Cathedral Principle in Action",
@@ -480,6 +480,15 @@
       "priority": "0.7",
       "title": "Daily Signal: proof-first founder systems | THE SIGNAL",
       "description": "How to turn shipping evidence into trust, distribution, and compounding momentum. A practical daily brief for operators building commerce systems with proof, restraint, and compounding execution."
+    },
+    {
+      "file": "daily/2026-06-20.html",
+      "url": "https://1commercesolutions.com/daily/2026-06-20.html",
+      "lastmod": "2026-06-20",
+      "changefreq": "daily",
+      "priority": "0.7",
+      "title": "Daily Signal: solo-founder infrastructure | THE SIGNAL",
+      "description": "Where leverage comes from when headcount stays intentionally small. A practical daily brief for operators building commerce systems with proof, restraint, and compounding execution."
     },
     {
       "file": "daily/index.html",
