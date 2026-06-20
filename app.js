@@ -644,3 +644,26 @@ if ('serviceWorker' in navigator) {
     }, { once: true });
   });
 })();
+
+// ─── LITE YOUTUBE FACADE (click-to-load) ───────────────────
+// The real YouTube player (~1MB+ of JS) only loads when the user
+// clicks the poster, keeping it off the initial page load.
+(function(){
+  var facades = document.querySelectorAll('.yt-facade');
+  if (!facades.length) return;
+
+  facades.forEach(function(facade) {
+    facade.addEventListener('click', function() {
+      var id = facade.getAttribute('data-yt-id');
+      if (!id) return;
+      var iframe = document.createElement('iframe');
+      iframe.src = 'https://www.youtube-nocookie.com/embed/' + id +
+                   '?autoplay=1&rel=0';
+      iframe.title = facade.getAttribute('data-yt-title') || 'Video player';
+      iframe.setAttribute('allow', 'accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share');
+      iframe.setAttribute('referrerpolicy', 'strict-origin-when-cross-origin');
+      iframe.setAttribute('allowfullscreen', '');
+      facade.replaceWith(iframe);
+    });
+  });
+})();
