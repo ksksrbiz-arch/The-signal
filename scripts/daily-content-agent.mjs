@@ -318,12 +318,21 @@ function articleHtml(brief, date) {
     headline: brief.title,
     description: brief.description,
     keywords: brief.keyword,
-    author: { '@type': 'Organization', name: '1Commerce LLC' },
-    publisher: { '@type': 'Organization', name: '1Commerce LLC' },
+    author: { '@type': 'Organization', name: '1Commerce LLC', url: SITE_URL + '/' },
+    publisher: { '@type': 'Organization', name: '1Commerce LLC', url: SITE_URL + '/' },
     mainEntityOfPage: url,
     image: `${SITE_URL}/og-image.png`,
     datePublished: date,
     dateModified: date,
+  });
+  const breadcrumb = safeJsonLd({
+    '@context': 'https://schema.org',
+    '@type': 'BreadcrumbList',
+    itemListElement: [
+      { '@type': 'ListItem', position: 1, name: 'Home', item: `${SITE_URL}/` },
+      { '@type': 'ListItem', position: 2, name: 'Daily Signal', item: `${SITE_URL}/daily/` },
+      { '@type': 'ListItem', position: 3, name: date },
+    ],
   });
 
   return `<!DOCTYPE html>
@@ -342,17 +351,36 @@ function articleHtml(brief, date) {
 <meta property="og:url" content="${url}">
 <meta property="og:site_name" content="THE SIGNAL">
 <meta property="og:image" content="${SITE_URL}/og-image.png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta property="og:image:alt" content="${safeTitle} | THE SIGNAL">
+<meta property="og:image:type" content="image/png">
+<meta property="og:locale" content="en_US">
 <meta name="twitter:card" content="summary_large_image">
 <meta name="twitter:title" content="${safeTitle}">
 <meta name="twitter:description" content="${safeDescription}">
 <meta name="twitter:image" content="${SITE_URL}/og-image.png">
+<meta name="twitter:image:alt" content="${safeTitle} | THE SIGNAL — 1Commerce LLC">
 <meta name="author" content="1Commerce LLC">
+<!-- GEO Targeting -->
+<meta name="geo.region" content="US-OR">
+<meta name="geo.placename" content="Canby, Oregon">
+<meta name="geo.position" content="45.2640;-122.6918">
+<meta name="ICBM" content="45.2640, -122.6918">
 <meta name="theme-color" content="#E8B86A">
 <link rel="icon" type="image/svg+xml" href="/assets/brand/favicon.svg">
+<link rel="apple-touch-icon" sizes="180x180" href="/assets/brand/apple-touch-icon.png">
+<link rel="manifest" href="/manifest.json">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+<meta name="apple-mobile-web-app-title" content="THE SIGNAL">
 <link rel="stylesheet" href="../base.css?v=20260502a">
 <link rel="stylesheet" href="../style.css?v=20260502a">
 <script type="application/ld+json">
 ${schema}
+</script>
+<script type="application/ld+json">
+${breadcrumb}
 </script>
 <style>
 .daily-wrap{max-width:840px;margin:0 auto;padding:clamp(56px,8vw,96px) 24px}
@@ -444,12 +472,54 @@ async function writeIndex() {
 <meta property="og:description" content="Daily SEO and content operating briefs generated for THE SIGNAL.">
 <meta property="og:type" content="website">
 <meta property="og:url" content="${SITE_URL}/daily/">
+<meta property="og:site_name" content="THE SIGNAL">
 <meta property="og:image" content="${SITE_URL}/og-image.png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta property="og:image:alt" content="Daily Signal — THE SIGNAL | 1Commerce LLC">
+<meta property="og:image:type" content="image/png">
+<meta property="og:locale" content="en_US">
 <meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Daily Signal — THE SIGNAL">
+<meta name="twitter:description" content="Daily SEO and content operating briefs generated for THE SIGNAL by 1Commerce LLC.">
+<meta name="twitter:image" content="${SITE_URL}/og-image.png">
+<meta name="twitter:image:alt" content="Daily Signal — THE SIGNAL | 1Commerce LLC">
+<meta name="author" content="1Commerce LLC">
+<!-- GEO Targeting -->
+<meta name="geo.region" content="US-OR">
+<meta name="geo.placename" content="Canby, Oregon">
+<meta name="geo.position" content="45.2640;-122.6918">
+<meta name="ICBM" content="45.2640, -122.6918">
 <meta name="theme-color" content="#E8B86A">
 <link rel="icon" type="image/svg+xml" href="/assets/brand/favicon.svg">
+<link rel="apple-touch-icon" sizes="180x180" href="/assets/brand/apple-touch-icon.png">
+<link rel="manifest" href="/manifest.json">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+<meta name="apple-mobile-web-app-title" content="THE SIGNAL">
 <link rel="stylesheet" href="../base.css?v=20260502a">
 <link rel="stylesheet" href="../style.css?v=20260502a">
+<script type="application/ld+json">
+${safeJsonLd({
+  '@context': 'https://schema.org',
+  '@type': 'CollectionPage',
+  name: 'Daily Signal — THE SIGNAL',
+  description: 'Daily SEO and content operating briefs generated for THE SIGNAL by 1Commerce LLC.',
+  url: `${SITE_URL}/daily/`,
+  isPartOf: { '@type': 'WebSite', name: 'THE SIGNAL', url: `${SITE_URL}/` },
+  publisher: { '@type': 'Organization', name: '1Commerce LLC', url: `${SITE_URL}/` },
+})}
+</script>
+<script type="application/ld+json">
+${safeJsonLd({
+  '@context': 'https://schema.org',
+  '@type': 'BreadcrumbList',
+  itemListElement: [
+    { '@type': 'ListItem', position: 1, name: 'Home', item: `${SITE_URL}/` },
+    { '@type': 'ListItem', position: 2, name: 'Daily Signal' },
+  ],
+})}
+</script>
 <style>
 .daily-index{max-width:920px;margin:0 auto;padding:clamp(56px,8vw,96px) 24px}
 .daily-index h1{font-family:var(--font-display);font-size:clamp(2.8rem,8vw,4.8rem);margin:0 0 18px;color:var(--text)}
