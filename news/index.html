@@ -66,8 +66,8 @@
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,600;9..144,700&family=IBM+Plex+Sans:wght@400;500;600&family=JetBrains+Mono:wght@300;400;500&display=swap" rel="stylesheet">
 
-<link rel="stylesheet" href="../base.css?v=20260502a">
-<link rel="stylesheet" href="../style.css?v=20260502a">
+<link rel="stylesheet" href="../base.css?v=20260620b">
+<link rel="stylesheet" href="../style.css?v=20260620b">
 <style>
   .news-controls {
     display: grid;
@@ -120,6 +120,7 @@
 
   .news-card {
     background: var(--panel);
+    background-image: var(--glass-bg);
     border: 1px solid var(--rule);
     border-radius: var(--r);
     overflow: hidden;
@@ -408,9 +409,13 @@
 
     <!-- AI Pulse — featured infographic -->
     <figure class="section-figure" style="max-width: var(--page, 1200px); margin: 0 auto; padding: 0 var(--p, 18px) calc(var(--p, 18px) * 2);">
-      <img src="../images/ai-pulse-2025-infographic.png"
+      <picture>
+        <source srcset="../images/ai-pulse-2025-infographic.avif" type="image/avif">
+        <source srcset="../images/ai-pulse-2025-infographic.webp" type="image/webp">
+        <img src="../images/ai-pulse-2025-infographic.png"
            alt="The 2025 AI Pulse: From Global Trends to Ground-Level Infrastructure — infographic covering compute costs, model commoditization, and solo-scale enterprise opportunity"
            width="1200" height="675" loading="lazy" decoding="async" class="section-image">
+      </picture>
       <figcaption class="mono-label dim" style="text-align: center; margin-top: 12px;">
         Deep dive: <a href="../archive/016.html" style="color: var(--active, #E8B86A);">Week №016 — Steam to Silicon</a>
       </figcaption>
@@ -673,6 +678,20 @@
       });
     }
 
+    function renderSkeletons(n) {
+      var line = '<div class="news-skel-line sk-wide skeleton"></div>';
+      var card =
+        '<div class="news-skel-card" aria-hidden="true">' +
+          '<div class="news-skel-head"><div class="news-skel-line sk-sm skeleton"></div></div>' +
+          '<div class="news-skel-body">' +
+            '<div class="news-skel-line sk-title skeleton"></div>' +
+            line + line +
+            '<div class="news-skel-line sk-mid skeleton"></div>' +
+          '</div>' +
+        '</div>';
+      newsGrid.innerHTML = new Array(n).fill(card).join('');
+    }
+
     function renderArticles(articles) {
       newsGrid.innerHTML = '';
       if (!articles || articles.length === 0) {
@@ -702,6 +721,8 @@
           '</div>';
         newsGrid.appendChild(card);
       });
+      // Let runtime-injected cards opt into the pointer spotlight.
+      if (window.SignalSpotlight) window.SignalSpotlight(newsGrid);
     }
 
     function applyFilters() {
@@ -717,7 +738,7 @@
           return;
         }
       }
-      loadingContainer.style.display = 'block';
+      renderSkeletons(9);
       errorContainer.innerHTML = '';
       try {
         const results = await Promise.all(RSS_FEEDS.map(fetchFeed));
@@ -727,7 +748,6 @@
       } catch (e) {
         errorContainer.innerHTML = '<div class="error"><strong>Error:</strong> ' + escapeHtml(e.message) + '</div>';
       } finally {
-        loadingContainer.style.display = 'none';
         applyFilters();
       }
     }

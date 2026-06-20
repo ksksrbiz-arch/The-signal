@@ -6311,3 +6311,151 @@ footer,
 @media (prefers-reduced-motion: reduce) {
   .img-fade { opacity: 1 !important; transform: none !important; transition: none !important; }
 }
+
+/* ============================================================
+   PREMIUM POLISH 2026 — section pages
+   Extends the homepage glass/depth + spotlight system to the
+   card families on about / builds / news / profile / videos /
+   reel-engine so the whole site reads as one piece.
+   ============================================================ */
+
+.entity-card,
+.pricing-card,
+.property-card,
+.video-series-card,
+.reel-card,
+.build-card,
+.preview-card,
+.news-card,
+.profile-stats-card {
+  position: relative;
+  isolation: isolate;
+  background-image: var(--glass-bg);
+  box-shadow: var(--elev-1), var(--glass-highlight);
+  transition: transform var(--t-mid) var(--ease-out-expo),
+              border-color var(--t-mid) ease,
+              box-shadow var(--t-mid) ease;
+  will-change: transform;
+}
+
+.entity-card::after,
+.pricing-card::after,
+.property-card::after,
+.video-series-card::after,
+.reel-card::after,
+.preview-card::after,
+.news-card::after,
+.profile-stats-card::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  z-index: -1;
+  border-radius: inherit;
+  background: radial-gradient(
+    420px circle at var(--spot-x) var(--spot-y),
+    rgba(232,184,106,0.12),
+    transparent 60%
+  );
+  opacity: 0;
+  transition: opacity var(--t-mid) ease;
+  pointer-events: none;
+}
+
+.entity-card:hover::after,
+.pricing-card:hover::after,
+.property-card:hover::after,
+.video-series-card:hover::after,
+.reel-card:hover::after,
+.preview-card:hover::after,
+.news-card:hover::after,
+.profile-stats-card:hover::after {
+  opacity: 1;
+}
+
+.entity-card:hover,
+.pricing-card:hover,
+.property-card:hover,
+.video-series-card:hover,
+.reel-card:hover,
+.build-card:hover,
+.preview-card:hover,
+.news-card:hover,
+.profile-stats-card:hover {
+  transform: translateY(-5px);
+  border-color: rgba(232,184,106,0.40);
+  box-shadow: var(--elev-3), var(--elev-amber), var(--glass-highlight);
+}
+
+.entity-card:active,
+.pricing-card:active,
+.build-card:active,
+.preview-card:active,
+.news-card:active,
+.reel-card:active {
+  transform: translateY(-2px) scale(0.995);
+  transition-duration: var(--t-fast);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .entity-card, .pricing-card, .property-card, .video-series-card,
+  .reel-card, .build-card, .preview-card, .news-card, .profile-stats-card {
+    transition: none !important;
+  }
+  .entity-card:hover, .pricing-card:hover, .property-card:hover,
+  .video-series-card:hover, .reel-card:hover, .build-card:hover,
+  .preview-card:hover, .news-card:hover, .profile-stats-card:hover {
+    transform: none !important;
+  }
+  .entity-card::after, .pricing-card::after, .property-card::after,
+  .video-series-card::after, .reel-card::after, .preview-card::after,
+  .news-card::after, .profile-stats-card::after {
+    display: none !important;
+  }
+}
+
+@media (hover: none) {
+  .entity-card:hover, .pricing-card:hover, .property-card:hover,
+  .video-series-card:hover, .reel-card:hover, .build-card:hover,
+  .preview-card:hover, .news-card:hover, .profile-stats-card:hover {
+    transform: none;
+  }
+  .entity-card::after, .pricing-card::after, .property-card::after,
+  .video-series-card::after, .reel-card::after, .preview-card::after,
+  .news-card::after, .profile-stats-card::after {
+    display: none;
+  }
+}
+
+/* --- News aggregator skeleton loading state --- */
+.news-skeleton-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(340px, 1fr));
+  gap: var(--p);
+  margin-bottom: calc(var(--p) * 2);
+}
+.news-skel-card {
+  border: 1px solid var(--rule);
+  border-radius: var(--r);
+  overflow: hidden;
+  background: var(--panel);
+  min-height: 200px;
+}
+.news-skel-head {
+  padding: var(--p);
+  border-bottom: 1px solid var(--rule);
+  display: flex;
+  justify-content: space-between;
+  gap: 12px;
+}
+.news-skel-body { padding: var(--p); }
+.news-skel-line {
+  display: block;
+  height: 12px;
+  border-radius: 4px;
+  margin-bottom: 12px;
+}
+.news-skel-line.sk-sm { width: 30%; height: 9px; }
+.news-skel-line.sk-title { height: 18px; width: 85%; margin-bottom: 16px; }
+.news-skel-line.sk-wide { width: 100%; }
+.news-skel-line.sk-mid { width: 70%; }
+.news-skel-line:last-child { margin-bottom: 0; }
