@@ -585,3 +585,41 @@ if ('serviceWorker' in navigator) {
     });
   });
 })();
+
+// ─── CONTENT IMAGE FADE-IN + GRACEFUL FAILURE ──────────────
+// Fades content imagery in once it decodes (skipped for already
+// cached images so nothing flashes), and degrades broken images
+// to a calm "image unavailable" frame instead of a broken glyph.
+(function(){
+  var imgs = document.querySelectorAll(
+    '.section-image, .section-figure img, .hero-photo, ' +
+    '.arc-featured-media img, .arc-item-media img, ' +
+    'figure img, .dispatch-figure img'
+  );
+  if (!imgs.length) return;
+
+  function markBroken(img) {
+    img.classList.add('img-error');
+    var frame = img.closest(
+      '.section-figure, .arc-featured-media, .arc-item-media, ' +
+      '.hero-photo-wrap, figure, .dispatch-figure'
+    );
+    if (frame) frame.classList.add('media-broken');
+  }
+
+  imgs.forEach(function(img) {
+    // Already finished (cached) and valid — leave fully visible.
+    if (img.complete) {
+      if (img.naturalWidth === 0) markBroken(img);
+      return;
+    }
+    img.classList.add('img-fade');
+    img.addEventListener('load', function() {
+      img.classList.add('img-loaded');
+    }, { once: true });
+    img.addEventListener('error', function() {
+      img.classList.add('img-loaded'); // release the transition
+      markBroken(img);
+    }, { once: true });
+  });
+})();
