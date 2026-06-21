@@ -1,0 +1,44 @@
+# THE SIGNAL — 1Commerce LLC
+
+> Weekly dispatches, fieldnotes, and daily briefs from a solo founder building commerce infrastructure in Canby, Oregon (Portland metro). Proof-first systems, AI agents, Shopify development, and build-in-public publishing since 2025.
+
+## Core Pages
+
+- [Home](https://1commercesolutions.com/): Landing page with Cathedral Framework overview, verified builds index, and latest dispatch.
+- [About](https://1commercesolutions.com/about/): Founder Keith's background, the Cathedral Principle (Foundation → Revenue → Systems → Scale), and the 1Commerce LLC mission.
+- [Archive](https://1commercesolutions.com/archive/): Complete archive of weekly Signal transmissions — dispatches №013 through №018.
+- [Daily](https://1commercesolutions.com/daily/): Daily operating briefs on commerce systems, AI agents, SEO discipline, and proof-first execution.
+- [Fieldnotes](https://1commercesolutions.com/fieldnotes/): Long-form strategy notes, system specs, build logs, and operating plans published most Saturdays.
+- [Builds](https://1commercesolutions.com/builds/): Verified production deployments — 6+ live commerce systems with architecture notes.
+- [News](https://1commercesolutions.com/news/): Real-time operator-curated tech and commerce news via RSS aggregation.
+- [Videos](https://1commercesolutions.com/videos/): Founder video transmissions, system architecture walkthroughs, and build-in-public dispatches.
+
+## Key Fieldnotes
+
+- [The Cathedral Principle](https://1commercesolutions.com/fieldnotes/cathedral-principle.html): The operating framework governing what gets built, in what order, and why — Foundation → Revenue → Systems → Scale.
+- [Build in Public as an Operating System](https://1commercesolutions.com/fieldnotes/build-in-public-system.html): How The Signal functions as a forcing function, not a marketing strategy.
+- [The Solo Founder Stack, 2026](https://1commercesolutions.com/fieldnotes/solo-founder-stack-2026.html): Every tool in the 1Commerce operating stack — cost, purpose, and what got cut.
+- [How to Ship an MVP in a Week Using AI Agents](https://1commercesolutions.com/fieldnotes/mvp-in-a-week.html): GigOS from concept to deployed product in under 7 days, day-by-day.
+- [AI Agents vs. Chatbots](https://1commercesolutions.com/fieldnotes/ai-agents-vs-chatbots.html): The distinction between answering questions and executing work — why it matters for builders.
+- [Cold Outreach Engine with Claude + n8n](https://1commercesolutions.com/fieldnotes/cold-outreach-engine.html): The real system — prompts, triggers, rate limits, and 30-day numbers.
+- [Shopify vs. Custom Storefront](https://1commercesolutions.com/fieldnotes/shopify-vs-custom.html): Honest tradeoffs from running both simultaneously as a solo operator.
+- [UnifyOne MCP Client and Universal Endpoint](https://1commercesolutions.com/fieldnotes/unifyone-mcp-endpoint.html): What the Model Context Protocol means for commerce infrastructure.
+- [When Your Business Name Is Already Taken](https://1commercesolutions.com/fieldnotes/trademark-name-taken.html): Navigating competing trademark claims on "1Commerce" in real time.
+
+## About 1Commerce LLC
+
+1Commerce LLC is a solo founder operation based in Canby, Oregon (Clackamas County, Portland metro area). Keith builds commerce infrastructure — headless storefronts, AI agent pipelines, MCP servers, Shopify CI/CD systems, and affiliate backends — under the Cathedral Principle: build the foundation first, then revenue, then systems, then scale.
+
+**Active systems in production:**
+- UnifyOne — AI commerce intelligence layer with MCP endpoint
+- Precision Core — authentication and operations backbone
+- Forged American — headless Next.js storefront (Netlify + Stripe)
+- Torqued Affiliates — Shopify affiliate backend with webhook processing
+- PACER — distressed domain discovery and RWA monetization pipeline
+- 1Commerce MCP Server — Model Context Protocol surface for store, product, order, and AI tooling
+
+**The Signal** is the public publishing layer: weekly dispatches, daily briefs, fieldnotes, and a build-in-public record of every system shipped.
+
+Contact: skdev@1commercesolutions.com
+GitHub: https://github.com/ksksrbiz-arch
+Instagram: https://www.instagram.com/1commerce_llc/
