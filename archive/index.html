@@ -16,17 +16,27 @@
 <meta property="og:image:width" content="1200">
 <meta property="og:image:height" content="630">
 <meta property="og:image:alt" content="THE SIGNAL Archive — Weekly Dispatches">
+<meta property="og:image:type" content="image/png">
 <meta property="og:locale" content="en_US">
 <meta name="twitter:card" content="summary_large_image">
 <meta name="twitter:title" content="Archive — THE SIGNAL">
 <meta name="twitter:description" content="Complete archive of The Signal transmissions from 1Commerce LLC.">
 <meta name="twitter:image" content="https://1commercesolutions.com/og-image.png">
+<meta name="twitter:image:alt" content="THE SIGNAL Archive — Weekly Dispatches from 1Commerce LLC">
 <meta name="author" content="1Commerce LLC">
+<meta name="keywords" content="Signal archive, weekly dispatches, solo founder, build in public, 1Commerce LLC, commerce infrastructure, Canby Oregon, Pacific Northwest, newsletter archive">
+
+<!-- GEO Targeting -->
+<meta name="geo.region" content="US-OR">
+<meta name="geo.placename" content="Canby, Oregon">
+<meta name="geo.position" content="45.2640;-122.6918">
+<meta name="ICBM" content="45.2640, -122.6918">
 <meta name="theme-color" content="#E8B86A">
 <link rel="icon" type="image/svg+xml" href="/assets/brand/favicon.svg">
 <link rel="icon" type="image/png" sizes="32x32" href="/assets/brand/favicon-32.png">
 <link rel="apple-touch-icon" sizes="180x180" href="/assets/brand/apple-touch-icon.png">
 <link rel="manifest" href="/manifest.json">
+<link rel="alternate" type="application/rss+xml" title="THE SIGNAL — Weekly Dispatches" href="/feed.xml">
 <meta name="apple-mobile-web-app-capable" content="yes">
 <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
 <meta name="apple-mobile-web-app-title" content="THE SIGNAL">
@@ -57,8 +67,8 @@
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,600;9..144,700&family=IBM+Plex+Sans:wght@400;500;600&family=JetBrains+Mono:wght@300;400;500&display=swap" rel="stylesheet">
 
-<link rel="stylesheet" href="../base.css?v=20260502a">
-<link rel="stylesheet" href="../style.css?v=20260502a">
+<link rel="stylesheet" href="../base.css?v=20260620c">
+<link rel="stylesheet" href="../style.css?v=20260620c">
 </head>
 <body>
   <a href="#main" class="skip-link">Skip to main content</a>
@@ -104,7 +114,7 @@
         <nav>
           <ul class="nav-links">
             <li><a href="../">Home</a></li>
-            <li><a href="./" class="active">Archive</a></li>
+            <li><a href="./" class="active" aria-current="page">Archive</a></li>
             <li><a href="../fieldnotes/">Fieldnotes</a></li>
             <li><a href="../builds/">Verified Builds</a></li>
             <li><a href="../news/">News Aggregator</a></li>
@@ -153,7 +163,11 @@
       <div class="arc-featured-inner">
         <a href="./018.html" class="arc-featured">
           <div class="arc-featured-media">
-            <img src="./week018-hero.jpg" alt="Week 018 — Cathedral Principle in Action" loading="eager">
+            <picture>
+              <source srcset="../images/verified-build-ecosystem.avif" type="image/avif">
+              <source srcset="../images/verified-build-ecosystem.webp" type="image/webp">
+              <img src="../images/verified-build-ecosystem.png" alt="Week 018 — Cathedral Principle in Action" loading="eager" decoding="async">
+            </picture>
           </div>
           <div class="arc-featured-body">
             <div class="arc-badge">Latest · Week №018</div>
@@ -182,6 +196,10 @@
         <div class="arc-list-header">
           <h2 class="arc-list-title">All transmissions</h2>
           <div class="arc-list-sub">Ordered newest to oldest. Every entry links to the full dispatch.</div>
+          <a class="arc-feed-link" href="/feed.xml">
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M6.18 15.64a2.18 2.18 0 1 1 0 4.36 2.18 2.18 0 0 1 0-4.36zM4 4.44A15.56 15.56 0 0 1 19.56 20h-2.83A12.73 12.73 0 0 0 4 7.27V4.44zm0 5.66a9.9 9.9 0 0 1 9.9 9.9h-2.83A7.07 7.07 0 0 0 4 12.93V10.1z"/></svg>
+            Subscribe via RSS
+          </a>
         </div>
 
         <!-- Type filters -->
@@ -198,7 +216,11 @@
           <li class="arc-item" data-type="dispatch">
             <a href="./018.html" class="arc-item-link">
               <div class="arc-item-media">
-                <img src="./week018-hero.jpg" alt="" loading="lazy">
+                <picture>
+                  <source srcset="../images/verified-build-ecosystem.avif" type="image/avif">
+                  <source srcset="../images/verified-build-ecosystem.webp" type="image/webp">
+                  <img src="../images/verified-build-ecosystem.png" alt="" loading="lazy" decoding="async">
+                </picture>
               </div>
               <div class="arc-item-body">
                 <div class="arc-item-meta">
@@ -224,7 +246,11 @@
           <li class="arc-item" data-type="build">
             <a href="./017.html" class="arc-item-link">
               <div class="arc-item-media">
-                <img src="../images/barbell/ai-native-tech-stack.png" alt="" loading="lazy">
+                <picture>
+                  <source srcset="../images/barbell/ai-native-tech-stack.avif" type="image/avif">
+                  <source srcset="../images/barbell/ai-native-tech-stack.webp" type="image/webp">
+                  <img src="../images/barbell/ai-native-tech-stack.png" alt="" loading="lazy">
+                </picture>
               </div>
               <div class="arc-item-body">
                 <div class="arc-item-meta">
@@ -249,7 +275,11 @@
           <li class="arc-item" data-type="build">
             <a href="./016.html" class="arc-item-link">
               <div class="arc-item-media">
-                <img src="../images/barbell/barbell-economy.png" alt="" loading="lazy">
+                <picture>
+                  <source srcset="../images/barbell/barbell-economy.avif" type="image/avif">
+                  <source srcset="../images/barbell/barbell-economy.webp" type="image/webp">
+                  <img src="../images/barbell/barbell-economy.png" alt="" loading="lazy">
+                </picture>
               </div>
               <div class="arc-item-body">
                 <div class="arc-item-meta">
@@ -274,7 +304,11 @@
           <li class="arc-item" data-type="system">
             <a href="./015.html" class="arc-item-link">
               <div class="arc-item-media">
-                <img src="../images/unify-one-intelligence-layer.png" alt="" loading="lazy">
+                <picture>
+                  <source srcset="../images/unify-one-intelligence-layer.avif" type="image/avif">
+                  <source srcset="../images/unify-one-intelligence-layer.webp" type="image/webp">
+                  <img src="../images/unify-one-intelligence-layer.png" alt="" loading="lazy">
+                </picture>
               </div>
               <div class="arc-item-body">
                 <div class="arc-item-meta">

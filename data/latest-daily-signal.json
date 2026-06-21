@@ -1,41 +1,41 @@
 {
-  "date": "2026-06-17",
-  "title": "Daily Signal: validated product experiments",
-  "description": "How to move from idea to shipped proof while keeping scope under control. A practical daily brief for operators building commerce systems with proof, restraint, and compounding execution.",
-  "keyword": "product validation systems",
-  "thesis": "How to move from idea to shipped proof while keeping scope under control.",
+  "date": "2026-06-20",
+  "title": "Daily Signal: solo-founder infrastructure",
+  "description": "Where leverage comes from when headcount stays intentionally small. A practical daily brief for operators building commerce systems with proof, restraint, and compounding execution.",
+  "keyword": "solo founder tech stack",
+  "thesis": "Where leverage comes from when headcount stays intentionally small.",
   "editorialNote": "This brief is intentionally source-free and evergreen: no invented news, no unsupported market claims, and no metrics that did not come from a measured system.",
   "takeaways": [
-    "Treat product validation systems as an operating system problem, not a content calendar slogan.",
+    "Treat solo founder tech stack as an operating system problem, not a content calendar slogan.",
     "Publish concrete proof before polishing the narrative around it.",
     "Use automation to protect judgment, not to flood the site with thin pages."
   ],
   "sections": [
     {
       "heading": "The operating signal",
-      "body": "A validated experiment is not a brainstorm with a landing page. It is a constrained test with a user, a promise, a measurable signal, and a decision rule that prevents endless tinkering. The daily content job is to make that reality easier to see: one clear idea, one operational lesson, and one useful next action for a founder or operator reading THE SIGNAL."
+      "body": "A solo-founder stack is not a trophy shelf of tools. It is a set of defaults that protects attention, reduces context switching, and makes the next customer-visible improvement cheaper to ship. The daily content job is to make that reality easier to see: one clear idea, one operational lesson, and one useful next action for a founder or operator reading THE SIGNAL."
     },
     {
       "heading": "Why it matters today",
-      "body": "The risk is not publishing too little; it is publishing copy that looks active while saying nothing specific. Better daily content should sharpen the archive, support internal links, and give readers a practical way to inspect product validation systems inside their own operation."
+      "body": "The risk is not publishing too little; it is publishing copy that looks active while saying nothing specific. Better daily content should sharpen the archive, support internal links, and give readers a practical way to inspect solo founder tech stack inside their own operation."
     },
     {
       "heading": "Operator moves",
-      "body": "1. Write the smallest promise a real user can understand and respond to. 2. Set the decision rule before building: continue, change, or kill. 3. Ship the proof artifact even if the result is negative, because the learning compounds."
+      "body": "1. Identify one tool that creates more coordination work than leverage. 2. Move recurring setup steps into a checklist, script, template, or saved view. 3. Keep the stack boring where reliability matters and experimental where learning matters."
     },
     {
       "heading": "Quality signals to watch",
-      "body": "A useful brief should leave a trail of improved execution. For this theme, watch for shorter test cycles, clear pass/fail criteria, less scope creep before feedback. If those signals do not improve, the content is decoration rather than infrastructure."
+      "body": "A useful brief should leave a trail of improved execution. For this theme, watch for fewer open loops, shorter path from idea to deploy, lower monthly tool waste. If those signals do not improve, the content is decoration rather than infrastructure."
     },
     {
       "heading": "Content angle to ship next",
-      "body": "Turn today's note into an experiment brief. Then link it to one existing fieldnote, one archive dispatch, and one current build so the page strengthens the wider site instead of standing alone."
+      "body": "Turn today's note into a tool audit. Then link it to one existing fieldnote, one archive dispatch, and one current build so the page strengthens the wider site instead of standing alone."
     }
   ],
   "prompts": [
-    "What proof would make this product validation systems claim believable to a skeptical operator?",
+    "What proof would make this solo founder tech stack claim believable to a skeptical operator?",
     "Which existing page should this brief strengthen with a contextual internal link?",
     "What decision should a reader be able to make after two minutes on this page?",
-    "Which next asset would create the most durable proof: experiment brief, validation scorecard, MVP postmortem?"
+    "Which next asset would create the most durable proof: tool audit, solo operator playbook, cost-to-leverage breakdown?"
   ]
 }

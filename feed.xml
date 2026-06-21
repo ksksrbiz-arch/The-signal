@@ -1,0 +1,224 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>THE SIGNAL — Weekly Dispatches</title>
+    <link>https://1commercesolutions.com/archive/</link>
+    <description>Weekly transmissions and field notes from the front lines of 1Commerce LLC — proof-first commerce infrastructure, built in public from Canby, Oregon.</description>
+    <language>en-us</language>
+    <copyright>© 2026 1Commerce LLC</copyright>
+    <managingEditor>skdev@1commerce.online (Keith)</managingEditor>
+    <lastBuildDate>Mon, 01 Jun 2026 12:00:00 +0000</lastBuildDate>
+    <atom:link href="https://1commercesolutions.com/feed.xml" rel="self" type="application/rss+xml" />
+    <image><url>https://1commercesolutions.com/og-image.png</url><title>THE SIGNAL</title><link>https://1commercesolutions.com/archive/</link></image>
+    <item>
+      <title>Cathedral Principle in Action</title>
+      <link>https://1commercesolutions.com/archive/018.html</link>
+      <guid isPermaLink="true">https://1commercesolutions.com/archive/018.html</guid>
+      <pubDate>Mon, 01 Jun 2026 12:00:00 +0000</pubDate>
+      <description>Eleven active work streams. Zero placeholders. Eight verified deployments. One v1.0 game release. One music video pipeline. One licensing cascade. Fifteen thousand memoir words in hand.</description>
+    </item>
+    <item>
+      <title>ag drone bootstrap playbook: a public playbook packaged as a site</title>
+      <link>https://1commercesolutions.com/fieldnotes/github-ag-drone-bootstrap-playbook.html</link>
+      <guid isPermaLink="true">https://1commercesolutions.com/fieldnotes/github-ag-drone-bootstrap-playbook.html</guid>
+      <pubDate>Wed, 06 May 2026 12:00:00 +0000</pubDate>
+      <description>A static site and media bundle around starting a precision agriculture drone business, including markdown, PDF, video, and deployment files.</description>
+    </item>
+    <item>
+      <title>Amp: a sparse TypeScript tooling seed</title>
+      <link>https://1commercesolutions.com/fieldnotes/github-amp.html</link>
+      <guid isPermaLink="true">https://1commercesolutions.com/fieldnotes/github-amp.html</guid>
+      <pubDate>Wed, 06 May 2026 12:00:00 +0000</pubDate>
+      <description>A small public repository with a terse README and a tools directory, currently more seed than finished product.</description>
+    </item>
+    <item>
+      <title>bonkbird-site: a zero-build livestream joke that shipped</title>
+      <link>https://1commercesolutions.com/fieldnotes/github-bonkbird-site.html</link>
+      <guid isPermaLink="true">https://1commercesolutions.com/fieldnotes/github-bonkbird-site.html</guid>
+      <pubDate>Wed, 06 May 2026 12:00:00 +0000</pubDate>
+      <description>A pure HTML/CSS/JS Netlify site for Bonkbird, a Canby livestream built around a bird repeatedly hitting a kitchen window.</description>
+    </item>
+    <item>
+      <title>Clearpath: a Vite app with deployment hardening</title>
+      <link>https://1commercesolutions.com/fieldnotes/github-clearpath.html</link>
+      <guid isPermaLink="true">https://1commercesolutions.com/fieldnotes/github-clearpath.html</guid>
+      <pubDate>Wed, 06 May 2026 12:00:00 +0000</pubDate>
+      <description>A JavaScript app with Vite, Netlify, Docker, Nginx, security headers, and a minimal README.</description>
+    </item>
+    <item>
+      <title>clerk-netlify-template: authentication scaffolding on Netlify</title>
+      <link>https://1commercesolutions.com/fieldnotes/github-clerk-netlify-template.html</link>
+      <guid isPermaLink="true">https://1commercesolutions.com/fieldnotes/github-clerk-netlify-template.html</guid>
+      <pubDate>Wed, 06 May 2026 12:00:00 +0000</pubDate>
+      <description>A starter template pairing Clerk authentication with Netlify deployment and Tailwind styling.</description>
+    </item>
+    <item>
+      <title>compass: an AI workspace for deal analysis</title>
+      <link>https://1commercesolutions.com/fieldnotes/github-compass.html</link>
+      <guid isPermaLink="true">https://1commercesolutions.com/fieldnotes/github-compass.html</guid>
+      <pubDate>Wed, 06 May 2026 12:00:00 +0000</pubDate>
+      <description>A JavaScript repository positioning Compass AI as a legal-intelligence workspace for analyzing deals.</description>
+    </item>
+    <item>
+      <title>early-gov-contract-watch: contract alerts wired to paper trading</title>
+      <link>https://1commercesolutions.com/fieldnotes/github-early-gov-contract-watch.html</link>
+      <guid isPermaLink="true">https://1commercesolutions.com/fieldnotes/github-early-gov-contract-watch.html</guid>
+      <pubDate>Wed, 06 May 2026 12:00:00 +0000</pubDate>
+      <description>A high-risk educational Python bot that watches USASpending awards and models stock trades around contract signals.</description>
+    </item>
+    <item>
+      <title>forged-american: headless commerce on Netlify and Stripe</title>
+      <link>https://1commercesolutions.com/fieldnotes/github-forged-american.html</link>
+      <guid isPermaLink="true">https://1commercesolutions.com/fieldnotes/github-forged-american.html</guid>
+      <pubDate>Wed, 06 May 2026 12:00:00 +0000</pubDate>
+      <description>A Next.js 14 storefront with product catalog, admin tools, checkout, order lookup, reviews, and Netlify DB.</description>
+    </item>
+    <item>
+      <title>Graph: a personal knowledge graph with local and v2 tracks</title>
+      <link>https://1commercesolutions.com/fieldnotes/github-graph.html</link>
+      <guid isPermaLink="true">https://1commercesolutions.com/fieldnotes/github-graph.html</guid>
+      <pubDate>Wed, 06 May 2026 12:00:00 +0000</pubDate>
+      <description>A personal knowledge graph visualization system that ingests digital footprints and renders them as interactive graph structures.</description>
+    </item>
+    <item>
+      <title>house: Cathedral Acquisitions for Section 8 deal flow</title>
+      <link>https://1commercesolutions.com/fieldnotes/github-house.html</link>
+      <guid isPermaLink="true">https://1commercesolutions.com/fieldnotes/github-house.html</guid>
+      <pubDate>Wed, 06 May 2026 12:00:00 +0000</pubDate>
+      <description>A Cloudflare-backed acquisition pipeline for finding, underwriting, and managing HUD-assisted rental properties.</description>
+    </item>
+    <item>
+      <title>Kimnara: a named seed repository</title>
+      <link>https://1commercesolutions.com/fieldnotes/github-kimnara.html</link>
+      <guid isPermaLink="true">https://1commercesolutions.com/fieldnotes/github-kimnara.html</guid>
+      <pubDate>Wed, 06 May 2026 12:00:00 +0000</pubDate>
+      <description>A minimal public repository whose README currently establishes the name and little else.</description>
+    </item>
+    <item>
+      <title>Loi: a compact Next.js seed with a named product shell</title>
+      <link>https://1commercesolutions.com/fieldnotes/github-loi.html</link>
+      <guid isPermaLink="true">https://1commercesolutions.com/fieldnotes/github-loi.html</guid>
+      <pubDate>Wed, 06 May 2026 12:00:00 +0000</pubDate>
+      <description>A TypeScript Next.js repository with app, components, Tailwind, and Netlify configuration, but minimal public explanation.</description>
+    </item>
+    <item>
+      <title>montucky-moonshine-proposal: a premium client storefront proposal</title>
+      <link>https://1commercesolutions.com/fieldnotes/github-montucky-moonshine-proposal.html</link>
+      <guid isPermaLink="true">https://1commercesolutions.com/fieldnotes/github-montucky-moonshine-proposal.html</guid>
+      <pubDate>Wed, 06 May 2026 12:00:00 +0000</pubDate>
+      <description>A multi-page static proposal for Montucky Moonshine, combining storefront, venue showcase, legal pages, and admin-dashboard prototype.</description>
+    </item>
+    <item>
+      <title>news-aggregator: a news surface for affiliate web services</title>
+      <link>https://1commercesolutions.com/fieldnotes/github-news-aggregator.html</link>
+      <guid isPermaLink="true">https://1commercesolutions.com/fieldnotes/github-news-aggregator.html</guid>
+      <pubDate>Wed, 06 May 2026 12:00:00 +0000</pubDate>
+      <description>A compact repository labeled as the Torque-d affiliate web-services news aggregator.</description>
+    </item>
+    <item>
+      <title>next-platform-starter: Netlify’s Next.js primitives in starter form</title>
+      <link>https://1commercesolutions.com/fieldnotes/github-next-platform-starter.html</link>
+      <guid isPermaLink="true">https://1commercesolutions.com/fieldnotes/github-next-platform-starter.html</guid>
+      <pubDate>Wed, 06 May 2026 12:00:00 +0000</pubDate>
+      <description>A Next.js 16 starter configured for Netlify Core Primitives such as Edge Functions, Image CDN, and Blob Store.</description>
+    </item>
+    <item>
+      <title>nextchapter: an AI Studio app ready for local iteration</title>
+      <link>https://1commercesolutions.com/fieldnotes/github-nextchapter.html</link>
+      <guid isPermaLink="true">https://1commercesolutions.com/fieldnotes/github-nextchapter.html</guid>
+      <pubDate>Wed, 06 May 2026 12:00:00 +0000</pubDate>
+      <description>A TypeScript app exported from AI Studio, with Gemini API configuration and standard local development commands.</description>
+    </item>
+    <item>
+      <title>onecommerce-mcp-server: the MCP surface for 1Commerce operations</title>
+      <link>https://1commercesolutions.com/fieldnotes/github-onecommerce-mcp-server.html</link>
+      <guid isPermaLink="true">https://1commercesolutions.com/fieldnotes/github-onecommerce-mcp-server.html</guid>
+      <pubDate>Wed, 06 May 2026 12:00:00 +0000</pubDate>
+      <description>A production Model Context Protocol server exposing store, product, order, automation, and AI tools for UnifyOne.</description>
+    </item>
+    <item>
+      <title>onpoint: a single-page static deployment</title>
+      <link>https://1commercesolutions.com/fieldnotes/github-onpoint.html</link>
+      <guid isPermaLink="true">https://1commercesolutions.com/fieldnotes/github-onpoint.html</guid>
+      <pubDate>Wed, 06 May 2026 12:00:00 +0000</pubDate>
+      <description>A lightweight HTML site with Netlify configuration and robots metadata.</description>
+    </item>
+    <item>
+      <title>PACER: distressed-domain discovery and RWA tokenization</title>
+      <link>https://1commercesolutions.com/fieldnotes/github-pacer.html</link>
+      <guid isPermaLink="true">https://1commercesolutions.com/fieldnotes/github-pacer.html</guid>
+      <pubDate>Wed, 06 May 2026 12:00:00 +0000</pubDate>
+      <description>A Python pipeline for discovering distressed SaaS and tech domains, scoring them, drop-catching them, and preparing RWA monetization paths.</description>
+    </item>
+    <item>
+      <title>pnwenterprises: an AI-compressed enterprise operating stack</title>
+      <link>https://1commercesolutions.com/fieldnotes/github-pnwenterprises.html</link>
+      <guid isPermaLink="true">https://1commercesolutions.com/fieldnotes/github-pnwenterprises.html</guid>
+      <pubDate>Wed, 06 May 2026 12:00:00 +0000</pubDate>
+      <description>A broad MVP package that frames PNW Enterprises as a multi-division technology, logistics, education, and SaaS operation.</description>
+    </item>
+    <item>
+      <title>reels-automation: a cron-driven short-form content machine</title>
+      <link>https://1commercesolutions.com/fieldnotes/github-reels-automation.html</link>
+      <guid isPermaLink="true">https://1commercesolutions.com/fieldnotes/github-reels-automation.html</guid>
+      <pubDate>Wed, 06 May 2026 12:00:00 +0000</pubDate>
+      <description>An n8n and TypeScript pipeline for generating, editing, scheduling, publishing, and measuring Instagram Reels.</description>
+    </item>
+    <item>
+      <title>rockhard-handware: the repeatable headless storefront pattern</title>
+      <link>https://1commercesolutions.com/fieldnotes/github-rockhard-handware.html</link>
+      <guid isPermaLink="true">https://1commercesolutions.com/fieldnotes/github-rockhard-handware.html</guid>
+      <pubDate>Wed, 06 May 2026 12:00:00 +0000</pubDate>
+      <description>A brand-specific Next.js 14 commerce storefront using Netlify DB, Stripe, admin auth, inventory, orders, variants, and reviews.</description>
+    </item>
+    <item>
+      <title>shopify-theme-ci-cd: deployment discipline for Shopify themes</title>
+      <link>https://1commercesolutions.com/fieldnotes/github-shopify-theme-ci-cd.html</link>
+      <guid isPermaLink="true">https://1commercesolutions.com/fieldnotes/github-shopify-theme-ci-cd.html</guid>
+      <pubDate>Wed, 06 May 2026 12:00:00 +0000</pubDate>
+      <description>A production-ready Shopify theme repository with GitHub Actions deployment, linting, rollback, and local development guidance.</description>
+    </item>
+    <item>
+      <title>Signal-Archives: an empty archive vessel for future Signal material</title>
+      <link>https://1commercesolutions.com/fieldnotes/github-signal-archives.html</link>
+      <guid isPermaLink="true">https://1commercesolutions.com/fieldnotes/github-signal-archives.html</guid>
+      <pubDate>Wed, 06 May 2026 12:00:00 +0000</pubDate>
+      <description>A public repository reserved for The Signal archive work, currently empty on GitHub.</description>
+    </item>
+    <item>
+      <title>skaggsk: a generated personal static page</title>
+      <link>https://1commercesolutions.com/fieldnotes/github-skaggsk.html</link>
+      <guid isPermaLink="true">https://1commercesolutions.com/fieldnotes/github-skaggsk.html</guid>
+      <pubDate>Wed, 06 May 2026 12:00:00 +0000</pubDate>
+      <description>A compact Python-generated static site, with a large generated index and the script that produces it.</description>
+    </item>
+    <item>
+      <title>stripe-supabase-saas-starter-kit: payments and auth in one starter</title>
+      <link>https://1commercesolutions.com/fieldnotes/github-stripe-supabase-saas-starter-kit.html</link>
+      <guid isPermaLink="true">https://1commercesolutions.com/fieldnotes/github-stripe-supabase-saas-starter-kit.html</guid>
+      <pubDate>Wed, 06 May 2026 12:00:00 +0000</pubDate>
+      <description>A Next.js SaaS starter combining Supabase authentication, Postgres/Drizzle, Stripe billing, and dashboard-protected routes.</description>
+    </item>
+    <item>
+      <title>Terp-Forge: industrial branding for engineered aromatics</title>
+      <link>https://1commercesolutions.com/fieldnotes/github-terp-forge.html</link>
+      <guid isPermaLink="true">https://1commercesolutions.com/fieldnotes/github-terp-forge.html</guid>
+      <pubDate>Wed, 06 May 2026 12:00:00 +0000</pubDate>
+      <description>A Next.js and Tailwind brand site for TerpForge, blending terpene science, lifestyle commerce, and static deployment.</description>
+    </item>
+    <item>
+      <title>The-signal: the publishing surface you are reading now</title>
+      <link>https://1commercesolutions.com/fieldnotes/github-the-signal.html</link>
+      <guid isPermaLink="true">https://1commercesolutions.com/fieldnotes/github-the-signal.html</guid>
+      <pubDate>Wed, 06 May 2026 12:00:00 +0000</pubDate>
+      <description>The Signal is the public static publishing layer for 1Commerce dispatches, fieldnotes, archives, news, builds, and videos.</description>
+    </item>
+    <item>
+      <title>Tobe-: a Next.js app seed with database and component scaffolding</title>
+      <link>https://1commercesolutions.com/fieldnotes/github-tobe.html</link>
+      <guid isPermaLink="true">https://1commercesolutions.com/fieldnotes/github-tobe.html</guid>
+      <pubDate>Wed, 06 May 2026 12:00:00 +0000</pubDate>
+      <description>A TypeScript Next.js repository that began as an AI Studio app and now includes app, component, database, and library folders.</description>
+    </item>
+  </channel>
+</rss>

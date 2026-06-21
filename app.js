@@ -551,3 +551,124 @@ if ('serviceWorker' in navigator) {
     });
   });
 })();
+
+// ─── POINTER-TRACKED CARD SPOTLIGHT ────────────────────────
+// Feeds --spot-x / --spot-y to the glass cards so the amber sheen
+// follows the cursor. Progressive enhancement only: skipped on
+// touch / coarse pointers and when reduced motion is requested.
+(function(){
+  if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
+  if (!window.matchMedia('(hover: hover) and (pointer: fine)').matches) return;
+
+  var SELECTOR =
+    '.cathedral-card, .client-tier-card, .partner-card, ' +
+    '.feature-matrix-card, .dispatch-preview-card, .dossier-card, ' +
+    '.entity-card, .pricing-card, .property-card, .video-series-card, ' +
+    '.reel-card, .preview-card, .news-card, .profile-stats-card';
+
+  var raf = null;
+
+  function bind(card) {
+    if (card._spotBound) return;
+    card._spotBound = true;
+    card.addEventListener('pointermove', function(e) {
+      if (raf) return;
+      raf = requestAnimationFrame(function() {
+        var rect = card.getBoundingClientRect();
+        card.style.setProperty('--spot-x', (e.clientX - rect.left) + 'px');
+        card.style.setProperty('--spot-y', (e.clientY - rect.top) + 'px');
+        raf = null;
+      });
+    }, { passive: true });
+    card.addEventListener('pointerleave', function() {
+      card.style.removeProperty('--spot-x');
+      card.style.removeProperty('--spot-y');
+    });
+  }
+
+  function init(root) {
+    (root || document).querySelectorAll(SELECTOR).forEach(bind);
+  }
+
+  init();
+  // Expose so runtime-injected cards (e.g. the news aggregator) can
+  // opt in after they render.
+  window.SignalSpotlight = init;
+})();
+
+// ─── CONTENT IMAGE FADE-IN + GRACEFUL FAILURE ──────────────
+// Fades content imagery in once it decodes (skipped for already
+// cached images so nothing flashes), and degrades broken images
+// to a calm "image unavailable" frame instead of a broken glyph.
+(function(){
+  var imgs = document.querySelectorAll(
+    '.section-image, .section-figure img, .hero-photo, ' +
+    '.arc-featured-media img, .arc-item-media img, ' +
+    'figure img, .dispatch-figure img'
+  );
+  if (!imgs.length) return;
+
+  function markBroken(img) {
+    img.classList.add('img-error');
+    var frame = img.closest(
+      '.section-figure, .arc-featured-media, .arc-item-media, ' +
+      '.hero-photo-wrap, figure, .dispatch-figure'
+    );
+    if (frame) frame.classList.add('media-broken');
+  }
+
+  imgs.forEach(function(img) {
+    // Never fade LCP / above-the-fold heroes — starting them at
+    // opacity:0 would delay Largest Contentful Paint. Only lazy,
+    // below-the-fold imagery gets the fade-in.
+    var isPriority = img.loading === 'eager' ||
+                     (img.getAttribute('fetchpriority') || '').toLowerCase() === 'high';
+
+    // Already finished (cached) and valid — leave fully visible.
+    if (img.complete) {
+      if (img.naturalWidth === 0) markBroken(img);
+      return;
+    }
+    if (isPriority) {
+      // Still guard against a broken priority image, but no fade.
+      img.addEventListener('error', function() { markBroken(img); }, { once: true });
+      return;
+    }
+    img.classList.add('img-fade');
+    img.addEventListener('load', function() {
+      img.classList.add('img-loaded');
+    }, { once: true });
+    img.addEventListener('error', function() {
+      img.classList.add('img-loaded'); // release the transition
+      markBroken(img);
+    }, { once: true });
+  });
+})();
+
+// ─── LITE YOUTUBE FACADE (click-to-load) ───────────────────
+// The real YouTube player (~1MB+ of JS) only loads when the user
+// clicks the poster, keeping it off the initial page load.
+(function(){
+  var facades = document.querySelectorAll('.yt-facade');
+  if (!facades.length) return;
+
+  // YouTube video IDs are exactly 11 chars of [A-Za-z0-9_-]. Validating
+  // against that allowlist sanitizes the attribute before it is used to
+  // build the embed URL (prevents any injection via the data attribute).
+  var YT_ID = /^[A-Za-z0-9_-]{11}$/;
+
+  facades.forEach(function(facade) {
+    facade.addEventListener('click', function() {
+      var id = facade.getAttribute('data-yt-id');
+      if (!id || !YT_ID.test(id)) return;
+      var iframe = document.createElement('iframe');
+      iframe.src = 'https://www.youtube-nocookie.com/embed/' +
+                   encodeURIComponent(id) + '?autoplay=1&rel=0';
+      iframe.title = facade.getAttribute('data-yt-title') || 'Video player';
+      iframe.setAttribute('allow', 'accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share');
+      iframe.setAttribute('referrerpolicy', 'strict-origin-when-cross-origin');
+      iframe.setAttribute('allowfullscreen', '');
+      facade.replaceWith(iframe);
+    });
+  });
+})();

@@ -16,17 +16,27 @@
 <meta property="og:image:width" content="1200">
 <meta property="og:image:height" content="630">
 <meta property="og:image:alt" content="News Aggregator — THE SIGNAL">
+<meta property="og:image:type" content="image/png">
 <meta property="og:locale" content="en_US">
 <meta name="twitter:card" content="summary_large_image">
 <meta name="twitter:title" content="News Aggregator — THE SIGNAL">
 <meta name="twitter:description" content="Real-time tech news from 8 sources via RSS. Operator-curated signals.">
 <meta name="twitter:image" content="https://1commercesolutions.com/og-image.png">
+<meta name="twitter:image:alt" content="News Aggregator — THE SIGNAL | 1Commerce LLC">
 <meta name="author" content="1Commerce LLC">
+<meta name="keywords" content="commerce news, tech signals, operator news, AI news, e-commerce updates, 1Commerce LLC, Pacific Northwest tech, Oregon tech, Canby Oregon">
+
+<!-- GEO Targeting -->
+<meta name="geo.region" content="US-OR">
+<meta name="geo.placename" content="Canby, Oregon">
+<meta name="geo.position" content="45.2640;-122.6918">
+<meta name="ICBM" content="45.2640, -122.6918">
 <meta name="theme-color" content="#E8B86A">
 <link rel="icon" type="image/svg+xml" href="/assets/brand/favicon.svg">
 <link rel="icon" type="image/png" sizes="32x32" href="/assets/brand/favicon-32.png">
 <link rel="apple-touch-icon" sizes="180x180" href="/assets/brand/apple-touch-icon.png">
 <link rel="manifest" href="/manifest.json">
+<link rel="alternate" type="application/rss+xml" title="THE SIGNAL — Weekly Dispatches" href="/feed.xml">
 <meta name="apple-mobile-web-app-capable" content="yes">
 <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
 <meta name="apple-mobile-web-app-title" content="THE SIGNAL">
@@ -57,8 +67,8 @@
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,600;9..144,700&family=IBM+Plex+Sans:wght@400;500;600&family=JetBrains+Mono:wght@300;400;500&display=swap" rel="stylesheet">
 
-<link rel="stylesheet" href="../base.css?v=20260502a">
-<link rel="stylesheet" href="../style.css?v=20260502a">
+<link rel="stylesheet" href="../base.css?v=20260620b">
+<link rel="stylesheet" href="../style.css?v=20260620b">
 <style>
   .news-controls {
     display: grid;
@@ -111,6 +121,7 @@
 
   .news-card {
     background: var(--panel);
+    background-image: var(--glass-bg);
     border: 1px solid var(--rule);
     border-radius: var(--r);
     overflow: hidden;
@@ -314,7 +325,7 @@
     <a href="../archive/">Archive</a>
     <a href="../fieldnotes/">Fieldnotes</a>
     <a href="../builds/">Verified Builds</a>
-    <a href="../news/" class="active">News Aggregator</a>
+    <a href="../news/" class="active" aria-current="page">News Aggregator</a>
     <a href="../reel-engine/">Reel Engine</a>
     <a href="../about/">About</a>
     <a href="../#subscribe">Subscribe</a>
@@ -345,7 +356,7 @@
             <li><a href="../archive/">Archive</a></li>
             <li><a href="../fieldnotes/">Fieldnotes</a></li>
             <li><a href="../builds/">Verified Builds</a></li>
-            <li><a href="../news/" class="active">News Aggregator</a></li>
+            <li><a href="../news/" class="active" aria-current="page">News Aggregator</a></li>
             <li><a href="../reel-engine/">Reel Engine</a></li>
           <li><a href="../about/">About</a></li>
             <li><a href="../#subscribe">Subscribe</a></li>
@@ -399,9 +410,13 @@
 
     <!-- AI Pulse — featured infographic -->
     <figure class="section-figure" style="max-width: var(--page, 1200px); margin: 0 auto; padding: 0 var(--p, 18px) calc(var(--p, 18px) * 2);">
-      <img src="../images/ai-pulse-2025-infographic.png"
+      <picture>
+        <source srcset="../images/ai-pulse-2025-infographic.avif" type="image/avif">
+        <source srcset="../images/ai-pulse-2025-infographic.webp" type="image/webp">
+        <img src="../images/ai-pulse-2025-infographic.png"
            alt="The 2025 AI Pulse: From Global Trends to Ground-Level Infrastructure — infographic covering compute costs, model commoditization, and solo-scale enterprise opportunity"
            width="1200" height="675" loading="lazy" decoding="async" class="section-image">
+      </picture>
       <figcaption class="mono-label dim" style="text-align: center; margin-top: 12px;">
         Deep dive: <a href="../archive/016.html" style="color: var(--active, #E8B86A);">Week №016 — Steam to Silicon</a>
       </figcaption>
@@ -410,7 +425,7 @@
     <!-- Controls -->
     <div class="news-controls">
       <div class="control-group">
-        <label class="control-label">Category</label>
+        <label class="control-label" for="categorySelect">Category</label>
         <select id="categorySelect">
           <option value="technology">Technology</option>
           <option value="business">Business</option>
@@ -419,7 +434,7 @@
         </select>
       </div>
       <div class="control-group">
-        <label class="control-label">Search</label>
+        <label class="control-label" for="searchInput">Search</label>
         <input type="text" id="searchInput" placeholder="Filter articles...">
       </div>
     </div>
@@ -664,6 +679,20 @@
       });
     }
 
+    function renderSkeletons(n) {
+      var line = '<div class="news-skel-line sk-wide skeleton"></div>';
+      var card =
+        '<div class="news-skel-card" aria-hidden="true">' +
+          '<div class="news-skel-head"><div class="news-skel-line sk-sm skeleton"></div></div>' +
+          '<div class="news-skel-body">' +
+            '<div class="news-skel-line sk-title skeleton"></div>' +
+            line + line +
+            '<div class="news-skel-line sk-mid skeleton"></div>' +
+          '</div>' +
+        '</div>';
+      newsGrid.innerHTML = new Array(n).fill(card).join('');
+    }
+
     function renderArticles(articles) {
       newsGrid.innerHTML = '';
       if (!articles || articles.length === 0) {
@@ -693,6 +722,8 @@
           '</div>';
         newsGrid.appendChild(card);
       });
+      // Let runtime-injected cards opt into the pointer spotlight.
+      if (window.SignalSpotlight) window.SignalSpotlight(newsGrid);
     }
 
     function applyFilters() {
@@ -708,7 +739,7 @@
           return;
         }
       }
-      loadingContainer.style.display = 'block';
+      renderSkeletons(9);
       errorContainer.innerHTML = '';
       try {
         const results = await Promise.all(RSS_FEEDS.map(fetchFeed));
@@ -718,7 +749,6 @@
       } catch (e) {
         errorContainer.innerHTML = '<div class="error"><strong>Error:</strong> ' + escapeHtml(e.message) + '</div>';
       } finally {
-        loadingContainer.style.display = 'none';
         applyFilters();
       }
     }

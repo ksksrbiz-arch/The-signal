@@ -53,6 +53,7 @@
 <!-- PWA Manifest -->
 <link rel="apple-touch-icon" sizes="180x180" href="/assets/brand/apple-touch-icon.png">
 <link rel="manifest" href="/manifest.json">
+<link rel="alternate" type="application/rss+xml" title="THE SIGNAL — Weekly Dispatches" href="/feed.xml">
 <meta name="theme-color" content="#E8B86A">
 <meta name="apple-mobile-web-app-capable" content="yes">
 <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
@@ -136,7 +137,7 @@
   "description": "Weekly dispatches from the front lines of 1Commerce LLC. Proof-first infrastructure, 6 verified builds in production, zero placeholders.",
   "isPartOf": {"@type": "WebSite", "url": "https://1commercesolutions.com/"},
   "inLanguage": "en-US",
-  "dateModified": "2026-06-17",
+  "dateModified": "2026-06-18",
   "speakable": {
     "@type": "SpeakableSpecification",
     "cssSelector": [".hero-lede", ".cathedral-section", ".hero h1"]
@@ -255,8 +256,8 @@
 }
 </script>
 
-<link rel="stylesheet" href="./base.css?v=20260502a">
-<link rel="stylesheet" href="./style.css?v=20260502a">
+<link rel="stylesheet" href="./base.css?v=20260620c">
+<link rel="stylesheet" href="./style.css?v=20260620c">
 
 <style>
 /* ── Cathedral Framework ─────────────────────────────────── */
@@ -280,9 +281,10 @@
 }
 .cathedral-card {
   background: #141414;
+  background-image: var(--glass-bg);
   padding: 32px 24px;
 }
-[data-theme="light"] .cathedral-card { background: #fafafa; }
+[data-theme="light"] .cathedral-card { background: #fafafa; background-image: var(--glass-bg); }
 .cathedral-card-glyph {
   font-size: 1.4rem;
   color: #E8B86A;
@@ -317,11 +319,12 @@
 }
 .client-tier-card {
   background: #141414;
+  background-image: var(--glass-bg);
   border: 1px solid rgba(232,184,106,0.18);
   border-radius: 6px;
   padding: 32px 28px;
 }
-[data-theme="light"] .client-tier-card { background: #fafafa; }
+[data-theme="light"] .client-tier-card { background: #fafafa; background-image: var(--glass-bg); }
 .client-tier-label {
   font-family: 'JetBrains Mono', monospace;
   font-size: 9px;
@@ -434,16 +437,13 @@
   display: flex;
   flex-direction: column;
   background: #141414;
+  background-image: var(--glass-bg);
   border: 1px solid rgba(232,184,106,0.18);
   border-radius: 6px;
   padding: 28px;
   transition: border-color 0.25s ease, transform 0.25s ease;
 }
-[data-theme="light"] .partner-card { background: #fafafa; }
-.partner-card:hover {
-  border-color: rgba(232,184,106,0.45);
-  transform: translateY(-2px);
-}
+[data-theme="light"] .partner-card { background: #fafafa; background-image: var(--glass-bg); }
 .partner-logo {
   display: flex;
   align-items: center;
@@ -593,7 +593,7 @@
       <div class="header-right">
         <nav>
           <ul class="nav-links">
-            <li><a href="./" class="active">Home</a></li>
+            <li><a href="./" class="active" aria-current="page">Home</a></li>
             <li><a href="./archive/">Archive</a></li>
             <li><a href="./fieldnotes/">Fieldnotes</a></li>
             <li><a href="./builds/">Verified Builds</a></li>
@@ -661,7 +661,10 @@
     <!-- Featured Video -->
     <div class="video-embed video-embed--featured reveal-scale" style="max-width: var(--page); margin: calc(var(--p) * 2) auto; padding: 0 var(--p);">
       <div class="video-embed" style="margin-bottom: 0;">
-        <iframe src="https://www.youtube-nocookie.com/embed/fblm9vrKH7s" title="1Commerce LLC — Founder Transmission" loading="lazy" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+        <button class="yt-facade" type="button" data-yt-id="fblm9vrKH7s" data-yt-title="1Commerce LLC — Founder Transmission" aria-label="Play video: 1Commerce LLC — Founder Transmission">
+          <img class="yt-facade-poster" src="https://i.ytimg.com/vi/fblm9vrKH7s/hqdefault.jpg" alt="" width="480" height="360" loading="lazy" decoding="async">
+          <span class="yt-facade-play"><svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M8 5v14l11-7z"/></svg></span>
+        </button>
       </div>
     </div>
 
@@ -855,9 +858,13 @@
       <div class="section-label">// UnifyOne Intelligence Layer</div>
       <h2 class="comparison-heading">The Intelligence Matrix</h2>
       <figure class="section-figure">
-        <img src="./images/unify-one-intelligence-layer.png"
+        <picture>
+          <source srcset="./images/unify-one-intelligence-layer.avif" type="image/avif">
+          <source srcset="./images/unify-one-intelligence-layer.webp" type="image/webp">
+          <img src="./images/unify-one-intelligence-layer.png"
              alt="UnifyOne: The Intelligence Layer for Modern Gig Commerce — contextual AI across store builder, money manager, gig command, and universal endpoint"
              width="1200" height="675" loading="lazy" decoding="async" class="section-image">
+        </picture>
       </figure>
       <div class="feature-matrix stagger-children">
         <div class="feature-matrix-card">
@@ -952,9 +959,13 @@
     <section class="reveal">
       <div class="section-label">02 / Verified Builds</div>
       <figure class="section-figure">
-        <img src="./images/verified-build-ecosystem.png"
+        <picture>
+          <source srcset="./images/verified-build-ecosystem.avif" type="image/avif">
+          <source srcset="./images/verified-build-ecosystem.webp" type="image/webp">
+          <img src="./images/verified-build-ecosystem.png"
              alt="1Commerce — The Verified Build Ecosystem: UnifyOne, The Signal, ClearPath, Hidden Creek, Precision Core, Compass, Next Chapter, Montucky Moonshine"
              width="1200" height="675" loading="lazy" decoding="async" class="section-image">
+        </picture>
       </figure>
       <div class="dossier-grid">
         <a href="https://1commerce.online/" class="dossier-card" target="_blank" rel="noopener noreferrer">
@@ -1268,7 +1279,7 @@
     </div>
   </div>
 
-  <script src="./app.js" defer></script>
+  <script src="./app.js?v=20260620c" defer></script>
   <script>
     (function () {
       async function handleSubscribe(form) {
@@ -1277,7 +1288,9 @@
         const msg = form.querySelector('.subscribe-msg');
         const email = input.value.trim();
         btn.disabled = true;
+        form.classList.add('is-loading');
         msg.textContent = '';
+        msg.classList.remove('is-ok', 'is-err');
         try {
           const res = await fetch('/api/subscribe', {
             method: 'POST',
@@ -1286,15 +1299,19 @@
           });
           const data = await res.json();
           if (data.ok) {
-            msg.textContent = "You're on the list.";
+            msg.textContent = "✓ You're on the list.";
+            msg.classList.add('is-ok');
             input.value = '';
           } else {
             msg.textContent = data.error || 'Something went wrong. Try again.';
+            msg.classList.add('is-err');
           }
         } catch {
           msg.textContent = 'Network error. Please try again.';
+          msg.classList.add('is-err');
         } finally {
           btn.disabled = false;
+          form.classList.remove('is-loading');
         }
       }
 

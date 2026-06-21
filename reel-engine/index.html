@@ -27,6 +27,7 @@
 <link rel="icon" type="image/png" sizes="32x32" href="/assets/brand/favicon-32.png">
 <link rel="apple-touch-icon" sizes="180x180" href="/assets/brand/apple-touch-icon.png">
 <link rel="manifest" href="/manifest.json">
+<link rel="alternate" type="application/rss+xml" title="THE SIGNAL — Weekly Dispatches" href="/feed.xml">
 <meta name="apple-mobile-web-app-capable" content="yes">
 <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
 <meta name="apple-mobile-web-app-title" content="THE SIGNAL">
@@ -54,15 +55,15 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,600;9..144,700&family=IBM+Plex+Sans:wght@400;500;600&family=JetBrains+Mono:wght@300;400;500&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="../base.css?v=20260502a">
-<link rel="stylesheet" href="../style.css?v=20260502a">
+<link rel="stylesheet" href="../base.css?v=20260620b">
+<link rel="stylesheet" href="../style.css?v=20260620b">
 <style>
 .reel-hero { padding: clamp(var(--space-16), 8vw, var(--space-24)) var(--space-6) var(--space-12); border-bottom: 1px solid var(--color-divider); }
 .reel-hero-inner { max-width: var(--content-default); margin: 0 auto; }
 .reel-section { padding: var(--space-12) var(--space-6); border-bottom: 1px solid var(--color-divider); }
 .reel-section-inner { max-width: var(--content-default); margin: 0 auto; }
 .reel-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); gap: var(--space-6); margin-top: var(--space-8); }
-.reel-card { padding: var(--space-6); border: 1px solid var(--color-divider); background: var(--color-surface-raised); border-radius: 4px; }
+.reel-card { padding: var(--space-6); border: 1px solid var(--color-divider); background: var(--color-surface-raised); background-image: var(--glass-bg); border-radius: 4px; }
 .reel-card h3 { margin-top: 0; font-size: var(--text-lg); }
 .reel-card .mono-label { color: var(--color-gold); display: block; margin-bottom: var(--space-2); }
 .reel-pipeline { display: flex; flex-wrap: wrap; gap: var(--space-3); align-items: center; margin-top: var(--space-6); font-family: var(--font-mono); font-size: var(--text-sm); }
@@ -108,7 +109,7 @@ pre.reel-code { background: var(--color-surface-raised); border: 1px solid var(-
     <a href="../builds/">Verified Builds</a>
     <a href="../news/">News Aggregator</a>
     <a href="../videos/">Videos</a>
-    <a href="./" class="active">Reel Engine</a>
+    <a href="./" class="active" aria-current="page">Reel Engine</a>
     <a href="../about/">About</a>
     <a href="../#subscribe">Subscribe</a>
   </div>
@@ -140,7 +141,7 @@ pre.reel-code { background: var(--color-surface-raised); border: 1px solid var(-
             <li><a href="../builds/">Verified Builds</a></li>
             <li><a href="../news/">News Aggregator</a></li>
             <li><a href="../videos/">Videos</a></li>
-            <li><a href="./" class="active">Reel Engine</a></li>
+            <li><a href="./" class="active" aria-current="page">Reel Engine</a></li>
             <li><a href="../about/">About</a></li>
             <li><a href="../#subscribe">Subscribe</a></li>
           </ul>
@@ -181,7 +182,7 @@ pre.reel-code { background: var(--color-surface-raised); border: 1px solid var(-
         <div class="gen-controls">
           <div class="gen-row">
             <div class="gen-field">
-              <label class="gen-label">Shot Type</label>
+              <label class="gen-label" for="gen-shot">Shot Type</label>
               <select id="gen-shot" class="gen-select">
                 <option value="extreme close-up of face, deep shadow, one eye illuminated">Extreme Close-Up</option>
                 <option value="medium shot, figure standing against fog, city lights behind">Medium Shot — Fog</option>
@@ -192,7 +193,7 @@ pre.reel-code { background: var(--color-surface-raised); border: 1px solid var(-
               </select>
             </div>
             <div class="gen-field">
-              <label class="gen-label">Action</label>
+              <label class="gen-label" for="gen-action">Action</label>
               <select id="gen-action" class="gen-select">
                 <option value="seated, reviewing documents, jaw tight, one lamp">Reviewing Documents</option>
                 <option value="standing, looking through rain-streaked glass, hands clasped">Looking Through Glass</option>
@@ -203,7 +204,7 @@ pre.reel-code { background: var(--color-surface-raised); border: 1px solid var(-
               </select>
             </div>
             <div class="gen-field">
-              <label class="gen-label">Environment</label>
+              <label class="gen-label" for="gen-env">Environment</label>
               <select id="gen-env" class="gen-select">
                 <option value="empty office, no furniture, single desk lamp, concrete floor">Empty Office</option>
                 <option value="rooftop, city at 3am, distant sirens, overcast sky">Rooftop — 3am</option>
@@ -216,7 +217,7 @@ pre.reel-code { background: var(--color-surface-raised); border: 1px solid var(-
           </div>
           <div class="gen-row">
             <div class="gen-field">
-              <label class="gen-label">Lighting</label>
+              <label class="gen-label" for="gen-light">Lighting</label>
               <select id="gen-light" class="gen-select">
                 <option value="single hard source, 90-degree side lighting, harsh shadows">Single Hard Source</option>
                 <option value="neon sign glow, magenta-cyan mix, reflections on wet floor">Neon Glow</option>
@@ -227,7 +228,7 @@ pre.reel-code { background: var(--color-surface-raised); border: 1px solid var(-
               </select>
             </div>
             <div class="gen-field">
-              <label class="gen-label">Color Palette</label>
+              <label class="gen-label" for="gen-color">Color Palette</label>
               <select id="gen-color" class="gen-select">
                 <option value="monochrome black and white, grain overlay, silver gelatin tone">Monochrome</option>
                 <option value="teal-to-black gradient, low saturation, signal blue highlights">Teal / Black</option>
@@ -238,7 +239,7 @@ pre.reel-code { background: var(--color-surface-raised); border: 1px solid var(-
               </select>
             </div>
             <div class="gen-field">
-              <label class="gen-label">Texture / Theme</label>
+              <label class="gen-label" for="gen-texture">Texture / Theme</label>
               <select id="gen-texture" class="gen-select">
                 <option value="heavy film grain 3200ISO, celluloid flicker, scratch artifacts">Heavy Film Grain</option>
                 <option value="hyper-sharp digital, zero noise, clinical precision, modern">Hyper-Sharp Digital</option>
@@ -256,7 +257,7 @@ pre.reel-code { background: var(--color-surface-raised); border: 1px solid var(-
           <button class="gen-btn gen-btn--generate" id="gen-generate">Generate Script →</button>
         </div>
 
-        <div class="gen-output" id="gen-output" style="display:none;">
+        <div class="gen-output" id="gen-output" role="region" aria-label="Generated script" aria-live="polite" style="display:none;">
           <div class="gen-output-section">
             <div class="gen-output-label">Visual Prompt</div>
             <div class="gen-output-text" id="gen-visual-prompt"></div>
