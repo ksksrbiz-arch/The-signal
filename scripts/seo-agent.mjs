@@ -55,7 +55,62 @@ function metadata(html) {
     canonical: html.match(/<link\s+rel=["']canonical["']\s+href=["']([^"']+)["']/i)?.[1]?.trim() || '',
     ogTitle: html.match(/<meta\s+property=["']og:title["']\s+content=["']([^"']+)["']/i)?.[1]?.trim() || '',
     ogDescription: html.match(/<meta\s+property=["']og:description["']\s+content=["']([^"']+)["']/i)?.[1]?.trim() || '',
+    headline: html.match(/"headline"\s*:\s*"([^"]+)"/i)?.[1]?.trim() || '',
+    datePublished: html.match(/"datePublished"\s*:\s*"(\d{4}-\d{2}-\d{2})/i)?.[1] || '',
   };
+}
+
+// RFC-822 date for RSS, anchored at noon UTC for stability.
+const RFC822_DAYS = ['Sun', 'Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat'];
+const RFC822_MONTHS = ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'];
+function rfc822(isoDate) {
+  const d = new Date(`${isoDate}T12:00:00Z`);
+  if (Number.isNaN(d.getTime())) return '';
+  const day = RFC822_DAYS[d.getUTCDay()];
+  const mon = RFC822_MONTHS[d.getUTCMonth()];
+  const dd = String(d.getUTCDate()).padStart(2, '0');
+  return `${day}, ${dd} ${mon} ${d.getUTCFullYear()} 12:00:00 +0000`;
+}
+
+// The feed syndicates real posts only: weekly dispatches (archive/NNN.html)
+// and field notes (fieldnotes/*.html) — not index/landing pages.
+function isFeedItem(relative) {
+  return /^archive\/\d+\.html$/.test(relative) || (/^fieldnotes\/[^/]+\.html$/.test(relative) && relative !== 'fieldnotes/index.html');
+}
+
+function buildFeed(items) {
+  const ordered = items
+    .filter((item) => item.date)
+    .sort((a, b) => (a.date < b.date ? 1 : a.date > b.date ? -1 : 0))
+    .slice(0, 30);
+  const lastBuild = ordered[0] ? rfc822(ordered[0].date) : rfc822(new Date().toISOString().slice(0, 10));
+  const entries = ordered
+    .map(
+      (item) => `    <item>
+      <title>${escapeXml(item.title)}</title>
+      <link>${escapeXml(item.url)}</link>
+      <guid isPermaLink="true">${escapeXml(item.url)}</guid>
+      <pubDate>${rfc822(item.date)}</pubDate>
+      <description>${escapeXml(item.description)}</description>
+    </item>`,
+    )
+    .join('\n');
+  return `<?xml version="1.0" encoding="UTF-8"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>THE SIGNAL — Weekly Dispatches</title>
+    <link>${SITE_URL}/archive/</link>
+    <description>Weekly transmissions and field notes from the front lines of 1Commerce LLC — proof-first commerce infrastructure, built in public from Canby, Oregon.</description>
+    <language>en-us</language>
+    <copyright>© ${new Date().getUTCFullYear()} 1Commerce LLC</copyright>
+    <managingEditor>skdev@1commerce.online (Keith)</managingEditor>
+    <lastBuildDate>${lastBuild}</lastBuildDate>
+    <atom:link href="${SITE_URL}/feed.xml" rel="self" type="application/rss+xml" />
+    <image><url>${SITE_URL}/og-image.png</url><title>THE SIGNAL</title><link>${SITE_URL}/archive/</link></image>
+${entries}
+  </channel>
+</rss>
+`;
 }
 
 function priorityFor(url) {
@@ -92,6 +147,7 @@ async function main() {
   await mkdir(DATA_DIR, { recursive: true });
   const files = (await walk(ROOT)).sort();
   const pages = [];
+  const feedItems = [];
   const issues = [];
 
   for (const file of files) {
@@ -107,15 +163,26 @@ async function main() {
     if (!meta.ogTitle) issues.push({ file: relative, issue: 'Missing og:title' });
     if (!meta.ogDescription) issues.push({ file: relative, issue: 'Missing og:description' });
 
+    const lastmod = await lastModifiedDate(file);
+
     pages.push({
       file: relative,
       url,
-      lastmod: await lastModifiedDate(file),
+      lastmod,
       changefreq: changefreqFor(url),
       priority: priorityFor(url),
       title: meta.title,
       description: meta.description,
     });
+
+    if (isFeedItem(relative)) {
+      feedItems.push({
+        url,
+        title: meta.headline || meta.ogTitle || meta.title,
+        description: meta.ogDescription || meta.description,
+        date: meta.datePublished || lastmod,
+      });
+    }
   }
 
   const sitemap = `<?xml version="1.0" encoding="UTF-8"?>
@@ -134,6 +201,7 @@ ${pages
 `;
 
   await writeFile(path.join(ROOT, 'sitemap.xml'), sitemap);
+  await writeFile(path.join(ROOT, 'feed.xml'), buildFeed(feedItems));
   await writeFile(
     path.join(DATA_DIR, 'seo-report.json'),
     `${JSON.stringify(
@@ -149,7 +217,7 @@ ${pages
     )}\n`,
   );
 
-  console.log(`SEO agent scanned ${pages.length} pages and found ${issues.length} metadata issues.`);
+  console.log(`SEO agent scanned ${pages.length} pages, wrote ${Math.min(feedItems.length, 30)} feed items, and found ${issues.length} metadata issues.`);
 }
 
 main().catch((error) => {
