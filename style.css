@@ -6589,3 +6589,50 @@ footer,
   .dispatch-nav-link { transition: none !important; }
   .dispatch-nav-link:hover { transform: none !important; }
 }
+
+/* --- Fieldnotes search --- */
+.fn-search {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  max-width: 640px;
+  margin: calc(var(--p) * 1.5) 0 calc(var(--p) * 0.5);
+  padding: 12px 16px;
+  background: var(--panel);
+  background-image: var(--glass-bg);
+  border: 1px solid var(--rule2);
+  border-radius: var(--r);
+  box-shadow: var(--elev-1), var(--glass-highlight);
+  transition: border-color var(--t-fast) ease, box-shadow var(--t-mid) ease;
+}
+.fn-search:focus-within {
+  border-color: var(--active);
+  box-shadow: 0 0 0 3px rgba(232,184,106,0.18);
+}
+.fn-search-icon { color: var(--faint); flex-shrink: 0; }
+.fn-search input {
+  flex: 1;
+  min-width: 0;
+  background: none;
+  border: none;
+  outline: none;
+  color: var(--text);
+  font-family: var(--font-body);
+  font-size: 15px;
+}
+.fn-search input::placeholder { color: var(--faint); }
+.fn-search-count {
+  font-family: var(--font-mono);
+  font-size: 12px;
+  color: var(--faint);
+  white-space: nowrap;
+}
+.fn-search-empty {
+  max-width: 640px;
+  margin: var(--p) 0;
+  font-family: var(--font-body);
+  color: var(--muted);
+}
+.fn-search-empty strong { color: var(--text); }
+/* [hidden] must win over .fn-entry display:grid / .fn-week layout */
+.fn-entry[hidden], .fn-week[hidden] { display: none !important; }

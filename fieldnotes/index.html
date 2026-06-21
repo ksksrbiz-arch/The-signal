@@ -65,8 +65,8 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,600;9..144,700&family=IBM+Plex+Sans:wght@400;500;600&family=JetBrains+Mono:wght@300;400;500&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="../base.css?v=20260620b">
-<link rel="stylesheet" href="../style.css?v=20260620b">
+<link rel="stylesheet" href="../base.css?v=20260621a">
+<link rel="stylesheet" href="../style.css?v=20260621a">
 
 <style>
 /* ============================================================
@@ -456,6 +456,14 @@
         <p class="fn-lede">Strategy notes, build logs, system specs, and operating plans from a solo founder building 1Commerce LLC in public.</p>
         <p class="fn-meta">Most Saturdays<span class="dot">·</span>Last entry: May 6, 2026<span class="dot">·</span>Sensitive material withheld &mdash; client names, financials, legal strategy</p>
       </header>
+
+      <div class="fn-search">
+        <svg class="fn-search-icon" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><circle cx="11" cy="11" r="7"/><path d="M21 21l-4.35-4.35"/></svg>
+        <label for="fn-search-input" class="sr-only">Search fieldnotes</label>
+        <input type="search" id="fn-search-input" placeholder="Search fieldnotes by title, tag, or topic…" autocomplete="off" enterkeyhint="search">
+        <span class="fn-search-count" aria-live="polite"></span>
+      </div>
+      <p class="fn-search-empty" role="status" hidden>No fieldnotes match <strong class="fn-search-term"></strong>. Try a broader term.</p>
 
 
       <!-- Repository Atlas -->
@@ -983,5 +991,56 @@
   </div>
 
   <script src="../app.js" defer></script>
+  <script>
+    // Client-side fieldnotes filter — fulfils the WebSite SearchAction
+    // (/fieldnotes/?q=…). Pure DOM filtering, no dependencies.
+    (function () {
+      var input = document.getElementById('fn-search-input');
+      if (!input) return;
+      var entries = Array.prototype.slice.call(document.querySelectorAll('.fn-entry'));
+      var sections = Array.prototype.slice.call(document.querySelectorAll('.fn-week'));
+      var countEl = document.querySelector('.fn-search-count');
+      var emptyEl = document.querySelector('.fn-search-empty');
+      var termEl = document.querySelector('.fn-search-term');
+
+      // Cache lowercased searchable text per entry.
+      entries.forEach(function (el) { el.dataset.search = (el.textContent || '').toLowerCase(); });
+
+      function apply(q) {
+        var needle = q.trim().toLowerCase();
+        var shown = 0;
+        entries.forEach(function (el) {
+          var match = !needle || el.dataset.search.indexOf(needle) !== -1;
+          el.hidden = !match;
+          if (match) shown++;
+        });
+        // Hide section wrappers with no visible entries.
+        sections.forEach(function (sec) {
+          var any = sec.querySelector('.fn-entry:not([hidden])');
+          sec.hidden = !any;
+        });
+        if (countEl) countEl.textContent = needle ? (shown + ' of ' + entries.length) : '';
+        if (emptyEl) {
+          emptyEl.hidden = !(needle && shown === 0);
+          if (termEl) termEl.textContent = '“' + q.trim() + '”';
+        }
+      }
+
+      function syncUrl(q) {
+        var url = new URL(window.location.href);
+        if (q.trim()) url.searchParams.set('q', q.trim()); else url.searchParams.delete('q');
+        history.replaceState(null, '', url);
+      }
+
+      var initial = new URLSearchParams(window.location.search).get('q') || '';
+      if (initial) { input.value = initial; }
+      apply(initial);
+
+      input.addEventListener('input', function () {
+        apply(input.value);
+        syncUrl(input.value);
+      });
+    })();
+  </script>
 </body>
 </html>
