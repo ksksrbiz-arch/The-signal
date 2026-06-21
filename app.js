@@ -498,12 +498,36 @@ if ('serviceWorker' in navigator) {
         }
       }
     }
+  }
 
-    requestAnimationFrame(draw);
+  // Controlled loop — only animates while the hero is on-screen and the
+  // tab is visible, so it never burns CPU/battery in the background.
+  var rafId = null;
+  var inView = true;
+
+  function loop() {
+    draw();
+    rafId = requestAnimationFrame(loop);
+  }
+  function start() {
+    if (!rafId && inView && !document.hidden) rafId = requestAnimationFrame(loop);
+  }
+  function stop() {
+    if (rafId) { cancelAnimationFrame(rafId); rafId = null; }
   }
 
   resize();
-  draw();
+  start();
+
+  if ('IntersectionObserver' in window) {
+    new IntersectionObserver(function (entries) {
+      inView = entries[0].isIntersecting;
+      if (inView) start(); else stop();
+    }, { threshold: 0 }).observe(canvas.parentElement);
+  }
+  document.addEventListener('visibilitychange', function () {
+    if (document.hidden) stop(); else start();
+  });
 
   var resizeTimeout;
   window.addEventListener('resize', function() {
