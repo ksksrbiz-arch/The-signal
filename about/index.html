@@ -69,6 +69,117 @@
 
 <link rel="stylesheet" href="../base.css?v=20260620c">
 <link rel="stylesheet" href="../style.css?v=20260620c">
+
+<style>
+  /* ── Instagram Recent Videos Embed ───────────────────────── */
+  .ig-feed-section { padding: calc(var(--p, 18px) * 2) 0; }
+  .ig-feed-inner {
+    max-width: var(--page, 1200px);
+    margin: 0 auto;
+    padding: 0 var(--p, 18px);
+  }
+  .ig-feed-head {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 12px;
+    align-items: center;
+    justify-content: space-between;
+    margin-bottom: 22px;
+  }
+  .ig-feed-head a {
+    font-family: var(--font-mono, 'JetBrains Mono', monospace);
+    font-size: 0.78rem;
+    letter-spacing: 0.04em;
+    text-decoration: none;
+    color: var(--active, #E8B86A);
+    white-space: nowrap;
+  }
+  .ig-feed-head a:hover { text-decoration: underline; }
+  .ig-feed-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 18px;
+  }
+  .ig-card {
+    display: flex;
+    flex-direction: column;
+    border: 1px solid rgba(232, 184, 106, 0.22);
+    border-radius: 10px;
+    overflow: hidden;
+    background: rgba(0, 0, 0, 0.22);
+    text-decoration: none;
+    color: inherit;
+    transition: border-color 0.2s ease, transform 0.2s ease, box-shadow 0.2s ease;
+  }
+  .ig-card:hover {
+    border-color: rgba(232, 184, 106, 0.6);
+    transform: translateY(-3px);
+    box-shadow: 0 10px 28px rgba(0, 0, 0, 0.35);
+  }
+  .ig-card-media {
+    position: relative;
+    display: block;
+    aspect-ratio: 1 / 1;
+    background: #0d1117;
+    overflow: hidden;
+  }
+  .ig-card-img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+    transition: transform 0.4s ease;
+  }
+  .ig-card-img--empty { background: linear-gradient(135deg, #1a1d24, #0d1117); }
+  .ig-card:hover .ig-card-img { transform: scale(1.04); }
+  .ig-card-play {
+    position: absolute;
+    inset: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: #fff;
+    pointer-events: none;
+  }
+  .ig-card-play svg {
+    width: 46px;
+    height: 46px;
+    filter: drop-shadow(0 2px 6px rgba(0, 0, 0, 0.6));
+    opacity: 0.92;
+    transition: transform 0.2s ease;
+  }
+  .ig-card:hover .ig-card-play svg { transform: scale(1.12); }
+  .ig-card-body {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+    padding: 14px 16px 16px;
+  }
+  .ig-card-title {
+    font-size: 0.92rem;
+    line-height: 1.4;
+    display: -webkit-box;
+    -webkit-line-clamp: 2;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+  }
+  .ig-card-date { font-size: 10px; letter-spacing: 0.12em; }
+  .ig-feed-status {
+    grid-column: 1 / -1;
+    text-align: center;
+    font-family: var(--font-mono, 'JetBrains Mono', monospace);
+    font-size: 0.82rem;
+    opacity: 0.7;
+    padding: 24px 0;
+  }
+  .ig-feed-status--error a { color: var(--active, #E8B86A); }
+  @media (max-width: 860px) {
+    .ig-feed-grid { grid-template-columns: repeat(2, 1fr); }
+  }
+  @media (max-width: 520px) {
+    .ig-feed-grid { grid-template-columns: 1fr; }
+  }
+</style>
 </head>
 <body>
   <a href="#main" class="skip-link">Skip to main content</a>
@@ -208,6 +319,23 @@
         </button>
       </div>
     </div>
+
+    <!-- Recent Videos — Instagram embed -->
+    <section class="ig-feed-section" aria-labelledby="ig-feed-title">
+      <div class="ig-feed-inner">
+        <div class="ig-feed-head">
+          <span class="mono-label accent-text" id="ig-feed-title">// RECENT VIDEOS — @1commerce_llc</span>
+          <a href="https://www.instagram.com/1commerce_llc/" target="_blank" rel="noopener noreferrer">View on Instagram ↗</a>
+        </div>
+        <div class="ig-feed-grid"
+             data-ig-feed
+             data-ig-rss="https://rss.app/feeds/PbTSjJYxLEhIubeL.xml"
+             data-ig-limit="6"
+             data-ig-handle="1commerce_llc">
+          <p class="ig-feed-status">Loading recent videos…</p>
+        </div>
+      </div>
+    </section>
 
     <!-- Foundation Awaits — cathedral CTA -->
     <section class="cathedral-cta">
@@ -540,6 +668,7 @@
   </div>
 
   <script src="../app.js?v=20260620c" defer></script>
+  <script src="../assets/js/instagram-feed.js?v=20260622a" defer></script>
 </body>
 </html>
 
