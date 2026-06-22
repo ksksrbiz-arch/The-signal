@@ -1,13 +1,13 @@
 {
-  "generatedAt": "2026-06-21",
-  "pagesScanned": 103,
+  "generatedAt": "2026-06-22",
+  "pagesScanned": 104,
   "issuesFound": 0,
   "issues": [],
   "pages": [
     {
       "file": "about/index.html",
       "url": "https://1commercesolutions.com/about/",
-      "lastmod": "2026-06-20",
+      "lastmod": "2026-06-22",
       "changefreq": "monthly",
       "priority": "0.6",
       "title": "About — THE SIGNAL | 1Commerce LLC",
@@ -70,7 +70,7 @@
     {
       "file": "archive/index.html",
       "url": "https://1commercesolutions.com/archive/",
-      "lastmod": "2026-06-20",
+      "lastmod": "2026-06-21",
       "changefreq": "weekly",
       "priority": "0.9",
       "title": "Archive — THE SIGNAL | 1Commerce LLC",
@@ -79,7 +79,7 @@
     {
       "file": "builds/index.html",
       "url": "https://1commercesolutions.com/builds/",
-      "lastmod": "2026-06-20",
+      "lastmod": "2026-06-21",
       "changefreq": "monthly",
       "priority": "0.6",
       "title": "Verified Builds — THE SIGNAL | Infrastructure Index",
@@ -500,6 +500,15 @@
       "description": "How agents support prospecting, qualification, follow-up, and post-sale delivery. A practical daily brief for operators building commerce systems with proof, restraint, and compounding execution."
     },
     {
+      "file": "daily/2026-06-22.html",
+      "url": "https://1commercesolutions.com/daily/2026-06-22.html",
+      "lastmod": "2026-06-22",
+      "changefreq": "daily",
+      "priority": "0.7",
+      "title": "Daily Signal: commerce intelligence layers | THE SIGNAL",
+      "description": "Why storefronts need memory, context, and action layers beyond static pages. A practical daily brief for operators building commerce systems with proof, restraint, and compounding execution."
+    },
+    {
       "file": "daily/index.html",
       "url": "https://1commercesolutions.com/daily/",
       "lastmod": "2026-06-21",
@@ -835,7 +844,7 @@
     {
       "file": "fieldnotes/index.html",
       "url": "https://1commercesolutions.com/fieldnotes/",
-      "lastmod": "2026-06-20",
+      "lastmod": "2026-06-21",
       "changefreq": "weekly",
       "priority": "0.9",
       "title": "Fieldnotes — THE SIGNAL | A working notebook from 1Commerce LLC",
@@ -889,7 +898,7 @@
     {
       "file": "index.html",
       "url": "https://1commercesolutions.com/",
-      "lastmod": "2026-06-20",
+      "lastmod": "2026-06-21",
       "changefreq": "weekly",
       "priority": "1.0",
       "title": "THE SIGNAL — Commerce Systems That Ship | 1Commerce LLC",
@@ -898,7 +907,7 @@
     {
       "file": "news/index.html",
       "url": "https://1commercesolutions.com/news/",
-      "lastmod": "2026-06-20",
+      "lastmod": "2026-06-21",
       "changefreq": "daily",
       "priority": "0.9",
       "title": "News Aggregator — THE SIGNAL",
@@ -907,7 +916,7 @@
     {
       "file": "profile/index.html",
       "url": "https://1commercesolutions.com/profile/",
-      "lastmod": "2026-06-20",
+      "lastmod": "2026-06-22",
       "changefreq": "monthly",
       "priority": "0.6",
       "title": "Profile — THE SIGNAL | 1Commerce LLC",
@@ -916,7 +925,7 @@
     {
       "file": "reel-engine/index.html",
       "url": "https://1commercesolutions.com/reel-engine/",
-      "lastmod": "2026-06-20",
+      "lastmod": "2026-06-21",
       "changefreq": "monthly",
       "priority": "0.6",
       "title": "Noir Reel Engine — THE SIGNAL | Reproducible Cinematic Reel System",
@@ -925,7 +934,7 @@
     {
       "file": "videos/index.html",
       "url": "https://1commercesolutions.com/videos/",
-      "lastmod": "2026-06-20",
+      "lastmod": "2026-06-21",
       "changefreq": "monthly",
       "priority": "0.6",
       "title": "Video Library — THE SIGNAL | 1Commerce LLC",
