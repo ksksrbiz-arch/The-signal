@@ -1,6 +1,6 @@
 {
-  "generatedAt": "2026-06-22",
-  "pagesScanned": 104,
+  "generatedAt": "2026-06-23",
+  "pagesScanned": 105,
   "issuesFound": 0,
   "issues": [],
   "pages": [
@@ -509,6 +509,15 @@
       "description": "Why storefronts need memory, context, and action layers beyond static pages. A practical daily brief for operators building commerce systems with proof, restraint, and compounding execution."
     },
     {
+      "file": "daily/2026-06-23.html",
+      "url": "https://1commercesolutions.com/daily/2026-06-23.html",
+      "lastmod": "2026-06-23",
+      "changefreq": "daily",
+      "priority": "0.7",
+      "title": "Daily Signal: operator SEO discipline | THE SIGNAL",
+      "description": "The daily habits that keep crawl signals fresh without chasing gimmicks. A practical daily brief for operators building commerce systems with proof, restraint, and compounding execution."
+    },
+    {
       "file": "daily/index.html",
       "url": "https://1commercesolutions.com/daily/",
       "lastmod": "2026-06-22",
@@ -898,7 +907,7 @@
     {
       "file": "index.html",
       "url": "https://1commercesolutions.com/",
-      "lastmod": "2026-06-21",
+      "lastmod": "2026-06-22",
       "changefreq": "weekly",
       "priority": "1.0",
       "title": "THE SIGNAL — Commerce Systems That Ship | 1Commerce LLC",
