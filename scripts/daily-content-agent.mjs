@@ -154,6 +154,15 @@ function articleFor(phrase) {
   return /^[aeiou]/i.test(phrase) ? 'an' : 'a';
 }
 
+function humanDate(date) {
+  return new Date(`${date}T00:00:00Z`).toLocaleDateString('en-US', {
+    year: 'numeric',
+    month: 'long',
+    day: 'numeric',
+    timeZone: 'UTC',
+  });
+}
+
 function readingMinutes(brief) {
   const body = [
     brief.title,
@@ -172,7 +181,7 @@ function fallbackBrief(date) {
   const topic = pickTopic(date);
   return {
     title: `Daily Signal: ${topic.theme}`,
-    description: `${topic.angle} A practical daily brief for operators building commerce systems with proof, restraint, and compounding execution.`,
+    description: `${topic.angle} A practical daily brief for commerce operators — THE SIGNAL, ${humanDate(date)}.`,
     keyword: topic.keyword,
     thesis: topic.angle,
     editorialNote:
