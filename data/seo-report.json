@@ -1,13 +1,13 @@
 {
-  "generatedAt": "2026-06-23",
-  "pagesScanned": 105,
+  "generatedAt": "2026-07-05",
+  "pagesScanned": 113,
   "issuesFound": 0,
   "issues": [],
   "pages": [
     {
       "file": "about/index.html",
       "url": "https://1commercesolutions.com/about/",
-      "lastmod": "2026-06-22",
+      "lastmod": "2026-06-28",
       "changefreq": "monthly",
       "priority": "0.6",
       "title": "About — THE SIGNAL | 1Commerce LLC",
@@ -16,7 +16,7 @@
     {
       "file": "archive/013.html",
       "url": "https://1commercesolutions.com/archive/013.html",
-      "lastmod": "2026-06-21",
+      "lastmod": "2026-06-26",
       "changefreq": "monthly",
       "priority": "0.7",
       "title": "THE SIGNAL — Weekly Transmission №013 | 1Commerce LLC",
@@ -25,7 +25,7 @@
     {
       "file": "archive/014.html",
       "url": "https://1commercesolutions.com/archive/014.html",
-      "lastmod": "2026-06-21",
+      "lastmod": "2026-06-26",
       "changefreq": "monthly",
       "priority": "0.7",
       "title": "THE SIGNAL — Weekly Transmission №014 | 1Commerce LLC",
@@ -34,7 +34,7 @@
     {
       "file": "archive/015.html",
       "url": "https://1commercesolutions.com/archive/015.html",
-      "lastmod": "2026-06-21",
+      "lastmod": "2026-06-26",
       "changefreq": "monthly",
       "priority": "0.7",
       "title": "THE SIGNAL — Weekly Transmission №015 | 1Commerce LLC",
@@ -43,7 +43,7 @@
     {
       "file": "archive/016.html",
       "url": "https://1commercesolutions.com/archive/016.html",
-      "lastmod": "2026-06-21",
+      "lastmod": "2026-06-26",
       "changefreq": "monthly",
       "priority": "0.7",
       "title": "THE SIGNAL — Weekly Transmission №016 | 1Commerce LLC",
@@ -52,7 +52,7 @@
     {
       "file": "archive/017.html",
       "url": "https://1commercesolutions.com/archive/017.html",
-      "lastmod": "2026-06-21",
+      "lastmod": "2026-06-26",
       "changefreq": "monthly",
       "priority": "0.7",
       "title": "THE SIGNAL — Weekly Transmission №017 | 1Commerce LLC",
@@ -61,16 +61,34 @@
     {
       "file": "archive/018.html",
       "url": "https://1commercesolutions.com/archive/018.html",
-      "lastmod": "2026-06-21",
+      "lastmod": "2026-07-05",
       "changefreq": "monthly",
       "priority": "0.7",
       "title": "THE SIGNAL — Weekly Transmission №018 | Cathedral Principle in Action",
       "description": "Eleven active work streams. Zero placeholders. Cathedral principle in action. Precision Core auth stabilized, UnifyOne fully rebuilt, ag drone licensing initiated, memoir at 15,000 words, AI music video shipped."
     },
     {
+      "file": "archive/019.html",
+      "url": "https://1commercesolutions.com/archive/019.html",
+      "lastmod": "2026-07-05",
+      "changefreq": "monthly",
+      "priority": "0.7",
+      "title": "THE SIGNAL — Weekly Transmission №019 | Built For The Machines",
+      "description": "Six GEO/SEO commits in seven days. Five PRs merged. Forty-four daily briefs patched with schema. The crawlers that decide what gets cited don't care about glamour — they care about structured, current, correctly-tagged truth."
+    },
+    {
+      "file": "archive/020.html",
+      "url": "https://1commercesolutions.com/archive/020.html",
+      "lastmod": "2026-07-05",
+      "changefreq": "monthly",
+      "priority": "0.7",
+      "title": "THE SIGNAL — Weekly Transmission №020 | The Signal Went Quiet",
+      "description": "Forty-six commits. Twelve merged pull requests. Two hundred forty-nine files touched. The weekly dispatch went dark for four weeks — the build log never did. Catching the archive up on June 1–28, 2026."
+    },
+    {
       "file": "archive/index.html",
       "url": "https://1commercesolutions.com/archive/",
-      "lastmod": "2026-06-21",
+      "lastmod": "2026-07-05",
       "changefreq": "weekly",
       "priority": "0.9",
       "title": "Archive — THE SIGNAL | 1Commerce LLC",
@@ -79,7 +97,7 @@
     {
       "file": "builds/index.html",
       "url": "https://1commercesolutions.com/builds/",
-      "lastmod": "2026-06-21",
+      "lastmod": "2026-06-28",
       "changefreq": "monthly",
       "priority": "0.6",
       "title": "Verified Builds — THE SIGNAL | Infrastructure Index",
@@ -88,439 +106,493 @@
     {
       "file": "daily/2026-05-06.html",
       "url": "https://1commercesolutions.com/daily/2026-05-06.html",
-      "lastmod": "2026-06-20",
+      "lastmod": "2026-07-04",
       "changefreq": "daily",
       "priority": "0.7",
       "title": "Daily Signal: validated product experiments | THE SIGNAL",
-      "description": "How to move from idea to shipped proof while keeping scope under control. A practical daily brief for operators building commerce systems with proof, restraint, and compounding execution."
+      "description": "How to move from idea to shipped proof while keeping scope under control. A practical daily brief for commerce operators — THE SIGNAL, May 6, 2026."
     },
     {
       "file": "daily/2026-05-07.html",
       "url": "https://1commercesolutions.com/daily/2026-05-07.html",
-      "lastmod": "2026-06-20",
+      "lastmod": "2026-07-04",
       "changefreq": "daily",
       "priority": "0.7",
       "title": "Daily Signal: AI-native commerce operations | THE SIGNAL",
-      "description": "What an operator should automate today without losing human judgment. A practical daily brief for operators building commerce systems with proof, restraint, and compounding execution."
+      "description": "What an operator should automate today without losing human judgment. A practical daily brief for commerce operators — THE SIGNAL, May 7, 2026."
     },
     {
       "file": "daily/2026-05-08.html",
       "url": "https://1commercesolutions.com/daily/2026-05-08.html",
-      "lastmod": "2026-06-20",
+      "lastmod": "2026-07-04",
       "changefreq": "daily",
       "priority": "0.7",
       "title": "Daily Signal: proof-first founder systems | THE SIGNAL",
-      "description": "How to turn shipping evidence into trust, distribution, and compounding momentum. A practical daily brief for operators building commerce systems with proof, restraint, and compounding execution."
+      "description": "How to turn shipping evidence into trust, distribution, and compounding momentum. A practical daily brief for commerce operators — THE SIGNAL, May 8, 2026."
     },
     {
       "file": "daily/2026-05-09.html",
       "url": "https://1commercesolutions.com/daily/2026-05-09.html",
-      "lastmod": "2026-06-20",
+      "lastmod": "2026-07-04",
       "changefreq": "daily",
       "priority": "0.7",
       "title": "Daily Signal: solo-founder infrastructure | THE SIGNAL",
-      "description": "Where leverage comes from when headcount stays intentionally small. A practical daily brief for operators building commerce systems with proof, restraint, and compounding execution."
+      "description": "Where leverage comes from when headcount stays intentionally small. A practical daily brief for commerce operators — THE SIGNAL, May 9, 2026."
     },
     {
       "file": "daily/2026-05-10.html",
       "url": "https://1commercesolutions.com/daily/2026-05-10.html",
-      "lastmod": "2026-06-20",
+      "lastmod": "2026-07-04",
       "changefreq": "daily",
       "priority": "0.7",
       "title": "Daily Signal: agent workflows for revenue | THE SIGNAL",
-      "description": "How agents support prospecting, qualification, follow-up, and post-sale delivery. A practical daily brief for operators building commerce systems with proof, restraint, and compounding execution."
+      "description": "How agents support prospecting, qualification, follow-up, and post-sale delivery. A practical daily brief for commerce operators — THE SIGNAL, May 10, 2026."
     },
     {
       "file": "daily/2026-05-11.html",
       "url": "https://1commercesolutions.com/daily/2026-05-11.html",
-      "lastmod": "2026-06-20",
+      "lastmod": "2026-07-04",
       "changefreq": "daily",
       "priority": "0.7",
       "title": "Daily Signal: commerce intelligence layers | THE SIGNAL",
-      "description": "Why storefronts need memory, context, and action layers beyond static pages. A practical daily brief for operators building commerce systems with proof, restraint, and compounding execution."
+      "description": "Why storefronts need memory, context, and action layers beyond static pages. A practical daily brief for commerce operators — THE SIGNAL, May 11, 2026."
     },
     {
       "file": "daily/2026-05-12.html",
       "url": "https://1commercesolutions.com/daily/2026-05-12.html",
-      "lastmod": "2026-06-20",
+      "lastmod": "2026-07-04",
       "changefreq": "daily",
       "priority": "0.7",
       "title": "Daily Signal: operator SEO discipline | THE SIGNAL",
-      "description": "The daily habits that keep crawl signals fresh without chasing gimmicks. A practical daily brief for operators building commerce systems with proof, restraint, and compounding execution."
+      "description": "The daily habits that keep crawl signals fresh without chasing gimmicks. A practical daily brief for commerce operators — THE SIGNAL, May 12, 2026."
     },
     {
       "file": "daily/2026-05-13.html",
       "url": "https://1commercesolutions.com/daily/2026-05-13.html",
-      "lastmod": "2026-06-20",
+      "lastmod": "2026-07-04",
       "changefreq": "daily",
       "priority": "0.7",
       "title": "Daily Signal: validated product experiments | THE SIGNAL",
-      "description": "How to move from idea to shipped proof while keeping scope under control. A practical daily brief for operators building commerce systems with proof, restraint, and compounding execution."
+      "description": "How to move from idea to shipped proof while keeping scope under control. A practical daily brief for commerce operators — THE SIGNAL, May 13, 2026."
     },
     {
       "file": "daily/2026-05-14.html",
       "url": "https://1commercesolutions.com/daily/2026-05-14.html",
-      "lastmod": "2026-06-20",
+      "lastmod": "2026-07-04",
       "changefreq": "daily",
       "priority": "0.7",
       "title": "Daily Signal: AI-native commerce operations | THE SIGNAL",
-      "description": "What an operator should automate today without losing human judgment. A practical daily brief for operators building commerce systems with proof, restraint, and compounding execution."
+      "description": "What an operator should automate today without losing human judgment. A practical daily brief for commerce operators — THE SIGNAL, May 14, 2026."
     },
     {
       "file": "daily/2026-05-15.html",
       "url": "https://1commercesolutions.com/daily/2026-05-15.html",
-      "lastmod": "2026-06-20",
+      "lastmod": "2026-07-04",
       "changefreq": "daily",
       "priority": "0.7",
       "title": "Daily Signal: proof-first founder systems | THE SIGNAL",
-      "description": "How to turn shipping evidence into trust, distribution, and compounding momentum. A practical daily brief for operators building commerce systems with proof, restraint, and compounding execution."
+      "description": "How to turn shipping evidence into trust, distribution, and compounding momentum. A practical daily brief for commerce operators — THE SIGNAL, May 15, 2026."
     },
     {
       "file": "daily/2026-05-16.html",
       "url": "https://1commercesolutions.com/daily/2026-05-16.html",
-      "lastmod": "2026-06-20",
+      "lastmod": "2026-07-04",
       "changefreq": "daily",
       "priority": "0.7",
       "title": "Daily Signal: solo-founder infrastructure | THE SIGNAL",
-      "description": "Where leverage comes from when headcount stays intentionally small. A practical daily brief for operators building commerce systems with proof, restraint, and compounding execution."
+      "description": "Where leverage comes from when headcount stays intentionally small. A practical daily brief for commerce operators — THE SIGNAL, May 16, 2026."
     },
     {
       "file": "daily/2026-05-17.html",
       "url": "https://1commercesolutions.com/daily/2026-05-17.html",
-      "lastmod": "2026-06-20",
+      "lastmod": "2026-07-04",
       "changefreq": "daily",
       "priority": "0.7",
       "title": "Daily Signal: agent workflows for revenue | THE SIGNAL",
-      "description": "How agents support prospecting, qualification, follow-up, and post-sale delivery. A practical daily brief for operators building commerce systems with proof, restraint, and compounding execution."
+      "description": "How agents support prospecting, qualification, follow-up, and post-sale delivery. A practical daily brief for commerce operators — THE SIGNAL, May 17, 2026."
     },
     {
       "file": "daily/2026-05-18.html",
       "url": "https://1commercesolutions.com/daily/2026-05-18.html",
-      "lastmod": "2026-06-20",
+      "lastmod": "2026-07-04",
       "changefreq": "daily",
       "priority": "0.7",
       "title": "Daily Signal: commerce intelligence layers | THE SIGNAL",
-      "description": "Why storefronts need memory, context, and action layers beyond static pages. A practical daily brief for operators building commerce systems with proof, restraint, and compounding execution."
+      "description": "Why storefronts need memory, context, and action layers beyond static pages. A practical daily brief for commerce operators — THE SIGNAL, May 18, 2026."
     },
     {
       "file": "daily/2026-05-19.html",
       "url": "https://1commercesolutions.com/daily/2026-05-19.html",
-      "lastmod": "2026-06-20",
+      "lastmod": "2026-07-04",
       "changefreq": "daily",
       "priority": "0.7",
       "title": "Daily Signal: operator SEO discipline | THE SIGNAL",
-      "description": "The daily habits that keep crawl signals fresh without chasing gimmicks. A practical daily brief for operators building commerce systems with proof, restraint, and compounding execution."
+      "description": "The daily habits that keep crawl signals fresh without chasing gimmicks. A practical daily brief for commerce operators — THE SIGNAL, May 19, 2026."
     },
     {
       "file": "daily/2026-05-20.html",
       "url": "https://1commercesolutions.com/daily/2026-05-20.html",
-      "lastmod": "2026-06-20",
+      "lastmod": "2026-07-04",
       "changefreq": "daily",
       "priority": "0.7",
       "title": "Daily Signal: validated product experiments | THE SIGNAL",
-      "description": "How to move from idea to shipped proof while keeping scope under control. A practical daily brief for operators building commerce systems with proof, restraint, and compounding execution."
+      "description": "How to move from idea to shipped proof while keeping scope under control. A practical daily brief for commerce operators — THE SIGNAL, May 20, 2026."
     },
     {
       "file": "daily/2026-05-21.html",
       "url": "https://1commercesolutions.com/daily/2026-05-21.html",
-      "lastmod": "2026-06-20",
+      "lastmod": "2026-07-04",
       "changefreq": "daily",
       "priority": "0.7",
       "title": "Daily Signal: AI-native commerce operations | THE SIGNAL",
-      "description": "What an operator should automate today without losing human judgment. A practical daily brief for operators building commerce systems with proof, restraint, and compounding execution."
+      "description": "What an operator should automate today without losing human judgment. A practical daily brief for commerce operators — THE SIGNAL, May 21, 2026."
     },
     {
       "file": "daily/2026-05-22.html",
       "url": "https://1commercesolutions.com/daily/2026-05-22.html",
-      "lastmod": "2026-06-20",
+      "lastmod": "2026-07-04",
       "changefreq": "daily",
       "priority": "0.7",
       "title": "Daily Signal: proof-first founder systems | THE SIGNAL",
-      "description": "How to turn shipping evidence into trust, distribution, and compounding momentum. A practical daily brief for operators building commerce systems with proof, restraint, and compounding execution."
+      "description": "How to turn shipping evidence into trust, distribution, and compounding momentum. A practical daily brief for commerce operators — THE SIGNAL, May 22, 2026."
     },
     {
       "file": "daily/2026-05-23.html",
       "url": "https://1commercesolutions.com/daily/2026-05-23.html",
-      "lastmod": "2026-06-20",
+      "lastmod": "2026-07-04",
       "changefreq": "daily",
       "priority": "0.7",
       "title": "Daily Signal: solo-founder infrastructure | THE SIGNAL",
-      "description": "Where leverage comes from when headcount stays intentionally small. A practical daily brief for operators building commerce systems with proof, restraint, and compounding execution."
+      "description": "Where leverage comes from when headcount stays intentionally small. A practical daily brief for commerce operators — THE SIGNAL, May 23, 2026."
     },
     {
       "file": "daily/2026-05-24.html",
       "url": "https://1commercesolutions.com/daily/2026-05-24.html",
-      "lastmod": "2026-06-20",
+      "lastmod": "2026-07-04",
       "changefreq": "daily",
       "priority": "0.7",
       "title": "Daily Signal: agent workflows for revenue | THE SIGNAL",
-      "description": "How agents support prospecting, qualification, follow-up, and post-sale delivery. A practical daily brief for operators building commerce systems with proof, restraint, and compounding execution."
+      "description": "How agents support prospecting, qualification, follow-up, and post-sale delivery. A practical daily brief for commerce operators — THE SIGNAL, May 24, 2026."
     },
     {
       "file": "daily/2026-05-25.html",
       "url": "https://1commercesolutions.com/daily/2026-05-25.html",
-      "lastmod": "2026-06-20",
+      "lastmod": "2026-07-04",
       "changefreq": "daily",
       "priority": "0.7",
       "title": "Daily Signal: commerce intelligence layers | THE SIGNAL",
-      "description": "Why storefronts need memory, context, and action layers beyond static pages. A practical daily brief for operators building commerce systems with proof, restraint, and compounding execution."
+      "description": "Why storefronts need memory, context, and action layers beyond static pages. A practical daily brief for commerce operators — THE SIGNAL, May 25, 2026."
     },
     {
       "file": "daily/2026-05-27.html",
       "url": "https://1commercesolutions.com/daily/2026-05-27.html",
-      "lastmod": "2026-06-20",
+      "lastmod": "2026-07-04",
       "changefreq": "daily",
       "priority": "0.7",
       "title": "Daily Signal: validated product experiments | THE SIGNAL",
-      "description": "How to move from idea to shipped proof while keeping scope under control. A practical daily brief for operators building commerce systems with proof, restraint, and compounding execution."
+      "description": "How to move from idea to shipped proof while keeping scope under control. A practical daily brief for commerce operators — THE SIGNAL, May 27, 2026."
     },
     {
       "file": "daily/2026-05-28.html",
       "url": "https://1commercesolutions.com/daily/2026-05-28.html",
-      "lastmod": "2026-06-20",
+      "lastmod": "2026-07-04",
       "changefreq": "daily",
       "priority": "0.7",
       "title": "Daily Signal: AI-native commerce operations | THE SIGNAL",
-      "description": "What an operator should automate today without losing human judgment. A practical daily brief for operators building commerce systems with proof, restraint, and compounding execution."
+      "description": "What an operator should automate today without losing human judgment. A practical daily brief for commerce operators — THE SIGNAL, May 28, 2026."
     },
     {
       "file": "daily/2026-05-29.html",
       "url": "https://1commercesolutions.com/daily/2026-05-29.html",
-      "lastmod": "2026-06-20",
+      "lastmod": "2026-07-04",
       "changefreq": "daily",
       "priority": "0.7",
       "title": "Daily Signal: proof-first founder systems | THE SIGNAL",
-      "description": "How to turn shipping evidence into trust, distribution, and compounding momentum. A practical daily brief for operators building commerce systems with proof, restraint, and compounding execution."
+      "description": "How to turn shipping evidence into trust, distribution, and compounding momentum. A practical daily brief for commerce operators — THE SIGNAL, May 29, 2026."
     },
     {
       "file": "daily/2026-05-30.html",
       "url": "https://1commercesolutions.com/daily/2026-05-30.html",
-      "lastmod": "2026-06-20",
+      "lastmod": "2026-07-04",
       "changefreq": "daily",
       "priority": "0.7",
       "title": "Daily Signal: solo-founder infrastructure | THE SIGNAL",
-      "description": "Where leverage comes from when headcount stays intentionally small. A practical daily brief for operators building commerce systems with proof, restraint, and compounding execution."
+      "description": "Where leverage comes from when headcount stays intentionally small. A practical daily brief for commerce operators — THE SIGNAL, May 30, 2026."
     },
     {
       "file": "daily/2026-05-31.html",
       "url": "https://1commercesolutions.com/daily/2026-05-31.html",
-      "lastmod": "2026-06-20",
+      "lastmod": "2026-07-04",
       "changefreq": "daily",
       "priority": "0.7",
       "title": "Daily Signal: agent workflows for revenue | THE SIGNAL",
-      "description": "How agents support prospecting, qualification, follow-up, and post-sale delivery. A practical daily brief for operators building commerce systems with proof, restraint, and compounding execution."
+      "description": "How agents support prospecting, qualification, follow-up, and post-sale delivery. A practical daily brief for commerce operators — THE SIGNAL, May 31, 2026."
     },
     {
       "file": "daily/2026-06-01.html",
       "url": "https://1commercesolutions.com/daily/2026-06-01.html",
-      "lastmod": "2026-06-20",
+      "lastmod": "2026-07-04",
       "changefreq": "daily",
       "priority": "0.7",
       "title": "Daily Signal: commerce intelligence layers | THE SIGNAL",
-      "description": "Why storefronts need memory, context, and action layers beyond static pages. A practical daily brief for operators building commerce systems with proof, restraint, and compounding execution."
+      "description": "Why storefronts need memory, context, and action layers beyond static pages. A practical daily brief for commerce operators — THE SIGNAL, June 1, 2026."
     },
     {
       "file": "daily/2026-06-02.html",
       "url": "https://1commercesolutions.com/daily/2026-06-02.html",
-      "lastmod": "2026-06-20",
+      "lastmod": "2026-07-04",
       "changefreq": "daily",
       "priority": "0.7",
       "title": "Daily Signal: operator SEO discipline | THE SIGNAL",
-      "description": "The daily habits that keep crawl signals fresh without chasing gimmicks. A practical daily brief for operators building commerce systems with proof, restraint, and compounding execution."
+      "description": "The daily habits that keep crawl signals fresh without chasing gimmicks. A practical daily brief for commerce operators — THE SIGNAL, June 2, 2026."
     },
     {
       "file": "daily/2026-06-03.html",
       "url": "https://1commercesolutions.com/daily/2026-06-03.html",
-      "lastmod": "2026-06-20",
+      "lastmod": "2026-07-04",
       "changefreq": "daily",
       "priority": "0.7",
       "title": "Daily Signal: validated product experiments | THE SIGNAL",
-      "description": "How to move from idea to shipped proof while keeping scope under control. A practical daily brief for operators building commerce systems with proof, restraint, and compounding execution."
+      "description": "How to move from idea to shipped proof while keeping scope under control. A practical daily brief for commerce operators — THE SIGNAL, June 3, 2026."
     },
     {
       "file": "daily/2026-06-04.html",
       "url": "https://1commercesolutions.com/daily/2026-06-04.html",
-      "lastmod": "2026-06-20",
+      "lastmod": "2026-07-04",
       "changefreq": "daily",
       "priority": "0.7",
       "title": "Daily Signal: AI-native commerce operations | THE SIGNAL",
-      "description": "What an operator should automate today without losing human judgment. A practical daily brief for operators building commerce systems with proof, restraint, and compounding execution."
+      "description": "What an operator should automate today without losing human judgment. A practical daily brief for commerce operators — THE SIGNAL, June 4, 2026."
     },
     {
       "file": "daily/2026-06-05.html",
       "url": "https://1commercesolutions.com/daily/2026-06-05.html",
-      "lastmod": "2026-06-20",
+      "lastmod": "2026-07-04",
       "changefreq": "daily",
       "priority": "0.7",
       "title": "Daily Signal: proof-first founder systems | THE SIGNAL",
-      "description": "How to turn shipping evidence into trust, distribution, and compounding momentum. A practical daily brief for operators building commerce systems with proof, restraint, and compounding execution."
+      "description": "How to turn shipping evidence into trust, distribution, and compounding momentum. A practical daily brief for commerce operators — THE SIGNAL, June 5, 2026."
     },
     {
       "file": "daily/2026-06-06.html",
       "url": "https://1commercesolutions.com/daily/2026-06-06.html",
-      "lastmod": "2026-06-20",
+      "lastmod": "2026-07-04",
       "changefreq": "daily",
       "priority": "0.7",
       "title": "Daily Signal: solo-founder infrastructure | THE SIGNAL",
-      "description": "Where leverage comes from when headcount stays intentionally small. A practical daily brief for operators building commerce systems with proof, restraint, and compounding execution."
+      "description": "Where leverage comes from when headcount stays intentionally small. A practical daily brief for commerce operators — THE SIGNAL, June 6, 2026."
     },
     {
       "file": "daily/2026-06-07.html",
       "url": "https://1commercesolutions.com/daily/2026-06-07.html",
-      "lastmod": "2026-06-20",
+      "lastmod": "2026-07-04",
       "changefreq": "daily",
       "priority": "0.7",
       "title": "Daily Signal: agent workflows for revenue | THE SIGNAL",
-      "description": "How agents support prospecting, qualification, follow-up, and post-sale delivery. A practical daily brief for operators building commerce systems with proof, restraint, and compounding execution."
+      "description": "How agents support prospecting, qualification, follow-up, and post-sale delivery. A practical daily brief for commerce operators — THE SIGNAL, June 7, 2026."
     },
     {
       "file": "daily/2026-06-08.html",
       "url": "https://1commercesolutions.com/daily/2026-06-08.html",
-      "lastmod": "2026-06-20",
+      "lastmod": "2026-07-04",
       "changefreq": "daily",
       "priority": "0.7",
       "title": "Daily Signal: commerce intelligence layers | THE SIGNAL",
-      "description": "Why storefronts need memory, context, and action layers beyond static pages. A practical daily brief for operators building commerce systems with proof, restraint, and compounding execution."
+      "description": "Why storefronts need memory, context, and action layers beyond static pages. A practical daily brief for commerce operators — THE SIGNAL, June 8, 2026."
     },
     {
       "file": "daily/2026-06-09.html",
       "url": "https://1commercesolutions.com/daily/2026-06-09.html",
-      "lastmod": "2026-06-20",
+      "lastmod": "2026-07-04",
       "changefreq": "daily",
       "priority": "0.7",
       "title": "Daily Signal: operator SEO discipline | THE SIGNAL",
-      "description": "The daily habits that keep crawl signals fresh without chasing gimmicks. A practical daily brief for operators building commerce systems with proof, restraint, and compounding execution."
+      "description": "The daily habits that keep crawl signals fresh without chasing gimmicks. A practical daily brief for commerce operators — THE SIGNAL, June 9, 2026."
     },
     {
       "file": "daily/2026-06-10.html",
       "url": "https://1commercesolutions.com/daily/2026-06-10.html",
-      "lastmod": "2026-06-20",
+      "lastmod": "2026-07-04",
       "changefreq": "daily",
       "priority": "0.7",
       "title": "Daily Signal: validated product experiments | THE SIGNAL",
-      "description": "How to move from idea to shipped proof while keeping scope under control. A practical daily brief for operators building commerce systems with proof, restraint, and compounding execution."
+      "description": "How to move from idea to shipped proof while keeping scope under control. A practical daily brief for commerce operators — THE SIGNAL, June 10, 2026."
     },
     {
       "file": "daily/2026-06-11.html",
       "url": "https://1commercesolutions.com/daily/2026-06-11.html",
-      "lastmod": "2026-06-20",
+      "lastmod": "2026-07-04",
       "changefreq": "daily",
       "priority": "0.7",
       "title": "Daily Signal: AI-native commerce operations | THE SIGNAL",
-      "description": "What an operator should automate today without losing human judgment. A practical daily brief for operators building commerce systems with proof, restraint, and compounding execution."
+      "description": "What an operator should automate today without losing human judgment. A practical daily brief for commerce operators — THE SIGNAL, June 11, 2026."
     },
     {
       "file": "daily/2026-06-12.html",
       "url": "https://1commercesolutions.com/daily/2026-06-12.html",
-      "lastmod": "2026-06-20",
+      "lastmod": "2026-07-04",
       "changefreq": "daily",
       "priority": "0.7",
       "title": "Daily Signal: proof-first founder systems | THE SIGNAL",
-      "description": "How to turn shipping evidence into trust, distribution, and compounding momentum. A practical daily brief for operators building commerce systems with proof, restraint, and compounding execution."
+      "description": "How to turn shipping evidence into trust, distribution, and compounding momentum. A practical daily brief for commerce operators — THE SIGNAL, June 12, 2026."
     },
     {
       "file": "daily/2026-06-13.html",
       "url": "https://1commercesolutions.com/daily/2026-06-13.html",
-      "lastmod": "2026-06-20",
+      "lastmod": "2026-07-04",
       "changefreq": "daily",
       "priority": "0.7",
       "title": "Daily Signal: solo-founder infrastructure | THE SIGNAL",
-      "description": "Where leverage comes from when headcount stays intentionally small. A practical daily brief for operators building commerce systems with proof, restraint, and compounding execution."
+      "description": "Where leverage comes from when headcount stays intentionally small. A practical daily brief for commerce operators — THE SIGNAL, June 13, 2026."
     },
     {
       "file": "daily/2026-06-14.html",
       "url": "https://1commercesolutions.com/daily/2026-06-14.html",
-      "lastmod": "2026-06-20",
+      "lastmod": "2026-07-04",
       "changefreq": "daily",
       "priority": "0.7",
       "title": "Daily Signal: agent workflows for revenue | THE SIGNAL",
-      "description": "How agents support prospecting, qualification, follow-up, and post-sale delivery. A practical daily brief for operators building commerce systems with proof, restraint, and compounding execution."
+      "description": "How agents support prospecting, qualification, follow-up, and post-sale delivery. A practical daily brief for commerce operators — THE SIGNAL, June 14, 2026."
     },
     {
       "file": "daily/2026-06-15.html",
       "url": "https://1commercesolutions.com/daily/2026-06-15.html",
-      "lastmod": "2026-06-20",
+      "lastmod": "2026-07-04",
       "changefreq": "daily",
       "priority": "0.7",
       "title": "Daily Signal: commerce intelligence layers | THE SIGNAL",
-      "description": "Why storefronts need memory, context, and action layers beyond static pages. A practical daily brief for operators building commerce systems with proof, restraint, and compounding execution."
+      "description": "Why storefronts need memory, context, and action layers beyond static pages. A practical daily brief for commerce operators — THE SIGNAL, June 15, 2026."
     },
     {
       "file": "daily/2026-06-16.html",
       "url": "https://1commercesolutions.com/daily/2026-06-16.html",
-      "lastmod": "2026-06-20",
+      "lastmod": "2026-07-04",
       "changefreq": "daily",
       "priority": "0.7",
       "title": "Daily Signal: operator SEO discipline | THE SIGNAL",
-      "description": "The daily habits that keep crawl signals fresh without chasing gimmicks. A practical daily brief for operators building commerce systems with proof, restraint, and compounding execution."
+      "description": "The daily habits that keep crawl signals fresh without chasing gimmicks. A practical daily brief for commerce operators — THE SIGNAL, June 16, 2026."
     },
     {
       "file": "daily/2026-06-17.html",
       "url": "https://1commercesolutions.com/daily/2026-06-17.html",
-      "lastmod": "2026-06-20",
+      "lastmod": "2026-07-04",
       "changefreq": "daily",
       "priority": "0.7",
       "title": "Daily Signal: validated product experiments | THE SIGNAL",
-      "description": "How to move from idea to shipped proof while keeping scope under control. A practical daily brief for operators building commerce systems with proof, restraint, and compounding execution."
+      "description": "How to move from idea to shipped proof while keeping scope under control. A practical daily brief for commerce operators — THE SIGNAL, June 17, 2026."
     },
     {
       "file": "daily/2026-06-18.html",
       "url": "https://1commercesolutions.com/daily/2026-06-18.html",
-      "lastmod": "2026-06-20",
+      "lastmod": "2026-07-04",
       "changefreq": "daily",
       "priority": "0.7",
       "title": "Daily Signal: AI-native commerce operations | THE SIGNAL",
-      "description": "What an operator should automate today without losing human judgment. A practical daily brief for operators building commerce systems with proof, restraint, and compounding execution."
+      "description": "What an operator should automate today without losing human judgment. A practical daily brief for commerce operators — THE SIGNAL, June 18, 2026."
     },
     {
       "file": "daily/2026-06-19.html",
       "url": "https://1commercesolutions.com/daily/2026-06-19.html",
-      "lastmod": "2026-06-20",
+      "lastmod": "2026-07-04",
       "changefreq": "daily",
       "priority": "0.7",
       "title": "Daily Signal: proof-first founder systems | THE SIGNAL",
-      "description": "How to turn shipping evidence into trust, distribution, and compounding momentum. A practical daily brief for operators building commerce systems with proof, restraint, and compounding execution."
+      "description": "How to turn shipping evidence into trust, distribution, and compounding momentum. A practical daily brief for commerce operators — THE SIGNAL, June 19, 2026."
     },
     {
       "file": "daily/2026-06-20.html",
       "url": "https://1commercesolutions.com/daily/2026-06-20.html",
-      "lastmod": "2026-06-20",
+      "lastmod": "2026-07-04",
       "changefreq": "daily",
       "priority": "0.7",
       "title": "Daily Signal: solo-founder infrastructure | THE SIGNAL",
-      "description": "Where leverage comes from when headcount stays intentionally small. A practical daily brief for operators building commerce systems with proof, restraint, and compounding execution."
+      "description": "Where leverage comes from when headcount stays intentionally small. A practical daily brief for commerce operators — THE SIGNAL, June 20, 2026."
     },
     {
       "file": "daily/2026-06-21.html",
       "url": "https://1commercesolutions.com/daily/2026-06-21.html",
-      "lastmod": "2026-06-21",
+      "lastmod": "2026-07-04",
       "changefreq": "daily",
       "priority": "0.7",
       "title": "Daily Signal: agent workflows for revenue | THE SIGNAL",
-      "description": "How agents support prospecting, qualification, follow-up, and post-sale delivery. A practical daily brief for operators building commerce systems with proof, restraint, and compounding execution."
+      "description": "How agents support prospecting, qualification, follow-up, and post-sale delivery. A practical daily brief for commerce operators — THE SIGNAL, June 21, 2026."
     },
     {
       "file": "daily/2026-06-22.html",
       "url": "https://1commercesolutions.com/daily/2026-06-22.html",
-      "lastmod": "2026-06-22",
+      "lastmod": "2026-07-04",
       "changefreq": "daily",
       "priority": "0.7",
       "title": "Daily Signal: commerce intelligence layers | THE SIGNAL",
-      "description": "Why storefronts need memory, context, and action layers beyond static pages. A practical daily brief for operators building commerce systems with proof, restraint, and compounding execution."
+      "description": "Why storefronts need memory, context, and action layers beyond static pages. A practical daily brief for commerce operators — THE SIGNAL, June 22, 2026."
     },
     {
       "file": "daily/2026-06-23.html",
       "url": "https://1commercesolutions.com/daily/2026-06-23.html",
-      "lastmod": "2026-06-23",
+      "lastmod": "2026-07-04",
       "changefreq": "daily",
       "priority": "0.7",
       "title": "Daily Signal: operator SEO discipline | THE SIGNAL",
-      "description": "The daily habits that keep crawl signals fresh without chasing gimmicks. A practical daily brief for operators building commerce systems with proof, restraint, and compounding execution."
+      "description": "The daily habits that keep crawl signals fresh without chasing gimmicks. A practical daily brief for commerce operators — THE SIGNAL, June 23, 2026."
+    },
+    {
+      "file": "daily/2026-06-24.html",
+      "url": "https://1commercesolutions.com/daily/2026-06-24.html",
+      "lastmod": "2026-07-04",
+      "changefreq": "daily",
+      "priority": "0.7",
+      "title": "Daily Signal: validated product experiments | THE SIGNAL",
+      "description": "How to move from idea to shipped proof while keeping scope under control. A practical daily brief for commerce operators — THE SIGNAL, June 24, 2026."
+    },
+    {
+      "file": "daily/2026-06-25.html",
+      "url": "https://1commercesolutions.com/daily/2026-06-25.html",
+      "lastmod": "2026-07-04",
+      "changefreq": "daily",
+      "priority": "0.7",
+      "title": "Daily Signal: AI-native commerce operations | THE SIGNAL",
+      "description": "What an operator should automate today without losing human judgment. A practical daily brief for commerce operators — THE SIGNAL, June 25, 2026."
+    },
+    {
+      "file": "daily/2026-06-26.html",
+      "url": "https://1commercesolutions.com/daily/2026-06-26.html",
+      "lastmod": "2026-07-04",
+      "changefreq": "daily",
+      "priority": "0.7",
+      "title": "Daily Signal: proof-first founder systems | THE SIGNAL",
+      "description": "How to turn shipping evidence into trust, distribution, and compounding momentum. A practical daily brief for commerce operators — THE SIGNAL, June 26, 2026."
+    },
+    {
+      "file": "daily/2026-06-27.html",
+      "url": "https://1commercesolutions.com/daily/2026-06-27.html",
+      "lastmod": "2026-07-04",
+      "changefreq": "daily",
+      "priority": "0.7",
+      "title": "Daily Signal: solo-founder infrastructure | THE SIGNAL",
+      "description": "Where leverage comes from when headcount stays intentionally small. A practical daily brief for commerce operators — THE SIGNAL, June 27, 2026."
+    },
+    {
+      "file": "daily/2026-06-28.html",
+      "url": "https://1commercesolutions.com/daily/2026-06-28.html",
+      "lastmod": "2026-07-04",
+      "changefreq": "daily",
+      "priority": "0.7",
+      "title": "Daily Signal: agent workflows for revenue | THE SIGNAL",
+      "description": "How agents support prospecting, qualification, follow-up, and post-sale delivery. A practical daily brief for commerce operators — THE SIGNAL, June 28, 2026."
+    },
+    {
+      "file": "daily/2026-06-29.html",
+      "url": "https://1commercesolutions.com/daily/2026-06-29.html",
+      "lastmod": "2026-07-04",
+      "changefreq": "daily",
+      "priority": "0.7",
+      "title": "Daily Signal: commerce intelligence layers | THE SIGNAL",
+      "description": "Why storefronts need memory, context, and action layers beyond static pages. A practical daily brief for commerce operators — THE SIGNAL, June 29, 2026."
     },
     {
       "file": "daily/index.html",
       "url": "https://1commercesolutions.com/daily/",
-      "lastmod": "2026-06-23",
+      "lastmod": "2026-07-04",
       "changefreq": "daily",
       "priority": "0.9",
       "title": "Daily Signal — THE SIGNAL",
@@ -529,16 +601,16 @@
     {
       "file": "fieldnotes/ai-agents-vs-chatbots.html",
       "url": "https://1commercesolutions.com/fieldnotes/ai-agents-vs-chatbots.html",
-      "lastmod": "2026-06-20",
+      "lastmod": "2026-06-27",
       "changefreq": "monthly",
       "priority": "0.7",
       "title": "AI Agents vs. Chatbots: What the Difference Actually Means for Builders — Fieldnotes | THE SIGNAL",
-      "description": "One answers questions. The other executes work. The distinction between chatbots and AI agents matters more than most founders realize — especially when you"
+      "description": "One answers questions. The other executes work. The distinction between chatbots and AI agents matters more than most founders realize — especially when you're building alone."
     },
     {
       "file": "fieldnotes/build-in-public-system.html",
       "url": "https://1commercesolutions.com/fieldnotes/build-in-public-system.html",
-      "lastmod": "2026-06-20",
+      "lastmod": "2026-06-27",
       "changefreq": "monthly",
       "priority": "0.7",
       "title": "Build in Public as an Operating System, Not a Marketing Strategy — Fieldnotes | THE SIGNAL",
@@ -547,7 +619,7 @@
     {
       "file": "fieldnotes/cathedral-principle.html",
       "url": "https://1commercesolutions.com/fieldnotes/cathedral-principle.html",
-      "lastmod": "2026-06-20",
+      "lastmod": "2026-06-27",
       "changefreq": "monthly",
       "priority": "0.7",
       "title": "The Cathedral Principle — Fieldnotes | THE SIGNAL",
@@ -556,7 +628,7 @@
     {
       "file": "fieldnotes/cold-outreach-engine.html",
       "url": "https://1commercesolutions.com/fieldnotes/cold-outreach-engine.html",
-      "lastmod": "2026-06-20",
+      "lastmod": "2026-06-27",
       "changefreq": "monthly",
       "priority": "0.7",
       "title": "How to Build a Cold Outreach Engine with Claude + n8n — Fieldnotes | THE SIGNAL",
@@ -565,7 +637,7 @@
     {
       "file": "fieldnotes/github-ag-drone-bootstrap-playbook.html",
       "url": "https://1commercesolutions.com/fieldnotes/github-ag-drone-bootstrap-playbook.html",
-      "lastmod": "2026-06-20",
+      "lastmod": "2026-06-27",
       "changefreq": "monthly",
       "priority": "0.7",
       "title": "ag drone bootstrap playbook: a public playbook packaged as a site — Fieldnotes | THE SIGNAL",
@@ -574,7 +646,7 @@
     {
       "file": "fieldnotes/github-amp.html",
       "url": "https://1commercesolutions.com/fieldnotes/github-amp.html",
-      "lastmod": "2026-06-20",
+      "lastmod": "2026-06-27",
       "changefreq": "monthly",
       "priority": "0.7",
       "title": "Amp: a sparse TypeScript tooling seed — Fieldnotes | THE SIGNAL",
@@ -583,7 +655,7 @@
     {
       "file": "fieldnotes/github-bonkbird-site.html",
       "url": "https://1commercesolutions.com/fieldnotes/github-bonkbird-site.html",
-      "lastmod": "2026-06-20",
+      "lastmod": "2026-06-27",
       "changefreq": "monthly",
       "priority": "0.7",
       "title": "bonkbird-site: a zero-build livestream joke that shipped — Fieldnotes | THE SIGNAL",
@@ -592,7 +664,7 @@
     {
       "file": "fieldnotes/github-clearpath.html",
       "url": "https://1commercesolutions.com/fieldnotes/github-clearpath.html",
-      "lastmod": "2026-06-20",
+      "lastmod": "2026-06-27",
       "changefreq": "monthly",
       "priority": "0.7",
       "title": "Clearpath: a Vite app with deployment hardening — Fieldnotes | THE SIGNAL",
@@ -601,7 +673,7 @@
     {
       "file": "fieldnotes/github-clerk-netlify-template.html",
       "url": "https://1commercesolutions.com/fieldnotes/github-clerk-netlify-template.html",
-      "lastmod": "2026-06-20",
+      "lastmod": "2026-06-27",
       "changefreq": "monthly",
       "priority": "0.7",
       "title": "clerk-netlify-template: authentication scaffolding on Netlify — Fieldnotes | THE SIGNAL",
@@ -610,7 +682,7 @@
     {
       "file": "fieldnotes/github-compass.html",
       "url": "https://1commercesolutions.com/fieldnotes/github-compass.html",
-      "lastmod": "2026-06-20",
+      "lastmod": "2026-06-27",
       "changefreq": "monthly",
       "priority": "0.7",
       "title": "compass: an AI workspace for deal analysis — Fieldnotes | THE SIGNAL",
@@ -619,7 +691,7 @@
     {
       "file": "fieldnotes/github-early-gov-contract-watch.html",
       "url": "https://1commercesolutions.com/fieldnotes/github-early-gov-contract-watch.html",
-      "lastmod": "2026-06-20",
+      "lastmod": "2026-06-27",
       "changefreq": "monthly",
       "priority": "0.7",
       "title": "early-gov-contract-watch: contract alerts wired to paper trading — Fieldnotes | THE SIGNAL",
@@ -628,7 +700,7 @@
     {
       "file": "fieldnotes/github-forged-american.html",
       "url": "https://1commercesolutions.com/fieldnotes/github-forged-american.html",
-      "lastmod": "2026-06-20",
+      "lastmod": "2026-06-27",
       "changefreq": "monthly",
       "priority": "0.7",
       "title": "forged-american: headless commerce on Netlify and Stripe — Fieldnotes | THE SIGNAL",
@@ -637,7 +709,7 @@
     {
       "file": "fieldnotes/github-graph.html",
       "url": "https://1commercesolutions.com/fieldnotes/github-graph.html",
-      "lastmod": "2026-06-20",
+      "lastmod": "2026-06-27",
       "changefreq": "monthly",
       "priority": "0.7",
       "title": "Graph: a personal knowledge graph with local and v2 tracks — Fieldnotes | THE SIGNAL",
@@ -646,7 +718,7 @@
     {
       "file": "fieldnotes/github-house.html",
       "url": "https://1commercesolutions.com/fieldnotes/github-house.html",
-      "lastmod": "2026-06-20",
+      "lastmod": "2026-06-27",
       "changefreq": "monthly",
       "priority": "0.7",
       "title": "house: Cathedral Acquisitions for Section 8 deal flow — Fieldnotes | THE SIGNAL",
@@ -655,7 +727,7 @@
     {
       "file": "fieldnotes/github-kimnara.html",
       "url": "https://1commercesolutions.com/fieldnotes/github-kimnara.html",
-      "lastmod": "2026-06-20",
+      "lastmod": "2026-06-27",
       "changefreq": "monthly",
       "priority": "0.7",
       "title": "Kimnara: a named seed repository — Fieldnotes | THE SIGNAL",
@@ -664,7 +736,7 @@
     {
       "file": "fieldnotes/github-loi.html",
       "url": "https://1commercesolutions.com/fieldnotes/github-loi.html",
-      "lastmod": "2026-06-20",
+      "lastmod": "2026-06-27",
       "changefreq": "monthly",
       "priority": "0.7",
       "title": "Loi: a compact Next.js seed with a named product shell — Fieldnotes | THE SIGNAL",
@@ -673,7 +745,7 @@
     {
       "file": "fieldnotes/github-montucky-moonshine-proposal.html",
       "url": "https://1commercesolutions.com/fieldnotes/github-montucky-moonshine-proposal.html",
-      "lastmod": "2026-06-20",
+      "lastmod": "2026-06-27",
       "changefreq": "monthly",
       "priority": "0.7",
       "title": "montucky-moonshine-proposal: a premium client storefront proposal — Fieldnotes | THE SIGNAL",
@@ -682,7 +754,7 @@
     {
       "file": "fieldnotes/github-news-aggregator.html",
       "url": "https://1commercesolutions.com/fieldnotes/github-news-aggregator.html",
-      "lastmod": "2026-06-20",
+      "lastmod": "2026-06-27",
       "changefreq": "monthly",
       "priority": "0.7",
       "title": "news-aggregator: a news surface for affiliate web services — Fieldnotes | THE SIGNAL",
@@ -691,7 +763,7 @@
     {
       "file": "fieldnotes/github-next-platform-starter.html",
       "url": "https://1commercesolutions.com/fieldnotes/github-next-platform-starter.html",
-      "lastmod": "2026-06-20",
+      "lastmod": "2026-06-27",
       "changefreq": "monthly",
       "priority": "0.7",
       "title": "next-platform-starter: Netlify’s Next.js primitives in starter form — Fieldnotes | THE SIGNAL",
@@ -700,7 +772,7 @@
     {
       "file": "fieldnotes/github-nextchapter.html",
       "url": "https://1commercesolutions.com/fieldnotes/github-nextchapter.html",
-      "lastmod": "2026-06-20",
+      "lastmod": "2026-06-27",
       "changefreq": "monthly",
       "priority": "0.7",
       "title": "nextchapter: an AI Studio app ready for local iteration — Fieldnotes | THE SIGNAL",
@@ -709,7 +781,7 @@
     {
       "file": "fieldnotes/github-onecommerce-mcp-server.html",
       "url": "https://1commercesolutions.com/fieldnotes/github-onecommerce-mcp-server.html",
-      "lastmod": "2026-06-20",
+      "lastmod": "2026-06-27",
       "changefreq": "monthly",
       "priority": "0.7",
       "title": "onecommerce-mcp-server: the MCP surface for 1Commerce operations — Fieldnotes | THE SIGNAL",
@@ -718,7 +790,7 @@
     {
       "file": "fieldnotes/github-onpoint.html",
       "url": "https://1commercesolutions.com/fieldnotes/github-onpoint.html",
-      "lastmod": "2026-06-20",
+      "lastmod": "2026-06-27",
       "changefreq": "monthly",
       "priority": "0.7",
       "title": "onpoint: a single-page static deployment — Fieldnotes | THE SIGNAL",
@@ -727,7 +799,7 @@
     {
       "file": "fieldnotes/github-pacer.html",
       "url": "https://1commercesolutions.com/fieldnotes/github-pacer.html",
-      "lastmod": "2026-06-20",
+      "lastmod": "2026-06-27",
       "changefreq": "monthly",
       "priority": "0.7",
       "title": "PACER: distressed-domain discovery and RWA tokenization — Fieldnotes | THE SIGNAL",
@@ -736,7 +808,7 @@
     {
       "file": "fieldnotes/github-pnwenterprises.html",
       "url": "https://1commercesolutions.com/fieldnotes/github-pnwenterprises.html",
-      "lastmod": "2026-06-20",
+      "lastmod": "2026-06-27",
       "changefreq": "monthly",
       "priority": "0.7",
       "title": "pnwenterprises: an AI-compressed enterprise operating stack — Fieldnotes | THE SIGNAL",
@@ -745,7 +817,7 @@
     {
       "file": "fieldnotes/github-reels-automation.html",
       "url": "https://1commercesolutions.com/fieldnotes/github-reels-automation.html",
-      "lastmod": "2026-06-20",
+      "lastmod": "2026-06-27",
       "changefreq": "monthly",
       "priority": "0.7",
       "title": "reels-automation: a cron-driven short-form content machine — Fieldnotes | THE SIGNAL",
@@ -754,7 +826,7 @@
     {
       "file": "fieldnotes/github-rockhard-handware.html",
       "url": "https://1commercesolutions.com/fieldnotes/github-rockhard-handware.html",
-      "lastmod": "2026-06-20",
+      "lastmod": "2026-06-27",
       "changefreq": "monthly",
       "priority": "0.7",
       "title": "rockhard-handware: the repeatable headless storefront pattern — Fieldnotes | THE SIGNAL",
@@ -763,7 +835,7 @@
     {
       "file": "fieldnotes/github-shopify-theme-ci-cd.html",
       "url": "https://1commercesolutions.com/fieldnotes/github-shopify-theme-ci-cd.html",
-      "lastmod": "2026-06-20",
+      "lastmod": "2026-06-27",
       "changefreq": "monthly",
       "priority": "0.7",
       "title": "shopify-theme-ci-cd: deployment discipline for Shopify themes — Fieldnotes | THE SIGNAL",
@@ -772,7 +844,7 @@
     {
       "file": "fieldnotes/github-signal-archives.html",
       "url": "https://1commercesolutions.com/fieldnotes/github-signal-archives.html",
-      "lastmod": "2026-06-20",
+      "lastmod": "2026-06-27",
       "changefreq": "monthly",
       "priority": "0.7",
       "title": "Signal-Archives: an empty archive vessel for future Signal material — Fieldnotes | THE SIGNAL",
@@ -781,7 +853,7 @@
     {
       "file": "fieldnotes/github-skaggsk.html",
       "url": "https://1commercesolutions.com/fieldnotes/github-skaggsk.html",
-      "lastmod": "2026-06-20",
+      "lastmod": "2026-06-27",
       "changefreq": "monthly",
       "priority": "0.7",
       "title": "skaggsk: a generated personal static page — Fieldnotes | THE SIGNAL",
@@ -790,7 +862,7 @@
     {
       "file": "fieldnotes/github-stripe-supabase-saas-starter-kit.html",
       "url": "https://1commercesolutions.com/fieldnotes/github-stripe-supabase-saas-starter-kit.html",
-      "lastmod": "2026-06-20",
+      "lastmod": "2026-06-27",
       "changefreq": "monthly",
       "priority": "0.7",
       "title": "stripe-supabase-saas-starter-kit: payments and auth in one starter — Fieldnotes | THE SIGNAL",
@@ -799,7 +871,7 @@
     {
       "file": "fieldnotes/github-terp-forge.html",
       "url": "https://1commercesolutions.com/fieldnotes/github-terp-forge.html",
-      "lastmod": "2026-06-20",
+      "lastmod": "2026-06-27",
       "changefreq": "monthly",
       "priority": "0.7",
       "title": "Terp-Forge: industrial branding for engineered aromatics — Fieldnotes | THE SIGNAL",
@@ -808,7 +880,7 @@
     {
       "file": "fieldnotes/github-the-signal.html",
       "url": "https://1commercesolutions.com/fieldnotes/github-the-signal.html",
-      "lastmod": "2026-06-20",
+      "lastmod": "2026-06-27",
       "changefreq": "monthly",
       "priority": "0.7",
       "title": "The-signal: the publishing surface you are reading now — Fieldnotes | THE SIGNAL",
@@ -817,7 +889,7 @@
     {
       "file": "fieldnotes/github-tobe.html",
       "url": "https://1commercesolutions.com/fieldnotes/github-tobe.html",
-      "lastmod": "2026-06-20",
+      "lastmod": "2026-06-27",
       "changefreq": "monthly",
       "priority": "0.7",
       "title": "Tobe-: a Next.js app seed with database and component scaffolding — Fieldnotes | THE SIGNAL",
@@ -826,7 +898,7 @@
     {
       "file": "fieldnotes/github-torqued-affiliates.html",
       "url": "https://1commercesolutions.com/fieldnotes/github-torqued-affiliates.html",
-      "lastmod": "2026-06-20",
+      "lastmod": "2026-06-27",
       "changefreq": "monthly",
       "priority": "0.7",
       "title": "torqued-affiliates: the affiliate backend behind a Shopify front end — Fieldnotes | THE SIGNAL",
@@ -835,7 +907,7 @@
     {
       "file": "fieldnotes/github-unify0ne-mcp.html",
       "url": "https://1commercesolutions.com/fieldnotes/github-unify0ne-mcp.html",
-      "lastmod": "2026-06-20",
+      "lastmod": "2026-06-27",
       "changefreq": "monthly",
       "priority": "0.7",
       "title": "unify0ne-mcp: the platform-compatible MCP worker — Fieldnotes | THE SIGNAL",
@@ -844,7 +916,7 @@
     {
       "file": "fieldnotes/github-yod-ai.html",
       "url": "https://1commercesolutions.com/fieldnotes/github-yod-ai.html",
-      "lastmod": "2026-06-20",
+      "lastmod": "2026-06-27",
       "changefreq": "monthly",
       "priority": "0.7",
       "title": "Yod.ai: a multi-surface wisdom platform — Fieldnotes | THE SIGNAL",
@@ -853,7 +925,7 @@
     {
       "file": "fieldnotes/index.html",
       "url": "https://1commercesolutions.com/fieldnotes/",
-      "lastmod": "2026-06-21",
+      "lastmod": "2026-06-28",
       "changefreq": "weekly",
       "priority": "0.9",
       "title": "Fieldnotes — THE SIGNAL | A working notebook from 1Commerce LLC",
@@ -862,7 +934,7 @@
     {
       "file": "fieldnotes/mvp-in-a-week.html",
       "url": "https://1commercesolutions.com/fieldnotes/mvp-in-a-week.html",
-      "lastmod": "2026-06-20",
+      "lastmod": "2026-06-27",
       "changefreq": "monthly",
       "priority": "0.7",
       "title": "How to Ship an MVP in a Week Using AI Agents — Fieldnotes | THE SIGNAL",
@@ -871,16 +943,16 @@
     {
       "file": "fieldnotes/shopify-vs-custom.html",
       "url": "https://1commercesolutions.com/fieldnotes/shopify-vs-custom.html",
-      "lastmod": "2026-06-20",
+      "lastmod": "2026-06-27",
       "changefreq": "monthly",
       "priority": "0.7",
       "title": "Shopify vs. Custom Storefront: The Real Tradeoffs for a Solo Operator — Fieldnotes | THE SIGNAL",
-      "description": "After running both simultaneously, the honest answer is simpler than most comparisons admit — and it depends entirely on which phase of the business you"
+      "description": "After running both simultaneously, the honest answer is simpler than most comparisons admit — and it depends entirely on which phase of the business you're in."
     },
     {
       "file": "fieldnotes/solo-founder-stack-2026.html",
       "url": "https://1commercesolutions.com/fieldnotes/solo-founder-stack-2026.html",
-      "lastmod": "2026-06-20",
+      "lastmod": "2026-06-27",
       "changefreq": "monthly",
       "priority": "0.7",
       "title": "The Solo Founder Stack, 2026 — Fieldnotes | THE SIGNAL",
@@ -889,7 +961,7 @@
     {
       "file": "fieldnotes/trademark-name-taken.html",
       "url": "https://1commercesolutions.com/fieldnotes/trademark-name-taken.html",
-      "lastmod": "2026-06-20",
+      "lastmod": "2026-06-27",
       "changefreq": "monthly",
       "priority": "0.7",
       "title": "When Your Business Name Is Already Taken — Fieldnotes | THE SIGNAL",
@@ -898,16 +970,16 @@
     {
       "file": "fieldnotes/unifyone-mcp-endpoint.html",
       "url": "https://1commercesolutions.com/fieldnotes/unifyone-mcp-endpoint.html",
-      "lastmod": "2026-06-20",
+      "lastmod": "2026-06-27",
       "changefreq": "monthly",
       "priority": "0.7",
       "title": "UnifyOne's MCP Client and Universal Endpoint — Fieldnotes | THE SIGNAL",
-      "description": "What the Model Context Protocol actually means for commerce, how UnifyOne"
+      "description": "What the Model Context Protocol actually means for commerce, how UnifyOne's MCP client works, and why the universal endpoint changes what a store builder can be."
     },
     {
       "file": "index.html",
       "url": "https://1commercesolutions.com/",
-      "lastmod": "2026-06-22",
+      "lastmod": "2026-07-05",
       "changefreq": "weekly",
       "priority": "1.0",
       "title": "THE SIGNAL — Commerce Systems That Ship | 1Commerce LLC",
@@ -916,7 +988,7 @@
     {
       "file": "news/index.html",
       "url": "https://1commercesolutions.com/news/",
-      "lastmod": "2026-06-21",
+      "lastmod": "2026-06-28",
       "changefreq": "daily",
       "priority": "0.9",
       "title": "News Aggregator — THE SIGNAL",
@@ -925,7 +997,7 @@
     {
       "file": "profile/index.html",
       "url": "https://1commercesolutions.com/profile/",
-      "lastmod": "2026-06-22",
+      "lastmod": "2026-06-28",
       "changefreq": "monthly",
       "priority": "0.6",
       "title": "Profile — THE SIGNAL | 1Commerce LLC",
@@ -934,7 +1006,7 @@
     {
       "file": "reel-engine/index.html",
       "url": "https://1commercesolutions.com/reel-engine/",
-      "lastmod": "2026-06-21",
+      "lastmod": "2026-07-03",
       "changefreq": "monthly",
       "priority": "0.6",
       "title": "Noir Reel Engine — THE SIGNAL | Reproducible Cinematic Reel System",
@@ -943,7 +1015,7 @@
     {
       "file": "videos/index.html",
       "url": "https://1commercesolutions.com/videos/",
-      "lastmod": "2026-06-21",
+      "lastmod": "2026-06-28",
       "changefreq": "monthly",
       "priority": "0.6",
       "title": "Video Library — THE SIGNAL | 1Commerce LLC",
