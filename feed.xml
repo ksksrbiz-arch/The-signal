@@ -7,9 +7,16 @@
     <language>en-us</language>
     <copyright>© 2026 1Commerce LLC</copyright>
     <managingEditor>skdev@1commerce.online (Keith)</managingEditor>
-    <lastBuildDate>Mon, 01 Jun 2026 12:00:00 +0000</lastBuildDate>
+    <lastBuildDate>Sat, 04 Jul 2026 12:00:00 +0000</lastBuildDate>
     <atom:link href="https://1commercesolutions.com/feed.xml" rel="self" type="application/rss+xml" />
     <image><url>https://1commercesolutions.com/og-image.png</url><title>THE SIGNAL</title><link>https://1commercesolutions.com/archive/</link></image>
+    <item>
+      <title>Built For The Machines</title>
+      <link>https://1commercesolutions.com/archive/019.html</link>
+      <guid isPermaLink="true">https://1commercesolutions.com/archive/019.html</guid>
+      <pubDate>Sat, 04 Jul 2026 12:00:00 +0000</pubDate>
+      <description>Six GEO/SEO commits in seven days. Five PRs merged. Forty-four daily briefs patched with schema. The crawlers that decide what gets cited don't care about glamour — they care about structured, current, correctly-tagged truth.</description>
+    </item>
     <item>
       <title>Cathedral Principle in Action</title>
       <link>https://1commercesolutions.com/archive/018.html</link>
