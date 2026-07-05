@@ -15,14 +15,14 @@
       <link>https://1commercesolutions.com/archive/020.html</link>
       <guid isPermaLink="true">https://1commercesolutions.com/archive/020.html</guid>
       <pubDate>Sun, 05 Jul 2026 12:00:00 +0000</pubDate>
-      <description>Forty-six commits. Twelve merged pull requests. Two hundred forty-nine files touched. The weekly dispatch went dark for four weeks, June 1 through June 28 — the build log never did.</description>
+      <description>Forty-six commits. Twelve merged PRs. Two hundred forty-nine files touched. The dispatch went quiet for four weeks. The build log never did.</description>
     </item>
     <item>
       <title>Built For The Machines</title>
       <link>https://1commercesolutions.com/archive/019.html</link>
       <guid isPermaLink="true">https://1commercesolutions.com/archive/019.html</guid>
       <pubDate>Sat, 04 Jul 2026 12:00:00 +0000</pubDate>
-      <description>Six GEO/SEO commits in seven days. Five PRs merged. Forty-four daily briefs patched with schema. The crawlers that decide what gets cited don't care about glamour — they care about structured, current, correctly-tagged truth.</description>
+      <description>Six GEO/SEO commits in seven days. Five PRs merged. Forty-four daily briefs patched with schema. GEO isn&apos;t bolted onto SEO anymore — it&apos;s the whole game.</description>
     </item>
     <item>
       <title>Cathedral Principle in Action</title>
@@ -219,20 +219,6 @@
       <guid isPermaLink="true">https://1commercesolutions.com/fieldnotes/github-terp-forge.html</guid>
       <pubDate>Wed, 06 May 2026 12:00:00 +0000</pubDate>
       <description>A Next.js and Tailwind brand site for TerpForge, blending terpene science, lifestyle commerce, and static deployment.</description>
-    </item>
-    <item>
-      <title>The-signal: the publishing surface you are reading now</title>
-      <link>https://1commercesolutions.com/fieldnotes/github-the-signal.html</link>
-      <guid isPermaLink="true">https://1commercesolutions.com/fieldnotes/github-the-signal.html</guid>
-      <pubDate>Wed, 06 May 2026 12:00:00 +0000</pubDate>
-      <description>The Signal is the public static publishing layer for 1Commerce dispatches, fieldnotes, archives, news, builds, and videos.</description>
-    </item>
-    <item>
-      <title>Tobe-: a Next.js app seed with database and component scaffolding</title>
-      <link>https://1commercesolutions.com/fieldnotes/github-tobe.html</link>
-      <guid isPermaLink="true">https://1commercesolutions.com/fieldnotes/github-tobe.html</guid>
-      <pubDate>Wed, 06 May 2026 12:00:00 +0000</pubDate>
-      <description>A TypeScript Next.js repository that began as an AI Studio app and now includes app, component, database, and library folders.</description>
     </item>
   </channel>
 </rss>

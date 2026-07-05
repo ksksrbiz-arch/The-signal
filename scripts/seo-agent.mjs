@@ -51,10 +51,10 @@ function urlFor(file) {
 function metadata(html) {
   return {
     title: html.match(/<title>([^<]+)<\/title>/i)?.[1]?.trim() || '',
-    description: html.match(/<meta\s+name=["']description["']\s+content=["']([^"']+)["']/i)?.[1]?.trim() || '',
-    canonical: html.match(/<link\s+rel=["']canonical["']\s+href=["']([^"']+)["']/i)?.[1]?.trim() || '',
-    ogTitle: html.match(/<meta\s+property=["']og:title["']\s+content=["']([^"']+)["']/i)?.[1]?.trim() || '',
-    ogDescription: html.match(/<meta\s+property=["']og:description["']\s+content=["']([^"']+)["']/i)?.[1]?.trim() || '',
+    description: html.match(/<meta\s+name=["']description["']\s+content=(["'])(.*?)\1/i)?.[2]?.trim() || '',
+    canonical: html.match(/<link\s+rel=["']canonical["']\s+href=(["'])(.*?)\1/i)?.[2]?.trim() || '',
+    ogTitle: html.match(/<meta\s+property=["']og:title["']\s+content=(["'])(.*?)\1/i)?.[2]?.trim() || '',
+    ogDescription: html.match(/<meta\s+property=["']og:description["']\s+content=(["'])(.*?)\1/i)?.[2]?.trim() || '',
     headline: html.match(/"headline"\s*:\s*"([^"]+)"/i)?.[1]?.trim() || '',
     datePublished: html.match(/"datePublished"\s*:\s*"(\d{4}-\d{2}-\d{2})/i)?.[1] || '',
   };
