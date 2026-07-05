@@ -1,0 +1,644 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="dark">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>THE SIGNAL — Weekly Transmission №020 | The Signal Went Quiet</title>
+<meta name="description" content="Forty-six commits. Twelve merged pull requests. Two hundred forty-nine files touched. The weekly dispatch went dark for four weeks — the build log never did. Catching the archive up on June 1–28, 2026.">
+<meta property="og:title" content="THE SIGNAL №020 — The Signal Went Quiet">
+<meta property="og:description" content="Forty-six commits. Twelve merged PRs. Two hundred forty-nine files touched. The dispatch went quiet for four weeks. The build log never did.">
+<meta property="og:type" content="article">
+<meta property="og:image" content="https://1commercesolutions.com/og-image.png">
+<link rel="prev" href="https://1commercesolutions.com/archive/019.html">
+<link rel="canonical" href="https://1commercesolutions.com/archive/020.html">
+<meta property="og:url" content="https://1commercesolutions.com/archive/020.html">
+<meta name="robots" content="index, follow">
+<meta name="author" content="Keith">
+<meta name="theme-color" content="#E8B86A">
+<link rel="icon" type="image/svg+xml" href="/assets/brand/favicon.svg">
+<link rel="icon" type="image/png" sizes="32x32" href="/assets/brand/favicon-32.png">
+<link rel="apple-touch-icon" sizes="180x180" href="/assets/brand/apple-touch-icon.png">
+<link rel="manifest" href="/manifest.json">
+<link rel="alternate" type="application/rss+xml" title="THE SIGNAL — Weekly Dispatches" href="/feed.xml">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+<meta name="apple-mobile-web-app-title" content="THE SIGNAL">
+<meta property="og:site_name" content="THE SIGNAL">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta property="og:image:alt" content="THE SIGNAL Issue 020 — The Signal Went Quiet">
+<meta property="og:locale" content="en_US">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="THE SIGNAL №020 — The Signal Went Quiet">
+<meta name="twitter:description" content="Forty-six commits. Twelve merged PRs. Two hundred forty-nine files touched. Four weeks of silence, none of it idle.">
+<meta name="twitter:image" content="https://1commercesolutions.com/og-image.png">
+<meta name="twitter:image:alt" content="THE SIGNAL Issue 020 — The Signal Went Quiet">
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "NewsArticle",
+  "headline": "The Signal Went Quiet",
+  "description": "Forty-six commits. Twelve merged pull requests. Two hundred forty-nine files touched. The weekly dispatch went dark for four weeks, June 1 through June 28, 2026 — the build log never did. A retroactive catch-up on the shipped work: Core Web Vitals, accessibility, the RSS feed, fieldnotes search, and the GEO groundwork that set up dispatch №019.",
+  "datePublished": "2026-07-05",
+  "dateModified": "2026-07-05",
+  "articleSection": "Weekly Dispatch",
+  "inLanguage": "en-US",
+  "author": {"@type": "Person", "name": "Keith"},
+  "publisher": {"@type": "Organization", "name": "1Commerce LLC", "url": "https://1commercesolutions.com"},
+  "mainEntityOfPage": "https://1commercesolutions.com/archive/020.html",
+  "image": "https://1commercesolutions.com/og-image.png",
+  "isPartOf": {"@type": "Blog", "name": "THE SIGNAL", "url": "https://1commercesolutions.com/archive/"}
+}
+</script>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  "itemListElement": [
+    {"@type": "ListItem", "position": 1, "name": "Home", "item": "https://1commercesolutions.com/"},
+    {"@type": "ListItem", "position": 2, "name": "Archive", "item": "https://1commercesolutions.com/archive/"},
+    {"@type": "ListItem", "position": 3, "name": "Issue 020"}
+  ]
+}
+</script>
+
+<!-- GEO Targeting -->
+<meta name="geo.region" content="US-OR">
+<meta name="geo.placename" content="Canby, Oregon">
+<meta name="geo.position" content="45.2640;-122.6918">
+<meta name="ICBM" content="45.2640, -122.6918">
+<meta name="keywords" content="THE SIGNAL №020, Core Web Vitals, AVIF WebP, accessibility audit, RSS feed, fieldnotes search, llms.txt, GEO, solo founder, 1Commerce LLC, build in public, commerce infrastructure, Canby Oregon, Pacific Northwest, Oregon e-commerce">
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,600;9..144,700&family=IBM+Plex+Sans:wght@400;500;600&family=JetBrains+Mono:wght@300;400;500&display=swap" rel="stylesheet">
+
+<link rel="stylesheet" href="../base.css?v=20260621a">
+<link rel="stylesheet" href="../style.css?v=20260621a">
+
+<style>
+/* Hero backdrop */
+.hero { position: relative; overflow: hidden; }
+.hero-inner { position: relative; z-index: 1; }
+
+/* Open loops list (local — not part of the shared stylesheet) */
+.loop-list {
+  list-style: none;
+  margin: 1.5rem 0;
+  padding: 0;
+}
+.loop-list li {
+  display: flex;
+  align-items: flex-start;
+  gap: 12px;
+  padding: 12px 0;
+  border-bottom: 1px solid rgba(255,255,255,0.06);
+  font-family: 'IBM Plex Sans', sans-serif;
+  font-size: 0.87rem;
+  color: rgba(255,255,255,0.65);
+  line-height: 1.5;
+}
+.loop-list li:last-child { border-bottom: none; }
+.loop-marker {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 9px;
+  letter-spacing: 0.1em;
+  color: #E8B86A;
+  text-transform: uppercase;
+  white-space: nowrap;
+  padding-top: 2px;
+  min-width: 90px;
+}
+</style>
+</head>
+<body>
+  <a href="#main" class="skip-link">Skip to main content</a>
+
+  <div class="grain" aria-hidden="true"></div>
+
+  <div class="mobile-nav" aria-label="Mobile navigation">
+    <button class="mobile-nav-close" aria-label="Close menu">
+      <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 6L6 18M6 6l12 12"/></svg>
+    </button>
+    <a href="../">Home</a>
+    <a href="./">Archive</a>
+    <a href="../fieldnotes/">Fieldnotes</a>
+    <a href="../builds/">Verified Builds</a>
+    <a href="../news/">News Aggregator</a>
+    <a href="../videos/">Videos</a>
+    <a href="../reel-engine/">Reel Engine</a>
+    <a href="../about/">About</a>
+    <a href="../#subscribe">Subscribe</a>
+  </div>
+
+  <header class="site-header">
+    <div class="header-inner">
+      <div class="header-left">
+        <a href="../">
+          <svg class="logo" viewBox="0 0 32 32" width="28" height="28" fill="none" aria-label="The Signal logo">
+            <rect x="2" y="2" width="28" height="28" rx="5" stroke="currentColor" stroke-width="1.25" opacity="0.35"/>
+            <line x1="16" y1="5" x2="16" y2="27" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/>
+            <line x1="9" y1="8" x2="9" y2="24" stroke="currentColor" stroke-width="1.15" stroke-linecap="round" opacity="0.58"/>
+            <line x1="23" y1="8" x2="23" y2="24" stroke="currentColor" stroke-width="1.15" stroke-linecap="round" opacity="0.58"/>
+            <circle cx="16" cy="16" r="4.2" stroke="currentColor" stroke-width="1.5" fill="none"/>
+            <circle cx="16" cy="16" r="1.25" fill="currentColor"/>
+            <line x1="4.75" y1="16" x2="11.2" y2="16" stroke="currentColor" stroke-width="0.9" stroke-linecap="round" opacity="0.5"/>
+            <line x1="20.8" y1="16" x2="27.25" y2="16" stroke="currentColor" stroke-width="0.9" stroke-linecap="round" opacity="0.5"/>
+          </svg>
+          <span class="header-title">THE SIGNAL</span>
+        </a>
+      </div>
+      <div class="header-right">
+        <nav>
+          <ul class="nav-links">
+            <li><a href="../">Home</a></li>
+            <li><a href="./" class="active" aria-current="page">Archive</a></li>
+            <li><a href="../fieldnotes/">Fieldnotes</a></li>
+            <li><a href="../builds/">Verified Builds</a></li>
+            <li><a href="../news/">News Aggregator</a></li>
+            <li><a href="../videos/">Videos</a></li>
+            <li><a href="../reel-engine/">Reel Engine</a></li>
+            <li><a href="../about/">About</a></li>
+            <li><a href="../#subscribe">Subscribe</a></li>
+          </ul>
+        </nav>
+        <button class="nav-toggle" aria-label="Open menu">
+          <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 12h18M3 6h18M3 18h18"/></svg>
+        </button>
+        <button data-theme-toggle aria-label="Switch to light mode">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="5"/><path d="M12 1v2M12 21v2M4.22 4.22l1.42 1.42M18.36 18.36l1.42 1.42M1 12h2M21 12h2M4.22 19.78l1.42-1.42M18.36 5.64l1.42-1.42"/></svg>
+        </button>
+      </div>
+    </div>
+  </header>
+
+  <nav class="breadcrumb" aria-label="Breadcrumb">
+    <a href="../">Home</a>
+    <span class="sep">›</span>
+    <a href="./">Archive</a>
+    <span class="sep">›</span>
+    <span class="current">Week №020</span>
+  </nav>
+
+  <main id="main">
+
+    <!-- Hero -->
+    <section class="hero">
+      <div class="hero-inner">
+        <div class="hero-overline">
+          <span class="mono-label">◈ WEEKLY TRANSMISSION · RETROACTIVE ◈</span>
+        </div>
+        <h1 class="hero-title">
+          <span class="hero-title-line">The Signal</span>
+          <span class="hero-title-line accent">Went Quiet.</span>
+        </h1>
+        <div class="hero-meta">
+          <span class="mono-label">WEEK №20 · 2026</span>
+          <span class="mono-label dim">JUNE 1 – JUNE 28, 2026 · CATCH-UP</span>
+
+          <span class="mono-label dim">8 min read</span>
+        </div>
+        <p class="hero-quote">"Forty-six commits. Twelve merged pull requests. Two hundred forty-nine files touched. The dispatch went quiet for four weeks. The build log never did."</p>
+      </div>
+      <div class="hero-scanline" aria-hidden="true"></div>
+    </section>
+
+    <div class="dispatch-share-strip">
+      <span class="share-strip-label">SHARE THIS TRANSMISSION</span>
+      <div class="share-strip-buttons" data-share-strip></div>
+    </div>
+
+    <section class="status-bar">
+      <div class="status-inner">
+        <div class="status-item">
+          <span class="status-label">COMMITS SHIPPED</span>
+          <span class="status-value gold">46</span>
+          <span class="status-detail">across 4 silent weeks</span>
+        </div>
+        <div class="status-item">
+          <span class="status-label">PRS MERGED</span>
+          <span class="status-value">12</span>
+          <span class="status-detail">reviewed, checked, merged</span>
+        </div>
+        <div class="status-item">
+          <span class="status-label">FILES TOUCHED</span>
+          <span class="status-value gold">249</span>
+          <span class="status-detail">across the whole site</span>
+        </div>
+        <div class="status-item">
+          <span class="status-label">OPERATOR</span>
+          <span class="status-value gold">SOLO</span>
+          <span class="status-detail">Keith · 1Commerce LLC</span>
+        </div>
+        <div class="status-item">
+          <span class="status-label">METHODOLOGY</span>
+          <span class="status-value">C.F.</span>
+          <span class="status-detail">Cathedral Framework</span>
+        </div>
+        <div class="status-item">
+          <span class="status-label">DISPATCHES</span>
+          <span class="status-value gold">20</span>
+          <span class="status-detail">shipped</span>
+        </div>
+      </div>
+    </section>
+
+    <!-- Section I: The Gap, Named -->
+    <article class="dispatch" id="the-gap">
+      <div class="dispatch-inner">
+        <div class="section-marker">
+          <span class="section-numeral">I</span>
+          <span class="section-label">THE GAP, NAMED</span>
+        </div>
+        <div class="dispatch-header">
+          <span class="mono-label accent-text">// TRANSMISSION OPEN · RETROACTIVE</span>
+        </div>
+        <div class="dispatch-body">
+
+          <p class="lead-text">Transmission №018 shipped June 1. Transmission №019 shipped July 4. Weekly cadence says four dispatches should sit between them. None do. This is the honest fix: not a rewrite of history, but the record of what actually happened in the silence.</p>
+
+          <p>Zero placeholders cuts both ways. It's easy to apply to features — don't ship what isn't real. It's harder to apply to the newsletter itself: don't pretend a gap didn't happen, and don't let the archive imply nothing shipped just because nothing got written about it. Forty-six commits landed in those four weeks. Twelve pull requests were reviewed and merged. Two hundred forty-nine files changed. Twenty-one of those forty-six commits were the automated daily-content and SEO-maintenance bots, running on schedule the entire time — the machine cadence never broke, only the human one did. The other twenty-five were real engineering: Core Web Vitals work, an accessibility audit, a real RSS feed, working fieldnotes search, and the GEO groundwork that dispatch №019 later built on. This dispatch is where that work finally gets its record.</p>
+
+          <div class="metric-row">
+            <div class="metric-cell">
+              <span class="metric-num">46</span>
+              <span class="metric-lbl">Commits shipped</span>
+            </div>
+            <div class="metric-cell">
+              <span class="metric-num">12</span>
+              <span class="metric-lbl">Pull requests merged</span>
+            </div>
+            <div class="metric-cell">
+              <span class="metric-num">249</span>
+              <span class="metric-lbl">Files touched</span>
+            </div>
+          </div>
+
+        </div>
+      </div>
+    </article>
+
+    <section class="quote-block">
+      <div class="quote-inner">
+        <div class="quote-mark" aria-hidden="true">//</div>
+        <blockquote>
+          <p>A dispatch that goes quiet for a month and pretends otherwise isn't proof-first — it's marketing. The record has to include the weeks nobody wrote about.</p>
+        </blockquote>
+        <cite class="mono-label dim">— INTERNAL LOG · JUL 2026</cite>
+      </div>
+    </section>
+
+    <!-- Section II: Performance & Core Web Vitals -->
+    <article class="dispatch" id="performance">
+      <div class="dispatch-inner">
+        <div class="section-marker">
+          <span class="section-numeral">II</span>
+          <span class="section-label">PERFORMANCE &amp; CORE WEB VITALS</span>
+        </div>
+        <div class="dispatch-header">
+          <span class="mono-label accent-text">// PERFORMANCE LOG · WEEK OF JUN 19–21</span>
+        </div>
+        <div class="dispatch-body">
+
+          <p>One dense three-day window carried most of the site's real performance work this cycle — six commits across two merged PRs, all aimed at the metrics Lighthouse and real users both feel.</p>
+
+          <div class="build-log-grid">
+            <div class="build-log-card">
+              <div class="build-log-card-label">◈ IMAGES · PR #33</div>
+              <div class="build-log-card-title">AVIF + WebP for 18 Infographics</div>
+              <div class="build-log-card-desc">27 &lt;img&gt; references across 7 pages wrapped in &lt;picture&gt; with AVIF → WebP → PNG fallback. Payload down ~96% (45MB PNG → 2–3MB modern formats); PNGs kept as universal fallback.</div>
+              <div class="build-log-card-status resolved">Merged · PR #33</div>
+            </div>
+            <div class="build-log-card">
+              <div class="build-log-card-label">◈ VIDEO · PR #34</div>
+              <div class="build-log-card-title">YouTube Click-to-Load Facade</div>
+              <div class="build-log-card-desc">4 iframes (home, builds, videos, about) replaced with a poster + play-button facade. The ~1MB+ player now loads only on click — real wins for Performance score and main-thread work.</div>
+              <div class="build-log-card-status resolved">Merged · PR #34</div>
+            </div>
+            <div class="build-log-card">
+              <div class="build-log-card-label">◈ SECURITY · SAME PR</div>
+              <div class="build-log-card-title">CodeQL Alert Resolved — Facade Hardened</div>
+              <div class="build-log-card-desc">CodeQL flagged the facade's data-yt-id attribute flowing unvalidated into an iframe src. Fixed same day: strict ^[A-Za-z0-9_-]{11}$ format check + encodeURIComponent before use.</div>
+              <div class="build-log-card-status resolved">High-Severity Alert Closed</div>
+            </div>
+            <div class="build-log-card">
+              <div class="build-log-card-label">◈ LCP · GUARD</div>
+              <div class="build-log-card-title">Image Fade-In, Made LCP-Safe</div>
+              <div class="build-log-card-desc">A new fade-in micro-interaction started every image at opacity:0 — including eager, high-priority hero images. Restricted to lazy below-the-fold imagery same day once the LCP regression was caught.</div>
+              <div class="build-log-card-status resolved">Regression Caught &amp; Fixed</div>
+            </div>
+            <div class="build-log-card">
+              <div class="build-log-card-label">◈ HOMEPAGE · CANVAS</div>
+              <div class="build-log-card-title">Hero Particle Canvas — Visibility-Gated</div>
+              <div class="build-log-card-desc">The signal canvas ran requestAnimationFrame nonstop, even scrolled past or backgrounded. Now gated by IntersectionObserver + visibilitychange — animates only when actually on-screen.</div>
+              <div class="build-log-card-status resolved">Live</div>
+            </div>
+            <div class="build-log-card">
+              <div class="build-log-card-label">◈ MEDIA · INTEGRITY</div>
+              <div class="build-log-card-title">Broken Archive Media — Repointed</div>
+              <div class="build-log-card-desc">Three broken references to a missing hero image (archive/018.html + 2 in archive/index.html) repointed to real, on-brand assets. All 248 local image references now resolve.</div>
+              <div class="build-log-card-status resolved">248 / 248 Resolve</div>
+            </div>
+          </div>
+
+        </div>
+      </div>
+    </article>
+
+    <!-- Section III: Accessibility & Reader Ergonomics -->
+    <article class="dispatch" id="accessibility">
+      <div class="dispatch-inner">
+        <div class="section-marker">
+          <span class="section-numeral">III</span>
+          <span class="section-label">ACCESSIBILITY &amp; READER ERGONOMICS</span>
+        </div>
+        <div class="dispatch-header">
+          <span class="mono-label accent-text">// ERGONOMICS LOG · WEEK OF JUN 20–21</span>
+        </div>
+        <div class="dispatch-body">
+
+          <p>The same window that carried the performance work also carried a full accessibility audit and the two features that made the archive actually usable as a blog: a real feed, and search that works.</p>
+
+          <div class="build-log-grid">
+            <div class="build-log-card">
+              <div class="build-log-card-label">◈ A11Y · AUDIT</div>
+              <div class="build-log-card-title">Labels, Live Regions, aria-current</div>
+              <div class="build-log-card-desc">Form labels properly associated across news filters and all six reel-engine selects. Generator output marked as a live region. aria-current="page" added to the active nav link across 47 pages.</div>
+              <div class="build-log-card-status resolved">Verified Site-Wide</div>
+            </div>
+            <div class="build-log-card">
+              <div class="build-log-card-label">◈ RSS · LAUNCHED</div>
+              <div class="build-log-card-title">feed.xml — Then Made Self-Maintaining</div>
+              <div class="build-log-card-desc">A real RSS 2.0 feed shipped with per-item guids and pubDates, advertised on 59 pages. One day later the SEO agent was taught to regenerate it automatically from headline + datePublished on every scheduled run.</div>
+              <div class="build-log-card-status resolved">Live · Self-Updating</div>
+            </div>
+            <div class="build-log-card">
+              <div class="build-log-card-label">◈ DISPATCHES · UX</div>
+              <div class="build-log-card-title">Reading Time + Prev/Next Nav</div>
+              <div class="build-log-card-desc">Archive/013–018 backfilled with per-post reading time (~225 wpm) and prev/next dispatch navigation, plus rel="prev"/"next" link hints in &lt;head&gt;.</div>
+              <div class="build-log-card-status resolved">Backfilled · 013–018</div>
+            </div>
+            <div class="build-log-card">
+              <div class="build-log-card-label">◈ FIELDNOTES · PR #38</div>
+              <div class="build-log-card-title">Client-Side Search — Finally Real</div>
+              <div class="build-log-card-desc">The WebSite schema had advertised a SearchAction at /fieldnotes/?q=… with nothing behind it. Now a dependency-free live filter across 41 entries by title, tag, and dek, reading ?q= on load.</div>
+              <div class="build-log-card-status resolved">Merged · PR #38</div>
+            </div>
+          </div>
+
+        </div>
+      </div>
+    </article>
+
+    <!-- Section IV: GEO Groundwork — Before GEO Had a Name -->
+    <article class="dispatch" id="geo-groundwork">
+      <div class="dispatch-inner">
+        <div class="section-marker">
+          <span class="section-numeral">IV</span>
+          <span class="section-label">GEO GROUNDWORK — BEFORE GEO HAD A NAME</span>
+        </div>
+        <div class="dispatch-header">
+          <span class="mono-label accent-text">// AUDIT LOG · JUN 13 – JUN 20</span>
+        </div>
+        <div class="dispatch-body">
+
+          <p>Dispatch №019 told the story of six GEO/SEO commits in the week of June 28. What it didn't say: those commits were the fifth act. The groundwork — the schema types, the crawler allowances, the machine-readable overview file — went in during these silent weeks, one audit at a time, before "built for the machines" was ever a headline.</p>
+
+          <div class="build-log-grid">
+            <div class="build-log-card">
+              <div class="build-log-card-label">◈ SCHEMA · LOCAL</div>
+              <div class="build-log-card-title">LocalBusiness + ProfessionalService</div>
+              <div class="build-log-card-desc">GEO meta tags (region, placename, position, ICBM) plus a full LocalBusiness/ProfessionalService block with GeoCoordinates, PostalAddress, and a five-item service catalog.</div>
+              <div class="build-log-card-status resolved">Live</div>
+            </div>
+            <div class="build-log-card">
+              <div class="build-log-card-label">◈ SCHEMA · SGE</div>
+              <div class="build-log-card-title">Speakable + SearchAction</div>
+              <div class="build-log-card-desc">WebPage speakable cssSelector for AI-powered search citation (Perplexity, ChatGPT, Google SGE), plus a WebSite SearchAction enabling a Sitelinks search box.</div>
+              <div class="build-log-card-status resolved">Live</div>
+            </div>
+            <div class="build-log-card">
+              <div class="build-log-card-label">◈ AI CRAWLERS</div>
+              <div class="build-log-card-title">llms.txt + Expanded Allowlist</div>
+              <div class="build-log-card-desc">/llms.txt shipped as a structured AI-engine overview. robots.txt expanded with Meta-ExternalAgent, Bytespider, cohere-ai, FacebookBot, ia_archiver. Schema @id added so Google's Knowledge Graph can link entities definitively.</div>
+              <div class="build-log-card-status resolved">Live</div>
+            </div>
+            <div class="build-log-card">
+              <div class="build-log-card-label">◈ LIGHTHOUSE · CAUGHT</div>
+              <div class="build-log-card-title">SEO Regression — Same-Day Fix</div>
+              <div class="build-log-card-desc">A non-standard "Llms-txt:" directive in robots.txt tripped Lighthouse's validator, dropping SEO 8 points on the preview. Pulled the directive same day — /llms.txt stays discoverable at its standard path regardless.</div>
+              <div class="build-log-card-status resolved">Caught Pre-Merge</div>
+            </div>
+          </div>
+
+        </div>
+      </div>
+    </article>
+
+    <!-- Section V: Brand & Housekeeping -->
+    <article class="dispatch" id="brand-housekeeping">
+      <div class="dispatch-inner">
+        <div class="section-marker">
+          <span class="section-numeral">V</span>
+          <span class="section-label">BRAND, SOCIAL &amp; HOUSEKEEPING</span>
+        </div>
+        <div class="dispatch-header">
+          <span class="mono-label accent-text">// BRAND LOG · JUN 16 – JUN 22</span>
+        </div>
+        <div class="dispatch-body">
+
+          <p>The smaller items, still real, still shipped: the parts of proof-first that are about keeping the record honest rather than adding a feature.</p>
+
+          <div class="build-log-grid" style="grid-template-columns: 1fr 1fr 1fr;">
+            <div class="build-log-card">
+              <div class="build-log-card-label">◈ SOCIAL</div>
+              <div class="build-log-card-title">Instagram in the Footer</div>
+              <div class="build-log-card-desc">@1commerce_llc added to the footer bottom bar and to the Organization schema's sameAs array, so search engines associate the account with the brand.</div>
+              <div class="build-log-card-status resolved">Live</div>
+            </div>
+            <div class="build-log-card">
+              <div class="build-log-card-label">◈ SOCIAL</div>
+              <div class="build-log-card-title">Instagram Embed on About/Profile</div>
+              <div class="build-log-card-desc">Recent-post grid pulled through the RSS2JSON proxy, matching the dossier aesthetic with real loading and error states.</div>
+              <div class="build-log-card-status resolved">Live</div>
+            </div>
+            <div class="build-log-card">
+              <div class="build-log-card-label">◈ DOCS</div>
+              <div class="build-log-card-title">CLAUDE.md Rewritten to Match Reality</div>
+              <div class="build-log-card-desc">The AI-assistant guide had drifted from the actual site. Rewritten to describe what's really here — no orphaned instructions, no stale architecture.</div>
+              <div class="build-log-card-status resolved">Corrected</div>
+            </div>
+          </div>
+
+        </div>
+      </div>
+    </article>
+
+    <!-- Section VI: Open Loops -->
+    <article class="dispatch" id="open-loops">
+      <div class="dispatch-inner">
+        <div class="section-marker">
+          <span class="section-numeral">VI</span>
+          <span class="section-label">OPEN LOOPS — ENTERING WEEK OF JULY 6</span>
+        </div>
+        <div class="dispatch-header">
+          <span class="mono-label accent-text">// STATUS LOG · FORWARD SCOPE</span>
+        </div>
+        <div class="dispatch-body">
+
+          <ul class="loop-list">
+            <li>
+              <span class="loop-marker">CADENCE</span>
+              Confirm weekly dispatch discipline holds going forward; this issue exists specifically so the next gap can't hide.
+            </li>
+            <li>
+              <span class="loop-marker">RSS FEED</span>
+              Verify the self-maintaining feed.xml generation picks up both №019 and №020 correctly on the next scheduled agent run.
+            </li>
+            <li>
+              <span class="loop-marker">FIELDNOTES SEARCH</span>
+              Consider surfacing the same client-side search pattern on the archive and daily/ listings.
+            </li>
+            <li>
+              <span class="loop-marker">PERFORMANCE</span>
+              Re-run Lighthouse across all touched pages now that AVIF/WebP, the YouTube facade, and canvas gating have had a full cycle in production.
+            </li>
+            <li>
+              <span class="loop-marker">GEO</span>
+              Extend LocalBusiness/ProfessionalService schema to the remaining section pages that don't yet carry it.
+            </li>
+          </ul>
+
+        </div>
+      </div>
+    </article>
+
+    <section class="quote-block closing">
+      <div class="quote-inner">
+        <div class="quote-mark" aria-hidden="true">//</div>
+        <blockquote>
+          <p>Forty-six commits. Twelve merged pull requests. Two hundred forty-nine files touched. Four weeks of silence on the newsletter, and not one of them idle.</p>
+        </blockquote>
+        <cite class="mono-label dim">— THE SIGNAL · TRANSMISSION №020</cite>
+      </div>
+    </section>
+
+    <section class="entity-card">
+      <div class="entity-inner">
+        <div class="entity-row">
+          <span class="entity-key">ENTITY</span>
+          <span class="entity-val">1COMMERCE LLC</span>
+        </div>
+        <div class="entity-row">
+          <span class="entity-key">PHASE</span>
+          <span class="entity-val gold-text">SYSTEMS → SCALE</span>
+        </div>
+        <div class="entity-row">
+          <span class="entity-key">LOCATION</span>
+          <span class="entity-val">CANBY, OR</span>
+        </div>
+        <div class="entity-row">
+          <span class="entity-key">STACK</span>
+          <span class="entity-val">NETLIFY · GITHUB ACTIONS · SCHEMA.ORG · NODE</span>
+        </div>
+        <div class="entity-row">
+          <span class="entity-key">STATUS</span>
+          <span class="entity-val gold-text">BUILDING IN PUBLIC</span>
+        </div>
+      </div>
+    </section>
+
+    <button type="button" class="tweet-card" onclick="window.open('https://twitter.com/intent/tweet?text=%22Forty-six%20commits.%20Twelve%20merged%20PRs.%20The%20dispatch%20went%20quiet%20for%20four%20weeks.%20The%20build%20log%20never%20did.%22%20%E2%80%94%20The%20Signal%20%E2%80%94%20Week%20020&url=https%3A%2F%2F1commercesolutions.com%2Farchive%2F020.html','_blank')" aria-label="Share on X">
+      <p class="tweet-card-quote">"Forty-six commits. Twelve merged pull requests. Two hundred forty-nine files touched. The dispatch went quiet for four weeks. The build log never did."</p>
+      <div class="tweet-card-footer">
+        <span class="tweet-card-attr">— The Signal — Week 020</span>
+        <span class="tweet-card-cta">𝕏 CLICK TO TWEET THIS</span>
+      </div>
+    </button>
+
+    <div class="reaction-bar">
+      <span class="reaction-bar-label">HOW DID THIS LAND?</span>
+      <div class="reaction-buttons">
+        <button class="reaction-btn" data-reaction="signal" aria-label="React: Signal"><span class="reaction-icon">◈</span><span class="reaction-name">SIGNAL</span><span class="reaction-count">0</span></button>
+        <button class="reaction-btn" data-reaction="cathedral" aria-label="React: Cathedral"><span class="reaction-icon">⬟</span><span class="reaction-name">CATHEDRAL</span><span class="reaction-count">0</span></button>
+        <button class="reaction-btn" data-reaction="filed" aria-label="React: Filed"><span class="reaction-icon">▣</span><span class="reaction-name">FILED</span><span class="reaction-count">0</span></button>
+        <button class="reaction-btn" data-reaction="noise" aria-label="React: Noise"><span class="reaction-icon">∅</span><span class="reaction-name">NOISE</span><span class="reaction-count">0</span></button>
+      </div>
+      <div class="reaction-share-strip">
+        <span class="share-strip-label">SHARE</span>
+        <div class="share-strip-buttons" data-share-strip></div>
+      </div>
+    </div>
+
+    <section class="subscribe-section" id="subscribe">
+      <h2>Receive The Signal</h2>
+      <p>One email per week. Structured dispatches from the front lines of building commerce infrastructure.</p>
+      <form class="subscribe-form" action="https://assets.mailerlite.com/jsonp/887036/forms/131950373498498498/subscribe" method="POST">
+        <input type="email" name="fields[email]" placeholder="your@email.com" required aria-label="Email address">
+        <button type="submit">Subscribe</button>
+      </form>
+    </section>
+
+
+    <nav class="dispatch-nav" aria-label="Dispatch navigation">
+      <a class="dispatch-nav-link dispatch-nav-prev" href="019.html" rel="prev">
+        <span class="dispatch-nav-dir">← Older dispatch</span>
+        <span class="dispatch-nav-title">Built For The Machines</span>
+      </a>
+      <span class="dispatch-nav-link dispatch-nav-link--placeholder" aria-hidden="true"></span>
+    </nav>
+  </main>
+
+  <footer class="site-footer">
+    <div class="footer-inner">
+      <div class="footer-col">
+        <h4>The Signal</h4>
+        <p>Systems atlas. Proof-first. No placeholders.</p>
+        <form class="subscribe-form" action="https://assets.mailerlite.com/jsonp/887036/forms/131950373498498498/subscribe" method="POST">
+          <input type="email" name="fields[email]" placeholder="your@email.com" required aria-label="Email address">
+          <button type="submit">Subscribe</button>
+        </form>
+      </div>
+      <div class="footer-col">
+        <h4>Navigate</h4>
+        <ul>
+          <li><a href="../">Home</a></li>
+          <li><a href="./">Archive</a></li>
+          <li><a href="../fieldnotes/">Fieldnotes</a></li>
+          <li><a href="../builds/">Verified Builds</a></li>
+          <li><a href="../news/">News Aggregator</a></li>
+          <li><a href="../videos/">Videos</a></li>
+          <li><a href="../reel-engine/">Reel Engine</a></li>
+          <li><a href="../about/">About</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <h4>Systems</h4>
+        <ul>
+          <li><a href="https://1commerce.online/" target="_blank" rel="noopener noreferrer">UnifyOne</a></li>
+          <li><a href="https://1commercesolutions.com/news/" target="_blank" rel="noopener noreferrer">News Aggregator</a></li>
+          <li><a href="https://github.com/ksksrbiz-arch" target="_blank" rel="noopener noreferrer">GitHub Org</a></li>
+          <li><a href="https://github.com/ksksrbiz-arch/The-Architecture" target="_blank" rel="noopener noreferrer">Architecture Index</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <h4>Contact</h4>
+        <p class="text-muted text-sm mb-3">Direct line to Keith for projects, consulting, or collaboration.</p>
+        <a href="mailto:skdev@1commerce.online" class="contact-email">skdev@1commerce.online</a>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <div class="footer-bottom-left">
+        <span class="mono-label">© 2026 1COMMERCE LLC · CANBY, OREGON</span>
+        <span class="mono-label">Systems. Proof. Precision.</span>
+        <span class="mono-label" style="opacity: 0.35; display: block; margin-top: 8px;">This site uses one cookie (theme preference). No tracking. No analytics.</span>
+      </div>
+      <a href="https://app.netlify.com/sites/signal01/deploys" target="_blank" rel="noopener noreferrer" class="netlify-badge" aria-label="Netlify deployment status">
+        <img src="https://api.netlify.com/api/v1/badges/31c4764b-f9c4-4531-93ca-b367db629132/deploy-status" alt="Netlify Status" width="114" height="20" loading="lazy" decoding="async" />
+      </a>
+    </div>
+  </footer>
+
+  <script src="../app.js" defer></script>
+</body>
+</html>

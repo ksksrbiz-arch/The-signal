@@ -7,9 +7,16 @@
     <language>en-us</language>
     <copyright>© 2026 1Commerce LLC</copyright>
     <managingEditor>skdev@1commerce.online (Keith)</managingEditor>
-    <lastBuildDate>Sat, 04 Jul 2026 12:00:00 +0000</lastBuildDate>
+    <lastBuildDate>Sun, 05 Jul 2026 12:00:00 +0000</lastBuildDate>
     <atom:link href="https://1commercesolutions.com/feed.xml" rel="self" type="application/rss+xml" />
     <image><url>https://1commercesolutions.com/og-image.png</url><title>THE SIGNAL</title><link>https://1commercesolutions.com/archive/</link></image>
+    <item>
+      <title>The Signal Went Quiet</title>
+      <link>https://1commercesolutions.com/archive/020.html</link>
+      <guid isPermaLink="true">https://1commercesolutions.com/archive/020.html</guid>
+      <pubDate>Sun, 05 Jul 2026 12:00:00 +0000</pubDate>
+      <description>Forty-six commits. Twelve merged pull requests. Two hundred forty-nine files touched. The weekly dispatch went dark for four weeks, June 1 through June 28 — the build log never did.</description>
+    </item>
     <item>
       <title>Built For The Machines</title>
       <link>https://1commercesolutions.com/archive/019.html</link>
