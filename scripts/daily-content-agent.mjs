@@ -163,6 +163,14 @@ function humanDate(date) {
   });
 }
 
+function humanDateShort(date) {
+  return new Date(`${date}T00:00:00Z`).toLocaleDateString('en-US', {
+    month: 'short',
+    day: 'numeric',
+    timeZone: 'UTC',
+  });
+}
+
 function readingMinutes(brief) {
   const body = [
     brief.title,
@@ -320,6 +328,7 @@ function articleHtml(brief, date) {
   const safeKeyword = escapeHtml(brief.keyword);
   const safeThesis = escapeHtml(brief.thesis);
   const safeEditorialNote = escapeHtml(brief.editorialNote);
+  const safeDateShort = escapeHtml(humanDateShort(date));
   const minutes = readingMinutes(brief);
   const schema = safeJsonLd({
     '@context': 'https://schema.org',
@@ -350,7 +359,7 @@ function articleHtml(brief, date) {
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <meta name="robots" content="index, follow">
-<title>${safeTitle} | THE SIGNAL</title>
+<title>${safeTitle} — ${safeDateShort} | THE SIGNAL</title>
 <meta name="description" content="${safeDescription}">
 <meta name="keywords" content="${safeKeyword}, THE SIGNAL, 1Commerce LLC, commerce systems, AI agents">
 <link rel="canonical" href="${url}">
