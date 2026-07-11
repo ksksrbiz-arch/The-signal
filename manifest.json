@@ -29,6 +29,44 @@
       "purpose": "maskable"
     }
   ],
+  "shortcuts": [
+    {
+      "name": "Archive",
+      "short_name": "Archive",
+      "url": "/archive/",
+      "icons": [
+        {
+          "src": "/assets/brand/icon-192.png",
+          "sizes": "192x192",
+          "type": "image/png"
+        }
+      ]
+    },
+    {
+      "name": "Fieldnotes",
+      "short_name": "Fieldnotes",
+      "url": "/fieldnotes/",
+      "icons": [
+        {
+          "src": "/assets/brand/icon-192.png",
+          "sizes": "192x192",
+          "type": "image/png"
+        }
+      ]
+    },
+    {
+      "name": "Daily",
+      "short_name": "Daily",
+      "url": "/daily/",
+      "icons": [
+        {
+          "src": "/assets/brand/icon-192.png",
+          "sizes": "192x192",
+          "type": "image/png"
+        }
+      ]
+    }
+  ],
   "categories": [
     "business",
     "productivity",
