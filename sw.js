@@ -4,11 +4,11 @@
    Increment CACHE_VERSION on each deploy to bust stale caches.
    ============================================================ */
 
-const CACHE_VERSION = 'signal-v5-2026-05-06-brand';
+const CACHE_VERSION = 'signal-v6-2026-07-11-cachebust';
 
 const STATIC_ASSETS = [
-  '/base.css?v=20260502a',
-  '/style.css?v=20260502a',
+  '/base.css?v=20260711a',
+  '/style.css?v=20260711a',
   '/app.js',
   '/manifest.json',
   '/assets/brand/favicon.svg',
@@ -22,11 +22,21 @@ const STATIC_ASSETS = [
   '/og-image.png'
 ];
 
-// Install: pre-cache core static assets
+// Install: pre-cache core static assets.
+// Cache each asset individually so one failed/404 URL doesn't abort the whole
+// install (unlike cache.addAll, which rejects atomically if any request fails).
 self.addEventListener('install', (event) => {
   self.skipWaiting(); // Activate immediately, don't wait for old SW
   event.waitUntil(
-    caches.open(CACHE_VERSION).then((cache) => cache.addAll(STATIC_ASSETS))
+    caches.open(CACHE_VERSION).then((cache) =>
+      Promise.allSettled(
+        STATIC_ASSETS.map((url) =>
+          cache.add(url).catch((err) => {
+            console.warn('[sw] Precache skipped:', url, err);
+          })
+        )
+      )
+    )
   );
 });
 
