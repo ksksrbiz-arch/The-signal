@@ -1,0 +1,414 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>THE SIGNAL — Transmission №021 | Paper Trader: A Desk Built to Disprove Its Own Edge</title>
+<meta name="description" content="Paper Trader is a paper-only trading OS that reads the market across a dozen sources, argues with itself before it acts, and keeps a ledger honest enough to say when it's wrong. No real money, no fabricated backtests — just: does it beat SPY, net of slippage?">
+<meta name="robots" content="index, follow">
+<meta name="author" content="Keith">
+<meta name="theme-color" content="#C9A24B">
+<meta name="keywords" content="THE SIGNAL №021, Paper Trader, paper trading OS, algorithmic trading, multi-model council, survivorship bias, net of slippage, build in public, 1Commerce LLC, Canby Oregon">
+
+<link rel="canonical" href="https://1commercesolutions.com/archive/021.html">
+<link rel="prev" href="https://1commercesolutions.com/archive/020.html">
+
+<meta property="og:type" content="article">
+<meta property="og:site_name" content="THE SIGNAL">
+<meta property="og:title" content="Paper Trader — A trading desk built to disprove its own edge">
+<meta property="og:description" content="A paper-only trading OS that argues with itself before it acts — and keeps a ledger honest enough to say when it's wrong.">
+<meta property="og:url" content="https://1commercesolutions.com/archive/021.html">
+<meta property="og:image" content="https://1commercesolutions.com/og-image.png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta property="og:image:alt" content="THE SIGNAL Transmission №021 — Paper Trader">
+<meta property="og:locale" content="en_US">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="THE SIGNAL №021 — Paper Trader">
+<meta name="twitter:description" content="A paper-only trading OS that argues with itself before it acts — and keeps a ledger honest enough to say when it's wrong.">
+<meta name="twitter:image" content="https://1commercesolutions.com/og-image.png">
+<meta name="twitter:image:alt" content="THE SIGNAL Transmission №021 — Paper Trader">
+
+<link rel="icon" type="image/svg+xml" href="/assets/brand/favicon.svg">
+<link rel="icon" type="image/png" sizes="32x32" href="/assets/brand/favicon-32.png">
+<link rel="apple-touch-icon" sizes="180x180" href="/assets/brand/apple-touch-icon.png">
+<link rel="manifest" href="/manifest.json">
+<link rel="alternate" type="application/rss+xml" title="THE SIGNAL — Weekly Dispatches" href="/feed.xml">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+<meta name="apple-mobile-web-app-title" content="THE SIGNAL">
+
+<!-- GEO Targeting -->
+<meta name="geo.region" content="US-OR">
+<meta name="geo.placename" content="Canby, Oregon">
+<meta name="geo.position" content="45.2640;-122.6918">
+<meta name="ICBM" content="45.2640, -122.6918">
+
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "NewsArticle",
+  "headline": "Paper Trader — A trading desk built to disprove its own edge",
+  "description": "Paper Trader is a paper-only trading OS that reads the market across a dozen sources, argues with itself before it acts, and keeps a ledger honest enough to say when it's wrong. No real money, no fabricated backtests — just: does it beat SPY, net of slippage?",
+  "datePublished": "2026-07-11",
+  "dateModified": "2026-07-11",
+  "articleSection": "Build Update",
+  "inLanguage": "en-US",
+  "author": {"@type": "Person", "name": "Keith"},
+  "publisher": {"@type": "Organization", "name": "1Commerce LLC", "url": "https://1commercesolutions.com"},
+  "mainEntityOfPage": "https://1commercesolutions.com/archive/021.html",
+  "image": "https://1commercesolutions.com/og-image.png",
+  "isPartOf": {"@type": "Blog", "name": "THE SIGNAL", "url": "https://1commercesolutions.com/archive/"}
+}
+</script>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  "itemListElement": [
+    {"@type": "ListItem", "position": 1, "name": "Home", "item": "https://1commercesolutions.com/"},
+    {"@type": "ListItem", "position": 2, "name": "Archive", "item": "https://1commercesolutions.com/archive/"},
+    {"@type": "ListItem", "position": 3, "name": "Issue 021"}
+  ]
+}
+</script>
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,500;9..144,600;9..144,900&family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400;500;700&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --ink:#0B0E14;
+    --panel:#12161F;
+    --panel-2:#0F131B;
+    --line:#232A36;
+    --line-soft:#1A2029;
+    --bone:#E8E4D8;
+    --bone-dim:#9AA2AE;
+    --gold:#C9A24B;
+    --green:#4FB477;
+    --red:#D0554E;
+    --mono:'JetBrains Mono',ui-monospace,SFMono-Regular,Menlo,monospace;
+    --serif:'Fraunces',Georgia,serif;
+    --sans:'Inter',system-ui,sans-serif;
+  }
+  *{box-sizing:border-box}
+  html{-webkit-text-size-adjust:100%}
+  body{
+    margin:0;
+    background:
+      radial-gradient(1200px 600px at 70% -10%, rgba(201,162,75,.06), transparent 60%),
+      var(--ink);
+    color:var(--bone);
+    font-family:var(--sans);
+    font-size:17px;
+    line-height:1.7;
+    -webkit-font-smoothing:antialiased;
+  }
+  .wrap{max-width:760px;margin:0 auto;padding:0 24px}
+  a{color:var(--gold);text-decoration:none}
+  a:hover{text-decoration:underline}
+  ::selection{background:rgba(201,162,75,.28);color:#fff}
+
+  /* ---- masthead ---- */
+  .top{
+    border-bottom:1px solid var(--line);
+    padding:22px 0 20px;
+    display:flex;justify-content:space-between;align-items:baseline;
+    font-family:var(--mono);font-size:12px;letter-spacing:.18em;text-transform:uppercase;
+    color:var(--bone-dim);
+  }
+  .top a{color:var(--bone-dim)}
+  .top a:hover{color:var(--bone);text-decoration:none}
+  .top b{color:var(--bone);font-weight:700}
+  .cursor{display:inline-block;width:8px;height:13px;background:var(--gold);margin-left:4px;transform:translateY(1px);animation:blink 1.1s steps(1) infinite}
+  @keyframes blink{50%{opacity:0}}
+
+  /* ---- back-to-archive rail ---- */
+  .rail{
+    padding:16px 0 0;
+    font-family:var(--mono);font-size:11px;letter-spacing:.14em;text-transform:uppercase;
+    color:var(--bone-dim);
+  }
+  .rail a{color:var(--bone-dim)}
+  .rail a:hover{color:var(--gold);text-decoration:none}
+  .rail .sep{color:var(--line);margin:0 8px}
+  .rail .here{color:var(--bone)}
+
+  /* ---- hero ---- */
+  .hero{padding:40px 0 40px;border-bottom:1px solid var(--line)}
+  .eyebrow{
+    font-family:var(--mono);font-size:12px;letter-spacing:.28em;text-transform:uppercase;
+    color:var(--gold);margin:0 0 22px;
+  }
+  h1{
+    font-family:var(--serif);
+    font-weight:600;
+    font-size:clamp(2.3rem,6.4vw,3.9rem);
+    line-height:1.02;
+    letter-spacing:-.015em;
+    margin:0 0 24px;
+    color:#F3EFE3;
+  }
+  h1 .em{font-style:italic;font-weight:500;color:var(--gold)}
+  .dek{font-size:1.18rem;line-height:1.6;color:var(--bone-dim);max-width:60ch;margin:0}
+  .dek b{color:var(--bone);font-weight:500}
+
+  /* ---- six-verb spine ---- */
+  .spine{
+    margin-top:30px;display:flex;flex-wrap:wrap;align-items:center;gap:10px 14px;
+    font-family:var(--mono);font-size:12.5px;letter-spacing:.14em;text-transform:uppercase;
+  }
+  .spine span{color:var(--bone)}
+  .spine i{color:var(--gold);font-style:normal}
+  .spine .sep{color:var(--line);}
+
+  /* ---- terminal status strip ---- */
+  .strip{
+    margin-top:30px;
+    display:flex;flex-wrap:wrap;gap:0;
+    border:1px solid var(--line);border-radius:6px;overflow:hidden;
+    background:var(--panel-2);
+    font-family:var(--mono);
+  }
+  .strip .cell{
+    flex:1 1 auto;padding:12px 16px;min-width:130px;
+    border-right:1px solid var(--line-soft);
+  }
+  .strip .cell:last-child{border-right:0}
+  .strip .k{display:block;font-size:9.5px;letter-spacing:.2em;text-transform:uppercase;color:var(--bone-dim);margin-bottom:4px}
+  .strip .v{font-size:14px;font-weight:700;color:var(--bone)}
+  .strip .paper .v{color:var(--gold)}
+
+  /* ---- sections ---- */
+  section{padding:52px 0;border-bottom:1px solid var(--line-soft)}
+  .roman{
+    font-family:var(--mono);font-size:12px;letter-spacing:.2em;color:var(--gold);
+    display:flex;align-items:center;gap:12px;margin:0 0 6px;
+  }
+  .roman::after{content:"";height:1px;flex:1;background:var(--line)}
+  h2{
+    font-family:var(--serif);font-weight:600;font-size:clamp(1.5rem,3.6vw,2.05rem);
+    line-height:1.12;letter-spacing:-.01em;margin:0 0 20px;color:#F0ECdf;
+  }
+  p{margin:0 0 18px}
+  p:last-child{margin-bottom:0}
+  .lead-rule{color:var(--bone)}
+
+  /* ---- contrast rack ---- */
+  .contrast{border:1px solid var(--line);border-radius:6px;overflow:hidden;background:var(--panel-2);margin-top:6px}
+  .crow{display:flex;align-items:baseline;gap:16px;padding:15px 20px;border-bottom:1px solid var(--line-soft)}
+  .crow:last-child{border-bottom:0}
+  .crow .yes{flex:1;font-weight:600;color:var(--bone);font-size:1.02rem}
+  .crow .yes b{color:var(--gold);font-weight:700}
+  .crow .no{flex:0 0 auto;font-family:var(--mono);font-size:11px;letter-spacing:.06em;text-transform:uppercase;color:var(--bone-dim)}
+
+  /* ---- pipeline ---- */
+  .pipeline{display:flex;flex-wrap:wrap;align-items:center;gap:8px;margin:0 0 26px;font-family:var(--mono);font-size:11px;letter-spacing:.08em;text-transform:uppercase}
+  .pipe{border:1px solid var(--line);border-radius:100px;padding:6px 13px;color:var(--bone);background:var(--panel)}
+  .pipe.mem{border-color:rgba(201,162,75,.4);color:var(--gold)}
+  .arw{color:var(--gold);font-size:12px}
+
+  /* ---- stack layers ---- */
+  .layers{display:grid;grid-template-columns:1fr 1fr;gap:12px;margin-top:6px}
+  .layer{border:1px solid var(--line);border-radius:6px;padding:16px 18px;background:var(--panel)}
+  .layer .n{font-family:var(--mono);font-size:11px;color:var(--gold);letter-spacing:.1em}
+  .layer h3{font-family:var(--sans);font-size:1rem;font-weight:600;margin:8px 0 6px;color:var(--bone)}
+  .layer p{font-size:.9rem;color:var(--bone-dim);margin:0;line-height:1.55}
+
+  /* ---- stat cards ---- */
+  .stats{display:grid;grid-template-columns:repeat(3,1fr);gap:12px;margin-top:8px}
+  .stat{border:1px solid var(--line);border-radius:6px;padding:20px 16px;background:var(--panel);text-align:left}
+  .stat .num{font-family:var(--mono);font-weight:700;font-size:1.7rem;color:var(--gold);line-height:1;letter-spacing:-.02em}
+  .stat .lbl{font-size:.78rem;color:var(--bone-dim);margin-top:9px;line-height:1.4}
+  .callout{margin-top:22px;border-left:2px solid var(--gold);padding:2px 0 2px 20px;color:var(--bone);font-size:1.02rem}
+
+  /* ---- honest ledger ---- */
+  .ledger{margin-top:6px;border:1px solid var(--line);border-radius:6px;overflow:hidden;background:var(--panel-2);font-family:var(--mono)}
+  .row{display:flex;align-items:center;gap:14px;padding:14px 18px;border-bottom:1px solid var(--line-soft);font-size:.9rem}
+  .row:last-child{border-bottom:0}
+  .row .mark{flex:0 0 26px;font-weight:700;font-size:1.05rem;text-align:center}
+  .row .desc{flex:1;color:var(--bone);line-height:1.4;font-family:var(--sans)}
+  .row.win .mark{color:var(--green)}
+  .row.loss .mark{color:var(--red)}
+  .row .verdict{flex:0 0 auto;font-size:10px;letter-spacing:.14em;text-transform:uppercase;color:var(--bone-dim)}
+
+  /* ---- close ---- */
+  .kicker{font-family:var(--serif);font-style:italic;font-size:1.35rem;color:var(--bone);line-height:1.4;margin:0 0 20px}
+  .tags{display:flex;gap:10px;flex-wrap:wrap;font-family:var(--mono);font-size:11px;letter-spacing:.12em;text-transform:uppercase}
+  .tag{border:1px solid var(--line);border-radius:100px;padding:6px 13px;color:var(--bone-dim)}
+  .tag.gold{border-color:rgba(201,162,75,.4);color:var(--gold)}
+
+  /* ---- prev/next dispatch nav ---- */
+  .dispatch-nav{display:flex;gap:14px;padding:36px 0 8px;border-top:1px solid var(--line)}
+  .dnav{
+    flex:1;border:1px solid var(--line);border-radius:6px;padding:16px 18px;background:var(--panel);
+    display:flex;flex-direction:column;gap:6px;
+  }
+  .dnav:hover{border-color:rgba(201,162,75,.4);text-decoration:none}
+  .dnav .dir{font-family:var(--mono);font-size:10px;letter-spacing:.16em;text-transform:uppercase;color:var(--bone-dim)}
+  .dnav .ttl{font-family:var(--sans);font-size:.95rem;font-weight:600;color:var(--bone)}
+
+  /* ---- footer ---- */
+  footer{padding:40px 0 64px;text-align:left}
+  .sign{font-family:var(--mono);font-size:12px;letter-spacing:.16em;text-transform:uppercase;color:var(--bone-dim);margin:0 0 10px}
+  .sign b{color:var(--bone)}
+  .disclaim{font-size:.78rem;color:#6A727E;margin:20px 0 0;line-height:1.5}
+
+  .fade{opacity:0;transform:translateY(14px);animation:rise .7s cubic-bezier(.2,.7,.2,1) forwards}
+  .fade.d1{animation-delay:.05s}.fade.d2{animation-delay:.12s}
+  @keyframes rise{to{opacity:1;transform:none}}
+
+  @media (max-width:620px){
+    body{font-size:16px}
+    .layers,.stats{grid-template-columns:1fr}
+    .stats{grid-template-columns:1fr 1fr}
+    .top{flex-direction:column;gap:6px}
+    .row{flex-wrap:wrap}
+    .row .verdict{flex-basis:100%;padding-left:40px}
+    .crow{flex-direction:column;gap:5px}
+    .dispatch-nav{flex-direction:column}
+  }
+  @media (prefers-reduced-motion:reduce){
+    .fade{animation:none;opacity:1;transform:none}
+    .cursor{animation:none}
+  }
+  :focus-visible{outline:2px solid var(--gold);outline-offset:3px;border-radius:2px}
+</style>
+</head>
+<body>
+<div class="wrap">
+
+  <div class="top">
+    <span><a href="../">The&nbsp;Signal</a>&nbsp;/&nbsp;<b>Transmission</b><span class="cursor"></span></span>
+    <span>Systems&nbsp;·&nbsp;Build&nbsp;in&nbsp;public</span>
+  </div>
+
+  <nav class="rail" aria-label="Breadcrumb">
+    <a href="../">Home</a><span class="sep">›</span><a href="./">Archive</a><span class="sep">›</span><span class="here">Transmission №021</span>
+  </nav>
+
+  <header class="hero">
+    <p class="eyebrow fade">Field Notes · Paper Trader · №021</p>
+    <h1 class="fade d1">A trading desk built to <span class="em">disprove</span> its own edge.</h1>
+    <p class="dek fade d2">Paper Trader is a paper-only trading OS that reads the market across a dozen sources, argues with itself before it acts, and keeps a ledger honest enough to tell me when I'm wrong. <b>No real money. No fabricated backtests.</b> Just the one question that actually matters: does it beat SPY, net of slippage?</p>
+
+    <div class="spine fade d2" aria-label="Operating loop">
+      <span>Observe</span><i class="arw">→</i><span>Reason</span><i class="arw">→</i><span>Act</span><i class="arw">→</i><span>Measure</span><i class="arw">→</i><span>Remember</span><i class="arw">→</i><span>Adapt</span>
+    </div>
+
+    <div class="strip fade d2" aria-label="System status">
+      <div class="cell paper"><span class="k">Mode</span><span class="v">PAPER · no real money</span></div>
+      <div class="cell"><span class="k">Equity</span><span class="v">$100,000</span></div>
+      <div class="cell"><span class="k">Benchmark</span><span class="v">SPY</span></div>
+      <div class="cell"><span class="k">Scoring</span><span class="v">Net of slippage</span></div>
+    </div>
+  </header>
+
+  <section>
+    <p class="roman">I</p>
+    <h2>The premise</h2>
+    <p>Most trading bots are one script with a confident opinion and a returns screenshot you can't reproduce. I wanted the opposite: a system that behaves like a disciplined <em>desk</em>, not a lucky gambler. That means it's allowed to wait. It's allowed to sit out. And it's built to catch its own bad trades <em>before</em> they happen — not just find more of them.</p>
+    <p class="lead-rule">The rule is painted across the entire stack, in the platform's own words: <strong>validation = beating SPY over weeks, net of slippage. Trade count is not edge.</strong></p>
+  </section>
+
+  <section>
+    <p class="roman">II</p>
+    <h2>What makes it different</h2>
+    <p>Six choices separate this from the average bot. None of them are features you bolt on — they're the difference between a gambler and a desk.</p>
+    <div class="contrast">
+      <div class="crow"><span class="yes"><b>Multi-model.</b> A council deliberates before a trade — it isn't one model's hunch.</span><span class="no">not single-model</span></div>
+      <div class="crow"><span class="yes"><b>Stateful.</b> It carries regime, posture, and open risk between decisions.</span><span class="no">not stateless</span></div>
+      <div class="crow"><span class="yes"><b>Memory-backed.</b> It recalls what past setups actually did.</span><span class="no">not prompt-only</span></div>
+      <div class="crow"><span class="yes"><b>Governed.</b> A deterministic policy has veto power over every action.</span><span class="no">not free-running</span></div>
+      <div class="crow"><span class="yes"><b>Self-healing.</b> The runtime checkpoints, restarts, and resumes on its own.</span><span class="no">not manual-only</span></div>
+      <div class="crow"><span class="yes"><b>Measured.</b> Every call is scored against what happened next.</span><span class="no">not vibes-based</span></div>
+    </div>
+  </section>
+
+  <section>
+    <p class="roman">III</p>
+    <h2>How it thinks</h2>
+    <p>The whole system runs one loop, over and over — and the models never pull the trigger. They inform the decision; a deterministic policy makes the actual call.</p>
+    <div class="pipeline" aria-label="Decision loop">
+      <span class="pipe">Data</span><span class="arw">→</span>
+      <span class="pipe">Awareness</span><span class="arw">→</span>
+      <span class="pipe">Reasoning</span><span class="arw">→</span>
+      <span class="pipe">Policy</span><span class="arw">→</span>
+      <span class="pipe">Execution</span><span class="arw">→</span>
+      <span class="pipe">Outcomes</span><span class="arw">→</span>
+      <span class="pipe">Learning</span><span class="arw">→</span>
+      <span class="pipe mem">Memory</span>
+    </div>
+    <div class="layers">
+      <div class="layer"><span class="n">Layer 01</span><h3>Market Brain</h3><p>Classifies the regime — risk-on, risk-off, high-vol — and sets posture and size. Equities and crypto are read separately.</p></div>
+      <div class="layer"><span class="n">Layer 02</span><h3>Reasoning Council</h3><p>Several models deliberate, then hand back the consensus, the dissent, and a chair's synthesis — not a single black-box answer.</p></div>
+      <div class="layer"><span class="n">Layer 03</span><h3>Prediction Engine</h3><p>Turns news and community chatter into ranked, testable hypotheses — then grades each one against what actually happened.</p></div>
+      <div class="layer"><span class="n">Layer 04</span><h3>ML Layer</h3><p>Learns a score from outcomes, with champion/challenger promotion: a new model only takes over if it genuinely beats the old one.</p></div>
+      <div class="layer"><span class="n">Layer 05</span><h3>Policy &amp; Risk</h3><p>The deterministic chokepoint. Trailing stops, a daily circuit breaker, 1:2 reward:risk, liquidity gates. Built to fail safely.</p></div>
+      <div class="layer"><span class="n">Layer 06</span><h3>Memory &amp; Repair</h3><p>Long-term recall plus a self-healing runtime that checkpoints and resumes — so the desk keeps running and remembering instead of forgetting.</p></div>
+    </div>
+  </section>
+
+  <section>
+    <p class="roman">IV</p>
+    <h2>What it's made of</h2>
+    <p>Six named bots, each with its own ledger, so strategies compete against each other instead of one pretending to be magic. A dozen live feeds — equities, crypto, filings, and the noise floor of the internet. And underneath it, a universe built to fight the biggest lie in backtesting:</p>
+    <div class="stats">
+      <div class="stat"><div class="num">21,692</div><div class="lbl">securities in the point-in-time universe</div></div>
+      <div class="stat"><div class="num">9,695</div><div class="lbl">delisting events — the dead names most tests ignore</div></div>
+      <div class="stat"><div class="num">899</div><div class="lbl">S&amp;P 500 membership intervals</div></div>
+      <div class="stat"><div class="num">398</div><div class="lbl">removed names recovered</div></div>
+      <div class="stat"><div class="num">6</div><div class="lbl">independent bots, independent ledgers</div></div>
+      <div class="stat"><div class="num">~12</div><div class="lbl">live data feeds, equities to crypto to SEC</div></div>
+    </div>
+    <p class="callout">Most backtests only test on the companies that survived — which is like judging a strategy by asking the winners. Paper Trader tests against the graveyard too.</p>
+  </section>
+
+  <section>
+    <p class="roman">V</p>
+    <h2>The honest ledger</h2>
+    <p>Here's the part no trading ad will ever show you: what <em>didn't</em> work. Every verdict below is one the system reached by trading against itself — and, often, losing.</p>
+    <div class="ledger" aria-label="Findings ledger">
+      <div class="row win"><span class="mark">+</span><span class="desc">Trend-timing to cash improved risk-adjusted returns</span><span class="verdict">Held up</span></div>
+      <div class="row win"><span class="mark">+</span><span class="desc">Tighter controls and sharper selectivity beat adding more signals</span><span class="verdict">Held up</span></div>
+      <div class="row loss"><span class="mark">−</span><span class="desc">Naive shorting did not magically win</span><span class="verdict">Disproven</span></div>
+      <div class="row loss"><span class="mark">−</span><span class="desc">Crypto momentum rotation failed hard</span><span class="verdict">Disproven</span></div>
+      <div class="row loss"><span class="mark">−</span><span class="desc">Overtrading quietly bled the account</span><span class="verdict">Disproven</span></div>
+      <div class="row loss"><span class="mark">−</span><span class="desc">Ignoring survivorship bias faked great-looking results</span><span class="verdict">Disproven</span></div>
+    </div>
+    <p style="margin-top:22px">Four red marks against two green ones. That's not a hole in the pitch — <strong>that is the product.</strong> A machine that tells you the truth about your ideas is worth more than one that flatters them.</p>
+  </section>
+
+  <section>
+    <p class="roman">VI</p>
+    <h2>Why I'm building it in public</h2>
+    <p class="kicker">The edge is still being proven, not assumed — and I'd rather show you a machine that's honest about that than sell you a fantasy.</p>
+    <p>It runs the full loop now: observe, reason, act, measure, remember, adapt. The next milestones aren't more surface area — they're more resolved outcomes and deeper history. More truth, not more hype. That's the only thing that turns a well-built desk into a proven one.</p>
+    <div class="tags" style="margin-top:26px">
+      <span class="tag gold">Paper money</span>
+      <span class="tag">Real discipline</span>
+      <span class="tag">Zero placeholders</span>
+    </div>
+  </section>
+
+  <nav class="dispatch-nav" aria-label="Dispatch navigation">
+    <a class="dnav" href="020.html" rel="prev">
+      <span class="dir">← Older dispatch · №020</span>
+      <span class="ttl">The Signal Went Quiet</span>
+    </a>
+    <a class="dnav" href="./" style="text-align:right">
+      <span class="dir">All transmissions →</span>
+      <span class="ttl">The Archive</span>
+    </a>
+  </nav>
+
+  <footer>
+    <p class="sign">Dispatched from the desk · <b>1Commerce</b> · The Signal</p>
+    <p style="margin:0;color:var(--bone-dim)">More builds, in the open, every week — <a href="https://1commercesolutions.com">1commercesolutions.com</a></p>
+    <p class="disclaim">Paper trading only. No capital is at risk and nothing here is investment advice — Paper Trader is a research and engineering system, not a signal service or a promise of returns.</p>
+  </footer>
+
+</div>
+</body>
+</html>
