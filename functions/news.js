@@ -17,6 +17,13 @@ const RSS_FEEDS = [
   'https://aws.amazon.com/blogs/aws/feed/',
 ];
 
+// NOTE: Every feed is proxied through the third-party api.rss2json.com service.
+// That makes rss2json a single point of failure — if it is down, rate-limits us,
+// or changes its response shape, all feeds fail together and the handler returns
+// an empty article set. Per-feed failures are already isolated via Promise.allSettled
+// and a 4s AbortController timeout below; a full outage still degrades gracefully
+// (empty list / 500). Kept dependency-free intentionally (no new npm packages).
+
 // Fetch a single RSS feed via RSS2JSON with a per-feed timeout.
 // Returns an array of mapped articles, or [] on failure.
 async function fetchFeed(feedUrl) {

@@ -30,6 +30,16 @@
 
 const fs = require('fs');
 const path = require('path');
+const crypto = require('crypto');
+
+// Constant-time string comparison. Returns false on any length mismatch so
+// timingSafeEqual never throws on differing buffer lengths.
+function safeEqual(a, b) {
+  const bufA = Buffer.from(String(a), 'utf8');
+  const bufB = Buffer.from(String(b), 'utf8');
+  if (bufA.length !== bufB.length) return false;
+  return crypto.timingSafeEqual(bufA, bufB);
+}
 
 const SITE_URL = process.env.SIGNAL_SITE_URL || 'https://1commercesolutions.com';
 const FROM_EMAIL = process.env.SIGNAL_FROM_EMAIL || 'skdev@1commerce.online';
@@ -46,7 +56,7 @@ exports.handler = async (event) => {
     }
     const token = process.env.SIGNAL_DISPATCH_TOKEN;
     const auth = (event.headers && (event.headers.authorization || event.headers.Authorization)) || '';
-    if (!token || auth !== 'Bearer ' + token) {
+    if (!token || !safeEqual(auth, 'Bearer ' + token)) {
       return json(401, { error: 'Unauthorized' });
     }
   }
