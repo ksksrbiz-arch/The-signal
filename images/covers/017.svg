@@ -1,0 +1,26 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="675" viewBox="0 0 1200 675" role="img">
+<defs>
+  <linearGradient id="bg" x1="0" y1="0" x2="1" y2="1">
+    <stop offset="0" stop-color="#12161F"/>
+    <stop offset="1" stop-color="#0B0E14"/>
+  </linearGradient>
+  <radialGradient id="glow" cx="0.78" cy="0.14" r="0.9">
+    <stop offset="0" stop-color="#4FB477" stop-opacity="0.16"/>
+    <stop offset="0.6" stop-color="#4FB477" stop-opacity="0"/>
+  </radialGradient>
+  <pattern id="grid" width="48" height="48" patternUnits="userSpaceOnUse">
+    <path d="M48 0H0V48" fill="none" stroke="#1A2029" stroke-width="1"/>
+  </pattern>
+</defs>
+<rect width="1200" height="675" fill="url(#bg)"/>
+<rect width="1200" height="675" fill="url(#grid)" opacity="0.6"/>
+<rect width="1200" height="675" fill="url(#glow)"/>
+<g><rect x="245.3" y="99.97" width="885.02" height="442.51" rx="10" fill="none" stroke="#33405280" stroke-width="1.1" opacity="0.8"/><rect x="312.9" y="133.77" width="749.82" height="374.91" rx="10" fill="none" stroke="#33405280" stroke-width="1.1" opacity="0.8"/><rect x="376.82" y="165.73" width="621.98" height="310.99" rx="10" fill="none" stroke="#33405280" stroke-width="1.1" opacity="0.8"/><rect x="383.68" y="169.16" width="608.26" height="304.13" rx="10" fill="none" stroke="#33405280" stroke-width="1.1" opacity="0.8"/><rect x="425.13" y="189.89" width="525.36" height="262.68" rx="10" fill="none" stroke="#33405280" stroke-width="1.1" opacity="0.8"/><rect x="458.35" y="206.49" width="458.93" height="229.46" rx="10" fill="none" stroke="#33405280" stroke-width="1.1" opacity="0.8"/><rect x="517.4" y="236.02" width="340.83" height="170.41" rx="10" fill="none" stroke="#4FB477" stroke-width="2" opacity="0.9"/><rect x="547.81" y="251.22" width="280.01" height="140.01" rx="10" fill="none" stroke="#33405280" stroke-width="1.1" opacity="0.8"/><rect x="585.87" y="270.25" width="203.89" height="101.95" rx="10" fill="none" stroke="#33405280" stroke-width="1.1" opacity="0.8"/><rect x="627.81" y="291.23" width="120" height="60" rx="10" fill="none" stroke="#33405280" stroke-width="1.1" opacity="0.8"/></g>
+<rect x="0.5" y="0.5" width="1199" height="674" fill="none" stroke="#232A36" stroke-width="1"/>
+<line x1="40" y1="40" x2="40" y2="74" stroke="#9AA2AE" stroke-width="1.4" opacity="0.55"/><line x1="40" y1="40" x2="74" y2="40" stroke="#9AA2AE" stroke-width="1.4" opacity="0.55"/><line x1="1160" y1="40" x2="1160" y2="74" stroke="#9AA2AE" stroke-width="1.4" opacity="0.55"/><line x1="1160" y1="40" x2="1126" y2="40" stroke="#9AA2AE" stroke-width="1.4" opacity="0.55"/><line x1="40" y1="635" x2="40" y2="601" stroke="#9AA2AE" stroke-width="1.4" opacity="0.55"/><line x1="40" y1="635" x2="74" y2="635" stroke="#9AA2AE" stroke-width="1.4" opacity="0.55"/><line x1="1160" y1="635" x2="1160" y2="601" stroke="#9AA2AE" stroke-width="1.4" opacity="0.55"/><line x1="1160" y1="635" x2="1126" y2="635" stroke="#9AA2AE" stroke-width="1.4" opacity="0.55"/>
+<text x="60" y="86" font-family="'JetBrains Mono', ui-monospace, 'SFMono-Regular', Menlo, monospace" font-size="19" letter-spacing="6" fill="#9AA2AE">THE SIGNAL</text>
+<text x="1140" y="86" text-anchor="end" font-family="'JetBrains Mono', ui-monospace, 'SFMono-Regular', Menlo, monospace" font-size="15" letter-spacing="4" fill="#9AA2AE">TRANSMISSION №017</text>
+<text x="60" y="543" font-family="'JetBrains Mono', ui-monospace, 'SFMono-Regular', Menlo, monospace" font-size="15" letter-spacing="5" fill="#4FB477">BUILD UPDATE</text>
+<line x1="60" y1="561" x2="1140" y2="561" stroke="#4FB477" stroke-width="1.4" opacity="0.5"/>
+<text x="58" y="633" font-family="'JetBrains Mono', ui-monospace, 'SFMono-Regular', Menlo, monospace" font-size="80" font-weight="700" letter-spacing="-2" fill="#E8E4D8">№017</text>
+</svg>
