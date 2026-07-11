@@ -1,0 +1,26 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="675" viewBox="0 0 1200 675" role="img">
+<defs>
+  <linearGradient id="bg" x1="0" y1="0" x2="1" y2="1">
+    <stop offset="0" stop-color="#12161F"/>
+    <stop offset="1" stop-color="#0B0E14"/>
+  </linearGradient>
+  <radialGradient id="glow" cx="0.78" cy="0.14" r="0.9">
+    <stop offset="0" stop-color="#4FB477" stop-opacity="0.16"/>
+    <stop offset="0.6" stop-color="#4FB477" stop-opacity="0"/>
+  </radialGradient>
+  <pattern id="grid" width="48" height="48" patternUnits="userSpaceOnUse">
+    <path d="M48 0H0V48" fill="none" stroke="#1A2029" stroke-width="1"/>
+  </pattern>
+</defs>
+<rect width="1200" height="675" fill="url(#bg)"/>
+<rect width="1200" height="675" fill="url(#grid)" opacity="0.6"/>
+<rect width="1200" height="675" fill="url(#glow)"/>
+<g><ellipse cx="435.82" cy="348.92" rx="137.21" ry="68.51" fill="none" stroke="#33405280" stroke-width="1" opacity="0.8" transform="rotate(130.48 435.82 348.92)"/><circle cx="494.4" cy="385.52" r="5.5" fill="#4FB477" opacity="0.9"/><ellipse cx="435.82" cy="348.92" rx="233.8" ry="141.07" fill="none" stroke="#33405280" stroke-width="1" opacity="0.8" transform="rotate(18.07 435.82 348.92)"/><circle cx="657.47" cy="363.14" r="3.6" fill="#9AA2AE" opacity="0.9"/><ellipse cx="435.82" cy="348.92" rx="323.45" ry="161.56" fill="none" stroke="#33405280" stroke-width="1" opacity="0.8" transform="rotate(20.24 435.82 348.92)"/><circle cx="426.68" cy="177.21" r="3.6" fill="#9AA2AE" opacity="0.9"/><circle cx="435.82" cy="348.92" r="7" fill="#4FB477"/><circle cx="435.82" cy="348.92" r="18" fill="none" stroke="#4FB477" stroke-width="1.2" opacity="0.4"/></g>
+<rect x="0.5" y="0.5" width="1199" height="674" fill="none" stroke="#232A36" stroke-width="1"/>
+<line x1="40" y1="40" x2="40" y2="74" stroke="#9AA2AE" stroke-width="1.4" opacity="0.55"/><line x1="40" y1="40" x2="74" y2="40" stroke="#9AA2AE" stroke-width="1.4" opacity="0.55"/><line x1="1160" y1="40" x2="1160" y2="74" stroke="#9AA2AE" stroke-width="1.4" opacity="0.55"/><line x1="1160" y1="40" x2="1126" y2="40" stroke="#9AA2AE" stroke-width="1.4" opacity="0.55"/><line x1="40" y1="635" x2="40" y2="601" stroke="#9AA2AE" stroke-width="1.4" opacity="0.55"/><line x1="40" y1="635" x2="74" y2="635" stroke="#9AA2AE" stroke-width="1.4" opacity="0.55"/><line x1="1160" y1="635" x2="1160" y2="601" stroke="#9AA2AE" stroke-width="1.4" opacity="0.55"/><line x1="1160" y1="635" x2="1126" y2="635" stroke="#9AA2AE" stroke-width="1.4" opacity="0.55"/>
+<text x="60" y="86" font-family="'JetBrains Mono', ui-monospace, 'SFMono-Regular', Menlo, monospace" font-size="19" letter-spacing="6" fill="#9AA2AE">THE SIGNAL</text>
+<text x="1140" y="86" text-anchor="end" font-family="'JetBrains Mono', ui-monospace, 'SFMono-Regular', Menlo, monospace" font-size="15" letter-spacing="4" fill="#9AA2AE">TRANSMISSION №008</text>
+<text x="60" y="543" font-family="'JetBrains Mono', ui-monospace, 'SFMono-Regular', Menlo, monospace" font-size="15" letter-spacing="5" fill="#4FB477">BUILD UPDATE</text>
+<line x1="60" y1="561" x2="1140" y2="561" stroke="#4FB477" stroke-width="1.4" opacity="0.5"/>
+<text x="58" y="633" font-family="'JetBrains Mono', ui-monospace, 'SFMono-Regular', Menlo, monospace" font-size="80" font-weight="700" letter-spacing="-2" fill="#E8E4D8">№008</text>
+</svg>

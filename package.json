@@ -15,6 +15,7 @@
     "build": "echo 'No build step — static HTML/CSS/JS'",
     "content:agent": "node scripts/daily-content-agent.mjs",
     "seo:agent": "node scripts/seo-agent.mjs",
+    "covers": "node scripts/generate-covers.mjs",
     "automation:daily": "npm run content:agent && npm run seo:agent"
   },
   "dependencies": {},
