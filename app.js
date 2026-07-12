@@ -696,3 +696,102 @@ if ('serviceWorker' in navigator) {
     });
   });
 })();
+
+// ─── UX ENHANCEMENTS · WAVE 1 ──────────────────────────────
+// Global, progressive-enhancement UX for every page (nav, reading,
+// forms, motion). Self-contained: styles are injected here so no
+// stylesheet cache-bust is required, and all motion honors
+// prefers-reduced-motion.
+(function(){
+  var reduce = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+  var css = document.createElement('style');
+  css.textContent = [
+    '.u-totop{position:fixed;right:20px;bottom:20px;z-index:120;width:44px;height:44px;display:flex;align-items:center;justify-content:center;border-radius:50%;border:1px solid rgba(232,184,106,.4);background:rgba(11,14,20,.72);color:#E8B86A;cursor:pointer;opacity:0;transform:translateY(12px);pointer-events:none;transition:opacity .28s ease,transform .28s ease,background .2s;-webkit-backdrop-filter:blur(8px);backdrop-filter:blur(8px)}',
+    '.u-totop.show{opacity:1;transform:none;pointer-events:auto}',
+    '.u-totop:hover{background:rgba(232,184,106,.16)}',
+    '.u-totop:focus-visible{outline:2px solid #E8B86A;outline-offset:3px}',
+    'main :is(h2,h3)[id]{scroll-margin-top:90px}',
+    '.u-anchor{opacity:0;margin-left:.4em;display:inline-flex;vertical-align:middle;color:#E8B86A;background:none;border:0;cursor:pointer;transition:opacity .18s;padding:2px;line-height:0}',
+    'main :is(h2,h3):hover .u-anchor,.u-anchor:focus-visible{opacity:.65}',
+    '.u-anchor:hover{opacity:1!important}',
+    '.u-anchor.copied{color:#4FB477;opacity:1!important}',
+    '.u-toast{position:fixed;left:50%;bottom:28px;transform:translate(-50%,16px);z-index:200;background:rgba(11,14,20,.92);color:#E8E4D8;border:1px solid rgba(232,184,106,.4);border-radius:8px;padding:11px 18px;font-family:"JetBrains Mono",ui-monospace,monospace;font-size:12px;letter-spacing:.04em;opacity:0;pointer-events:none;transition:opacity .3s ease,transform .3s ease;-webkit-backdrop-filter:blur(8px);backdrop-filter:blur(8px)}',
+    '.u-toast.show{opacity:1;transform:translate(-50%,0)}',
+    '.u-toast.err{border-color:rgba(208,85,78,.6);color:#f0d9d7}',
+    'form.u-busy button{opacity:.6;pointer-events:none}',
+    'input[aria-invalid="true"]{border-color:rgba(208,85,78,.7)!important}',
+    reduce ? '' : ':root.u-theme-anim,:root.u-theme-anim *{transition:background-color .35s ease,border-color .35s ease,color .25s ease!important}'
+  ].join('');
+  document.head.appendChild(css);
+
+  // Toast helper (exposed for reuse)
+  var toastEl, toastT;
+  function toast(msg, isErr){
+    if(!toastEl){ toastEl=document.createElement('div'); toastEl.className='u-toast'; toastEl.setAttribute('role','status'); toastEl.setAttribute('aria-live','polite'); document.body.appendChild(toastEl); }
+    toastEl.textContent=msg; toastEl.classList.toggle('err', !!isErr);
+    void toastEl.offsetWidth; toastEl.classList.add('show');
+    clearTimeout(toastT); toastT=setTimeout(function(){ toastEl.classList.remove('show'); }, 2600);
+  }
+  window.SignalToast = toast;
+
+  // 1) Back-to-top button (nav / wayfinding)
+  var toTop=document.createElement('button');
+  toTop.className='u-totop'; toTop.type='button'; toTop.setAttribute('aria-label','Back to top');
+  toTop.innerHTML='<svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 19V5M5 12l7-7 7 7"/></svg>';
+  document.body.appendChild(toTop);
+  var shown=false, ticking=false;
+  function updTop(){ var s=window.scrollY>600; if(s!==shown){ shown=s; toTop.classList.toggle('show', s); } ticking=false; }
+  window.addEventListener('scroll', function(){ if(!ticking){ requestAnimationFrame(updTop); ticking=true; } }, { passive:true });
+  toTop.addEventListener('click', function(){ window.scrollTo({ top:0, behavior: reduce?'auto':'smooth' }); });
+  updTop();
+
+  // 2) Deep-link anchors on content headings (reading experience)
+  var used={};
+  function slug(s){ return s.toLowerCase().trim().replace(/[^\w\s-]/g,'').replace(/\s+/g,'-').replace(/-+/g,'-').slice(0,60) || 'section'; }
+  var main=document.querySelector('main');
+  if(main){
+    main.querySelectorAll('h2,h3').forEach(function(h){
+      var txt=(h.textContent||'').trim();
+      if(!txt || h.querySelector('a,button')) return;
+      if(!h.id){ var base=slug(txt), id=base, n=2; while(document.getElementById(id)||used[id]){ id=base+'-'+(n++); } h.id=id; used[id]=1; }
+      var b=document.createElement('button');
+      b.className='u-anchor'; b.type='button'; b.setAttribute('aria-label','Copy link to “'+txt+'”');
+      b.innerHTML='<svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M10 13a5 5 0 0 0 7 0l3-3a5 5 0 0 0-7-7l-1 1"/><path d="M14 11a5 5 0 0 0-7 0l-3 3a5 5 0 0 0 7 7l1-1"/></svg>';
+      b.addEventListener('click', function(){
+        var url=location.origin+location.pathname+'#'+h.id;
+        function done(){ try{ history.replaceState(null,'','#'+h.id); }catch(e){} b.classList.add('copied'); toast('Link copied'); setTimeout(function(){ b.classList.remove('copied'); },1600); }
+        if(navigator.clipboard&&navigator.clipboard.writeText){ navigator.clipboard.writeText(url).then(done).catch(fallback); } else { fallback(); }
+        function fallback(){ var ta=document.createElement('textarea'); ta.value=url; ta.style.position='fixed'; ta.style.opacity='0'; document.body.appendChild(ta); ta.select(); try{ document.execCommand('copy'); }catch(e){} document.body.removeChild(ta); done(); }
+      });
+      h.appendChild(b);
+    });
+  }
+
+  // 3) Subscribe forms: inline validation + busy state (forms/feedback).
+  // Native POST still proceeds for valid emails — we only guard bad input
+  // and reflect a submitting state.
+  var EMAIL=/^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+  document.querySelectorAll('form.subscribe-form, form.arc-subscribe-form').forEach(function(f){
+    f.addEventListener('submit', function(e){
+      var input=f.querySelector('input[type="email"], input[name*="email" i]');
+      if(input && !EMAIL.test((input.value||'').trim())){
+        e.preventDefault(); input.setAttribute('aria-invalid','true'); input.focus(); toast('Enter a valid email address', true); return;
+      }
+      if(input) input.removeAttribute('aria-invalid');
+      f.classList.add('u-busy');
+      var btn=f.querySelector('button[type="submit"], button:not([type])');
+      if(btn && !btn.dataset.orig){ btn.dataset.orig=btn.textContent; btn.textContent='Subscribing…'; }
+    });
+  });
+
+  // 4) Theme-toggle crossfade (motion). Enables color transitions only
+  // for ~0.4s around a toggle so normal scrolling stays snappy.
+  var tt=document.querySelector('[data-theme-toggle]');
+  if(tt && !reduce){
+    tt.addEventListener('click', function(){
+      var root=document.documentElement; root.classList.add('u-theme-anim');
+      clearTimeout(tt._an); tt._an=setTimeout(function(){ root.classList.remove('u-theme-anim'); }, 450);
+    });
+  }
+})();
