@@ -155,15 +155,7 @@
 
 # Redirects — legacy paths from th3signal and common URL guesses
 # Point directly to trailing-slash URLs to avoid redirect chains.
-[[redirects]]
-  from = "/blog"
-  to = "/fieldnotes/"
-  status = 301
-
-[[redirects]]
-  from = "/blog/*"
-  to = "/fieldnotes/:splat"
-  status = 301
+# /blog/ is now a real hub page (blog/index.html) served statically — no redirect.
 
 [[redirects]]
   from = "/posts"
