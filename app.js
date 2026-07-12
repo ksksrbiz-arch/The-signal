@@ -987,3 +987,38 @@ if ('serviceWorker' in navigator) {
     }
   }
 })();
+
+// ─── SERIES BANNER (part-of-series + prev/next-in-series) ──
+// On an article page that belongs to a curated series, inject a banner with the
+// series name, position, and prev/next-in-series links. Reads the generated
+// data/series-map.json — no per-post markup required.
+(function(){
+  if(!/^\/(archive|fieldnotes|daily)\/[^/]+\.html$/.test(location.pathname)) return;
+  var main=document.querySelector('main'); if(!main) return;
+  fetch('/data/series-map.json').then(function(r){return r.json();}).then(function(map){
+    var mem=(map||{})[location.pathname]; if(!mem||!mem.length) return; var s=mem[0];
+    var css=document.createElement('style');
+    css.textContent=[
+      '.series-banner{max-width:760px;margin:18px auto 0;padding:14px 20px;display:flex;flex-wrap:wrap;align-items:center;gap:10px 16px;border:1px solid rgba(232,184,106,.35);border-radius:10px;background:rgba(232,184,106,.06)}',
+      '.series-banner .sb-k{font-family:"JetBrains Mono",monospace;font-size:10px;letter-spacing:.16em;text-transform:uppercase;color:var(--active,#E8B86A)}',
+      '.series-banner .sb-name{font-family:"Fraunces",Georgia,serif;font-size:1.05rem;color:var(--text,#E8E4D8)}',
+      '.series-banner .sb-name a{color:inherit;text-decoration:none;border-bottom:1px solid rgba(232,184,106,.4)}',
+      '.series-banner .sb-pos{font-family:"JetBrains Mono",monospace;font-size:11px;color:var(--faint,#9AA2AE)}',
+      '.series-banner .sb-nav{margin-left:auto;display:flex;gap:12px;font-family:"JetBrains Mono",monospace;font-size:11px;letter-spacing:.08em;text-transform:uppercase}',
+      '.series-banner .sb-nav a{color:var(--active,#E8B86A);text-decoration:none}',
+      '.series-banner .sb-nav span{color:var(--faint,#9AA2AE);opacity:.5}'
+    ].join('');
+    document.head.appendChild(css);
+    var el=document.createElement('aside'); el.className='series-banner'; el.setAttribute('aria-label','Series navigation');
+    el.innerHTML=''
+      +'<span class="sb-k">◆ Series</span>'
+      +'<span class="sb-name"><a href="'+s.url+'">'+s.name+'</a></span>'
+      +'<span class="sb-pos">Part '+s.index+' of '+s.total+'</span>'
+      +'<span class="sb-nav">'
+      +(s.prev?'<a href="'+s.prev+'">← Prev</a>':'<span>← Prev</span>')
+      +(s.next?'<a href="'+s.next+'">Next →</a>':'<span>Next →</span>')
+      +'</span>';
+    // place just inside <main>, above the article
+    main.insertBefore(el, main.firstChild);
+  }).catch(function(){});
+})();
