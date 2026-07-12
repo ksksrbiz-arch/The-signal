@@ -1,0 +1,17 @@
+{
+  "issues": [
+    {
+      "num": 1,
+      "slug": "001",
+      "date": "2026-07-11",
+      "title": "Quiet, then loud",
+      "intro": "The desk went dark for a stretch, then came back with a trading engine built to disprove its own edge and a pair of dispatches on building for machines. The first issue of THE SIGNAL, on the record.",
+      "posts": [
+        "archive/021",
+        "archive/020",
+        "archive/019",
+        "archive/018"
+      ]
+    }
+  ]
+}

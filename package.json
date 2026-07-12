@@ -17,11 +17,12 @@
     "seo:agent": "node scripts/seo-agent.mjs",
     "covers": "node scripts/generate-covers.mjs",
     "index": "node scripts/build-index.mjs",
-    "automation:daily": "npm run content:agent && npm run index && npm run blog && npm run series && npm run seo:agent",
+    "automation:daily": "npm run content:agent && npm run index && npm run blog && npm run series && npm run issue && npm run seo:agent",
     "og": "node scripts/generate-og.mjs",
     "blog": "node scripts/build-blog.mjs",
     "new-post": "node scripts/new-post.mjs",
-    "series": "node scripts/build-series.mjs"
+    "series": "node scripts/build-series.mjs",
+    "issue": "node scripts/build-issue.mjs"
   },
   "dependencies": {
     "@netlify/blobs": "^10.7.9"

@@ -104,10 +104,9 @@
   to = "/.netlify/functions/news"
   status = 200
 
-[[redirects]]
-  from = "/api/subscribe"
-  to = "/.netlify/functions/subscribe"
-  status = 200
+# /api/subscribe and /api/confirm are Netlify Functions v2 (functions/subscribe.mjs,
+# functions/confirm.mjs) and route themselves via `export const config.path` — no
+# redirect needed here (same as functions/engagement.mjs and functions/search.mjs).
 
 # Manual trigger for the daily Signal email dispatch.
 # Requires `Authorization: ******` header.
