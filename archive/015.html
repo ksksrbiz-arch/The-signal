@@ -8,7 +8,7 @@
 <meta property="og:title" content="THE SIGNAL — Weekly Transmission №015">
 <meta property="og:description" content="The Ecosystem Era. One intelligence layer to rule the stack.">
 <meta property="og:type" content="article">
-<meta property="og:image" content="https://1commercesolutions.com/og-image.png">
+<meta property="og:image" content="https://1commercesolutions.com/images/covers/015.png">
 <link rel="prev" href="https://1commercesolutions.com/archive/014.html">
 <link rel="next" href="https://1commercesolutions.com/archive/016.html">
 <link rel="canonical" href="https://1commercesolutions.com/archive/015.html">
@@ -32,7 +32,7 @@
 <meta name="twitter:card" content="summary_large_image">
 <meta name="twitter:title" content="THE SIGNAL №015 — The Ecosystem Era">
 <meta name="twitter:description" content="The Ecosystem Era. One intelligence layer to rule the stack. UnifyOne, UnifyAI, and the sovereign brand play.">
-<meta name="twitter:image" content="https://1commercesolutions.com/og-image.png">
+<meta name="twitter:image" content="https://1commercesolutions.com/images/covers/015.png">
 <meta name="twitter:image:alt" content="THE SIGNAL Issue 015 — The Ecosystem Era">
 <script type="application/ld+json">
 {
@@ -47,7 +47,7 @@
   "author": {"@type": "Person", "name": "Keith"},
   "publisher": {"@type": "Organization", "name": "1Commerce LLC", "url": "https://1commercesolutions.com"},
   "mainEntityOfPage": "https://1commercesolutions.com/archive/015.html",
-  "image": "https://1commercesolutions.com/og-image.png",
+  "image": "https://1commercesolutions.com/images/covers/015.png",
   "isPartOf": {"@type": "Blog", "name": "THE SIGNAL", "url": "https://1commercesolutions.com/archive/"}
 }
 </script>
@@ -75,8 +75,8 @@
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,600;9..144,700&family=IBM+Plex+Sans:wght@400;500;600&family=JetBrains+Mono:wght@300;400;500&display=swap" rel="stylesheet">
 
-<link rel="stylesheet" href="../base.css?v=20260621a">
-<link rel="stylesheet" href="../style.css?v=20260621a">
+<link rel="stylesheet" href="../base.css?v=20260711a">
+<link rel="stylesheet" href="../style.css?v=20260711a">
 
 <style>
 /* ── Dispatch-hero backdrop (infographic) ── */
@@ -84,6 +84,10 @@
   position: absolute;
   inset: 0;
   background-image: url('../images/unify-one-intelligence-layer.png');
+  background-image: image-set(
+    url('../images/unify-one-intelligence-layer.avif') type('image/avif'),
+    url('../images/unify-one-intelligence-layer.webp') type('image/webp'),
+    url('../images/unify-one-intelligence-layer.png') type('image/png'));
   background-size: cover;
   background-position: center top;
   filter: brightness(0.12) saturate(0.6);
@@ -179,8 +183,9 @@
     <a href="../news/">News Aggregator</a>
     <a href="../videos/">Videos</a>
     <a href="../reel-engine/">Reel Engine</a>
+    <a href="../daily/">Daily</a>
     <a href="../about/">About</a>
-    <a href="../#subscribe">Subscribe</a>
+    <a href="#subscribe">Subscribe</a>
   </div>
 
   <!-- Header -->
@@ -211,8 +216,9 @@
             <li><a href="../news/">News Aggregator</a></li>
             <li><a href="../videos/">Videos</a></li>
             <li><a href="../reel-engine/">Reel Engine</a></li>
+          <li><a href="../daily/">Daily</a></li>
           <li><a href="../about/">About</a></li>
-            <li><a href="../#subscribe">Subscribe</a></li>
+            <li><a href="#subscribe">Subscribe</a></li>
           </ul>
         </nav>
         <button class="nav-toggle" aria-label="Open menu">
@@ -461,7 +467,7 @@
         <div class="dispatch-body">
           <p>Everything in this dispatch is Systems Phase work. The Cathedral Principle sequencing — Foundation, Revenue, Systems, Scale — means none of this infrastructure gets built before the revenue base exists to justify it. The consulting engagements (Precision Core Builders, ClearPath Environmental, Hidden Creek Horse Park) fund the SaaS development. The SaaS development creates the technology provider credibility. The technology provider track creates the certification pathways.</p>
 
-          <p>The 1Commerce Operator Dossier puts the production proof on record: 6 verified builds live, 100% stack uptime, 14 weekly dispatches shipped, managed by 1 operator. That is not a portfolio slide. It is the documented evidence that the architecture works before the sales process begins — the proof that earns the right to scale.</p>
+          <p>The 1Commerce Operator Dossier puts the production proof on record: 6 verified builds live, 100% stack uptime, weekly dispatches shipped on a steady cadence, managed by 1 operator. That is not a portfolio slide. It is the documented evidence that the architecture works before the sales process begins — the proof that earns the right to scale.</p>
 
           <p>Signal 016 covers deployment infrastructure — the monorepo discipline, the Netlify operations pattern, and what the InkVault portal launch revealed about the gap between architectural planning and production reality when image assets and database migrations collide at 11pm on a Tuesday.</p>
         </div>
@@ -562,7 +568,7 @@
     <div class="footer-main">
       <div class="footer-col">
         <h4>The Signal</h4>
-        <div class="footer-subscribe">
+        <div class="footer-subscribe" id="subscribe">
           <form class="footer-subscribe-form" action="https://assets.mailerlite.com/jsonp/887036/forms/131950373498498498/subscribe" method="POST">
             <input type="email" name="fields[email]" placeholder="your@email.com" required aria-label="Email address">
             <button type="submit">Subscribe</button>
@@ -580,8 +586,9 @@
           <li><a href="../news/">News Aggregator</a></li>
           <li><a href="../videos/">Videos</a></li>
           <li><a href="../reel-engine/">Reel Engine</a></li>
+          <li><a href="../daily/">Daily</a></li>
           <li><a href="../about/">About</a></li>
-          <li><a href="../#subscribe">Subscribe</a></li>
+          <li><a href="#subscribe">Subscribe</a></li>
         </ul>
       </div>
       <div class="footer-col">

@@ -8,7 +8,7 @@
 <meta property="og:title" content="THE SIGNAL — Weekly Transmission №016">
 <meta property="og:description" content="Steam to Silicon. The era of applying models is wide open.">
 <meta property="og:type" content="article">
-<meta property="og:image" content="https://1commercesolutions.com/og-image.png">
+<meta property="og:image" content="https://1commercesolutions.com/images/covers/016.png">
 <link rel="prev" href="https://1commercesolutions.com/archive/015.html">
 <link rel="next" href="https://1commercesolutions.com/archive/017.html">
 <link rel="canonical" href="https://1commercesolutions.com/archive/016.html">
@@ -32,7 +32,7 @@
 <meta name="twitter:card" content="summary_large_image">
 <meta name="twitter:title" content="THE SIGNAL №016 — Steam to Silicon">
 <meta name="twitter:description" content="Steam to Silicon: The Architecture of the 2025 AI Economy. The Barbell Economy, solo-scale empire, and the blueprint for 2026.">
-<meta name="twitter:image" content="https://1commercesolutions.com/og-image.png">
+<meta name="twitter:image" content="https://1commercesolutions.com/images/covers/016.png">
 <meta name="twitter:image:alt" content="THE SIGNAL Issue 016 — Steam to Silicon">
 <script type="application/ld+json">
 {
@@ -47,7 +47,7 @@
   "author": {"@type": "Person", "name": "Keith"},
   "publisher": {"@type": "Organization", "name": "1Commerce LLC", "url": "https://1commercesolutions.com"},
   "mainEntityOfPage": "https://1commercesolutions.com/archive/016.html",
-  "image": "https://1commercesolutions.com/og-image.png",
+  "image": "https://1commercesolutions.com/images/covers/016.png",
   "isPartOf": {"@type": "Blog", "name": "THE SIGNAL", "url": "https://1commercesolutions.com/archive/"}
 }
 </script>
@@ -74,14 +74,18 @@
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,600;9..144,700&family=IBM+Plex+Sans:wght@400;500;600&family=JetBrains+Mono:wght@300;400;500&display=swap" rel="stylesheet">
 
-<link rel="stylesheet" href="../base.css?v=20260621a">
-<link rel="stylesheet" href="../style.css?v=20260621a">
+<link rel="stylesheet" href="../base.css?v=20260711a">
+<link rel="stylesheet" href="../style.css?v=20260711a">
 
 <style>
 /* Hero backdrop */
 .hero-backdrop-img {
   position: absolute; inset: 0;
   background-image: url('../images/barbell/steam-to-silicon-cover.png');
+  background-image: image-set(
+    url('../images/barbell/steam-to-silicon-cover.avif') type('image/avif'),
+    url('../images/barbell/steam-to-silicon-cover.webp') type('image/webp'),
+    url('../images/barbell/steam-to-silicon-cover.png') type('image/png'));
   background-size: cover;
   background-position: center top;
   filter: brightness(0.14) saturate(0.5);
@@ -206,8 +210,9 @@
     <a href="../news/">News Aggregator</a>
     <a href="../videos/">Videos</a>
     <a href="../reel-engine/">Reel Engine</a>
+    <a href="../daily/">Daily</a>
     <a href="../about/">About</a>
-    <a href="../#subscribe">Subscribe</a>
+    <a href="#subscribe">Subscribe</a>
   </div>
 
   <header class="site-header">
@@ -237,8 +242,9 @@
             <li><a href="../news/">News Aggregator</a></li>
             <li><a href="../videos/">Videos</a></li>
             <li><a href="../reel-engine/">Reel Engine</a></li>
+          <li><a href="../daily/">Daily</a></li>
           <li><a href="../about/">About</a></li>
-            <li><a href="../#subscribe">Subscribe</a></li>
+            <li><a href="#subscribe">Subscribe</a></li>
           </ul>
         </nav>
         <button class="nav-toggle" aria-label="Open menu">
@@ -687,7 +693,7 @@
     <div class="footer-main">
       <div class="footer-col">
         <h4>The Signal</h4>
-        <div class="footer-subscribe">
+        <div class="footer-subscribe" id="subscribe">
           <form class="footer-subscribe-form" action="https://assets.mailerlite.com/jsonp/887036/forms/131950373498498498/subscribe" method="POST">
             <input type="email" name="fields[email]" placeholder="your@email.com" required aria-label="Email address">
             <button type="submit">Subscribe</button>
@@ -705,8 +711,9 @@
           <li><a href="../news/">News Aggregator</a></li>
           <li><a href="../videos/">Videos</a></li>
           <li><a href="../reel-engine/">Reel Engine</a></li>
+          <li><a href="../daily/">Daily</a></li>
           <li><a href="../about/">About</a></li>
-          <li><a href="../#subscribe">Subscribe</a></li>
+          <li><a href="#subscribe">Subscribe</a></li>
         </ul>
       </div>
       <div class="footer-col">
