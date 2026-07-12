@@ -86,7 +86,8 @@ exports.handler = async (event) => {
       const counts = await readCounts(store, id);
       return json(200, { ok: true, id, ...counts });
     } catch (err) {
-      return json(200, { ok: false, degraded: true, id, ...emptyCounts() });
+      console.error('engagement GET degraded:', err && err.name, err && err.message);
+      return json(200, { ok: false, degraded: true, reason: String((err && err.name) || 'err') + ': ' + String((err && err.message) || '').slice(0, 100), id, ...emptyCounts() });
     }
   }
 
@@ -113,6 +114,7 @@ exports.handler = async (event) => {
     await store.setJSON(keyFor(id), counts);
     return json(200, { ok: true, id, ...counts });
   } catch (err) {
-    return json(200, { ok: false, degraded: true, id, ...emptyCounts() });
+    console.error('engagement POST degraded:', err && err.name, err && err.message);
+    return json(200, { ok: false, degraded: true, reason: String((err && err.name) || 'err') + ': ' + String((err && err.message) || '').slice(0, 100), id, ...emptyCounts() });
   }
 };
