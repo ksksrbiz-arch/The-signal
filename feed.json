@@ -1,0 +1,580 @@
+{
+  "version": "https://jsonfeed.org/version/1.1",
+  "title": "THE SIGNAL",
+  "home_page_url": "https://1commercesolutions.com/blog/",
+  "feed_url": "https://1commercesolutions.com/feed.json",
+  "description": "Weekly dispatches, fieldnotes, and daily briefs from 1Commerce LLC — proof-first commerce infrastructure, built in public from Canby, Oregon.",
+  "language": "en-US",
+  "authors": [
+    {
+      "name": "Keith",
+      "url": "https://1commercesolutions.com/about/"
+    }
+  ],
+  "items": [
+    {
+      "id": "https://1commercesolutions.com/archive/021.html",
+      "url": "https://1commercesolutions.com/archive/021.html",
+      "title": "Paper Trader — A trading desk built to disprove its own edge",
+      "content_text": "A paper-only trading OS that argues with itself before it acts — and keeps a ledger honest enough to say when it's wrong.",
+      "date_published": "2026-07-11T12:00:00Z",
+      "tags": [
+        "THE SIGNAL №021",
+        "Paper Trader",
+        "paper trading OS",
+        "algorithmic trading",
+        "multi-model council",
+        "survivorship bias"
+      ]
+    },
+    {
+      "id": "https://1commercesolutions.com/archive/020.html",
+      "url": "https://1commercesolutions.com/archive/020.html",
+      "title": "The Signal Went Quiet",
+      "content_text": "Forty-six commits. Twelve merged PRs. Two hundred forty-nine files touched. The dispatch went quiet for four weeks. The build log never did.",
+      "date_published": "2026-07-05T12:00:00Z",
+      "tags": [
+        "THE SIGNAL №020",
+        "Core Web Vitals",
+        "AVIF WebP",
+        "accessibility audit",
+        "RSS feed",
+        "fieldnotes search"
+      ]
+    },
+    {
+      "id": "https://1commercesolutions.com/archive/019.html",
+      "url": "https://1commercesolutions.com/archive/019.html",
+      "title": "Built For The Machines",
+      "content_text": "Six GEO/SEO commits in seven days. Five PRs merged. Forty-four daily briefs patched with schema. GEO isn't bolted onto SEO anymore — it's the whole game.",
+      "date_published": "2026-07-04T12:00:00Z",
+      "tags": [
+        "THE SIGNAL №019",
+        "GEO",
+        "generative engine optimization",
+        "structured data",
+        "schema.org",
+        "hreflang"
+      ]
+    },
+    {
+      "id": "https://1commercesolutions.com/daily/2026-06-29.html",
+      "url": "https://1commercesolutions.com/daily/2026-06-29.html",
+      "title": "Daily Signal: commerce intelligence layers",
+      "content_text": "Why storefronts need memory, context, and action layers beyond static pages. A practical daily brief for commerce operators — THE SIGNAL, June 29, 2026.",
+      "date_published": "2026-06-29T12:00:00Z",
+      "tags": [
+        "commerce intelligence layer",
+        "THE SIGNAL",
+        "1Commerce LLC",
+        "commerce systems",
+        "AI agents"
+      ]
+    },
+    {
+      "id": "https://1commercesolutions.com/daily/2026-06-28.html",
+      "url": "https://1commercesolutions.com/daily/2026-06-28.html",
+      "title": "Daily Signal: agent workflows for revenue",
+      "content_text": "How agents support prospecting, qualification, follow-up, and post-sale delivery. A practical daily brief for commerce operators — THE SIGNAL, June 28, 2026.",
+      "date_published": "2026-06-28T12:00:00Z",
+      "tags": [
+        "AI agent revenue workflows",
+        "THE SIGNAL",
+        "1Commerce LLC",
+        "commerce systems",
+        "AI agents"
+      ]
+    },
+    {
+      "id": "https://1commercesolutions.com/daily/2026-06-27.html",
+      "url": "https://1commercesolutions.com/daily/2026-06-27.html",
+      "title": "Daily Signal: solo-founder infrastructure",
+      "content_text": "Where leverage comes from when headcount stays intentionally small. A practical daily brief for commerce operators — THE SIGNAL, June 27, 2026.",
+      "date_published": "2026-06-27T12:00:00Z",
+      "tags": [
+        "solo-founder infrastructure",
+        "THE SIGNAL",
+        "1Commerce LLC",
+        "commerce systems",
+        "AI agents"
+      ]
+    },
+    {
+      "id": "https://1commercesolutions.com/daily/2026-06-26.html",
+      "url": "https://1commercesolutions.com/daily/2026-06-26.html",
+      "title": "Daily Signal: proof-first founder systems",
+      "content_text": "How to turn shipping evidence into trust, distribution, and compounding momentum. A practical daily brief for commerce operators — THE SIGNAL, June 26, 2026.",
+      "date_published": "2026-06-26T12:00:00Z",
+      "tags": [
+        "proof-first founder systems",
+        "THE SIGNAL",
+        "1Commerce LLC",
+        "commerce systems",
+        "AI agents"
+      ]
+    },
+    {
+      "id": "https://1commercesolutions.com/daily/2026-06-25.html",
+      "url": "https://1commercesolutions.com/daily/2026-06-25.html",
+      "title": "Daily Signal: AI-native commerce operations",
+      "content_text": "What an operator should automate today without losing human judgment. A practical daily brief for commerce operators — THE SIGNAL, June 25, 2026.",
+      "date_published": "2026-06-25T12:00:00Z",
+      "tags": [
+        "AI-native commerce operations",
+        "THE SIGNAL",
+        "1Commerce LLC",
+        "commerce systems",
+        "AI agents"
+      ]
+    },
+    {
+      "id": "https://1commercesolutions.com/daily/2026-06-24.html",
+      "url": "https://1commercesolutions.com/daily/2026-06-24.html",
+      "title": "Daily Signal: validated product experiments",
+      "content_text": "How to move from idea to shipped proof while keeping scope under control. A practical daily brief for commerce operators — THE SIGNAL, June 24, 2026.",
+      "date_published": "2026-06-24T12:00:00Z",
+      "tags": [
+        "validated product experiments",
+        "THE SIGNAL",
+        "1Commerce LLC",
+        "commerce systems",
+        "AI agents"
+      ]
+    },
+    {
+      "id": "https://1commercesolutions.com/daily/2026-06-23.html",
+      "url": "https://1commercesolutions.com/daily/2026-06-23.html",
+      "title": "Daily Signal: operator SEO discipline",
+      "content_text": "The daily habits that keep crawl signals fresh without chasing gimmicks. A practical daily brief for commerce operators — THE SIGNAL, June 23, 2026.",
+      "date_published": "2026-06-23T12:00:00Z",
+      "tags": [
+        "automated SEO for static sites",
+        "THE SIGNAL",
+        "1Commerce LLC",
+        "commerce systems",
+        "AI agents"
+      ]
+    },
+    {
+      "id": "https://1commercesolutions.com/daily/2026-06-22.html",
+      "url": "https://1commercesolutions.com/daily/2026-06-22.html",
+      "title": "Daily Signal: commerce intelligence layers",
+      "content_text": "Why storefronts need memory, context, and action layers beyond static pages. A practical daily brief for commerce operators — THE SIGNAL, June 22, 2026.",
+      "date_published": "2026-06-22T12:00:00Z",
+      "tags": [
+        "commerce intelligence layer",
+        "THE SIGNAL",
+        "1Commerce LLC",
+        "commerce systems",
+        "AI agents"
+      ]
+    },
+    {
+      "id": "https://1commercesolutions.com/daily/2026-06-21.html",
+      "url": "https://1commercesolutions.com/daily/2026-06-21.html",
+      "title": "Daily Signal: agent workflows for revenue",
+      "content_text": "How agents support prospecting, qualification, follow-up, and post-sale delivery. A practical daily brief for commerce operators — THE SIGNAL, June 21, 2026.",
+      "date_published": "2026-06-21T12:00:00Z",
+      "tags": [
+        "AI agent revenue workflows",
+        "THE SIGNAL",
+        "1Commerce LLC",
+        "commerce systems",
+        "AI agents"
+      ]
+    },
+    {
+      "id": "https://1commercesolutions.com/daily/2026-06-20.html",
+      "url": "https://1commercesolutions.com/daily/2026-06-20.html",
+      "title": "Daily Signal: solo-founder infrastructure",
+      "content_text": "Where leverage comes from when headcount stays intentionally small. A practical daily brief for commerce operators — THE SIGNAL, June 20, 2026.",
+      "date_published": "2026-06-20T12:00:00Z",
+      "tags": [
+        "solo founder tech stack",
+        "THE SIGNAL",
+        "1Commerce LLC",
+        "commerce systems",
+        "AI agents"
+      ]
+    },
+    {
+      "id": "https://1commercesolutions.com/daily/2026-06-19.html",
+      "url": "https://1commercesolutions.com/daily/2026-06-19.html",
+      "title": "Daily Signal: proof-first founder systems",
+      "content_text": "How to turn shipping evidence into trust, distribution, and compounding momentum. A practical daily brief for commerce operators — THE SIGNAL, June 19, 2026.",
+      "date_published": "2026-06-19T12:00:00Z",
+      "tags": [
+        "build in public systems",
+        "THE SIGNAL",
+        "1Commerce LLC",
+        "commerce systems",
+        "AI agents"
+      ]
+    },
+    {
+      "id": "https://1commercesolutions.com/daily/2026-06-18.html",
+      "url": "https://1commercesolutions.com/daily/2026-06-18.html",
+      "title": "Daily Signal: AI-native commerce operations",
+      "content_text": "What an operator should automate today without losing human judgment. A practical daily brief for commerce operators — THE SIGNAL, June 18, 2026.",
+      "date_published": "2026-06-18T12:00:00Z",
+      "tags": [
+        "AI commerce operations",
+        "THE SIGNAL",
+        "1Commerce LLC",
+        "commerce systems",
+        "AI agents"
+      ]
+    },
+    {
+      "id": "https://1commercesolutions.com/daily/2026-06-17.html",
+      "url": "https://1commercesolutions.com/daily/2026-06-17.html",
+      "title": "Daily Signal: validated product experiments",
+      "content_text": "How to move from idea to shipped proof while keeping scope under control. A practical daily brief for commerce operators — THE SIGNAL, June 17, 2026.",
+      "date_published": "2026-06-17T12:00:00Z",
+      "tags": [
+        "product validation systems",
+        "THE SIGNAL",
+        "1Commerce LLC",
+        "commerce systems",
+        "AI agents"
+      ]
+    },
+    {
+      "id": "https://1commercesolutions.com/daily/2026-06-16.html",
+      "url": "https://1commercesolutions.com/daily/2026-06-16.html",
+      "title": "Daily Signal: operator SEO discipline",
+      "content_text": "The daily habits that keep crawl signals fresh without chasing gimmicks. A practical daily brief for commerce operators — THE SIGNAL, June 16, 2026.",
+      "date_published": "2026-06-16T12:00:00Z",
+      "tags": [
+        "automated SEO for static sites",
+        "THE SIGNAL",
+        "1Commerce LLC",
+        "commerce systems",
+        "AI agents"
+      ]
+    },
+    {
+      "id": "https://1commercesolutions.com/daily/2026-06-15.html",
+      "url": "https://1commercesolutions.com/daily/2026-06-15.html",
+      "title": "Daily Signal: commerce intelligence layers",
+      "content_text": "Why storefronts need memory, context, and action layers beyond static pages. A practical daily brief for commerce operators — THE SIGNAL, June 15, 2026.",
+      "date_published": "2026-06-15T12:00:00Z",
+      "tags": [
+        "commerce intelligence layer",
+        "THE SIGNAL",
+        "1Commerce LLC",
+        "commerce systems",
+        "AI agents"
+      ]
+    },
+    {
+      "id": "https://1commercesolutions.com/daily/2026-06-14.html",
+      "url": "https://1commercesolutions.com/daily/2026-06-14.html",
+      "title": "Daily Signal: agent workflows for revenue",
+      "content_text": "How agents support prospecting, qualification, follow-up, and post-sale delivery. A practical daily brief for commerce operators — THE SIGNAL, June 14, 2026.",
+      "date_published": "2026-06-14T12:00:00Z",
+      "tags": [
+        "AI agent revenue workflows",
+        "THE SIGNAL",
+        "1Commerce LLC",
+        "commerce systems",
+        "AI agents"
+      ]
+    },
+    {
+      "id": "https://1commercesolutions.com/daily/2026-06-13.html",
+      "url": "https://1commercesolutions.com/daily/2026-06-13.html",
+      "title": "Daily Signal: solo-founder infrastructure",
+      "content_text": "Where leverage comes from when headcount stays intentionally small. A practical daily brief for commerce operators — THE SIGNAL, June 13, 2026.",
+      "date_published": "2026-06-13T12:00:00Z",
+      "tags": [
+        "solo founder tech stack",
+        "THE SIGNAL",
+        "1Commerce LLC",
+        "commerce systems",
+        "AI agents"
+      ]
+    },
+    {
+      "id": "https://1commercesolutions.com/daily/2026-06-12.html",
+      "url": "https://1commercesolutions.com/daily/2026-06-12.html",
+      "title": "Daily Signal: proof-first founder systems",
+      "content_text": "How to turn shipping evidence into trust, distribution, and compounding momentum. A practical daily brief for commerce operators — THE SIGNAL, June 12, 2026.",
+      "date_published": "2026-06-12T12:00:00Z",
+      "tags": [
+        "build in public systems",
+        "THE SIGNAL",
+        "1Commerce LLC",
+        "commerce systems",
+        "AI agents"
+      ]
+    },
+    {
+      "id": "https://1commercesolutions.com/daily/2026-06-11.html",
+      "url": "https://1commercesolutions.com/daily/2026-06-11.html",
+      "title": "Daily Signal: AI-native commerce operations",
+      "content_text": "What an operator should automate today without losing human judgment. A practical daily brief for commerce operators — THE SIGNAL, June 11, 2026.",
+      "date_published": "2026-06-11T12:00:00Z",
+      "tags": [
+        "AI commerce operations",
+        "THE SIGNAL",
+        "1Commerce LLC",
+        "commerce systems",
+        "AI agents"
+      ]
+    },
+    {
+      "id": "https://1commercesolutions.com/daily/2026-06-10.html",
+      "url": "https://1commercesolutions.com/daily/2026-06-10.html",
+      "title": "Daily Signal: validated product experiments",
+      "content_text": "How to move from idea to shipped proof while keeping scope under control. A practical daily brief for commerce operators — THE SIGNAL, June 10, 2026.",
+      "date_published": "2026-06-10T12:00:00Z",
+      "tags": [
+        "product validation systems",
+        "THE SIGNAL",
+        "1Commerce LLC",
+        "commerce systems",
+        "AI agents"
+      ]
+    },
+    {
+      "id": "https://1commercesolutions.com/daily/2026-06-09.html",
+      "url": "https://1commercesolutions.com/daily/2026-06-09.html",
+      "title": "Daily Signal: operator SEO discipline",
+      "content_text": "The daily habits that keep crawl signals fresh without chasing gimmicks. A practical daily brief for commerce operators — THE SIGNAL, June 9, 2026.",
+      "date_published": "2026-06-09T12:00:00Z",
+      "tags": [
+        "automated SEO for static sites",
+        "THE SIGNAL",
+        "1Commerce LLC",
+        "commerce systems",
+        "AI agents"
+      ]
+    },
+    {
+      "id": "https://1commercesolutions.com/daily/2026-06-08.html",
+      "url": "https://1commercesolutions.com/daily/2026-06-08.html",
+      "title": "Daily Signal: commerce intelligence layers",
+      "content_text": "Why storefronts need memory, context, and action layers beyond static pages. A practical daily brief for commerce operators — THE SIGNAL, June 8, 2026.",
+      "date_published": "2026-06-08T12:00:00Z",
+      "tags": [
+        "commerce intelligence layer",
+        "THE SIGNAL",
+        "1Commerce LLC",
+        "commerce systems",
+        "AI agents"
+      ]
+    },
+    {
+      "id": "https://1commercesolutions.com/daily/2026-06-07.html",
+      "url": "https://1commercesolutions.com/daily/2026-06-07.html",
+      "title": "Daily Signal: agent workflows for revenue",
+      "content_text": "How agents support prospecting, qualification, follow-up, and post-sale delivery. A practical daily brief for commerce operators — THE SIGNAL, June 7, 2026.",
+      "date_published": "2026-06-07T12:00:00Z",
+      "tags": [
+        "AI agent revenue workflows",
+        "THE SIGNAL",
+        "1Commerce LLC",
+        "commerce systems",
+        "AI agents"
+      ]
+    },
+    {
+      "id": "https://1commercesolutions.com/daily/2026-06-06.html",
+      "url": "https://1commercesolutions.com/daily/2026-06-06.html",
+      "title": "Daily Signal: solo-founder infrastructure",
+      "content_text": "Where leverage comes from when headcount stays intentionally small. A practical daily brief for commerce operators — THE SIGNAL, June 6, 2026.",
+      "date_published": "2026-06-06T12:00:00Z",
+      "tags": [
+        "solo founder tech stack",
+        "THE SIGNAL",
+        "1Commerce LLC",
+        "commerce systems",
+        "AI agents"
+      ]
+    },
+    {
+      "id": "https://1commercesolutions.com/daily/2026-06-05.html",
+      "url": "https://1commercesolutions.com/daily/2026-06-05.html",
+      "title": "Daily Signal: proof-first founder systems",
+      "content_text": "How to turn shipping evidence into trust, distribution, and compounding momentum. A practical daily brief for commerce operators — THE SIGNAL, June 5, 2026.",
+      "date_published": "2026-06-05T12:00:00Z",
+      "tags": [
+        "build in public systems",
+        "THE SIGNAL",
+        "1Commerce LLC",
+        "commerce systems",
+        "AI agents"
+      ]
+    },
+    {
+      "id": "https://1commercesolutions.com/daily/2026-06-04.html",
+      "url": "https://1commercesolutions.com/daily/2026-06-04.html",
+      "title": "Daily Signal: AI-native commerce operations",
+      "content_text": "What an operator should automate today without losing human judgment. A practical daily brief for commerce operators — THE SIGNAL, June 4, 2026.",
+      "date_published": "2026-06-04T12:00:00Z",
+      "tags": [
+        "AI commerce operations",
+        "THE SIGNAL",
+        "1Commerce LLC",
+        "commerce systems",
+        "AI agents"
+      ]
+    },
+    {
+      "id": "https://1commercesolutions.com/daily/2026-06-03.html",
+      "url": "https://1commercesolutions.com/daily/2026-06-03.html",
+      "title": "Daily Signal: validated product experiments",
+      "content_text": "How to move from idea to shipped proof while keeping scope under control. A practical daily brief for commerce operators — THE SIGNAL, June 3, 2026.",
+      "date_published": "2026-06-03T12:00:00Z",
+      "tags": [
+        "product validation systems",
+        "THE SIGNAL",
+        "1Commerce LLC",
+        "commerce systems",
+        "AI agents"
+      ]
+    },
+    {
+      "id": "https://1commercesolutions.com/daily/2026-06-02.html",
+      "url": "https://1commercesolutions.com/daily/2026-06-02.html",
+      "title": "Daily Signal: operator SEO discipline",
+      "content_text": "The daily habits that keep crawl signals fresh without chasing gimmicks. A practical daily brief for commerce operators — THE SIGNAL, June 2, 2026.",
+      "date_published": "2026-06-02T12:00:00Z",
+      "tags": [
+        "automated SEO for static sites",
+        "THE SIGNAL",
+        "1Commerce LLC",
+        "commerce systems",
+        "AI agents"
+      ]
+    },
+    {
+      "id": "https://1commercesolutions.com/archive/018.html",
+      "url": "https://1commercesolutions.com/archive/018.html",
+      "title": "Cathedral Principle in Action",
+      "content_text": "Eleven active work streams. Zero placeholders. Eight verified deployments. One v1.0 game release. One music video pipeline. One licensing cascade. Fifteen thousand memoir words in hand.",
+      "date_published": "2026-06-01T12:00:00Z",
+      "tags": [
+        "THE SIGNAL №018",
+        "cathedral principle",
+        "eleven work streams",
+        "verified deployments",
+        "solo founder",
+        "1Commerce LLC"
+      ]
+    },
+    {
+      "id": "https://1commercesolutions.com/daily/2026-06-01.html",
+      "url": "https://1commercesolutions.com/daily/2026-06-01.html",
+      "title": "Daily Signal: commerce intelligence layers",
+      "content_text": "Why storefronts need memory, context, and action layers beyond static pages. A practical daily brief for commerce operators — THE SIGNAL, June 1, 2026.",
+      "date_published": "2026-06-01T12:00:00Z",
+      "tags": [
+        "commerce intelligence layer",
+        "THE SIGNAL",
+        "1Commerce LLC",
+        "commerce systems",
+        "AI agents"
+      ]
+    },
+    {
+      "id": "https://1commercesolutions.com/daily/2026-05-31.html",
+      "url": "https://1commercesolutions.com/daily/2026-05-31.html",
+      "title": "Daily Signal: agent workflows for revenue",
+      "content_text": "How agents support prospecting, qualification, follow-up, and post-sale delivery. A practical daily brief for commerce operators — THE SIGNAL, May 31, 2026.",
+      "date_published": "2026-05-31T12:00:00Z",
+      "tags": [
+        "AI agent revenue workflows",
+        "THE SIGNAL",
+        "1Commerce LLC",
+        "commerce systems",
+        "AI agents"
+      ]
+    },
+    {
+      "id": "https://1commercesolutions.com/daily/2026-05-30.html",
+      "url": "https://1commercesolutions.com/daily/2026-05-30.html",
+      "title": "Daily Signal: solo-founder infrastructure",
+      "content_text": "Where leverage comes from when headcount stays intentionally small. A practical daily brief for commerce operators — THE SIGNAL, May 30, 2026.",
+      "date_published": "2026-05-30T12:00:00Z",
+      "tags": [
+        "solo founder tech stack",
+        "THE SIGNAL",
+        "1Commerce LLC",
+        "commerce systems",
+        "AI agents"
+      ]
+    },
+    {
+      "id": "https://1commercesolutions.com/daily/2026-05-29.html",
+      "url": "https://1commercesolutions.com/daily/2026-05-29.html",
+      "title": "Daily Signal: proof-first founder systems",
+      "content_text": "How to turn shipping evidence into trust, distribution, and compounding momentum. A practical daily brief for commerce operators — THE SIGNAL, May 29, 2026.",
+      "date_published": "2026-05-29T12:00:00Z",
+      "tags": [
+        "build in public systems",
+        "THE SIGNAL",
+        "1Commerce LLC",
+        "commerce systems",
+        "AI agents"
+      ]
+    },
+    {
+      "id": "https://1commercesolutions.com/daily/2026-05-28.html",
+      "url": "https://1commercesolutions.com/daily/2026-05-28.html",
+      "title": "Daily Signal: AI-native commerce operations",
+      "content_text": "What an operator should automate today without losing human judgment. A practical daily brief for commerce operators — THE SIGNAL, May 28, 2026.",
+      "date_published": "2026-05-28T12:00:00Z",
+      "tags": [
+        "AI commerce operations",
+        "THE SIGNAL",
+        "1Commerce LLC",
+        "commerce systems",
+        "AI agents"
+      ]
+    },
+    {
+      "id": "https://1commercesolutions.com/daily/2026-05-27.html",
+      "url": "https://1commercesolutions.com/daily/2026-05-27.html",
+      "title": "Daily Signal: validated product experiments",
+      "content_text": "How to move from idea to shipped proof while keeping scope under control. A practical daily brief for commerce operators — THE SIGNAL, May 27, 2026.",
+      "date_published": "2026-05-27T12:00:00Z",
+      "tags": [
+        "product validation systems",
+        "THE SIGNAL",
+        "1Commerce LLC",
+        "commerce systems",
+        "AI agents"
+      ]
+    },
+    {
+      "id": "https://1commercesolutions.com/daily/2026-05-25.html",
+      "url": "https://1commercesolutions.com/daily/2026-05-25.html",
+      "title": "Daily Signal: commerce intelligence layers",
+      "content_text": "Why storefronts need memory, context, and action layers beyond static pages. A practical daily brief for commerce operators — THE SIGNAL, May 25, 2026.",
+      "date_published": "2026-05-25T12:00:00Z",
+      "tags": [
+        "commerce intelligence layer",
+        "THE SIGNAL",
+        "1Commerce LLC",
+        "commerce systems",
+        "AI agents"
+      ]
+    },
+    {
+      "id": "https://1commercesolutions.com/daily/2026-05-24.html",
+      "url": "https://1commercesolutions.com/daily/2026-05-24.html",
+      "title": "Daily Signal: agent workflows for revenue",
+      "content_text": "How agents support prospecting, qualification, follow-up, and post-sale delivery. A practical daily brief for commerce operators — THE SIGNAL, May 24, 2026.",
+      "date_published": "2026-05-24T12:00:00Z",
+      "tags": [
+        "AI agent revenue workflows",
+        "THE SIGNAL",
+        "1Commerce LLC",
+        "commerce systems",
+        "AI agents"
+      ]
+    }
+  ]
+}
