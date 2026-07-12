@@ -871,3 +871,119 @@ if ('serviceWorker' in navigator) {
     });
   });
 })();
+
+// ─── COMMAND-K SEARCH PALETTE + RELATED POSTS ──────────────
+// A quick-jump palette (Cmd/Ctrl-K, or "/") that queries /api/search across
+// every dispatch, fieldnote and daily brief, and a "Related" block appended to
+// article pages. Both read the build-time content index via the search API.
+(function(){
+  var css=document.createElement('style');
+  css.textContent=[
+    '.k-overlay{position:fixed;inset:0;z-index:300;display:none;align-items:flex-start;justify-content:center;background:rgba(6,8,12,.6);-webkit-backdrop-filter:blur(3px);backdrop-filter:blur(3px)}',
+    '.k-overlay.open{display:flex}',
+    '.k-box{margin-top:12vh;width:min(620px,92vw);background:var(--panel,#12161f);border:1px solid var(--rule,#232a36);border-radius:12px;overflow:hidden;box-shadow:0 30px 80px rgba(0,0,0,.5)}',
+    '.k-inp{display:flex;align-items:center;gap:10px;padding:14px 16px;border-bottom:1px solid var(--rule,#232a36)}',
+    '.k-inp svg{color:var(--active,#E8B86A);flex:0 0 auto}',
+    '.k-inp input{flex:1;background:none;border:0;outline:none;color:var(--text,#E8E4D8);font-family:"IBM Plex Sans",system-ui,sans-serif;font-size:1.02rem}',
+    '.k-inp kbd{font-family:"JetBrains Mono",monospace;font-size:10px;color:var(--faint,#9AA2AE);border:1px solid var(--rule,#232a36);border-radius:4px;padding:2px 6px}',
+    '.k-list{max-height:56vh;overflow:auto;margin:0;padding:6px;list-style:none}',
+    '.k-item{display:block;padding:10px 12px;border-radius:8px;text-decoration:none;color:var(--text,#E8E4D8);cursor:pointer}',
+    '.k-item:hover,.k-item.sel{background:rgba(232,184,106,.1)}',
+    '.k-item .k-t{font-family:"Fraunces",Georgia,serif;font-size:1rem;line-height:1.2}',
+    '.k-item .k-m{display:flex;gap:8px;align-items:center;margin-top:3px;font-family:"JetBrains Mono",monospace;font-size:10px;letter-spacing:.08em;text-transform:uppercase;color:var(--faint,#9AA2AE)}',
+    '.k-item .k-badge{color:var(--active,#E8B86A)}',
+    '.k-empty{padding:22px 16px;color:var(--faint,#9AA2AE);font-family:"JetBrains Mono",monospace;font-size:12px}',
+    '.related{max-width:760px;margin:8px auto 0;padding:34px 24px 8px;border-top:1px solid var(--rule,#232a36)}',
+    '.related h2{font-family:"JetBrains Mono",monospace;font-size:12px;letter-spacing:.2em;text-transform:uppercase;color:var(--active,#E8B86A);margin:0 0 16px}',
+    '.related-grid{display:grid;grid-template-columns:1fr 1fr;gap:12px}',
+    '.related-card{display:block;border:1px solid var(--rule,#232a36);border-radius:8px;padding:14px 16px;text-decoration:none;color:var(--text,#E8E4D8);background:var(--panel,#12161f);transition:border-color .18s}',
+    '.related-card:hover{border-color:rgba(232,184,106,.45)}',
+    '.related-card .rc-m{font-family:"JetBrains Mono",monospace;font-size:9.5px;letter-spacing:.1em;text-transform:uppercase;color:var(--faint,#9AA2AE)}',
+    '.related-card .rc-t{font-family:"Fraunces",Georgia,serif;font-size:1.02rem;line-height:1.2;margin-top:6px}',
+    '@media(max-width:600px){.related-grid{grid-template-columns:1fr}}'
+  ].join('');
+  document.head.appendChild(css);
+
+  // ---- palette ----
+  var overlay=document.createElement('div');
+  overlay.className='k-overlay'; overlay.setAttribute('role','dialog'); overlay.setAttribute('aria-label','Search the Signal');
+  overlay.innerHTML=''
+    +'<div class="k-box">'
+    +'<div class="k-inp"><svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="7"/><path d="M21 21l-4.3-4.3"/></svg>'
+    +'<input type="text" placeholder="Search dispatches, fieldnotes, daily…" aria-label="Search" autocomplete="off" spellcheck="false"><kbd>ESC</kbd></div>'
+    +'<ul class="k-list" role="listbox"></ul>'
+    +'</div>';
+  document.body.appendChild(overlay);
+  var input=overlay.querySelector('input');
+  var list=overlay.querySelector('.k-list');
+  var lastFocus=null, sel=-1, results=[], t=null;
+
+  function open(){
+    lastFocus=document.activeElement;
+    overlay.classList.add('open');
+    input.value=''; input.focus();
+    query('');
+  }
+  function close(){
+    overlay.classList.remove('open');
+    if(lastFocus&&lastFocus.focus) lastFocus.focus();
+  }
+  function render(){
+    if(!results.length){ list.innerHTML='<li class="k-empty">No matches.</li>'; return; }
+    list.innerHTML=results.map(function(r,i){
+      return '<a class="k-item'+(i===sel?' sel':'')+'" role="option" href="'+r.path+'" data-i="'+i+'">'
+        +'<div class="k-t">'+esc(r.title)+'</div>'
+        +'<div class="k-m"><span class="k-badge">'+esc(r.type||r.stream)+'</span>'+(r.date?'<span>'+r.date+'</span>':'')+(r.readMins?'<span>'+r.readMins+' min</span>':'')+'</div></a>';
+    }).join('');
+  }
+  function esc(s){ return String(s||'').replace(/[&<>"]/g,function(c){return {'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c];}); }
+  function query(q){
+    clearTimeout(t);
+    t=setTimeout(function(){
+      fetch('/api/search?q='+encodeURIComponent(q)).then(function(r){return r.json();}).then(function(d){
+        results=(d&&d.results)||[]; sel=results.length?0:-1; render();
+      }).catch(function(){ results=[]; render(); });
+    },140);
+  }
+  function move(dir){
+    if(!results.length) return;
+    sel=(sel+dir+results.length)%results.length;
+    render();
+    var el=list.querySelector('.k-item.sel'); if(el) el.scrollIntoView({block:'nearest'});
+  }
+  function go(){ if(sel>=0&&results[sel]) location.href=results[sel].path; }
+
+  input.addEventListener('input', function(){ query(input.value.trim()); });
+  input.addEventListener('keydown', function(e){
+    if(e.key==='ArrowDown'){ e.preventDefault(); move(1); }
+    else if(e.key==='ArrowUp'){ e.preventDefault(); move(-1); }
+    else if(e.key==='Enter'){ e.preventDefault(); go(); }
+    else if(e.key==='Escape'){ e.preventDefault(); close(); }
+  });
+  list.addEventListener('click', function(e){ var a=e.target.closest('.k-item'); if(a){ e.preventDefault(); location.href=a.getAttribute('href'); } });
+  overlay.addEventListener('click', function(e){ if(e.target===overlay) close(); });
+
+  function editable(el){ return el && (el.tagName==='INPUT'||el.tagName==='TEXTAREA'||el.isContentEditable); }
+  document.addEventListener('keydown', function(e){
+    if((e.metaKey||e.ctrlKey) && (e.key==='k'||e.key==='K')){ e.preventDefault(); overlay.classList.contains('open')?close():open(); }
+    else if(e.key==='/' && !overlay.classList.contains('open') && !editable(document.activeElement)){ e.preventDefault(); open(); }
+  });
+  // Optional explicit triggers
+  document.querySelectorAll('[data-search-open]').forEach(function(b){ b.addEventListener('click', open); });
+  window.SignalSearch={open:open};
+
+  // ---- related posts (article pages only) ----
+  if(/^\/(archive|fieldnotes|daily)\/[^/]+\.html$/.test(location.pathname)){
+    var main=document.querySelector('main');
+    if(main){
+      fetch('/api/search?related='+encodeURIComponent(location.pathname)).then(function(r){return r.json();}).then(function(d){
+        var rs=(d&&d.results)||[]; if(!rs.length) return;
+        var sec=document.createElement('section'); sec.className='related';
+        sec.innerHTML='<h2>Related transmissions</h2><div class="related-grid">'+rs.map(function(r){
+          return '<a class="related-card" href="'+r.path+'"><div class="rc-m">'+esc(r.type||r.stream)+(r.date?' · '+r.date:'')+'</div><div class="rc-t">'+esc(r.title)+'</div></a>';
+        }).join('')+'</div>';
+        main.appendChild(sec);
+      }).catch(function(){});
+    }
+  }
+})();

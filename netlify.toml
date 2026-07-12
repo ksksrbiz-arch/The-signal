@@ -11,7 +11,7 @@
 # ── Functions: bundle the latest daily brief so the scheduled
 #    send-signal function can read it at runtime. ───────────────
 [functions]
-  included_files = ["data/latest-daily-signal.json"]
+  included_files = ["data/latest-daily-signal.json", "data/content-index.json"]
 
 # Scheduled daily Signal email dispatch — runs every day at 12:00 UTC
 # (shortly after the daily-content-agent GitHub Action publishes the
