@@ -6,7 +6,11 @@ import { fileURLToPath } from 'node:url';
 const ROOT = path.resolve(path.dirname(fileURLToPath(import.meta.url)), '..');
 const SITE_URL = 'https://1commercesolutions.com';
 const DATA_DIR = path.join(ROOT, 'data');
-const EXCLUDED_DIRS = new Set(['.git', '.github', 'node_modules']);
+// Keep the crawl to real, publicly-served site pages. `.claude` holds agent
+// worktrees (full repo copies) that would otherwise multiply every page into the
+// sitemap; `noir-reel-engine` is a separate Python toolkit; `.netlify`/`_dev` are
+// build/scratch dirs. Mirrors build-index.mjs's exclusion set.
+const EXCLUDED_DIRS = new Set(['.git', '.github', '.claude', '.netlify', 'node_modules', 'noir-reel-engine', '_dev']);
 
 function diagnosticMessage(error) {
   return String(error?.message || 'unknown error')
@@ -115,14 +119,16 @@ ${entries}
 
 function priorityFor(url) {
   if (url === `${SITE_URL}/`) return '1.0';
-  if (url.endsWith('/archive/') || url.endsWith('/fieldnotes/') || url.endsWith('/news/') || url.endsWith('/daily/')) return '0.9';
-  if (url.includes('/archive/') || url.includes('/fieldnotes/') || url.includes('/daily/')) return '0.7';
+  if (url.endsWith('/archive/') || url.endsWith('/fieldnotes/') || url.endsWith('/news/') || url.endsWith('/daily/') || url.endsWith('/blog/')) return '0.9';
+  if (url.endsWith('/blog/series/') || url.endsWith('/blog/issues/')) return '0.8';
+  if (url.includes('/archive/') || url.includes('/fieldnotes/') || url.includes('/daily/') || url.includes('/blog/')) return '0.7';
   return '0.6';
 }
 
 function changefreqFor(url) {
   if (url.endsWith('/news/') || url.includes('/daily/')) return 'daily';
-  if (url === `${SITE_URL}/` || url.endsWith('/archive/') || url.endsWith('/fieldnotes/')) return 'weekly';
+  if (url === `${SITE_URL}/` || url.endsWith('/archive/') || url.endsWith('/fieldnotes/') || url.endsWith('/blog/')) return 'weekly';
+  if (url.endsWith('/blog/series/') || url.endsWith('/blog/issues/')) return 'weekly';
   return 'monthly';
 }
 
