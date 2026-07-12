@@ -1,0 +1,41 @@
+{
+  "series": [
+    {
+      "slug": "cathedral-framework",
+      "name": "The Cathedral Framework",
+      "description": "The through-line of THE SIGNAL: build for the long horizon, lay every stone load-bearing, and light the work from within. The recurring cathedral thread, in reading order.",
+      "accent": "build",
+      "posts": [
+        "fieldnotes/cathedral-principle",
+        "archive/013",
+        "archive/008",
+        "archive/018"
+      ]
+    },
+    {
+      "slug": "building-in-public",
+      "name": "Building in Public",
+      "description": "Transparency as a competitive edge — why the work is shown in the open, and the operating system that keeps a solo founder accountable.",
+      "accent": "dispatch",
+      "posts": [
+        "archive/002",
+        "fieldnotes/build-in-public-system",
+        "archive/007",
+        "fieldnotes/solo-founder-stack-2026"
+      ]
+    },
+    {
+      "slug": "operators-playbook",
+      "name": "The Operator's Playbook",
+      "description": "Owning the stack instead of renting it — API sovereignty, platform independence, revenue architecture, and shipping fast with AI agents.",
+      "accent": "strategy",
+      "posts": [
+        "archive/006",
+        "archive/010",
+        "archive/011",
+        "archive/012",
+        "fieldnotes/mvp-in-a-week"
+      ]
+    }
+  ]
+}

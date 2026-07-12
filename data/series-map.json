@@ -1,0 +1,145 @@
+{
+  "/fieldnotes/cathedral-principle.html": [
+    {
+      "slug": "cathedral-framework",
+      "name": "The Cathedral Framework",
+      "url": "/blog/series/cathedral-framework.html",
+      "index": 1,
+      "total": 4,
+      "prev": null,
+      "next": "/archive/013.html"
+    }
+  ],
+  "/archive/013.html": [
+    {
+      "slug": "cathedral-framework",
+      "name": "The Cathedral Framework",
+      "url": "/blog/series/cathedral-framework.html",
+      "index": 2,
+      "total": 4,
+      "prev": "/fieldnotes/cathedral-principle.html",
+      "next": "/archive/008.html"
+    }
+  ],
+  "/archive/008.html": [
+    {
+      "slug": "cathedral-framework",
+      "name": "The Cathedral Framework",
+      "url": "/blog/series/cathedral-framework.html",
+      "index": 3,
+      "total": 4,
+      "prev": "/archive/013.html",
+      "next": "/archive/018.html"
+    }
+  ],
+  "/archive/018.html": [
+    {
+      "slug": "cathedral-framework",
+      "name": "The Cathedral Framework",
+      "url": "/blog/series/cathedral-framework.html",
+      "index": 4,
+      "total": 4,
+      "prev": "/archive/008.html",
+      "next": null
+    }
+  ],
+  "/archive/002.html": [
+    {
+      "slug": "building-in-public",
+      "name": "Building in Public",
+      "url": "/blog/series/building-in-public.html",
+      "index": 1,
+      "total": 4,
+      "prev": null,
+      "next": "/fieldnotes/build-in-public-system.html"
+    }
+  ],
+  "/fieldnotes/build-in-public-system.html": [
+    {
+      "slug": "building-in-public",
+      "name": "Building in Public",
+      "url": "/blog/series/building-in-public.html",
+      "index": 2,
+      "total": 4,
+      "prev": "/archive/002.html",
+      "next": "/archive/007.html"
+    }
+  ],
+  "/archive/007.html": [
+    {
+      "slug": "building-in-public",
+      "name": "Building in Public",
+      "url": "/blog/series/building-in-public.html",
+      "index": 3,
+      "total": 4,
+      "prev": "/fieldnotes/build-in-public-system.html",
+      "next": "/fieldnotes/solo-founder-stack-2026.html"
+    }
+  ],
+  "/fieldnotes/solo-founder-stack-2026.html": [
+    {
+      "slug": "building-in-public",
+      "name": "Building in Public",
+      "url": "/blog/series/building-in-public.html",
+      "index": 4,
+      "total": 4,
+      "prev": "/archive/007.html",
+      "next": null
+    }
+  ],
+  "/archive/006.html": [
+    {
+      "slug": "operators-playbook",
+      "name": "The Operator's Playbook",
+      "url": "/blog/series/operators-playbook.html",
+      "index": 1,
+      "total": 5,
+      "prev": null,
+      "next": "/archive/010.html"
+    }
+  ],
+  "/archive/010.html": [
+    {
+      "slug": "operators-playbook",
+      "name": "The Operator's Playbook",
+      "url": "/blog/series/operators-playbook.html",
+      "index": 2,
+      "total": 5,
+      "prev": "/archive/006.html",
+      "next": "/archive/011.html"
+    }
+  ],
+  "/archive/011.html": [
+    {
+      "slug": "operators-playbook",
+      "name": "The Operator's Playbook",
+      "url": "/blog/series/operators-playbook.html",
+      "index": 3,
+      "total": 5,
+      "prev": "/archive/010.html",
+      "next": "/archive/012.html"
+    }
+  ],
+  "/archive/012.html": [
+    {
+      "slug": "operators-playbook",
+      "name": "The Operator's Playbook",
+      "url": "/blog/series/operators-playbook.html",
+      "index": 4,
+      "total": 5,
+      "prev": "/archive/011.html",
+      "next": "/fieldnotes/mvp-in-a-week.html"
+    }
+  ],
+  "/fieldnotes/mvp-in-a-week.html": [
+    {
+      "slug": "operators-playbook",
+      "name": "The Operator's Playbook",
+      "url": "/blog/series/operators-playbook.html",
+      "index": 5,
+      "total": 5,
+      "prev": "/archive/012.html",
+      "next": null
+    }
+  ]
+}
