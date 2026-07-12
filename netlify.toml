@@ -116,6 +116,12 @@
   to = "/.netlify/functions/send-signal"
   status = 200
 
+# Post engagement (reactions + views), backed by Netlify Blobs.
+[[redirects]]
+  from = "/api/engagement"
+  to = "/.netlify/functions/engagement"
+  status = 200
+
 # Block public access to internal documentation and setup scripts.
 # force=true overrides static file serving so Netlify returns 404
 # instead of serving the raw file content.
