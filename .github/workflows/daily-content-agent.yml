@@ -42,13 +42,39 @@ jobs:
         run: npm run automation:daily
 
       - name: Commit generated updates
+        id: commit
         run: |
           if [ -z "$(git status --porcelain)" ]; then
             echo "No generated changes to commit."
+            echo "published=false" >> "$GITHUB_OUTPUT"
             exit 0
           fi
           git config user.name "github-actions[bot]"
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
-          git add daily data sitemap.xml feed.xml
+          # automation:daily regenerates the daily briefs, the content index /
+          # blog hub / series / issues, and the sitemap/feed — stage all of them.
+          git add daily data blog sitemap.xml feed.xml feed.json
           git commit -m "Update daily Signal content"
           git push
+          DATE="${SIGNAL_DATE:-$(date -u +%F)}"
+          echo "published=true" >> "$GITHUB_OUTPUT"
+          echo "date=$DATE" >> "$GITHUB_OUTPUT"
+        env:
+          SIGNAL_DATE: ${{ inputs.signal_date }}
+
+      # Notify IndexNow (Bing/Yandex/…) about the freshly published brief. Runs
+      # after the push so the URL is on main; polls until Netlify has the page
+      # live, then submits just the changed URLs (per IndexNow's guidance). Never
+      # fails the run — discovery is best-effort.
+      - name: Ping IndexNow for new content
+        if: steps.commit.outputs.published == 'true'
+        continue-on-error: true
+        run: |
+          BASE="https://1commercesolutions.com"
+          BRIEF="$BASE/daily/${{ steps.commit.outputs.date }}.html"
+          for i in $(seq 1 20); do
+            code=$(curl -s -o /dev/null -w "%{http_code}" "$BRIEF")
+            if [ "$code" = "200" ]; then echo "Live after ${i} check(s): $BRIEF"; break; fi
+            sleep 15
+          done
+          npm run indexnow -- "$BRIEF" "$BASE/daily/" "$BASE/blog/"
