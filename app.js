@@ -795,3 +795,79 @@ if ('serviceWorker' in navigator) {
     });
   }
 })();
+
+// ─── POST ENGAGEMENT (reactions + views) ───────────────────
+// Hydrates the reaction bar from /api/engagement (Netlify Blobs), records a
+// view once per session, and posts a reaction once per type per browser
+// (localStorage-guarded, optimistic). No-ops on pages without a reaction bar.
+(function(){
+  var bar=document.querySelector('.reaction-bar');
+  if(!bar) return;
+  var id=location.pathname;
+  var API='/api/engagement';
+
+  var css=document.createElement('style');
+  css.textContent=[
+    '.reaction-views{display:inline-flex;align-items:center;gap:6px;font-family:"JetBrains Mono",ui-monospace,monospace;font-size:11px;letter-spacing:.12em;text-transform:uppercase;color:var(--faint,#9AA2AE);margin-left:auto}',
+    '.reaction-views b{color:var(--active,#E8B86A);font-weight:600}',
+    '.reaction-btn.reacted{border-color:rgba(232,184,106,.5)}',
+    '.reaction-btn.reacted .reaction-count{color:var(--active,#E8B86A)}',
+    '.reaction-btn.bump{animation:reactbump .4s ease}',
+    '@keyframes reactbump{40%{transform:scale(1.18)}}'
+  ].join('');
+  document.head.appendChild(css);
+
+  // views badge appended to the bar label row
+  var views=document.createElement('span');
+  views.className='reaction-views';
+  views.innerHTML='<svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M1 12s4-7 11-7 11 7 11 7-4 7-11 7-11-7-11-7z"/><circle cx="12" cy="12" r="3"/></svg><span><b>—</b> views</span>';
+  var label=bar.querySelector('.reaction-bar-label');
+  (label||bar).insertAdjacentElement(label?'afterend':'afterbegin', views);
+  var viewsNum=views.querySelector('b');
+
+  function paint(data){
+    if(data && data.reactions){
+      bar.querySelectorAll('.reaction-btn').forEach(function(btn){
+        var k=btn.getAttribute('data-reaction');
+        var c=btn.querySelector('.reaction-count');
+        if(c && typeof data.reactions[k]==='number') c.textContent=data.reactions[k];
+      });
+    }
+    if(data && typeof data.views==='number') viewsNum.textContent=data.views;
+  }
+  function req(method, body){
+    var opts={method:method,headers:{'Content-Type':'application/json'}};
+    if(body) opts.body=JSON.stringify(body);
+    var url=API+(method==='GET'?('?id='+encodeURIComponent(id)):'');
+    return fetch(url,opts).then(function(r){return r.json();}).catch(function(){return null;});
+  }
+
+  // hydrate
+  req('GET').then(function(d){ if(d) paint(d); });
+
+  // record a view once per session
+  try{
+    var vk='sig-viewed:'+id;
+    if(!sessionStorage.getItem(vk)){
+      sessionStorage.setItem(vk,'1');
+      req('POST',{id:id,type:'view'}).then(function(d){ if(d && d.ok) paint(d); });
+    }
+  }catch(e){}
+
+  // reactions — one per type per browser
+  bar.querySelectorAll('.reaction-btn').forEach(function(btn){
+    var k=btn.getAttribute('data-reaction');
+    var rk='sig-react:'+id+':'+k;
+    var already=false;
+    try{ already=!!localStorage.getItem(rk); }catch(e){}
+    if(already) btn.classList.add('reacted');
+    btn.addEventListener('click', function(){
+      try{ if(localStorage.getItem(rk)) return; localStorage.setItem(rk,'1'); }catch(e){}
+      btn.classList.add('reacted','bump');
+      setTimeout(function(){ btn.classList.remove('bump'); },400);
+      var c=btn.querySelector('.reaction-count');
+      if(c) c.textContent=(parseInt(c.textContent,10)||0)+1; // optimistic
+      req('POST',{id:id,type:'react',reaction:k}).then(function(d){ if(d && d.ok) paint(d); });
+    });
+  });
+})();

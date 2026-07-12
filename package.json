@@ -19,7 +19,9 @@
     "index": "node scripts/build-index.mjs",
     "automation:daily": "npm run content:agent && npm run index && npm run seo:agent"
   },
-  "dependencies": {},
+  "dependencies": {
+    "@netlify/blobs": "^10.7.9"
+  },
   "engines": {
     "node": ">=18"
   }
