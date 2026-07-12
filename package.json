@@ -16,7 +16,8 @@
     "content:agent": "node scripts/daily-content-agent.mjs",
     "seo:agent": "node scripts/seo-agent.mjs",
     "covers": "node scripts/generate-covers.mjs",
-    "automation:daily": "npm run content:agent && npm run seo:agent"
+    "index": "node scripts/build-index.mjs",
+    "automation:daily": "npm run content:agent && npm run index && npm run seo:agent"
   },
   "dependencies": {},
   "engines": {
