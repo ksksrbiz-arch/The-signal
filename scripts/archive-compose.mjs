@@ -183,6 +183,15 @@ async function main() {
       type: draft.coverType,
     }),
   );
+  // Keep the normalized draft. Pages are rendered once, so without the source a
+  // template or design change could never reach dispatches already published —
+  // npm run archive:rerender replays these through the current renderer.
+  await mkdir(path.join(ROOT, 'data', 'dispatches'), { recursive: true });
+  await writeFile(
+    path.join(ROOT, 'data', 'dispatches', `${number}.json`),
+    `${JSON.stringify({ ...draft, number, date: TODAY }, null, 2)}\n`,
+  );
+
   await writeFile(path.join(ARCHIVE_DIR, `${number}.html`), renderPage(draft, { number, date: TODAY, prev }));
   await updateArchiveIndex(draft, number, TODAY);
 
