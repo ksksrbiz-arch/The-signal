@@ -111,6 +111,33 @@ straight back to `main` (which then auto-deploys via Netlify):
 Because these bots push to `main`, expect periodic automated commits like
 "Update daily Signal content" and "Publish archive transmission №NNN".
 
+### Publishing without GitHub Actions
+
+**GitHub Actions is currently unavailable on this repo**, which is why every
+scheduled workflow failed daily for weeks. The `schedule:` blocks in all three
+workflows are therefore commented out — the files are kept and still work via
+`workflow_dispatch`, so restoring the crons is a one-line change if Actions come
+back. **If you restore them, delete the Claude routine below** or the two will
+double-publish.
+
+The live publisher is a **Claude routine** that runs one command:
+
+```bash
+npm run archive:publish
+```
+
+`scripts/archive-publish.mjs` runs the whole sequence — gates, generate, rebuild
+covers/indexes/feeds/sitemap, commit, push to `main`, ping IndexNow. Keeping it
+in the repo rather than in the routine's prompt means the logic is versioned and
+reviewable. It exits 0 when the agent refuses to publish (a quiet day is the
+system working) and 1 only when something actually broke.
+
+**The API keys must live where the routine runs.** `GROQ_API_KEY` and
+`GEMINI_API_KEY` have to be set in the Claude Code environment. Netlify
+environment variables do **not** reach it — those only apply to Netlify builds
+and serverless functions, which is a different machine from the one the routine
+uses. The command fails fast with that explanation if the keys are missing.
+
 ### Why `/daily/` is noindex
 
 The daily brief generator picks its theme with `topics[dayNumber % topics.length]`

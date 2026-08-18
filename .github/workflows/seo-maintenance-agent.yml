@@ -1,8 +1,10 @@
 name: SEO maintenance agent
 
+# SCHEDULE PARKED — GitHub Actions is unavailable on this repo right now.
+# The sitemap/feed refresh now runs as part of `npm run archive:publish`.
 on:
-  schedule:
-    - cron: '45 11 * * *'
+#   schedule:
+#     - cron: '45 11 * * *'
   workflow_dispatch:
 
 permissions:

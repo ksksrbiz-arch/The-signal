@@ -9,9 +9,14 @@ name: Archive transmission agent
 # nothing, and a thin page costs the whole site. `continue-on-error` on the
 # generate step keeps a refused run from showing up as a red build.
 
+# SCHEDULE PARKED — GitHub Actions is unavailable on this repo right now, so a
+# cron here only produces a daily failure. The live publisher is the Claude
+# routine described in CLAUDE.md ("Publishing without GitHub Actions"), which
+# runs `npm run archive:publish`. Restore the `schedule:` block below when
+# Actions work again, and delete the routine so the two do not double-publish.
 on:
-  schedule:
-    - cron: '30 10 * * *'
+#   schedule:
+#     - cron: '30 10 * * *'
   workflow_dispatch:
     inputs:
       signal_date:
