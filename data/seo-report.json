@@ -1,6 +1,6 @@
 {
   "generatedAt": "2026-08-18",
-  "pagesScanned": 87,
+  "pagesScanned": 88,
   "noindexedExcluded": 54,
   "issuesFound": 0,
   "issues": [],
@@ -260,6 +260,15 @@
       "description": "Paper Trader is a paper-only trading OS that reads the market across a dozen sources, argues with itself before it acts, and keeps a ledger honest enough to say when it's wrong. No real money, no fabricated backtests — just: does it beat SPY, net of slippage?"
     },
     {
+      "file": "archive/022.html",
+      "url": "https://1commercesolutions.com/archive/022.html",
+      "lastmod": "2026-08-18",
+      "changefreq": "monthly",
+      "priority": "0.7",
+      "title": "THE SIGNAL — Transmission №022 | What a Headless Migration Actually Costs",
+      "description": "Headless migration quotes are wrong in a specific, predictable way. They price the thing everyone can see — rebuilding the storefront against an API — and…"
+    },
+    {
       "file": "archive/index.html",
       "url": "https://1commercesolutions.com/archive/",
       "lastmod": "2026-08-18",
@@ -271,7 +280,7 @@
     {
       "file": "blog/index.html",
       "url": "https://1commercesolutions.com/blog/",
-      "lastmod": "2026-07-12",
+      "lastmod": "2026-08-18",
       "changefreq": "weekly",
       "priority": "0.9",
       "title": "The Blog — THE SIGNAL | Every dispatch, fieldnote & daily brief",

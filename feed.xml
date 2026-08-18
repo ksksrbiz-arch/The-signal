@@ -7,9 +7,16 @@
     <language>en-us</language>
     <copyright>© 2026 1Commerce LLC</copyright>
     <managingEditor>skdev@1commerce.online (Keith)</managingEditor>
-    <lastBuildDate>Sat, 11 Jul 2026 12:00:00 +0000</lastBuildDate>
+    <lastBuildDate>Tue, 18 Aug 2026 12:00:00 +0000</lastBuildDate>
     <atom:link href="https://1commercesolutions.com/feed.xml" rel="self" type="application/rss+xml" />
     <image><url>https://1commercesolutions.com/og-image.png</url><title>THE SIGNAL</title><link>https://1commercesolutions.com/archive/</link></image>
+    <item>
+      <title>What a Headless Migration Actually Costs</title>
+      <link>https://1commercesolutions.com/archive/022.html</link>
+      <guid isPermaLink="true">https://1commercesolutions.com/archive/022.html</guid>
+      <pubDate>Tue, 18 Aug 2026 12:00:00 +0000</pubDate>
+      <description>Headless migration quotes are wrong in a specific, predictable way. They price the thing everyone can see — rebuilding the storefront against an API — and…</description>
+    </item>
     <item>
       <title>Paper Trader — A trading desk built to disprove its own edge</title>
       <link>https://1commercesolutions.com/archive/021.html</link>
@@ -212,13 +219,6 @@
       <guid isPermaLink="true">https://1commercesolutions.com/fieldnotes/github-skaggsk.html</guid>
       <pubDate>Wed, 06 May 2026 12:00:00 +0000</pubDate>
       <description>A compact Python-generated static site, with a large generated index and the script that produces it.</description>
-    </item>
-    <item>
-      <title>stripe-supabase-saas-starter-kit: payments and auth in one starter</title>
-      <link>https://1commercesolutions.com/fieldnotes/github-stripe-supabase-saas-starter-kit.html</link>
-      <guid isPermaLink="true">https://1commercesolutions.com/fieldnotes/github-stripe-supabase-saas-starter-kit.html</guid>
-      <pubDate>Wed, 06 May 2026 12:00:00 +0000</pubDate>
-      <description>A Next.js SaaS starter combining Supabase authentication, Postgres/Drizzle, Stripe billing, and dashboard-protected routes.</description>
     </item>
   </channel>
 </rss>

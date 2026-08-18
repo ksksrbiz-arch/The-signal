@@ -1,0 +1,40 @@
+{
+  "version": 1,
+  "rubric": [],
+  "lessons": [],
+  "runs": [
+    {
+      "date": "2026-08-18",
+      "number": "022",
+      "topicId": "headless-migration-cost",
+      "outcome": "published",
+      "title": "What a Headless Migration Actually Costs",
+      "margins": {
+        "wordsOver": 152,
+        "similarityHeadroom": 0.279,
+        "peakSimilarity": 0.001,
+        "sectionsOver": 1
+      },
+      "warnings": []
+    }
+  ],
+  "structures": [
+    {
+      "number": "022",
+      "openingShape": "other",
+      "openingWords": "headless migration quotes",
+      "sections": 5,
+      "headingWords": 8,
+      "headingStartsWith": [
+        "the",
+        "you",
+        "dual-running",
+        "the",
+        "how"
+      ],
+      "avgSentenceWords": 21,
+      "sentenceVariance": 11,
+      "words": 1052
+    }
+  ]
+}
