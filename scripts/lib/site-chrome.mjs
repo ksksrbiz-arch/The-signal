@@ -19,6 +19,7 @@ export const NAV_ITEMS = [
   ['Home', ''],
   ['Archive', 'archive/'],
   ['Fieldnotes', 'fieldnotes/'],
+  ['Playbooks', 'playbooks/'],
   ['Verified Builds', 'builds/'],
   ['News Aggregator', 'news/'],
   ['Videos', 'videos/'],

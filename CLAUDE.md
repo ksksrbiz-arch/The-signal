@@ -204,6 +204,11 @@ daily briefs cover in passing. Content lives in `scripts/playbooks-content.mjs`;
 the renderer is `scripts/build-playbooks.mjs`. Edit the content module and run
 `npm run playbooks` — never hand-edit `playbooks/*.html`, it is generated.
 
+The site nav is defined once, in `scripts/lib/site-chrome.mjs` (`NAV_ITEMS`).
+`blog/`, `blog/series/`, and `blog/issues/` are generated from it, so editing
+their nav by hand is pointless — the next automation run overwrites it. Add nav
+entries there and re-run the generators.
+
 Keep one page per search intent. If a new theme is added to the daily brief
 generator, add its pillar here too.
 

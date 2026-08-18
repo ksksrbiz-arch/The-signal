@@ -36,7 +36,8 @@ import { fileURLToPath } from 'node:url';
 import { archiveTopics, findTopic } from './archive-topics.mjs';
 import { buildCover } from './generate-covers.mjs';
 import { complete, hasGemini, hasGroq, MODELS, parseJsonBlock, redact } from './llm-client.mjs';
-import { escapeHtml, safeJsonLd, siteFooter, siteHeader } from './site-chrome.mjs';
+import { buildChrome } from './lib/site-chrome.mjs';
+import { escapeHtml, safeJsonLd } from './lib/html.mjs';
 
 const ROOT = path.resolve(path.dirname(fileURLToPath(import.meta.url)), '..');
 const ARCHIVE_DIR = path.join(ROOT, 'archive');
@@ -47,6 +48,8 @@ const CSS_VERSION = '20260711a';
 
 const TODAY = process.env.SIGNAL_DATE || new Date().toISOString().slice(0, 10);
 const DRY_RUN = process.env.DRY_RUN === '1';
+
+const ARCHIVE_CHROME = buildChrome({ prefix: '../', active: 'Archive' });
 
 const MIN_WORDS = 900;
 const MIN_SECTIONS = 4;
@@ -461,7 +464,7 @@ ${safeJsonLd(breadcrumbs)}
 </script>
 </head>
 <body>
-${siteHeader(1, 'Archive')}
+${ARCHIVE_CHROME.header}
 <main id="main" class="tx-wrap">
   <p class="tx-kicker">◈ Field Transmission · №${number} · ${humanDate} ◈</p>
   <h1 class="tx-title">${escapeHtml(draft.title)}</h1>
@@ -490,7 +493,7 @@ ${draft.takeaways.map((t) => `      <li>${escapeHtml(t)}</li>`).join('\n')}
     <p>This transmission is analysis, not a build report. Verified build claims live in <a href="../builds/">Verified Builds</a>; the operating playbooks live in <a href="../playbooks/">Playbooks</a>.</p>
   </div>
 </main>
-${siteFooter(1)}
+${ARCHIVE_CHROME.footer}
 <script src="../app.js?v=${CSS_VERSION}" defer></script>
 </body>
 </html>

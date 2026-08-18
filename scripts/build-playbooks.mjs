@@ -11,15 +11,15 @@ import { mkdir, writeFile } from 'node:fs/promises';
 import path from 'node:path';
 import { fileURLToPath } from 'node:url';
 import { playbooks } from './playbooks-content.mjs';
-import { escapeHtml, safeJsonLd, siteFooter, siteHeader } from './site-chrome.mjs';
+import { buildChrome } from './lib/site-chrome.mjs';
+import { escapeHtml, safeJsonLd } from './lib/html.mjs';
 
 const ROOT = path.resolve(path.dirname(fileURLToPath(import.meta.url)), '..');
 const OUT_DIR = path.join(ROOT, 'playbooks');
 const SITE_URL = 'https://1commercesolutions.com';
 const CSS_VERSION = '20260711a';
 
-const HEADER = siteHeader(1, 'Playbooks');
-const FOOTER = siteFooter(1);
+const { header: HEADER, footer: FOOTER } = buildChrome({ prefix: '../', active: 'Playbooks' });
 
 // The `daily-*` rules mirror the inline block the daily briefs already ship, so
 // playbooks inherit the same reading layout. The `playbook-*` rules add the
