@@ -1,32 +1,23 @@
 #!/usr/bin/env node
 /**
- * archive-agent.mjs — publishes one new archive transmission per run.
+ * archive-pipeline.mjs — the deterministic half of archive publishing.
  *
- * Design constraints, in priority order:
+ * Authoring is done by Claude in the routine session (see CLAUDE.md). This
+ * module is everything that must NOT depend on a model's judgement: topic
+ * selection, the quality gates, the transformer, the page renderer, the archive
+ * index update, and the state file. Separating them this way means the writing
+ * can get better over time while the guarantees stay fixed and testable.
  *
- * 1. NEVER REPEAT A TOPIC. The daily brief agent cycles seven themes with a
- *    modulo, which produced ~8 near-identical pages per theme and made the
- *    whole section unrankable. Here each topic in scripts/archive-topics.mjs is
- *    consumed once, recorded in data/archive-state.json, and never reused. The
- *    run also refuses to publish if the draft is too similar to an existing
- *    dispatch, so a repeat cannot slip through by another route.
+ * The gates are the whole point. They exist because a previous generator
+ * produced 54 near-identical pages that suppressed the entire site, so they are
+ * enforced in code rather than trusted to whoever is drafting:
  *
- * 2. NEVER FABRICATE PROOF. This site's whole claim is that its numbers are
- *    real. A model cannot know what shipped this week, so generated dispatches
- *    are analytical: no invented metrics, deploy counts, revenue figures,
- *    client names, or "this week I built X" claims. The transformer rejects
- *    drafts containing those patterns rather than publishing them.
+ *   - a topic is consumed once and never reused
+ *   - a draft too close to any existing dispatch is refused
+ *   - drafts making unverifiable first-person proof claims are refused, because
+ *     this site's positioning is that its claims are checkable
  *
- * 3. PUBLISH NOTHING RATHER THAN PUBLISH FILLER. Every quality gate is fatal.
- *    A failed run exits non-zero with no file written, and the workflow makes
- *    no commit. A quiet day is cheaper than a thin page.
- *
- * Pipeline: plan (Groq, JSON outline) → draft (Groq, long-form) → edit (Gemini,
- * specificity + de-slop pass) → deterministic transform into the site's HTML.
- * Providers fall back to each other, so a rate-limited free tier is survivable.
- *
- * Env: GROQ_API_KEY and/or GEMINI_API_KEY. Optional: SIGNAL_DATE (YYYY-MM-DD),
- * ARCHIVE_TOPIC_ID (force a topic), DRY_RUN=1 (write nothing).
+ * Consumed by scripts/archive-compose.mjs and scripts/test-archive-agent.mjs.
  */
 
 import { mkdir, readFile, readdir, writeFile } from 'node:fs/promises';
@@ -35,7 +26,6 @@ import { fileURLToPath } from 'node:url';
 
 import { archiveTopics, findTopic } from './archive-topics.mjs';
 import { buildCover } from './generate-covers.mjs';
-import { complete, hasGemini, hasGroq, MODELS, parseJsonBlock, redact } from './llm-client.mjs';
 import { buildChrome } from './lib/site-chrome.mjs';
 import { escapeHtml, safeJsonLd } from './lib/html.mjs';
 
@@ -47,7 +37,6 @@ const SITE_URL = 'https://1commercesolutions.com';
 const CSS_VERSION = '20260711a';
 
 const TODAY = process.env.SIGNAL_DATE || new Date().toISOString().slice(0, 10);
-const DRY_RUN = process.env.DRY_RUN === '1';
 
 const ARCHIVE_CHROME = buildChrome({ prefix: '../', active: 'Archive' });
 
@@ -57,7 +46,10 @@ const MAX_SIMILARITY = 0.28; // Jaccard over 5-word shingles against any existin
 
 /* ------------------------------ house voice ------------------------------ */
 
-const SYSTEM = `You write for THE SIGNAL, the publication of 1Commerce LLC — a solo commerce-infrastructure operator in Canby, Oregon.
+// The authoring brief. scripts/archive-brief.mjs prints this to whoever is
+// writing (now Claude, in the routine session) alongside the accumulated
+// craft lessons. It is data, not a model prompt.
+export const HOUSE_VOICE = `You write for THE SIGNAL, the publication of 1Commerce LLC — a solo commerce-infrastructure operator in Canby, Oregon.
 
 VOICE
 - Direct, technical, unsentimental. You are talking to another operator who has shipped things.
@@ -166,7 +158,7 @@ function checkQuality(draft, existingTexts) {
 
   for (const { re, why } of FABRICATION_PATTERNS) {
     const hit = full.match(re);
-    if (hit) problems.push(`possible fabricated claim (${why}): "${redact(hit[0])}"`);
+    if (hit) problems.push(`possible fabricated claim (${why}): "${hit[0].slice(0, 120)}"`);
   }
 
   const draftShingles = shingles(full);
@@ -185,116 +177,6 @@ function checkQuality(draft, existingTexts) {
 }
 
 /* ------------------------------ pipeline ------------------------------ */
-
-async function planStage(topic) {
-  const prompt = `Plan a long-form dispatch for THE SIGNAL.
-
-TOPIC: ${topic.title}
-ANGLE: ${topic.angle}
-TARGET SEARCH INTENT: ${topic.keyword}
-
-Produce an outline as JSON with exactly this shape:
-{
-  "thesis": "one sentence — the specific, arguable claim the piece defends",
-  "counterpoint": "the strongest honest objection to the thesis",
-  "sections": [
-    { "heading": "specific, not generic", "argument": "what this section proves", "mechanism": "the concrete mechanism, trade-off, or worked example that supports it" }
-  ]
-}
-
-Requirements:
-- 5 or 6 sections.
-- Headings must be specific claims or questions, never one-word labels like "Introduction", "Overview", "Benefits", "Conclusion".
-- Each mechanism must be something derivable by reasoning about how the system works — never a statistic, study, or anecdote.
-- The thesis must be arguable. If a reasonable operator could not disagree with it, it is too weak.
-
-Return only the JSON object.`;
-
-  const raw = await complete({ system: SYSTEM, prompt, temperature: 0.75, maxTokens: 2048, json: true });
-  const plan = parseJsonBlock(raw);
-
-  if (!plan?.thesis || !Array.isArray(plan.sections) || plan.sections.length < MIN_SECTIONS) {
-    throw new Error(`plan stage returned an unusable outline: ${redact(JSON.stringify(plan).slice(0, 300))}`);
-  }
-  return plan;
-}
-
-async function draftStage(topic, plan) {
-  const outline = plan.sections
-    .map((s, i) => `${i + 1}. ${s.heading}\n   argument: ${s.argument}\n   mechanism: ${s.mechanism}`)
-    .join('\n');
-
-  const prompt = `Write the full dispatch from this outline.
-
-TOPIC: ${topic.title}
-THESIS: ${plan.thesis}
-COUNTERPOINT TO ADDRESS: ${plan.counterpoint}
-
-OUTLINE:
-${outline}
-
-Return JSON with exactly this shape:
-{
-  "title": "the headline — specific, under 65 characters, no colon-subtitle pattern",
-  "subtitle": "one clause that sharpens the headline",
-  "lede": "2-3 paragraphs opening the piece, separated by \\n\\n — start with the claim, not with context",
-  "pullQuote": "one sentence from the piece worth setting apart",
-  "sections": [ { "heading": "...", "paragraphs": ["...", "..."] } ],
-  "takeaways": ["4-6 imperative sentences an operator can act on"],
-  "coverType": "one of: dispatch, build, strategy, system"
-}
-
-Requirements:
-- 180-320 words per section, across 2-4 paragraphs.
-- Total length 1100-1600 words.
-- Address the counterpoint honestly inside one of the sections.
-- No statistics, no studies, no client stories, no claims about what 1Commerce shipped.
-- Plain prose. No markdown formatting, no bold, no bullet characters inside paragraphs.
-
-Return only the JSON object.`;
-
-  const raw = await complete({ system: SYSTEM, prompt, temperature: 0.8, maxTokens: 8192, json: true });
-  const draft = parseJsonBlock(raw);
-
-  if (!draft?.title || !draft?.lede || !Array.isArray(draft.sections)) {
-    throw new Error(`draft stage returned an unusable draft: ${redact(JSON.stringify(draft).slice(0, 300))}`);
-  }
-  return draft;
-}
-
-async function editStage(draft) {
-  const prompt = `Edit this dispatch. Return the same JSON shape, with the same keys, edited.
-
-${JSON.stringify(draft, null, 2)}
-
-Editing pass — apply all of these:
-1. Delete every sentence that only restates the previous one. Padding is the main defect to remove.
-2. Replace vague phrasing with the specific mechanism. "This can cause problems" becomes the actual failure.
-3. Remove any statistic, percentage, study reference, or claim about a specific company, client, or shipped work. If a sentence depends on one, rewrite it as reasoning.
-4. Cut these if present: "in today's fast-paced", "in the world of", "game changer", "dive deep", "it's important to note", "at the end of the day", "revolutionize", "cutting-edge", "delve", "in conclusion", "firstly", "furthermore", "moreover", "ever-evolving", "testament to", "landscape" as metaphor.
-5. Vary sentence length. Consecutive sentences of the same shape read as generated.
-6. Make the first sentence of the lede carry the claim.
-7. Keep total length between 1100 and 1600 words. Cut rather than pad.
-
-Return only the edited JSON object, no commentary.`;
-
-  // Gemini first here: the edit pass benefits from a different model than the
-  // one that wrote the draft, which catches self-consistent padding.
-  const raw = await complete({ system: SYSTEM, prompt, temperature: 0.4, maxTokens: 8192, json: true }, ['gemini', 'groq']);
-  const edited = parseJsonBlock(raw);
-
-  if (!edited?.title || !Array.isArray(edited.sections) || !edited.sections.length) {
-    console.warn('edit stage returned an unusable object — falling back to the unedited draft');
-    return draft;
-  }
-  // Preserve fields the editor may have dropped.
-  return {
-    ...draft,
-    ...edited,
-    takeaways: Array.isArray(edited.takeaways) && edited.takeaways.length ? edited.takeaways : draft.takeaways,
-    coverType: edited.coverType || draft.coverType,
-  };
-}
 
 /* ------------------------------ transformer ------------------------------ */
 
@@ -626,86 +508,41 @@ async function pickTopic(state) {
   return remaining[0];
 }
 
-async function main() {
-  if (!hasGroq() && !hasGemini()) {
-    throw new Error('no LLM provider configured — set GROQ_API_KEY and/or GEMINI_API_KEY');
-  }
-  console.log(`archive-agent: date=${TODAY} groq=${hasGroq() ? MODELS.groqLarge : 'off'} gemini=${hasGemini() ? MODELS.gemini : 'off'}`);
 
-  const state = await loadState();
-  const topic = await pickTopic(state);
-  const numbers = await existingNumbers();
-  const number = nextNumber(numbers);
-  const prev = numbers.length ? numbers[numbers.length - 1] : null;
+/* ------------------------------ exports ------------------------------ */
 
-  console.log(`archive-agent: topic="${topic.id}" → archive/${number}.html`);
+export {
+  loadState,
+  saveState,
+  existingNumbers,
+  nextNumber,
+  words,
+  shingles,
+  jaccard,
+  stripTags,
+  checkQuality,
+  normalize,
+  metaDescription,
+  renderPage,
+  listItemHtml,
+  updateArchiveIndex,
+  collectExistingTexts,
+  pickTopic,
+  BANNED_PHRASES,
+  FABRICATION_PATTERNS,
+  MIN_WORDS,
+  MIN_SECTIONS,
+  MAX_SIMILARITY,
+  ARCHIVE_DIR,
+  COVERS_DIR,
+  STATE_FILE,
+  ROOT,
+  SITE_URL,
+  TODAY,
+  buildCover,
+  archiveTopics,
+  findTopic,
+};
 
-  const plan = await planStage(topic);
-  console.log(`archive-agent: planned ${plan.sections.length} sections`);
-
-  const rawDraft = await draftStage(topic, plan);
-  const edited = await editStage(rawDraft);
-  const draft = normalize(edited, topic);
-  console.log(`archive-agent: drafted "${draft.title}" (${draft.sections.length} sections)`);
-
-  const existingTexts = await collectExistingTexts();
-  const problems = checkQuality(draft, existingTexts);
-  if (problems.length) {
-    console.error('archive-agent: quality gates failed — publishing nothing.');
-    for (const problem of problems) console.error(`  · ${problem}`);
-    process.exit(1);
-  }
-  console.log('archive-agent: quality gates passed');
-
-  if (DRY_RUN) {
-    console.log(`archive-agent: DRY_RUN — would publish archive/${number}.html "${draft.title}"`);
-    return;
-  }
-
-  await mkdir(COVERS_DIR, { recursive: true });
-  await writeFile(
-    path.join(COVERS_DIR, `${number}.svg`),
-    buildCover({
-      seed: `signal-${number}-${draft.title}`,
-      kicker: `TRANSMISSION №${number}`,
-      big: `№${number}`,
-      type: draft.coverType,
-    }),
-  );
-
-  await writeFile(path.join(ARCHIVE_DIR, `${number}.html`), renderPage(draft, { number, date: TODAY, prev }));
-  await updateArchiveIndex(draft, number, TODAY);
-
-  // Point the previous dispatch forward at this one.
-  if (prev) {
-    const prevFile = path.join(ARCHIVE_DIR, `${prev}.html`);
-    let prevHtml = await readFile(prevFile, 'utf8');
-    const nextLink = `<link rel="next" href="${SITE_URL}/archive/${number}.html">`;
-    if (/<link rel="next"[^>]*>/.test(prevHtml)) {
-      prevHtml = prevHtml.replace(/<link rel="next"[^>]*>/, nextLink);
-    } else {
-      prevHtml = prevHtml.replace('<link rel="canonical"', `${nextLink}\n<link rel="canonical"`);
-    }
-    await writeFile(prevFile, prevHtml);
-  }
-
-  state.published = [
-    { number, date: TODAY, title: draft.title, topicId: topic.id, keyword: draft.keyword, coverType: draft.coverType },
-    ...(state.published || []),
-  ];
-  state.usedTopicIds = [...new Set([...(state.usedTopicIds || []), topic.id])];
-  await saveState(state);
-
-  console.log(`archive-agent: published archive/${number}.html — "${draft.title}"`);
-}
-
-// Exported so scripts/test-archive-agent.mjs can exercise the deterministic
-// layer — transformer, gates, renderer — without API keys or network access.
+// Kept for the existing offline test suite.
 export const __test = { normalize, checkQuality, renderPage, metaDescription, jaccard, shingles, updateArchiveIndex, listItemHtml };
-
-if (process.argv[1] && path.resolve(process.argv[1]) === path.resolve(fileURLToPath(import.meta.url))) {
-  main().catch((error) => {
-    console.error(`archive-agent failed: ${redact(error?.message)}`);
-    process.exit(1);
-  });
-}

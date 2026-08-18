@@ -13,7 +13,7 @@ import path from 'node:path';
 import { fileURLToPath } from 'node:url';
 
 import { archiveTopics } from './archive-topics.mjs';
-import { __test } from './archive-agent.mjs';
+import { __test } from "./archive-pipeline.mjs";
 
 const { normalize, checkQuality, renderPage, metaDescription } = __test;
 const ROOT = path.resolve(path.dirname(fileURLToPath(import.meta.url)), '..');
@@ -52,7 +52,7 @@ function goodDraft() {
   };
 }
 
-console.log('archive-agent deterministic checks\n');
+console.log('archive-pipeline deterministic checks\n');
 
 check('normalize strips markdown and drops stub paragraphs', () => {
   const draft = normalize(
