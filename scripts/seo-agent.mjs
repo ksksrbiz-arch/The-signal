@@ -57,6 +57,7 @@ function metadata(html) {
     title: html.match(/<title>([^<]+)<\/title>/i)?.[1]?.trim() || '',
     description: html.match(/<meta\s+name=["']description["']\s+content=(["'])(.*?)\1/i)?.[2]?.trim() || '',
     canonical: html.match(/<link\s+rel=["']canonical["']\s+href=(["'])(.*?)\1/i)?.[2]?.trim() || '',
+    robots: html.match(/<meta\s+name=["']robots["']\s+content=(["'])(.*?)\1/i)?.[2]?.trim() || '',
     ogTitle: html.match(/<meta\s+property=["']og:title["']\s+content=(["'])(.*?)\1/i)?.[2]?.trim() || '',
     ogDescription: html.match(/<meta\s+property=["']og:description["']\s+content=(["'])(.*?)\1/i)?.[2]?.trim() || '',
     headline: html.match(/"headline"\s*:\s*"([^"]+)"/i)?.[1]?.trim() || '',
@@ -155,6 +156,7 @@ async function main() {
   const pages = [];
   const feedItems = [];
   const issues = [];
+  const noindexed = [];
 
   for (const file of files) {
     const html = await readFile(file, 'utf8');
@@ -171,7 +173,14 @@ async function main() {
 
     const lastmod = await lastModifiedDate(file);
 
-    pages.push({
+    // A noindex page must never appear in the sitemap — submitting a URL we ask
+    // Google to drop sends contradictory signals. Dated /daily/ briefs are the
+    // main case. Such pages are still audited above and still feed the RSS/JSON
+    // feeds below, so this only gates sitemap inclusion.
+    const indexable = !/noindex/i.test(meta.robots);
+    if (!indexable) noindexed.push(relative);
+
+    if (indexable) pages.push({
       file: relative,
       url,
       lastmod,
@@ -214,8 +223,10 @@ ${pages
       {
         generatedAt: process.env.SIGNAL_DATE || new Date().toISOString().slice(0, 10),
         pagesScanned: pages.length,
+        noindexedExcluded: noindexed.length,
         issuesFound: issues.length,
         issues,
+        noindexed,
         pages,
       },
       null,
@@ -223,7 +234,7 @@ ${pages
     )}\n`,
   );
 
-  console.log(`SEO agent scanned ${pages.length} pages, wrote ${Math.min(feedItems.length, 30)} feed items, and found ${issues.length} metadata issues.`);
+  console.log(`SEO agent scanned ${pages.length} pages, wrote ${Math.min(feedItems.length, 30)} feed items, excluded ${noindexed.length} noindex pages from the sitemap, and found ${issues.length} metadata issues.`);
 }
 
 main().catch((error) => {

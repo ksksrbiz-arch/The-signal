@@ -17,6 +17,7 @@
     "seo:agent": "node scripts/seo-agent.mjs",
     "covers": "node scripts/generate-covers.mjs",
     "index": "node scripts/build-index.mjs",
+    "playbooks": "node scripts/build-playbooks.mjs",
     "automation:daily": "npm run content:agent && npm run index && npm run blog && npm run series && npm run issue && npm run seo:agent",
     "og": "node scripts/generate-og.mjs",
     "blog": "node scripts/build-blog.mjs",
