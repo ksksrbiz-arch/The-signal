@@ -1,7 +1,7 @@
 {
   "name": "the-signal",
   "version": "1.0.0",
-  "description": "THE SIGNAL — 1Commerce LLC weekly dispatch platform",
+  "description": "THE SIGNAL \u2014 1Commerce LLC weekly dispatch platform",
   "private": true,
   "homepage": "https://1commercesolutions.com",
   "repository": {
@@ -11,8 +11,8 @@
   "author": "Keith Skaggs Jr. <skdev@1commerce.online>",
   "license": "UNLICENSED",
   "scripts": {
-    "dev": "echo 'Static site — open index.html directly'",
-    "build": "echo 'No build step — static HTML/CSS/JS'",
+    "dev": "echo 'Static site \u2014 open index.html directly'",
+    "build": "echo 'No build step \u2014 static HTML/CSS/JS'",
     "content:agent": "node scripts/daily-content-agent.mjs",
     "seo:agent": "node scripts/seo-agent.mjs",
     "covers": "node scripts/generate-covers.mjs",
@@ -26,7 +26,8 @@
     "new-post": "node scripts/new-post.mjs",
     "series": "node scripts/build-series.mjs",
     "issue": "node scripts/build-issue.mjs",
-    "indexnow": "node scripts/indexnow.mjs"
+    "indexnow": "node scripts/indexnow.mjs",
+    "archive:publish": "node scripts/archive-publish.mjs"
   },
   "dependencies": {
     "@netlify/blobs": "^10.7.9"
