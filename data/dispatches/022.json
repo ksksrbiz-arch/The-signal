@@ -1,0 +1,62 @@
+{
+  "title": "What a Headless Migration Actually Costs",
+  "subtitle": "The quote covers the build. The build was never the expensive part.",
+  "lede": [
+    "Headless migration quotes are wrong in a specific, predictable way. They price the thing everyone can see — rebuilding the storefront against an API — and leave out the three costs that dominate the project. The build is the visible tip of the work, and it is usually the cheapest phase.,This matters because the omitted costs are not overruns in the usual sense. An overrun means someone estimated badly. These are categories of work that never appeared on the estimate at all, so there is nothing to compare the actual spend against. The project is not late relative to its plan; the plan described a different project."
+  ],
+  "pullQuote": "The build is the visible tip of the work, and it is usually the cheapest phase.",
+  "sections": [
+    {
+      "heading": "The content model is the real migration",
+      "paragraphs": [
+        "A monolithic platform makes a thousand modelling decisions on your behalf. What a product is, how a variant differs from a product, where a description lives, what a collection can contain, how a page composes itself from parts. You inherited those decisions without making them, and after a few years of trading you have built a great deal of merchandising on top of assumptions nobody wrote down.",
+        "Going headless means making every one of those decisions explicitly, in a system that has no opinion about commerce. That is not a data export. It is a modelling exercise that has to reconcile how the catalog is actually used against how it was originally structured, and those two diverge more than anyone expects. The edge cases are where the money goes: the bundle that is really three SKUs with shared inventory, the seasonal collection with hand-ordered products, the size chart that differs by supplier, the legacy category that three campaigns still link to.",
+        "None of this is difficult work. It is slow work that requires someone who knows why the catalog is shaped the way it is, and that person is usually the busiest person in the company. The schedule assumes their time is free. It is the single most common reason a headless migration stalls at eighty percent."
+      ]
+    },
+    {
+      "heading": "You are buying an editing experience, and you have to build it",
+      "paragraphs": [
+        "The platform you are leaving includes an admin interface that non-technical staff use every day without thinking about it. Preview, scheduling, rollback, drafts, and the ability to see a page before it goes live are not features anyone lists as requirements, because on the old platform they were simply there.",
+        "Decoupled architecture removes all of them by definition. The frontend is a separate application, so previewing unpublished content means building a preview pipeline: a draft-aware rendering path, an authenticated route, and a build or revalidation strategy that lets an editor see their change without shipping it to customers. Scheduling means a job that publishes at a time, plus a cache invalidation that actually takes effect at that time.",
+        "This is real engineering, it appears on no requirements document, and it lands late in the project when the team is already tired. Skip it and the migration technically succeeds while making the merchandising team dramatically slower — which is how a project gets judged a failure despite hitting every technical milestone. The honest version of a headless quote includes a line item for rebuilding the parts of the admin you are about to delete."
+      ]
+    },
+    {
+      "heading": "Dual-running is the line item nobody writes down",
+      "paragraphs": [
+        "Migrations are not atomic. For some period you run both systems: the old storefront serving some traffic or some regions, the new one serving the rest, with inventory and orders reconciled across them. That period is longer than planned, because the trigger to finish it is confidence rather than a date.",
+        "During dual-running you pay for both platforms, and every change has to be made twice or deliberately frozen. The freeze is the expensive part. Teams stop shipping merchandising changes because the coordination cost doubles, and a quarter of stalled optimization on a working storefront costs more than the license fees do. That cost is invisible because it shows up as work that did not happen.",
+        "The useful planning move is to treat dual-running as a phase with its own budget and its own exit criteria written in advance — a specific error rate, a specific conversion parity, a specific date after which you cut over regardless. Without a written exit condition the phase ends when someone gets tired of it, which is the worst available decision rule."
+      ]
+    },
+    {
+      "heading": "The performance win is real but smaller than the pitch",
+      "paragraphs": [
+        "Headless is sold on speed, and the demo is genuinely fast. The demo also has four products, no third-party scripts, no consent banner, no reviews widget, no analytics stack, and no personalization. Your production site has all of those, and they will follow you across the migration because they belong to marketing rather than to the platform.",
+        "The gain that survives contact with production is real: better control over what loads and when, the ability to render at the edge, and freedom from a template system that fought you. But the ceiling is set by the third-party payload, and if that payload is the actual problem you can usually fix it on the platform you already have, for a fraction of the cost.",
+        "This is the honest counter-argument to the whole project, and it deserves a straight answer rather than a defensive one. If the only justification is page speed, measure what your current site would score with the tag manager disciplined and the images fixed first. Frequently that number is close enough to make the migration hard to justify on performance alone. Headless earns its cost when you need genuine architectural freedom — multiple storefronts on one catalog, a channel the platform cannot express, a market it will not support — not when you need a faster homepage."
+      ]
+    },
+    {
+      "heading": "How to quote one honestly",
+      "paragraphs": [
+        "Price the four phases separately and let the total be uncomfortable rather than misleading. Content modelling with the person who knows the catalog. Editorial tooling to replace what the admin gave you free. Dual-running, with its exit criteria attached. Then the build, which is the part everyone was already estimating.",
+        "Put a number on the freeze as well, even a rough one. If merchandising ships thirty changes a quarter and the freeze costs half of them, that is a real number in lost optimization, and it belongs next to the license savings that usually justify the project. A quote that contains an uncomfortable number is worth more than one that omits it, because the omitted cost does not disappear — it just arrives later, without a budget line, at the point where stopping is no longer an option."
+      ]
+    }
+  ],
+  "takeaways": [
+    "Budget content modelling as its own phase, staffed by whoever knows why the catalog is shaped the way it is.",
+    "Add a line item for rebuilding preview, scheduling, and drafts — the admin features you are about to delete.",
+    "Write the exit criteria for dual-running before it starts: a specific error rate, parity target, and hard date.",
+    "Estimate the cost of the merchandising freeze in changes not shipped, and put it beside the license savings.",
+    "Before committing on performance grounds, measure what your current stack scores with third-party scripts disciplined.",
+    "Justify headless on architectural freedom you actually need, not on a homepage score you could fix cheaper."
+  ],
+  "coverType": "strategy",
+  "keyword": "headless commerce migration cost",
+  "topicId": "headless-migration-cost",
+  "number": "022",
+  "date": "2026-08-18"
+}

@@ -27,6 +27,7 @@ import { fileURLToPath } from 'node:url';
 import { archiveTopics, findTopic } from './archive-topics.mjs';
 import { buildCover } from './generate-covers.mjs';
 import { buildChrome } from './lib/site-chrome.mjs';
+import { playbooks } from './playbooks-content.mjs';
 import { escapeHtml, safeJsonLd } from './lib/html.mjs';
 
 const ROOT = path.resolve(path.dirname(fileURLToPath(import.meta.url)), '..');
@@ -270,14 +271,61 @@ function renderPage(draft, { number, date, prev }) {
     ],
   };
 
-  const sectionsHtml = draft.sections
-    .map(
-      (s, i) => `      <article class="dispatch" id="${slugId(s.heading, i)}">
+  const sectionHtml = (s, i) => `      <article class="dispatch" id="${slugId(s.heading, i)}">
         <div class="dispatch-numeral" aria-hidden="true">${ROMAN[i] || i + 1}</div>
         <h2>${escapeHtml(s.heading)}</h2>
 ${s.paragraphs.map((p) => `        <p>${escapeHtml(p)}</p>`).join('\n')}
-      </article>`,
-    )
+      </article>`;
+
+  // The subscribe block goes after the second section: late enough that the
+  // reader has seen the argument work, early enough that most readers who will
+  // ever reach it still have. Asking above the fold converts worse and costs
+  // attention before any value has been delivered.
+  const ctaAfter = Math.min(2, draft.sections.length - 1);
+  const sectionsHtml = draft.sections
+    .map((s, i) => (i === ctaAfter ? `${sectionHtml(s, i)}\n${SUBSCRIBE_BLOCK}` : sectionHtml(s, i)))
+    .join('\n');
+
+  const tocItems = draft.sections
+    .map((s, i) => `      <li><a href="#${slugId(s.heading, i)}">${escapeHtml(s.heading)}</a></li>`)
+    .join('\n');
+
+  // Where a finishing reader goes next. Playbooks first: they are the evergreen
+  // pages built to rank and be revisited, so moving a reader from a dated
+  // dispatch into one is the most valuable hop on the site.
+  const related = relatedPlaybooks(draft);
+  const playbookCards = related.length
+    ? related.map(
+      (pb) => `        <a class="tx-card" href="../playbooks/${pb.slug}.html">
+          <span class="k">Playbook</span>
+          <span class="t">${escapeHtml(pb.navTitle)}</span>
+          <span class="d">${escapeHtml(pb.dek)}</span>
+        </a>`,
+      )
+    : [
+        `        <a class="tx-card" href="../playbooks/">
+          <span class="k">Playbooks</span>
+          <span class="t">The operator playbooks</span>
+          <span class="d">Seven evergreen guides to the systems behind these dispatches.</span>
+        </a>`,
+      ];
+
+  const nextCards = [
+    ...playbookCards,
+    prev
+      ? `        <a class="tx-card" href="./${prev}.html">
+          <span class="k">Previous transmission</span>
+          <span class="t">№${prev}</span>
+          <span class="d">The dispatch before this one.</span>
+        </a>`
+      : '',
+    `        <a class="tx-card" href="../fieldnotes/">
+          <span class="k">Fieldnotes</span>
+          <span class="t">The working notebook</span>
+          <span class="d">Longer build logs and system notes, published most Saturdays.</span>
+        </a>`,
+  ]
+    .filter(Boolean)
     .join('\n');
 
   return `<!DOCTYPE html>
@@ -318,25 +366,80 @@ ${prev ? `<link rel="prev" href="${SITE_URL}/archive/${prev}.html">\n` : ''}<met
 <link rel="stylesheet" href="../base.css?v=${CSS_VERSION}">
 <link rel="stylesheet" href="../style.css?v=${CSS_VERSION}">
 <style>
-.tx-wrap{max-width:820px;margin:0 auto;padding:clamp(48px,7vw,88px) 24px}
+/* Reading-first layout. The measure is capped near 68 characters because that
+   is where sustained reading stays comfortable; the sidebar sits outside it so
+   navigation never competes with the text column. */
+.tx-progress{position:fixed;top:0;left:0;height:2px;width:100%;background:transparent;z-index:60}
+.tx-progress span{display:block;height:100%;width:0;background:var(--verified);transition:width .1s linear}
+.tx-shell{max-width:1180px;margin:0 auto;padding:clamp(44px,6vw,80px) 24px;display:grid;grid-template-columns:minmax(0,1fr);gap:0}
+.tx-wrap{max-width:68ch;width:100%}
 .tx-kicker{font-family:var(--font-mono);font-size:12px;letter-spacing:.18em;text-transform:uppercase;color:var(--verified);margin:0 0 18px}
-.tx-title{font-family:var(--font-display);font-size:clamp(2.3rem,6.4vw,4rem);line-height:1.06;margin:0 0 16px;color:var(--text)}
-.tx-sub{font-family:var(--font-display);font-size:clamp(1.05rem,2vw,1.3rem);line-height:1.55;color:#DFD3BA;margin:0 0 24px}
-.tx-meta{font-family:var(--font-mono);font-size:12px;color:var(--faint);letter-spacing:.06em;margin:0 0 40px}
+.tx-title{font-family:var(--font-display);font-size:clamp(2.2rem,6vw,3.6rem);line-height:1.07;margin:0 0 16px;color:var(--text);letter-spacing:-.01em}
+.tx-sub{font-family:var(--font-display);font-size:clamp(1.05rem,2vw,1.3rem);line-height:1.55;color:#DFD3BA;margin:0 0 22px}
+.tx-meta{font-family:var(--font-mono);font-size:12px;color:var(--faint);letter-spacing:.06em;margin:0 0 36px;display:flex;flex-wrap:wrap;gap:10px;align-items:center}
+.tx-meta a{color:var(--faint)}.tx-meta a:hover{color:var(--verified)}
+.tx-dot{opacity:.4}
 .tx-cover{width:100%;height:auto;border:1px solid var(--rule);border-radius:var(--r);margin:0 0 44px;display:block}
-.tx-lede p{font-size:19px;line-height:1.75;color:#DFD3BA;margin:0 0 20px}
-.dispatch{border-top:1px solid var(--rule);padding-top:30px;margin-top:38px;position:relative}
+.tx-lede p{font-size:19.5px;line-height:1.75;color:#DFD3BA;margin:0 0 20px}
+.dispatch{border-top:1px solid var(--rule);padding-top:30px;margin-top:38px;scroll-margin-top:90px}
 .dispatch-numeral{font-family:var(--font-mono);font-size:11px;letter-spacing:.2em;color:var(--verified);opacity:.75;margin-bottom:10px}
-.dispatch h2{font-family:var(--font-display);font-size:clamp(1.4rem,3vw,1.8rem);line-height:1.25;color:var(--text);margin:0 0 14px}
-.dispatch p{font-size:18px;line-height:1.78;color:var(--muted);margin:0 0 18px}
+.dispatch h2{font-family:var(--font-display);font-size:clamp(1.4rem,3vw,1.85rem);line-height:1.25;color:var(--text);margin:0 0 14px;letter-spacing:-.005em}
+.dispatch p{font-size:18px;line-height:1.8;color:var(--muted);margin:0 0 18px}
 .tx-quote{margin:44px 0;padding:26px 28px;border-left:3px solid var(--verified);background:rgba(232,184,106,.06)}
 .tx-quote p{font-family:var(--font-display);font-size:clamp(1.15rem,2.4vw,1.45rem);line-height:1.5;color:var(--text);margin:0}
 .tx-takeaways{margin:44px 0 0;padding:26px 28px;border:1px solid var(--rule);background:var(--panel);border-radius:var(--r)}
 .tx-takeaways h2{font-family:var(--font-mono);font-size:12px;letter-spacing:.14em;text-transform:uppercase;color:var(--verified);margin:0 0 16px}
 .tx-takeaways ul{margin:0;padding-left:20px;color:var(--muted);line-height:1.75}
 .tx-takeaways li{margin-bottom:10px}
+
+/* Sticky contents. Desktop only — on mobile it would cost more scroll than it
+   saves, so it collapses into a plain jump list above the article. */
+.tx-toc{display:none}
+.tx-toc-inline{margin:0 0 36px;padding:16px 20px;border:1px solid var(--rule);border-radius:var(--r);background:var(--panel)}
+.tx-toc-inline p{font-family:var(--font-mono);font-size:11px;letter-spacing:.14em;text-transform:uppercase;color:var(--verified);margin:0 0 10px}
+.tx-toc-inline ol{margin:0;padding-left:18px;color:var(--muted);font-size:15px;line-height:1.7}
+.tx-toc-inline a{color:var(--muted);text-decoration:none}
+.tx-toc-inline a:hover{color:var(--verified)}
+
+/* Mid-article subscribe. Placed after the argument is established rather than
+   at the top, where it interrupts before the reader has any reason to convert. */
+.tx-cta{margin:48px 0;padding:26px 28px;border:1px solid var(--rule2);border-radius:var(--r);background:linear-gradient(180deg,rgba(232,184,106,.07),rgba(232,184,106,.02))}
+.tx-cta h2{font-family:var(--font-display);font-size:1.25rem;color:var(--text);margin:0 0 8px}
+.tx-cta p{font-size:15.5px;line-height:1.65;color:var(--muted);margin:0 0 16px}
+.tx-cta form{display:flex;gap:10px;flex-wrap:wrap}
+.tx-cta input{flex:1 1 220px;min-width:0;padding:11px 14px;border:1px solid var(--rule2);border-radius:6px;background:var(--bg);color:var(--text);font-family:var(--font-mono);font-size:14px}
+.tx-cta input:focus{outline:2px solid var(--verified);outline-offset:1px}
+.tx-cta button{padding:11px 20px;border:0;border-radius:6px;background:var(--verified);color:#0B0F1A;font-family:var(--font-mono);font-size:13px;font-weight:600;letter-spacing:.06em;text-transform:uppercase;cursor:pointer}
+.tx-cta button:hover{filter:brightness(1.08)}
+
+/* Keep reading. The end of an article is the largest drop-off point on the
+   site, so it gets a real next step instead of a dead stop. */
+.tx-next{margin:52px 0 0;padding-top:32px;border-top:1px solid var(--rule)}
+.tx-next h2{font-family:var(--font-mono);font-size:12px;letter-spacing:.14em;text-transform:uppercase;color:var(--verified);margin:0 0 18px}
+.tx-next-grid{display:grid;gap:14px}
+@media(min-width:640px){.tx-next-grid{grid-template-columns:repeat(2,minmax(0,1fr))}}
+.tx-card{display:block;padding:20px;border:1px solid var(--rule);border-radius:var(--r);background:var(--panel);text-decoration:none;transition:border-color .15s,background .15s}
+.tx-card:hover{border-color:var(--rule2);background:var(--panel2)}
+.tx-card .k{font-family:var(--font-mono);font-size:10.5px;letter-spacing:.14em;text-transform:uppercase;color:var(--verified);display:block;margin-bottom:8px}
+.tx-card .t{font-family:var(--font-display);font-size:1.05rem;line-height:1.3;color:var(--text);display:block;margin-bottom:6px}
+.tx-card .d{font-size:14px;line-height:1.55;color:var(--faint);display:block}
 .tx-foot{margin-top:44px;padding-top:24px;border-top:1px solid var(--rule);font-family:var(--font-mono);font-size:12px;color:var(--faint);line-height:1.8}
 .tx-foot a{color:var(--verified)}
+
+@media(min-width:1080px){
+  .tx-shell{grid-template-columns:216px minmax(0,68ch);gap:60px;justify-content:center}
+  .tx-toc{display:block;grid-column:1;position:sticky;top:96px;align-self:start;max-height:calc(100vh - 140px);overflow-y:auto}
+  .tx-toc p{font-family:var(--font-mono);font-size:11px;letter-spacing:.14em;text-transform:uppercase;color:var(--verified);margin:0 0 12px}
+  .tx-toc ol{list-style:none;margin:0;padding:0;counter-reset:toc}
+  .tx-toc li{counter-increment:toc;margin-bottom:10px;line-height:1.45}
+  .tx-toc a{font-size:13.5px;color:var(--faint);text-decoration:none;display:block;padding-left:22px;position:relative;border-left:1px solid transparent;transition:color .15s}
+  .tx-toc a::before{content:counter(toc,upper-roman);position:absolute;left:0;font-family:var(--font-mono);font-size:10px;opacity:.6}
+  .tx-toc a:hover{color:var(--muted)}
+  .tx-toc a.is-current{color:var(--verified)}
+  .tx-wrap{grid-column:2}
+  .tx-toc-inline{display:none}
+}
+@media(prefers-reduced-motion:reduce){.tx-progress span{transition:none}}
 </style>
 <script type="application/ld+json">
 ${safeJsonLd(article)}
@@ -347,16 +450,32 @@ ${safeJsonLd(breadcrumbs)}
 </head>
 <body>
 ${ARCHIVE_CHROME.header}
-<main id="main" class="tx-wrap">
+<div class="tx-progress" aria-hidden="true"><span id="tx-bar"></span></div>
+<div class="tx-shell">
+  <nav class="tx-toc" aria-label="Contents">
+    <p>Contents</p>
+    <ol>
+${tocItems}
+    </ol>
+  </nav>
+
+  <main id="main" class="tx-wrap">
   <p class="tx-kicker">◈ Field Transmission · №${number} · ${humanDate} ◈</p>
   <h1 class="tx-title">${escapeHtml(draft.title)}</h1>
-${draft.subtitle ? `  <p class="tx-sub">${escapeHtml(draft.subtitle)}</p>\n` : ''}  <p class="tx-meta">${readMinutes} min read · <a href="./">Archive</a> · <a href="../playbooks/">Playbooks</a> · <a href="../fieldnotes/">Fieldnotes</a></p>
+${draft.subtitle ? `  <p class="tx-sub">${escapeHtml(draft.subtitle)}</p>\n` : ''}  <p class="tx-meta"><span>${readMinutes} min read</span><span class="tx-dot">·</span><a href="./">Archive</a><span class="tx-dot">·</span><a href="../playbooks/">Playbooks</a><span class="tx-dot">·</span><a href="../fieldnotes/">Fieldnotes</a></p>
 
   <img class="tx-cover" src="../images/covers/${number}.svg" alt="THE SIGNAL Transmission ${number} — ${escapeHtml(draft.title)}" width="1200" height="630" loading="eager" decoding="async">
 
   <div class="tx-lede">
 ${draft.lede.map((p) => `    <p>${escapeHtml(p)}</p>`).join('\n')}
   </div>
+
+  <nav class="tx-toc-inline" aria-label="Contents">
+    <p>In this transmission</p>
+    <ol>
+${tocItems}
+    </ol>
+  </nav>
 
 ${sectionsHtml}
 
@@ -370,16 +489,100 @@ ${draft.takeaways.map((t) => `      <li>${escapeHtml(t)}</li>`).join('\n')}
   </section>`
       : ''}
 
+  <section class="tx-next">
+    <h2>Keep reading</h2>
+    <div class="tx-next-grid">
+${nextCards}
+    </div>
+  </section>
+
   <div class="tx-foot">
-    <p>Transmission №${number} · ${humanDate} · THE SIGNAL · 1Commerce LLC${prev ? ` · <a href="./${prev}.html">Previous: №${prev}</a>` : ''}</p>
+    <p>Transmission №${number} · ${humanDate} · THE SIGNAL · 1Commerce LLC</p>
     <p>This transmission is analysis, not a build report. Verified build claims live in <a href="../builds/">Verified Builds</a>; the operating playbooks live in <a href="../playbooks/">Playbooks</a>.</p>
   </div>
-</main>
+  </main>
+</div>
 ${ARCHIVE_CHROME.footer}
 <script src="../app.js?v=${CSS_VERSION}" defer></script>
+<script>
+// Reading progress + current-section highlight. Deliberately tiny and
+// dependency-free: this runs on every dispatch, so it must not cost a
+// measurable slice of the page's performance budget.
+(function () {
+  var bar = document.getElementById('tx-bar');
+  var links = Array.prototype.slice.call(document.querySelectorAll('.tx-toc a'));
+  var targets = links.map(function (a) { return document.getElementById(a.getAttribute('href').slice(1)); });
+  var ticking = false;
+
+  function update() {
+    ticking = false;
+    var doc = document.documentElement;
+    var max = doc.scrollHeight - doc.clientHeight;
+    if (bar) bar.style.width = (max > 0 ? Math.min(100, (doc.scrollTop / max) * 100) : 0) + '%';
+
+    var current = -1;
+    for (var i = 0; i < targets.length; i++) {
+      if (targets[i] && targets[i].getBoundingClientRect().top <= 120) current = i;
+    }
+    for (var j = 0; j < links.length; j++) links[j].classList.toggle('is-current', j === current);
+  }
+
+  addEventListener('scroll', function () {
+    if (!ticking) { ticking = true; requestAnimationFrame(update); }
+  }, { passive: true });
+  update();
+})();
+</script>
 </body>
 </html>
 `;
+}
+
+
+
+// One subscribe block, reused mid-article. Posts to the same MailerLite
+// endpoint as the footer form so there is a single list to maintain.
+const SUBSCRIBE_BLOCK = `  <aside class="tx-cta">
+    <h2>Get the next transmission</h2>
+    <p>One dispatch on commerce infrastructure, sent when it is written. No cadence padding, no recycled posts.</p>
+    <form class="subscribe-form" action="https://assets.mailerlite.com/jsonp/887036/forms/131950373498498498/subscribe" method="POST">
+      <input type="email" name="fields[email]" placeholder="your@email.com" required aria-label="Email address">
+      <button type="submit">Subscribe</button>
+    </form>
+  </aside>`;
+
+/* --------------------------- related content --------------------------- */
+
+const STOPWORDS = new Set(['the', 'a', 'an', 'for', 'and', 'of', 'to', 'in', 'on', 'your', 'you', 'is', 'are', 'with', 'without', 'what', 'how', 'when', 'why', 'it', 'that', 'this', 'actually', 'really']);
+
+function tokens(text) {
+  return new Set(
+    String(text).toLowerCase().replace(/[^a-z0-9\s]/g, ' ').split(/\s+/).filter((w) => w.length > 2 && !STOPWORDS.has(w)),
+  );
+}
+
+/**
+ * Pick the playbooks closest to this dispatch by vocabulary overlap. Dispatches
+ * are timely analysis; playbooks are the evergreen pillar pages. Sending a
+ * finishing reader from one to the other is the highest-value internal link on
+ * the page — it moves them from a dated post to a page built to rank and to be
+ * returned to.
+ */
+function relatedPlaybooks(draft, limit = 2) {
+  const source = tokens(`${draft.title} ${draft.keyword} ${draft.subtitle}`);
+  return playbooks
+    .map((pb) => {
+      const target = tokens(`${pb.title} ${pb.keyword} ${pb.dek}`);
+      let overlap = 0;
+      for (const t of source) if (target.has(t)) overlap += 1;
+      return { pb, overlap };
+    })
+    // Two shared terms, not one: a single common word like "commerce" matches
+    // almost everything on this site and produces confident-looking noise.
+    .filter((entry) => entry.overlap >= 2)
+    .sort((a, b) => b.overlap - a.overlap)
+    .slice(0, limit)
+    .map((entry) => entry.pb);
 }
 
 /* --------------------- archive index insertion --------------------- */

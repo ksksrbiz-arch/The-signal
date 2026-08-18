@@ -1,6 +1,6 @@
 {
   "generatedAt": "2026-08-18",
-  "pagesScanned": 88,
+  "pagesScanned": 89,
   "noindexedExcluded": 54,
   "issuesFound": 0,
   "issues": [],
@@ -843,6 +843,15 @@
       "priority": "0.6",
       "title": "Noir Reel Engine — THE SIGNAL | Reproducible Cinematic Reel System",
       "description": "A reproducible engine for producing daily noir-aesthetic talking-head reels: variable menu, Stoic monologue formula, Veo 3.1 video rendering, Grok image stills."
+    },
+    {
+      "file": "start/index.html",
+      "url": "https://1commercesolutions.com/start/",
+      "lastmod": "2026-08-18",
+      "changefreq": "monthly",
+      "priority": "0.6",
+      "title": "Start Here — THE SIGNAL | Where to begin",
+      "description": "New to THE SIGNAL? Start here. The playbooks, dispatches, verified builds, and fieldnotes of 1Commerce LLC — and which one to read first depending on what you need."
     },
     {
       "file": "videos/index.html",

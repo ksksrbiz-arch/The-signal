@@ -17,6 +17,7 @@
 // [label, path-relative-to-site-root]
 export const NAV_ITEMS = [
   ['Home', ''],
+  ['Start Here', 'start/'],
   ['Archive', 'archive/'],
   ['Fieldnotes', 'fieldnotes/'],
   ['Playbooks', 'playbooks/'],

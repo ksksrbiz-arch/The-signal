@@ -2,7 +2,7 @@
   "generated": null,
   "site": "https://1commercesolutions.com",
   "counts": {
-    "total": 142,
+    "total": 143,
     "posts": 117,
     "archive": 22,
     "fieldnotes": 41,
@@ -2338,11 +2338,11 @@
       "type": "Page",
       "title": "The Blog — THE SIGNAL",
       "description": "Every dispatch, fieldnote and daily brief in one reverse-chronological feed.",
-      "date": "2026-07-11",
+      "date": "2026-08-18",
       "tags": [],
       "cover": "",
       "ogImage": "https://1commercesolutions.com/og-image.png",
-      "readMins": 20
+      "readMins": 21
     },
     {
       "id": "blog/issues/index",
@@ -2459,21 +2459,6 @@
       "readMins": 1
     },
     {
-      "id": "daily/index",
-      "url": "https://1commercesolutions.com/daily/",
-      "path": "/daily/",
-      "stream": "daily",
-      "kind": "index",
-      "type": "Daily",
-      "title": "Daily Signal — THE SIGNAL",
-      "description": "Daily SEO and content operating briefs generated for THE SIGNAL.",
-      "date": "",
-      "tags": [],
-      "cover": "",
-      "ogImage": "https://1commercesolutions.com/og-image.png",
-      "readMins": 7
-    },
-    {
       "id": "playbooks/build-in-public-systems",
       "url": "https://1commercesolutions.com/playbooks/build-in-public-systems.html",
       "path": "/playbooks/build-in-public-systems.html",
@@ -2559,6 +2544,21 @@
       "cover": "",
       "ogImage": "https://1commercesolutions.com/og-image.png",
       "readMins": 5
+    },
+    {
+      "id": "daily/index",
+      "url": "https://1commercesolutions.com/daily/",
+      "path": "/daily/",
+      "stream": "daily",
+      "kind": "index",
+      "type": "Daily",
+      "title": "Daily Signal — THE SIGNAL",
+      "description": "Daily SEO and content operating briefs generated for THE SIGNAL.",
+      "date": "",
+      "tags": [],
+      "cover": "",
+      "ogImage": "https://1commercesolutions.com/og-image.png",
+      "readMins": 7
     },
     {
       "id": "fieldnotes/index",
@@ -2750,6 +2750,21 @@
       "cover": "",
       "ogImage": "https://1commercesolutions.com/og-image.png",
       "readMins": 3
+    },
+    {
+      "id": "start/index",
+      "url": "https://1commercesolutions.com/start/",
+      "path": "/start/",
+      "stream": "start",
+      "kind": "index",
+      "type": "Page",
+      "title": "Start Here — THE SIGNAL",
+      "description": "Where to begin with THE SIGNAL: playbooks, dispatches, verified builds, and fieldnotes from 1Commerce LLC.",
+      "date": "",
+      "tags": [],
+      "cover": "",
+      "ogImage": "https://1commercesolutions.com/og-image.png",
+      "readMins": 2
     },
     {
       "id": "videos/index",
