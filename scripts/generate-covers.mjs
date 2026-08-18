@@ -21,8 +21,8 @@
  *   a plain <img src="images/covers/NNN.svg">. No build step, no runtime JS.
  */
 
-import { mkdirSync, writeFileSync } from 'node:fs';
-import { dirname, join } from 'node:path';
+import { mkdirSync, readFileSync, writeFileSync } from 'node:fs';
+import { dirname, join, resolve } from 'node:path';
 import { fileURLToPath } from 'node:url';
 
 const __dirname = dirname(fileURLToPath(import.meta.url));
@@ -197,7 +197,7 @@ function motifStrata(rnd, a) {
 const MOTIFS = [motifWaves, motifNodes, motifRadar, motifBars, motifOrbits, motifStrata];
 
 /* --------------------------- compositor ---------------------------- */
-function buildCover({ seed, kicker, big, type }) {
+export function buildCover({ seed, kicker, big, type }) {
   const accent = ACCENTS[type] || ACCENTS.dispatch;
   const a = accent.key;
   const rnd = mulberry32(hash(seed));
@@ -268,16 +268,43 @@ const POSTS = [
 ];
 
 /* ------------------------------ emit ------------------------------- */
-mkdirSync(OUT_DIR, { recursive: true });
-let count = 0;
-for (const p of POSTS) {
-  const svg = buildCover({
-    seed: `signal-${p.n}-${p.title}`,
-    kicker: `TRANSMISSION №${p.n}`,
-    big: `№${p.n}`,
-    type: p.type,
-  });
-  writeFileSync(join(OUT_DIR, `${p.n}.svg`), svg);
-  count++;
+// Dispatches minted by scripts/archive-agent.mjs record themselves in
+// data/archive-state.json. Merging them here means a plain `npm run covers`
+// still regenerates every cover, including auto-published ones.
+function generatedPosts() {
+  try {
+    const state = JSON.parse(readFileSync(join(ROOT, 'data', 'archive-state.json'), 'utf8'));
+    return (state.published || []).map((entry) => ({
+      n: entry.number,
+      type: entry.coverType || 'dispatch',
+      title: entry.title,
+    }));
+  } catch {
+    return [];
+  }
 }
-console.log(`Generated ${count} covers → images/covers/`);
+
+// Only emit when run directly — archive-agent.mjs imports buildCover from here
+// and must not trigger a full cover rebuild as an import side effect.
+function emitAll() {
+  const seen = new Set(POSTS.map((p) => p.n));
+  const allPosts = [...generatedPosts().filter((p) => !seen.has(p.n)), ...POSTS];
+
+  mkdirSync(OUT_DIR, { recursive: true });
+  let count = 0;
+  for (const p of allPosts) {
+    const svg = buildCover({
+      seed: `signal-${p.n}-${p.title}`,
+      kicker: `TRANSMISSION №${p.n}`,
+      big: `№${p.n}`,
+      type: p.type,
+    });
+    writeFileSync(join(OUT_DIR, `${p.n}.svg`), svg);
+    count++;
+  }
+  console.log(`Generated ${count} covers → images/covers/`);
+}
+
+if (process.argv[1] && resolve(process.argv[1]) === resolve(fileURLToPath(import.meta.url))) {
+  emitAll();
+}

@@ -88,22 +88,72 @@ There are also many root-level `*.md` docs and `setup*` scripts (`.bat`/`.py`/
 
 ## Automation (GitHub Actions)
 
-Two scheduled workflows in `.github/workflows/` generate content and commit it
+Three scheduled workflows in `.github/workflows/` generate content and commit it
 straight back to `main` (which then auto-deploys via Netlify):
 
 | Workflow | Schedule (UTC) | Runs | Commits |
 |----------|----------------|------|---------|
+| `archive-transmission-agent.yml` | `30 10 * * *` (10:30) | `npm run archive:agent` + index rebuild | `archive/`, `data/`, `images/covers/`, `sitemap.xml` |
 | `daily-content-agent.yml` | `15 11 * * *` (11:15) | `npm run automation:daily` (content + SEO) | `daily/`, `data/`, `sitemap.xml` |
 | `seo-maintenance-agent.yml` | `45 11 * * *` (11:45) | `npm run seo:agent` | `data/seo-report.json`, `sitemap.xml` |
 
+- The **archive transmission agent** publishes one long-form dispatch per day.
+  It needs **`GROQ_API_KEY`** and/or **`GEMINI_API_KEY`** (optional repo
+  variables `GROQ_MODEL_LARGE`, `GROQ_MODEL_SMALL`, `GEMINI_MODEL` override the
+  model IDs). See "Archive transmission agent" below — **read that section
+  before changing it.**
 - The daily content agent needs the **`OPENAI_API_KEY`** repo secret (and an
   optional `OPENAI_MODEL` repo variable, default `gpt-4o-mini`). It can also be
   triggered manually via `workflow_dispatch` with an optional `signal_date`.
-- Both can run manually from the Actions tab.
+- All three can run manually from the Actions tab.
 - **Code scanning**: GitHub CodeQL ("Analyze") runs on pull requests.
 
 Because these bots push to `main`, expect periodic automated commits like
-"Update daily Signal content" and "Refresh SEO maintenance report".
+"Update daily Signal content" and "Publish archive transmission №NNN".
+
+### Why `/daily/` is noindex
+
+The daily brief generator picks its theme with `topics[dayNumber % topics.length]`
+over a 7-entry array. Across 54 dated pages that produced 7 clusters of ~8
+near-identical briefs, each cluster competing with itself for one query. Nothing
+in the section could rank and the volume of thin pages weighed on the whole site.
+
+So: **dated `/daily/*.html` pages are `noindex, follow`**, the `/daily/` hub
+stays indexed, and the evergreen versions of those seven themes live at
+`/playbooks/`. `scripts/seo-agent.mjs` excludes any page carrying a `noindex`
+directive from `sitemap.xml` automatically, derived from the page itself.
+
+Do not re-index the daily briefs without first fixing the topic rotation — the
+noindex is load-bearing, not an oversight.
+
+### Archive transmission agent
+
+`scripts/archive-agent.mjs` publishes one dispatch per run. It is built to avoid
+repeating the `/daily/` failure, and each guard matters:
+
+- **Topics are consumed once.** `scripts/archive-topics.mjs` holds ~120 distinct
+  topics; used ids are recorded in `data/archive-state.json` and never reused.
+  An exhausted queue is a hard error, not a wraparound — add topics instead.
+- **Three-stage pipeline**: plan (Groq → JSON outline) → draft (Groq → long-form)
+  → edit (Gemini → specificity pass). Using a different model for the edit
+  catches padding the drafting model cannot see. Providers fall back to each
+  other, so one rate-limited free tier does not fail the run.
+- **Gates are fatal.** Minimum length/sections, banned phrasing, duplicate
+  headings, and shingle-similarity against every existing dispatch. A failed
+  gate publishes nothing and exits non-zero; the workflow then commits nothing.
+  A quiet day is the intended behaviour, not a bug.
+- **Fabrication gates.** Generated dispatches are analytical, never build
+  reports: a model cannot know what actually shipped, and this site's whole
+  positioning is that its claims are checkable. Drafts asserting deploy counts,
+  revenue movement, population statistics, cited studies, or client anecdotes
+  are rejected. Real build claims belong in hand-written dispatches.
+
+`npm run test:archive` covers the transformer, every gate, and the renderer
+offline. The workflow runs it before any model call — keep it passing.
+
+Manual runs: Actions → "Archive transmission agent" → Run workflow, with
+optional `signal_date`, `topic_id`, and a `dry_run` toggle that gates a draft
+without writing anything.
 
 ## Development Workflow
 
@@ -146,6 +196,21 @@ Edit `index.html` directly. Page-specific component styles live in its inline
 `<style>` block; global/shared styles (header, footer, etc.) live in
 `style.css`. Reuse the design tokens in `style.css` `:root` (e.g. `--active`
 amber `#E8B86A`, `--faint`, `--font-mono`) rather than hard-coding values.
+
+### Editing the playbooks
+
+`/playbooks/` holds the seven evergreen pillar pages that consolidate what the
+daily briefs cover in passing. Content lives in `scripts/playbooks-content.mjs`;
+the renderer is `scripts/build-playbooks.mjs`. Edit the content module and run
+`npm run playbooks` — never hand-edit `playbooks/*.html`, it is generated.
+
+The site nav is defined once, in `scripts/lib/site-chrome.mjs` (`NAV_ITEMS`).
+`blog/`, `blog/series/`, and `blog/issues/` are generated from it, so editing
+their nav by hand is pointless — the next automation run overwrites it. Add nav
+entries there and re-run the generators.
+
+Keep one page per search intent. If a new theme is added to the daily brief
+generator, add its pillar here too.
 
 ### Adding a new section page
 Create `<section>/index.html` and link it from the header/footer nav in

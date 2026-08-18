@@ -472,7 +472,10 @@ function articleHtml(brief, date) {
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<meta name="robots" content="index, follow">
+<!-- Dated briefs are noindex by design: they are newsletter/feed artifacts that
+     rotate a fixed topic set, so indexing them cannibalizes the evergreen
+     playbooks at /playbooks/. The /daily/ hub itself stays indexed. -->
+<meta name="robots" content="noindex, follow, max-snippet:-1, max-image-preview:large">
 <title>${safeTitle} — ${safeDateShort} | THE SIGNAL</title>
 <meta name="description" content="${safeDescription}">
 <meta name="keywords" content="${safeKeyword}, THE SIGNAL, 1Commerce LLC, commerce systems, AI agents">
