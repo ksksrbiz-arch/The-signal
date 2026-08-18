@@ -236,8 +236,11 @@ async function main() {
     return;
   }
 
+  // Must be a GitHub noreply address. The account has email-privacy protection
+  // enabled, so pushing a commit authored with a real address is rejected with
+  // GH007 and the dispatch never reaches production.
   run('git', ['config', 'user.name', 'signal-archive-agent']);
-  run('git', ['config', 'user.email', 'skdev@1commercesolutions.com']);
+  run('git', ['config', 'user.email', '240277128+ksksrbiz-arch@users.noreply.github.com']);
   run('git', ['add', 'archive', 'data', 'images/covers', 'blog', 'sitemap.xml', 'feed.xml', 'feed.json']);
   run('git', ['commit', '-m', `Publish archive transmission №${number}: ${draft.title}`]);
 
