@@ -113,30 +113,82 @@ Because these bots push to `main`, expect periodic automated commits like
 
 ### Publishing without GitHub Actions
 
-**GitHub Actions is currently unavailable on this repo**, which is why every
-scheduled workflow failed daily for weeks. The `schedule:` blocks in all three
-workflows are therefore commented out — the files are kept and still work via
-`workflow_dispatch`, so restoring the crons is a one-line change if Actions come
-back. **If you restore them, delete the Claude routine below** or the two will
-double-publish.
+**GitHub Actions is unavailable on this repo**, which is why every scheduled
+workflow failed daily for weeks. The remaining two workflows have their
+`schedule:` blocks commented out (files kept, `workflow_dispatch` still works).
 
-The live publisher is a **Claude routine** that runs one command:
+The archive workflow was deleted outright, because the current design **cannot**
+run in Actions: Claude writes the dispatch, so there is no unattended runner
+that can produce one. Publishing happens through a **Claude routine** instead —
+"Signal — daily archive transmission", daily at 10:30 UTC.
+
+### Archive transmission agent
+
+One dispatch per run, published to `/archive/`. Authoring and enforcement are
+deliberately split, so the writing can improve while the guarantees stay fixed:
+
+| Half | Where | What it does |
+|------|-------|--------------|
+| Authoring | Claude, in the routine session | Reads the brief, writes the dispatch |
+| Enforcement | `scripts/archive-pipeline.mjs` | Gates, transformer, renderer, index, state |
+| Learning | `scripts/archive-craft.mjs` | Measures each run, accumulates rules |
+
+The daily loop is three commands:
 
 ```bash
-npm run archive:publish
+npm run archive:brief                        # what to write, and what not to repeat
+# …Claude writes the dispatch to a JSON file…
+npm run archive:compose -- draft.json        # gate, publish, push, ping
 ```
 
-`scripts/archive-publish.mjs` runs the whole sequence — gates, generate, rebuild
-covers/indexes/feeds/sitemap, commit, push to `main`, ping IndexNow. Keeping it
-in the repo rather than in the routine's prompt means the logic is versioned and
-reviewable. It exits 0 when the agent refuses to publish (a quiet day is the
-system working) and 1 only when something actually broke.
+`archive:brief` prints the next unused topic, the house voice, the hard
+requirements, the standing rubric, open lessons, drift warnings, and the
+openings of the last five dispatches. `archive:compose` runs every gate and
+either publishes or refuses. Add `--dry-run` to gate without writing.
 
-**The API keys must live where the routine runs.** `GROQ_API_KEY` and
-`GEMINI_API_KEY` have to be set in the Claude Code environment. Netlify
-environment variables do **not** reach it — those only apply to Netlify builds
-and serverless functions, which is a different machine from the one the routine
-uses. The command fails fast with that explanation if the keys are missing.
+**Exit codes from compose:** `0` published · `2` draft refused (revise it) ·
+`1` machinery broke.
+
+**The guards exist for a reason — do not relax them.** `/daily/` failed because
+a generator cycled seven topics and produced 54 near-identical pages. So:
+
+- **Topics are consumed once.** ~120 in `scripts/archive-topics.mjs`, used ids
+  recorded in `data/archive-state.json`. An exhausted queue is a hard error, not
+  a wraparound — write new topics instead.
+- **Gates are fatal**: minimum length and sections, banned phrasing, duplicate
+  headings, and shingle-similarity against every existing dispatch.
+- **Fabrication gates.** Dispatches are analytical, never build reports. Claude
+  cannot know what actually shipped, and this site's whole positioning is that
+  its claims are checkable, so drafts asserting deploy counts, revenue movement,
+  population statistics, cited studies, or client anecdotes are refused. Real
+  build claims belong in hand-written dispatches.
+
+`npm run test:archive` covers the transformer, every gate, and the renderer
+offline. Keep it passing.
+
+### The self-improvement layer
+
+The gates stop bad pages shipping; they cannot make the writing better. That is
+`scripts/archive-craft.mjs`, storing to `data/archive-craft.json` (committed, so
+learning survives the ephemeral routine sessions that produce it).
+
+Because the site runs no analytics, there is no traffic signal to learn from.
+Improvement therefore comes from measurable properties of the work itself:
+
+1. **Gate margins** — not pass/fail but *how close*. A dispatch passing
+   similarity at 0.27 against a 0.28 limit is a warning about the next one.
+2. **Structural drift** — opening shapes, heading construction, section counts,
+   sentence-length variance across the last 8 dispatches. A writer converging on
+   a formula is exactly how `/daily/` decayed, and it shows up here long before a
+   similarity gate would catch it.
+3. **Lesson promotion** — a gate failure is recorded as a lesson; the same
+   lesson twice is promoted into the standing rubric and appears in every future
+   brief. This is the ratchet that makes the system compound rather than just
+   keep a diary.
+
+Do not hand-edit `data/archive-craft.json` to remove an inconvenient rule. If a
+rule is wrong, fix the underlying gate or write a better rule — the file is the
+memory, and editing it to feel better is how the memory stops being true.
 
 ### Why `/daily/` is noindex
 

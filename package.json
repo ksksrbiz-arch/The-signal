@@ -18,8 +18,7 @@
     "covers": "node scripts/generate-covers.mjs",
     "index": "node scripts/build-index.mjs",
     "playbooks": "node scripts/build-playbooks.mjs",
-    "archive:agent": "node scripts/archive-agent.mjs",
-    "test:archive": "node scripts/test-archive-agent.mjs",
+    "test:archive": "node scripts/test-archive-pipeline.mjs",
     "automation:daily": "npm run content:agent && npm run index && npm run blog && npm run series && npm run issue && npm run seo:agent",
     "og": "node scripts/generate-og.mjs",
     "blog": "node scripts/build-blog.mjs",
@@ -27,7 +26,8 @@
     "series": "node scripts/build-series.mjs",
     "issue": "node scripts/build-issue.mjs",
     "indexnow": "node scripts/indexnow.mjs",
-    "archive:publish": "node scripts/archive-publish.mjs"
+    "archive:brief": "node scripts/archive-brief.mjs",
+    "archive:compose": "node scripts/archive-compose.mjs"
   },
   "dependencies": {
     "@netlify/blobs": "^10.7.9"
