@@ -33,12 +33,16 @@ export async function syncConfirmedContact(email) {
         unsubscribed: false,
         segments: [{ id: segmentId }],
       }),
+      // A stalled Resend connection must not delay the caller's response
+      // (subscribe/confirm) until the function's own timeout.
+      signal: AbortSignal.timeout(5000),
     });
     if (!res.ok) {
       const detail = await res.text().catch(() => '');
       console.warn('resend-contacts: sync failed', res.status, detail);
     }
   } catch (err) {
-    console.warn('resend-contacts: sync error', err && err.message);
+    const reason = err && err.name === 'TimeoutError' ? 'timed out' : (err && err.message);
+    console.warn('resend-contacts: sync error', reason);
   }
 }

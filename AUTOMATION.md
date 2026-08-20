@@ -66,7 +66,7 @@ If `SIGNAL_DISPATCH_TOKEN` is set, you can dispatch on demand:
 
 ```bash
 curl -X POST https://1commercesolutions.com/api/send-signal \
-  -H "Authorization: ******"
+  -H "Authorization: Bearer $SIGNAL_DISPATCH_TOKEN"
 ```
 
 This is handy for hooking into the daily-content-agent GitHub Action
