@@ -755,7 +755,7 @@
         <h1>I build commerce systems that ship.</h1>
         <p class="hero-lede">Weekly transmissions from the front lines of 1Commerce LLC — proof-first infrastructure, built for operators who count shipped code as the only metric that matters.</p>
         <div class="hero-ctas">
-          <form class="hero-subscribe" id="hero-subscribe-form">
+          <form class="hero-subscribe subscribe-form" id="hero-subscribe-form">
             <input type="email" name="fields[email]" placeholder="your@email.com" required aria-label="Email address">
             <button type="submit" class="btn-primary">Get The Signal →</button>
             <span class="subscribe-msg" aria-live="polite"></span>
@@ -1412,53 +1412,7 @@
     </div>
   </div>
 
-  <script src="./app.js?v=20260621a" defer></script>
-  <script>
-    (function () {
-      async function handleSubscribe(form) {
-        const input = form.querySelector('input[type="email"]');
-        const btn = form.querySelector('button[type="submit"]');
-        const msg = form.querySelector('.subscribe-msg');
-        const email = input.value.trim();
-        btn.disabled = true;
-        form.classList.add('is-loading');
-        msg.textContent = '';
-        msg.classList.remove('is-ok', 'is-err');
-        try {
-          const res = await fetch('/api/subscribe', {
-            method: 'POST',
-            headers: { 'Content-Type': 'application/json' },
-            body: JSON.stringify({ email }),
-          });
-          const data = await res.json();
-          if (data.ok) {
-            msg.textContent = "✓ You're on the list.";
-            msg.classList.add('is-ok');
-            input.value = '';
-          } else {
-            msg.textContent = data.error || 'Something went wrong. Try again.';
-            msg.classList.add('is-err');
-          }
-        } catch {
-          msg.textContent = 'Network error. Please try again.';
-          msg.classList.add('is-err');
-        } finally {
-          btn.disabled = false;
-          form.classList.remove('is-loading');
-        }
-      }
-
-      ['hero-subscribe-form', 'footer-subscribe-form'].forEach(function (id) {
-        var form = document.getElementById(id);
-        if (form) {
-          form.addEventListener('submit', function (e) {
-            e.preventDefault();
-            handleSubscribe(form);
-          });
-        }
-      });
-    })();
-  </script>
+  <script src="./app.js?v=20260820a" defer></script>
 </body>
 </html>
 

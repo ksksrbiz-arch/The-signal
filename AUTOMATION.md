@@ -93,23 +93,20 @@ manage contacts, and has no narrower "contacts" scope):
 | `RESEND_CONTACTS_API_KEY` | Resend API key, **full_access**, used only to create/update contacts in the segment |
 | `RESEND_SIGNAL_SEGMENT_ID` | Same segment ID as above |
 
-### Known gap: most of the site still posts straight to MailerLite
+### Every subscribe form on the site now goes through this pipeline
 
-The shared page footer (`scripts/lib/site-chrome.mjs`, `buildChrome()`) still
-renders a `<form>` that POSTs natively to a MailerLite JSONP endpoint
-(`assets.mailerlite.com/jsonp/...`), independent of `/api/subscribe`. That
-footer is baked into essentially every page **except** the root
-`index.html` — including pages already published from `site-chrome.mjs`
-(playbooks, blog hub/series/issues) and pages that copy the same markup by
-hand (archive, fieldnotes, daily, about). `app.js`'s generic
-`form.subscribe-form` handler only adds client-side validation/busy-state;
-it deliberately lets that native POST proceed.
+This used to be a gap: every page except `index.html` posted straight to a
+MailerLite JSONP endpoint, independent of `/api/subscribe`, and MailerLite
+had no contacts on it to begin with — those forms were live but unused.
 
-Net effect: signups from the homepage reach Blobs → Resend (as above), but
-signups from almost every other page today still go straight to a live
-MailerLite list that this pipeline has no visibility into. Fixing
-`site-chrome.mjs` corrects the template for future/regenerated pages, but
-does **not** retroactively fix already-published static HTML — that's a
-separate, larger sweep, not something to do incidentally alongside an
-unrelated change. Until it's addressed, do not assume the Resend segment or
-the Blobs store reflects the site's full subscriber base.
+Fixed by removing the `action`/`method` attributes from every subscribe
+form on the site (`scripts/lib/site-chrome.mjs`, `scripts/archive-
+pipeline.mjs`'s mid-article CTA, `scripts/build-start.mjs`, `scripts/daily-
+content-agent.mjs`, and every already-published static page that had copied
+the same markup by hand — archive, fieldnotes, daily, about, builds, news,
+videos, reel-engine, profile). `app.js`'s `form.subscribe-form` /
+`form.arc-subscribe-form` handler now always intercepts submit and posts to
+`/api/subscribe` regardless of any `action`, using the form's own
+`.subscribe-msg` element for feedback when present and falling back to the
+site's toast helper otherwise. There is now exactly one signup path on the
+whole site, and it always reaches Blobs → Resend.

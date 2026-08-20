@@ -768,20 +768,45 @@ if ('serviceWorker' in navigator) {
     });
   }
 
-  // 3) Subscribe forms: inline validation + busy state (forms/feedback).
-  // Native POST still proceeds for valid emails — we only guard bad input
-  // and reflect a submitting state.
+  // 3) Subscribe forms: self-hosted signup flow (forms/feedback).
+  // Every form.subscribe-form / form.arc-subscribe-form on the site relies
+  // on this — none of them carry a native action/method. Posts JSON to
+  // /api/subscribe (Netlify Blobs + best-effort Resend mirror, see
+  // functions/subscribe.mjs). Uses the form's own .subscribe-msg element
+  // for feedback when present (index.html), falling back to the toast
+  // helper for forms that don't have one (e.g. archive's arc-subscribe-form).
   var EMAIL=/^[^\s@]+@[^\s@]+\.[^\s@]+$/;
   document.querySelectorAll('form.subscribe-form, form.arc-subscribe-form').forEach(function(f){
     f.addEventListener('submit', function(e){
+      e.preventDefault();
+      if(f.classList.contains('u-busy')) return;
       var input=f.querySelector('input[type="email"], input[name*="email" i]');
+      var msg=f.querySelector('.subscribe-msg');
       if(input && !EMAIL.test((input.value||'').trim())){
-        e.preventDefault(); input.setAttribute('aria-invalid','true'); input.focus(); toast('Enter a valid email address', true); return;
+        input.setAttribute('aria-invalid','true'); input.focus(); toast('Enter a valid email address', true); return;
       }
       if(input) input.removeAttribute('aria-invalid');
       f.classList.add('u-busy');
       var btn=f.querySelector('button[type="submit"], button:not([type])');
       if(btn && !btn.dataset.orig){ btn.dataset.orig=btn.textContent; btn.textContent='Subscribing…'; }
+      if(msg){ msg.textContent=''; msg.classList.remove('is-ok','is-err'); }
+      function feedback(text, isErr){
+        if(msg){ msg.textContent=(isErr?'':'✓ ')+text; msg.classList.add(isErr?'is-err':'is-ok'); }
+        else { toast(text, isErr); }
+      }
+      fetch('/api/subscribe', {
+        method:'POST',
+        headers:{'Content-Type':'application/json'},
+        body: JSON.stringify({ email: (input&&input.value||'').trim() }),
+      }).then(function(r){ return r.json(); }).then(function(data){
+        if(data && data.ok){ feedback("You're on the list."); if(input) input.value=''; }
+        else { feedback((data&&data.error)||'Something went wrong. Try again.', true); }
+      }).catch(function(){
+        feedback('Network error. Please try again.', true);
+      }).finally(function(){
+        f.classList.remove('u-busy');
+        if(btn && btn.dataset.orig){ btn.textContent=btn.dataset.orig; }
+      });
     });
   });
 
