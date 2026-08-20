@@ -540,14 +540,15 @@ ${ARCHIVE_CHROME.footer}
 
 
 
-// One subscribe block, reused mid-article. Posts to the same MailerLite
-// endpoint as the footer form so there is a single list to maintain.
+// One subscribe block, reused mid-article. Posts to /api/subscribe, same as
+// the footer form, so there is a single self-hosted list to maintain.
 const SUBSCRIBE_BLOCK = `  <aside class="tx-cta">
     <h2>Get the next transmission</h2>
     <p>One dispatch on commerce infrastructure, sent when it is written. No cadence padding, no recycled posts.</p>
-    <form class="subscribe-form" action="https://assets.mailerlite.com/jsonp/887036/forms/131950373498498498/subscribe" method="POST">
+    <form class="subscribe-form">
       <input type="email" name="fields[email]" placeholder="your@email.com" required aria-label="Email address">
       <button type="submit">Subscribe</button>
+      <span class="subscribe-msg" aria-live="polite"></span>
     </form>
   </aside>`;
 

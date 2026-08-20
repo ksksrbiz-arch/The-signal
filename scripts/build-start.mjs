@@ -197,9 +197,10 @@ ${playbooks.map(playbookRow).join('\n')}
   <section class="st-sub" id="subscribe">
     <h2>Get the next transmission</h2>
     <p>One dispatch on commerce infrastructure, sent when it is written. No cadence padding, no recycled posts.</p>
-    <form class="subscribe-form" action="https://assets.mailerlite.com/jsonp/887036/forms/131950373498498498/subscribe" method="POST">
+    <form class="subscribe-form">
       <input type="email" name="fields[email]" placeholder="your@email.com" required aria-label="Email address">
       <button type="submit">Subscribe</button>
+      <span class="subscribe-msg" aria-live="polite"></span>
     </form>
   </section>
 </main>
