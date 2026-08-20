@@ -11,11 +11,15 @@
    scheduled run, or a retried invocation from sending the newsletter twice
    — including two truly concurrent invocations, via Blobs' conditional
    "only if new" write, and a crash between creating and sending a broadcast,
-   by resuming the send step on the existing broadcastId rather than
-   creating a second one. It fails CLOSED: if the dispatch log can't be
-   read/written, the tick is skipped rather than risking a duplicate send —
-   a skipped day is cheap and visible; a duplicate send to the whole list is
-   not.
+   by resuming on the existing broadcastId rather than creating a second one.
+   Before retrying the send step on a resumed broadcastId, it checks Resend's
+   own status for that broadcast first (GET /broadcasts/:id) — a crash could
+   just as easily happen after Resend accepted the send as before it, so
+   "retry send" is only safe once we know the broadcast is still a draft.
+   The whole guard fails CLOSED: if the dispatch log — or that status check —
+   can't be completed, the tick is skipped rather than risking a duplicate
+   send. A skipped day is cheap and visible; a duplicate send to the whole
+   list is not.
 
    Triggers:
    - Scheduled: runs on the cron declared in netlify.toml under
@@ -130,6 +134,16 @@ exports.handler = async (event) => {
       // Record the id before attempting the send, so a crash between the two
       // Resend calls resumes at 'resume' next time instead of re-creating.
       await plan.store.setJSON(brief.date, { status: 'claimed', broadcastId, claimedAt: new Date().toISOString() });
+    } else {
+      // Resuming: Resend may have already accepted an earlier invocation's
+      // send even though it crashed before recording that locally. Check
+      // before retrying — don't assume calling send again is harmless.
+      const remoteStatus = await getBroadcastStatus({ apiKey, broadcastId });
+      if (remoteStatus !== 'draft') {
+        await plan.store.setJSON(brief.date, { status: 'sent', broadcastId, dispatchedAt: new Date().toISOString() });
+        console.log('send-signal: broadcast', broadcastId, 'already', remoteStatus, 'at Resend for', brief.date, '— recording, not re-sending.');
+        return json(200, { ok: true, dispatched: true, broadcastId, date: brief.date, resumed: true });
+      }
     }
     await sendBroadcast({ apiKey, broadcastId });
     await plan.store.setJSON(brief.date, { status: 'sent', broadcastId, dispatchedAt: new Date().toISOString() });
@@ -233,6 +247,18 @@ async function createBroadcast({ apiKey, segmentId, subject, previewText, html, 
   const body = await res.json();
   if (!body || !body.id) throw new Error('create broadcast: missing id in response');
   return body.id;
+}
+
+async function getBroadcastStatus({ apiKey, broadcastId }) {
+  const res = await fetch(RESEND_API + '/broadcasts/' + encodeURIComponent(broadcastId), {
+    headers: { 'Authorization': 'Bearer ' + apiKey },
+  });
+  if (!res.ok) {
+    throw new Error('get broadcast ' + res.status + ' ' + (await safeText(res)));
+  }
+  const body = await res.json();
+  if (!body || !body.status) throw new Error('get broadcast: missing status in response');
+  return body.status; // 'draft' | 'scheduled' | 'queued' | 'sent'
 }
 
 async function sendBroadcast({ apiKey, broadcastId }) {
