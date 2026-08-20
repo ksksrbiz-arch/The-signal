@@ -1,23 +1,24 @@
-// The Signal — newsletter signup (self-hosted, no external service)
+// The Signal — newsletter signup (self-hosted signup, Resend delivery)
 // ------------------------------------------------------------------
 // Netlify Functions v2 (ESM). Captures subscribers into a Netlify Blobs store
-// ("subscribers") that THE SIGNAL owns outright — no MailerLite, no third-party
-// list. Delivery is pull-based: subscribers read issues on-site under /blog/issues/
-// and via the RSS (/feed.xml) + JSON (/feed.json) feeds. Owning the stack instead
-// of renting it — the same stance the dispatches preach.
+// ("subscribers") that THE SIGNAL owns outright — the Blobs record is always
+// the source of truth for signup/confirm state. A confirmed subscriber is
+// additionally best-effort mirrored into Resend (see functions/lib/resend-
+// contacts.mjs) so functions/send-signal.js can actually reach them; that
+// mirror never blocks or fails the signup itself.
 //
 //   POST /api/subscribe   { email }
 //        → { ok:true, status:"confirmed"|"pending", message }
 //
 // Double opt-in is built in but off by default: set NEWSLETTER_DOUBLE_OPTIN=true
 // to store new signups as "pending" with a confirm token (redeemed at
-// /api/confirm). The confirm link is surfaced in the response and can be wired to
-// any mailer later; with the flag off, signups are confirmed immediately so the
-// flow works end-to-end with zero external dependencies.
+// /api/confirm, which performs the same Resend mirroring on success). With the
+// flag off, signups are confirmed (and mirrored) immediately.
 //
 // Serves at /api/subscribe via config.path (no netlify.toml redirect needed).
 
 import { getStore } from '@netlify/blobs';
+import { syncConfirmedContact } from './lib/resend-contacts.mjs';
 
 export const config = { path: '/api/subscribe' };
 
@@ -96,6 +97,7 @@ export default async (req, context) => {
     }
 
     await store.setJSON(key, { email, status: 'confirmed', token: null, createdAt: nowIso, confirmedAt: nowIso });
+    await syncConfirmedContact(email);
     return reply(200, { ok: true, status: 'confirmed', message: "You're on the list." });
   } catch (err) {
     console.error('subscribe.mjs error:', err && err.name, err && err.message);
