@@ -2,14 +2,17 @@
 // --------------------------------------------------------------
 // Netlify Functions v2 (ESM). Redeems the token minted by /api/subscribe when
 // NEWSLETTER_DOUBLE_OPTIN is enabled, flipping a subscriber from "pending" to
-// "confirmed" in the Netlify Blobs "subscribers" store. Returns a small branded
-// HTML page so the confirmation link is clickable straight from an inbox.
+// "confirmed" in the Netlify Blobs "subscribers" store, then best-effort
+// mirrors them into Resend (see functions/lib/resend-contacts.mjs) so
+// functions/send-signal.js can reach them. Returns a small branded HTML page
+// so the confirmation link is clickable straight from an inbox.
 //
 //   GET /api/confirm?email=<addr>&token=<token>
 //
 // Serves at /api/confirm via config.path (no netlify.toml redirect needed).
 
 import { getStore } from '@netlify/blobs';
+import { syncConfirmedContact } from './lib/resend-contacts.mjs';
 
 export const config = { path: '/api/confirm' };
 
@@ -71,6 +74,7 @@ export default async (req) => {
     if (rec.token !== tok) return page('Invalid link', '<h1>That link looks off</h1><p>The token didn’t match. Try subscribing again to get a fresh link.</p>', 400);
 
     await store.setJSON(key, { ...rec, status: 'confirmed', token: null, confirmedAt: new Date().toISOString() });
+    await syncConfirmedContact(email);
     return page('Confirmed', '<h1>You’re on the list</h1><p>Confirmation received. One dispatch per week, no noise.</p>');
   } catch (err) {
     console.error('confirm.mjs error:', err && err.name, err && err.message);
