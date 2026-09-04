@@ -17,6 +17,7 @@
 <meta property="og:image" content="https://1commercesolutions.com/og-image.png">
 <meta property="og:image:width" content="1200">
 <meta property="og:image:height" content="630">
+<meta property="og:image:type" content="image/png">
 <meta property="og:image:alt" content="Noir Reel Engine — THE SIGNAL">
 <meta property="og:locale" content="en_US">
 <meta name="twitter:card" content="summary_large_image">
@@ -50,7 +51,7 @@
   "url": "https://1commercesolutions.com/reel-engine/",
   "isPartOf": {"@type": "WebSite", "name": "THE SIGNAL", "url": "https://1commercesolutions.com/"},
   "publisher": {"@type": "Organization", "name": "1Commerce LLC"},
-  "dateModified": "2026-07-03",
+  "dateModified": "2026-09-04",
   "inLanguage": "en-US"
 }
 </script>
@@ -109,6 +110,9 @@ pre.reel-code { background: var(--color-surface-raised); border: 1px solid var(-
 </head>
 <body>
   <a href="#main" class="skip-link">Skip to main content</a>
+
+  <!-- Ambient grain overlay -->
+  <div class="grain" aria-hidden="true"></div>
 
   <!-- Mobile Nav Overlay -->
   <div class="mobile-nav" aria-label="Mobile navigation">
@@ -380,7 +384,7 @@ python3 grok.py --prompt "$PROMPT" --out builds/still.png
 python3 veo.py --prompt "$PROMPT" --image builds/still.png
 
 # Plan 30 days at a time
-python3 plan.py --start 2026-05-01 --days 30</pre>
+python3 plan.py --start YYYY-MM-DD --days 30</pre>
         <p>The source lives in <code>/noir-reel-engine/</code> in the repo. Scripts, variable library, monologue bank, daily blueprints, and the 30-day plan are all committed alongside each other so a fresh clone is a working studio.</p>
       </div>
     </section>
