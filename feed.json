@@ -13,6 +13,18 @@
   ],
   "items": [
     {
+      "id": "https://1commercesolutions.com/archive/023.html",
+      "url": "https://1commercesolutions.com/archive/023.html",
+      "title": "When to Buy the Shopify App and When to Build It Yourself",
+      "content_text": "The build-vs-buy question on Shopify usually gets framed as a cost comparison: the app costs thirty dollars a month, a custom build costs a developer&#39;s…",
+      "date_published": "2026-09-04T12:00:00Z",
+      "tags": [
+        "shopify app vs custom build",
+        "THE SIGNAL",
+        "1Commerce LLC"
+      ]
+    },
+    {
       "id": "https://1commercesolutions.com/archive/022.html",
       "url": "https://1commercesolutions.com/archive/022.html",
       "title": "What a Headless Migration Actually Costs",
@@ -554,20 +566,6 @@
       "date_published": "2026-05-27T12:00:00Z",
       "tags": [
         "product validation systems",
-        "THE SIGNAL",
-        "1Commerce LLC",
-        "commerce systems",
-        "AI agents"
-      ]
-    },
-    {
-      "id": "https://1commercesolutions.com/daily/2026-05-25.html",
-      "url": "https://1commercesolutions.com/daily/2026-05-25.html",
-      "title": "Daily Signal: commerce intelligence layers",
-      "content_text": "Why storefronts need memory, context, and action layers beyond static pages. A practical daily brief for commerce operators — THE SIGNAL, May 25, 2026.",
-      "date_published": "2026-05-25T12:00:00Z",
-      "tags": [
-        "commerce intelligence layer",
         "THE SIGNAL",
         "1Commerce LLC",
         "commerce systems",

@@ -2,13 +2,32 @@
   "generated": null,
   "site": "https://1commercesolutions.com",
   "counts": {
-    "total": 143,
-    "posts": 117,
-    "archive": 22,
+    "total": 144,
+    "posts": 118,
+    "archive": 23,
     "fieldnotes": 41,
     "daily": 54
   },
   "items": [
+    {
+      "id": "archive/023",
+      "url": "https://1commercesolutions.com/archive/023.html",
+      "path": "/archive/023.html",
+      "stream": "archive",
+      "kind": "post",
+      "type": "Weekly Dispatch",
+      "title": "When to Buy the Shopify App and When to Build It Yourself",
+      "description": "The build-vs-buy question on Shopify usually gets framed as a cost comparison: the app costs thirty dollars a month, a custom build costs a developer&#39;s…",
+      "date": "2026-09-04",
+      "tags": [
+        "shopify app vs custom build",
+        "THE SIGNAL",
+        "1Commerce LLC"
+      ],
+      "cover": "/images/covers/023.svg",
+      "ogImage": "https://1commercesolutions.com/images/covers/023.svg",
+      "readMins": 6
+    },
     {
       "id": "archive/022",
       "url": "https://1commercesolutions.com/archive/022.html",
@@ -2314,7 +2333,7 @@
       "type": "Dispatch",
       "title": "Archive — THE SIGNAL",
       "description": "Complete archive of The Signal transmissions from 1Commerce LLC.",
-      "date": "2026-08-18",
+      "date": "2026-09-04",
       "tags": [
         "Signal archive",
         "weekly dispatches",
@@ -2327,7 +2346,7 @@
       ],
       "cover": "",
       "ogImage": "https://1commercesolutions.com/og-image.png",
-      "readMins": 3
+      "readMins": 4
     },
     {
       "id": "blog/index",
@@ -2529,7 +2548,7 @@
       "kind": "index",
       "type": "Page",
       "title": "THE SIGNAL — Commerce Systems That Ship",
-      "description": "Weekly dispatches from a solo founder building commerce infrastructure. 21 dispatches shipped, 6 verified builds, zero placeholders.",
+      "description": "Weekly dispatches from a solo founder building commerce infrastructure. Dispatches shipped weekly, 6 verified builds, zero placeholders.",
       "date": "2026-01-01",
       "tags": [
         "commerce infrastructure",
@@ -2722,7 +2741,15 @@
       "title": "Profile — THE SIGNAL | 1Commerce LLC",
       "description": "Animated GitHub personal profile of ksksrbiz-arch, embedded into The Signal.",
       "date": "",
-      "tags": [],
+      "tags": [
+        "ksksrbiz-arch GitHub profile",
+        "build in public",
+        "GitHub stats",
+        "contribution streak",
+        "1Commerce LLC",
+        "Canby Oregon",
+        "solo founder"
+      ],
       "cover": "",
       "ogImage": "https://1commercesolutions.com/og-image.png",
       "readMins": 1

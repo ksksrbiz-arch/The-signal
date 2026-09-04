@@ -1,0 +1,50 @@
+{
+  "title": "When to Buy the Shopify App and When to Build It Yourself",
+  "subtitle": "Distance from your differentiation decides it, not the price tag",
+  "lede": [
+    "The build-vs-buy question on Shopify usually gets framed as a cost comparison: the app costs thirty dollars a month, a custom build costs a developer's week. That framing is wrong, and it produces wrong answers, because it treats every feature as interchangeable. It isn't. The real variable is how close the feature sits to the thing that makes the store worth visiting instead of a competitor's. Close to that core, the app is a liability no matter how cheap it is. Far from it, the app is almost always correct no matter how capable your team is.,Distance from differentiation is a harder thing to measure than a subscription price, which is exactly why most stores skip the question and default to whichever option is faster this week. That default compounds. A store that has installed fifteen apps because each individual decision looked cheap ends up with a checkout nobody understands, a page speed score nobody can fix without breaking three integrations, and a data model split across five different apps' databases. None of that shows up in the thirty-dollar line item. It shows up eighteen months later as a rebuild."
+  ],
+  "pullQuote": "An app you can't picture demoing is infrastructure. Buy it. A feature you'd put in a sales conversation is product. Build it.",
+  "sections": [
+    {
+      "heading": "The question apps answer is never the question that matters",
+      "paragraphs": [
+        "Every app in the Shopify ecosystem is optimized to answer 'can I get this feature live today.' That's a real and valuable question, but it's a different question from 'should this feature be mine to control.' The two get conflated because the same interface — the App Store — answers both, and because the sales copy for every app implies that installing it is a complete decision rather than the first half of one.",
+        "A useful test: picture explaining the feature to a customer in a sales conversation. If the explanation is about the store — 'we built our own sizing engine because generic size charts don't work for our fabric' — the feature is close to differentiation. If the explanation is about plumbing — 'we use a reviews app so people can leave reviews' — nobody cares which reviews app, and neither should the merchant. The plumbing features are exactly the ones an app should own, because the store gains nothing from owning the implementation and loses the app vendor's maintenance budget by rebuilding it."
+      ]
+    },
+    {
+      "heading": "The maintenance tax is the real price, and it's not in the pricing page",
+      "paragraphs": [
+        "A thirty-dollar-a-month app looks cheap next to a week of developer time until you count what both options actually cost over two years. The app's real price includes every Liquid conflict it introduces with the theme, every checkout extensibility limit it runs into as Shopify's platform changes underneath it, and every renegotiation when the vendor raises tiers because their pricing model depends on your GMV rather than your usage. None of that is visible at install time. It's visible at renewal time, migration time, or the moment a theme update silently breaks an app's injected script.",
+        "Custom code has its own tax — dependency updates, the bus-factor risk of one developer understanding the implementation, the cost of a security patch nobody scheduled — but that tax is at least visible and schedulable. You can put 'update the subscription logic' on a roadmap. You cannot put 'the app vendor changed their API without a deprecation window' on a roadmap, because you don't control when that happens. The asymmetry matters: build gives you a maintenance cost you can plan around; buy gives you a maintenance cost that arrives as a surprise, timed by someone else's business decisions."
+      ]
+    },
+    {
+      "heading": "Reversibility, not cost, is the variable to optimize",
+      "paragraphs": [
+        "The better question than 'what does this cost' is 'how hard is it to leave.' An app that owns customer-facing data — a subscription app that becomes the system of record for recurring billing, a loyalty app that owns the points ledger — is not reversible in any practical sense. Migrating off it means a customer data migration, a billing cutover, and a support-ticket spike, all timed on the vendor's terms, not yours. That's true even if the monthly fee is trivial. The fee was never the cost; the lock-in was.",
+        "Apps that sit at the edges — image optimization, a specific UI widget, an email popup — are reversible because uninstalling them just removes a script tag. Nothing downstream depends on their internal data model because they don't have one that matters to the business. This is the actual filter: not 'is this feature important' but 'does this app become the source of truth for something I need to control later.' Source-of-truth features get built in-house or on infrastructure you own. Edge features get bought without a second thought."
+      ]
+    },
+    {
+      "heading": "“We'll migrate off it later” underestimates how sticky metafields get",
+      "paragraphs": [
+        "The standard rebuttal is to buy the app now for speed and plan a custom replacement later once the feature proves out. This is reasonable in theory and routinely fails in practice, because the app doesn't stay isolated. It writes metafields the theme starts referencing. Other apps start reading its webhooks. A support workflow gets built assuming its admin UI exists. Eighteen months later, 'replace the app' has quietly become 'replace the app and everything that grew dependent on it,' which is a materially larger project than the one that got deferred.",
+        "The honest fix isn't to avoid apps that might become load-bearing — you often can't know in advance which ones will. It's to treat every app installation as a decision to review on a fixed cadence, not a decision made once and forgotten. An app audit every two quarters, checking which apps have become referenced by other systems, catches the drift while it's still cheap to reverse. Waiting for the app's price increase or outage to trigger the review means reviewing under duress, which is when migrations get rushed and mistakes get made."
+      ]
+    }
+  ],
+  "takeaways": [
+    "Ask whether the feature is something you'd describe to a customer as part of the product, or as invisible plumbing — build the first kind, buy the second.",
+    "Price the app's maintenance tax, not just its subscription fee: theme conflicts, API changes, and vendor pricing shifts you don't control.",
+    "Optimize for reversibility over cost. An app that becomes the system of record for customer data is a lock-in decision disguised as a thirty-dollar line item.",
+    "Don't trust \"we'll replace it later\" as a plan unless you also schedule a recurring audit of which apps have become referenced by other systems.",
+    "Treat every installed app as a decision under active review, not a decision made once at install time and never revisited."
+  ],
+  "coverType": "strategy",
+  "keyword": "shopify app vs custom build",
+  "topicId": "shopify-app-vs-custom",
+  "number": "023",
+  "date": "2026-09-04"
+}

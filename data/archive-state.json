@@ -1,6 +1,14 @@
 {
   "published": [
     {
+      "number": "023",
+      "date": "2026-09-04",
+      "title": "When to Buy the Shopify App and When to Build It Yourself",
+      "topicId": "shopify-app-vs-custom",
+      "keyword": "shopify app vs custom build",
+      "coverType": "strategy"
+    },
+    {
       "number": "022",
       "date": "2026-08-18",
       "title": "What a Headless Migration Actually Costs",
@@ -10,6 +18,7 @@
     }
   ],
   "usedTopicIds": [
-    "headless-migration-cost"
+    "headless-migration-cost",
+    "shopify-app-vs-custom"
   ]
 }

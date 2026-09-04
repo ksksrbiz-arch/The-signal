@@ -1,8 +1,33 @@
 {
   "version": 1,
   "rubric": [],
-  "lessons": [],
+  "lessons": [
+    {
+      "tag": "margin:thin",
+      "observation": "Only 26 words above the minimum — the argument was probably thin.",
+      "action": "Push each section to a fuller argument rather than stopping at the minimum.",
+      "count": 1,
+      "firstSeen": "2026-09-04",
+      "lastSeen": "2026-09-04"
+    }
+  ],
   "runs": [
+    {
+      "date": "2026-09-04",
+      "number": "023",
+      "topicId": "shopify-app-vs-custom",
+      "outcome": "published",
+      "title": "When to Buy the Shopify App and When to Build It Yourself",
+      "margins": {
+        "wordsOver": 26,
+        "similarityHeadroom": 0.28,
+        "peakSimilarity": 0,
+        "sectionsOver": 0
+      },
+      "warnings": [
+        "Only 26 words above the minimum — the argument was probably thin."
+      ]
+    },
     {
       "date": "2026-08-18",
       "number": "022",
@@ -19,6 +44,22 @@
     }
   ],
   "structures": [
+    {
+      "number": "023",
+      "openingShape": "other",
+      "openingWords": "the build-vs-buy question",
+      "sections": 4,
+      "headingWords": 11,
+      "headingStartsWith": [
+        "the",
+        "the",
+        "reversibility,",
+        "“we'll"
+      ],
+      "avgSentenceWords": 24,
+      "sentenceVariance": 14,
+      "words": 926
+    },
     {
       "number": "022",
       "openingShape": "other",

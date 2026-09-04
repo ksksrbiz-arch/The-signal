@@ -7,9 +7,16 @@
     <language>en-us</language>
     <copyright>© 2026 1Commerce LLC</copyright>
     <managingEditor>skdev@1commerce.online (Keith)</managingEditor>
-    <lastBuildDate>Tue, 18 Aug 2026 12:00:00 +0000</lastBuildDate>
+    <lastBuildDate>Fri, 04 Sep 2026 12:00:00 +0000</lastBuildDate>
     <atom:link href="https://1commercesolutions.com/feed.xml" rel="self" type="application/rss+xml" />
     <image><url>https://1commercesolutions.com/og-image.png</url><title>THE SIGNAL</title><link>https://1commercesolutions.com/archive/</link></image>
+    <item>
+      <title>When to Buy the Shopify App and When to Build It Yourself</title>
+      <link>https://1commercesolutions.com/archive/023.html</link>
+      <guid isPermaLink="true">https://1commercesolutions.com/archive/023.html</guid>
+      <pubDate>Fri, 04 Sep 2026 12:00:00 +0000</pubDate>
+      <description>The build-vs-buy question on Shopify usually gets framed as a cost comparison: the app costs thirty dollars a month, a custom build costs a developer&amp;#39;s…</description>
+    </item>
     <item>
       <title>What a Headless Migration Actually Costs</title>
       <link>https://1commercesolutions.com/archive/022.html</link>
@@ -212,13 +219,6 @@
       <guid isPermaLink="true">https://1commercesolutions.com/fieldnotes/github-signal-archives.html</guid>
       <pubDate>Wed, 06 May 2026 12:00:00 +0000</pubDate>
       <description>A public repository reserved for The Signal archive work, currently empty on GitHub.</description>
-    </item>
-    <item>
-      <title>skaggsk: a generated personal static page</title>
-      <link>https://1commercesolutions.com/fieldnotes/github-skaggsk.html</link>
-      <guid isPermaLink="true">https://1commercesolutions.com/fieldnotes/github-skaggsk.html</guid>
-      <pubDate>Wed, 06 May 2026 12:00:00 +0000</pubDate>
-      <description>A compact Python-generated static site, with a large generated index and the script that produces it.</description>
     </item>
   </channel>
 </rss>
