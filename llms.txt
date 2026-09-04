@@ -6,7 +6,7 @@
 
 - [Home](https://1commercesolutions.com/): Landing page with Cathedral Framework overview, verified builds index, and latest dispatch.
 - [About](https://1commercesolutions.com/about/): Founder Keith's background, the Cathedral Principle (Foundation → Revenue → Systems → Scale), and the 1Commerce LLC mission.
-- [Archive](https://1commercesolutions.com/archive/): Complete archive of weekly Signal transmissions — dispatches №001 through №021.
+- [Archive](https://1commercesolutions.com/archive/): Growing archive of weekly Signal transmissions, published roughly daily.
 - [Daily](https://1commercesolutions.com/daily/): Daily operating briefs on commerce systems, AI agents, SEO discipline, and proof-first execution.
 - [Fieldnotes](https://1commercesolutions.com/fieldnotes/): Long-form strategy notes, system specs, build logs, and operating plans published most Saturdays.
 - [Builds](https://1commercesolutions.com/builds/): Verified production deployments — 6+ live commerce systems with architecture notes.

@@ -87,6 +87,8 @@ exports.handler = async (event) => {
     return json(500, { error: 'Failed to load latest Signal brief' });
   }
 
+  warnIfBriefStale(brief);
+
   const subject = brief.title || ('The Signal — ' + brief.date);
   const previewText = brief.thesis || '';
   const html = renderHtml(brief);
@@ -163,6 +165,26 @@ exports.handler = async (event) => {
     return json(502, { error: 'Resend dispatch failed', detail: err.message });
   }
 };
+
+// The daily content agent that regenerates latest-daily-signal.json no
+// longer runs on a schedule (see AUTOMATION.md). Once a stale brief's date
+// has been dispatched, the per-date guard below correctly skips re-sending
+// it forever — which is safe, but looks identical in the logs to a healthy
+// day with nothing to report. Surface staleness loudly instead, so "the
+// content agent stopped running" doesn't go unnoticed indefinitely.
+const STALE_BRIEF_WARNING_DAYS = 1;
+
+function warnIfBriefStale(brief) {
+  const briefDate = new Date(brief.date + 'T00:00:00Z');
+  if (Number.isNaN(briefDate.getTime())) return;
+  const ageDays = Math.floor((Date.now() - briefDate.getTime()) / 86400000);
+  if (ageDays > STALE_BRIEF_WARNING_DAYS) {
+    console.warn(
+      'send-signal: latest brief is', ageDays, 'days stale (date:', brief.date + ') —',
+      'the daily content agent may not be running. See AUTOMATION.md.'
+    );
+  }
+}
 
 function loadLatestBrief() {
   // `data/latest-daily-signal.json` is bundled via `included_files`
