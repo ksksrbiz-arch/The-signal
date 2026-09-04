@@ -2,9 +2,9 @@
   "generated": null,
   "site": "https://1commercesolutions.com",
   "counts": {
-    "total": 145,
-    "posts": 119,
-    "archive": 24,
+    "total": 146,
+    "posts": 120,
+    "archive": 25,
     "fieldnotes": 41,
     "daily": 54
   },
@@ -45,6 +45,25 @@
       ],
       "cover": "/images/covers/024.svg",
       "ogImage": "https://1commercesolutions.com/images/covers/024.svg",
+      "readMins": 6
+    },
+    {
+      "id": "archive/025",
+      "url": "https://1commercesolutions.com/archive/025.html",
+      "path": "/archive/025.html",
+      "stream": "archive",
+      "kind": "post",
+      "type": "Weekly Dispatch",
+      "title": "The Product Data Model That Survives Your Third Catalog Change",
+      "description": "The product data model gets designed once, in the first week of setting up a store, by whoever is racing to get the catalog live — and it is almost never…",
+      "date": "2026-09-04",
+      "tags": [
+        "ecommerce product data model",
+        "THE SIGNAL",
+        "1Commerce LLC"
+      ],
+      "cover": "/images/covers/025.svg",
+      "ogImage": "https://1commercesolutions.com/images/covers/025.svg",
       "readMins": 6
     },
     {

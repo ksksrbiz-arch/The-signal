@@ -25,6 +25,13 @@
       <description>Checkout abandonment rate is the single most misleading number in commerce analytics, because it collapses four structurally different failures into one…</description>
     </item>
     <item>
+      <title>The Product Data Model That Survives Your Third Catalog Change</title>
+      <link>https://1commercesolutions.com/archive/025.html</link>
+      <guid isPermaLink="true">https://1commercesolutions.com/archive/025.html</guid>
+      <pubDate>Fri, 04 Sep 2026 12:00:00 +0000</pubDate>
+      <description>The product data model gets designed once, in the first week of setting up a store, by whoever is racing to get the catalog live — and it is almost never…</description>
+    </item>
+    <item>
       <title>What a Headless Migration Actually Costs</title>
       <link>https://1commercesolutions.com/archive/022.html</link>
       <guid isPermaLink="true">https://1commercesolutions.com/archive/022.html</guid>
@@ -212,13 +219,6 @@
       <guid isPermaLink="true">https://1commercesolutions.com/fieldnotes/github-rockhard-handware.html</guid>
       <pubDate>Wed, 06 May 2026 12:00:00 +0000</pubDate>
       <description>A brand-specific Next.js 14 commerce storefront using Netlify DB, Stripe, admin auth, inventory, orders, variants, and reviews.</description>
-    </item>
-    <item>
-      <title>shopify-theme-ci-cd: deployment discipline for Shopify themes</title>
-      <link>https://1commercesolutions.com/fieldnotes/github-shopify-theme-ci-cd.html</link>
-      <guid isPermaLink="true">https://1commercesolutions.com/fieldnotes/github-shopify-theme-ci-cd.html</guid>
-      <pubDate>Wed, 06 May 2026 12:00:00 +0000</pubDate>
-      <description>A production-ready Shopify theme repository with GitHub Actions deployment, linting, rollback, and local development guidance.</description>
     </item>
   </channel>
 </rss>

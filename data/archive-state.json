@@ -1,6 +1,14 @@
 {
   "published": [
     {
+      "number": "025",
+      "date": "2026-09-04",
+      "title": "The Product Data Model That Survives Your Third Catalog Change",
+      "topicId": "product-data-model",
+      "keyword": "ecommerce product data model",
+      "coverType": "system"
+    },
+    {
       "number": "024",
       "date": "2026-09-04",
       "title": "Diagnosing Checkout Abandonment Without Guessing",
@@ -28,6 +36,7 @@
   "usedTopicIds": [
     "headless-migration-cost",
     "shopify-app-vs-custom",
-    "checkout-abandonment-diagnosis"
+    "checkout-abandonment-diagnosis",
+    "product-data-model"
   ]
 }

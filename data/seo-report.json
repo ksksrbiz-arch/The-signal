@@ -1,6 +1,6 @@
 {
   "generatedAt": "2026-09-04",
-  "pagesScanned": 91,
+  "pagesScanned": 92,
   "noindexedExcluded": 54,
   "issuesFound": 0,
   "issues": [],
@@ -285,6 +285,15 @@
       "priority": "0.7",
       "title": "THE SIGNAL — Transmission №024 | Diagnosing Checkout Abandonment Without Guessing",
       "description": "Checkout abandonment rate is the single most misleading number in commerce analytics, because it collapses four structurally different failures into one…"
+    },
+    {
+      "file": "archive/025.html",
+      "url": "https://1commercesolutions.com/archive/025.html",
+      "lastmod": "2026-09-04",
+      "changefreq": "monthly",
+      "priority": "0.7",
+      "title": "THE SIGNAL — Transmission №025 | The Product Data Model That Survives Your Third Catalog Change",
+      "description": "The product data model gets designed once, in the first week of setting up a store, by whoever is racing to get the catalog live — and it is almost never…"
     },
     {
       "file": "archive/index.html",

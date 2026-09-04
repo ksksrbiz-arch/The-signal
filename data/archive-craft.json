@@ -21,6 +21,23 @@
   "runs": [
     {
       "date": "2026-09-04",
+      "number": "025",
+      "topicId": "product-data-model",
+      "outcome": "published",
+      "title": "The Product Data Model That Survives Your Third Catalog Change",
+      "margins": {
+        "wordsOver": 131,
+        "similarityHeadroom": 0.28,
+        "peakSimilarity": 0,
+        "sectionsOver": 0
+      },
+      "warnings": [
+        "3 of the last 3 dispatches open with the \"other\" move. Open the next one differently.",
+        "6 recent section headings start with \"the\". Vary heading construction."
+      ]
+    },
+    {
+      "date": "2026-09-04",
       "number": "024",
       "topicId": "checkout-abandonment-diagnosis",
       "outcome": "published",
@@ -67,6 +84,22 @@
     }
   ],
   "structures": [
+    {
+      "number": "025",
+      "openingShape": "failure-first",
+      "openingWords": "the product data",
+      "sections": 4,
+      "headingWords": 11,
+      "headingStartsWith": [
+        "option",
+        "metafields",
+        "bundles",
+        "the"
+      ],
+      "avgSentenceWords": 39,
+      "sentenceVariance": 17,
+      "words": 1031
+    },
     {
       "number": "024",
       "openingShape": "other",

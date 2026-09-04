@@ -1,0 +1,50 @@
+{
+  "title": "The Product Data Model That Survives Your Third Catalog Change",
+  "subtitle": "Variant decisions made in week one decide what you can sell in year two",
+  "lede": [
+    "The product data model gets designed once, in the first week of setting up a store, by whoever is racing to get the catalog live — and it is almost never revisited until it actively breaks, because revisiting it means touching every product, every order record, and every integration that reads product data. By the time it breaks, the store has hundreds or thousands of SKUs built on the original assumption, and the fix is a migration project instead of a design decision. The mistake is treating variant structure as a data-entry task instead of what it actually is: a bet on which future catalog changes the business will need to support.,Most stores get this wrong the same way. They model variants around the product they're selling today — size and color for apparel, say — and hard-code that structure into option names, into the theme's variant picker logic, and into every app that touches inventory. The bet fails the moment the catalog needs a dimension the original model didn't anticipate: a bundle that isn't really a size/color product, a subscription variant that needs its own pricing logic, a product line that comes in a material option nobody planned for. None of these are exotic scenarios. They're the normal trajectory of a catalog that grows."
+  ],
+  "pullQuote": "The data model isn't wrong on day one — it's wrong on the day the catalog needs a dimension nobody designed for, and by then it's load-bearing.",
+  "sections": [
+    {
+      "heading": "Option names hard-coded into logic are the real trap, not variant count",
+      "paragraphs": [
+        "The common advice is to avoid too many variants because platforms impose combinatorial limits, and that's true but it's the smaller problem. The larger problem is when option names themselves — 'Size,' 'Color' — get referenced directly in theme code, in app configuration, or in fulfillment logic, rather than treated as data the system reads generically. A theme that specifically checks for an option literally named 'Color' to render a swatch picker works fine until a product line needs a 'Finish' option instead, at which point the swatch logic silently doesn't apply and nobody notices until a customer complains that a product looks wrong.",
+        "The fix is cheap early and expensive late: treat option names as configuration, not as identifiers baked into code. A variant picker that renders based on option position and type metadata, rather than a specific string match, survives a new option type without a deploy. This is the kind of decision that costs almost nothing to make correctly in week one and costs a rebuild of every theme touchpoint to fix in year two, which is exactly the asymmetry that makes it worth getting right before the catalog exists to break."
+      ]
+    },
+    {
+      "heading": "Metafields you didn't plan for become impossible to add cleanly",
+      "paragraphs": [
+        "Every catalog eventually needs a piece of product data that wasn't in the original schema — a compliance field, a sourcing attribute, a flag for a specific promotion mechanic. The question is whether the data model has room for that addition without a full-catalog backfill or a change to every integration reading the product feed. A model that treats every product attribute as a fixed, named field baked into the product object has no room; adding a new attribute means updating every downstream consumer of the object shape simultaneously; a model that treats attributes as an open, queryable set — metafields with a defined namespace convention rather than ad hoc naming — absorbs a new attribute as an addition, not a schema change.",
+        "The naming convention matters more than it sounds like it should. A catalog where metafields get named inconsistently by whoever added them that week — some namespaced, some not, some duplicating what a different app already stores under a different key — turns 'add a new attribute' into 'first figure out if this already exists somewhere under a different name.' A documented namespace convention, decided once before the second metafield gets created, is the difference between a metafield system that scales and one that becomes an archaeology project."
+      ]
+    },
+    {
+      "heading": "Bundles and subscriptions break models built for single, standalone SKUs",
+      "paragraphs": [
+        "A product data model built around 'one SKU, one price, one inventory count' works cleanly for a catalog of standalone products and breaks the moment the business needs a bundle — a product that's really a composition of other products, with its own SKU but inventory that should decrement from the components, not from a separate bundle-specific stock count. Stores that didn't plan for this end up managing bundle inventory manually, which works until the bundle sells out of a component and the storefront doesn't know, because the bundle's own stock count is disconnected from the components it's made of.",
+        "Subscriptions create a parallel version of the same problem: a subscription variant often needs pricing logic — a discount off the one-time price, a different tax treatment, a recurring billing cycle — that a data model built for one-time-purchase SKUs has nowhere to hold. The fix isn't to anticipate every future product type in the original schema; that's over-engineering a guess. The fix is making sure the model doesn't assume every product is standalone and single-priced, so that adding a composed or recurring product type later is an extension rather than a rewrite of the core object."
+      ]
+    },
+    {
+      "heading": "The migration cost is the actual argument for getting this right early",
+      "paragraphs": [
+        "None of this matters if a catalog stays small and static, which is exactly why the mistake is so common — the cost of a rigid model is invisible at fifty SKUs and becomes visible at five hundred, by which point every order record, every fulfillment integration, and every analytics pipeline has been built against the existing shape. Migrating the data model at that scale isn't a data-entry task; it's a project that touches every system that reads product data, run while the store is still taking live orders, which is precisely the condition under which migrations go wrong.",
+        "The counter-argument is that designing for flexibility up front costs real time against a catalog that might never need it, and that's a fair trade-off to weigh — a five-SKU store genuinely doesn't need a namespace convention for metafields it will never create. But the asymmetry still favors early discipline on the few decisions that are expensive to reverse: don't hard-code option names into logic, decide a metafield namespace convention before the second one exists, and don't assume every product will be standalone. Those three cost almost nothing to do correctly at launch and cost a migration project to fix once the catalog has grown past the point where nobody wants to touch it."
+      ]
+    }
+  ],
+  "takeaways": [
+    "Never reference option names like 'Color' or 'Size' directly in theme or app logic — read them generically by position or type metadata instead.",
+    "Decide a metafield namespace convention before the second metafield gets created, not after the third inconsistent one causes confusion.",
+    "Don't build the product data model around the assumption that every SKU is standalone and single-priced — bundles and subscriptions need room the model may not have.",
+    "Weigh the cost of early flexibility against catalog size honestly — a five-SKU store doesn't need infrastructure for problems it will never have.",
+    "Treat a rigid data model's cost as invisible until it isn't: the migration gets harder every month the catalog grows on top of it."
+  ],
+  "coverType": "system",
+  "keyword": "ecommerce product data model",
+  "topicId": "product-data-model",
+  "number": "025",
+  "date": "2026-09-04"
+}
