@@ -44,9 +44,12 @@ The-signal/
 ├── package.json            # Scripts + metadata (no runtime deps; no real build)
 │
 ├── functions/              # Netlify serverless functions
-│   ├── news.js             #   → /api/news      (RSS news aggregator)
-│   ├── subscribe.js        #   → /api/subscribe (newsletter signup)
-│   └── send-signal.js      #   → /api/send-signal + scheduled daily email
+│   ├── subscribe.mjs       #   → /api/subscribe (newsletter signup; Blobs + Resend)
+│   ├── confirm.mjs         #   → /api/confirm   (signup confirmation)
+│   ├── engagement.mjs      #   engagement tracking (Blobs)
+│   ├── search.mjs          #   search endpoint
+│   ├── send-signal.js      #   → /api/send-signal + scheduled daily email (Resend)
+│   └── lib/resend-contacts.mjs # shared Resend contact-sync helper
 │
 ├── scripts/                # Node ESM automation (run by GitHub Actions)
 │   ├── daily-content-agent.mjs
@@ -76,8 +79,9 @@ There are also many root-level `*.md` docs and `setup*` scripts (`.bat`/`.py`/
 
 - `publish = "."`, `functions = "functions"` — no build command.
 - **Scheduled function**: `send-signal` runs daily at `0 12 * * *` (12:00 UTC).
-- **API rewrites**: `/api/news`, `/api/subscribe`, `/api/send-signal` →
-  corresponding functions (status 200 rewrites).
+- **API routes**: `/api/subscribe` and `/api/confirm` are Netlify Functions v2
+  and self-route via `config.path` (no redirect needed); `/api/send-signal` is
+  a v1 function with an explicit status-200 rewrite in `[[redirects]]`.
 - **Security headers + CSP** apply to all routes (frame-ancestors none,
   scoped script/style/connect/font/img/frame sources).
 - **Redirects**: canonical `signal01.netlify.app/*` → production domain;

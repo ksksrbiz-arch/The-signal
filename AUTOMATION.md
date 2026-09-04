@@ -1,9 +1,18 @@
 # Daily SEO and content automation
 
-THE SIGNAL now includes two GitHub Actions agents:
+THE SIGNAL includes two GitHub Actions agents:
 
-- **Daily content agent** (`.github/workflows/daily-content-agent.yml`) runs every day at 11:15 UTC and can also be triggered manually.
-- **SEO maintenance agent** (`.github/workflows/seo-maintenance-agent.yml`) runs every day at 11:45 UTC and can also be triggered manually.
+- **Daily content agent** (`.github/workflows/daily-content-agent.yml`) — `workflow_dispatch` only.
+- **SEO maintenance agent** (`.github/workflows/seo-maintenance-agent.yml`) — `workflow_dispatch` only.
+
+**Both schedules are currently parked** (see the `SCHEDULE PARKED` comment at
+the top of each workflow file) — GitHub Actions cron was unreliable on this
+repo and produced weeks of daily failures, so neither agent runs on its own
+anymore. Run them manually from the Actions tab, or via `workflow_dispatch`,
+when a fresh `/daily/` brief or `sitemap.xml`/`data/seo-report.json` refresh
+is needed. Because neither runs automatically, `data/latest-daily-signal.json`
+does not update on its own either — see "Email dispatch" below for what that
+means for the daily Signal email.
 
 ## What runs
 
@@ -59,6 +68,17 @@ Environment variables):
 Without `RESEND_API_KEY` / `RESEND_SIGNAL_SEGMENT_ID` set, the function
 logs the payload it would send and returns 200, so the schedule keeps
 running cleanly until you fill the env vars.
+
+**Content freshness depends on the daily content agent, which no longer runs
+on a schedule** (see above). `send-signal.js` sends whatever is in
+`data/latest-daily-signal.json`; once that date has been dispatched once, the
+per-date dispatch guard correctly skips re-sending it forever, so a stale
+brief does not spam subscribers — but it also means the daily email quietly
+stops carrying anything new. The function logs a loud warning (`brief is N
+days stale`) on every tick where the brief is more than a day old, so this
+shows up in Netlify function logs instead of silently looking healthy. Run
+the content agent manually (or revisit whether the daily email is worth
+keeping) before assuming subscribers are getting anything current.
 
 ### Manual trigger
 
