@@ -17,6 +17,9 @@ yarn-error.log*
 .env.local
 .env.*.local
 
+# Claude Code local state (agent worktrees, etc.)
+.claude/
+
 # OS
 .DS_Store
 Thumbs.db
