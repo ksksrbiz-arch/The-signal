@@ -124,7 +124,8 @@ workflow failed daily for weeks. The remaining two workflows have their
 The archive workflow was deleted outright, because the current design **cannot**
 run in Actions: Claude writes the dispatch, so there is no unattended runner
 that can produce one. Publishing happens through a **Claude routine** instead —
-"Signal — daily archive transmission", daily at 10:30 UTC.
+"Signal — weekly archive transmission", every Friday at 10:30 UTC, matching
+the site's original weekly cadence (dispatches №001–017 were 7 days apart).
 
 ### Archive transmission agent
 
