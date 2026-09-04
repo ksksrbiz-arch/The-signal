@@ -1,17 +1,40 @@
 {
   "version": 1,
-  "rubric": [],
+  "rubric": [
+    {
+      "tag": "margin:thin",
+      "rule": "Push each section to a fuller argument rather than stopping at the minimum.",
+      "promotedAt": "2026-09-04",
+      "reason": "Recurred 2× — promoted from lesson to standing rule."
+    }
+  ],
   "lessons": [
     {
       "tag": "margin:thin",
       "observation": "Only 26 words above the minimum — the argument was probably thin.",
       "action": "Push each section to a fuller argument rather than stopping at the minimum.",
-      "count": 1,
+      "count": 2,
       "firstSeen": "2026-09-04",
       "lastSeen": "2026-09-04"
     }
   ],
   "runs": [
+    {
+      "date": "2026-09-04",
+      "number": "024",
+      "topicId": "checkout-abandonment-diagnosis",
+      "outcome": "published",
+      "title": "Diagnosing Checkout Abandonment Without Guessing",
+      "margins": {
+        "wordsOver": 42,
+        "similarityHeadroom": 0.279,
+        "peakSimilarity": 0.001,
+        "sectionsOver": 0
+      },
+      "warnings": [
+        "Only 42 words above the minimum — the argument was probably thin."
+      ]
+    },
     {
       "date": "2026-09-04",
       "number": "023",
@@ -44,6 +67,22 @@
     }
   ],
   "structures": [
+    {
+      "number": "024",
+      "openingShape": "other",
+      "openingWords": "checkout abandonment rate",
+      "sections": 4,
+      "headingWords": 12,
+      "headingStartsWith": [
+        "the",
+        "payment-step",
+        "review-step",
+        "the"
+      ],
+      "avgSentenceWords": 31,
+      "sentenceVariance": 13,
+      "words": 942
+    },
     {
       "number": "023",
       "openingShape": "other",

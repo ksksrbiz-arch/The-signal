@@ -1,6 +1,6 @@
 {
   "generatedAt": "2026-09-04",
-  "pagesScanned": 90,
+  "pagesScanned": 91,
   "noindexedExcluded": 54,
   "issuesFound": 0,
   "issues": [],
@@ -262,7 +262,7 @@
     {
       "file": "archive/022.html",
       "url": "https://1commercesolutions.com/archive/022.html",
-      "lastmod": "2026-08-19",
+      "lastmod": "2026-09-04",
       "changefreq": "monthly",
       "priority": "0.7",
       "title": "THE SIGNAL — Transmission №022 | What a Headless Migration Actually Costs",
@@ -278,9 +278,18 @@
       "description": "The build-vs-buy question on Shopify usually gets framed as a cost comparison: the app costs thirty dollars a month, a custom build costs a developer&#39;s…"
     },
     {
+      "file": "archive/024.html",
+      "url": "https://1commercesolutions.com/archive/024.html",
+      "lastmod": "2026-09-04",
+      "changefreq": "monthly",
+      "priority": "0.7",
+      "title": "THE SIGNAL — Transmission №024 | Diagnosing Checkout Abandonment Without Guessing",
+      "description": "Checkout abandonment rate is the single most misleading number in commerce analytics, because it collapses four structurally different failures into one…"
+    },
+    {
       "file": "archive/index.html",
       "url": "https://1commercesolutions.com/archive/",
-      "lastmod": "2026-08-19",
+      "lastmod": "2026-09-04",
       "changefreq": "weekly",
       "priority": "0.9",
       "title": "Archive — THE SIGNAL | 1Commerce LLC",
@@ -289,7 +298,7 @@
     {
       "file": "blog/index.html",
       "url": "https://1commercesolutions.com/blog/",
-      "lastmod": "2026-08-19",
+      "lastmod": "2026-09-04",
       "changefreq": "weekly",
       "priority": "0.9",
       "title": "The Blog — THE SIGNAL | Every dispatch, fieldnote & daily brief",

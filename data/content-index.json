@@ -2,9 +2,9 @@
   "generated": null,
   "site": "https://1commercesolutions.com",
   "counts": {
-    "total": 144,
-    "posts": 118,
-    "archive": 23,
+    "total": 145,
+    "posts": 119,
+    "archive": 24,
     "fieldnotes": 41,
     "daily": 54
   },
@@ -26,6 +26,25 @@
       ],
       "cover": "/images/covers/023.svg",
       "ogImage": "https://1commercesolutions.com/images/covers/023.svg",
+      "readMins": 6
+    },
+    {
+      "id": "archive/024",
+      "url": "https://1commercesolutions.com/archive/024.html",
+      "path": "/archive/024.html",
+      "stream": "archive",
+      "kind": "post",
+      "type": "Weekly Dispatch",
+      "title": "Diagnosing Checkout Abandonment Without Guessing",
+      "description": "Checkout abandonment rate is the single most misleading number in commerce analytics, because it collapses four structurally different failures into one…",
+      "date": "2026-09-04",
+      "tags": [
+        "diagnose checkout abandonment",
+        "THE SIGNAL",
+        "1Commerce LLC"
+      ],
+      "cover": "/images/covers/024.svg",
+      "ogImage": "https://1commercesolutions.com/images/covers/024.svg",
       "readMins": 6
     },
     {
@@ -2357,7 +2376,7 @@
       "type": "Page",
       "title": "The Blog — THE SIGNAL",
       "description": "Every dispatch, fieldnote and daily brief in one reverse-chronological feed.",
-      "date": "2026-08-18",
+      "date": "2026-09-04",
       "tags": [],
       "cover": "",
       "ogImage": "https://1commercesolutions.com/og-image.png",
@@ -2478,59 +2497,58 @@
       "readMins": 1
     },
     {
-      "id": "playbooks/build-in-public-systems",
-      "url": "https://1commercesolutions.com/playbooks/build-in-public-systems.html",
-      "path": "/playbooks/build-in-public-systems.html",
+      "id": "playbooks/index",
+      "url": "https://1commercesolutions.com/playbooks/",
+      "path": "/playbooks/",
       "stream": "playbooks",
-      "kind": "page",
+      "kind": "index",
       "type": "Page",
-      "title": "Build in Public Systems: Turning Shipping Evidence Into Trust",
-      "description": "A build-in-public system that produces proof automatically: capturing an artifact from every shipped change, tying updates to customer problems, and archiving evidence on pages that can be crawled and referenced.",
-      "date": "2026-08-18",
+      "title": "Operator Playbooks — THE SIGNAL | Commerce systems, agents &amp; validation",
+      "description": "Seven evergreen operator playbooks from 1Commerce LLC: AI commerce operations, build-in-public systems, the solo founder stack, agent revenue workflows, commerce intelligence, automated SEO, and product validation.",
+      "date": "",
       "tags": [
-        "build in public systems",
-        "THE SIGNAL",
-        "1Commerce LLC",
-        "commerce systems",
-        "AI agents"
-      ],
-      "cover": "",
-      "ogImage": "https://1commercesolutions.com/og-image.png",
-      "readMins": 5
-    },
-    {
-      "id": "playbooks/product-validation-systems",
-      "url": "https://1commercesolutions.com/playbooks/product-validation-systems.html",
-      "path": "/playbooks/product-validation-systems.html",
-      "stream": "playbooks",
-      "kind": "page",
-      "type": "Page",
-      "title": "Product Validation Systems: From Idea to Shipped Proof",
-      "description": "A product validation system that prevents endless tinkering: writing the smallest testable promise, setting the continue/change/kill rule before building, and shipping the proof artifact even when the result is negative.",
-      "date": "2026-08-18",
-      "tags": [
-        "product validation systems",
-        "THE SIGNAL",
-        "1Commerce LLC",
-        "commerce systems",
-        "AI agents"
-      ],
-      "cover": "",
-      "ogImage": "https://1commercesolutions.com/og-image.png",
-      "readMins": 5
-    },
-    {
-      "id": "playbooks/solo-founder-tech-stack",
-      "url": "https://1commercesolutions.com/playbooks/solo-founder-tech-stack.html",
-      "path": "/playbooks/solo-founder-tech-stack.html",
-      "stream": "playbooks",
-      "kind": "page",
-      "type": "Page",
-      "title": "The Solo Founder Tech Stack: Leverage Without Headcount",
-      "description": "How to choose a solo founder tech stack that creates leverage instead of coordination work: auditing tools that cost more than they return, scripting recurring setup, and knowing where to stay boring.",
-      "date": "2026-08-18",
-      "tags": [
+        "operator playbooks",
+        "AI commerce operations",
         "solo founder tech stack",
+        "product validation systems"
+      ],
+      "cover": "",
+      "ogImage": "https://1commercesolutions.com/og-image.png",
+      "readMins": 1
+    },
+    {
+      "id": "playbooks/automated-seo-static-sites",
+      "url": "https://1commercesolutions.com/playbooks/automated-seo-static-sites.html",
+      "path": "/playbooks/automated-seo-static-sites.html",
+      "stream": "playbooks",
+      "kind": "page",
+      "type": "Page",
+      "title": "Automated SEO for Static Sites: Discipline Over Gimmicks",
+      "description": "How to automate SEO maintenance on a static site without generating thin pages: enforcing one search intent per URL, keeping sitemaps honest, and improving existing pages instead of adding new ones.",
+      "date": "2026-08-18",
+      "tags": [
+        "automated SEO for static sites",
+        "THE SIGNAL",
+        "1Commerce LLC",
+        "commerce systems",
+        "AI agents"
+      ],
+      "cover": "",
+      "ogImage": "https://1commercesolutions.com/og-image.png",
+      "readMins": 5
+    },
+    {
+      "id": "playbooks/commerce-intelligence-layer",
+      "url": "https://1commercesolutions.com/playbooks/commerce-intelligence-layer.html",
+      "path": "/playbooks/commerce-intelligence-layer.html",
+      "stream": "playbooks",
+      "kind": "page",
+      "type": "Page",
+      "title": "The Commerce Intelligence Layer: Memory, Context, and Action",
+      "description": "What a commerce intelligence layer is and how to build one: mapping pre-purchase and post-delivery questions, connecting content, product, and support context, and designing explicit handoffs.",
+      "date": "2026-08-18",
+      "tags": [
+        "commerce intelligence layer",
         "THE SIGNAL",
         "1Commerce LLC",
         "commerce systems",
@@ -2628,26 +2646,6 @@
       "readMins": 1
     },
     {
-      "id": "playbooks/index",
-      "url": "https://1commercesolutions.com/playbooks/",
-      "path": "/playbooks/",
-      "stream": "playbooks",
-      "kind": "index",
-      "type": "Page",
-      "title": "Operator Playbooks — THE SIGNAL | Commerce systems, agents &amp; validation",
-      "description": "Seven evergreen operator playbooks from 1Commerce LLC: AI commerce operations, build-in-public systems, the solo founder stack, agent revenue workflows, commerce intelligence, automated SEO, and product validation.",
-      "date": "",
-      "tags": [
-        "operator playbooks",
-        "AI commerce operations",
-        "solo founder tech stack",
-        "product validation systems"
-      ],
-      "cover": "",
-      "ogImage": "https://1commercesolutions.com/og-image.png",
-      "readMins": 1
-    },
-    {
       "id": "playbooks/ai-agent-revenue-workflows",
       "url": "https://1commercesolutions.com/playbooks/ai-agent-revenue-workflows.html",
       "path": "/playbooks/ai-agent-revenue-workflows.html",
@@ -2690,17 +2688,17 @@
       "readMins": 6
     },
     {
-      "id": "playbooks/automated-seo-static-sites",
-      "url": "https://1commercesolutions.com/playbooks/automated-seo-static-sites.html",
-      "path": "/playbooks/automated-seo-static-sites.html",
+      "id": "playbooks/build-in-public-systems",
+      "url": "https://1commercesolutions.com/playbooks/build-in-public-systems.html",
+      "path": "/playbooks/build-in-public-systems.html",
       "stream": "playbooks",
       "kind": "page",
       "type": "Page",
-      "title": "Automated SEO for Static Sites: Discipline Over Gimmicks",
-      "description": "How to automate SEO maintenance on a static site without generating thin pages: enforcing one search intent per URL, keeping sitemaps honest, and improving existing pages instead of adding new ones.",
+      "title": "Build in Public Systems: Turning Shipping Evidence Into Trust",
+      "description": "A build-in-public system that produces proof automatically: capturing an artifact from every shipped change, tying updates to customer problems, and archiving evidence on pages that can be crawled and referenced.",
       "date": "2026-08-18",
       "tags": [
-        "automated SEO for static sites",
+        "build in public systems",
         "THE SIGNAL",
         "1Commerce LLC",
         "commerce systems",
@@ -2711,17 +2709,38 @@
       "readMins": 5
     },
     {
-      "id": "playbooks/commerce-intelligence-layer",
-      "url": "https://1commercesolutions.com/playbooks/commerce-intelligence-layer.html",
-      "path": "/playbooks/commerce-intelligence-layer.html",
+      "id": "playbooks/product-validation-systems",
+      "url": "https://1commercesolutions.com/playbooks/product-validation-systems.html",
+      "path": "/playbooks/product-validation-systems.html",
       "stream": "playbooks",
       "kind": "page",
       "type": "Page",
-      "title": "The Commerce Intelligence Layer: Memory, Context, and Action",
-      "description": "What a commerce intelligence layer is and how to build one: mapping pre-purchase and post-delivery questions, connecting content, product, and support context, and designing explicit handoffs.",
+      "title": "Product Validation Systems: From Idea to Shipped Proof",
+      "description": "A product validation system that prevents endless tinkering: writing the smallest testable promise, setting the continue/change/kill rule before building, and shipping the proof artifact even when the result is negative.",
       "date": "2026-08-18",
       "tags": [
-        "commerce intelligence layer",
+        "product validation systems",
+        "THE SIGNAL",
+        "1Commerce LLC",
+        "commerce systems",
+        "AI agents"
+      ],
+      "cover": "",
+      "ogImage": "https://1commercesolutions.com/og-image.png",
+      "readMins": 5
+    },
+    {
+      "id": "playbooks/solo-founder-tech-stack",
+      "url": "https://1commercesolutions.com/playbooks/solo-founder-tech-stack.html",
+      "path": "/playbooks/solo-founder-tech-stack.html",
+      "stream": "playbooks",
+      "kind": "page",
+      "type": "Page",
+      "title": "The Solo Founder Tech Stack: Leverage Without Headcount",
+      "description": "How to choose a solo founder tech stack that creates leverage instead of coordination work: auditing tools that cost more than they return, scripting recurring setup, and knowing where to stay boring.",
+      "date": "2026-08-18",
+      "tags": [
+        "solo founder tech stack",
         "THE SIGNAL",
         "1Commerce LLC",
         "commerce systems",

@@ -1,6 +1,14 @@
 {
   "published": [
     {
+      "number": "024",
+      "date": "2026-09-04",
+      "title": "Diagnosing Checkout Abandonment Without Guessing",
+      "topicId": "checkout-abandonment-diagnosis",
+      "keyword": "diagnose checkout abandonment",
+      "coverType": "strategy"
+    },
+    {
       "number": "023",
       "date": "2026-09-04",
       "title": "When to Buy the Shopify App and When to Build It Yourself",
@@ -19,6 +27,7 @@
   ],
   "usedTopicIds": [
     "headless-migration-cost",
-    "shopify-app-vs-custom"
+    "shopify-app-vs-custom",
+    "checkout-abandonment-diagnosis"
   ]
 }

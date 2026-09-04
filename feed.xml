@@ -18,6 +18,13 @@
       <description>The build-vs-buy question on Shopify usually gets framed as a cost comparison: the app costs thirty dollars a month, a custom build costs a developer&amp;#39;s…</description>
     </item>
     <item>
+      <title>Diagnosing Checkout Abandonment Without Guessing</title>
+      <link>https://1commercesolutions.com/archive/024.html</link>
+      <guid isPermaLink="true">https://1commercesolutions.com/archive/024.html</guid>
+      <pubDate>Fri, 04 Sep 2026 12:00:00 +0000</pubDate>
+      <description>Checkout abandonment rate is the single most misleading number in commerce analytics, because it collapses four structurally different failures into one…</description>
+    </item>
+    <item>
       <title>What a Headless Migration Actually Costs</title>
       <link>https://1commercesolutions.com/archive/022.html</link>
       <guid isPermaLink="true">https://1commercesolutions.com/archive/022.html</guid>
@@ -212,13 +219,6 @@
       <guid isPermaLink="true">https://1commercesolutions.com/fieldnotes/github-shopify-theme-ci-cd.html</guid>
       <pubDate>Wed, 06 May 2026 12:00:00 +0000</pubDate>
       <description>A production-ready Shopify theme repository with GitHub Actions deployment, linting, rollback, and local development guidance.</description>
-    </item>
-    <item>
-      <title>Signal-Archives: an empty archive vessel for future Signal material</title>
-      <link>https://1commercesolutions.com/fieldnotes/github-signal-archives.html</link>
-      <guid isPermaLink="true">https://1commercesolutions.com/fieldnotes/github-signal-archives.html</guid>
-      <pubDate>Wed, 06 May 2026 12:00:00 +0000</pubDate>
-      <description>A public repository reserved for The Signal archive work, currently empty on GitHub.</description>
     </item>
   </channel>
 </rss>

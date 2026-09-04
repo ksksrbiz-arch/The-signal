@@ -1,0 +1,51 @@
+{
+  "title": "Diagnosing Checkout Abandonment Without Guessing",
+  "subtitle": "One abandonment rate hides four different problems",
+  "lede": [
+    "Checkout abandonment rate is the single most misleading number in commerce analytics, because it collapses four structurally different failures into one metric and then invites four structurally different fixes to be applied at random. A store sees 68% abandonment, reads an article recommending free shipping thresholds, adds one, and watches the number barely move — because the actual leak was at the shipping-cost reveal, not the absence of a threshold, or it was at payment-method selection, or it was people who were never going to buy and were just pricing-checking. The aggregate number cannot tell you which.,The fix is not a better dashboard. It's refusing to treat the funnel as one step. Checkout is four or five distinct decisions stacked in sequence — information entry, shipping method, payment method, final review, and (for many stores) an account-creation prompt somewhere in that sequence — and each one has its own abandonment rate, its own causes, and its own fix. Diagnosing correctly means measuring step-by-step drop-off before touching anything, because the fix for a leak at step two actively wastes effort if the real leak is at step four."
+  ],
+  "pullQuote": "A single abandonment number is an average of four different arguments a customer had with your checkout — and the average tells you none of them.",
+  "sections": [
+    {
+      "heading": "The step where you lose people tells you what kind of problem you have",
+      "paragraphs": [
+        "Drop-off at the very first checkout step — before any shipping cost or payment method has even been shown — is almost never about the checkout itself. It's a signal that the cart-to-checkout transition surfaced something unexpected: a price that changed, a promo code that silently failed, or simply a customer who added to cart as a save-for-later action and was never going to convert this session. Optimizing checkout UX does nothing for this leak, because the customer never engaged with the UX. The fix lives upstream, in cart behavior and pricing transparency, not in the checkout flow.",
+        "Drop-off concentrated at the shipping-method step is a cost-surprise problem almost by definition — the customer built a mental price in their head at the product page, and checkout is where the real number, with shipping added, gets revealed for the first time. This is the one leak free-shipping thresholds and shipping-cost calculators actually fix, because it's the one leak that's genuinely about the number, not about friction. If your aggregate abandonment rate is high but your shipping-step drop-off specifically is low, adding a shipping threshold will change nothing, because that was never where the leak was."
+      ]
+    },
+    {
+      "heading": "Payment-step abandonment is usually a trust or capability problem, not a UX problem",
+      "paragraphs": [
+        "When the drop happens at payment method selection, the two live explanations are trust and capability — either the customer doesn't recognize or believe the payment processor, or the store doesn't support a payment method the customer actually uses. Both get treated as UX bugs and fixed with UX effort, which doesn't touch the cause. A cleaner payment form does not make an unfamiliar processor logo look more trustworthy, and it does not add a payment method that isn't there. The diagnostic tell is whether the drop rate at this step correlates with device or region — a spike specific to mobile users in a market where a particular wallet dominates is a capability gap, not a design gap.",
+        "The counter-argument worth naming here is that a genuinely bad payment form can add friction on top of a trust or capability gap, making it look worse than it is — so fixing the form isn't wrong, it's just not sufficient on its own, and treating it as sufficient is how teams spend a quarter on a redesign that moves the number two percentage points instead of the fifteen a payment-method gap would explain. Fix both, but diagnose which one is doing the heavy lifting before allocating the budget."
+      ]
+    },
+    {
+      "heading": "Review-step and post-review drop-off is where account friction actually lives",
+      "paragraphs": [
+        "If the funnel holds through shipping and payment and then drops at final review or immediately after, the customer has already committed mentally — they picked a shipping method and entered payment details — and something at the very end broke the transaction anyway. This is almost always a forced-account-creation wall, an unexpected terms checkbox, a total that changed again due to tax calculation, or a technical error in the payment authorization itself. Because the customer was this close, this is the highest-value leak to fix per unit of effort: the friction removed at this step converts people who had already decided to buy, not people who were undecided.",
+        "This is also the step most stores never instrument separately from 'payment failed,' because payment failures and voluntary abandonment at the same step produce the same downstream signal — an incomplete order — and get logged identically. Separating the two requires actually looking at payment gateway logs for declined-transaction counts against the step-level abandonment count, not just trusting the analytics platform's funnel visualization, which usually can't distinguish 'customer left' from 'transaction was rejected.'"
+      ]
+    },
+    {
+      "heading": "The instrumentation cost is real, and it's worth paying once",
+      "paragraphs": [
+        "Step-level funnel tracking requires more setup than a single abandonment metric — event tracking at each checkout stage, correlated against session data, ideally cross-referenced with payment gateway logs for the review-step ambiguity above. That's real engineering time against a metric that most analytics platforms already report as one aggregate number for free. The temptation is to skip the setup and act on the aggregate anyway, reasoning that some fix is better than analysis paralysis.",
+        "That reasoning is backwards for checkout specifically, because the fixes for different steps aren't just different in effort, they're sometimes actively opposed. A fix aimed at reducing perceived friction at the review step — fewer fields, fewer confirmations — can increase failed-payment rates if it also reduces the validation that would have caught a bad card number earlier. Acting on the wrong diagnosis doesn't just waste effort; it can make the actual leak worse while the vanity metric looks unchanged, because a friction reduction at the wrong step doesn't touch the step that's actually bleeding customers."
+      ]
+    }
+  ],
+  "takeaways": [
+    "Never optimize against a single checkout abandonment percentage — instrument drop-off at each distinct step before choosing a fix.",
+    "Drop-off before shipping is shown is a pricing-transparency or cart-behavior problem, not a checkout-UX problem.",
+    "Shipping-step drop-off is the one leak a free-shipping threshold or shipping calculator genuinely addresses; check whether that's actually where your leak is first.",
+    "Payment-step drop-off correlated with device or region points to a missing payment method, not a form redesign.",
+    "Separate 'customer left' from 'transaction was declined' at the review step by cross-referencing payment gateway logs, since most analytics platforms log them identically.",
+    "Fix the review-step and post-review leaks first when you find them — they convert customers who had already decided to buy."
+  ],
+  "coverType": "strategy",
+  "keyword": "diagnose checkout abandonment",
+  "topicId": "checkout-abandonment-diagnosis",
+  "number": "024",
+  "date": "2026-09-04"
+}
