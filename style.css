@@ -3,57 +3,133 @@
    Operator-grade aesthetic. No templates. No blur.
    ============================================================ */
 
-/* --- Color Tokens --- */
+/* --- Color Tokens ---
+   Canonical design-system root. This used to be six separate :root
+   blocks appended across revision passes (base palette, contrast
+   pass, WARM SIGNAL palette reset, legacy token aliases, premium
+   elevation/glass tokens), each winning on later-wins-the-cascade.
+   Merged here into one block, keeping the values that were actually
+   in effect (the last declaration of each token in source order). */
 :root {
-  /* Ink / Paper */
-  --bg: #070A12;            /* ink navy */
-  --bg2: #05070D;           /* deeper */
-  --panel: #0B0F1A;         /* monolith slab */
-  --panel2: #0E1424;        /* hover/raised */
-  --rule: #1A2338;          /* grid/rules */
-  --rule2: #24304A;         /* stronger rule */
+  /* Ink / Paper — warm espresso palette (WARM SIGNAL, May 2026) */
+  --bg: #14110D;             /* warm espresso */
+  --bg2: #100E0A;            /* deeper */
+  --panel: #1C1814;          /* warm charcoal slab */
+  --panel2: #231E18;         /* hover/raised */
+  --rule: #2E2823;           /* warm rule line */
+  --rule2: #3C342B;          /* stronger rule */
 
   /* Type */
-  --text: #E9EDF6;          /* primary */
-  --muted: #AAB4C7;         /* secondary */
-  --faint: #6E7891;         /* tertiary */
+  --text: #F2EAD9;           /* warm cream primary */
+  --muted: #C9BBA1;          /* warm beige secondary */
+  --faint: #8E7F69;          /* taupe tertiary/meta */
 
   /* Signals */
-  --active: #E8B86A;        /* warm amber — overridden by WARM SIGNAL block */
-  --verified: #C7A35A;      /* brass */
-  --danger: #E06565;
+  --active: #E8B86A;         /* warm amber */
+  --active-soft: rgba(232, 184, 106, 0.12);
+  --verified: #C7A35A;       /* brass */
+  --danger: #D77A60;         /* terracotta */
 
   /* Density */
   --r: 8px;
-  --p: 18px;                /* panel padding */
-  --gap: 14px;              /* vertical rhythm */
+  --p: 18px;                 /* panel padding */
+  --gap: 14px;                /* vertical rhythm */
   --lh: 1.25;
-  --page: 1200px;           /* content max-width */
+  --page: 1200px;             /* content max-width */
+
+  /* Typography
+     Fonts are loaded from Google Fonts via <link> in each HTML <head>,
+     not @import here. @import from inside a stylesheet creates a
+     critical-request chain (HTML -> style.css -> fonts) that blocks
+     First Contentful Paint. The <link> approach fetches fonts in
+     parallel with the stylesheet. */
+  --font-display: 'Fraunces', serif;
+  --font-body: 'IBM Plex Sans', sans-serif;
+  --font-mono: 'JetBrains Mono', monospace;
 
   /* Aliases for base.css compatibility */
   --text-base: 16px;
-  --space-16: 16px;
-  --space-4: 4px;
+  --space-16: 64px;
+  --space-4: 16px;
   --radius-sm: 6px;
-
-  /* Aliases used by base.css */
   --color-bg: var(--bg);
   --color-text: var(--text);
   --color-primary: var(--active);
   --transition-interactive: 180ms cubic-bezier(0.16, 1, 0.3, 1);
-}
 
-/* --- Typography ---
-   Fonts are loaded from Google Fonts via <link> in each HTML <head>,
-   not @import here. @import from inside a stylesheet creates a
-   critical-request chain (HTML -> style.css -> fonts) that blocks the
-   First Contentful Paint. The <link> approach fetches fonts in
-   parallel with the stylesheet. */
+  /* Legacy token compatibility — May 2026
+     Many pages were authored against an older design-system token
+     vocabulary (--color-surface, --space-N, --text-xs, --color-gold...)
+     that no longer exists. Aliased here as warm-palette values so every
+     legacy reference resolves correctly without rewriting markup. */
+  --color-bg-2:            var(--bg2);
+  --color-surface:         var(--panel);
+  --color-surface-2:       var(--panel2);
+  --color-surface-raised:  var(--panel2);
+  --color-text-muted:      var(--muted);
+  --color-text-faint:      var(--faint);
+  --color-border:          var(--rule);
+  --color-divider:         var(--rule);
+  --color-gold:            var(--verified);
 
-:root {
-  --font-display: 'Fraunces', serif;
-  --font-body: 'IBM Plex Sans', sans-serif;
-  --font-mono: 'JetBrains Mono', monospace;
+  /* Spacing scale (4px base) */
+  --space-1:  4px;
+  --space-2:  8px;
+  --space-3:  12px;
+  --space-5:  20px;
+  --space-6:  24px;
+  --space-7:  28px;
+  --space-8:  32px;
+  --space-9:  36px;
+  --space-10: 40px;
+  --space-12: 48px;
+  --space-14: 56px;
+  --space-20: 80px;
+  --space-24: 96px;
+  --space-32: 128px;
+
+  /* Type scale */
+  --text-xs:   11px;
+  --text-sm:   13px;
+  --text-md:   16px;
+  --text-lg:   18px;
+  --text-xl:   22px;
+  --text-2xl:  28px;
+  --text-3xl:  36px;
+  --text-4xl:  48px;
+
+  /* Radii */
+  --radius-xs: 3px;
+  --radius-md: 8px;
+  --radius-lg: 12px;
+  --radius-xl: 16px;
+
+  /* Layout */
+  --content-default: 1200px;
+  --content-narrow:  720px;
+  --content-wide:    1400px;
+
+  /* Layered elevation system — soft, multi-shadow depth
+     (PREMIUM POLISH 2026). Light-theme overrides for these same
+     tokens live on [data-theme="light"] further down the file. */
+  --elev-1: 0 1px 2px rgba(0,0,0,0.30), 0 2px 8px rgba(0,0,0,0.20);
+  --elev-2: 0 2px 4px rgba(0,0,0,0.28), 0 8px 24px rgba(0,0,0,0.30);
+  --elev-3: 0 8px 16px rgba(0,0,0,0.30), 0 20px 48px rgba(0,0,0,0.42);
+  --elev-amber: 0 12px 40px rgba(232,184,106,0.14);
+
+  /* Glass surface — translucent gradient + top highlight (cheap, no blur) */
+  --glass-bg: linear-gradient(160deg, rgba(255,255,255,0.055) 0%, rgba(255,255,255,0.015) 42%, rgba(255,255,255,0) 100%);
+  --glass-border: rgba(255,255,255,0.10);
+  --glass-highlight: inset 0 1px 0 rgba(255,255,255,0.08);
+
+  /* Spotlight glow that tracks the pointer (set by app.js) */
+  --spot-x: 50%;
+  --spot-y: 0%;
+
+  /* Premium easing + timing */
+  --ease-out-expo: cubic-bezier(0.16, 1, 0.3, 1);
+  --t-fast: 140ms;
+  --t-mid: 240ms;
 }
 
 /* --- Reset --- */
@@ -73,12 +149,17 @@ body {
   background: var(--bg);
   color: var(--text);
   font-family: var(--font-body);
-  font-size: 16px; /* Increased from 15px for better readability */
+  font-size: var(--text-md); /* Increased from 15px for better readability */
   line-height: 1.6; /* Increased from 1.45 for better readability */
   position: relative;
   overflow-x: hidden;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+  /* Subtle warm vignette to feel like a reading lamp on a desk */
+  background-image:
+    radial-gradient(ellipse 90% 60% at 50% -10%, rgba(232, 184, 106, 0.05), transparent 60%),
+    radial-gradient(ellipse 70% 50% at 50% 110%, rgba(199, 163, 90, 0.04), transparent 70%);
+  background-attachment: fixed;
 }
 
 /* Mobile: Even larger for comfort */
@@ -204,7 +285,7 @@ p {
   text-decoration: none;
   color: var(--text);
   font-family: var(--font-display);
-  font-size: 18px;
+  font-size: var(--text-lg);
   font-weight: 600;
 }
 
@@ -329,7 +410,7 @@ button[data-theme-toggle]:hover {
   text-decoration: none;
   padding: 16px 0;
   border-bottom: 1px solid var(--rule);
-  font-size: 16px;
+  font-size: var(--text-md);
   min-height: 44px;
   display: flex;
   align-items: center;
@@ -390,7 +471,7 @@ main {
 }
 
 .stat-label {
-  font-size: 11px;
+  font-size: var(--text-xs);
   font-weight: 600;
   letter-spacing: 0.1em;
   text-transform: uppercase;
@@ -451,34 +532,77 @@ main {
   border-color: var(--active);
 }
 
+/* Canonical .btn-primary — warm amber CTA, body font (not mono caps).
+   This used to be five separate rules appended across revision passes;
+   merged here into one declaration carrying every property that was
+   actually in effect (later passes won on background/color/shape via
+   cascade order — those winning values are what's kept below). */
 .btn-primary {
+  position: relative;
   display: inline-flex;
   align-items: center;
   justify-content: center;
+  overflow: hidden;
   padding: 14px 22px;
   background: var(--active);
-  color: var(--bg);
+  color: #1A1410;
   border: none;
-  border-radius: var(--r);
-  font-family: var(--font-mono);
+  border-radius: 10px;
+  font-family: var(--font-body);
   font-weight: 600;
-  font-size: 13px;
-  letter-spacing: 0.05em;
-  text-transform: uppercase;
+  font-size: 14px;
+  letter-spacing: 0;
+  text-transform: none;
   text-decoration: none;
   cursor: pointer;
-  transition: background 180ms ease;
+  box-shadow: 0 6px 18px rgba(232, 184, 106, 0.18);
+  transition: background var(--t-fast) ease,
+              transform var(--t-fast) var(--ease-out-expo),
+              box-shadow var(--t-mid) ease;
   min-height: 48px;
   white-space: nowrap;
 }
 
 .btn-primary:visited,
 .btn-primary:link {
-  color: var(--bg);
+  color: #1A1410;
+}
+
+/* Ripple sheen on hover */
+.btn-primary::before {
+  content: '';
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 0;
+  height: 0;
+  background: rgba(255, 255, 255, 0.15);
+  border-radius: 50%;
+  transform: translate(-50%, -50%);
+  transition: width 0.5s ease, height 0.5s ease;
+}
+
+.btn-primary:hover::before {
+  width: 300px;
+  height: 300px;
 }
 
 .btn-primary:hover {
   background: #F0CB89;
+  color: #1A1410;
+  transform: translateY(-2px);
+  box-shadow: 0 8px 22px rgba(232, 184, 106, 0.32);
+}
+
+.btn-primary:active {
+  transform: translateY(0) scale(0.98);
+  box-shadow: 0 3px 10px rgba(232, 184, 106, 0.24);
+}
+
+.btn-primary:focus-visible {
+  outline: 2px solid var(--active);
+  outline-offset: 3px;
+  box-shadow: 0 0 0 5px rgba(232, 184, 106, 0.18);
 }
 
 .btn-ghost {
@@ -489,7 +613,7 @@ main {
   border-radius: var(--r);
   font-family: var(--font-mono);
   font-weight: 500;
-  font-size: 13px;
+  font-size: var(--text-sm);
   letter-spacing: 0.05em;
   text-transform: uppercase;
   cursor: pointer;
@@ -505,7 +629,7 @@ main {
 
 .hero-micro-copy {
   font-family: var(--font-mono);
-  font-size: 11px;
+  font-size: var(--text-xs);
   color: var(--faint);
   letter-spacing: 0.03em;
   margin-top: 4px;
@@ -641,21 +765,12 @@ main {
   border-radius: var(--r);
 }
 
-.comparison-card--strong {
-  border-color: var(--active);
-  background: var(--panel2);
-}
-
 .comparison-card-title {
   font-family: var(--font-display);
-  font-size: 18px;
+  font-size: var(--text-lg);
   font-weight: 600;
   color: var(--text);
   margin-bottom: 10px;
-}
-
-.comparison-card--strong .comparison-card-title {
-  color: var(--active);
 }
 
 .comparison-card-body {
@@ -770,7 +885,7 @@ main {
 
 .pedigree-tag {
   font-family: var(--font-mono);
-  font-size: 11px;
+  font-size: var(--text-xs);
   font-weight: 600;
   letter-spacing: 0.06em;
   text-transform: uppercase;
@@ -805,7 +920,7 @@ main {
 }
 
 .cathedral-cta-lede {
-  font-size: 18px;
+  font-size: var(--text-lg);
   color: var(--muted);
   line-height: 1.6;
   margin-bottom: calc(var(--p) * 1.5);
@@ -951,7 +1066,7 @@ main {
 /* Video planned series + stack */
 .video-section-label {
   font-family: var(--font-mono);
-  font-size: 11px;
+  font-size: var(--text-xs);
   letter-spacing: 0.12em;
   text-transform: uppercase;
   color: var(--active);
@@ -997,7 +1112,7 @@ main {
 
 .video-series-number {
   font-family: var(--font-mono);
-  font-size: 11px;
+  font-size: var(--text-xs);
   color: var(--faint);
   margin-bottom: 6px;
 }
@@ -1026,7 +1141,7 @@ main {
 
 .video-series-episodes {
   font-family: var(--font-mono);
-  font-size: 11px;
+  font-size: var(--text-xs);
   color: var(--faint);
 }
 
@@ -1134,7 +1249,7 @@ main {
   background: transparent;
   border: 1px solid var(--rule2);
   border-radius: 4px;
-  font-size: 11px;
+  font-size: var(--text-xs);
   font-weight: 600;
   letter-spacing: 0.1em;
   text-transform: uppercase;
@@ -1162,7 +1277,7 @@ main {
 }
 
 .dossier-section-label {
-  font-size: 11px;
+  font-size: var(--text-xs);
   font-weight: 600;
   letter-spacing: 0.1em;
   text-transform: uppercase;
@@ -1297,7 +1412,7 @@ main {
 
 .archive-card-cta {
   font-family: var(--font-mono);
-  font-size: 11px;
+  font-size: var(--text-xs);
   font-weight: 600;
   color: var(--active);
   letter-spacing: 0.1em;
@@ -1353,7 +1468,7 @@ main {
 
 .share-strip-label {
   font-family: var(--font-mono);
-  font-size: 11px;
+  font-size: var(--text-xs);
   font-weight: 600;
   color: var(--muted);
   letter-spacing: 0.1em;
@@ -1412,7 +1527,7 @@ main {
 .tweet-card blockquote {
   margin: 0;
   font-family: var(--font-display);
-  font-size: 18px;
+  font-size: var(--text-lg);
   font-style: italic;
   line-height: 1.5;
   color: var(--text);
@@ -1497,7 +1612,7 @@ footer {
 
 .footer-col h4 {
   font-family: var(--font-display);
-  font-size: 16px;
+  font-size: var(--text-md);
   font-weight: 600;
   margin-bottom: calc(var(--gap) / 2);
   color: var(--text);
@@ -1590,7 +1705,7 @@ footer {
   display: block;
   margin-top: 12px;
   color: var(--muted);
-  font-size: 13px;
+  font-size: var(--text-sm);
   font-family: var(--font-mono);
   text-decoration: none;
   transition: color 180ms ease;
@@ -1695,7 +1810,7 @@ footer {
 
 .contact-modal-title {
   font-family: var(--font-display);
-  font-size: 28px;
+  font-size: var(--text-2xl);
   font-weight: 600;
   color: var(--text);
   margin-bottom: 8px;
@@ -1721,7 +1836,7 @@ footer {
 }
 
 .form-group label {
-  font-size: 13px;
+  font-size: var(--text-sm);
   font-weight: 600;
   color: var(--text);
   text-transform: uppercase;
@@ -1736,7 +1851,7 @@ footer {
   border-radius: var(--r);
   color: var(--text);
   font-family: var(--font-body);
-  font-size: 16px;
+  font-size: var(--text-md);
   transition: border-color 180ms ease;
 }
 
@@ -1767,7 +1882,7 @@ footer {
   border: none;
   border-radius: var(--r);
   font-family: var(--font-body);
-  font-size: 16px;
+  font-size: var(--text-md);
   font-weight: 600;
   cursor: pointer;
   transition: all 180ms ease;
@@ -1943,7 +2058,7 @@ footer {
   }
 
   h1 {
-    font-size: 36px;
+    font-size: var(--text-3xl);
     line-height: 1.2;
   }
 
@@ -2002,7 +2117,7 @@ footer {
 /* Small phones */
 @media (max-width: 480px) {
   h1 {
-    font-size: 28px;
+    font-size: var(--text-2xl);
   }
 
   h2 {
@@ -2057,7 +2172,7 @@ footer {
   textarea,
   select {
     min-height: 48px;
-    font-size: 16px; /* Prevents zoom on iOS */
+    font-size: var(--text-md); /* Prevents zoom on iOS */
   }
 
   /* Better spacing for touch */
@@ -2091,7 +2206,7 @@ footer {
   border-radius: var(--r);
   color: var(--text);
   font-family: var(--font-body);
-  font-size: 16px; /* Prevent iOS auto-zoom */
+  font-size: var(--text-md); /* Prevent iOS auto-zoom */
 }
 
 .subscribe-form button {
@@ -2116,7 +2231,7 @@ footer {
   }
 
   .subscribe-section h2 {
-    font-size: 22px;
+    font-size: var(--text-xl);
   }
 
   .page-hero-ctas {
@@ -2214,15 +2329,10 @@ footer {
    Appended at EOF — overrides by specificity/cascade order.
    ═══════════════════════════════════════════════════════════════ */
 
-/* -- Raise base text contrast -- */
-:root {
-  --text: #F1F4FB;          /* was #E9EDF6 — brighter primary */
-  --muted: #C2CAD9;         /* was #AAB4C7 — stronger body */
-  --faint: #8A94AC;         /* was #6E7891 — more legible meta */
-  --rule: #233052;          /* was #1A2338 — visible borders */
-  --active: #E8B86A;        /* warm amber */
-  --active-soft: rgba(232, 184, 106, 0.12);
-}
+/* -- Raise base text contrast --
+   (superseded by the WARM SIGNAL palette; --text/--muted/--faint/--rule
+   /--active/--active-soft now live in the canonical :root at the top
+   of the file) */
 
 p {
   color: var(--muted);
@@ -2331,7 +2441,7 @@ nav ul.nav-links a[href="#subscribe"]::after {
 /* -- Mobile nav: bigger taps, better separators -- */
 .mobile-nav a {
   padding: 18px 24px;
-  font-size: 18px;
+  font-size: var(--text-lg);
   border-bottom: 1px solid var(--rule);
   letter-spacing: 0.04em;
   color: var(--text);
@@ -2364,7 +2474,7 @@ nav ul.nav-links a[href="#subscribe"]::after {
   margin: 0 auto;
   padding: 20px 24px 0;
   font-family: var(--font-mono);
-  font-size: 11px;
+  font-size: var(--text-xs);
   letter-spacing: 0.08em;
   color: var(--faint);
   text-transform: uppercase;
@@ -2398,13 +2508,13 @@ h2 {
 }
 
 h3 {
-  font-size: 22px;
+  font-size: var(--text-xl);
   color: var(--text);
 }
 
 /* -- Section labels: more visual weight -- */
 .section-label {
-  font-size: 11px;
+  font-size: var(--text-xs);
   letter-spacing: 0.2em;
   color: var(--faint);
   display: flex;
@@ -2445,14 +2555,7 @@ h3 {
   height: 48px;
 }
 
-.btn-primary {
-  box-shadow: 0 4px 14px rgba(232, 184, 106, 0.25);
-}
-
-.btn-primary:hover {
-  box-shadow: 0 6px 20px rgba(232, 184, 106, 0.4);
-  transform: translateY(-1px);
-}
+/* .btn-primary shadow/hover now live in the canonical rule above. */
 
 /* -- Proof stack: readable alignment -- */
 .proof-number {
@@ -2492,7 +2595,7 @@ footer.site-footer {
 }
 
 .footer-col a {
-  font-size: 13px;
+  font-size: var(--text-sm);
   color: var(--muted);
   letter-spacing: 0.01em;
 }
@@ -2632,7 +2735,7 @@ button:focus-visible {
   font-size: 10px;
   letter-spacing: 0.16em;
   text-transform: uppercase;
-  color: var(--verified, #22D3C5);
+  color: var(--verified, #C7A35A);
   padding: 0 20px;
 }
 
@@ -2680,8 +2783,8 @@ button:focus-visible {
 }
 
 .dispatch-preview-card:hover {
-  border-color: var(--active, #22D3C5);
-  background: rgba(34,211,197,0.04);
+  border-color: var(--active, #E8B86A);
+  background: rgba(232,184,106,0.04);
 }
 
 .dispatch-preview-meta {
@@ -2690,12 +2793,12 @@ button:focus-visible {
   gap: 10px;
   margin-bottom: 10px;
   font-family: var(--font-mono, 'JetBrains Mono', monospace);
-  font-size: 11px;
+  font-size: var(--text-xs);
   color: var(--faint);
 }
 
 .dispatch-num {
-  color: var(--active, #22D3C5);
+  color: var(--active, #E8B86A);
   font-weight: 500;
 }
 
@@ -2730,7 +2833,7 @@ button:focus-visible {
 
 .arc-hero-kicker {
   font-family: var(--font-mono);
-  font-size: 11px;
+  font-size: var(--text-xs);
   font-weight: 500;
   letter-spacing: 0.14em;
   color: var(--verified);
@@ -2878,7 +2981,7 @@ button:focus-visible {
 
 .arc-featured-quote {
   font-family: var(--font-display);
-  font-size: 18px;
+  font-size: var(--text-lg);
   font-weight: 300;
   font-style: italic;
   line-height: 1.5;
@@ -2934,7 +3037,7 @@ button:focus-visible {
 
 .arc-list-title {
   font-family: var(--font-display);
-  font-size: 28px;
+  font-size: var(--text-2xl);
   font-weight: 400;
   letter-spacing: -0.02em;
   color: var(--text);
@@ -2943,7 +3046,7 @@ button:focus-visible {
 
 .arc-list-sub {
   font-family: var(--font-mono);
-  font-size: 11px;
+  font-size: var(--text-xs);
   letter-spacing: 0.08em;
   color: var(--faint);
   text-transform: uppercase;
@@ -2958,7 +3061,7 @@ button:focus-visible {
 
 .arc-filter-btn {
   font-family: var(--font-mono);
-  font-size: 11px;
+  font-size: var(--text-xs);
   letter-spacing: 0.1em;
   text-transform: uppercase;
   padding: 6px 14px;
@@ -2972,9 +3075,9 @@ button:focus-visible {
 
 .arc-filter-btn:hover,
 .arc-filter-btn.active {
-  border-color: var(--active, #22D3C5);
-  color: var(--active, #22D3C5);
-  background: rgba(34,211,197,0.05);
+  border-color: var(--active, #E8B86A);
+  color: var(--active, #E8B86A);
+  background: rgba(232,184,106,0.05);
 }
 
 .arc-type-badge {
@@ -2982,7 +3085,7 @@ button:focus-visible {
   font-size: 10px;
   letter-spacing: 0.1em;
   text-transform: uppercase;
-  color: var(--active, #22D3C5);
+  color: var(--active, #E8B86A);
   opacity: 0.8;
 }
 
@@ -3052,7 +3155,7 @@ button:focus-visible {
 
 .arc-item-marker {
   font-family: var(--font-mono);
-  font-size: 28px;
+  font-size: var(--text-2xl);
   font-weight: 300;
   letter-spacing: -0.02em;
   color: var(--faint);
@@ -3068,7 +3171,7 @@ button:focus-visible {
   align-items: center;
   gap: 8px;
   font-family: var(--font-mono);
-  font-size: 11px;
+  font-size: var(--text-xs);
   color: var(--faint);
   letter-spacing: 0.04em;
   margin-bottom: 8px;
@@ -3083,7 +3186,7 @@ button:focus-visible {
 
 .arc-item-title {
   font-family: var(--font-display);
-  font-size: 22px;
+  font-size: var(--text-xl);
   font-weight: 500;
   line-height: 1.2;
   letter-spacing: -0.015em;
@@ -3134,7 +3237,7 @@ button:focus-visible {
   border: 1px solid var(--rule);
   border-radius: 3px;
   font-family: var(--font-body);
-  font-size: 11px;
+  font-size: var(--text-xs);
   font-weight: 500;
   letter-spacing: 0.01em;
   color: var(--muted);
@@ -3172,7 +3275,7 @@ button:focus-visible {
 
 .arc-subscribe-kicker {
   font-family: var(--font-mono);
-  font-size: 11px;
+  font-size: var(--text-xs);
   font-weight: 500;
   letter-spacing: 0.16em;
   color: var(--verified);
@@ -3257,7 +3360,7 @@ button:focus-visible {
 
 .arc-subscribe-fine {
   font-family: var(--font-mono);
-  font-size: 11px;
+  font-size: var(--text-xs);
   color: var(--faint);
   letter-spacing: 0.04em;
   margin: 0;
@@ -3308,7 +3411,7 @@ button:focus-visible {
   }
 
   .arc-item-title {
-    font-size: 18px;
+    font-size: var(--text-lg);
   }
 
   .arc-item-quote {
@@ -3457,7 +3560,7 @@ button:focus-visible {
   padding-top: 14px;
   border-top: 1px solid var(--rule);
   font-family: var(--font-body);
-  font-size: 13px;
+  font-size: var(--text-sm);
   font-weight: 500;
   color: var(--active);
   letter-spacing: 0.005em;
@@ -3471,7 +3574,7 @@ button:focus-visible {
 
 .archive-card-cta {
   font-family: var(--font-body);
-  font-size: 13px;
+  font-size: var(--text-sm);
   font-weight: 600;
   letter-spacing: 0.02em;
   color: var(--active);
@@ -3501,7 +3604,7 @@ button:focus-visible {
   .header-inner { gap: 48px; }
 
   nav ul.nav-links a {
-    font-size: 13px;
+    font-size: var(--text-sm);
     font-family: var(--font-body);
     font-weight: 500;
     letter-spacing: 0.005em;
@@ -3539,7 +3642,7 @@ h3 { font-variation-settings: 'opsz' 48; }
 .dispatch-body .lead-text,
 .article-body .lead-text {
   font-family: var(--font-display);
-  font-size: 22px;
+  font-size: var(--text-xl);
   font-weight: 300;
   line-height: 1.5;
   color: #E4E8F4;
@@ -3560,45 +3663,13 @@ h3 { font-variation-settings: 'opsz' 48; }
    • Blueprint grid dimmed; reads as paper grain, not engineering plans
    ═══════════════════════════════════════════════════════════════════ */
 
-:root {
-  /* Paper / leather */
-  --bg:     #14110D;          /* warm espresso */
-  --bg2:    #100E0A;          /* deeper */
-  --panel:  #1C1814;          /* warm charcoal slab */
-  --panel2: #231E18;          /* hover/raised */
-  --rule:   #2E2823;          /* warm rule line */
-  --rule2:  #3C342B;          /* stronger rule */
-
-  /* Type */
-  --text:  #F2EAD9;           /* warm cream */
-  --muted: #C9BBA1;           /* warm beige body */
-  --faint: #8E7F69;           /* taupe meta */
-
-  /* Signals */
-  --active:      #E8B86A;     /* amber — was neon teal */
-  --active-soft: rgba(232, 184, 106, 0.12);
-  --verified:    #C7A35A;     /* brass kept */
-  --danger:      #D77A60;     /* terracotta */
-}
-
-/* Tap highlight (replaces hardcoded teal on body) */
-* { -webkit-tap-highlight-color: rgba(232, 184, 106, 0.15); }
+/* Palette tokens (--bg, --panel, --text, --active, etc.) now live in
+   the canonical :root block at the top of the file. */
 
 /* ::selection — warm */
 ::selection {
   background: rgba(232, 184, 106, 0.22);
   color: var(--text);
-}
-
-/* Body — warmer rendering */
-body {
-  background: var(--bg);
-  color: var(--text);
-  /* Subtle warm vignette to feel like a reading lamp on a desk */
-  background-image:
-    radial-gradient(ellipse 90% 60% at 50% -10%, rgba(232, 184, 106, 0.05), transparent 60%),
-    radial-gradient(ellipse 70% 50% at 50% 110%, rgba(199, 163, 90, 0.04), transparent 70%);
-  background-attachment: fixed;
 }
 
 /* Blueprint grid → paper grain.
@@ -3640,7 +3711,7 @@ p {
 /* Section labels — less terminal-prompt, more editorial folio */
 .section-label {
   font-family: var(--font-mono);
-  font-size: 11px;
+  font-size: var(--text-xs);
   font-weight: 500;
   letter-spacing: 0.18em;
   color: var(--verified);
@@ -3728,21 +3799,9 @@ nav ul.nav-links a[href="#subscribe"]:hover {
 }
 .trust-strip .mono-label { color: var(--faint); }
 
-/* Buttons — primary uses warm amber + body font (not mono caps).
-   Approachable, not terminal. */
-.btn-primary {
-  background: var(--active);
-  color: #1A1410;
-  font-family: var(--font-body);
-  font-weight: 600;
-  letter-spacing: 0;
-  text-transform: none;
-  font-size: 14px;
-  border-radius: 10px;
-  box-shadow: 0 6px 18px rgba(232, 184, 106, 0.18);
-}
-.btn-primary:hover { background: #F0CB89; color: #1A1410; }
-.btn-primary:link, .btn-primary:visited { color: #1A1410; }
+/* Buttons — .btn-primary is now canonical (see top of file); it
+   already uses warm amber + body font (not mono caps), approachable
+   not terminal. */
 
 .btn-ghost {
   font-family: var(--font-body);
@@ -3768,11 +3827,6 @@ nav ul.nav-links a[href="#subscribe"]:hover {
 
 /* Comparison cards — warm */
 .comparison-card { background: var(--panel); border-color: var(--rule); }
-.comparison-card--strong {
-  border-color: var(--active);
-  background: linear-gradient(180deg, rgba(232, 184, 106, 0.06), var(--panel2));
-}
-.comparison-card--strong .comparison-card-title { color: var(--active); }
 
 /* Dossier + build cards — warm leather feel, softer hover */
 .dossier-card,
@@ -3851,7 +3905,7 @@ nav ul.nav-links a[href="#subscribe"]:hover {
   box-shadow: 0 12px 28px rgba(0, 0, 0, 0.4);
 }
 .archive-card-week { color: var(--verified); letter-spacing: 0.14em; }
-.archive-card-quote { color: var(--muted); font-family: var(--font-display); font-size: 16px; }
+.archive-card-quote { color: var(--muted); font-family: var(--font-display); font-size: var(--text-md); }
 
 /* Tweet card — paper-feel pull quote */
 .tweet-card {
@@ -3949,7 +4003,7 @@ footer,
   align-items: center;
   gap: 6px;
   font-family: var(--font-mono);
-  font-size: 11px;
+  font-size: var(--text-xs);
   letter-spacing: 0.14em;
   text-transform: uppercase;
   color: var(--verified);
@@ -3961,7 +4015,7 @@ footer,
 
 .fn-article-eyebrow {
   font-family: var(--font-mono);
-  font-size: 11px;
+  font-size: var(--text-xs);
   letter-spacing: 0.16em;
   text-transform: uppercase;
   color: var(--verified);
@@ -3995,7 +4049,7 @@ footer,
   flex-wrap: wrap;
   gap: 18px;
   font-family: var(--font-mono);
-  font-size: 11px;
+  font-size: var(--text-xs);
   letter-spacing: 0.1em;
   text-transform: uppercase;
   color: var(--faint);
@@ -4008,7 +4062,7 @@ footer,
 .fn-disclosure {
   font-family: var(--font-body);
   font-style: italic;
-  font-size: 13px;
+  font-size: var(--text-sm);
   line-height: 1.55;
   color: var(--faint);
   padding: 12px 14px;
@@ -4190,7 +4244,7 @@ footer,
   display: block;
   margin-top: 10px;
   font-family: var(--font-mono);
-  font-size: 11px;
+  font-size: var(--text-xs);
   font-style: normal;
   letter-spacing: 0.08em;
   text-transform: uppercase;
@@ -4291,7 +4345,7 @@ footer,
 /* --- Hero --- */
 .hero-overline {
   font-family: var(--font-mono);
-  font-size: 11px;
+  font-size: var(--text-xs);
   letter-spacing: 0.18em;
   text-transform: uppercase;
   color: var(--verified);
@@ -4326,7 +4380,7 @@ footer,
   justify-content: center;
   gap: 14px 22px;
   font-family: var(--font-mono);
-  font-size: 11px;
+  font-size: var(--text-xs);
   letter-spacing: 0.1em;
   text-transform: uppercase;
   color: var(--faint);
@@ -4860,7 +4914,7 @@ footer,
   margin: 0 auto;
   padding: 14px 24px 0;
   font-family: var(--font-mono);
-  font-size: 11px;
+  font-size: var(--text-xs);
   letter-spacing: 0.08em;
   color: var(--faint);
 }
@@ -4988,7 +5042,7 @@ footer,
 
 .cathedral-phase-name {
   font-family: var(--font-mono);
-  font-size: 11px;
+  font-size: var(--text-xs);
   letter-spacing: 0.12em;
   text-transform: uppercase;
   color: var(--muted);
@@ -5071,7 +5125,7 @@ footer,
 
 .pricing-card-name {
   font-family: var(--font-mono);
-  font-size: 11px;
+  font-size: var(--text-xs);
   letter-spacing: 0.16em;
   text-transform: uppercase;
   color: var(--verified);
@@ -5121,7 +5175,7 @@ footer,
 
 .cta-block p {
   font-family: var(--font-body);
-  font-size: 16px;
+  font-size: var(--text-md);
   line-height: 1.65;
   color: var(--muted);
   margin: 0 0 22px;
@@ -5253,7 +5307,7 @@ footer,
 .builds-hero-badge {
   display: inline-block;
   font-family: var(--font-mono);
-  font-size: 11px;
+  font-size: var(--text-xs);
   letter-spacing: 0.18em;
   text-transform: uppercase;
   color: var(--verified);
@@ -5290,7 +5344,7 @@ footer,
 
 .builds-section-title {
   font-family: var(--font-mono);
-  font-size: 11px;
+  font-size: var(--text-xs);
   font-weight: 500;
   letter-spacing: 0.18em;
   text-transform: uppercase;
@@ -5555,66 +5609,10 @@ footer,
    LEGACY TOKEN COMPATIBILITY — May 2026
    Many pages were authored against an older design-system token
    vocabulary (--color-surface, --space-N, --text-xs, --color-gold...)
-   that no longer exists. Define them here as warm palette aliases so
-   every legacy reference resolves correctly without rewriting markup.
-   These are cascade-tail and will not override any explicit setting.
+   that no longer exists. Aliased in the canonical :root block at the
+   top of the file so every legacy reference resolves correctly
+   without rewriting markup.
    ═══════════════════════════════════════════════════════════════════ */
-
-:root {
-  /* Color aliases */
-  --color-bg:              var(--bg);
-  --color-bg-2:            var(--bg2);
-  --color-surface:         var(--panel);
-  --color-surface-2:       var(--panel2);
-  --color-surface-raised:  var(--panel2);
-  --color-text:            var(--text);
-  --color-text-muted:      var(--muted);
-  --color-text-faint:      var(--faint);
-  --color-border:          var(--rule);
-  --color-divider:         var(--rule);
-  --color-gold:            var(--verified);
-
-  /* Spacing scale (4px base) */
-  --space-1:  4px;
-  --space-2:  8px;
-  --space-3:  12px;
-  --space-4:  16px;
-  --space-5:  20px;
-  --space-6:  24px;
-  --space-7:  28px;
-  --space-8:  32px;
-  --space-9:  36px;
-  --space-10: 40px;
-  --space-12: 48px;
-  --space-14: 56px;
-  --space-16: 64px;
-  --space-20: 80px;
-  --space-24: 96px;
-  --space-32: 128px;
-
-  /* Type scale */
-  --text-xs:   11px;
-  --text-sm:   13px;
-  --text-base: 16px;
-  --text-md:   16px;
-  --text-lg:   18px;
-  --text-xl:   22px;
-  --text-2xl:  28px;
-  --text-3xl:  36px;
-  --text-4xl:  48px;
-
-  /* Radii */
-  --radius-xs: 3px;
-  --radius-sm: 6px;
-  --radius-md: 8px;
-  --radius-lg: 12px;
-  --radius-xl: 16px;
-
-  /* Layout */
-  --content-default: 1200px;
-  --content-narrow:  720px;
-  --content-wide:    1400px;
-}
 
 /* ============================================================
    DYNAMIC ANIMATIONS & ENHANCED UX
@@ -5876,29 +5874,9 @@ footer,
   backdrop-filter: blur(12px);
 }
 
-/* --- Floating Action Pulse (Subscribe Button) --- */
-.btn-primary {
-  position: relative;
-  overflow: hidden;
-}
-
-.btn-primary::before {
-  content: '';
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  width: 0;
-  height: 0;
-  background: rgba(255, 255, 255, 0.15);
-  border-radius: 50%;
-  transform: translate(-50%, -50%);
-  transition: width 0.5s ease, height 0.5s ease;
-}
-
-.btn-primary:hover::before {
-  width: 300px;
-  height: 300px;
-}
+/* --- Floating Action Pulse (Subscribe Button) ---
+   .btn-primary's ripple sheen (position/overflow/::before) is part of
+   the canonical rule at the top of the file. */
 
 /* --- Video Embed Enhanced --- */
 .video-embed--featured {
@@ -5910,6 +5888,10 @@ footer,
 }
 
 /* --- Respect Reduced Motion --- */
+/* Canonical prefers-reduced-motion block. This used to be six separate
+   @media blocks scattered through the file (one per revision pass);
+   merged here into one so every motion-sensitive rule lives in a
+   single, auditable place. */
 @media (prefers-reduced-motion: reduce) {
   .reveal,
   .reveal-left,
@@ -5935,6 +5917,46 @@ footer,
     animation: none !important;
     opacity: 0.4 !important;
   }
+  .img-fade {
+    opacity: 1 !important;
+    transform: none !important;
+    transition: none !important;
+  }
+  .cathedral-card, .client-tier-card, .partner-card,
+  .feature-matrix-card, .dispatch-preview-card, .dossier-card,
+  .proof-item, .btn-primary, .btn-ghost, .btn-outline, .partner-cta,
+  .entity-card, .pricing-card, .property-card, .video-series-card,
+  .reel-card, .build-card, .preview-card, .news-card, .profile-stats-card,
+  .yt-facade-poster, .yt-facade-play, .yt-facade::after,
+  .dispatch-nav-link {
+    transition: none !important;
+  }
+  .cathedral-card:hover, .client-tier-card:hover, .partner-card:hover,
+  .feature-matrix-card:hover, .dispatch-preview-card:hover, .dossier-card:hover,
+  .proof-item:hover, .btn-primary:hover, .btn-ghost:hover,
+  .btn-outline:hover, .partner-cta:hover,
+  .entity-card:hover, .pricing-card:hover, .property-card:hover,
+  .video-series-card:hover, .reel-card:hover, .build-card:hover,
+  .preview-card:hover, .news-card:hover, .profile-stats-card:hover,
+  .dispatch-nav-link:hover {
+    transform: none !important;
+  }
+  .cathedral-card::after, .client-tier-card::after, .partner-card::after,
+  .feature-matrix-card::after, .dispatch-preview-card::after, .dossier-card::after,
+  .entity-card::after, .pricing-card::after, .property-card::after,
+  .video-series-card::after, .reel-card::after, .preview-card::after,
+  .news-card::after, .profile-stats-card::after {
+    display: none !important;
+  }
+  .yt-facade:hover .yt-facade-poster { transform: none; }
+  .yt-facade:hover .yt-facade-play { transform: translate(-50%, -50%); }
+  .contact-modal.active .contact-modal-content,
+  .contact-success .success-icon path,
+  .skeleton::after,
+  .hero-subscribe.is-loading button[type="submit"]::after {
+    animation: none !important;
+  }
+  .contact-success .success-icon path { stroke-dashoffset: 0 !important; }
 }
 
 /* ============================================================
@@ -5944,28 +5966,9 @@ footer,
    identity while adding tactile depth and feedback.
    ============================================================ */
 
-:root {
-  /* Layered elevation system — soft, multi-shadow depth */
-  --elev-1: 0 1px 2px rgba(0,0,0,0.30), 0 2px 8px rgba(0,0,0,0.20);
-  --elev-2: 0 2px 4px rgba(0,0,0,0.28), 0 8px 24px rgba(0,0,0,0.30);
-  --elev-3: 0 8px 16px rgba(0,0,0,0.30), 0 20px 48px rgba(0,0,0,0.42);
-  --elev-amber: 0 12px 40px rgba(232,184,106,0.14);
-
-  /* Glass surface — translucent gradient + top highlight (cheap, no blur) */
-  --glass-bg: linear-gradient(160deg, rgba(255,255,255,0.055) 0%, rgba(255,255,255,0.015) 42%, rgba(255,255,255,0) 100%);
-  --glass-border: rgba(255,255,255,0.10);
-  --glass-highlight: inset 0 1px 0 rgba(255,255,255,0.08);
-
-  /* Spotlight glow that tracks the pointer (set by app.js) */
-  --spot-x: 50%;
-  --spot-y: 0%;
-
-  /* Premium easing + timing */
-  --ease-out-expo: cubic-bezier(0.16, 1, 0.3, 1);
-  --t-fast: 140ms;
-  --t-mid: 240ms;
-}
-
+/* Elevation, glass, and spotlight tokens now live in the canonical
+   :root block at the top of the file (see PREMIUM POLISH 2026 notes
+   there). Light-theme overrides for those same tokens: */
 [data-theme="light"] {
   --elev-1: 0 1px 2px rgba(16,20,32,0.06), 0 2px 8px rgba(16,20,32,0.05);
   --elev-2: 0 2px 4px rgba(16,20,32,0.06), 0 8px 24px rgba(16,20,32,0.08);
@@ -6062,23 +6065,13 @@ footer,
   border-color: rgba(232,184,106,0.30);
 }
 
-/* --- Buttons: lift, press & sheen --- */
-.btn-primary {
-  transition: background var(--t-fast) ease,
-              transform var(--t-fast) var(--ease-out-expo),
-              box-shadow var(--t-mid) ease;
-}
-.btn-primary:hover {
-  transform: translateY(-2px);
-  box-shadow: 0 8px 22px rgba(232,184,106,0.32);
-}
-.btn-primary:active {
-  transform: translateY(0) scale(0.98);
-  box-shadow: 0 3px 10px rgba(232,184,106,0.24);
-}
+/* --- Buttons: lift, press & sheen ---
+   .btn-primary's transition/hover/active lift is part of the canonical
+   rule at the top of the file. */
 
 .btn-ghost,
 .btn-outline {
+  min-height: 44px;
   transition: border-color var(--t-fast) ease,
               color var(--t-fast) ease,
               transform var(--t-fast) var(--ease-out-expo),
@@ -6229,31 +6222,6 @@ footer,
 .ticker-wrap:hover .ticker-track { animation-play-state: paused; }
 
 /* --- Reduced-motion: strip the new motion, keep the depth --- */
-@media (prefers-reduced-motion: reduce) {
-  .cathedral-card, .client-tier-card, .partner-card,
-  .feature-matrix-card, .dispatch-preview-card, .dossier-card,
-  .proof-item, .btn-primary, .btn-ghost, .btn-outline, .partner-cta {
-    transition: none !important;
-  }
-  .cathedral-card:hover, .client-tier-card:hover, .partner-card:hover,
-  .feature-matrix-card:hover, .dispatch-preview-card:hover, .dossier-card:hover,
-  .proof-item:hover, .btn-primary:hover, .btn-ghost:hover,
-  .btn-outline:hover, .partner-cta:hover {
-    transform: none !important;
-  }
-  .cathedral-card::after, .client-tier-card::after, .partner-card::after,
-  .feature-matrix-card::after, .dispatch-preview-card::after, .dossier-card::after {
-    display: none !important;
-  }
-  .contact-modal.active .contact-modal-content,
-  .contact-success .success-icon path,
-  .skeleton::after,
-  .hero-subscribe.is-loading button[type="submit"]::after {
-    animation: none !important;
-  }
-  .contact-success .success-icon path { stroke-dashoffset: 0 !important; }
-}
-
 /* --- Touch devices: no hover lift (avoids sticky :hover) --- */
 @media (hover: none) {
   .cathedral-card:hover, .client-tier-card:hover, .partner-card:hover,
@@ -6302,14 +6270,10 @@ footer,
   align-items: center;
   justify-content: center;
   font-family: var(--font-mono);
-  font-size: 11px;
+  font-size: var(--text-xs);
   letter-spacing: 0.08em;
   text-transform: uppercase;
   color: var(--faint);
-}
-
-@media (prefers-reduced-motion: reduce) {
-  .img-fade { opacity: 1 !important; transform: none !important; transition: none !important; }
 }
 
 /* ============================================================
@@ -6394,23 +6358,6 @@ footer,
 .reel-card:active {
   transform: translateY(-2px) scale(0.995);
   transition-duration: var(--t-fast);
-}
-
-@media (prefers-reduced-motion: reduce) {
-  .entity-card, .pricing-card, .property-card, .video-series-card,
-  .reel-card, .build-card, .preview-card, .news-card, .profile-stats-card {
-    transition: none !important;
-  }
-  .entity-card:hover, .pricing-card:hover, .property-card:hover,
-  .video-series-card:hover, .reel-card:hover, .build-card:hover,
-  .preview-card:hover, .news-card:hover, .profile-stats-card:hover {
-    transform: none !important;
-  }
-  .entity-card::after, .pricing-card::after, .property-card::after,
-  .video-series-card::after, .reel-card::after, .preview-card::after,
-  .news-card::after, .profile-stats-card::after {
-    display: none !important;
-  }
 }
 
 @media (hover: none) {
@@ -6531,12 +6478,6 @@ footer,
   outline: 2px solid var(--active);
   outline-offset: -3px;
 }
-@media (prefers-reduced-motion: reduce) {
-  .yt-facade-poster, .yt-facade-play, .yt-facade::after { transition: none !important; }
-  .yt-facade:hover .yt-facade-poster { transform: none; }
-  .yt-facade:hover .yt-facade-play { transform: translate(-50%, -50%); }
-}
-
 /* --- Dispatch prev/next navigation --- */
 .dispatch-nav {
   display: grid;
@@ -6568,7 +6509,7 @@ footer,
 .dispatch-nav-next { text-align: right; }
 .dispatch-nav-dir {
   font-family: var(--font-mono);
-  font-size: 11px;
+  font-size: var(--text-xs);
   letter-spacing: 0.1em;
   text-transform: uppercase;
   color: var(--active);
@@ -6585,11 +6526,6 @@ footer,
   .dispatch-nav { grid-template-columns: 1fr; }
   .dispatch-nav-next { text-align: left; }
 }
-@media (prefers-reduced-motion: reduce) {
-  .dispatch-nav-link { transition: none !important; }
-  .dispatch-nav-link:hover { transform: none !important; }
-}
-
 /* --- Fieldnotes search --- */
 .fn-search {
   display: flex;
@@ -6619,6 +6555,13 @@ footer,
   color: var(--text);
   font-family: var(--font-body);
   font-size: 15px;
+}
+/* .fn-search:focus-within already rings the whole search bar; give the
+   input itself a visible indicator too so keyboard focus is never silent. */
+.fn-search input:focus-visible {
+  outline: 2px solid var(--active);
+  outline-offset: 2px;
+  border-radius: 2px;
 }
 .fn-search input::placeholder { color: var(--faint); }
 .fn-search-count {
