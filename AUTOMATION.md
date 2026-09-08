@@ -41,12 +41,20 @@ The content agent is deterministic by default, so it works without paid APIs or 
 
 ## Email dispatch (Netlify Scheduled Function)
 
-The brief is emailed via [Resend](https://resend.com) broadcasts to the
-"The Signal — Newsletter" segment, via a native Netlify Scheduled Function:
-`functions/send-signal.js`. The schedule (`0 12 * * *`, daily at 12:00 UTC)
-is declared in `netlify.toml` under `[functions."send-signal"]`, and the
-latest brief JSON is bundled with the function deploy via
-`[functions].included_files`.
+The latest **archive transmission** (see "Archive transmission agent" above
+— a weekly Claude routine, not GitHub Actions, and not the retired `/daily/`
+generator below) is emailed via [Resend](https://resend.com) broadcasts to
+the "The Signal — Newsletter" segment, via a native Netlify Scheduled
+Function: `functions/send-signal.js`. It reads `data/archive-state.json`'s
+newest entry (`published[0]`) and pulls its teaser text straight from that
+dispatch's own `<meta name="description">` at `archive/<number>.html`, so
+there is one source of truth for a dispatch's summary. The schedule
+(`0 12 * * *`, daily at 12:00 UTC) is declared in `netlify.toml` under
+`[functions."send-signal"]` — checking daily is harmless even though new
+dispatches land weekly, because the per-dispatch send guard (keyed by
+archive number, not date) means it just skips every day nothing new has
+published. `data/archive-state.json` and `archive/*.html` are bundled with
+the function deploy via `[functions].included_files`.
 
 The function creates a new Resend broadcast from the brief's rendered
 HTML/text, then sends it (two calls: `POST /broadcasts`, then
@@ -69,16 +77,20 @@ Without `RESEND_API_KEY` / `RESEND_SIGNAL_SEGMENT_ID` set, the function
 logs the payload it would send and returns 200, so the schedule keeps
 running cleanly until you fill the env vars.
 
-**Content freshness depends on the daily content agent, which no longer runs
-on a schedule** (see above). `send-signal.js` sends whatever is in
-`data/latest-daily-signal.json`; once that date has been dispatched once, the
-per-date dispatch guard correctly skips re-sending it forever, so a stale
-brief does not spam subscribers — but it also means the daily email quietly
-stops carrying anything new. The function logs a loud warning (`brief is N
-days stale`) on every tick where the brief is more than a day old, so this
-shows up in Netlify function logs instead of silently looking healthy. Run
-the content agent manually (or revisit whether the daily email is worth
-keeping) before assuming subscribers are getting anything current.
+**Content freshness depends on the archive transmission agent** (the
+"Signal — weekly archive transmission" Claude routine, Fridays 10:30 UTC —
+see CLAUDE.md). Once a dispatch number has been sent once, the per-dispatch
+guard correctly skips re-sending it forever, so a quiet week does not spam
+subscribers — but it also means the email quietly stops carrying anything
+new if that routine stops running. The function logs a loud warning (`brief
+is N days stale`, threshold 9 days to allow for the weekly cadence) on every
+tick where the latest dispatch is older than that, so a stalled routine shows
+up in Netlify function logs instead of silently looking healthy.
+
+**The old daily content agent below is retired** (see "Why `/daily/` is
+noindex" in CLAUDE.md) — `data/latest-daily-signal.json` is no longer read by
+`send-signal.js` and is left stale on purpose; do not wire anything back to
+it without first fixing the topic-rotation problem that got it retired.
 
 ### Manual trigger
 
@@ -89,9 +101,8 @@ curl -X POST https://1commercesolutions.com/api/send-signal \
   -H "Authorization: Bearer $SIGNAL_DISPATCH_TOKEN"
 ```
 
-This is handy for hooking into the daily-content-agent GitHub Action
-to send immediately after the new brief is published, instead of
-waiting for the next scheduled tick.
+This is handy for pinging right after the archive transmission routine
+publishes a new dispatch, instead of waiting for the next scheduled tick.
 
 ## Subscriber pipeline (Blobs → Resend)
 
